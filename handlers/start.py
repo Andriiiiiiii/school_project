@@ -1,7 +1,7 @@
 # handlers/start.py
 from aiogram import types
 from keyboards.main_menu import main_menu_keyboard
-from database import crud
+from database import crud  # или используйте функции из вашего модуля database
 
 async def cmd_start(message: types.Message):
     chat_id = message.chat.id

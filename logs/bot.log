@@ -164,3 +164,128 @@ TypeError: object bool can't be used in 'await' expression
 2025-02-04 19:02:28,692 - INFO - Job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-04 19:03:28 MSK)" executed successfully
 2025-02-04 19:02:40,929 - INFO - Stop polling...
 2025-02-04 19:02:40,946 - WARNING - Goodbye!
+2025-02-04 19:25:40,692 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-04 19:25:40,943 - WARNING - Updates were skipped successfully.
+2025-02-04 19:25:40,945 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-04 19:25:40,961 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-04 19:25:40,961 - INFO - Scheduler started
+2025-02-04 19:25:40,961 - INFO - Бот запущен.
+2025-02-04 19:25:40,961 - INFO - Start polling.
+2025-02-04 19:26:09,017 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:13,021 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-17' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:15,280 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:16,165 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:16,878 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:17,367 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-29' coro=<Dispatcher._process_polling_updates() done, defined at C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\habit-tracker-bot\venv311\Lib\site-packages\aiogram\dispatcher\handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 19:26:40,966 - INFO - Running job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-04 19:27:40 MSK)" (scheduled at 2025-02-04 19:26:40.945840+03:00)
+2025-02-04 19:26:40,966 - INFO - Job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-04 19:27:40 MSK)" executed successfully
+2025-02-04 19:27:35,281 - INFO - Stop polling...
+2025-02-04 19:27:35,281 - WARNING - Goodbye!
