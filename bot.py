@@ -1,29 +1,27 @@
 # bot.py
 import logging
 from aiogram import Bot, Dispatcher, executor
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from config import BOT_TOKEN
+from services.scheduler import start_scheduler
+from handlers import register_handlers
 
-import handlers
-import database
-
-# Замените эту строку на токен вашего бота, полученный от BotFather
-BOT_TOKEN = '7826920570:AAFNCinJxjrYMt_a_MWhYVNyYPRQKu0ELzg'
-
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename="logs/bot.log",
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
-handlers.register_handlers(dp, bot)
-
-scheduler = AsyncIOScheduler()
-# Планируем авторассылку слова дня каждую минуту
-scheduler.add_job(handlers.check_and_send_daily_words, 'interval', minutes=1, args=[bot])
+# Регистрируем все обработчики
+register_handlers(dp, bot)
 
 async def on_startup(dp):
-    scheduler.start()
-    logger.info("Планировщик запущен.")
+    # Запускаем планировщик, когда event loop уже запущен.
+    start_scheduler(bot)
+    logger.info("Бот запущен.")
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
