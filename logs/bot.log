@@ -289,3 +289,596 @@ TypeError: object bool can't be used in 'await' expression
 2025-02-04 19:26:40,966 - INFO - Job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-04 19:27:40 MSK)" executed successfully
 2025-02-04 19:27:35,281 - INFO - Stop polling...
 2025-02-04 19:27:35,281 - WARNING - Goodbye!
+2025-02-04 23:30:00,021 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-04 23:30:00,202 - WARNING - Updates were skipped successfully.
+2025-02-04 23:30:00,211 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-04 23:30:00,211 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-04 23:30:00,211 - INFO - Scheduler started
+2025-02-04 23:30:00,211 - INFO - Бот запущен.
+2025-02-04 23:30:00,212 - INFO - Start polling.
+2025-02-04 23:30:13,225 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:14,501 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:15,659 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:16,021 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:16,363 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:19,561 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-28' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-04 23:30:19,907 - INFO - Stop polling...
+2025-02-04 23:30:19,907 - WARNING - Goodbye!
+2025-02-05 00:55:24,668 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 00:55:24,820 - WARNING - Updates were skipped successfully.
+2025-02-05 00:55:24,823 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 00:55:24,825 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 00:55:24,825 - INFO - Scheduler started
+2025-02-05 00:55:24,825 - INFO - Бот запущен.
+2025-02-05 00:55:24,825 - INFO - Start polling.
+2025-02-05 00:55:42,068 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 00:56:29,197 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 00:57:24 MSK)" was missed by 0:00:04.373431
+2025-02-05 00:57:29,157 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 00:58:24 MSK)" was missed by 0:00:04.333623
+2025-02-05 00:57:30,219 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-31' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 00:58:29,980 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 00:59:24 MSK)" was missed by 0:00:05.157249
+2025-02-05 00:59:27,279 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:00:24 MSK)" was missed by 0:00:02.455359
+2025-02-05 01:00:30,073 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:01:24 MSK)" was missed by 0:00:05.249813
+2025-02-05 01:00:56,341 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-44' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:00:57,440 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-47' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:00:59,700 - INFO - Stop polling...
+2025-02-05 01:00:59,700 - WARNING - Goodbye!
+2025-02-05 01:01:06,573 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:01:06,719 - WARNING - Updates were skipped successfully.
+2025-02-05 01:01:06,721 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:01:06,721 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:01:06,721 - INFO - Scheduler started
+2025-02-05 01:01:06,721 - INFO - Бот запущен.
+2025-02-05 01:01:06,721 - INFO - Start polling.
+2025-02-05 01:01:08,995 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:02:11,557 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:03:06 MSK)" was missed by 0:00:04.835901
+2025-02-05 01:03:11,689 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:04:06 MSK)" was missed by 0:00:04.968608
+2025-02-05 01:03:40,397 - INFO - Stop polling...
+2025-02-05 01:03:40,397 - WARNING - Goodbye!
+2025-02-05 01:03:43,857 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:03:44,010 - WARNING - Updates were skipped successfully.
+2025-02-05 01:03:44,016 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:03:44,017 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:03:44,017 - INFO - Scheduler started
+2025-02-05 01:03:44,017 - INFO - Бот запущен.
+2025-02-05 01:03:44,018 - INFO - Start polling.
+2025-02-05 01:03:49,083 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:04:08,971 - INFO - Stop polling...
+2025-02-05 01:04:08,971 - WARNING - Goodbye!
+2025-02-05 01:10:21,114 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:10:21,259 - WARNING - Updates were skipped successfully.
+2025-02-05 01:10:21,263 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:10:21,264 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:10:21,264 - INFO - Scheduler started
+2025-02-05 01:10:21,264 - INFO - Бот запущен.
+2025-02-05 01:10:21,264 - INFO - Start polling.
+2025-02-05 01:10:25,261 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:10:45,938 - INFO - Stop polling...
+2025-02-05 01:10:45,938 - WARNING - Goodbye!
+2025-02-05 01:15:57,882 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:15:58,032 - WARNING - Updates were skipped successfully.
+2025-02-05 01:15:58,035 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:15:58,036 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:15:58,036 - INFO - Scheduler started
+2025-02-05 01:15:58,036 - INFO - Бот запущен.
+2025-02-05 01:15:58,036 - INFO - Start polling.
+2025-02-05 01:16:01,887 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:17:01,116 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:17:58 MSK)" was missed by 0:00:03.080979
+2025-02-05 01:17:21,686 - INFO - Stop polling...
+2025-02-05 01:17:21,686 - WARNING - Goodbye!
+2025-02-05 01:17:32,185 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:17:32,337 - WARNING - Updates were skipped successfully.
+2025-02-05 01:17:32,340 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:17:32,340 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:17:32,340 - INFO - Scheduler started
+2025-02-05 01:17:32,340 - INFO - Бот запущен.
+2025-02-05 01:17:32,340 - INFO - Start polling.
+2025-02-05 01:17:37,612 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:17:47,827 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:17:55,552 - INFO - Stop polling...
+2025-02-05 01:17:55,553 - WARNING - Goodbye!
+2025-02-05 01:23:41,542 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:23:41,690 - WARNING - Updates were skipped successfully.
+2025-02-05 01:23:41,693 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:23:41,693 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:23:41,693 - INFO - Scheduler started
+2025-02-05 01:23:41,693 - INFO - Бот запущен.
+2025-02-05 01:23:41,693 - INFO - Start polling.
+2025-02-05 01:23:49,610 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:23:51,358 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:23:51,925 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:23:53,339 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:03,744 - INFO - Stop polling...
+2025-02-05 01:24:03,745 - WARNING - Goodbye!
+2025-02-05 01:24:06,030 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:24:06,123 - WARNING - Updates were skipped successfully.
+2025-02-05 01:24:06,124 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:24:06,124 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:24:06,124 - INFO - Scheduler started
+2025-02-05 01:24:06,124 - INFO - Бот запущен.
+2025-02-05 01:24:06,125 - INFO - Start polling.
+2025-02-05 01:24:08,309 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:09,262 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-17' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:09,497 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:10,325 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:10,582 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:24:16,980 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-29' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("object bool can't be used in 'await' expression")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object bool can't be used in 'await' expression
+2025-02-05 01:53:36,055 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-05 01:53:36,210 - WARNING - Updates were skipped successfully.
+2025-02-05 01:53:36,211 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-05 01:53:36,211 - INFO - Added job "send_daily_words" to job store "default"
+2025-02-05 01:53:36,211 - INFO - Scheduler started
+2025-02-05 01:53:36,211 - INFO - Бот запущен.
+2025-02-05 01:53:36,212 - INFO - Start polling.
+2025-02-05 01:54:42,925 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:55:36 MSK)" was missed by 0:00:06.713656
+2025-02-05 01:55:42,920 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:56:36 MSK)" was missed by 0:00:06.709222
+2025-02-05 01:56:39,555 - WARNING - Run time of job "send_daily_words (trigger: interval[0:01:00], next run at: 2025-02-05 01:57:36 MSK)" was missed by 0:00:03.344119
+2025-02-05 01:56:45,209 - INFO - Stop polling...
+2025-02-05 01:56:45,209 - WARNING - Goodbye!

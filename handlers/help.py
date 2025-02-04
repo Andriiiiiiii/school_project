@@ -30,8 +30,33 @@ async def process_help_feedback(callback_query: types.CallbackQuery, bot: Bot):
                            "Обратная связь:\nПишите: admin@example.com")
     await callback_query.answer()
 
+# Обёртки для регистрации с правильным порядком аргументов
+async def show_help_menu_callback(callback_query: types.CallbackQuery):
+    await show_help_menu(callback_query.from_user.id, callback_query.bot)
+
+async def process_help_about_callback(callback_query: types.CallbackQuery):
+    await process_help_about(callback_query, callback_query.bot)
+
+async def process_help_commands_callback(callback_query: types.CallbackQuery):
+    await process_help_commands(callback_query, callback_query.bot)
+
+async def process_help_feedback_callback(callback_query: types.CallbackQuery):
+    await process_help_feedback(callback_query, callback_query.bot)
+
 def register_help_handlers(dp: Dispatcher, bot: Bot):
-    dp.register_callback_query_handler(lambda c: c.data == "menu:help", lambda c: show_help_menu(c.from_user.id, bot))
-    dp.register_callback_query_handler(lambda c: c.data == "help:about", lambda c: process_help_about(c, bot))
-    dp.register_callback_query_handler(lambda c: c.data == "help:commands", lambda c: process_help_commands(c, bot))
-    dp.register_callback_query_handler(lambda c: c.data == "help:feedback", lambda c: process_help_feedback(c, bot))
+    dp.register_callback_query_handler(
+        show_help_menu_callback,
+        lambda c: c.data == "menu:help"
+    )
+    dp.register_callback_query_handler(
+        process_help_about_callback,
+        lambda c: c.data == "help:about"
+    )
+    dp.register_callback_query_handler(
+        process_help_commands_callback,
+        lambda c: c.data == "help:commands"
+    )
+    dp.register_callback_query_handler(
+        process_help_feedback_callback,
+        lambda c: c.data == "help:feedback"
+    )

@@ -6,6 +6,7 @@ from .help import register_help_handlers
 from .settings import register_settings_handlers
 from .quiz import register_quiz_handlers
 from .test import register_test_handlers
+from .premium import register_premium_handlers
 
 def register_handlers(dp, bot):
     dp.register_message_handler(cmd_start, commands=['start'])
@@ -16,3 +17,4 @@ def register_handlers(dp, bot):
     register_settings_handlers(dp, bot)
     register_quiz_handlers(dp, bot)
     register_test_handlers(dp, bot)
+    register_premium_handlers(dp, bot)

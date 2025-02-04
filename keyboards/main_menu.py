@@ -12,3 +12,4 @@ def main_menu_keyboard():
         InlineKeyboardButton("📝 Тест уровня", callback_data="menu:test")
     )
     return keyboard
+

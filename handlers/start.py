@@ -10,3 +10,4 @@ async def cmd_start(message: types.Message):
         "Добро пожаловать в English Learning Bot!\n\nВыберите действие из меню ниже:",
         reply_markup=main_menu_keyboard()
     )
+

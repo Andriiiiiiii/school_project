@@ -13,6 +13,20 @@ async def show_dictionary(chat_id: int, bot: Bot):
             text += f"• {word} — {translation}\n"
         await bot.send_message(chat_id, text, reply_markup=main_menu_keyboard())
 
+# Обёртка для callback-обработчика
+async def show_dictionary_callback(callback_query: types.CallbackQuery):
+    await show_dictionary(callback_query.from_user.id, callback_query.bot)
+
+# Обёртка для message-обработчика
+async def show_dictionary_message_handler(message: types.Message):
+    await show_dictionary(message.chat.id, message.bot)
+
 def register_dictionary_handlers(dp: Dispatcher, bot: Bot):
-    dp.register_callback_query_handler(lambda c: c.data == "menu:my_dictionary", lambda c: show_dictionary(c.from_user.id, bot))
-    dp.register_message_handler(lambda message: show_dictionary(message.chat.id, bot), commands=["dictionary"])
+    dp.register_callback_query_handler(
+        show_dictionary_callback,
+        lambda c: c.data == "menu:my_dictionary"
+    )
+    dp.register_message_handler(
+        show_dictionary_message_handler,
+        commands=["dictionary"]
+    )

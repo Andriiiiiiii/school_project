@@ -35,6 +35,19 @@ async def process_set_time(callback_query: types.CallbackQuery, bot: Bot):
     await bot.send_message(chat_id, f"Время напоминаний установлено на {time}.", reply_markup=main_menu_keyboard())
     await callback_query.answer()
 
+# Обёртки для регистрации обработчиков с правильным порядком аргументов
+async def show_settings_callback(callback_query: types.CallbackQuery):
+    await show_settings(callback_query.from_user.id, callback_query.bot)
+
+async def process_set_time_callback(callback_query: types.CallbackQuery):
+    await process_set_time(callback_query, callback_query.bot)
+
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
-    dp.register_callback_query_handler(lambda c: c.data == "menu:settings", lambda c: show_settings(c.from_user.id, bot))
-    dp.register_callback_query_handler(lambda c: c.data.startswith("set_time:"), lambda c: process_set_time(c, bot))
+    dp.register_callback_query_handler(
+        show_settings_callback,
+        lambda c: c.data == "menu:settings"
+    )
+    dp.register_callback_query_handler(
+        process_set_time_callback,
+        lambda c: c.data.startswith("set_time:")
+    )
