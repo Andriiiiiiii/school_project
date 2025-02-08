@@ -3,24 +3,22 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime
 import asyncio
 
-def send_daily_words(bot):
-    from database import crud
-    # Получаем всех пользователей
-    from database.db import cursor
-    cursor.execute("SELECT chat_id, reminder_time FROM users")
-    users = cursor.fetchall()
+def scheduler_job(bot):
+    # Получаем текущее время в формате HH:MM
     now = datetime.now().strftime("%H:%M")
-    for user in users:
-        chat_id, reminder_time = user
-        if now == reminder_time:
-            asyncio.create_task(send_word(bot, chat_id))
-
-async def send_word(bot, chat_id):
-    from handlers.words import send_proficiency_word_of_day
-    await send_proficiency_word_of_day(chat_id, bot)
+    # Пример: если время между 10:00 и 22:00, можно отправлять уведомления.
+    if "10:00" <= now <= "22:00":
+        # Здесь вызываем функцию отправки слов дня
+        # Например, проходим по списку пользователей и отправляем слово
+        # (Эту логику нужно реализовать, используя базу данных)
+        pass
+    # В 22:00 можно запустить викторину
+    if now == "22:00":
+        # Запустить вечернюю викторину для всех пользователей
+        pass
 
 def start_scheduler(bot):
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(send_daily_words, 'interval', minutes=1, args=[bot])
+    scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot])
     scheduler.start()
     return scheduler

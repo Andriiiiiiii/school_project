@@ -5,45 +5,38 @@ def add_user(chat_id: int):
     cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
     if cursor.fetchone() is None:
         cursor.execute(
-            "INSERT INTO users (chat_id, topic, word_index, reminder_time, proficiency_level) VALUES (?, ?, ?, ?, ?)",
-            (chat_id, 'business', 0, '09:00', 'A1')
+            "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time) VALUES (?, ?, ?, ?, ?)",
+            (chat_id, 'A1', 5, 10, '09:00')
         )
         conn.commit()
 
 def get_user(chat_id: int):
-    cursor.execute("SELECT chat_id, topic, word_index, reminder_time, proficiency_level FROM users WHERE chat_id = ?", (chat_id,))
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users WHERE chat_id = ?", (chat_id,))
     return cursor.fetchone()
 
-def update_user_topic(chat_id: int, topic: str):
-    cursor.execute("UPDATE users SET topic = ?, word_index = ? WHERE chat_id = ?", (topic, 0, chat_id))
+def update_user_level(chat_id: int, level: str):
+    cursor.execute("UPDATE users SET level = ? WHERE chat_id = ?", (level, chat_id))
     conn.commit()
 
-def update_user_word_index(chat_id: int, new_index: int):
-    cursor.execute("UPDATE users SET word_index = ? WHERE chat_id = ?", (new_index, chat_id))
+def update_user_words_per_day(chat_id: int, count: int):
+    cursor.execute("UPDATE users SET words_per_day = ? WHERE chat_id = ?", (count, chat_id))
     conn.commit()
 
-def update_user_reminder_time(chat_id: int, reminder_time: str):
-    cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (reminder_time, chat_id))
+def update_user_notifications(chat_id: int, count: int):
+    cursor.execute("UPDATE users SET notifications = ? WHERE chat_id = ?", (count, chat_id))
     conn.commit()
 
-def get_user_proficiency(chat_id: int):
-    cursor.execute("SELECT proficiency_level FROM users WHERE chat_id = ?", (chat_id,))
-    result = cursor.fetchone()
-    if result:
-        return result[0]
-    return None
-
-def update_user_proficiency(chat_id: int, level: str):
-    cursor.execute("UPDATE users SET proficiency_level = ? WHERE chat_id = ?", (level, chat_id))
+def update_user_reminder_time(chat_id: int, time: str):
+    cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (time, chat_id))
     conn.commit()
 
 def add_word_to_dictionary(chat_id: int, word_data: dict):
     cursor.execute("""
         INSERT INTO dictionary (chat_id, word, translation, transcription, example)
         VALUES (?, ?, ?, ?, ?)
-    """, (chat_id, word_data['word'], word_data.get('translation', ''), word_data.get('transcription', ''), word_data.get('example', '')))
+    """, (chat_id, word_data.get('word'), word_data.get('translation', ''), word_data.get('transcription', ''), word_data.get('example', '')))
     conn.commit()
 
-def get_user_dictionary(chat_id: int):
-    cursor.execute("SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ?", (chat_id,))
+def get_user_dictionary(chat_id: int, limit: int = 10, offset: int = 0):
+    cursor.execute("SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", (chat_id, limit, offset))
     return cursor.fetchall()

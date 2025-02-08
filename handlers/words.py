@@ -1,70 +1,54 @@
 # handlers/words.py
 import random
-import os
-import tempfile
-import logging
 from aiogram import types, Dispatcher, Bot
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from gtts import gTTS
-from database import crud
+from keyboards.submenus import words_day_keyboard
 from utils.helpers import load_words_for_level
-from utils.constants import levels_order
+from database import crud
+from functools import partial
 
-# Функция отправки слова дня с подробностями
-async def send_word_of_day(callback_query: types.CallbackQuery):
-    bot = callback_query.bot
-    chat_id = callback_query.from_user.id
-
-    # Определяем текущий уровень пользователя и выбираем слово из следующего уровня
-    proficiency = crud.get_user_proficiency(chat_id) or "A1"
-
-    try:
-        current_index = levels_order.index(proficiency)
-    except ValueError:
-        current_index = 0
-
-    next_index = current_index + 1 if current_index < len(levels_order) - 1 else current_index
-    next_level = levels_order[next_index]
-    words = load_words_for_level(next_level)
-
+async def send_words_day(chat_id: int, bot: Bot):
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Пользователь не найден.")
+        return
+    level = user[1]  # например, 'A1'
+    words = load_words_for_level(level)
     if not words:
-        await bot.send_message(chat_id, f"Словарь для уровня {next_level} не найден или пуст.")
+        await bot.send_message(chat_id, f"Слова для уровня {level} не найдены.")
         return
 
-    word = random.choice(words)
-    # Формируем сообщение (здесь можно расширить получение транскрипции и перевода)
-    text = (
-        f"Слово дня (уровень {next_level}):\n\n"
-        f"Слово: {word}\n"
-        f"Транскрипция: (пример транскрипции)\n"
-        f"Перевод: (пример перевода)\n"
-        f"Пример: (пример использования слова в предложении)"
-    )
+    words_to_send = words[:10]
+    messages = []
+    for w in words_to_send:
+        msg = (f"Слово: {w}\n"
+               f"Перевод: (пример перевода)\n"
+               f"Транскрипция: (пример транскрипции)\n"
+               f"Пример использования: (пример предложения)")
+        messages.append(msg)
+    full_text = "\n\n".join(messages)
+    await bot.send_message(chat_id, full_text, reply_markup=words_day_keyboard())
 
-    keyboard = InlineKeyboardMarkup(row_width=1)
-    keyboard.add(InlineKeyboardButton("📚 Добавить в словарь", callback_data=f"add_word:{word}"))
+async def handle_words_day(callback: types.CallbackQuery, bot: Bot):
+    await send_words_day(callback.from_user.id, bot)
+    await callback.answer()
 
-    await bot.send_message(chat_id, text, reply_markup=keyboard)
-    await callback_query.answer()  # Закрываем callback "часики"
-
-# Обработчик callback для добавления слова в словарь
-async def process_add_word(callback_query: types.CallbackQuery):
-    bot = callback_query.bot
-    word = callback_query.data.split(":")[1]
-    chat_id = callback_query.from_user.id
-
-    # Добавляем слово в словарь
+async def handle_add_word(callback: types.CallbackQuery, bot: Bot):
+    try:
+        _, word = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    chat_id = callback.from_user.id
     crud.add_word_to_dictionary(chat_id, {"word": word})
-
     await bot.send_message(chat_id, f"Слово '{word}' добавлено в ваш словарь!")
-    await callback_query.answer()  # Закрываем callback "часики"
+    await callback.answer()
 
 def register_words_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
-        process_add_word,
-        lambda c: c.data.startswith("add_word:")
+        partial(handle_words_day, bot=bot),
+        lambda c: c.data == "menu:words_day"
     )
     dp.register_callback_query_handler(
-        send_word_of_day,
-        lambda c: c.data == "menu:get_word"
+        partial(handle_add_word, bot=bot),
+        lambda c: c.data and c.data.startswith("add_word:")
     )

@@ -15,11 +15,10 @@ logger = logging.getLogger(__name__)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
-# Регистрируем все обработчики
 register_handlers(dp, bot)
 
+# Запускаем планировщик после старта event loop
 async def on_startup(dp):
-    # Запускаем планировщик, когда event loop уже запущен.
     start_scheduler(bot)
     logger.info("Бот запущен.")
 
