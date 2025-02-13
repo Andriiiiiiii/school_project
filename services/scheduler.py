@@ -1,4 +1,3 @@
-#scheduler.py
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime, timedelta
 import asyncio
@@ -7,34 +6,23 @@ from database import crud
 from utils.helpers import load_words_for_level
 from aiogram import Bot
 
-# Параметры уведомлений
-FIRST_TIME = "02:19"      # FT: время первого уведомления
-DURATION_HOURS = 1        # DT: длительность периода уведомлений
+# Константы для уведомлений: с 10:00 до 20:00
+FIRST_TIME = "10:00"        # Начало интервала уведомлений
+DURATION_HOURS = 10         # Длительность интервала уведомлений
 
 def compute_notification_times(Y):
     """
-    Вычисляет список из Y времён уведомлений.
-    По формуле: Tₙ = FT + (n-1) · (DT / Y)
-    Возвращает список строк в формате "HH:MM".
+    Вычисляет список из Y времен уведомлений, начиная с FIRST_TIME и равномерно распределяя
+    интервал DURATION_HOURS между уведомлениями.
     """
     base = datetime.strptime(FIRST_TIME, "%H:%M")
     interval = timedelta(hours=DURATION_HOURS / Y)
-    times = []
-    for n in range(Y):
-        t = base + n * interval
-        formatted_time = t.strftime("%H:%M")
-        times.append(formatted_time)
-    # Логирование вычисленных времен
-    print("Вычисленные времена уведомлений:", times)
+    times = [(base + n * interval).strftime("%H:%M") for n in range(Y)]
     return times
 
 def distribute_word_messages_cyclic(words_list, Y):
     """
-    Принимает список слов words_list длиной T = 3*X (каждое слово повторено 3 раза)
-    и вычисляет N = ceil(T / Y) – число слов в каждом уведомлении.
-    Для уведомления с индексом i (0-based) выбирает слова:
-         words_list[(i*N + j) mod T],  j = 0..N-1.
-    Возвращает список из Y строк, где каждая строка – сообщение для уведомления.
+    Равномерно распределяет повторённые слова по Y уведомлениям.
     """
     T = len(words_list)
     N = ceil(T / Y)
@@ -46,11 +34,13 @@ def distribute_word_messages_cyclic(words_list, Y):
 
 def compute_notification_message_for_user(user):
     """
-    Для пользователя (user – кортеж: chat_id, level, words_per_day, notifications, reminder_time)
-    загружает первые X слов для его уровня, повторяет их 3 раза и распределяет циклически по Y уведомлениям.
-    Возвращает кортеж (messages, times), где:
-      - messages: список из Y сообщений,
-      - times: список времен уведомлений (Y значений).
+    Для пользователя (настройки из БД) вычисляет сообщения уведомлений:
+      - Берёт уровень, количество слов (X) и число уведомлений (Y),
+      - Загружает первые X слов для уровня,
+      - Повторяет их 3 раза,
+      - Равномерно распределяет слова по Y уведомлениям,
+      - Вычисляет времена уведомлений.
+    Возвращает кортеж (messages, times) или None, если слов нет.
     """
     _, level, words_per_day, notifications, _ = user
     X = words_per_day
@@ -59,45 +49,49 @@ def compute_notification_message_for_user(user):
     if not words:
         return None
     selected_words = words[:X]
-    # Повторяем список 3 раза
     words_repeated = selected_words * 3
     messages = distribute_word_messages_cyclic(words_repeated, Y)
     times = compute_notification_times(Y)
     return messages, times
 
-def scheduler_job(bot: Bot):
+def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
+    """
+    Функция, вызываемая каждую минуту планировщиком:
+      - Если текущее время входит в интервал уведомлений,
+        для каждого пользователя вычисляются сообщения и времена уведомлений.
+      - Если текущее время совпадает с рассчитанным, отправляется уведомление.
+    """
     now_str = datetime.now().strftime("%H:%M")
     base_obj = datetime.strptime(FIRST_TIME, "%H:%M")
     end_obj = base_obj + timedelta(hours=DURATION_HOURS)
     now_obj = datetime.strptime(now_str, "%H:%M")
 
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Запуск scheduler_job")
-    print(f"Текущее время: {now_str}, период отправки: {base_obj.strftime('%H:%M')} - {end_obj.strftime('%H:%M')}")
-
     if base_obj <= now_obj <= end_obj:
-        users = crud.get_all_users()  # Получаем всех пользователей
+        users = crud.get_all_users()
         for user in users:
             result = compute_notification_message_for_user(user)
             if result is None:
                 continue
             messages, times = result
-            print(f"Пользователь {user[0]} | Вычисленные времена уведомлений: {times}")
             if now_str in times:
                 notif_index = times.index(now_str)
                 message_text = messages[notif_index] if notif_index < len(messages) else ""
                 chat_id = user[0]
-                print(f"Отправка уведомления пользователю {chat_id} в {now_str}: {message_text}")
-                asyncio.create_task(bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"))
-    else:
-        print(f"Текущее время {now_str} не входит в интервал уведомлений.")
+                asyncio.run_coroutine_threadsafe(
+                    bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"),
+                    loop
+                )
 
     if now_str == end_obj.strftime("%H:%M"):
         # Здесь можно добавить логику завершения дня (например, запуск викторины)
         pass
 
-def start_scheduler(bot: Bot):
+def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
+    """
+    Запускает планировщик APScheduler, который каждую минуту вызывает scheduler_job.
+    Параметр loop – это основной event loop бота.
+    """
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot])
+    scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot, loop])
     scheduler.start()
     return scheduler
-

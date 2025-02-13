@@ -2683,3 +2683,108 @@ TypeError: compute_notification_times() missing 1 required positional argument: 
 2025-02-13 03:13:22,142 - INFO - Received /start from chat_id: 1999873173
 2025-02-13 03:13:59,898 - INFO - Stop polling...
 2025-02-13 03:13:59,899 - WARNING - Goodbye!
+2025-02-13 22:27:25,033 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:27:25,396 - WARNING - Updates were skipped successfully.
+2025-02-13 22:27:25,403 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 22:27:25,405 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 22:27:25,405 - INFO - Scheduler started
+2025-02-13 22:27:25,405 - INFO - Бот запущен.
+2025-02-13 22:27:25,405 - INFO - Start polling.
+2025-02-13 22:27:28,397 - INFO - Stop polling...
+2025-02-13 22:27:28,397 - WARNING - Goodbye!
+2025-02-13 22:27:42,127 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:27:43,921 - WARNING - Updates were skipped successfully.
+2025-02-13 22:27:43,924 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 22:27:43,928 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 22:27:43,928 - INFO - Scheduler started
+2025-02-13 22:27:43,928 - INFO - Бот запущен.
+2025-02-13 22:27:43,928 - INFO - Start polling.
+2025-02-13 22:27:57,212 - INFO - Received /start from chat_id: 380675615
+2025-02-13 22:28:43,931 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:29:43 MSK)" (scheduled at 2025-02-13 22:28:43.924642+03:00)
+2025-02-13 22:28:43,941 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:29:43 MSK)" executed successfully
+2025-02-13 22:29:43,931 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:30:43 MSK)" (scheduled at 2025-02-13 22:29:43.924642+03:00)
+2025-02-13 22:29:43,931 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:30:43 MSK)" executed successfully
+2025-02-13 22:30:43,929 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:31:43 MSK)" (scheduled at 2025-02-13 22:30:43.924642+03:00)
+2025-02-13 22:30:43,933 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:31:43 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 90, in scheduler_job
+    asyncio.create_task(bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"))
+  File "/usr/local/lib/python3.11/asyncio/tasks.py", line 381, in create_task
+    loop = events.get_running_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: no running event loop
+2025-02-13 22:31:43,927 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:32:43 MSK)" (scheduled at 2025-02-13 22:31:43.924642+03:00)
+2025-02-13 22:31:43,929 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:32:43 MSK)" executed successfully
+2025-02-13 22:32:43,930 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:33:43 MSK)" (scheduled at 2025-02-13 22:32:43.924642+03:00)
+2025-02-13 22:32:43,931 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:33:43 MSK)" executed successfully
+2025-02-13 22:33:43,929 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:34:43 MSK)" (scheduled at 2025-02-13 22:33:43.924642+03:00)
+2025-02-13 22:33:43,930 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:34:43 MSK)" executed successfully
+2025-02-13 22:34:43,928 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:35:43 MSK)" (scheduled at 2025-02-13 22:34:43.924642+03:00)
+2025-02-13 22:34:43,936 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:35:43 MSK)" executed successfully
+2025-02-13 22:35:43,926 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:36:43 MSK)" (scheduled at 2025-02-13 22:35:43.924642+03:00)
+2025-02-13 22:35:43,929 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:36:43 MSK)" executed successfully
+2025-02-13 22:36:43,635 - INFO - Stop polling...
+2025-02-13 22:36:43,636 - WARNING - Goodbye!
+2025-02-13 22:37:24,758 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:37:25,262 - WARNING - Updates were skipped successfully.
+2025-02-13 22:37:25,266 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 22:37:25,266 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 22:37:25,266 - INFO - Scheduler started
+2025-02-13 22:37:25,266 - INFO - Бот запущен.
+2025-02-13 22:37:25,267 - INFO - Start polling.
+2025-02-13 22:37:30,319 - INFO - Stop polling...
+2025-02-13 22:37:30,319 - WARNING - Goodbye!
+2025-02-13 22:37:44,256 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:37:44,666 - WARNING - Updates were skipped successfully.
+2025-02-13 22:37:44,667 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 22:37:44,668 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 22:37:44,668 - INFO - Scheduler started
+2025-02-13 22:37:44,668 - INFO - Бот запущен.
+2025-02-13 22:37:44,668 - INFO - Start polling.
+2025-02-13 22:38:44,673 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:39:44 MSK)" (scheduled at 2025-02-13 22:38:44.667693+03:00)
+2025-02-13 22:38:44,678 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:39:44 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 91, in scheduler_job
+    asyncio.run_coroutine_threadsafe(
+  File "/usr/local/lib/python3.11/asyncio/tasks.py", line 936, in run_coroutine_threadsafe
+    loop.call_soon_threadsafe(callback)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'call_soon_threadsafe'
+2025-02-13 22:39:44,671 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:40:44 MSK)" (scheduled at 2025-02-13 22:39:44.667693+03:00)
+2025-02-13 22:39:44,678 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:40:44 MSK)" executed successfully
+2025-02-13 22:40:44,683 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:41:44 MSK)" (scheduled at 2025-02-13 22:40:44.667693+03:00)
+2025-02-13 22:40:44,691 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:41:44 MSK)" executed successfully
+2025-02-13 22:41:44,682 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:42:44 MSK)" (scheduled at 2025-02-13 22:41:44.667693+03:00)
+2025-02-13 22:41:44,684 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:42:44 MSK)" executed successfully
+2025-02-13 22:42:11,806 - INFO - Stop polling...
+2025-02-13 22:42:11,807 - WARNING - Goodbye!
+2025-02-13 22:42:17,107 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:42:18,766 - WARNING - Updates were skipped successfully.
+2025-02-13 22:42:18,767 - WARNING - Goodbye!
+2025-02-13 22:43:16,988 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 22:43:17,449 - WARNING - Updates were skipped successfully.
+2025-02-13 22:43:17,452 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 22:43:17,455 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 22:43:17,455 - INFO - Scheduler started
+2025-02-13 22:43:17,455 - INFO - Бот запущен.
+2025-02-13 22:43:17,455 - INFO - Start polling.
+2025-02-13 22:44:17,457 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:45:17 MSK)" (scheduled at 2025-02-13 22:44:17.452062+03:00)
+2025-02-13 22:44:17,462 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:45:17 MSK)" executed successfully
+2025-02-13 22:45:17,456 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:46:17 MSK)" (scheduled at 2025-02-13 22:45:17.452062+03:00)
+2025-02-13 22:45:17,458 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:46:17 MSK)" executed successfully
+2025-02-13 22:46:17,456 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:47:17 MSK)" (scheduled at 2025-02-13 22:46:17.452062+03:00)
+2025-02-13 22:46:17,459 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:47:17 MSK)" executed successfully
+2025-02-13 22:47:17,454 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:48:17 MSK)" (scheduled at 2025-02-13 22:47:17.452062+03:00)
+2025-02-13 22:47:17,455 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:48:17 MSK)" executed successfully
+2025-02-13 22:48:17,463 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:49:17 MSK)" (scheduled at 2025-02-13 22:48:17.452062+03:00)
+2025-02-13 22:48:17,465 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:49:17 MSK)" executed successfully
+2025-02-13 22:49:17,469 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:50:17 MSK)" (scheduled at 2025-02-13 22:49:17.452062+03:00)
+2025-02-13 22:49:17,471 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 22:50:17 MSK)" executed successfully
+2025-02-13 22:49:48,704 - INFO - Stop polling...
+2025-02-13 22:49:48,705 - WARNING - Goodbye!
