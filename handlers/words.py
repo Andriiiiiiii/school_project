@@ -1,54 +1,94 @@
-# handlers/words.py
-import random
-from aiogram import types, Dispatcher, Bot
-from keyboards.submenus import words_day_keyboard
-from utils.helpers import load_words_for_level
-from database import crud
-from functools import partial
 
-async def send_words_day(chat_id: int, bot: Bot):
+#words.py
+import os
+from math import ceil
+from datetime import datetime, timedelta
+from aiogram import types, Dispatcher, Bot
+from database import crud
+from utils.helpers import load_words_for_level  # Функция, которая загружает слова для уровня из файлов levels/<level>.txt
+from keyboards.submenus import words_day_keyboard
+
+# Параметры уведомлений (FT и DT)
+FIRST_TIME = "02:19"      # Время первого уведомления (FT)
+DURATION_HOURS = 1       # Длительность периода уведомлений (DT) – от FT до FT+DT (например, 10:00–22:00)
+
+def compute_notification_times(Y):
+    """
+    Вычисляет список из Y времён уведомлений.
+    По формуле: Tₙ = FT + (n-1) · (DT / Y)
+    Возвращает список строк в формате "HH:MM".
+    """
+    base = datetime.strptime(FIRST_TIME, "%H:%M")
+    interval = timedelta(hours=DURATION_HOURS / Y)
+    times = []
+    for n in range(Y):
+        t = base + n * interval
+        times.append(t.strftime("%H:%M"))
+    return times
+
+def distribute_word_messages_cyclic(words_list, Y):
+    """
+    Принимает список слов words_list длиной T = 3*X (каждое слово повторено 3 раза).
+    Вычисляет N = ceil(T / Y) – число слов в каждом уведомлении.
+    Для уведомления с индексом i (0-based) выбирает слова:
+         words_list[(i*N + j) mod T],  j = 0..N-1.
+    Возвращает список из Y строк, где каждая строка – сообщение для уведомления.
+    """
+    T = len(words_list)
+    N = ceil(T / Y)
+    messages = []
+    for i in range(Y):
+        msg_words = [words_list[(i * N + j) % T] for j in range(N)]
+        messages.append("\n".join(f"🔹 {word}" for word in msg_words))
+    return messages
+
+async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик кнопки "Слова дня".
+    Получает настройки пользователя: X (words_per_day) и Y (notifications),
+    загружает первые X слов для его уровня, формирует список из 3*X слов,
+    распределяет их циклически по Y уведомлениям (каждое уведомление содержит ceil(3X/Y) слов),
+    вычисляет времена уведомлений по формуле Tₙ = FT + (n-1)*(DT/Y)
+    и отправляет пользователю расписание уведомлений.
+    """
+    chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     if not user:
-        await bot.send_message(chat_id, "Пользователь не найден.")
+        await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
         return
-    level = user[1]  # например, 'A1'
+
+    # Извлекаем параметры: уровень, X и Y
+    _, level, words_per_day, notifications, _ = user
+    X = words_per_day
+    Y = notifications
+
+    # Загружаем слова для уровня (берем первые X слов)
     words = load_words_for_level(level)
     if not words:
-        await bot.send_message(chat_id, f"Слова для уровня {level} не найдены.")
+        await bot.send_message(chat_id, f"⚠️ Нет слов для уровня {level}.")
         return
+    selected_words = words[:X]
 
-    words_to_send = words[:10]
-    messages = []
-    for w in words_to_send:
-        msg = (f"Слово: {w}\n"
-               f"Перевод: (пример перевода)\n"
-               f"Транскрипция: (пример транскрипции)\n"
-               f"Пример использования: (пример предложения)")
-        messages.append(msg)
-    full_text = "\n\n".join(messages)
-    await bot.send_message(chat_id, full_text, reply_markup=words_day_keyboard())
+    # Формируем список из 3*X слов (каждое слово повторяется 3 раза)
+    words_repeated = selected_words * 3
 
-async def handle_words_day(callback: types.CallbackQuery, bot: Bot):
-    await send_words_day(callback.from_user.id, bot)
-    await callback.answer()
+    # Распределяем слова циклически по Y уведомлениям
+    messages = distribute_word_messages_cyclic(words_repeated, Y)
+    times = compute_notification_times(Y)
 
-async def handle_add_word(callback: types.CallbackQuery, bot: Bot):
-    try:
-        _, word = callback.data.split(":", 1)
-    except ValueError:
-        await callback.answer("Неверный формат данных.", show_alert=True)
-        return
-    chat_id = callback.from_user.id
-    crud.add_word_to_dictionary(chat_id, {"word": word})
-    await bot.send_message(chat_id, f"Слово '{word}' добавлено в ваш словарь!")
+    # Формируем итоговый текст расписания
+    text = "📌 Сегодня вам будут отправлены следующие слова:\n\n"
+    for i in range(Y):
+        t = times[i]
+        msg = messages[i] if messages[i] else "(нет слов)"
+        text += f"⏰ {t}:\n{msg}\n\n"
+    text += "Нажмите кнопку ниже для возврата в главное меню."
+
+    await bot.send_message(chat_id, text, reply_markup=words_day_keyboard())
     await callback.answer()
 
 def register_words_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
-        partial(handle_words_day, bot=bot),
+        lambda c: send_words_day_schedule(c, bot),
         lambda c: c.data == "menu:words_day"
-    )
-    dp.register_callback_query_handler(
-        partial(handle_add_word, bot=bot),
-        lambda c: c.data and c.data.startswith("add_word:")
     )

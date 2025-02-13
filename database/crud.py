@@ -14,6 +14,11 @@ def get_user(chat_id: int):
     cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users WHERE chat_id = ?", (chat_id,))
     return cursor.fetchone()
 
+def get_all_users():
+    """Возвращает список всех пользователей с их настройками."""
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users")
+    return cursor.fetchall()
+
 def update_user_level(chat_id: int, level: str):
     cursor.execute("UPDATE users SET level = ? WHERE chat_id = ?", (level, chat_id))
     conn.commit()

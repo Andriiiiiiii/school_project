@@ -1,10 +1,41 @@
-abnegation
-abysmal
-adroit
-altruistic
-anachronistic
-antipathy
-apocryphal
-assiduous
-atavistic
-balderdash
+abstruse - трудный для понимания  
+acquiescence - молчаливое согласие  
+adumbrate - предвещать, намечать в общих чертах  
+anachronistic - устаревший, неуместный во времени  
+apocryphal - недостоверный, сомнительный  
+assiduity - усердие, прилежание  
+blandishment - лесть, угодничество  
+bombastic - напыщенный, высокопарный  
+cacophony - какофония, неприятное сочетание звуков  
+cogitation - размышление, обдумывание  
+concatenation - последовательность, цепочка событий  
+contumacious - непокорный, упрямый  
+conundrum - загадка, головоломка  
+corpulent - тучный, полный  
+credulity - доверчивость, легковерие  
+deleterious - вредный, пагубный  
+desultory - несвязный, беспорядочный  
+diaphanous - прозрачный, просвечивающий  
+diffident - застенчивый, неуверенный  
+effulgent - сверкающий, сияющий  
+ephemeral - мимолетный, недолговечный  
+equanimity - хладнокровие, невозмутимость  
+expatiate - распространяться в рассуждениях  
+expropriate - конфисковать, экспроприировать  
+grandiloquent - напыщенный, высокопарный  
+histrionic - театральный, наигранный  
+impecunious - безденежный, бедный  
+inchoate - зачаточный, неразвитый  
+inexorable - неумолимый, непреклонный  
+insouciance - беззаботность, беспечность  
+lachrymose - плаксивый, слезливый  
+languid - вялый, томный  
+malfeasance - должностное преступление  
+meretricious - показной, фальшивый  
+munificent - щедрый, великодушный  
+nadir - низшая точка, упадок  
+nefarious - гнусный, мерзкий  
+obsequious - угодливый, подобострастный  
+pellucid - прозрачный, ясный  
+peremptory - властный, безапелляционный  
+recond

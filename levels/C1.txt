@@ -1,10 +1,91 @@
-acquisition
-amalgamate
-anomaly
-antecedent
-anthropogenic
-arbitrary
-articulate
-ascendant
-assimilation
-asymmetry
+aberration - отклонение, аномалия  
+acquiesce - уступать, молчаливо соглашаться  
+adversity - невзгоды, трудности  
+altruism - альтруизм, бескорыстие  
+ameliorate - улучшать, исправлять  
+anachronism - анахронизм, нечто устаревшее  
+anecdotal - анекдотичный, неподтвержденный  
+antagonistic - враждебный, противоборствующий  
+arbitrary - произвольный, случайный  
+articulation - формулировка, четкость речи  
+ascertain - выяснять, удостоверяться  
+assiduous - усердный, прилежный  
+asymmetrical - асимметричный  
+audacity - дерзость, смелость  
+belittle - принижать, умалять  
+benevolent - благожелательный, великодушный  
+boisterous - шумный, бурный  
+brevity - краткость, лаконичность  
+candid - откровенный, искренний  
+capricious - капризный, непредсказуемый  
+circumvent - обходить, перехитрить  
+clandestine - тайный, секретный  
+coherent - связный, логичный  
+collusion - сговор  
+commensurate - соразмерный, соответствующий  
+compelling - убедительный, захватывающий  
+complacent - самодовольный  
+conjecture - догадка, предположение  
+conspicuous - заметный, очевидный  
+contentious - спорный, конфликтный  
+contrived - надуманный, неестественный  
+corroborate - подтверждать, подкреплять  
+credulous - доверчивый  
+culpable - виновный  
+cursory - беглый, поверхностный  
+debilitate - ослаблять  
+delineate - очерчивать, описывать  
+denigrate - клеветать, очернять  
+deprecate - осуждать, протестовать  
+despondent - унылый, подавленный  
+dichotomy - дихотомия, разделение на две части  
+discretionary - дискреционный, произвольный  
+disingenuous - неискренний, лукавый  
+disparity - неравенство, разница  
+disseminate - распространять (информацию)  
+divulge - разглашать, раскрывать  
+egregious - вопиющий, очевидно плохой  
+elucidate - разъяснять, объяснять  
+emphatic - выразительный, подчеркнутый  
+encompass - охватывать, включать  
+ephemeral - мимолетный, недолговечный  
+equivocate - увиливать, говорить двусмысленно  
+esoteric - эзотерический, тайный  
+exonerate - оправдывать, освобождать от вины  
+expedient - целесообразный, выгодный  
+facilitate - облегчать, способствовать  
+fallacy - заблуждение, логическая ошибка  
+fickle - непостоянный, изменчивый  
+garrulous - болтливый  
+gregarious - общительный, стадный  
+hackneyed - банальный, избитый  
+hedonistic - гедонистический, любящий удовольствия  
+impetuous - импульсивный, поспешный  
+incongruous - неуместный, нелогичный  
+insidious - коварный, скрытый  
+juxtaposition - сопоставление  
+loquacious - говорливый, болтливый  
+magnanimous - великодушный  
+mitigate - смягчать, уменьшать  
+obfuscate - запутывать, затруднять понимание  
+ostentatious - показной, хвастливый  
+perfunctory - поверхностный, небрежный  
+pernicious - пагубный, вредный  
+placate - успокаивать, умиротворять  
+pragmatic - прагматичный  
+quintessential - квинтэссенция, наиболее типичный  
+recalcitrant - непокорный, упрямый  
+reiterate - повторять, напоминать  
+repudiate - отрекаться, отвергать  
+sagacious - проницательный, мудрый  
+satiate - насыщать, удовлетворять  
+superfluous - избыточный, ненужный  
+taciturn - молчаливый, неразговорчивый  
+tangential - косвенный, несущественный  
+tenacious - упорный, настойчивый  
+transient - временный, кратковременный  
+ubiquitous - вездесущий, повсеместный  
+verbose - многословный  
+vindicate - оправдывать, доказывать правоту  
+voracious - ненасытный, жадный  
+zealous - рьяный, усердный  

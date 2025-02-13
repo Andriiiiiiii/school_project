@@ -8,26 +8,30 @@ def words_day_keyboard():
     return keyboard
 
 def learning_menu_keyboard():
-    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
-        InlineKeyboardButton("Тест уровня знаний (15 слов)", callback_data="learning:test"),
-        InlineKeyboardButton("Викторина", callback_data="learning:quiz"),
-        InlineKeyboardButton("Заучивание", callback_data="learning:memorize"),
-        InlineKeyboardButton("Назад", callback_data="menu:back")
+        InlineKeyboardButton("📚 Тест (множественный выбор)", callback_data="test_level:start"),
+        InlineKeyboardButton("🎯 Викторина", callback_data="learning:quiz"),
+    )
+    keyboard.add(
+        InlineKeyboardButton("📝 Заучивание", callback_data="learning:memorize"),
+        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
     return keyboard
+
 
 def dictionary_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
-        InlineKeyboardButton("+10", callback_data="dictionary:+10"),
-        InlineKeyboardButton("+50", callback_data="dictionary:+50")
+        InlineKeyboardButton("📈 +10 слов", callback_data="dictionary:+10"),
+        InlineKeyboardButton("📊 +50 слов", callback_data="dictionary:+50")
     )
     keyboard.add(
-        InlineKeyboardButton("Показать все слова", callback_data="dictionary:all"),
-        InlineKeyboardButton("Назад", callback_data="menu:back")
+        InlineKeyboardButton("📖 Показать все", callback_data="dictionary:all"),
+        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
     return keyboard
+
 
 def settings_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=1)

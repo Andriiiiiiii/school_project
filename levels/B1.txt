@@ -1,100 +1,100 @@
-accountant
-achievement
-advertise
-agreement
-agriculture
-alarm
-ambition
-analyze
-announcement
-anxiety
-architect
-article
-assistant
-atmosphere
-audience
-backpack
-balance
-behavior
-bilingual
-biography
-brand
-budget
-candidate
-carbohydrate
-carnival
-cashier
-ceremony
-chemistry
-climate
-colleague
-communicate
-comparison
-competition
-complain
-concentrate
-confident
-confirm
-consequence
-considerable
-construction
-consumer
-contribution
-convenience
-cooperation
-corporate
-creativity
-critic
-cultural
-currency
-deadline
-decade
-decoration
-democracy
-destination
-determination
-development
-difference
-disability
-discount
-discrimination
-documentary
-donation
-earthquake
-efficiency
-election
-electronic
-emergency
-employment
-encourage
-engagement
-entertainment
-entrepreneur
-environment
-essential
-establish
-estimate
-evidence
-evolution
-examine
-exchange
-exhibition
-experiment
-exploration
-expression
-facilities
-failure
-finance
-flexible
-foundation
-generation
-government
-graduation
-guarantee
-household
-hurricane
-identity
-immigration
-impression
-improvement
-independence
+accountant - бухгалтер  
+achievement - достижение  
+advertise - рекламировать  
+agreement - соглашение, договор  
+agriculture - сельское хозяйство  
+alarm - тревога, сигнализация  
+ambition - амбиция, стремление  
+analyze - анализировать  
+announcement - объявление  
+anxiety - тревога, беспокойство  
+architect - архитектор  
+article - статья, артикль  
+assistant - ассистент, помощник  
+atmosphere - атмосфера  
+audience - аудитория, зрители  
+backpack - рюкзак  
+balance - баланс, равновесие  
+behavior - поведение  
+bilingual - двуязычный  
+biography - биография  
+brand - бренд, марка  
+budget - бюджет  
+candidate - кандидат  
+carbohydrate - углевод  
+carnival - карнавал  
+cashier - кассир  
+ceremony - церемония  
+chemistry - химия  
+climate - климат  
+colleague - коллега  
+communicate - общаться  
+comparison - сравнение  
+competition - соревнование, конкуренция  
+complain - жаловаться  
+concentrate - концентрироваться  
+confident - уверенный  
+confirm - подтверждать  
+consequence - последствие  
+considerable - значительный  
+construction - строительство  
+consumer - потребитель  
+contribution - вклад  
+convenience - удобство  
+cooperation - сотрудничество  
+corporate - корпоративный  
+creativity - креативность, творчество  
+critic - критик  
+cultural - культурный  
+currency - валюта  
+deadline - крайний срок, дедлайн  
+decade - десятилетие  
+decoration - украшение, декор  
+democracy - демократия  
+destination - пункт назначения  
+determination - решительность, целеустремленность  
+development - развитие  
+difference - разница, отличие  
+disability - инвалидность, неспособность  
+discount - скидка  
+discrimination - дискриминация  
+documentary - документальный фильм  
+donation - пожертвование  
+earthquake - землетрясение  
+efficiency - эффективность  
+election - выборы  
+electronic - электронный  
+emergency - чрезвычайная ситуация, экстренный случай  
+employment - занятость, трудоустройство  
+encourage - поощрять, вдохновлять  
+engagement - помолвка, обязательство  
+entertainment - развлечение  
+entrepreneur - предприниматель  
+environment - окружающая среда  
+essential - важный, необходимый  
+establish - устанавливать, основывать  
+estimate - оценивать  
+evidence - доказательство  
+evolution - эволюция  
+examine - исследовать, проверять  
+exchange - обмен  
+exhibition - выставка  
+experiment - эксперимент  
+exploration - исследование  
+expression - выражение  
+facilities - удобства, оборудование  
+failure - неудача, провал  
+finance - финансы  
+flexible - гибкий  
+foundation - основание, фундамент  
+generation - поколение  
+government - правительство  
+graduation - выпускной  
+guarantee - гарантия  
+household - домохозяйство, бытовой  
+hurricane - ураган  
+identity - личность, идентичность  
+immigration - иммиграция  
+impression - впечатление  
+improvement - улучшение  
+independence - независимость  

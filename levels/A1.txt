@@ -1,100 +1,98 @@
-apple
-book
-car
-dog
-chair
-house
-table
-cat
-tree
-water
-school
-friend
-family
-mother
-father
-brother
-sister
-teacher
-student
-computer
-pen
-pencil
-paper
-phone
-door
-window
-street
-park
-city
-country
-morning
-evening
-day
-night
-time
-clock
-kitchen
-bathroom
-bedroom
-living room
-bathroom
-bathroom
-rain
-sun
-snow
-hot
-cold
-warm
-big
-small
-tall
-short
-happy
-sad
-good
-bad
-fast
-slow
-busy
-free
-new
-old
-young
-rich
-poor
-strong
-weak
-beautiful
-ugly
-clean
-dirty
-right
-wrong
-yes
-no
-please
-thank you
-sorry
-hello
-goodbye
-what
-where
-who
-when
-why
-how
-up
-down
-left
-right
-here
-there
-together
-separate
-open
-close
-go
-come
-eat
-drink
+apple - яблоко  
+book - книга  
+car - машина, автомобиль  
+dog - собака  
+chair - стул  
+house - дом  
+table - стол  
+cat - кот, кошка  
+tree - дерево  
+water - вода  
+school - школа  
+friend - друг, подруга  
+family - семья  
+mother - мать, мама  
+father - отец, папа  
+brother - брат  
+sister - сестра  
+teacher - учитель, преподаватель  
+student - студент, ученик  
+computer - компьютер  
+pen - ручка  
+pencil - карандаш  
+paper - бумага  
+phone - телефон  
+door - дверь  
+window - окно  
+street - улица  
+park - парк  
+city - город  
+country - страна, сельская местность  
+morning - утро  
+evening - вечер  
+day - день  
+night - ночь  
+time - время  
+clock - часы  
+kitchen - кухня  
+bathroom - ванная комната  
+bedroom - спальня  
+living room - гостиная  
+rain - дождь  
+sun - солнце  
+snow - снег  
+hot - горячий, жаркий  
+cold - холодный  
+warm - тёплый  
+big - большой  
+small - маленький  
+tall - высокий  
+short - короткий, низкий  
+happy - счастливый  
+sad - грустный  
+good - хороший  
+bad - плохой  
+fast - быстрый  
+slow - медленный  
+busy - занятый  
+free - свободный  
+new - новый  
+old - старый  
+young - молодой  
+rich - богатый  
+poor - бедный  
+strong - сильный  
+weak - слабый  
+beautiful - красивый  
+ugly - некрасивый, уродливый  
+clean - чистый  
+dirty - грязный  
+right - правильный, правый  
+wrong - неправильный  
+yes - да  
+no - нет  
+please - пожалуйста  
+thank you - спасибо  
+sorry - извините, прости  
+hello - здравствуйте, привет  
+goodbye - до свидания, пока  
+what - что  
+where - где, куда  
+who - кто  
+when - когда  
+why - почему  
+how - как  
+up - вверх  
+down - вниз  
+left - налево, левый  
+right - направо, правый  
+here - здесь, тут  
+there - там  
+together - вместе  
+separate - отдельно  
+open - открывать, открытый  
+close - закрывать, закрытый  
+go - идти, ехать  
+come - приходить, приезжать  
+eat - есть, кушать  
+drink - пить  

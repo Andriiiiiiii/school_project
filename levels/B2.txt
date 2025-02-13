@@ -1,100 +1,100 @@
-abolish
-accelerate
-accompany
-accomplish
-accountability
-accumulate
-acknowledge
-activate
-adaptation
-administer
-advocate
-affordable
-aggression
-algorithm
-alleviate
-ambiguous
-analyze
-anticipate
-appliance
-articulate
-aspiration
-assessment
-assumption
-astonishing
-authenticity
-awareness
-barrier
-beneficiary
-biodiversity
-blueprint
-breakthrough
-bureaucracy
-capability
-catastrophe
-censorship
-charismatic
-civilization
-collaboration
-commitment
-commodity
-comparative
-competence
-compliance
-component
-compromise
-computation
-concentration
-congestion
-consensus
-constraint
-controversy
-correlation
-credibility
-crucial
-cumulative
-curriculum
-customization
-deduction
-democracy
-dependency
-deterioration
-diagnosis
-differentiation
-diplomatic
-discrimination
-displacement
-disruption
-distinctive
-diversification
-documentation
-domination
-drawback
-drought
-durability
-efficiency
-elaborate
-eligibility
-emancipation
-entrepreneur
-epidemic
-equilibrium
-equity
-ethics
-evaluate
-excavation
-expertise
-exploration
-exploitation
-exposure
-fluctuate
-forecast
-formidable
-fragmentation
-globalization
-gratitude
-hazardous
-hypothesis
-ideology
-illuminate
-infrastructure
+abolish - отменять, упразднять  
+accelerate - ускорять  
+accompany - сопровождать  
+accomplish - выполнять, достигать  
+accountability - ответственность, подотчетность  
+accumulate - накапливать  
+acknowledge - признавать, подтверждать  
+activate - активировать  
+adaptation - адаптация, приспособление  
+administer - управлять, осуществлять  
+advocate - защищать, выступать в поддержку  
+affordable - доступный (по цене)  
+aggression - агрессия  
+algorithm - алгоритм  
+alleviate - облегчать, смягчать  
+ambiguous - двусмысленный, неопределенный  
+analyze - анализировать  
+anticipate - предвидеть, ожидать  
+appliance - прибор, устройство  
+articulate - четко выражать, формулировать  
+aspiration - стремление, устремление  
+assessment - оценка  
+assumption - предположение  
+astonishing - удивительный, поразительный  
+authenticity - подлинность, аутентичность  
+awareness - осознание, осведомленность  
+barrier - барьер, преграда  
+beneficiary - получатель выгоды, бенефициар  
+biodiversity - биологическое разнообразие  
+blueprint - чертеж, план  
+breakthrough - прорыв  
+bureaucracy - бюрократия  
+capability - способность, возможность  
+catastrophe - катастрофа  
+censorship - цензура  
+charismatic - харизматичный  
+civilization - цивилизация  
+collaboration - сотрудничество  
+commitment - обязательство, приверженность  
+commodity - товар, продукт  
+comparative - сравнительный  
+competence - компетентность, способность  
+compliance - соответствие, соблюдение  
+component - компонент, составляющая  
+compromise - компромисс  
+computation - вычисление  
+concentration - концентрация, сосредоточенность  
+congestion - перегруженность, затор  
+consensus - согласие, консенсус  
+constraint - ограничение, сдерживающий фактор  
+controversy - спор, противоречие  
+correlation - корреляция, взаимосвязь  
+credibility - доверие, авторитетность  
+crucial - решающий, ключевой  
+cumulative - накопительный, совокупный  
+curriculum - учебный план  
+customization - настройка, адаптация  
+deduction - вывод, вычет  
+democracy - демократия  
+dependency - зависимость  
+deterioration - ухудшение  
+diagnosis - диагноз, диагностика  
+differentiation - дифференциация, различие  
+diplomatic - дипломатический  
+discrimination - дискриминация  
+displacement - перемещение, смещение  
+disruption - нарушение, сбой  
+distinctive - отличительный, характерный  
+diversification - диверсификация, разнообразие  
+documentation - документация  
+domination - господство, доминирование  
+drawback - недостаток, минус  
+drought - засуха  
+durability - прочность, долговечность  
+efficiency - эффективность  
+elaborate - детально разрабатывать, сложный  
+eligibility - право на участие, соответствие требованиям  
+emancipation - освобождение, эмансипация  
+entrepreneur - предприниматель  
+epidemic - эпидемия  
+equilibrium - равновесие, баланс  
+equity - справедливость, равенство, собственный капитал  
+ethics - этика  
+evaluate - оценивать  
+excavation - раскопки  
+expertise - экспертиза, опыт  
+exploration - исследование  
+exploitation - эксплуатация, использование  
+exposure - воздействие, разоблачение  
+fluctuate - колебаться, изменяться  
+forecast - прогноз, прогнозировать  
+formidable - грозный, внушительный  
+fragmentation - раздробленность, фрагментация  
+globalization - глобализация  
+gratitude - благодарность  
+hazardous - опасный, рискованный  
+hypothesis - гипотеза  
+ideology - идеология  
+illuminate - освещать, разъяснять  
+infrastructure - инфраструктура  

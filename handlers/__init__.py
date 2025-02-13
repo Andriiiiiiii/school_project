@@ -6,6 +6,9 @@ from .dictionary import register_dictionary_handlers
 from .settings import register_settings_handlers
 from .help import register_help_handlers
 from .back import handle_back  # обработчик кнопки "Назад"
+from .test_level import register_level_test_handlers
+
+
 
 def register_handlers(dp, bot):
     dp.register_message_handler(cmd_start, commands=["start"])
@@ -19,3 +22,4 @@ def register_handlers(dp, bot):
         handle_back,
         lambda c: c.data == "menu:back"
     )
+    register_level_test_handlers(dp, bot)  # регистрация нового тестирования

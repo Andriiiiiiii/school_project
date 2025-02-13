@@ -2059,3 +2059,627 @@ TypeError: object bool can't be used in 'await' expression
 2025-02-08 16:16:35,857 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-08 16:17:35 MSK)" executed successfully
 2025-02-08 16:17:00,971 - INFO - Stop polling...
 2025-02-08 16:17:00,971 - WARNING - Goodbye!
+2025-02-12 23:16:30,150 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-02-12 23:16:30,312 - WARNING - Updates were skipped successfully.
+2025-02-12 23:16:30,322 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:16:30,324 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:16:30,325 - INFO - Scheduler started
+2025-02-12 23:16:30,325 - INFO - Бот запущен.
+2025-02-12 23:16:30,325 - INFO - Start polling.
+2025-02-12 23:16:35,338 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:16:46,700 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:16:56,647 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:17:06,584 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:17:16,523 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:17:27,888 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-02-12 23:17:33,191 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:18:30 MSK)" was missed by 0:00:02.869622
+2025-02-12 23:17:34,183 - INFO - Stop polling...
+2025-02-12 23:17:34,183 - WARNING - Goodbye!
+2025-02-12 23:17:35,454 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-12 23:17:35,621 - WARNING - Updates were skipped successfully.
+2025-02-12 23:17:35,626 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:17:35,627 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:17:35,628 - INFO - Scheduler started
+2025-02-12 23:17:35,628 - INFO - Бот запущен.
+2025-02-12 23:17:35,628 - INFO - Start polling.
+2025-02-12 23:17:40,192 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:18:08,642 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:18:13,534 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-12 23:18:13,685 - WARNING - Updates were skipped successfully.
+2025-02-12 23:18:13,687 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:18:13,687 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:18:13,687 - INFO - Scheduler started
+2025-02-12 23:18:13,687 - INFO - Бот запущен.
+2025-02-12 23:18:13,688 - INFO - Start polling.
+2025-02-12 23:18:15,264 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:19:16,596 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:20:13 MSK)" was missed by 0:00:02.909353
+2025-02-12 23:20:16,483 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:21:13 MSK)" was missed by 0:00:02.795659
+2025-02-12 23:21:16,703 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:22:13 MSK)" was missed by 0:00:03.016582
+2025-02-12 23:22:15,129 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:23:13 MSK)" was missed by 0:00:01.441778
+2025-02-12 23:23:16,635 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:24:13 MSK)" was missed by 0:00:02.948179
+2025-02-12 23:24:16,738 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:25:13 MSK)" was missed by 0:00:03.050996
+2025-02-12 23:25:16,695 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:26:13 MSK)" was missed by 0:00:03.008487
+2025-02-12 23:26:15,288 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:27:13 MSK)" was missed by 0:00:01.601390
+2025-02-12 23:27:16,917 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:28:13 MSK)" was missed by 0:00:03.230418
+2025-02-12 23:28:16,928 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:29:13 MSK)" was missed by 0:00:03.241018
+2025-02-12 23:29:17,044 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:30:13 MSK)" was missed by 0:00:03.357137
+2025-02-12 23:30:16,912 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:31:13 MSK)" was missed by 0:00:03.224842
+2025-02-12 23:31:15,347 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:32:13 MSK)" was missed by 0:00:01.660413
+2025-02-12 23:32:16,866 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:33:13 MSK)" was missed by 0:00:03.179206
+2025-02-12 23:33:16,841 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:34:13 MSK)" was missed by 0:00:03.154031
+2025-02-12 23:34:16,769 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:35:13 MSK)" was missed by 0:00:03.082060
+2025-02-12 23:35:15,212 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:36:13 MSK)" was missed by 0:00:01.525257
+2025-02-12 23:36:16,794 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:37:13 MSK)" was missed by 0:00:03.107050
+2025-02-12 23:37:16,780 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:38:13 MSK)" was missed by 0:00:03.093552
+2025-02-12 23:38:16,780 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:39:13 MSK)" was missed by 0:00:03.093632
+2025-02-12 23:39:16,835 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:40:13 MSK)" was missed by 0:00:03.148173
+2025-02-12 23:40:15,284 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:41:13 MSK)" was missed by 0:00:01.597089
+2025-02-12 23:41:16,921 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:42:13 MSK)" was missed by 0:00:03.233793
+2025-02-12 23:42:16,756 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:43:13 MSK)" was missed by 0:00:03.068991
+2025-02-12 23:43:16,873 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:44:13 MSK)" was missed by 0:00:03.186461
+2025-02-12 23:44:15,265 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:45:13 MSK)" was missed by 0:00:01.578008
+2025-02-12 23:45:16,854 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:46:13 MSK)" was missed by 0:00:03.167388
+2025-02-12 23:46:16,855 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:47:13 MSK)" was missed by 0:00:03.168497
+2025-02-12 23:47:16,896 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:48:13 MSK)" was missed by 0:00:03.209236
+2025-02-12 23:48:15,308 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:49:13 MSK)" was missed by 0:00:01.621306
+2025-02-12 23:49:16,841 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:50:13 MSK)" was missed by 0:00:03.153851
+2025-02-12 23:50:16,968 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:51:13 MSK)" was missed by 0:00:03.280753
+2025-02-12 23:51:09,511 - INFO - Stop polling...
+2025-02-12 23:51:09,512 - WARNING - Goodbye!
+2025-02-12 23:51:11,569 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-12 23:51:11,750 - WARNING - Updates were skipped successfully.
+2025-02-12 23:51:11,762 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:51:11,764 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:51:11,764 - INFO - Scheduler started
+2025-02-12 23:51:11,765 - INFO - Бот запущен.
+2025-02-12 23:51:11,765 - INFO - Start polling.
+2025-02-12 23:51:57,665 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:52:15,278 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:53:11 MSK)" was missed by 0:00:03.516111
+2025-02-12 23:53:01,921 - INFO - Stop polling...
+2025-02-12 23:53:01,921 - WARNING - Goodbye!
+2025-02-12 23:53:03,761 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-12 23:53:03,945 - WARNING - Updates were skipped successfully.
+2025-02-12 23:53:03,946 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:53:03,946 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:53:03,946 - INFO - Scheduler started
+2025-02-12 23:53:03,946 - INFO - Бот запущен.
+2025-02-12 23:53:03,947 - INFO - Start polling.
+2025-02-12 23:53:06,324 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:53:48,358 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:54:07,449 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:55:03 MSK)" was missed by 0:00:03.502631
+2025-02-12 23:55:07,377 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:56:03 MSK)" was missed by 0:00:03.430598
+2025-02-12 23:56:05,496 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:57:03 MSK)" was missed by 0:00:01.549913
+2025-02-12 23:56:09,181 - INFO - Stop polling...
+2025-02-12 23:56:09,182 - WARNING - Goodbye!
+2025-02-12 23:56:10,359 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-12 23:56:10,528 - WARNING - Updates were skipped successfully.
+2025-02-12 23:56:10,529 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-12 23:56:10,529 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-12 23:56:10,529 - INFO - Scheduler started
+2025-02-12 23:56:10,529 - INFO - Бот запущен.
+2025-02-12 23:56:10,530 - INFO - Start polling.
+2025-02-12 23:56:14,351 - INFO - Received /start from chat_id: 1999873173
+2025-02-12 23:57:13,956 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:58:10 MSK)" was missed by 0:00:03.427082
+2025-02-12 23:58:10,104 - INFO - Received /start from chat_id: 380675615
+2025-02-12 23:58:13,850 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-12 23:59:10 MSK)" was missed by 0:00:03.321048
+2025-02-12 23:59:13,811 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:00:10 MSK)" was missed by 0:00:03.281493
+2025-02-13 00:00:13,699 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:01:10 MSK)" was missed by 0:00:03.170026
+2025-02-13 00:01:12,108 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:02:10 MSK)" was missed by 0:00:01.578916
+2025-02-13 00:02:13,633 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:03:10 MSK)" was missed by 0:00:03.104034
+2025-02-13 00:02:17,722 - INFO - Stop polling...
+2025-02-13 00:02:17,723 - WARNING - Goodbye!
+2025-02-13 00:02:19,368 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 00:02:19,521 - WARNING - Updates were skipped successfully.
+2025-02-13 00:02:19,522 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 00:02:19,522 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 00:02:19,522 - INFO - Scheduler started
+2025-02-13 00:02:19,522 - INFO - Бот запущен.
+2025-02-13 00:02:19,522 - INFO - Start polling.
+2025-02-13 00:02:31,108 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 00:03:22,628 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:04:19 MSK)" was missed by 0:00:03.106134
+2025-02-13 00:04:22,337 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:05:19 MSK)" was missed by 0:00:02.815196
+2025-02-13 00:04:26,165 - INFO - Received /start from chat_id: 380675615
+2025-02-13 00:05:22,332 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:06:19 MSK)" was missed by 0:00:02.810308
+2025-02-13 00:06:20,727 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:07:19 MSK)" was missed by 0:00:01.205196
+2025-02-13 00:07:21,011 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:08:19 MSK)" was missed by 0:00:01.489525
+2025-02-13 00:08:21,611 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:09:19 MSK)" was missed by 0:00:02.089169
+2025-02-13 00:09:21,468 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:10:19 MSK)" was missed by 0:00:01.946027
+2025-02-13 00:10:20,474 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:11:19 MSK)" (scheduled at 2025-02-13 00:10:19.522058+03:00)
+2025-02-13 00:10:20,474 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:11:19 MSK)" executed successfully
+2025-02-13 00:11:21,565 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:12:19 MSK)" was missed by 0:00:02.043366
+2025-02-13 00:12:21,937 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:13:19 MSK)" was missed by 0:00:02.415665
+2025-02-13 00:13:21,930 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:14:19 MSK)" was missed by 0:00:02.408772
+2025-02-13 00:14:22,034 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:15:19 MSK)" was missed by 0:00:02.512877
+2025-02-13 00:43:21,603 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:44:19 MSK)" was missed by 0:00:02.081727
+2025-02-13 00:44:24,331 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:45:19 MSK)" was missed by 0:00:04.809642
+2025-02-13 00:45:25,135 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:46:19 MSK)" was missed by 0:00:05.613325
+2025-02-13 00:46:22,098 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:47:19 MSK)" was missed by 0:00:02.576096
+2025-02-13 00:47:25,096 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:48:19 MSK)" was missed by 0:00:05.573927
+2025-02-13 00:48:03,957 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 139, in make_request
+    async with session.post(url, data=req, **kwargs) as response:
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+TimeoutError
+2025-02-13 00:48:25,743 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:49:19 MSK)" was missed by 0:00:06.221085
+2025-02-13 00:49:22,626 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:50:19 MSK)" was missed by 0:00:03.104246
+2025-02-13 00:50:25,743 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:51:19 MSK)" was missed by 0:00:06.221649
+2025-02-13 00:51:25,664 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:52:19 MSK)" was missed by 0:00:06.142483
+2025-02-13 00:52:22,743 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:53:19 MSK)" was missed by 0:00:03.221327
+2025-02-13 00:53:25,960 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:54:19 MSK)" was missed by 0:00:06.438049
+2025-02-13 00:54:25,597 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:55:19 MSK)" was missed by 0:00:06.075542
+2025-02-13 00:55:25,604 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:56:19 MSK)" was missed by 0:00:06.082039
+2025-02-13 00:56:15,810 - INFO - Stop polling...
+2025-02-13 00:56:15,811 - WARNING - Goodbye!
+2025-02-13 00:56:17,907 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 00:56:18,135 - WARNING - Updates were skipped successfully.
+2025-02-13 00:56:18,139 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 00:56:18,139 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 00:56:18,140 - INFO - Scheduler started
+2025-02-13 00:56:18,140 - INFO - Бот запущен.
+2025-02-13 00:56:18,140 - INFO - Start polling.
+2025-02-13 00:56:27,368 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 00:57:24,383 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:58:18 MSK)" was missed by 0:00:06.244032
+2025-02-13 00:58:24,404 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 00:59:18 MSK)" was missed by 0:00:06.265767
+2025-02-13 00:59:21,293 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:00:18 MSK)" was missed by 0:00:03.154748
+2025-02-13 01:00:24,422 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:01:18 MSK)" was missed by 0:00:06.283171
+2025-02-13 01:01:24,453 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:02:18 MSK)" was missed by 0:00:06.314668
+2025-02-13 01:01:28,462 - INFO - Stop polling...
+2025-02-13 01:01:28,462 - WARNING - Goodbye!
+2025-02-13 01:01:30,082 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 01:01:30,239 - WARNING - Updates were skipped successfully.
+2025-02-13 01:01:30,244 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 01:01:30,244 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 01:01:30,244 - INFO - Scheduler started
+2025-02-13 01:01:30,244 - INFO - Бот запущен.
+2025-02-13 01:01:30,245 - INFO - Start polling.
+2025-02-13 01:01:37,645 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 01:02:36,253 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:03:30 MSK)" was missed by 0:00:06.010041
+2025-02-13 01:03:33,830 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:04:30 MSK)" was missed by 0:00:03.586582
+2025-02-13 01:04:37,226 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:05:30 MSK)" was missed by 0:00:06.983107
+2025-02-13 01:05:36,829 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:06:30 MSK)" was missed by 0:00:06.585581
+2025-02-13 01:06:33,721 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:07:30 MSK)" was missed by 0:00:03.477579
+2025-02-13 01:07:37,075 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:08:30 MSK)" was missed by 0:00:06.831245
+2025-02-13 01:08:37,002 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:09:30 MSK)" was missed by 0:00:06.758812
+2025-02-13 01:09:33,654 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:10:30 MSK)" was missed by 0:00:03.411204
+2025-02-13 01:10:37,124 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:11:30 MSK)" was missed by 0:00:06.880489
+2025-02-13 01:11:37,198 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:12:30 MSK)" was missed by 0:00:06.954426
+2025-02-13 01:12:37,245 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:13:30 MSK)" was missed by 0:00:07.002033
+2025-02-13 01:13:33,653 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:14:30 MSK)" was missed by 0:00:03.409609
+2025-02-13 01:14:37,228 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:15:30 MSK)" was missed by 0:00:06.984221
+2025-02-13 01:15:37,138 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:16:30 MSK)" was missed by 0:00:06.894859
+2025-02-13 01:16:33,495 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:17:30 MSK)" was missed by 0:00:03.251809
+2025-02-13 01:17:36,747 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:18:30 MSK)" was missed by 0:00:06.503586
+2025-02-13 01:18:25,456 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 01:18:25,608 - WARNING - Updates were skipped successfully.
+2025-02-13 01:18:25,610 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 01:18:25,611 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 01:18:25,611 - INFO - Scheduler started
+2025-02-13 01:18:25,611 - INFO - Бот запущен.
+2025-02-13 01:18:25,611 - INFO - Start polling.
+2025-02-13 01:19:01,475 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 01:19:32,125 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:20:25 MSK)" was missed by 0:00:06.515182
+2025-02-13 01:20:32,141 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:21:25 MSK)" was missed by 0:00:06.530997
+2025-02-13 01:21:32,143 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:22:25 MSK)" was missed by 0:00:06.532501
+2025-02-13 01:22:28,870 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:23:25 MSK)" was missed by 0:00:03.260096
+2025-02-13 01:23:32,544 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:24:25 MSK)" was missed by 0:00:06.933628
+2025-02-13 01:24:32,640 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:25:25 MSK)" was missed by 0:00:07.029411
+2025-02-13 01:25:29,019 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:26:25 MSK)" was missed by 0:00:03.408513
+2025-02-13 01:26:32,506 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:27:25 MSK)" was missed by 0:00:06.895526
+2025-02-13 01:27:32,621 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:28:25 MSK)" was missed by 0:00:07.010470
+2025-02-13 01:28:29,124 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:29:25 MSK)" was missed by 0:00:03.513795
+2025-02-13 01:29:32,742 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:30:25 MSK)" was missed by 0:00:07.131375
+2025-02-13 01:30:32,489 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:31:25 MSK)" was missed by 0:00:06.878843
+2025-02-13 01:31:28,994 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:32:25 MSK)" was missed by 0:00:03.383498
+2025-02-13 01:32:32,407 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:33:25 MSK)" was missed by 0:00:06.796300
+2025-02-13 01:33:32,428 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:34:25 MSK)" was missed by 0:00:06.817188
+2025-02-13 01:34:29,164 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:35:25 MSK)" was missed by 0:00:03.554020
+2025-02-13 01:35:32,574 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:36:25 MSK)" was missed by 0:00:06.964135
+2025-02-13 01:36:32,649 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:37:25 MSK)" was missed by 0:00:07.038732
+2025-02-13 01:37:29,140 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:38:25 MSK)" was missed by 0:00:03.529562
+2025-02-13 01:38:32,513 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:39:25 MSK)" was missed by 0:00:06.902821
+2025-02-13 01:39:32,032 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:40:25 MSK)" was missed by 0:00:06.421903
+2025-02-13 01:40:32,015 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:41:25 MSK)" was missed by 0:00:06.404725
+2025-02-13 01:41:28,822 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:42:25 MSK)" was missed by 0:00:03.212252
+2025-02-13 01:42:32,028 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:43:25 MSK)" was missed by 0:00:06.417361
+2025-02-13 01:43:32,047 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:44:25 MSK)" was missed by 0:00:06.437229
+2025-02-13 01:44:28,835 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:45:25 MSK)" was missed by 0:00:03.224598
+2025-02-13 01:45:32,201 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:46:25 MSK)" was missed by 0:00:06.590387
+2025-02-13 01:46:32,721 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:47:25 MSK)" was missed by 0:00:07.111203
+2025-02-13 01:47:29,000 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:48:25 MSK)" was missed by 0:00:03.389499
+2025-02-13 01:48:32,464 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:49:25 MSK)" was missed by 0:00:06.853583
+2025-02-13 01:49:32,531 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:50:25 MSK)" was missed by 0:00:06.920917
+2025-02-13 01:49:52,144 - INFO - Stop polling...
+2025-02-13 01:49:52,145 - WARNING - Goodbye!
+2025-02-13 01:49:53,765 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 01:49:53,967 - WARNING - Updates were skipped successfully.
+2025-02-13 01:49:53,968 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 01:49:53,969 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 01:49:53,969 - INFO - Scheduler started
+2025-02-13 01:49:53,969 - INFO - Бот запущен.
+2025-02-13 01:49:53,969 - INFO - Start polling.
+2025-02-13 01:50:08,377 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 01:50:09,636 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'compute_notification_message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 20, in send_words_day_schedule
+    result = compute_notification_message(user)  # функция из scheduler.py можно скопировать в utils или импортировать
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'compute_notification_message' is not defined
+2025-02-13 01:57:41,835 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 01:57:41,982 - WARNING - Updates were skipped successfully.
+2025-02-13 01:57:41,984 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 01:57:41,985 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 01:57:41,985 - INFO - Scheduler started
+2025-02-13 01:57:41,985 - INFO - Бот запущен.
+2025-02-13 01:57:41,986 - INFO - Start polling.
+2025-02-13 01:57:47,757 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 01:58:48,954 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 01:59:41 MSK)" was missed by 0:00:06.969390
+2025-02-13 01:59:49,050 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:00:41 MSK)" was missed by 0:00:07.065942
+2025-02-13 02:00:49,030 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:01:41 MSK)" was missed by 0:00:07.045616
+2025-02-13 02:01:45,324 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:02:41 MSK)" was missed by 0:00:03.339981
+2025-02-13 02:02:48,381 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:03:41 MSK)" was missed by 0:00:06.396572
+2025-02-13 02:03:48,361 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:04:41 MSK)" was missed by 0:00:06.377059
+2025-02-13 02:04:45,167 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:05:41 MSK)" was missed by 0:00:03.182555
+2025-02-13 02:04:52,694 - INFO - Stop polling...
+2025-02-13 02:04:52,694 - WARNING - Goodbye!
+2025-02-13 02:04:53,963 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:04:54,132 - WARNING - Updates were skipped successfully.
+2025-02-13 02:04:54,134 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:04:54,134 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:04:54,134 - INFO - Scheduler started
+2025-02-13 02:04:54,134 - INFO - Бот запущен.
+2025-02-13 02:04:54,135 - INFO - Start polling.
+2025-02-13 02:05:01,409 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:05:57,321 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:06:54 MSK)" was missed by 0:00:03.187281
+2025-02-13 02:07:01,042 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:07:54 MSK)" was missed by 0:00:06.908055
+2025-02-13 02:08:01,111 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:08:54 MSK)" was missed by 0:00:06.977148
+2025-02-13 02:08:57,591 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:09:54 MSK)" was missed by 0:00:03.456985
+2025-02-13 02:10:01,076 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:10:54 MSK)" was missed by 0:00:06.942368
+2025-02-13 02:10:16,549 - INFO - Stop polling...
+2025-02-13 02:10:16,549 - WARNING - Goodbye!
+2025-02-13 02:10:17,865 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:10:18,014 - WARNING - Updates were skipped successfully.
+2025-02-13 02:10:18,017 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:10:18,017 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:10:18,017 - INFO - Scheduler started
+2025-02-13 02:10:18,018 - INFO - Бот запущен.
+2025-02-13 02:10:18,018 - INFO - Start polling.
+2025-02-13 02:11:21,515 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:12:18 MSK)" was missed by 0:00:03.498204
+2025-02-13 02:12:25,048 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:13:18 MSK)" was missed by 0:00:07.031413
+2025-02-13 02:13:25,185 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:14:18 MSK)" was missed by 0:00:07.168339
+2025-02-13 02:14:25,190 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:15:18 MSK)" was missed by 0:00:07.172942
+2025-02-13 02:14:50,917 - INFO - Received /start from chat_id: 577300683
+2025-02-13 02:15:21,604 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:16:18 MSK)" was missed by 0:00:03.587572
+2025-02-13 02:16:25,188 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:17:18 MSK)" was missed by 0:00:07.171628
+2025-02-13 02:17:24,931 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:18:18 MSK)" was missed by 0:00:06.914830
+2025-02-13 02:17:37,333 - INFO - Stop polling...
+2025-02-13 02:17:37,334 - WARNING - Goodbye!
+2025-02-13 02:17:38,973 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:17:39,144 - WARNING - Updates were skipped successfully.
+2025-02-13 02:17:39,146 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:17:39,146 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:17:39,147 - INFO - Scheduler started
+2025-02-13 02:17:39,147 - INFO - Бот запущен.
+2025-02-13 02:17:39,147 - INFO - Start polling.
+2025-02-13 02:17:53,984 - INFO - Stop polling...
+2025-02-13 02:17:53,985 - WARNING - Goodbye!
+2025-02-13 02:18:36,155 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:18:36,313 - WARNING - Updates were skipped successfully.
+2025-02-13 02:18:36,314 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:18:36,315 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:18:36,315 - INFO - Scheduler started
+2025-02-13 02:18:36,315 - INFO - Бот запущен.
+2025-02-13 02:18:36,315 - INFO - Start polling.
+2025-02-13 02:19:39,702 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:20:36 MSK)" was missed by 0:00:03.387861
+2025-02-13 02:20:43,159 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:21:36 MSK)" was missed by 0:00:06.844816
+2025-02-13 02:21:43,284 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:22:36 MSK)" was missed by 0:00:06.969386
+2025-02-13 02:22:39,903 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:23:36 MSK)" was missed by 0:00:03.588437
+2025-02-13 02:23:43,432 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:24:36 MSK)" was missed by 0:00:07.117488
+2025-02-13 02:24:43,419 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:25:36 MSK)" was missed by 0:00:07.104632
+2025-02-13 02:25:39,694 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:26:36 MSK)" was missed by 0:00:03.379469
+2025-02-13 02:26:43,078 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:27:36 MSK)" was missed by 0:00:06.763371
+2025-02-13 02:27:43,089 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:28:36 MSK)" was missed by 0:00:06.775181
+2025-02-13 02:28:43,117 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:29:36 MSK)" was missed by 0:00:06.803383
+2025-02-13 02:29:39,719 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:30:36 MSK)" was missed by 0:00:03.404928
+2025-02-13 02:30:31,214 - INFO - Stop polling...
+2025-02-13 02:30:31,214 - WARNING - Goodbye!
+2025-02-13 02:30:32,455 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:30:32,628 - WARNING - Updates were skipped successfully.
+2025-02-13 02:30:32,630 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:30:32,630 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:30:32,630 - INFO - Scheduler started
+2025-02-13 02:30:32,630 - INFO - Бот запущен.
+2025-02-13 02:30:32,630 - INFO - Start polling.
+2025-02-13 02:30:37,118 - INFO - Stop polling...
+2025-02-13 02:30:37,118 - WARNING - Goodbye!
+2025-02-13 02:30:41,044 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:30:41,194 - WARNING - Updates were skipped successfully.
+2025-02-13 02:30:41,196 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:30:41,196 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:30:41,197 - INFO - Scheduler started
+2025-02-13 02:30:41,197 - INFO - Бот запущен.
+2025-02-13 02:30:41,197 - INFO - Start polling.
+2025-02-13 02:30:50,144 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:31:48,178 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:32:41 MSK)" was missed by 0:00:06.982433
+2025-02-13 02:32:44,764 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:33:41 MSK)" was missed by 0:00:03.568562
+2025-02-13 02:33:48,379 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:34:41 MSK)" was missed by 0:00:07.183519
+2025-02-13 02:34:48,304 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:35:41 MSK)" was missed by 0:00:07.108183
+2025-02-13 02:34:57,511 - INFO - Stop polling...
+2025-02-13 02:34:57,511 - WARNING - Goodbye!
+2025-02-13 02:34:59,512 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:34:59,666 - WARNING - Updates were skipped successfully.
+2025-02-13 02:34:59,667 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:34:59,667 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:34:59,667 - INFO - Scheduler started
+2025-02-13 02:34:59,667 - INFO - Бот запущен.
+2025-02-13 02:34:59,668 - INFO - Start polling.
+2025-02-13 02:35:05,078 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:36:06,790 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:36:59 MSK)" was missed by 0:00:07.123492
+2025-02-13 02:37:06,844 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:37:59 MSK)" was missed by 0:00:07.176977
+2025-02-13 02:37:44,507 - INFO - Stop polling...
+2025-02-13 02:37:44,507 - WARNING - Goodbye!
+2025-02-13 02:40:57,458 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:40:57,599 - WARNING - Updates were skipped successfully.
+2025-02-13 02:40:57,600 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:40:57,600 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:40:57,600 - INFO - Scheduler started
+2025-02-13 02:40:57,600 - INFO - Бот запущен.
+2025-02-13 02:40:57,600 - INFO - Start polling.
+2025-02-13 02:41:00,742 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:42:04,440 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:42:57 MSK)" was missed by 0:00:06.839987
+2025-02-13 02:43:04,451 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:43:57 MSK)" was missed by 0:00:06.851301
+2025-02-13 02:43:25,246 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:43:25,395 - WARNING - Updates were skipped successfully.
+2025-02-13 02:43:25,400 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:43:25,401 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:43:25,401 - INFO - Scheduler started
+2025-02-13 02:43:25,401 - INFO - Бот запущен.
+2025-02-13 02:43:25,401 - INFO - Start polling.
+2025-02-13 02:44:32,367 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:45:25 MSK)" was missed by 0:00:06.967186
+2025-02-13 02:45:32,427 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:46:25 MSK)" was missed by 0:00:07.026791
+2025-02-13 02:45:32,733 - INFO - Stop polling...
+2025-02-13 02:45:32,734 - WARNING - Goodbye!
+2025-02-13 02:45:34,578 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:45:34,734 - WARNING - Updates were skipped successfully.
+2025-02-13 02:45:34,737 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:45:34,738 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:45:34,738 - INFO - Scheduler started
+2025-02-13 02:45:34,739 - INFO - Бот запущен.
+2025-02-13 02:45:34,739 - INFO - Start polling.
+2025-02-13 02:46:41,907 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:47:34 MSK)" was missed by 0:00:07.169957
+2025-02-13 02:47:18,979 - INFO - Stop polling...
+2025-02-13 02:47:18,980 - WARNING - Goodbye!
+2025-02-13 02:47:25,083 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:47:25,234 - WARNING - Updates were skipped successfully.
+2025-02-13 02:47:25,235 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:47:25,235 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:47:25,236 - INFO - Scheduler started
+2025-02-13 02:47:25,236 - INFO - Бот запущен.
+2025-02-13 02:47:25,236 - INFO - Start polling.
+2025-02-13 02:47:32,393 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:48:31,724 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:49:25 MSK)" was missed by 0:00:06.488700
+2025-02-13 02:49:17,202 - INFO - Stop polling...
+2025-02-13 02:49:17,203 - WARNING - Goodbye!
+2025-02-13 02:50:39,256 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 02:50:39,405 - WARNING - Updates were skipped successfully.
+2025-02-13 02:50:39,410 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 02:50:39,410 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 02:50:39,410 - INFO - Scheduler started
+2025-02-13 02:50:39,410 - INFO - Бот запущен.
+2025-02-13 02:50:39,411 - INFO - Start polling.
+2025-02-13 02:50:55,230 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 02:51:45,894 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:52:39 MSK)" was missed by 0:00:06.484766
+2025-02-13 02:52:45,913 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:53:39 MSK)" was missed by 0:00:06.502872
+2025-02-13 02:53:45,923 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:54:39 MSK)" was missed by 0:00:06.513285
+2025-02-13 02:54:42,869 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 02:55:39 MSK)" was missed by 0:00:03.458848
+2025-02-13 02:55:15,993 - INFO - Stop polling...
+2025-02-13 02:55:15,993 - WARNING - Goodbye!
+2025-02-13 02:55:16,755 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 03:06:25,698 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 03:06:35,543 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 03:06:35,686 - WARNING - Updates were skipped successfully.
+2025-02-13 03:06:35,686 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 03:06:35,687 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 03:06:35,687 - INFO - Scheduler started
+2025-02-13 03:06:35,687 - INFO - Бот запущен.
+2025-02-13 03:06:35,687 - INFO - Start polling.
+2025-02-13 03:06:49,867 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 03:06:51,397 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("compute_notification_times() missing 1 required positional argument: 'first_time'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 76, in send_words_day_schedule
+    times = compute_notification_times(Y)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() missing 1 required positional argument: 'first_time'
+2025-02-13 03:07:03,219 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 03:07:04,207 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-39' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("compute_notification_times() missing 1 required positional argument: 'first_time'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 76, in send_words_day_schedule
+    times = compute_notification_times(Y)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() missing 1 required positional argument: 'first_time'
+2025-02-13 03:07:42,663 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-13 03:08:35 MSK)" was missed by 0:00:06.976158
+2025-02-13 03:08:18,200 - INFO - Stop polling...
+2025-02-13 03:08:18,201 - WARNING - Goodbye!
+2025-02-13 03:13:18,307 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-02-13 03:13:18,461 - WARNING - Updates were skipped successfully.
+2025-02-13 03:13:18,463 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-13 03:13:18,464 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-13 03:13:18,464 - INFO - Scheduler started
+2025-02-13 03:13:18,464 - INFO - Бот запущен.
+2025-02-13 03:13:18,464 - INFO - Start polling.
+2025-02-13 03:13:22,142 - INFO - Received /start from chat_id: 1999873173
+2025-02-13 03:13:59,898 - INFO - Stop polling...
+2025-02-13 03:13:59,899 - WARNING - Goodbye!

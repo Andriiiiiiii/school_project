@@ -1,100 +1,100 @@
-airport
-ambulance
-apartment
-bakery
-battery
-bicycle
-blanket
-bridge
-building
-bus stop
-calendar
-camera
-campsite
-candle
-cartoon
-ceiling
-celebrate
-champion
-chemistry
-childhood
-chopsticks
-cinema
-classical
-cloud
-coast
-collect
-comb
-concert
-connect
-continue
-cooker
-corner
-countryside
-crowded
-curly
-customer
-decision
-dentist
-department
-desert
-dictionary
-direction
-discount
-discussion
-diving
-downstairs
-earthquake
-education
-electricity
-elevator
-employee
-employer
-envelope
-environment
-exciting
-exhibition
-experience
-experiment
-factory
-fair
-fashion
-fence
-firefighter
-fishing
-flashlight
-flour
-furniture
-gallery
-geography
-grammar
-grocery
-guest
-haircut
-helicopter
-history
-homeless
-hospital
-hurry
-iceberg
-insects
-intelligent
-interview
-invitation
-jellyfish
-journalist
-lawyer
-lemonade
-license
-lighthouse
-luggage
-mechanical
-message
-microwave
-mountain
-museum
-nervous
-oven
-package
-painting
-passport
+airport - аэропорт  
+ambulance - скорая помощь  
+apartment - квартира  
+bakery - пекарня  
+battery - батарея, аккумулятор  
+bicycle - велосипед  
+blanket - одеяло  
+bridge - мост  
+building - здание  
+bus stop - автобусная остановка  
+calendar - календарь  
+camera - камера, фотоаппарат  
+campsite - кемпинг, лагерь  
+candle - свеча  
+cartoon - мультфильм  
+ceiling - потолок  
+celebrate - праздновать  
+champion - чемпион  
+chemistry - химия  
+childhood - детство  
+chopsticks - палочки для еды  
+cinema - кинотеатр  
+classical - классический  
+cloud - облако  
+coast - побережье  
+collect - собирать  
+comb - расчёска, расчёсывать  
+concert - концерт  
+connect - соединять, связывать  
+continue - продолжать  
+cooker - плита, кухонная плита  
+corner - угол  
+countryside - сельская местность  
+crowded - многолюдный  
+curly - кудрявый  
+customer - клиент, покупатель  
+decision - решение  
+dentist - стоматолог  
+department - отдел, департамент  
+desert - пустыня  
+dictionary - словарь  
+direction - направление  
+discount - скидка  
+discussion - обсуждение  
+diving - дайвинг, ныряние  
+downstairs - внизу, на нижнем этаже  
+earthquake - землетрясение  
+education - образование  
+electricity - электричество  
+elevator - лифт  
+employee - сотрудник, работник  
+employer - работодатель  
+envelope - конверт  
+environment - окружающая среда  
+exciting - захватывающий, увлекательный  
+exhibition - выставка  
+experience - опыт  
+experiment - эксперимент  
+factory - фабрика, завод  
+fair - ярмарка, справедливый  
+fashion - мода  
+fence - забор  
+firefighter - пожарный  
+fishing - рыбалка  
+flashlight - фонарик  
+flour - мука  
+furniture - мебель  
+gallery - галерея  
+geography - география  
+grammar - грамматика  
+grocery - продуктовый магазин, бакалея  
+guest - гость  
+haircut - стрижка  
+helicopter - вертолёт  
+history - история  
+homeless - бездомный  
+hospital - больница  
+hurry - спешить, спешка  
+iceberg - айсберг  
+insects - насекомые  
+intelligent - умный, интеллектуальный  
+interview - интервью, собеседование  
+invitation - приглашение  
+jellyfish - медуза  
+journalist - журналист  
+lawyer - адвокат, юрист  
+lemonade - лимонад  
+license - лицензия  
+lighthouse - маяк  
+luggage - багаж  
+mechanical - механический  
+message - сообщение  
+microwave - микроволновая печь, микроволновка  
+mountain - гора  
+museum - музей  
+nervous - нервный, переживающий  
+oven - духовка  
+package - упаковка, посылка  
+painting - картина, живопись  
+passport - паспорт  

@@ -44,3 +44,5 @@ def register_learning_handlers(dp: Dispatcher, bot: Bot):
         lambda c: learning_placeholder(c, bot),
         lambda c: c.data in ["learning:quiz", "learning:memorize"]
     )
+
+
