@@ -1,12 +1,13 @@
-# database/crud.py
 from database.db import cursor, conn
+from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
 
 def add_user(chat_id: int):
     cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
     if cursor.fetchone() is None:
+        # notifications теперь используется для количества повторений
         cursor.execute(
             "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time) VALUES (?, ?, ?, ?, ?)",
-            (chat_id, 'A1', 5, 10, '09:00')
+            (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT)
         )
         conn.commit()
 
@@ -15,7 +16,6 @@ def get_user(chat_id: int):
     return cursor.fetchone()
 
 def get_all_users():
-    """Возвращает список всех пользователей с их настройками."""
     cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users")
     return cursor.fetchall()
 
@@ -45,3 +45,11 @@ def add_word_to_dictionary(chat_id: int, word_data: dict):
 def get_user_dictionary(chat_id: int, limit: int = 10, offset: int = 0):
     cursor.execute("SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", (chat_id, limit, offset))
     return cursor.fetchall()
+
+def add_learned_word(chat_id: int, word: str, learned_date: str):
+    cursor.execute("INSERT INTO learned_words (chat_id, word, learned_date) VALUES (?, ?, ?)", (chat_id, word, learned_date))
+    conn.commit()
+
+def get_learned_words(chat_id: int):
+    cursor.execute("SELECT word FROM learned_words WHERE chat_id = ?", (chat_id,))
+    return [row[0] for row in cursor.fetchall()]

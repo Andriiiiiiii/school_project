@@ -1,4 +1,3 @@
-# database/db.py
 import sqlite3
 from config import DB_PATH
 
@@ -23,6 +22,15 @@ def init_db():
             translation TEXT,
             transcription TEXT,
             example TEXT
+        )
+    ''')
+    # Новая таблица для хранения выученных слов
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS learned_words (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            chat_id INTEGER,
+            word TEXT,
+            learned_date TEXT
         )
     ''')
     conn.commit()

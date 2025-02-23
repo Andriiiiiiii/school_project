@@ -38,7 +38,8 @@ def settings_menu_keyboard():
     keyboard.add(
         InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
         InlineKeyboardButton("Количество слов", callback_data="settings:words"),
-        InlineKeyboardButton("Количество уведомлений", callback_data="settings:notifications"),
+        InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
+        InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
         InlineKeyboardButton("Назад", callback_data="menu:back")
     )
     return keyboard

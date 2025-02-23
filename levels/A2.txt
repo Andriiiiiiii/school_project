@@ -98,3 +98,152 @@ oven - духовка
 package - упаковка, посылка  
 painting - картина, живопись  
 passport - паспорт  
+pavement - тротуар
+peacock - павлин
+pepper - перец
+perfume - духи
+pharmacy - аптека
+photographer - фотограф
+planet - планета
+plastic - пластик
+platform - платформа
+pollution - загрязнение
+postcard - открытка
+prediction - предсказание
+presentation - презентация
+pressure - давление
+prize - приз
+punishment - наказание
+puzzle - головоломка
+raincoat - дождевик
+realistic - реалистичный
+reception - приём, ресепшн
+recipe - рецепт (кулинарный)
+recycling - переработка отходов
+relationship - отношения
+relaxing - расслабляющий
+remote - пульт, удалённый
+repair - ремонт, чинить
+reporter - репортёр
+reptile - рептилия
+request - запрос, просьба
+reservation - бронь, резервирование
+respect - уважение
+review - обзор
+rooftop - крыша
+route - маршрут
+rubber - резина
+safe - безопасный, сейф
+sailing - парусный спорт
+sandcastle - песочный замок
+sauce - соус
+scientist - учёный
+sculpture - скульптура
+security - безопасность
+seed - семя
+shampoo - шампунь
+shark - акула
+shelf - полка
+shell - ракушка
+shopping mall - торговый центр
+shortcut - короткий путь
+sidewalk - тротуар
+signpost - указатель
+signal - сигнал
+silver - серебро
+sink - раковина (на кухне), тонуть
+skateboarding - катание на скейтборде
+skyscraper - небоскрёб
+sleepy - сонный
+sleeveless - без рукавов
+slogan - лозунг
+snowboarding - сноубординг
+soap - мыло
+solar - солнечный
+souvenir - сувенир
+spaceship - космический корабль
+spelling - правописание
+spider - паук
+spicy - острый (о еде)
+stadium - стадион
+staircase - лестница
+starfish - морская звезда
+stationery - канцелярские товары
+statue - статуя
+steering wheel - руль
+stew - рагу
+stormy - штормовой
+straw - солома, трубочка
+strawberry jam - клубничное варенье
+strict - строгий
+stripe - полоса
+stubborn - упрямый
+submarine - подводная лодка
+subtitles - субтитры
+successful - успешный
+suitcase - чемодан
+sunbathing - загорание
+sunrise - восход солнца
+sunset - закат
+surfing - серфинг
+sweater - свитер
+swimsuit - купальник
+symbol - символ
+symphony - симфония
+syrup - сироп
+tablecloth - скатерть
+tablet - планшет
+telescope - телескоп
+temperature - температура
+textbook - учебник
+thirsty - испытывающий жажду
+thunderstorm - гроза
+tiger - тигр
+toothache - зубная боль
+tourist - турист
+tower - башня
+traffic jam - пробка (на дороге)
+traffic light - светофор
+translation - перевод
+trash - мусор
+treasure - сокровище
+triangle - треугольник
+trip - поездка
+trophy - трофей
+trousers - брюки
+tulip - тюльпан
+tunnel - туннель
+typewriter - печатная машинка
+umbrella - зонт
+underground - метро
+unicorn - единорог
+universe - вселенная
+vacuum cleaner - пылесос
+valley - долина
+vanilla - ваниль
+vegetarian - вегетарианец
+vehicle - транспортное средство
+vending machine - торговый автомат
+view - вид
+violin - скрипка
+volcano - вулкан
+volleyball - волейбол
+waiter - официант
+wardrobe - гардероб
+warehouse - склад
+waterfall - водопад
+waterproof - водонепроницаемый
+wedding - свадьба
+whale - кит
+wheelchair - инвалидное кресло
+whistle - свисток
+windy - ветреный
+winner - победитель
+wireless - беспроводной
+wristwatch - наручные часы
+x-ray - рентген
+yawn - зевать
+yoga - йога
+zebra - зебра
+zipper - молния (на одежде)
+zoo - зоопарк

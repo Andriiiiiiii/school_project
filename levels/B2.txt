@@ -98,3 +98,138 @@ hypothesis - гипотеза
 ideology - идеология  
 illuminate - освещать, разъяснять  
 infrastructure - инфраструктура  
+immense - огромный, безмерный
+implementation - внедрение, реализация
+implicit - неявный, скрытый
+incentive - стимул, побуждение
+inclusion - включение, интеграция
+incorporate - включать, объединять
+indigenous - коренной, местный
+inequality - неравенство
+inevitable - неизбежный
+influential - влиятельный
+inherent - присущий, свойственный
+initiative - инициатива
+innovation - инновация, новшество
+insight - понимание, проницательность
+integrate - интегрировать, объединять
+intensive - интенсивный
+intermediate - промежуточный
+intervention - вмешательство
+intricate - сложный, запутанный
+inventory - инвентарь, запас
+irreversible - необратимый
+justification - оправдание, обоснование
+legislation - законодательство
+legitimate - законный, легитимный
+liability - ответственность, обязательство
+linguistic - лингвистический
+magnify - увеличивать, усиливать
+mainstream - основное направление, мейнстрим
+manifestation - проявление, демонстрация
+manipulation - манипуляция
+marginal - незначительный, маргинальный
+mechanism - механизм
+mediation - посредничество
+methodology - методология
+migration - миграция
+minimize - минимизировать
+modification - модификация, изменение
+momentum - импульс, динамика
+monopoly - монополия
+multitude - множество
+negligence - халатность, небрежность
+nomadic - кочевой
+notable - заметный, выдающийся
+notion - понятие, идея
+obligation - обязательство
+observance - соблюдение, выполнение
+obstacle - препятствие
+offset - компенсировать
+optimism - оптимизм
+orientation - ориентация, направленность
+parameter - параметр
+parliament - парламент
+participation - участие
+patronage - покровительство
+perception - восприятие
+perseverance - настойчивость, упорство
+pertinent - уместный, относящийся к делу
+plausible - правдоподобный
+polarization - поляризация
+pollutant - загрязнитель
+precedent - прецедент
+precision - точность
+predominant - преобладающий
+preservation - сохранение, охрана
+prevalent - распространенный
+priority - приоритет
+probability - вероятность
+profound - глубокий, основательный
+prolong - продлевать
+prolific - продуктивный, плодовитый
+proportion - пропорция
+prospect - перспектива, шанс
+prototype - прототип
+proximity - близость
+publicity - публичность, известность
+punctuality - пунктуальность
+quantify - количественно оценивать
+radical - радикальный
+randomness - случайность
+rationalization - рационализация
+reciprocal - взаимный
+reconstruction - реконструкция
+reconsider - пересмотреть
+recovery - восстановление
+redundancy - избыточность, сокращение (на работе)
+reflection - отражение, размышление
+regression - регресс
+rehabilitation - реабилитация
+reinforcement - укрепление, подкрепление
+reluctance - нежелание, неохота
+remedy - средство, мера
+repetition - повторение
+replication - копирование, воспроизведение
+resentment - негодование, обида
+resilience - устойчивость, жизнестойкость
+resolute - решительный
+restriction - ограничение
+retention - удержание, сохранение
+revenue - доход, выручка
+rigorous - строгий, тщательный
+sanction - санкция, разрешение
+scarcity - нехватка, дефицит
+scrutiny - внимательное изучение
+segmentation - сегментация, разделение
+sensitivity - чувствительность
+simulation - моделирование
+skepticism - скептицизм
+sophisticated - сложный, утонченный
+sovereignty - суверенитет
+speculation - предположение, спекуляция
+spontaneity - спонтанность
+stability - стабильность
+standardization - стандартизация
+statistical - статистический
+stimulus - стимул
+stratification - расслоение
+subsidy - субсидия
+sufficiency - достаточность
+suppression - подавление
+sustainability - устойчивое развитие
+synchronization - синхронизация
+synergy - синергия
+tangible - осязаемый, ощутимый
+tolerance - терпимость
+transcend - превосходить
+transformation - преобразование
+transparency - прозрачность
+turbulence - турбулентность
+unification - объединение
+utilization - использование
+validity - действительность, обоснованность
+versatility - универсальность, гибкость
+viability - жизнеспособность
+vigilance - бдительность
+vulnerability - уязвимость
