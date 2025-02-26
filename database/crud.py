@@ -6,17 +6,17 @@ def add_user(chat_id: int):
     if cursor.fetchone() is None:
         # notifications теперь используется для количества повторений
         cursor.execute(
-            "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time) VALUES (?, ?, ?, ?, ?)",
-            (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT)
+            "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone) VALUES (?, ?, ?, ?, ?, ?)",
+            (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow")
         )
         conn.commit()
 
 def get_user(chat_id: int):
-    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users WHERE chat_id = ?", (chat_id,))
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users WHERE chat_id = ?", (chat_id,))
     return cursor.fetchone()
 
 def get_all_users():
-    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time FROM users")
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
     return cursor.fetchall()
 
 def update_user_level(chat_id: int, level: str):
@@ -33,6 +33,10 @@ def update_user_notifications(chat_id: int, count: int):
 
 def update_user_reminder_time(chat_id: int, time: str):
     cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (time, chat_id))
+    conn.commit()
+
+def update_user_timezone(chat_id: int, timezone: str):
+    cursor.execute("UPDATE users SET timezone = ? WHERE chat_id = ?", (timezone, chat_id))
     conn.commit()
 
 def add_word_to_dictionary(chat_id: int, word_data: dict):

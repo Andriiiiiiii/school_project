@@ -3,22 +3,20 @@ from database import crud
 from keyboards.submenus import words_day_keyboard
 from utils.helpers import get_daily_words_for_user
 from config import REMINDER_START, DURATION_HOURS
+from zoneinfo import ZoneInfo
+from datetime import datetime
 
 async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик кнопки "Слова дня".
     Возвращает сохранённый набор слов для сегодняшнего дня с временными метками,
-    используя настройки из базы для данного пользователя:
-      - user[2] — количество слов в день
-      - user[3] — количество повторений
-    Если набор уже зафиксирован (в daily_words_storage), он возвращается, иначе генерируется новый.
+    вычисленными с учётом часового пояса пользователя.
     """
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     if not user:
         await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
         return
-
     result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
                                        first_time=REMINDER_START, duration_hours=DURATION_HOURS)
     if result is None:

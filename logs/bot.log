@@ -5435,3 +5435,1596 @@ NameError: name 'daily_words_storage' is not defined
 2025-02-24 00:04:57,461 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-24 00:05:57 MSK)" executed successfully
 2025-02-24 00:05:05,467 - INFO - Stop polling...
 2025-02-24 00:05:05,468 - WARNING - Goodbye!
+2025-02-26 19:48:28,806 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 19:48:30,158 - WARNING - Updates were skipped successfully.
+2025-02-26 19:48:30,169 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 19:48:30,170 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 19:48:30,170 - INFO - Scheduler started
+2025-02-26 19:48:30,170 - INFO - Бот запущен.
+2025-02-26 19:48:30,171 - INFO - Start polling.
+2025-02-26 19:48:37,844 - INFO - Received /start from chat_id: 380675615
+2025-02-26 19:48:46,818 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-24' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: timezone')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 96, in process_set_timezone_callback
+    crud.update_user_timezone(chat_id, tz)
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 39, in update_user_timezone
+    cursor.execute("UPDATE users SET timezone = ? WHERE chat_id = ?", (timezone, chat_id))
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:48:58,992 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-27' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: timezone')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 53, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 15, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:49:30,182 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:50:30 MSK)" (scheduled at 2025-02-26 19:49:30.169288+03:00)
+2025-02-26 19:49:30,198 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:50:30 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    users = crud.get_all_users()
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 19, in get_all_users
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:49:55,380 - INFO - Stop polling...
+2025-02-26 19:49:55,381 - WARNING - Goodbye!
+2025-02-26 19:50:00,578 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 19:50:01,167 - WARNING - Updates were skipped successfully.
+2025-02-26 19:50:01,175 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 19:50:01,176 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 19:50:01,176 - INFO - Scheduler started
+2025-02-26 19:50:01,176 - INFO - Бот запущен.
+2025-02-26 19:50:01,176 - INFO - Start polling.
+2025-02-26 19:50:03,270 - INFO - Received /start from chat_id: 380675615
+2025-02-26 19:50:09,078 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: timezone')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 53, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 15, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:51:01,187 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:52:01 MSK)" (scheduled at 2025-02-26 19:51:01.175757+03:00)
+2025-02-26 19:51:01,190 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:52:01 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    users = crud.get_all_users()
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 19, in get_all_users
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:52:01,185 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:53:01 MSK)" (scheduled at 2025-02-26 19:52:01.175757+03:00)
+2025-02-26 19:52:01,187 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:53:01 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    users = crud.get_all_users()
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/database/crud.py", line 19, in get_all_users
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
+sqlite3.OperationalError: no such column: timezone
+2025-02-26 19:52:11,831 - INFO - Stop polling...
+2025-02-26 19:52:11,833 - WARNING - Goodbye!
+2025-02-26 19:53:29,479 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 19:53:32,138 - WARNING - Updates were skipped successfully.
+2025-02-26 19:53:32,141 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 19:53:32,141 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 19:53:32,141 - INFO - Scheduler started
+2025-02-26 19:53:32,141 - INFO - Бот запущен.
+2025-02-26 19:53:32,142 - INFO - Start polling.
+2025-02-26 19:53:43,243 - INFO - Received /start from chat_id: 380675615
+2025-02-26 19:54:32,142 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:55:32 MSK)" (scheduled at 2025-02-26 19:54:32.140769+03:00)
+2025-02-26 19:54:32,154 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:55:32 MSK)" executed successfully
+2025-02-26 19:55:32,143 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:56:32 MSK)" (scheduled at 2025-02-26 19:55:32.140769+03:00)
+2025-02-26 19:55:32,144 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:56:32 MSK)" executed successfully
+2025-02-26 19:56:32,147 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:57:32 MSK)" (scheduled at 2025-02-26 19:56:32.140769+03:00)
+2025-02-26 19:56:32,148 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:57:32 MSK)" executed successfully
+2025-02-26 19:57:32,146 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:58:32 MSK)" (scheduled at 2025-02-26 19:57:32.140769+03:00)
+2025-02-26 19:57:32,147 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:58:32 MSK)" executed successfully
+2025-02-26 19:58:32,144 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:59:32 MSK)" (scheduled at 2025-02-26 19:58:32.140769+03:00)
+2025-02-26 19:58:32,145 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 19:59:32 MSK)" executed successfully
+2025-02-26 19:59:32,143 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:00:32 MSK)" (scheduled at 2025-02-26 19:59:32.140769+03:00)
+2025-02-26 19:59:32,150 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:00:32 MSK)" executed successfully
+2025-02-26 20:00:32,157 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:01:32 MSK)" (scheduled at 2025-02-26 20:00:32.140769+03:00)
+2025-02-26 20:00:32,158 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:01:32 MSK)" executed successfully
+2025-02-26 20:01:32,159 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:02:32 MSK)" (scheduled at 2025-02-26 20:01:32.140769+03:00)
+2025-02-26 20:01:32,160 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:02:32 MSK)" executed successfully
+2025-02-26 20:02:32,180 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:03:32 MSK)" (scheduled at 2025-02-26 20:02:32.140769+03:00)
+2025-02-26 20:02:32,181 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:03:32 MSK)" executed successfully
+2025-02-26 20:03:32,204 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:04:32 MSK)" (scheduled at 2025-02-26 20:03:32.140769+03:00)
+2025-02-26 20:03:32,204 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:04:32 MSK)" executed successfully
+2025-02-26 20:04:14,929 - INFO - Stop polling...
+2025-02-26 20:04:14,931 - WARNING - Goodbye!
+2025-02-26 20:04:40,926 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:04:43,175 - WARNING - Updates were skipped successfully.
+2025-02-26 20:04:43,184 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:04:43,185 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:04:43,185 - INFO - Scheduler started
+2025-02-26 20:04:43,185 - INFO - Бот запущен.
+2025-02-26 20:04:43,186 - INFO - Start polling.
+2025-02-26 20:04:49,149 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:04:51,666 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:05:40,978 - INFO - Stop polling...
+2025-02-26 20:05:40,979 - WARNING - Goodbye!
+2025-02-26 20:05:59,719 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:06:00,289 - WARNING - Updates were skipped successfully.
+2025-02-26 20:06:00,290 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:06:00,291 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:06:00,291 - INFO - Scheduler started
+2025-02-26 20:06:00,291 - INFO - Бот запущен.
+2025-02-26 20:06:00,291 - INFO - Start polling.
+2025-02-26 20:06:03,972 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:06:25,300 - INFO - Stop polling...
+2025-02-26 20:06:25,301 - WARNING - Goodbye!
+2025-02-26 20:06:44,821 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:06:45,337 - WARNING - Updates were skipped successfully.
+2025-02-26 20:06:45,339 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:06:45,339 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:06:45,339 - INFO - Scheduler started
+2025-02-26 20:06:45,339 - INFO - Бот запущен.
+2025-02-26 20:06:45,339 - INFO - Start polling.
+2025-02-26 20:06:46,468 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:07:45,343 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:08:45 MSK)" (scheduled at 2025-02-26 20:07:45.338893+03:00)
+2025-02-26 20:07:45,356 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:08:45 MSK)" executed successfully
+2025-02-26 20:08:06,886 - INFO - Stop polling...
+2025-02-26 20:08:06,887 - WARNING - Goodbye!
+2025-02-26 20:08:16,784 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:08:17,744 - WARNING - Updates were skipped successfully.
+2025-02-26 20:08:17,746 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:08:17,747 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:08:17,747 - INFO - Scheduler started
+2025-02-26 20:08:17,747 - INFO - Бот запущен.
+2025-02-26 20:08:17,747 - INFO - Start polling.
+2025-02-26 20:08:21,286 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:09:17,750 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:10:17 MSK)" (scheduled at 2025-02-26 20:09:17.746784+03:00)
+2025-02-26 20:09:17,758 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:10:17 MSK)" executed successfully
+2025-02-26 20:10:17,749 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:11:17 MSK)" (scheduled at 2025-02-26 20:10:17.746784+03:00)
+2025-02-26 20:10:17,750 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:11:17 MSK)" executed successfully
+2025-02-26 20:11:17,758 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:12:17 MSK)" (scheduled at 2025-02-26 20:11:17.746784+03:00)
+2025-02-26 20:11:17,759 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:12:17 MSK)" executed successfully
+2025-02-26 20:12:17,756 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:13:17 MSK)" (scheduled at 2025-02-26 20:12:17.746784+03:00)
+2025-02-26 20:12:17,757 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:13:17 MSK)" executed successfully
+2025-02-26 20:13:17,756 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:14:17 MSK)" (scheduled at 2025-02-26 20:13:17.746784+03:00)
+2025-02-26 20:13:17,757 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:14:17 MSK)" executed successfully
+2025-02-26 20:14:17,754 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:15:17 MSK)" (scheduled at 2025-02-26 20:14:17.746784+03:00)
+2025-02-26 20:14:17,755 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:15:17 MSK)" executed successfully
+2025-02-26 20:15:17,755 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:16:17 MSK)" (scheduled at 2025-02-26 20:15:17.746784+03:00)
+2025-02-26 20:15:17,756 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:16:17 MSK)" executed successfully
+2025-02-26 20:16:17,755 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:17:17 MSK)" (scheduled at 2025-02-26 20:16:17.746784+03:00)
+2025-02-26 20:16:17,756 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:17:17 MSK)" executed successfully
+2025-02-26 20:17:17,754 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:18:17 MSK)" (scheduled at 2025-02-26 20:17:17.746784+03:00)
+2025-02-26 20:17:17,755 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:18:17 MSK)" executed successfully
+2025-02-26 20:18:17,753 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:19:17 MSK)" (scheduled at 2025-02-26 20:18:17.746784+03:00)
+2025-02-26 20:18:17,754 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:19:17 MSK)" executed successfully
+2025-02-26 20:19:17,750 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:20:17 MSK)" (scheduled at 2025-02-26 20:19:17.746784+03:00)
+2025-02-26 20:19:17,751 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:20:17 MSK)" executed successfully
+2025-02-26 20:20:17,750 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:21:17 MSK)" (scheduled at 2025-02-26 20:20:17.746784+03:00)
+2025-02-26 20:20:17,751 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:21:17 MSK)" executed successfully
+2025-02-26 20:21:17,749 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:22:17 MSK)" (scheduled at 2025-02-26 20:21:17.746784+03:00)
+2025-02-26 20:21:17,750 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:22:17 MSK)" executed successfully
+2025-02-26 20:22:17,752 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:23:17 MSK)" (scheduled at 2025-02-26 20:22:17.746784+03:00)
+2025-02-26 20:22:17,753 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:23:17 MSK)" executed successfully
+2025-02-26 20:22:58,764 - INFO - Stop polling...
+2025-02-26 20:22:58,764 - WARNING - Goodbye!
+2025-02-26 20:24:24,469 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:24:24,981 - WARNING - Updates were skipped successfully.
+2025-02-26 20:24:24,983 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:24:24,984 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:24:24,984 - INFO - Scheduler started
+2025-02-26 20:24:24,984 - INFO - Бот запущен.
+2025-02-26 20:24:24,985 - INFO - Start polling.
+2025-02-26 20:24:32,148 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:25:24,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:26:24 MSK)" (scheduled at 2025-02-26 20:25:24.983559+03:00)
+2025-02-26 20:25:24,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:26:24 MSK)" executed successfully
+2025-02-26 20:25:55,473 - INFO - Stop polling...
+2025-02-26 20:25:55,474 - WARNING - Goodbye!
+2025-02-26 20:25:58,065 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:26:00,111 - WARNING - Updates were skipped successfully.
+2025-02-26 20:26:00,114 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:26:00,115 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:26:00,115 - INFO - Scheduler started
+2025-02-26 20:26:00,115 - INFO - Бот запущен.
+2025-02-26 20:26:00,115 - INFO - Start polling.
+2025-02-26 20:26:16,215 - INFO - Stop polling...
+2025-02-26 20:26:16,216 - WARNING - Goodbye!
+2025-02-26 20:26:21,411 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:26:21,922 - WARNING - Updates were skipped successfully.
+2025-02-26 20:26:21,925 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:26:21,925 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:26:21,925 - INFO - Scheduler started
+2025-02-26 20:26:21,925 - INFO - Бот запущен.
+2025-02-26 20:26:21,926 - INFO - Start polling.
+2025-02-26 20:26:57,179 - INFO - Stop polling...
+2025-02-26 20:26:57,180 - WARNING - Goodbye!
+2025-02-26 20:27:40,671 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:27:41,797 - WARNING - Updates were skipped successfully.
+2025-02-26 20:27:41,800 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:27:41,804 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:27:41,804 - INFO - Scheduler started
+2025-02-26 20:27:41,805 - INFO - Бот запущен.
+2025-02-26 20:27:41,805 - INFO - Start polling.
+2025-02-26 20:28:41,802 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:29:41 MSK)" (scheduled at 2025-02-26 20:28:41.800438+03:00)
+2025-02-26 20:28:41,813 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:29:41 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 12, in load_tzdata
+    return resources.files(package_name).joinpath(resource_name).open("rb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 22, in files
+    return from_package(get_package(package))
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 53, in get_package
+    resolved = resolve(package)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 44, in resolve
+    return cand if isinstance(cand, types.ModuleType) else importlib.import_module(cand)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1126, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tzdata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    now_local = now_server.astimezone(ZoneInfo(user_tz))
+                                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 24, in load_tzdata
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key UTC+4'
+2025-02-26 20:29:06,262 - INFO - Stop polling...
+2025-02-26 20:29:06,263 - WARNING - Goodbye!
+2025-02-26 20:29:20,203 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:29:20,816 - WARNING - Updates were skipped successfully.
+2025-02-26 20:29:20,818 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:29:20,819 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:29:20,819 - INFO - Scheduler started
+2025-02-26 20:29:20,819 - INFO - Бот запущен.
+2025-02-26 20:29:20,819 - INFO - Start polling.
+2025-02-26 20:30:20,829 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:31:20 MSK)" (scheduled at 2025-02-26 20:30:20.818799+03:00)
+2025-02-26 20:30:20,832 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:31:20 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 12, in load_tzdata
+    return resources.files(package_name).joinpath(resource_name).open("rb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 22, in files
+    return from_package(get_package(package))
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 53, in get_package
+    resolved = resolve(package)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 44, in resolve
+    return cand if isinstance(cand, types.ModuleType) else importlib.import_module(cand)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1126, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tzdata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    now_local = now_server.astimezone(ZoneInfo(user_tz))
+                                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 24, in load_tzdata
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key UTC+4'
+2025-02-26 20:31:20,828 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:32:20 MSK)" (scheduled at 2025-02-26 20:31:20.818799+03:00)
+2025-02-26 20:31:20,830 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:32:20 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 12, in load_tzdata
+    return resources.files(package_name).joinpath(resource_name).open("rb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 22, in files
+    return from_package(get_package(package))
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 53, in get_package
+    resolved = resolve(package)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 44, in resolve
+    return cand if isinstance(cand, types.ModuleType) else importlib.import_module(cand)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1126, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tzdata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    now_local = now_server.astimezone(ZoneInfo(user_tz))
+                                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 24, in load_tzdata
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key UTC+4'
+2025-02-26 20:32:20,826 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:33:20 MSK)" (scheduled at 2025-02-26 20:32:20.818799+03:00)
+2025-02-26 20:32:20,828 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:33:20 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 12, in load_tzdata
+    return resources.files(package_name).joinpath(resource_name).open("rb")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 22, in files
+    return from_package(get_package(package))
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 53, in get_package
+    resolved = resolve(package)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/resources/_common.py", line 44, in resolve
+    return cand if isinstance(cand, types.ModuleType) else importlib.import_module(cand)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1126, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1140, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'tzdata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 31, in scheduler_job
+    now_local = now_server.astimezone(ZoneInfo(user_tz))
+                                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/zoneinfo/_common.py", line 24, in load_tzdata
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key UTC+4'
+2025-02-26 20:33:20,820 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:34:20 MSK)" (scheduled at 2025-02-26 20:33:20.818799+03:00)
+2025-02-26 20:33:20,835 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:34:20 MSK)" executed successfully
+2025-02-26 20:33:46,228 - INFO - Stop polling...
+2025-02-26 20:33:46,232 - WARNING - Goodbye!
+2025-02-26 20:33:54,640 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:33:56,377 - WARNING - Updates were skipped successfully.
+2025-02-26 20:33:56,379 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:33:56,379 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:33:56,379 - INFO - Scheduler started
+2025-02-26 20:33:56,379 - INFO - Бот запущен.
+2025-02-26 20:33:56,380 - INFO - Start polling.
+2025-02-26 20:34:07,961 - INFO - Received /start from chat_id: 380675615
+2025-02-26 20:34:26,359 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-42' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageIsTooLong('Message is too long')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 36, in send_words_day_schedule
+    await bot.send_message(chat_id, text, reply_markup=words_day_keyboard())
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageIsTooLong: Message is too long
+2025-02-26 20:34:54,220 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-47' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageIsTooLong('Message is too long')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 36, in send_words_day_schedule
+    await bot.send_message(chat_id, text, reply_markup=words_day_keyboard())
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageIsTooLong: Message is too long
+2025-02-26 20:34:56,383 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:35:56 MSK)" (scheduled at 2025-02-26 20:34:56.379153+03:00)
+2025-02-26 20:34:56,384 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:35:56 MSK)" executed successfully
+2025-02-26 20:35:56,387 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:36:56 MSK)" (scheduled at 2025-02-26 20:35:56.379153+03:00)
+2025-02-26 20:35:56,388 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:36:56 MSK)" executed successfully
+2025-02-26 20:36:56,387 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:37:56 MSK)" (scheduled at 2025-02-26 20:36:56.379153+03:00)
+2025-02-26 20:36:56,387 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:37:56 MSK)" executed successfully
+2025-02-26 20:37:56,384 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:38:56 MSK)" (scheduled at 2025-02-26 20:37:56.379153+03:00)
+2025-02-26 20:37:56,386 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:38:56 MSK)" executed successfully
+2025-02-26 20:38:56,387 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:39:56 MSK)" (scheduled at 2025-02-26 20:38:56.379153+03:00)
+2025-02-26 20:38:56,394 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:39:56 MSK)" executed successfully
+2025-02-26 20:39:27,271 - INFO - Stop polling...
+2025-02-26 20:39:27,272 - WARNING - Goodbye!
+2025-02-26 20:39:31,751 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:39:32,354 - WARNING - Updates were skipped successfully.
+2025-02-26 20:39:32,357 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:39:32,360 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:39:32,360 - INFO - Scheduler started
+2025-02-26 20:39:32,360 - INFO - Бот запущен.
+2025-02-26 20:39:32,361 - INFO - Start polling.
+2025-02-26 20:39:55,821 - INFO - Stop polling...
+2025-02-26 20:39:55,821 - WARNING - Goodbye!
+2025-02-26 20:40:01,642 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:40:02,155 - WARNING - Updates were skipped successfully.
+2025-02-26 20:40:02,158 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:40:02,158 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:40:02,158 - INFO - Scheduler started
+2025-02-26 20:40:02,158 - INFO - Бот запущен.
+2025-02-26 20:40:02,159 - INFO - Start polling.
+2025-02-26 20:41:02,162 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:42:02 MSK)" (scheduled at 2025-02-26 20:41:02.158163+03:00)
+2025-02-26 20:41:02,173 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:42:02 MSK)" executed successfully
+2025-02-26 20:41:21,895 - INFO - Stop polling...
+2025-02-26 20:41:21,896 - WARNING - Goodbye!
+2025-02-26 20:41:27,657 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:41:28,272 - WARNING - Updates were skipped successfully.
+2025-02-26 20:41:28,275 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:41:28,276 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:41:28,276 - INFO - Scheduler started
+2025-02-26 20:41:28,276 - INFO - Бот запущен.
+2025-02-26 20:41:28,276 - INFO - Start polling.
+2025-02-26 20:42:28,280 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:43:28 MSK)" (scheduled at 2025-02-26 20:42:28.275678+03:00)
+2025-02-26 20:42:28,288 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:43:28 MSK)" executed successfully
+2025-02-26 20:43:28,290 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:44:28 MSK)" (scheduled at 2025-02-26 20:43:28.275678+03:00)
+2025-02-26 20:43:28,291 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:44:28 MSK)" executed successfully
+2025-02-26 20:44:28,279 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:45:28 MSK)" (scheduled at 2025-02-26 20:44:28.275678+03:00)
+2025-02-26 20:44:28,279 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:45:28 MSK)" executed successfully
+2025-02-26 20:45:28,278 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:46:28 MSK)" (scheduled at 2025-02-26 20:45:28.275678+03:00)
+2025-02-26 20:45:28,279 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:46:28 MSK)" executed successfully
+2025-02-26 20:46:28,282 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:47:28 MSK)" (scheduled at 2025-02-26 20:46:28.275678+03:00)
+2025-02-26 20:46:28,283 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:47:28 MSK)" executed successfully
+2025-02-26 20:47:04,806 - INFO - Stop polling...
+2025-02-26 20:47:04,806 - WARNING - Goodbye!
+2025-02-26 20:47:11,352 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 20:47:11,897 - WARNING - Updates were skipped successfully.
+2025-02-26 20:47:11,901 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 20:47:11,902 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 20:47:11,902 - INFO - Scheduler started
+2025-02-26 20:47:11,902 - INFO - Бот запущен.
+2025-02-26 20:47:11,902 - INFO - Start polling.
+2025-02-26 20:48:11,902 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:49:11 MSK)" (scheduled at 2025-02-26 20:48:11.900818+03:00)
+2025-02-26 20:48:11,910 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:49:11 MSK)" executed successfully
+2025-02-26 20:49:11,907 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:50:11 MSK)" (scheduled at 2025-02-26 20:49:11.900818+03:00)
+2025-02-26 20:49:11,909 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:50:11 MSK)" executed successfully
+2025-02-26 20:50:11,902 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:51:11 MSK)" (scheduled at 2025-02-26 20:50:11.900818+03:00)
+2025-02-26 20:50:11,903 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:51:11 MSK)" executed successfully
+2025-02-26 20:51:11,909 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:52:11 MSK)" (scheduled at 2025-02-26 20:51:11.900818+03:00)
+2025-02-26 20:51:11,911 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:52:11 MSK)" executed successfully
+2025-02-26 20:52:11,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:53:11 MSK)" (scheduled at 2025-02-26 20:52:11.900818+03:00)
+2025-02-26 20:52:11,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:53:11 MSK)" executed successfully
+2025-02-26 20:53:11,904 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:54:11 MSK)" (scheduled at 2025-02-26 20:53:11.900818+03:00)
+2025-02-26 20:53:11,905 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:54:11 MSK)" executed successfully
+2025-02-26 20:54:11,904 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:55:11 MSK)" (scheduled at 2025-02-26 20:54:11.900818+03:00)
+2025-02-26 20:54:11,908 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:55:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 20:55:11,902 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:56:11 MSK)" (scheduled at 2025-02-26 20:55:11.900818+03:00)
+2025-02-26 20:55:11,903 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:56:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 20:56:11,907 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:57:11 MSK)" (scheduled at 2025-02-26 20:56:11.900818+03:00)
+2025-02-26 20:56:11,908 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:57:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 20:57:11,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:58:11 MSK)" (scheduled at 2025-02-26 20:57:11.900818+03:00)
+2025-02-26 20:57:11,907 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:58:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 20:58:11,904 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:59:11 MSK)" (scheduled at 2025-02-26 20:58:11.900818+03:00)
+2025-02-26 20:58:11,906 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 20:59:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 20:59:11,907 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:00:11 MSK)" (scheduled at 2025-02-26 20:59:11.900818+03:00)
+2025-02-26 20:59:11,908 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:00:11 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 53, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:00:11,910 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:01:11 MSK)" (scheduled at 2025-02-26 21:00:11.900818+03:00)
+2025-02-26 21:00:11,910 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:01:11 MSK)" executed successfully
+2025-02-26 21:01:11,914 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:02:11 MSK)" (scheduled at 2025-02-26 21:01:11.900818+03:00)
+2025-02-26 21:01:11,914 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:02:11 MSK)" executed successfully
+2025-02-26 21:02:11,913 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:03:11 MSK)" (scheduled at 2025-02-26 21:02:11.900818+03:00)
+2025-02-26 21:02:11,914 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:03:11 MSK)" executed successfully
+2025-02-26 21:03:11,912 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:04:11 MSK)" (scheduled at 2025-02-26 21:03:11.900818+03:00)
+2025-02-26 21:03:11,914 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:04:11 MSK)" executed successfully
+2025-02-26 21:04:11,912 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:05:11 MSK)" (scheduled at 2025-02-26 21:04:11.900818+03:00)
+2025-02-26 21:04:11,913 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:05:11 MSK)" executed successfully
+2025-02-26 21:05:11,901 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:06:11 MSK)" (scheduled at 2025-02-26 21:05:11.900818+03:00)
+2025-02-26 21:05:11,902 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:06:11 MSK)" executed successfully
+2025-02-26 21:06:11,908 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:07:11 MSK)" (scheduled at 2025-02-26 21:06:11.900818+03:00)
+2025-02-26 21:06:11,908 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:07:11 MSK)" executed successfully
+2025-02-26 21:07:11,902 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:08:11 MSK)" (scheduled at 2025-02-26 21:07:11.900818+03:00)
+2025-02-26 21:07:11,902 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:08:11 MSK)" executed successfully
+2025-02-26 21:08:11,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:09:11 MSK)" (scheduled at 2025-02-26 21:08:11.900818+03:00)
+2025-02-26 21:08:11,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:09:11 MSK)" executed successfully
+2025-02-26 21:09:11,905 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:10:11 MSK)" (scheduled at 2025-02-26 21:09:11.900818+03:00)
+2025-02-26 21:09:11,906 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:10:11 MSK)" executed successfully
+2025-02-26 21:10:11,904 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:11:11 MSK)" (scheduled at 2025-02-26 21:10:11.900818+03:00)
+2025-02-26 21:10:11,905 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:11:11 MSK)" executed successfully
+2025-02-26 21:11:11,902 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:12:11 MSK)" (scheduled at 2025-02-26 21:11:11.900818+03:00)
+2025-02-26 21:11:11,903 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:12:11 MSK)" executed successfully
+2025-02-26 21:11:12,061 - INFO - Stop polling...
+2025-02-26 21:11:12,061 - WARNING - Goodbye!
+2025-02-26 21:11:17,597 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 21:11:17,978 - WARNING - Updates were skipped successfully.
+2025-02-26 21:11:17,979 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 21:11:17,979 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 21:11:17,979 - INFO - Scheduler started
+2025-02-26 21:11:17,979 - INFO - Бот запущен.
+2025-02-26 21:11:17,979 - INFO - Start polling.
+2025-02-26 21:11:28,188 - INFO - Received /start from chat_id: 380675615
+2025-02-26 21:12:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:13:17 MSK)" (scheduled at 2025-02-26 21:12:17.979418+03:00)
+2025-02-26 21:12:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:13:17 MSK)" executed successfully
+2025-02-26 21:13:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:14:17 MSK)" (scheduled at 2025-02-26 21:13:17.979418+03:00)
+2025-02-26 21:13:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:14:17 MSK)" executed successfully
+2025-02-26 21:14:17,989 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:15:17 MSK)" (scheduled at 2025-02-26 21:14:17.979418+03:00)
+2025-02-26 21:14:17,990 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:15:17 MSK)" executed successfully
+2025-02-26 21:15:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:16:17 MSK)" (scheduled at 2025-02-26 21:15:17.979418+03:00)
+2025-02-26 21:15:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:16:17 MSK)" executed successfully
+2025-02-26 21:16:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:17:17 MSK)" (scheduled at 2025-02-26 21:16:17.979418+03:00)
+2025-02-26 21:16:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:17:17 MSK)" executed successfully
+2025-02-26 21:17:17,999 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:18:17 MSK)" (scheduled at 2025-02-26 21:17:17.979418+03:00)
+2025-02-26 21:17:18,000 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:18:17 MSK)" executed successfully
+2025-02-26 21:18:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:19:17 MSK)" (scheduled at 2025-02-26 21:18:17.979418+03:00)
+2025-02-26 21:18:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:19:17 MSK)" executed successfully
+2025-02-26 21:19:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:20:17 MSK)" (scheduled at 2025-02-26 21:19:17.979418+03:00)
+2025-02-26 21:19:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:20:17 MSK)" executed successfully
+2025-02-26 21:20:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:21:17 MSK)" (scheduled at 2025-02-26 21:20:17.979418+03:00)
+2025-02-26 21:20:17,996 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:21:17 MSK)" executed successfully
+2025-02-26 21:21:17,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:22:17 MSK)" (scheduled at 2025-02-26 21:21:17.979418+03:00)
+2025-02-26 21:21:17,994 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:22:17 MSK)" executed successfully
+2025-02-26 21:22:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:23:17 MSK)" (scheduled at 2025-02-26 21:22:17.979418+03:00)
+2025-02-26 21:22:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:23:17 MSK)" executed successfully
+2025-02-26 21:23:17,991 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:24:17 MSK)" (scheduled at 2025-02-26 21:23:17.979418+03:00)
+2025-02-26 21:23:17,992 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:24:17 MSK)" executed successfully
+2025-02-26 21:24:17,989 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:25:17 MSK)" (scheduled at 2025-02-26 21:24:17.979418+03:00)
+2025-02-26 21:24:17,991 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:25:17 MSK)" executed successfully
+2025-02-26 21:25:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:26:17 MSK)" (scheduled at 2025-02-26 21:25:17.979418+03:00)
+2025-02-26 21:25:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:26:17 MSK)" executed successfully
+2025-02-26 21:26:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:27:17 MSK)" (scheduled at 2025-02-26 21:26:17.979418+03:00)
+2025-02-26 21:26:17,986 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:27:17 MSK)" executed successfully
+2025-02-26 21:27:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:28:17 MSK)" (scheduled at 2025-02-26 21:27:17.979418+03:00)
+2025-02-26 21:27:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:28:17 MSK)" executed successfully
+2025-02-26 21:28:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:29:17 MSK)" (scheduled at 2025-02-26 21:28:17.979418+03:00)
+2025-02-26 21:28:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:29:17 MSK)" executed successfully
+2025-02-26 21:29:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:30:17 MSK)" (scheduled at 2025-02-26 21:29:17.979418+03:00)
+2025-02-26 21:29:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:30:17 MSK)" executed successfully
+2025-02-26 21:30:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:31:17 MSK)" (scheduled at 2025-02-26 21:30:17.979418+03:00)
+2025-02-26 21:30:17,988 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:31:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:31:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:32:17 MSK)" (scheduled at 2025-02-26 21:31:17.979418+03:00)
+2025-02-26 21:31:17,984 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:32:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:32:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:33:17 MSK)" (scheduled at 2025-02-26 21:32:17.979418+03:00)
+2025-02-26 21:32:17,982 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:33:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:33:17,996 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:34:17 MSK)" (scheduled at 2025-02-26 21:33:17.979418+03:00)
+2025-02-26 21:33:17,997 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:34:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:34:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:35:17 MSK)" (scheduled at 2025-02-26 21:34:17.979418+03:00)
+2025-02-26 21:34:17,996 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:35:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:35:17,987 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:36:17 MSK)" (scheduled at 2025-02-26 21:35:17.979418+03:00)
+2025-02-26 21:35:17,988 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:36:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:36:17,994 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:37:17 MSK)" (scheduled at 2025-02-26 21:36:17.979418+03:00)
+2025-02-26 21:36:17,994 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:37:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:37:17,989 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:38:17 MSK)" (scheduled at 2025-02-26 21:37:17.979418+03:00)
+2025-02-26 21:37:17,991 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:38:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:38:17,990 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:39:17 MSK)" (scheduled at 2025-02-26 21:38:17.979418+03:00)
+2025-02-26 21:38:17,992 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:39:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:39:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:40:17 MSK)" (scheduled at 2025-02-26 21:39:17.979418+03:00)
+2025-02-26 21:39:17,984 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:40:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:40:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:41:17 MSK)" (scheduled at 2025-02-26 21:40:17.979418+03:00)
+2025-02-26 21:40:17,987 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:41:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:41:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:42:17 MSK)" (scheduled at 2025-02-26 21:41:17.979418+03:00)
+2025-02-26 21:41:17,981 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:42:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:42:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:43:17 MSK)" (scheduled at 2025-02-26 21:42:17.979418+03:00)
+2025-02-26 21:42:17,987 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:43:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:43:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:44:17 MSK)" (scheduled at 2025-02-26 21:43:17.979418+03:00)
+2025-02-26 21:43:17,984 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:44:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:44:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:45:17 MSK)" (scheduled at 2025-02-26 21:44:17.979418+03:00)
+2025-02-26 21:44:17,984 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:45:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:45:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:46:17 MSK)" (scheduled at 2025-02-26 21:45:17.979418+03:00)
+2025-02-26 21:45:17,996 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:46:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:46:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:47:17 MSK)" (scheduled at 2025-02-26 21:46:17.979418+03:00)
+2025-02-26 21:46:17,994 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:47:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:47:17,991 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:48:17 MSK)" (scheduled at 2025-02-26 21:47:17.979418+03:00)
+2025-02-26 21:47:17,992 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:48:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:48:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:49:17 MSK)" (scheduled at 2025-02-26 21:48:17.979418+03:00)
+2025-02-26 21:48:17,989 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:49:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:49:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:50:17 MSK)" (scheduled at 2025-02-26 21:49:17.979418+03:00)
+2025-02-26 21:49:17,988 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:50:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:50:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:51:17 MSK)" (scheduled at 2025-02-26 21:50:17.979418+03:00)
+2025-02-26 21:50:17,985 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:51:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:51:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:52:17 MSK)" (scheduled at 2025-02-26 21:51:17.979418+03:00)
+2025-02-26 21:51:17,983 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:52:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:52:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:53:17 MSK)" (scheduled at 2025-02-26 21:52:17.979418+03:00)
+2025-02-26 21:52:17,983 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:53:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:53:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:54:17 MSK)" (scheduled at 2025-02-26 21:53:17.979418+03:00)
+2025-02-26 21:53:17,985 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:54:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:54:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:55:17 MSK)" (scheduled at 2025-02-26 21:54:17.979418+03:00)
+2025-02-26 21:54:17,985 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:55:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:55:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:56:17 MSK)" (scheduled at 2025-02-26 21:55:17.979418+03:00)
+2025-02-26 21:55:17,983 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:56:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:56:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:57:17 MSK)" (scheduled at 2025-02-26 21:56:17.979418+03:00)
+2025-02-26 21:56:17,982 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:57:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:57:18,002 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:57:17 MSK)" (scheduled at 2025-02-26 21:57:17.979418+03:00)
+2025-02-26 21:57:18,003 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:58:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:58:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:59:17 MSK)" (scheduled at 2025-02-26 21:58:17.979418+03:00)
+2025-02-26 21:58:17,982 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 21:59:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 21:59:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:00:17 MSK)" (scheduled at 2025-02-26 21:59:17.979418+03:00)
+2025-02-26 21:59:17,985 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:00:17 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 22:00:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:01:17 MSK)" (scheduled at 2025-02-26 22:00:17.979418+03:00)
+2025-02-26 22:00:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:01:17 MSK)" executed successfully
+2025-02-26 22:01:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:02:17 MSK)" (scheduled at 2025-02-26 22:01:17.979418+03:00)
+2025-02-26 22:01:17,981 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:02:17 MSK)" executed successfully
+2025-02-26 22:02:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:03:17 MSK)" (scheduled at 2025-02-26 22:02:17.979418+03:00)
+2025-02-26 22:02:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:03:17 MSK)" executed successfully
+2025-02-26 22:03:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:04:17 MSK)" (scheduled at 2025-02-26 22:03:17.979418+03:00)
+2025-02-26 22:03:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:04:17 MSK)" executed successfully
+2025-02-26 22:04:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:05:17 MSK)" (scheduled at 2025-02-26 22:04:17.979418+03:00)
+2025-02-26 22:04:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:05:17 MSK)" executed successfully
+2025-02-26 22:05:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:06:17 MSK)" (scheduled at 2025-02-26 22:05:17.979418+03:00)
+2025-02-26 22:05:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:06:17 MSK)" executed successfully
+2025-02-26 22:06:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:07:17 MSK)" (scheduled at 2025-02-26 22:06:17.979418+03:00)
+2025-02-26 22:06:17,981 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:07:17 MSK)" executed successfully
+2025-02-26 22:07:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:08:17 MSK)" (scheduled at 2025-02-26 22:07:17.979418+03:00)
+2025-02-26 22:07:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:08:17 MSK)" executed successfully
+2025-02-26 22:08:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:09:17 MSK)" (scheduled at 2025-02-26 22:08:17.979418+03:00)
+2025-02-26 22:08:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:09:17 MSK)" executed successfully
+2025-02-26 22:09:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:10:17 MSK)" (scheduled at 2025-02-26 22:09:17.979418+03:00)
+2025-02-26 22:09:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:10:17 MSK)" executed successfully
+2025-02-26 22:10:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:11:17 MSK)" (scheduled at 2025-02-26 22:10:17.979418+03:00)
+2025-02-26 22:10:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:11:17 MSK)" executed successfully
+2025-02-26 22:11:17,996 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:12:17 MSK)" (scheduled at 2025-02-26 22:11:17.979418+03:00)
+2025-02-26 22:11:17,997 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:12:17 MSK)" executed successfully
+2025-02-26 22:12:17,996 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:13:17 MSK)" (scheduled at 2025-02-26 22:12:17.979418+03:00)
+2025-02-26 22:12:17,997 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:13:17 MSK)" executed successfully
+2025-02-26 22:13:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:14:17 MSK)" (scheduled at 2025-02-26 22:13:17.979418+03:00)
+2025-02-26 22:13:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:14:17 MSK)" executed successfully
+2025-02-26 22:14:17,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:15:17 MSK)" (scheduled at 2025-02-26 22:14:17.979418+03:00)
+2025-02-26 22:14:17,994 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:15:17 MSK)" executed successfully
+2025-02-26 22:15:17,991 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:16:17 MSK)" (scheduled at 2025-02-26 22:15:17.979418+03:00)
+2025-02-26 22:15:17,992 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:16:17 MSK)" executed successfully
+2025-02-26 22:16:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:17:17 MSK)" (scheduled at 2025-02-26 22:16:17.979418+03:00)
+2025-02-26 22:16:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:17:17 MSK)" executed successfully
+2025-02-26 22:17:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:18:17 MSK)" (scheduled at 2025-02-26 22:17:17.979418+03:00)
+2025-02-26 22:17:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:18:17 MSK)" executed successfully
+2025-02-26 22:18:17,987 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:19:17 MSK)" (scheduled at 2025-02-26 22:18:17.979418+03:00)
+2025-02-26 22:18:17,988 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:19:17 MSK)" executed successfully
+2025-02-26 22:19:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:20:17 MSK)" (scheduled at 2025-02-26 22:19:17.979418+03:00)
+2025-02-26 22:19:17,986 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:20:17 MSK)" executed successfully
+2025-02-26 22:20:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:21:17 MSK)" (scheduled at 2025-02-26 22:20:17.979418+03:00)
+2025-02-26 22:20:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:21:17 MSK)" executed successfully
+2025-02-26 22:21:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:22:17 MSK)" (scheduled at 2025-02-26 22:21:17.979418+03:00)
+2025-02-26 22:21:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:22:17 MSK)" executed successfully
+2025-02-26 22:22:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:23:17 MSK)" (scheduled at 2025-02-26 22:22:17.979418+03:00)
+2025-02-26 22:22:17,986 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:23:17 MSK)" executed successfully
+2025-02-26 22:23:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:24:17 MSK)" (scheduled at 2025-02-26 22:23:17.979418+03:00)
+2025-02-26 22:23:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:24:17 MSK)" executed successfully
+2025-02-26 22:24:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:25:17 MSK)" (scheduled at 2025-02-26 22:24:17.979418+03:00)
+2025-02-26 22:24:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:25:17 MSK)" executed successfully
+2025-02-26 22:25:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:26:17 MSK)" (scheduled at 2025-02-26 22:25:17.979418+03:00)
+2025-02-26 22:25:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:26:17 MSK)" executed successfully
+2025-02-26 22:26:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:27:17 MSK)" (scheduled at 2025-02-26 22:26:17.979418+03:00)
+2025-02-26 22:26:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:27:17 MSK)" executed successfully
+2025-02-26 22:27:17,994 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:28:17 MSK)" (scheduled at 2025-02-26 22:27:17.979418+03:00)
+2025-02-26 22:27:17,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:28:17 MSK)" executed successfully
+2025-02-26 22:28:17,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:29:17 MSK)" (scheduled at 2025-02-26 22:28:17.979418+03:00)
+2025-02-26 22:28:17,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:29:17 MSK)" executed successfully
+2025-02-26 22:29:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:30:17 MSK)" (scheduled at 2025-02-26 22:29:17.979418+03:00)
+2025-02-26 22:29:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:30:17 MSK)" executed successfully
+2025-02-26 22:30:17,990 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:31:17 MSK)" (scheduled at 2025-02-26 22:30:17.979418+03:00)
+2025-02-26 22:30:17,991 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:31:17 MSK)" executed successfully
+2025-02-26 22:31:17,990 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:32:17 MSK)" (scheduled at 2025-02-26 22:31:17.979418+03:00)
+2025-02-26 22:31:17,991 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:32:17 MSK)" executed successfully
+2025-02-26 22:32:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:33:17 MSK)" (scheduled at 2025-02-26 22:32:17.979418+03:00)
+2025-02-26 22:32:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:33:17 MSK)" executed successfully
+2025-02-26 22:33:17,987 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:34:17 MSK)" (scheduled at 2025-02-26 22:33:17.979418+03:00)
+2025-02-26 22:33:17,988 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:34:17 MSK)" executed successfully
+2025-02-26 22:34:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:35:17 MSK)" (scheduled at 2025-02-26 22:34:17.979418+03:00)
+2025-02-26 22:34:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:35:17 MSK)" executed successfully
+2025-02-26 22:35:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:36:17 MSK)" (scheduled at 2025-02-26 22:35:17.979418+03:00)
+2025-02-26 22:35:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:36:17 MSK)" executed successfully
+2025-02-26 22:36:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:37:17 MSK)" (scheduled at 2025-02-26 22:36:17.979418+03:00)
+2025-02-26 22:36:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:37:17 MSK)" executed successfully
+2025-02-26 22:37:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:38:17 MSK)" (scheduled at 2025-02-26 22:37:17.979418+03:00)
+2025-02-26 22:37:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:38:17 MSK)" executed successfully
+2025-02-26 22:38:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:39:17 MSK)" (scheduled at 2025-02-26 22:38:17.979418+03:00)
+2025-02-26 22:38:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:39:17 MSK)" executed successfully
+2025-02-26 22:39:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:40:17 MSK)" (scheduled at 2025-02-26 22:39:17.979418+03:00)
+2025-02-26 22:39:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:40:17 MSK)" executed successfully
+2025-02-26 22:40:17,996 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:41:17 MSK)" (scheduled at 2025-02-26 22:40:17.979418+03:00)
+2025-02-26 22:40:17,997 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:41:17 MSK)" executed successfully
+2025-02-26 22:41:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:42:17 MSK)" (scheduled at 2025-02-26 22:41:17.979418+03:00)
+2025-02-26 22:41:17,996 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:42:17 MSK)" executed successfully
+2025-02-26 22:42:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:43:17 MSK)" (scheduled at 2025-02-26 22:42:17.979418+03:00)
+2025-02-26 22:42:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:43:17 MSK)" executed successfully
+2025-02-26 22:43:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:44:17 MSK)" (scheduled at 2025-02-26 22:43:17.979418+03:00)
+2025-02-26 22:43:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:44:17 MSK)" executed successfully
+2025-02-26 22:44:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:45:17 MSK)" (scheduled at 2025-02-26 22:44:17.979418+03:00)
+2025-02-26 22:44:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:45:17 MSK)" executed successfully
+2025-02-26 22:45:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:46:17 MSK)" (scheduled at 2025-02-26 22:45:17.979418+03:00)
+2025-02-26 22:45:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:46:17 MSK)" executed successfully
+2025-02-26 22:46:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:47:17 MSK)" (scheduled at 2025-02-26 22:46:17.979418+03:00)
+2025-02-26 22:46:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:47:17 MSK)" executed successfully
+2025-02-26 22:47:17,983 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:48:17 MSK)" (scheduled at 2025-02-26 22:47:17.979418+03:00)
+2025-02-26 22:47:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:48:17 MSK)" executed successfully
+2025-02-26 22:48:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:49:17 MSK)" (scheduled at 2025-02-26 22:48:17.979418+03:00)
+2025-02-26 22:48:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:49:17 MSK)" executed successfully
+2025-02-26 22:49:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:50:17 MSK)" (scheduled at 2025-02-26 22:49:17.979418+03:00)
+2025-02-26 22:49:17,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:50:17 MSK)" executed successfully
+2025-02-26 22:50:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:51:17 MSK)" (scheduled at 2025-02-26 22:50:17.979418+03:00)
+2025-02-26 22:50:17,996 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:51:17 MSK)" executed successfully
+2025-02-26 22:51:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:52:17 MSK)" (scheduled at 2025-02-26 22:51:17.979418+03:00)
+2025-02-26 22:51:17,992 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:52:17 MSK)" executed successfully
+2025-02-26 22:52:17,989 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:53:17 MSK)" (scheduled at 2025-02-26 22:52:17.979418+03:00)
+2025-02-26 22:52:17,990 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:53:17 MSK)" executed successfully
+2025-02-26 22:53:17,987 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:54:17 MSK)" (scheduled at 2025-02-26 22:53:17.979418+03:00)
+2025-02-26 22:53:17,988 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:54:17 MSK)" executed successfully
+2025-02-26 22:54:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:55:17 MSK)" (scheduled at 2025-02-26 22:54:17.979418+03:00)
+2025-02-26 22:54:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:55:17 MSK)" executed successfully
+2025-02-26 22:55:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:56:17 MSK)" (scheduled at 2025-02-26 22:55:17.979418+03:00)
+2025-02-26 22:55:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:56:17 MSK)" executed successfully
+2025-02-26 22:56:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:57:17 MSK)" (scheduled at 2025-02-26 22:56:17.979418+03:00)
+2025-02-26 22:56:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:57:17 MSK)" executed successfully
+2025-02-26 22:57:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:58:17 MSK)" (scheduled at 2025-02-26 22:57:17.979418+03:00)
+2025-02-26 22:57:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:58:17 MSK)" executed successfully
+2025-02-26 22:58:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:59:17 MSK)" (scheduled at 2025-02-26 22:58:17.979418+03:00)
+2025-02-26 22:58:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 22:59:17 MSK)" executed successfully
+2025-02-26 22:59:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:00:17 MSK)" (scheduled at 2025-02-26 22:59:17.979418+03:00)
+2025-02-26 22:59:17,981 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:00:17 MSK)" executed successfully
+2025-02-26 23:00:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:01:17 MSK)" (scheduled at 2025-02-26 23:00:17.979418+03:00)
+2025-02-26 23:00:17,984 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:01:17 MSK)" executed successfully
+2025-02-26 23:01:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:02:17 MSK)" (scheduled at 2025-02-26 23:01:17.979418+03:00)
+2025-02-26 23:01:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:02:17 MSK)" executed successfully
+2025-02-26 23:02:17,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:03:17 MSK)" (scheduled at 2025-02-26 23:02:17.979418+03:00)
+2025-02-26 23:02:17,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:03:17 MSK)" executed successfully
+2025-02-26 23:03:17,992 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:04:17 MSK)" (scheduled at 2025-02-26 23:03:17.979418+03:00)
+2025-02-26 23:03:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:04:17 MSK)" executed successfully
+2025-02-26 23:04:17,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:05:17 MSK)" (scheduled at 2025-02-26 23:04:17.979418+03:00)
+2025-02-26 23:04:17,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:05:17 MSK)" executed successfully
+2025-02-26 23:05:17,993 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:06:17 MSK)" (scheduled at 2025-02-26 23:05:17.979418+03:00)
+2025-02-26 23:05:17,993 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:06:17 MSK)" executed successfully
+2025-02-26 23:06:17,991 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:07:17 MSK)" (scheduled at 2025-02-26 23:06:17.979418+03:00)
+2025-02-26 23:06:17,992 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:07:17 MSK)" executed successfully
+2025-02-26 23:07:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:08:17 MSK)" (scheduled at 2025-02-26 23:07:17.979418+03:00)
+2025-02-26 23:07:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:08:17 MSK)" executed successfully
+2025-02-26 23:08:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:09:17 MSK)" (scheduled at 2025-02-26 23:08:17.979418+03:00)
+2025-02-26 23:08:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:09:17 MSK)" executed successfully
+2025-02-26 23:09:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:10:17 MSK)" (scheduled at 2025-02-26 23:09:17.979418+03:00)
+2025-02-26 23:09:17,988 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:10:17 MSK)" executed successfully
+2025-02-26 23:10:17,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:11:17 MSK)" (scheduled at 2025-02-26 23:10:17.979418+03:00)
+2025-02-26 23:10:17,989 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:11:17 MSK)" executed successfully
+2025-02-26 23:11:17,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:12:17 MSK)" (scheduled at 2025-02-26 23:11:17.979418+03:00)
+2025-02-26 23:11:17,987 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:12:17 MSK)" executed successfully
+2025-02-26 23:12:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:13:17 MSK)" (scheduled at 2025-02-26 23:12:17.979418+03:00)
+2025-02-26 23:12:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:13:17 MSK)" executed successfully
+2025-02-26 23:13:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:14:17 MSK)" (scheduled at 2025-02-26 23:13:17.979418+03:00)
+2025-02-26 23:13:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:14:17 MSK)" executed successfully
+2025-02-26 23:14:17,981 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:15:17 MSK)" (scheduled at 2025-02-26 23:14:17.979418+03:00)
+2025-02-26 23:14:17,982 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:15:17 MSK)" executed successfully
+2025-02-26 23:15:17,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:16:17 MSK)" (scheduled at 2025-02-26 23:15:17.979418+03:00)
+2025-02-26 23:15:17,986 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:16:17 MSK)" executed successfully
+2025-02-26 23:16:17,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:17:17 MSK)" (scheduled at 2025-02-26 23:16:17.979418+03:00)
+2025-02-26 23:16:17,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:17:17 MSK)" executed successfully
+2025-02-26 23:17:17,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:18:17 MSK)" (scheduled at 2025-02-26 23:17:17.979418+03:00)
+2025-02-26 23:17:17,983 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:18:17 MSK)" executed successfully
+2025-02-26 23:17:41,723 - INFO - Stop polling...
+2025-02-26 23:17:41,724 - WARNING - Goodbye!
+2025-02-26 23:18:15,338 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:18:15,954 - WARNING - Updates were skipped successfully.
+2025-02-26 23:18:15,959 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:18:15,960 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:18:15,960 - INFO - Scheduler started
+2025-02-26 23:18:15,960 - INFO - Бот запущен.
+2025-02-26 23:18:15,960 - INFO - Start polling.
+2025-02-26 23:19:15,962 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:20:15 MSK)" (scheduled at 2025-02-26 23:19:15.958680+03:00)
+2025-02-26 23:19:15,970 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:20:15 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:20:15,961 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:21:15 MSK)" (scheduled at 2025-02-26 23:20:15.958680+03:00)
+2025-02-26 23:20:15,962 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:21:15 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:20:21,898 - INFO - Stop polling...
+2025-02-26 23:20:21,899 - WARNING - Goodbye!
+2025-02-26 23:20:34,229 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:20:34,793 - WARNING - Updates were skipped successfully.
+2025-02-26 23:20:34,795 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:20:34,796 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:20:34,796 - INFO - Scheduler started
+2025-02-26 23:20:34,796 - INFO - Бот запущен.
+2025-02-26 23:20:34,796 - INFO - Start polling.
+2025-02-26 23:21:34,801 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:22:34 MSK)" (scheduled at 2025-02-26 23:21:34.795482+03:00)
+2025-02-26 23:21:34,803 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:22:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:22:34,798 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:23:34 MSK)" (scheduled at 2025-02-26 23:22:34.795482+03:00)
+2025-02-26 23:22:34,799 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:23:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:23:34,805 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:24:34 MSK)" (scheduled at 2025-02-26 23:23:34.795482+03:00)
+2025-02-26 23:23:34,806 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:24:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:24:34,804 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:25:34 MSK)" (scheduled at 2025-02-26 23:24:34.795482+03:00)
+2025-02-26 23:24:34,805 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:25:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:25:34,804 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:26:34 MSK)" (scheduled at 2025-02-26 23:25:34.795482+03:00)
+2025-02-26 23:25:34,805 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:26:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:26:34,803 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:27:34 MSK)" (scheduled at 2025-02-26 23:26:34.795482+03:00)
+2025-02-26 23:26:34,804 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:27:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:27:34,801 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:28:34 MSK)" (scheduled at 2025-02-26 23:27:34.795482+03:00)
+2025-02-26 23:27:34,802 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:28:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:28:34,801 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:29:34 MSK)" (scheduled at 2025-02-26 23:28:34.795482+03:00)
+2025-02-26 23:28:34,803 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:29:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:29:34,799 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:30:34 MSK)" (scheduled at 2025-02-26 23:29:34.795482+03:00)
+2025-02-26 23:29:34,801 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:30:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    del daily_words_storage[chat_id]
+        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:30:34,798 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:31:34 MSK)" (scheduled at 2025-02-26 23:30:34.795482+03:00)
+2025-02-26 23:30:34,801 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:31:34 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:30:40,028 - INFO - Stop polling...
+2025-02-26 23:30:40,029 - WARNING - Goodbye!
+2025-02-26 23:30:42,151 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:30:42,668 - WARNING - Updates were skipped successfully.
+2025-02-26 23:30:42,671 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:30:42,671 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:30:42,671 - INFO - Scheduler started
+2025-02-26 23:30:42,671 - INFO - Бот запущен.
+2025-02-26 23:30:42,671 - INFO - Start polling.
+2025-02-26 23:31:42,673 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:32:42 MSK)" (scheduled at 2025-02-26 23:31:42.671005+03:00)
+2025-02-26 23:31:42,674 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:32:42 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:32:42,681 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:33:42 MSK)" (scheduled at 2025-02-26 23:32:42.671005+03:00)
+2025-02-26 23:32:42,681 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:33:42 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:33:29,252 - INFO - Stop polling...
+2025-02-26 23:33:29,254 - WARNING - Goodbye!
+2025-02-26 23:34:04,496 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:34:04,882 - WARNING - Updates were skipped successfully.
+2025-02-26 23:34:04,886 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:34:04,887 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:34:04,888 - INFO - Scheduler started
+2025-02-26 23:34:04,888 - INFO - Бот запущен.
+2025-02-26 23:34:04,888 - INFO - Start polling.
+2025-02-26 23:34:48,904 - INFO - Stop polling...
+2025-02-26 23:34:48,904 - WARNING - Goodbye!
+2025-02-26 23:35:07,677 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:35:08,280 - WARNING - Updates were skipped successfully.
+2025-02-26 23:35:08,283 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:35:08,283 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:35:08,284 - INFO - Scheduler started
+2025-02-26 23:35:08,284 - INFO - Бот запущен.
+2025-02-26 23:35:08,284 - INFO - Start polling.
+2025-02-26 23:36:08,288 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:37:08 MSK)" (scheduled at 2025-02-26 23:36:08.283242+03:00)
+2025-02-26 23:36:08,294 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:37:08 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:37:08,286 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:38:08 MSK)" (scheduled at 2025-02-26 23:37:08.283242+03:00)
+2025-02-26 23:37:08,287 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:38:08 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:38:08,288 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:39:08 MSK)" (scheduled at 2025-02-26 23:38:08.283242+03:00)
+2025-02-26 23:38:08,290 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:39:08 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:39:08,285 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:40:08 MSK)" (scheduled at 2025-02-26 23:39:08.283242+03:00)
+2025-02-26 23:39:08,287 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:40:08 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 75, in scheduler_job
+    _, messages, _, _, _, _, _, _ = daily_words_cache[chat_id]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 8, got 7)
+2025-02-26 23:39:19,943 - INFO - Stop polling...
+2025-02-26 23:39:19,945 - WARNING - Goodbye!
+2025-02-26 23:39:23,064 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:39:23,576 - WARNING - Updates were skipped successfully.
+2025-02-26 23:39:23,580 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:39:23,581 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:39:23,581 - INFO - Scheduler started
+2025-02-26 23:39:23,581 - INFO - Бот запущен.
+2025-02-26 23:39:23,581 - INFO - Start polling.
+2025-02-26 23:39:44,190 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:39:44,671 - WARNING - Updates were skipped successfully.
+2025-02-26 23:39:44,673 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:39:44,673 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:39:44,673 - INFO - Scheduler started
+2025-02-26 23:39:44,673 - INFO - Бот запущен.
+2025-02-26 23:39:44,673 - INFO - Start polling.
+2025-02-26 23:39:53,286 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("compute_notification_times() got an unexpected keyword argument 'tz'")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 20, in send_words_day_schedule
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/utils/helpers.py", line 94, in get_daily_words_for_user
+    times = compute_notification_times(total_count, first_time, duration_hours, tz=user_tz)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() got an unexpected keyword argument 'tz'
+2025-02-26 23:40:10,171 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-33' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("compute_notification_times() got an unexpected keyword argument 'tz'")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 20, in send_words_day_schedule
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/utils/helpers.py", line 94, in get_daily_words_for_user
+    times = compute_notification_times(total_count, first_time, duration_hours, tz=user_tz)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() got an unexpected keyword argument 'tz'
+2025-02-26 23:40:18,789 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-51' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("compute_notification_times() got an unexpected keyword argument 'tz'")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 20, in send_words_day_schedule
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/utils/helpers.py", line 94, in get_daily_words_for_user
+    times = compute_notification_times(total_count, first_time, duration_hours, tz=user_tz)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() got an unexpected keyword argument 'tz'
+2025-02-26 23:40:44,679 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:41:44 MSK)" (scheduled at 2025-02-26 23:40:44.673004+03:00)
+2025-02-26 23:40:44,683 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:41:44 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 55, in scheduler_job
+    result = get_daily_words_for_user(chat_id, level, words_count, repetitions,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/utils/helpers.py", line 94, in get_daily_words_for_user
+    times = compute_notification_times(total_count, first_time, duration_hours, tz=user_tz)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() got an unexpected keyword argument 'tz'
+2025-02-26 23:41:44,673 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:42:44 MSK)" (scheduled at 2025-02-26 23:41:44.673004+03:00)
+2025-02-26 23:41:44,674 - ERROR - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:42:44 MSK)" raised an exception
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/apscheduler/executors/base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/services/scheduler.py", line 55, in scheduler_job
+    result = get_daily_words_for_user(chat_id, level, words_count, repetitions,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/utils/helpers.py", line 94, in get_daily_words_for_user
+    times = compute_notification_times(total_count, first_time, duration_hours, tz=user_tz)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: compute_notification_times() got an unexpected keyword argument 'tz'
+2025-02-26 23:42:41,942 - INFO - Stop polling...
+2025-02-26 23:42:41,942 - WARNING - Goodbye!
+2025-02-26 23:42:43,670 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:42:44,000 - WARNING - Updates were skipped successfully.
+2025-02-26 23:42:44,002 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:42:44,002 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:42:44,002 - INFO - Scheduler started
+2025-02-26 23:42:44,002 - INFO - Бот запущен.
+2025-02-26 23:42:44,003 - INFO - Start polling.
+2025-02-26 23:43:44,017 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:44:44 MSK)" (scheduled at 2025-02-26 23:43:44.002275+03:00)
+2025-02-26 23:43:44,080 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:44:44 MSK)" executed successfully
+2025-02-26 23:44:23,397 - INFO - Stop polling...
+2025-02-26 23:44:23,397 - WARNING - Goodbye!
+2025-02-26 23:44:29,366 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:44:29,809 - WARNING - Updates were skipped successfully.
+2025-02-26 23:44:29,811 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:44:29,811 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:44:29,811 - INFO - Scheduler started
+2025-02-26 23:44:29,811 - INFO - Бот запущен.
+2025-02-26 23:44:29,811 - INFO - Start polling.
+2025-02-26 23:45:29,813 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:46:29 MSK)" (scheduled at 2025-02-26 23:45:29.811131+03:00)
+2025-02-26 23:45:29,876 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:46:29 MSK)" executed successfully
+2025-02-26 23:46:29,818 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:47:29 MSK)" (scheduled at 2025-02-26 23:46:29.811131+03:00)
+2025-02-26 23:46:29,818 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:47:29 MSK)" executed successfully
+2025-02-26 23:47:29,815 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:48:29 MSK)" (scheduled at 2025-02-26 23:47:29.811131+03:00)
+2025-02-26 23:47:29,816 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:48:29 MSK)" executed successfully
+2025-02-26 23:48:29,815 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:49:29 MSK)" (scheduled at 2025-02-26 23:48:29.811131+03:00)
+2025-02-26 23:48:29,815 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:49:29 MSK)" executed successfully
+2025-02-26 23:49:29,822 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:50:29 MSK)" (scheduled at 2025-02-26 23:49:29.811131+03:00)
+2025-02-26 23:49:29,823 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:50:29 MSK)" executed successfully
+2025-02-26 23:50:29,820 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:51:29 MSK)" (scheduled at 2025-02-26 23:50:29.811131+03:00)
+2025-02-26 23:50:29,820 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:51:29 MSK)" executed successfully
+2025-02-26 23:51:29,819 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:52:29 MSK)" (scheduled at 2025-02-26 23:51:29.811131+03:00)
+2025-02-26 23:51:29,820 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:52:29 MSK)" executed successfully
+2025-02-26 23:52:29,820 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:53:29 MSK)" (scheduled at 2025-02-26 23:52:29.811131+03:00)
+2025-02-26 23:52:29,820 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:53:29 MSK)" executed successfully
+2025-02-26 23:52:53,979 - INFO - Stop polling...
+2025-02-26 23:52:53,979 - WARNING - Goodbye!
+2025-02-26 23:52:55,800 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:52:56,144 - WARNING - Updates were skipped successfully.
+2025-02-26 23:52:56,146 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:52:56,147 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:52:56,147 - INFO - Scheduler started
+2025-02-26 23:52:56,147 - INFO - Бот запущен.
+2025-02-26 23:52:56,147 - INFO - Start polling.
+2025-02-26 23:53:09,901 - INFO - Stop polling...
+2025-02-26 23:53:09,901 - WARNING - Goodbye!
+2025-02-26 23:53:31,779 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:53:32,092 - WARNING - Updates were skipped successfully.
+2025-02-26 23:53:32,094 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:53:32,094 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:53:32,094 - INFO - Scheduler started
+2025-02-26 23:53:32,094 - INFO - Бот запущен.
+2025-02-26 23:53:32,095 - INFO - Start polling.
+2025-02-26 23:54:32,096 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:55:32 MSK)" (scheduled at 2025-02-26 23:54:32.094309+03:00)
+2025-02-26 23:54:32,154 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:55:32 MSK)" executed successfully
+2025-02-26 23:55:04,722 - INFO - Stop polling...
+2025-02-26 23:55:04,722 - WARNING - Goodbye!
+2025-02-26 23:55:07,607 - INFO - Bot: English_learning_bot [@Englishln_bot]
+2025-02-26 23:55:07,900 - WARNING - Updates were skipped successfully.
+2025-02-26 23:55:07,901 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-26 23:55:07,902 - INFO - Added job "scheduler_job" to job store "default"
+2025-02-26 23:55:07,902 - INFO - Scheduler started
+2025-02-26 23:55:07,902 - INFO - Бот запущен.
+2025-02-26 23:55:07,902 - INFO - Start polling.
+2025-02-26 23:56:07,903 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:57:07 MSK)" (scheduled at 2025-02-26 23:56:07.901730+03:00)
+2025-02-26 23:56:07,905 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:57:07 MSK)" executed successfully
+2025-02-26 23:57:07,918 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:58:07 MSK)" (scheduled at 2025-02-26 23:57:07.901730+03:00)
+2025-02-26 23:57:07,919 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:58:07 MSK)" executed successfully
+2025-02-26 23:58:07,903 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:59:07 MSK)" (scheduled at 2025-02-26 23:58:07.901730+03:00)
+2025-02-26 23:58:07,904 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-26 23:59:07 MSK)" executed successfully
+2025-02-26 23:59:07,912 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:00:07 MSK)" (scheduled at 2025-02-26 23:59:07.901730+03:00)
+2025-02-26 23:59:07,913 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:00:07 MSK)" executed successfully
+2025-02-27 00:00:07,917 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:01:07 MSK)" (scheduled at 2025-02-27 00:00:07.901730+03:00)
+2025-02-27 00:00:07,921 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:01:07 MSK)" executed successfully
+2025-02-27 00:01:07,916 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:02:07 MSK)" (scheduled at 2025-02-27 00:01:07.901730+03:00)
+2025-02-27 00:01:07,920 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:02:07 MSK)" executed successfully
+2025-02-27 00:02:07,909 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:03:07 MSK)" (scheduled at 2025-02-27 00:02:07.901730+03:00)
+2025-02-27 00:02:07,910 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:03:07 MSK)" executed successfully
+2025-02-27 00:03:07,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:04:07 MSK)" (scheduled at 2025-02-27 00:03:07.901730+03:00)
+2025-02-27 00:03:07,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:04:07 MSK)" executed successfully
+2025-02-27 00:04:07,903 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:05:07 MSK)" (scheduled at 2025-02-27 00:04:07.901730+03:00)
+2025-02-27 00:04:07,904 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-02-27 00:05:07 MSK)" executed successfully
+2025-02-27 00:04:30,632 - INFO - Stop polling...
+2025-02-27 00:04:30,633 - WARNING - Goodbye!

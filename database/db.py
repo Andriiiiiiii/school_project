@@ -11,7 +11,8 @@ def init_db():
             level TEXT DEFAULT 'A1',
             words_per_day INTEGER DEFAULT 5,
             notifications INTEGER DEFAULT 10,
-            reminder_time TEXT DEFAULT '09:00'
+            reminder_time TEXT DEFAULT '09:00',
+            timezone TEXT DEFAULT 'Europe/Moscow'
         )
     ''')
     cursor.execute('''
@@ -24,7 +25,6 @@ def init_db():
             example TEXT
         )
     ''')
-    # Новая таблица для хранения выученных слов
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS learned_words (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

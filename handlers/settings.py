@@ -1,28 +1,20 @@
-#pathtofile/handlers/settings.py
 from aiogram import types, Dispatcher, Bot
-from aiogram.dispatcher.filters import Command
 from keyboards.submenus import settings_menu_keyboard
 from keyboards.main_menu import main_menu_keyboard
 from database import crud
 from functools import partial
 from utils.helpers import daily_words_cache
 
-# Глобальный словарь для ожидания ввода настроек от пользователя.
-# Ключ: chat_id, значение: "words" или "repetitions"
+# Глобальный словарь для ожидания ввода настроек.
+# Ключ: chat_id, значение: "words", "repetitions" или "timezone"
 pending_settings = {}
 
 async def show_settings_callback(callback: types.CallbackQuery, bot: Bot):
-    """
-    Показывает меню настроек.
-    """
     chat_id = callback.from_user.id
     await bot.send_message(chat_id, "Настройки бота:", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_settings_choice_callback(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обрабатывает выбор настройки (количество слов, количество повторений, выбор уровня, мои настройки).
-    """
     chat_id = callback.from_user.id
     try:
         _, option = callback.data.split(":", 1)
@@ -42,6 +34,13 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
     elif option == "repetitions":
         pending_settings[chat_id] = "repetitions"
         await bot.send_message(chat_id, "Введите количество повторений (от 1 до 5):")
+    elif option == "timezone":
+        # Генерируем кнопки для выбора часового пояса от UTC+2 до UTC+12.
+        keyboard = types.InlineKeyboardMarkup(row_width=3)
+        for offset in range(2, 13):
+            tz_label = f"UTC+{offset}"
+            keyboard.add(types.InlineKeyboardButton(tz_label, callback_data=f"set_timezone:{tz_label}"))
+        await bot.send_message(chat_id, "Выберите ваш часовой пояс:", reply_markup=keyboard)
     elif option == "mysettings":
         user = crud.get_user(chat_id)
         if not user:
@@ -50,46 +49,58 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
             level = user[1]
             words_count = user[2]
             repetitions = user[3]
+            timezone = user[5] if len(user) > 5 and user[5] else "Не задан"
             text = (f"Ваш уровень: {level}\n"
                     f"Количество слов в день: {words_count}\n"
-                    f"Количество повторений в день: {repetitions}")
+                    f"Количество повторений: {repetitions}\n"
+                    f"Ваш часовой пояс: {timezone}")
             await bot.send_message(chat_id, text, reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обрабатывает выбор уровня (A1, A2, B1 и т.д.). После выбора уровня очищает кэш и возвращает меню настроек.
-    """
     chat_id = callback.from_user.id
     try:
         _, level = callback.data.split(":", 1)
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
-
     crud.update_user_level(chat_id, level)
     if chat_id in daily_words_cache:
         del daily_words_cache[chat_id]
     await bot.send_message(chat_id, f"Уровень установлен на {level}.", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
+async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    try:
+        _, tz = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    # Преобразуем значение, например, "UTC+4" -> "Etc/GMT-4"
+    if tz.startswith("UTC+"):
+        try:
+            offset = int(tz[4:])
+            tz_mapped = f"Etc/GMT-{offset}"
+        except ValueError:
+            tz_mapped = tz
+    else:
+        tz_mapped = tz
+    crud.update_user_timezone(chat_id, tz_mapped)
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+    await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=settings_menu_keyboard())
+    await callback.answer()
+
 async def process_text_setting(message: types.Message):
-    """
-    Обрабатывает текстовый ввод для настроек (количество слов, количество повторений).
-    Если пользователь вводит неверное значение, выводится ошибка и меню настроек.
-    Если значение корректное – обновляется БД, кэш очищается и отправляется сообщение об успехе + меню настроек.
-    """
     chat_id = message.chat.id
     if chat_id not in pending_settings:
         return
-
     setting_type = pending_settings.pop(chat_id)
     text = message.text.strip()
-
     if not text.isdigit():
         await message.answer("Ошибка: введите корректное число.", reply_markup=settings_menu_keyboard())
         return
-
     value = int(text)
     if setting_type == "words":
         if not (1 <= value <= 20):
@@ -120,5 +131,9 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
         partial(process_set_level_callback, bot=bot),
         lambda c: c.data and c.data.startswith("set_level:")
+    )
+    dp.register_callback_query_handler(
+        partial(process_set_timezone_callback, bot=bot),
+        lambda c: c.data and c.data.startswith("set_timezone:")
     )
     dp.register_message_handler(process_text_setting, content_types=['text'])

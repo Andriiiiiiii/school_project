@@ -1,4 +1,4 @@
-#pathtofile/clear_my_profile.py
+# clear_my_profile.py
 from database.db import conn, cursor
 
 def clear_my_profile(chat_id):

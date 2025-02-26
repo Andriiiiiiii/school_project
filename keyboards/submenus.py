@@ -39,6 +39,7 @@ def settings_menu_keyboard():
         InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
         InlineKeyboardButton("Количество слов", callback_data="settings:words"),
         InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
+        InlineKeyboardButton("Выбор часового пояса", callback_data="settings:timezone"),
         InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
         InlineKeyboardButton("Назад", callback_data="menu:back")
     )

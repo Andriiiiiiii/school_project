@@ -1,4 +1,4 @@
-#pathtofile/clear_user_cache.py
+# clear_user_cache.py
 from utils.helpers import daily_words_cache
 
 def clear_user_cache(chat_id):

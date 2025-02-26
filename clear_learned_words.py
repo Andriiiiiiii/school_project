@@ -1,4 +1,4 @@
-#clear_learned_words.py
+# clear_learned_words.py
 from database.db import conn, cursor
 
 def clear_learned_words():
