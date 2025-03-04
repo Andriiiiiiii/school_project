@@ -1,3 +1,4 @@
+# handlers/words.py
 from aiogram import types, Dispatcher, Bot
 from database import crud
 from keyboards.submenus import words_day_keyboard

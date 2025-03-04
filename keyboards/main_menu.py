@@ -12,6 +12,7 @@ def main_menu_keyboard():
         InlineKeyboardButton("⚙️ Настройки", callback_data="menu:settings"),
     )
     keyboard.add(
+        InlineKeyboardButton("🎯 Квиз", callback_data="quiz:start"),
         InlineKeyboardButton("❓ Помощь", callback_data="menu:help")
     )
     return keyboard

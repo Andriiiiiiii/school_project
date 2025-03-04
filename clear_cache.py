@@ -9,5 +9,5 @@ def clear_user_cache(chat_id):
         print(f"Для пользователя {chat_id} кэш не найден.")
 
 if __name__ == '__main__':
-    my_chat_id = 380675615   # замените на нужный chat_id
+    my_chat_id = 1999873173   # замените на нужный chat_id
     clear_user_cache(my_chat_id)

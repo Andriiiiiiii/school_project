@@ -1,3 +1,4 @@
+#pathtofile/database/db.py
 import sqlite3
 from config import DB_PATH
 
@@ -30,6 +31,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             chat_id INTEGER,
             word TEXT,
+            translation TEXT,
             learned_date TEXT
         )
     ''')

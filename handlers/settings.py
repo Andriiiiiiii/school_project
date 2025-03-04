@@ -1,3 +1,4 @@
+# handlers/settings.py
 from aiogram import types, Dispatcher, Bot
 from keyboards.submenus import settings_menu_keyboard
 from keyboards.main_menu import main_menu_keyboard
@@ -35,7 +36,6 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
         pending_settings[chat_id] = "repetitions"
         await bot.send_message(chat_id, "Введите количество повторений (от 1 до 5):")
     elif option == "timezone":
-        # Генерируем кнопки для выбора часового пояса от UTC+2 до UTC+12.
         keyboard = types.InlineKeyboardMarkup(row_width=3)
         for offset in range(2, 13):
             tz_label = f"UTC+{offset}"
@@ -77,7 +77,7 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
-    # Преобразуем значение, например, "UTC+4" -> "Etc/GMT-4"
+    # Преобразуем "UTC+X" в IANA-формат, например, "UTC+4" -> "Etc/GMT-4"
     if tz.startswith("UTC+"):
         try:
             offset = int(tz[4:])
@@ -121,19 +121,19 @@ async def process_text_setting(message: types.Message):
 
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
-        partial(show_settings_callback, bot=bot),
+        lambda c: show_settings_callback(c, bot),
         lambda c: c.data == "menu:settings"
     )
     dp.register_callback_query_handler(
-        partial(process_settings_choice_callback, bot=bot),
+        lambda c: process_settings_choice_callback(c, bot),
         lambda c: c.data and c.data.startswith("settings:")
     )
     dp.register_callback_query_handler(
-        partial(process_set_level_callback, bot=bot),
+        lambda c: process_set_level_callback(c, bot),
         lambda c: c.data and c.data.startswith("set_level:")
     )
     dp.register_callback_query_handler(
-        partial(process_set_timezone_callback, bot=bot),
+        lambda c: process_set_timezone_callback(c, bot),
         lambda c: c.data and c.data.startswith("set_timezone:")
     )
     dp.register_message_handler(process_text_setting, content_types=['text'])
