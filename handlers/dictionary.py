@@ -1,4 +1,4 @@
-#pathtofile/handlers/dictionary.py
+#handlers/dictionary.py
 from aiogram import types, Dispatcher, Bot
 from keyboards.submenus import dictionary_menu_keyboard
 from database import crud

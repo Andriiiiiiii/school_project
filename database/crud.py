@@ -1,4 +1,4 @@
-#pathtofile/database/crud.py
+#database/crud.py
 from database.db import cursor, conn
 from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
 

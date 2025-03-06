@@ -1,4 +1,4 @@
-#pathtofile/utils/quiz_helpers.py
+#utils/quiz_helpers.py
 """
 Файл: utils/quiz_helpers.py
 Описание: Функция для загрузки данных для квиза.

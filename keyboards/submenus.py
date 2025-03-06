@@ -1,5 +1,5 @@
-#pathtofile/keyboards/submenus.py
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import random
 
 def main_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
@@ -22,6 +22,33 @@ def words_day_keyboard():
     keyboard.add(InlineKeyboardButton("Назад", callback_data="menu:back"))
     return keyboard
 
+def dictionary_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(InlineKeyboardButton("Назад", callback_data="menu:back"))
+    return keyboard
+
+
+def settings_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(
+        InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
+        InlineKeyboardButton("Настройки уведомлений", callback_data="settings:notifications"),
+        InlineKeyboardButton("Выбор сета", callback_data="settings:set"),
+        InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
+        InlineKeyboardButton("Назад", callback_data="menu:back")
+    )
+    return keyboard
+
+def notification_settings_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(
+        InlineKeyboardButton("Количество слов", callback_data="settings:words"),
+        InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
+        InlineKeyboardButton("Выбор часового пояса", callback_data="settings:timezone"),
+        InlineKeyboardButton("Назад", callback_data="settings:back")
+    )
+    return keyboard
+
 def learning_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
@@ -31,30 +58,6 @@ def learning_menu_keyboard():
     keyboard.add(
         InlineKeyboardButton("📝 Заучивание", callback_data="learning:memorize"),
         InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
-    )
-    return keyboard
-
-def dictionary_menu_keyboard():
-    keyboard = InlineKeyboardMarkup(row_width=2)
-    keyboard.add(
-        InlineKeyboardButton("📈 +10 слов", callback_data="dictionary:+10"),
-        InlineKeyboardButton("📊 +50 слов", callback_data="dictionary:+50")
-    )
-    keyboard.add(
-        InlineKeyboardButton("📖 Показать все", callback_data="dictionary:all"),
-        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
-    )
-    return keyboard
-
-def settings_menu_keyboard():
-    keyboard = InlineKeyboardMarkup(row_width=1)
-    keyboard.add(
-        InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
-        InlineKeyboardButton("Количество слов", callback_data="settings:words"),
-        InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
-        InlineKeyboardButton("Выбор часового пояса", callback_data="settings:timezone"),
-        InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
-        InlineKeyboardButton("Назад", callback_data="menu:back")
     )
     return keyboard
 
