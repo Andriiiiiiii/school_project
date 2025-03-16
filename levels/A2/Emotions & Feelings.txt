@@ -1,0 +1,80 @@
+happy – счастливый
+joyful – радостный
+cheerful – весёлый
+delighted – восторженный
+glad – довольный
+content – удовлетворённый
+pleased – довольный
+ecstatic – в экстазе
+excited – взволнованный
+enthusiastic – воодушевлённый
+surprised – удивлённый
+shocked – шокированный
+amazed – поражённый
+fearful – испуганный
+scared – напуганный
+anxious – тревожный
+nervous – нервный
+worried – обеспокоенный
+stressed – напряжённый
+calm – спокойный
+relaxed – расслабленный
+peaceful – мирный
+serene – безмятежный
+angry – злой
+furious – яростный
+irritated – раздражённый
+annoyed – раздражённый
+frustrated – расстроенный
+upset – огорчённый
+miserable – несчастный
+depressed – подавленный
+lonely – одинокий
+bored – скучающий
+tired – усталый
+sleepy – сонный
+confused – сбитый с толку
+doubtful – сомневающийся
+hopeful – надеющийся
+optimistic – оптимистичный
+pessimistic – пессимистичный
+jealous – ревнивый
+envious – завидующий
+guilty – виноватый
+ashamed – стыдливый
+embarrassed – смущённый
+proud – гордый
+relieved – облегчённый
+contented – довольный
+satisfied – удовлетворённый
+indifferent – равнодушный
+curious – любопытный
+interested – заинтересованный
+sentimental – сентиментальный
+nostalgic – ностальгический
+grateful – благодарный
+thankful – признательный
+remorseful – раскаивающийся
+hurt – обиженный
+betrayed – преданный
+overwhelmed – ошеломлённый
+terrified – ужасно испуганный
+panicked – в панике
+reflective – задумчивый
+meditative – созерцательный
+vulnerable – уязвимый
+elated – приподнятый
+moody – переменчивый
+irritable – раздражительный
+energetic – энергичный
+lively – живой
+withdrawn – замкнутый
+melancholic – меланхоличный
+ecstatic – в экстазе (альтернативное значение)
+somber – мрачный
+blithe – беззаботный
+anguished – мучительный
+content – довольный (альтернативное)
+jubilant – ликующий
+remorseful – раскаивающийся (повтор)
+resilient – устойчивый

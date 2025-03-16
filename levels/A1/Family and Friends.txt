@@ -1,0 +1,70 @@
+mother - мать
+father - отец
+sister - сестра
+brother - брат
+grandmother - бабушка
+grandfather - дедушка
+aunt - тётя
+uncle - дядя
+cousin - кузен/кузина
+niece - племянница
+nephew - племянник
+son - сын
+daughter - дочь
+family - семья
+friend - друг
+best friend - лучший друг
+neighbor - сосед
+relative - родственник
+husband - муж
+wife - жена
+parent - родитель
+child - ребёнок
+baby - малыш
+classmate - одноклассник/одноклассница
+partner - партнёр
+colleague - коллега
+acquaintance - знакомый
+companion - спутник
+boyfriend - парень
+girlfriend - девушка
+spouse - супруг(а)
+in-law - родственник по браку
+stepmother - мачеха
+stepfather - отчим
+stepsister - сводная сестра
+stepbrother - сводный брат
+close - близкий
+loving - любящий
+caring - заботливый
+supportive - поддерживающий
+friendly - дружелюбный
+kind - добрый
+fun - весёлый
+warm - тёплый
+happy - счастливый
+serious - серьёзный
+funny - смешной
+smart - умный
+shy - застенчивый
+outgoing - общительный
+gentle - нежный
+trustworthy - надёжный
+respectful - уважительный
+sibling - брат или сестра
+kin - родня
+descendant - потомок
+ancestor - предок
+family tree - родословная
+reunion - встреча
+close-knit - сплочённый
+united - единый
+traditional - традиционный
+familiar - знакомый
+reliable - надёжный
+neighborly - соседский
+affectionate - ласковый
+considerate - внимательный
+cheerful - жизнерадостный
+generation - поколение
+bond - связь

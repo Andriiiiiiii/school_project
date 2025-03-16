@@ -1,0 +1,90 @@
+art – искусство
+music – музыка
+culture – культура
+painting – живопись
+sculpture – скульптура
+drawing – рисунок
+sketch – эскиз
+gallery – галерея
+museum – музей
+exhibition – выставка
+artist – художник
+musician – музыкант
+composer – композитор
+singer – певец
+songwriter – автор песен
+instrument – инструмент
+guitar – гитара
+piano – пианино
+violin – скрипка
+drum – барабан
+concert – концерт
+performance – выступление
+opera – опера
+ballet – балет
+theater – театр
+play – спектакль
+drama – драма
+comedy – комедия
+tragedy – трагедия
+literature – литература
+novel – роман
+poem – стихотворение
+prose – проза
+story – рассказ
+myth – миф
+legend – легенда
+folklore – фольклор
+tradition – традиция
+heritage – наследие
+language – язык
+dance – танец
+choreography – хореография
+rhythm – ритм
+melody – мелодия
+harmony – гармония
+beat – ритм
+sound – звук
+tone – тон
+festival – фестиваль
+cultural event – культурное мероприятие
+costume – костюм
+fashion – мода
+design – дизайн
+architecture – архитектура
+building – здание
+monument – памятник
+literature festival – литературный фестиваль
+art exhibit – художественная выставка
+cultural center – культурный центр
+traditional – традиционный
+modern – современный
+abstract – абстрактный
+realism – реализм
+impressionism – импрессионизм
+expressionism – экспрессионизм
+digital art – цифровое искусство
+street art – стрит-арт
+graffiti – граффити
+craft – ремесло
+pottery – керамика
+textile – текстиль
+photography – фотография
+film – кино
+cinema – кино
+director – режиссер
+actor – актер
+actress – актриса
+screenplay – сценарий
+script – сценарий
+editing – монтаж
+soundtrack – саундтрек
+album – альбом
+record – запись
+concert hall – концертный зал
+recital – концерт
+performance art – перформанс
+cultural diversity – культурное разнообразие
+art critic – арт-критик
+creative – творческий
+inspiration – вдохновение

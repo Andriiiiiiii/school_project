@@ -1,8 +1,0 @@
-cat - кот, кошка  
-tree - дерево  
-water - вода  
-school - школа  
-friend - друг, подруга  
-family - семья  
-mother - мать, мама  
-father - отец, папа  

@@ -1,0 +1,90 @@
+communication – коммуникация
+technology – технология
+internet – интернет
+email – электронная почта
+smartphone – смартфон
+computer – компьютер
+laptop – ноутбук
+tablet – планшет
+software – программное обеспечение
+hardware – оборудование
+application – приложение
+app – приложение
+website – веб-сайт
+browser – браузер
+search engine – поисковая система
+social media – социальные сети
+network – сеть
+Wi-Fi – вай-фай
+password – пароль
+username – имя пользователя
+login – вход
+logout – выход
+update – обновление
+download – скачивать
+upload – загружать
+file – файл
+document – документ
+folder – папка
+cloud – облако
+storage – хранилище
+server – сервер
+database – база данных
+coding – программирование
+programming – программирование
+code – код
+algorithm – алгоритм
+software engineer – программист
+developer – разработчик
+technician – техник
+digital – цифровой
+virtual – виртуальный
+reality – реальность
+augmented reality – дополненная реальность
+artificial intelligence – искусственный интеллект
+machine learning – машинное обучение
+data – данные
+analytics – аналитика
+cyber – кибер
+security – безопасность
+firewall – файрвол
+virus – вирус
+malware – вредоносное ПО
+hacker – хакер
+encryption – шифрование
+network cable – сетевой кабель
+modem – модем
+router – маршрутизатор
+Bluetooth – Bluetooth
+peripheral – периферийное устройство
+gadget – гаджет
+innovation – инновация
+tech-savvy – разбирающийся в технологиях
+online – онлайн
+offline – офлайн
+streaming – потоковое видео/аудио
+podcast – подкаст
+blog – блог
+forum – форум
+chat – чат
+messenger – мессенджер
+video call – видеозвонок
+conference call – конференц-связь
+webinar – вебинар
+virtual meeting – виртуальная встреча
+network security – сетевая безопасность
+user interface – пользовательский интерфейс
+operating system – операционная система
+file transfer – передача файлов
+backup – резервное копирование
+technical support – техническая поддержка
+user manual – руководство пользователя
+digital footprint – цифровой след
+streaming service – потоковый сервис
+e-commerce – электронная коммерция
+online payment – онлайн-платеж
+cybersecurity – кибербезопасность
+cloud computing – облачные вычисления
+virtual reality headset – шлем виртуальной реальности
+smart device – умное устройство
+biometric – биометрический

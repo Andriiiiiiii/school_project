@@ -1,8 +1,7 @@
-# handlers/learning.py
 import random
 from aiogram import types, Dispatcher, Bot
 from keyboards.submenus import learning_menu_keyboard
-from utils.helpers import load_words_for_level
+from utils.helpers import load_words_for_set   # Исправлено: импортируем новую функцию
 from database import crud
 from functools import partial
 
@@ -11,7 +10,8 @@ async def start_learning_test(chat_id: int, bot: Bot):
     if not user:
         return
     level = user[1]
-    words = load_words_for_level(level)
+    # Используем новую функцию для загрузки слов из выбранного сета
+    words = load_words_for_set(chat_id, level)
     if not words:
         await bot.send_message(chat_id, f"Нет слов для уровня {level}.")
         return
@@ -44,5 +44,3 @@ def register_learning_handlers(dp: Dispatcher, bot: Bot):
         lambda c: learning_placeholder(c, bot),
         lambda c: c.data in ["learning:quiz", "learning:memorize"]
     )
-
-

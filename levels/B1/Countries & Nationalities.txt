@@ -1,0 +1,90 @@
+country – страна
+nation – нация
+state – государство
+government – правительство
+capital – столица
+city – город
+region – регион
+continent – континент
+border – граница
+neighboring – соседний
+foreign – иностранный
+local – местный
+nationality – национальность
+citizen – гражданин
+immigrant – иммигрант
+refugee – беженец
+culture – культура
+language – язык
+tradition – традиция
+custom – обычай
+heritage – наследие
+flag – флаг
+emblem – эмблема
+anthem – гимн
+independence – независимость
+history – история
+diplomacy – дипломатия
+ambassador – посол
+embassy – посольство
+consulate – консульство
+international – международный
+global – глобальный
+trade – торговля
+economy – экономика
+development – развитие
+policy – политика
+treaty – договор
+alliance – союз
+union – объединение
+membership – членство
+international organization – международная организация
+United Nations – Организация Объединенных Наций
+European Union – Европейский союз
+NATO – НАТО
+country code – телефонный код
+visa – виза
+passport – паспорт
+travel – путешествие
+expedition – экспедиция
+cultural exchange – культурный обмен
+diaspora – диаспора
+population – население
+density – плотность
+urban – городской
+rural – сельский
+minority – меньшинство
+majority – большинство
+indigenous – коренной
+native – уроженец
+language family – языковая семья
+dialect – диалект
+bilingual – двуязычный
+multilingual – многоязычный
+international relations – международные отношения
+foreign policy – внешняя политика
+economic development – экономическое развитие
+cultural diversity – культурное разнообразие
+global community – глобальное сообщество
+cross-cultural – межкультурный
+homeland – родина
+immigration – иммиграция
+emigration – эмиграция
+citizenship – гражданство
+naturalization – натурализация
+expatriate – экспатриант
+native language – родной язык
+second language – второй язык
+regional – региональный
+continental – континентальный
+area – область
+province – провинция
+statehood – государственность
+sovereignty – суверенитет
+frontier – рубеж
+metropolis – мегаполис
+rural area – сельская местность
+urban area – городская местность
+capital city – столица
+national anthem – национальный гимн
+flag bearer – носитель флага

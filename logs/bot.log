@@ -9468,3 +9468,614 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-03-16 15:30:52,349 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 15:31:52 MSK)" executed successfully
 2025-03-16 15:31:03,663 - INFO - Stop polling...
 2025-03-16 15:31:03,663 - WARNING - Goodbye!
+2025-03-16 19:13:48,074 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:13:48,231 - WARNING - Updates were skipped successfully.
+2025-03-16 19:13:48,233 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:13:48,234 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:13:48,234 - INFO - Scheduler started
+2025-03-16 19:13:48,234 - INFO - Бот запущен.
+2025-03-16 19:13:48,234 - INFO - Start polling.
+2025-03-16 19:13:57,902 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:14:49,842 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:15:48 MSK)" was missed by 0:00:01.608226
+2025-03-16 19:15:10,381 - INFO - Stop polling...
+2025-03-16 19:15:10,382 - WARNING - Goodbye!
+2025-03-16 19:21:00,205 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:21:00,355 - WARNING - Updates were skipped successfully.
+2025-03-16 19:21:00,361 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:21:00,363 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:21:00,363 - INFO - Scheduler started
+2025-03-16 19:21:00,363 - INFO - Бот запущен.
+2025-03-16 19:21:00,364 - INFO - Start polling.
+2025-03-16 19:22:02,080 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:23:00 MSK)" was missed by 0:00:01.719726
+2025-03-16 19:22:55,650 - INFO - Stop polling...
+2025-03-16 19:22:55,650 - WARNING - Goodbye!
+2025-03-16 19:25:26,223 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:25:26,375 - WARNING - Updates were skipped successfully.
+2025-03-16 19:25:26,377 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:25:26,377 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:25:26,377 - INFO - Scheduler started
+2025-03-16 19:25:26,377 - INFO - Бот запущен.
+2025-03-16 19:25:26,378 - INFO - Start polling.
+2025-03-16 19:25:33,012 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:33:40,836 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:33:40,999 - WARNING - Updates were skipped successfully.
+2025-03-16 19:33:41,008 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:33:41,009 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:33:41,010 - INFO - Scheduler started
+2025-03-16 19:33:41,010 - INFO - Бот запущен.
+2025-03-16 19:33:41,010 - INFO - Start polling.
+2025-03-16 19:33:46,948 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:33:48,618 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 15, in send_words_day_schedule
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:33:52,084 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 76, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:33:56,321 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 73, in process_settings_choice_callback
+    await process_my_sets(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 96, in process_my_sets
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:03,834 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-38' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 76, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:05,930 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-46' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 15, in send_words_day_schedule
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:08,646 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-54' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 48, in start_quiz
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:12,235 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-62' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 73, in process_settings_choice_callback
+    await process_my_sets(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 96, in process_my_sets
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:12,912 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-65' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 76, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:17,991 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-73' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 162, in process_set_level_callback
+    crud.update_user_set(chat_id, default_set)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 42, in update_user_set
+    cursor.execute("UPDATE users SET chosen_set = ? WHERE chat_id = ?", (set_name, chat_id))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:34:26,329 - INFO - Stop polling...
+2025-03-16 19:34:26,330 - WARNING - Goodbye!
+2025-03-16 19:39:35,171 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:39:35,329 - WARNING - Updates were skipped successfully.
+2025-03-16 19:39:35,334 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:39:35,335 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:39:35,335 - INFO - Scheduler started
+2025-03-16 19:39:35,335 - INFO - Бот запущен.
+2025-03-16 19:39:35,335 - INFO - Start polling.
+2025-03-16 19:40:35,868 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:40:37,166 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:41:35 MSK)" was missed by 0:00:01.832270
+2025-03-16 19:40:40,030 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-21' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 15, in send_words_day_schedule
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:40:47,919 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-24' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 80, in process_settings_choice_callback
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:40:49,088 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-27' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 77, in process_settings_choice_callback
+    await process_my_sets(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 104, in process_my_sets
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:40:56,928 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-45' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 15, in send_words_day_schedule
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:41:01,951 - INFO - Stop polling...
+2025-03-16 19:41:01,952 - WARNING - Goodbye!
+2025-03-16 19:41:41,077 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:41:41,264 - WARNING - Updates were skipped successfully.
+2025-03-16 19:41:41,269 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:41:41,270 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:41:41,270 - INFO - Scheduler started
+2025-03-16 19:41:41,270 - INFO - Бот запущен.
+2025-03-16 19:41:41,270 - INFO - Start polling.
+2025-03-16 19:41:47,918 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:41:49,124 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: chosen_set')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 15, in send_words_day_schedule
+    user = crud.get_user(chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 14, in get_user
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
+sqlite3.OperationalError: no such column: chosen_set
+2025-03-16 19:41:59,795 - INFO - Stop polling...
+2025-03-16 19:41:59,796 - WARNING - Goodbye!
+2025-03-16 19:44:33,247 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:44:33,414 - WARNING - Updates were skipped successfully.
+2025-03-16 19:44:33,420 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:44:33,421 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:44:33,421 - INFO - Scheduler started
+2025-03-16 19:44:33,422 - INFO - Бот запущен.
+2025-03-16 19:44:33,422 - INFO - Start polling.
+2025-03-16 19:44:46,761 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:45:35,291 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:46:33 MSK)" was missed by 0:00:01.871264
+2025-03-16 19:46:35,277 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:47:33 MSK)" was missed by 0:00:01.857318
+2025-03-16 19:47:35,274 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:48:33 MSK)" was missed by 0:00:01.854972
+2025-03-16 19:48:23,098 - INFO - Stop polling...
+2025-03-16 19:48:23,098 - WARNING - Goodbye!
+2025-03-16 19:52:00,223 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:52:00,395 - WARNING - Updates were skipped successfully.
+2025-03-16 19:52:00,396 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:52:00,396 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:52:00,396 - INFO - Scheduler started
+2025-03-16 19:52:00,396 - INFO - Бот запущен.
+2025-03-16 19:52:00,396 - INFO - Start polling.
+2025-03-16 19:52:05,946 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:52:17,204 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-34' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError('load_quiz_data() takes 1 positional argument but 2 were given')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 79, in start_quiz
+    questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 22, in generate_quiz_questions_from_daily
+    quiz_data = load_quiz_data(level, chosen_set)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_quiz_data() takes 1 positional argument but 2 were given
+2025-03-16 19:52:41,612 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-38' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError('load_quiz_data() takes 1 positional argument but 2 were given')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 79, in start_quiz
+    questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 22, in generate_quiz_questions_from_daily
+    quiz_data = load_quiz_data(level, chosen_set)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_quiz_data() takes 1 positional argument but 2 were given
+2025-03-16 19:52:46,559 - INFO - Stop polling...
+2025-03-16 19:52:46,560 - WARNING - Goodbye!
+2025-03-16 19:53:46,601 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 19:53:46,756 - WARNING - Updates were skipped successfully.
+2025-03-16 19:53:46,758 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 19:53:46,759 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 19:53:46,759 - INFO - Scheduler started
+2025-03-16 19:53:46,759 - INFO - Бот запущен.
+2025-03-16 19:53:46,759 - INFO - Start polling.
+2025-03-16 19:53:52,843 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 19:54:48,581 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:55:46 MSK)" was missed by 0:00:01.822850
+2025-03-16 19:55:48,574 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:56:46 MSK)" was missed by 0:00:01.816279
+2025-03-16 19:56:48,665 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:57:46 MSK)" was missed by 0:00:01.906870
+2025-03-16 19:57:47,719 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:58:46 MSK)" (scheduled at 2025-03-16 19:57:46.758393+03:00)
+2025-03-16 19:57:47,725 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:58:46 MSK)" executed successfully
+2025-03-16 19:58:48,715 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 19:59:46 MSK)" was missed by 0:00:01.956870
+2025-03-16 19:59:05,288 - INFO - Stop polling...
+2025-03-16 19:59:05,288 - WARNING - Goodbye!
+2025-03-16 20:02:02,158 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:02:02,314 - WARNING - Updates were skipped successfully.
+2025-03-16 20:02:02,320 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:02:02,322 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:02:02,322 - INFO - Scheduler started
+2025-03-16 20:02:02,322 - INFO - Бот запущен.
+2025-03-16 20:02:02,323 - INFO - Start polling.
+2025-03-16 20:02:10,492 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:03:04,313 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:04:02 MSK)" was missed by 0:00:01.993749
+2025-03-16 20:04:04,214 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:05:02 MSK)" was missed by 0:00:01.894630
+2025-03-16 20:04:47,276 - INFO - Stop polling...
+2025-03-16 20:04:47,277 - WARNING - Goodbye!
+2025-03-16 20:07:06,203 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:07:06,364 - WARNING - Updates were skipped successfully.
+2025-03-16 20:07:06,365 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:07:06,366 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:07:06,366 - INFO - Scheduler started
+2025-03-16 20:07:06,366 - INFO - Бот запущен.
+2025-03-16 20:07:06,366 - INFO - Start polling.
+2025-03-16 20:07:11,892 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:07:46,755 - INFO - Stop polling...
+2025-03-16 20:07:46,755 - WARNING - Goodbye!
+2025-03-16 20:12:53,306 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:12:53,461 - WARNING - Updates were skipped successfully.
+2025-03-16 20:12:53,463 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:12:53,464 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:12:53,464 - INFO - Scheduler started
+2025-03-16 20:12:53,464 - INFO - Бот запущен.
+2025-03-16 20:12:53,464 - INFO - Start polling.
+2025-03-16 20:13:54,439 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:14:53 MSK)" (scheduled at 2025-03-16 20:13:53.463353+03:00)
+2025-03-16 20:13:54,446 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:14:53 MSK)" executed successfully
+2025-03-16 20:14:55,409 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:15:53 MSK)" was missed by 0:00:01.945761
+2025-03-16 20:15:02,348 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:15:48,086 - INFO - Stop polling...
+2025-03-16 20:15:48,087 - WARNING - Goodbye!
+2025-03-16 20:18:17,557 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:18:17,740 - WARNING - Updates were skipped successfully.
+2025-03-16 20:18:17,742 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:18:17,742 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:18:17,742 - INFO - Scheduler started
+2025-03-16 20:18:17,742 - INFO - Бот запущен.
+2025-03-16 20:18:17,742 - INFO - Start polling.
+2025-03-16 20:18:21,947 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:18:53,104 - INFO - Stop polling...
+2025-03-16 20:18:53,105 - WARNING - Goodbye!
+2025-03-16 20:24:57,449 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:24:57,611 - WARNING - Updates were skipped successfully.
+2025-03-16 20:24:57,617 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:24:57,618 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:24:57,618 - INFO - Scheduler started
+2025-03-16 20:24:57,619 - INFO - Бот запущен.
+2025-03-16 20:24:57,619 - INFO - Start polling.
+2025-03-16 20:25:04,001 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:25:24,035 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-49' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("get_daily_words_for_user() got an unexpected keyword argument 'chosen_set'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 58, in start_quiz
+    result = get_daily_words_for_user(chat_id, level, user[2], user[3],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_daily_words_for_user() got an unexpected keyword argument 'chosen_set'
+2025-03-16 20:25:34,703 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-77' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("get_daily_words_for_user() got an unexpected keyword argument 'chosen_set'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 58, in start_quiz
+    result = get_daily_words_for_user(chat_id, level, user[2], user[3],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_daily_words_for_user() got an unexpected keyword argument 'chosen_set'
+2025-03-16 20:25:42,739 - INFO - Stop polling...
+2025-03-16 20:25:42,740 - WARNING - Goodbye!
+2025-03-16 20:28:57,045 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-16 20:28:57,222 - WARNING - Updates were skipped successfully.
+2025-03-16 20:28:57,226 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-16 20:28:57,227 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-16 20:28:57,228 - INFO - Scheduler started
+2025-03-16 20:28:57,228 - INFO - Бот запущен.
+2025-03-16 20:28:57,228 - INFO - Start polling.
+2025-03-16 20:29:02,657 - INFO - Received /start from chat_id: 1999873173
+2025-03-16 20:29:58,227 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-16 20:30:57 MSK)" was missed by 0:00:01.000350
+2025-03-16 20:30:15,244 - INFO - Stop polling...
+2025-03-16 20:30:15,245 - WARNING - Goodbye!
+2025-03-17 00:08:01,342 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-03-17 00:08:01,481 - WARNING - Updates were skipped successfully.
+2025-03-17 00:08:01,483 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-17 00:08:01,484 - INFO - Added job "scheduler_job" to job store "default"
+2025-03-17 00:08:01,484 - INFO - Scheduler started
+2025-03-17 00:08:01,485 - INFO - Бот запущен.
+2025-03-17 00:08:01,485 - INFO - Start polling.
+2025-03-17 00:08:07,998 - INFO - Received /start from chat_id: 1999873173
+2025-03-17 00:09:04,614 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-03-17 00:10:01 MSK)" was missed by 0:00:03.130930
+2025-03-17 00:09:38,726 - INFO - Stop polling...
+2025-03-17 00:09:38,726 - WARNING - Goodbye!

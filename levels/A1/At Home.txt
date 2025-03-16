@@ -1,0 +1,70 @@
+living room - гостиная
+kitchen - кухня
+bedroom - спальня
+bathroom - ванная
+dining room - столовая
+hallway - коридор
+garage - гараж
+garden - сад
+backyard - задний двор
+front yard - передний двор
+attic - чердак
+basement - подвал
+roof - крыша
+wall - стена
+floor - пол
+ceiling - потолок
+window - окно
+door - дверь
+staircase - лестница
+balcony - балкон
+porch - веранда
+furniture - мебель
+sofa - диван
+armchair - кресло
+coffee table - журнальный столик
+television - телевизор
+lamp - лампа
+carpet - ковер
+curtain - занавеска
+picture - картина
+mirror - зеркало
+bookshelf - книжная полка
+clock - часы
+bed - кровать
+wardrobe - шкаф
+dresser - комод
+desk - письменный стол
+chair - стул
+computer - компьютер
+refrigerator - холодильник
+oven - духовка
+microwave - микроволновка
+toaster - тостер
+kettle - чайник
+sink - раковина
+bathtub - ванна
+shower - душ
+toilet - унитаз
+closet - шкаф
+cabinet - шкафчик
+rug - коврик
+blanket - одеяло
+pillow - подушка
+mattress - матрас
+doorbell - дверной звонок
+heater - обогреватель
+air conditioner - кондиционер
+fan - вентилятор
+trash can - мусорное ведро
+recycling bin - контейнер для переработки
+doormat - коврик у двери
+mailbox - почтовый ящик
+telephone - телефон
+window blind - жалюзи
+remote control - пульт
+battery - батарейка
+plug - вилка
+outlet - розетка
+cable - кабель
+floor lamp - торшер

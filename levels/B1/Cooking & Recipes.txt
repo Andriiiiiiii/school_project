@@ -1,0 +1,90 @@
+cooking – приготовление пищи
+recipe – рецепт
+ingredient – ингредиент
+cuisine – кухня (стиль приготовления)
+dish – блюдо
+meal – еда
+breakfast – завтрак
+lunch – обед
+dinner – ужин
+snack – перекус
+appetizer – закуска
+main course – основное блюдо
+dessert – десерт
+salad – салат
+soup – суп
+sauce – соус
+seasoning – приправа
+spice – специя
+herb – трава, пряность
+salt – соль
+pepper – перец
+sugar – сахар
+flour – мука
+oil – масло
+butter – масло
+water – вода
+milk – молоко
+cream – сливки
+egg – яйцо
+meat – мясо
+chicken – курица
+beef – говядина
+pork – свинина
+fish – рыба
+seafood – морепродукты
+vegetable – овощ
+fruit – фрукт
+garlic – чеснок
+onion – лук
+tomato – помидор
+carrot – морковь
+potato – картофель
+rice – рис
+pasta – макароны
+bread – хлеб
+dough – тесто
+baking – выпечка
+roast – запекать
+grill – жарить на гриле
+fry – жарить
+steam – готовить на пару
+boil – варить
+simmer – томить
+sauté – обжаривать
+marinate – мариновать
+chop – нарезать
+slice – нарезка
+dice – нарезать кубиками
+mix – смешивать
+blend – смешивать
+stir – помешивать
+whisk – взбивать
+knead – месить
+bake – выпекать
+preheat – разогревать
+serve – подавать
+garnish – украшать
+recipe book – кулинарная книга
+chef – шеф-повар
+cooking class – кулинарный урок
+food processor – кухонный комбайн
+blender – блендер
+microwave – микроволновка
+oven – духовка
+stove – плита
+skillet – сковорода
+pot – кастрюля
+pan – сковорода
+cutting board – разделочная доска
+knife – нож
+spatula – лопатка
+ladle – половник
+colander – дуршлаг
+measuring cup – мерный стакан
+measuring spoon – мерная ложка
+rolling pin – скалка
+timer – таймер
+recipe card – кулинарная карточка
+taste – вкус
+flavor – аромат, вкус

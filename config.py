@@ -12,5 +12,14 @@ DURATION_HOURS = float(os.getenv("DURATION_HOURS", 10))
 DEFAULT_WORDS_PER_DAY = int(os.getenv("DEFAULT_WORDS_PER_DAY", 5))
 DEFAULT_REPETITIONS = int(os.getenv("DEFAULT_REPETITIONS", 3))
 SERVER_TIMEZONE = os.getenv("SERVER_TIMEZONE", "UTC")
-# Новая переменная для времени сброса списка слов дня (например, "00:00" или любое другое время для теста)
 DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
+
+# Основные сеты для каждого уровня
+DEFAULT_SETS = {
+    "A1": "Essential Everyday Words",
+    "A2": "Everyday Activities & Routines",
+    "B1": "Common Idioms & Expressions",
+    "B2": "Essential Phrasal Verbs & Collocations",
+    "C1": "Academic & Formal English",
+    "C2": "Native-level Idioms & Expressions"
+}

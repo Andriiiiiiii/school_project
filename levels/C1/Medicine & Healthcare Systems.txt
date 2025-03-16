@@ -1,0 +1,100 @@
+medicine – медицина
+healthcare – здравоохранение
+treatment – лечение
+diagnosis – диагностика
+therapy – терапия
+surgery – операция
+patient – пациент
+physician – врач
+specialist – специалист
+general practitioner – терапевт
+nurse – медсестра
+hospital – больница
+clinic – клиника
+emergency – неотложная помощь
+intensive care – интенсивная терапия
+rehabilitation – реабилитация
+prescription – рецепт
+medication – лекарство
+dosage – дозировка
+side effect – побочный эффект
+vaccine – вакцина
+immunization – иммунизация
+epidemiology – эпидемиология
+outbreak – вспышка
+pandemic – пандемия
+public health – общественное здоровье
+health policy – политика здравоохранения
+insurance – страховка
+healthcare system – система здравоохранения
+universal healthcare – всеобщая медицинская помощь
+medical research – медицинские исследования
+clinical trial – клиническое испытание
+evidence-based medicine – доказательная медицина
+minimally invasive – минимально инвазивный
+diagnostic test – диагностический тест
+radiology – радиология
+imaging – визуализация
+MRI – МРТ
+CT scan – компьютерная томография
+ultrasound – ультразвук
+pathology – патология
+laboratory – лаборатория
+biomarker – биомаркер
+chronic – хронический
+acute – острый
+infection – инфекция
+antibiotic – антибиотик
+antiviral – противовирусный
+resistance – устойчивость
+treatment protocol – протокол лечения
+healthcare provider – поставщик медицинских услуг
+medical record – медицинская карта
+patient history – анамнез
+consultation – консультация
+second opinion – второе мнение
+specialist referral – направление к специалисту
+telemedicine – телемедицина
+outpatient – амбулаторный
+inpatient – стационарный
+operating room – операционная
+recovery – восстановление
+follow-up – последующее наблюдение
+clinical guideline – клиническое руководство
+evidence – доказательство
+informed consent – информированное согласие
+ethics – этика
+medical ethics – медицинская этика
+healthcare reform – реформа здравоохранения
+patient care – уход за пациентом
+primary care – первичная медицинская помощь
+specialist care – специализированная помощь
+medical specialty – медицинская специальность
+cardiology – кардиология
+oncology – онкология
+neurology – неврология
+orthopedics – ортопедия
+pediatrics – педиатрия
+geriatrics – геронтология
+psychiatry – психиатрия
+immunology – иммунология
+endocrinology – эндокринология
+dermatology – дерматология
+gastroenterology – гастроэнтерология
+nephrology – нефрология
+recovery room – палата восстановления
+intensive care unit – отделение интенсивной терапии
+medical technology – медицинские технологии
+electronic health record – электронная медицинская карта
+diagnostic tool – диагностический инструмент
+wearable device – носимое устройство
+clinical research – клинические исследования
+drug development – разработка лекарств
+pharmaceutical – фармацевтический
+generic drug – дженерик
+brand-name drug – брендовый препарат
+over-the-counter – без рецепта
+patient compliance – соблюдение рекомендаций
+healthcare access – доступ к медицине
+medical breakthrough – медицинский прорыв
+health outcome – результат лечения

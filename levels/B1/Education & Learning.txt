@@ -1,0 +1,90 @@
+education – образование
+learning – обучение
+student – студент
+teacher – преподаватель
+classroom – класс
+school – школа
+college – колледж
+university – университет
+course – курс
+subject – предмет
+lesson – урок
+lecture – лекция
+seminar – семинар
+workshop – мастерская
+tutorial – учебное пособие
+curriculum – учебная программа
+syllabus – силлабус
+exam – экзамен
+test – тест
+quiz – контрольная
+homework – домашнее задание
+assignment – задание
+project – проект
+research – исследование
+study – учёба
+textbook – учебник
+notebook – тетрадь
+pencil – карандаш
+pen – ручка
+marker – маркер
+blackboard – доска
+whiteboard – белая доска
+desk – парта
+chair – стул
+library – библиотека
+reference – справочник
+citation – цитирование
+degree – степень
+diploma – диплом
+certificate – сертификат
+scholarship – стипендия
+tuition – оплата за обучение
+enrollment – зачисление
+graduation – выпуск
+diploma ceremony – выпускная церемония
+faculty – факультет
+department – кафедра
+major – специальность
+minor – второстепенная специальность
+research paper – исследовательская работа
+thesis – тезис, диссертация
+dissertation – диссертация
+lecture hall – лекционная аудитория
+seminar room – семинарская комната
+lab – лаборатория
+experiment – эксперимент
+internship – стажировка
+fieldwork – практическая работа
+study group – учебная группа
+academic – академический
+knowledge – знание
+skill – навык
+learning outcome – результат обучения
+assessment – оценка
+grade – оценка
+report card – табель успеваемости
+evaluation – оценка
+plagiarism – плагиат
+bibliography – библиография
+lecture notes – конспект лекций
+study session – учебная сессия
+revision – повторение
+quiz show – викторина
+educational – образовательный
+interactive – интерактивный
+online course – онлайн-курс
+distance learning – дистанционное обучение
+e-learning – электронное обучение
+academic advisor – академический консультант
+counselor – консультант
+mentor – наставник
+group discussion – групповое обсуждение
+presentation – презентация
+public speaking – публичное выступление
+debate – дебаты
+critical thinking – критическое мышление
+problem solving – решение проблем
+creativity – креативность
+internship program – программа стажировки
+academic conference – научная конференция

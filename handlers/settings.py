@@ -1,5 +1,3 @@
-# handlers/settings.py
-
 from aiogram import types, Dispatcher, Bot
 from keyboards.submenus import (
     notification_settings_menu_keyboard, 
@@ -8,8 +6,7 @@ from keyboards.submenus import (
 from keyboards.main_menu import main_menu_keyboard
 from database import crud
 from functools import partial
-from utils.helpers import daily_words_cache, reset_daily_words_cache, get_daily_words_for_user, LEVELS_DIR
-from config import REMINDER_START, DURATION_HOURS
+from utils.helpers import daily_words_cache, LEVELS_DIR, reset_daily_words_cache
 import os
 
 # Глобальный словарь для хранения состояния ввода (какой параметр ожидается от пользователя)
@@ -127,8 +124,8 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
 
 async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
     """
-    Обработчик выбора сета. Читает файл выбранного сета, сохраняет выбор, сбрасывает кэш и сразу генерирует
-    ежедневные слова с использованием выбранного сета.
+    Обработчик выбора сета. Читает файл выбранного сета и отправляет список слов пользователю.
+    Также очищает кэш 'Слова дня', чтобы при следующем обращении он пересчитал слова по новому сету.
     """
     chat_id = callback.from_user.id
     try:
@@ -155,24 +152,11 @@ async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
         await bot.send_message(chat_id, f"Ошибка при чтении файла: {e}")
         return
 
-    # Сохраняем выбранный сет для данного пользователя
     user_set_selection[chat_id] = set_name
-    # Сбрасываем кэш слов дня для обновления с новым сетом
-    reset_daily_words_cache(chat_id)
+    reset_daily_words_cache(chat_id)  # очищаем кэш 'Слова дня' при смене сета
 
-    # Генерируем ежедневные слова с выбранным сетом
-    result = get_daily_words_for_user(chat_id, user_level, user[2], user[3],
-                                       first_time=REMINDER_START,
-                                       duration_hours=DURATION_HOURS,
-                                       force_reset=True,
-                                       selected_set=set_name)
-    if result is None:
-        await bot.send_message(chat_id, f"Не удалось загрузить слова из выбранного сета {set_name}.")
-        return
-
-    # Отправляем пользователю сразу информацию о выбранном сете и его слова
     await bot.send_message(chat_id, f"Выбран сет {set_name} для уровня {user_level}.\nСлова сета:\n\n{content}",
-                           reply_markup=settings_menu_keyboard())
+                               reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):

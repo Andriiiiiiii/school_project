@@ -1,0 +1,100 @@
+research – исследование
+study – изучение
+investigation – расследование
+analysis – анализ
+experiment – эксперимент
+methodology – методология
+data – данные
+survey – опрос
+observation – наблюдение
+sample – выборка
+variable – переменная
+hypothesis – гипотеза
+theory – теория
+literature review – обзор литературы
+case study – пример исследования
+qualitative – качественный
+quantitative – количественный
+empirical – эмпирический
+research design – дизайн исследования
+experimental group – экспериментальная группа
+control group – контрольная группа
+field study – полевое исследование
+laboratory – лаборатория
+protocol – протокол
+data collection – сбор данных
+data analysis – анализ данных
+statistical analysis – статистический анализ
+regression – регрессия
+correlation – корреляция
+significance – значимость
+p-value – p-значение
+statistical significance – статистическая значимость
+multivariate – многомерный
+factor analysis – факторный анализ
+experimental error – ошибка эксперимента
+margin of error – погрешность
+confidence interval – доверительный интервал
+scientific method – научный метод
+literature review – (повтор, см. 14)
+peer review – рецензирование
+publication – публикация
+theoretical framework – теоретическая основа
+research question – исследовательский вопрос
+empirical study – эмпирическое исследование
+instrumentation – инструментирование
+spectroscopy – спектроскопия
+microscopy – микроскопия
+nanotechnology – нанотехнология
+biotechnology – биотехнология
+quantitative research – количественное исследование
+qualitative research – качественное исследование
+case analysis – анализ случая
+fieldwork – полевые работы
+questionnaire – анкета
+interview – интервью
+focus group – фокус-группа
+bias – предвзятость
+confounding variable – смешивающая переменная
+randomization – рандомизация
+experimental design – экспериментальный дизайн
+hypothesis testing – проверка гипотез
+null hypothesis – нулевая гипотеза
+alternative hypothesis – альтернативная гипотеза
+experimental error – (повтор)
+significance level – уровень значимости
+research ethics – этика исследования
+informed consent – информированное согласие
+confidentiality – конфиденциальность
+replication – повторение
+reliability test – тест на надежность
+validity test – тест на достоверность
+systematic review – систематический обзор
+meta-analysis – мета-анализ
+case report – отчет о случае
+field experiment – полевой эксперимент
+survey research – опросное исследование
+data mining – анализ данных
+computational analysis – вычислительный анализ
+big data – большие данные
+research methodology – методология исследования
+pilot study – предварительное исследование
+longitudinal study – лонгитюдное исследование
+cross-sectional study – поперечное исследование
+mixed-methods – смешанные методы
+ethnography – этнография
+archival research – архивное исследование
+case comparison – сравнительный анализ случаев
+statistical inference – статистическое заключение
+data visualization – визуализация данных
+research outcome – результат исследования
+theoretical contribution – теоретический вклад
+empirical evidence – эмпирическое доказательство
+research gap – пробел в исследованиях
+scholarly debate – научные дебаты
+data set – набор данных
+research protocol – исследовательский протокол
+sampling technique – метод выборки
+survey instrument – опросный инструмент
+hypothesis formulation – формулирование гипотезы
+research conclusion – вывод исследования

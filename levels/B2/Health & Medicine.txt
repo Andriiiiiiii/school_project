@@ -1,0 +1,100 @@
+health – здоровье
+medicine – медицина
+treatment – лечение
+therapy – терапия
+diagnosis – диагноз
+symptom – симптом
+disease – болезнь
+illness – недуг
+infection – инфекция
+virus – вирус
+bacteria – бактерия
+vaccine – вакцина
+immunization – иммунизация
+epidemic – эпидемия
+pandemic – пандемия
+outbreak – вспышка
+recovery – выздоровление
+surgery – операция
+procedure – процедура
+patient – пациент
+physician – врач
+surgeon – хирург
+specialist – специалист
+general practitioner – терапевт
+consultation – консультация
+prescription – рецепт
+medication – лекарство
+dosage – дозировка
+side effect – побочный эффект
+allergy – аллергия
+chronic – хронический
+acute – острый
+preventive – профилактический
+screening – скрининг
+health check – медосмотр
+hospital – больница
+clinic – клиника
+emergency – неотложная помощь
+ambulance – скорая помощь
+intensive care – реанимация
+rehabilitation – реабилитация
+physiotherapy – физиотерапия
+mental health – психическое здоровье
+stress – стресс
+depression – депрессия
+anxiety – тревога
+counseling – консультирование
+nutrition – питание
+diet – диета
+calorie – калория
+vitamin – витамин
+mineral – минерал
+supplement – добавка
+obesity – ожирение
+exercise – физическая активность
+fitness – фитнес
+wellness – благополучие
+immune system – иммунная система
+blood pressure – артериальное давление
+heart rate – пульс
+cholesterol – холестерин
+diabetes – диабет
+cancer – рак
+antibiotic – антибиотик
+antiviral – противовирусный
+treatment plan – план лечения
+medical research – медицинские исследования
+clinical trial – клиническое испытание
+placebo – плацебо
+prognosis – прогноз
+therapy session – сеанс терапии
+outpatient – амбулаторный
+inpatient – стационарный
+health insurance – медицинская страховка
+public health – общественное здоровье
+sanitation – санитария
+hygiene – гигиена
+epidemic control – контроль эпидемии
+vaccine rollout – внедрение вакцины
+organ transplant – пересадка органа
+donor – донор
+surgical procedure – хирургическая процедура
+anesthesia – анестезия
+recovery period – период восстановления
+infection control – контроль инфекций
+treatment regimen – схема лечения
+healthcare system – система здравоохранения
+primary care – первичная медицинская помощь
+specialist care – специализированная помощь
+telemedicine – телемедицина
+health monitor – монитор здоровья
+genetic testing – генетическое тестирование
+medical record – медицинская карта
+health education – оздоровительное образование
+clinical practice – клиническая практика
+patient care – уход за пациентом
+medical breakthrough – медицинский прорыв
+diagnostic tool – диагностический инструмент
+rehabilitation center – реабилитационный центр
+wellness program – оздоровительная программа

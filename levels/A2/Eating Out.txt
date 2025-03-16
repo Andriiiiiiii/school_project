@@ -1,0 +1,80 @@
+restaurant – ресторан
+cafe – кафе
+diner – закусочная
+bistro – бистро
+menu – меню
+order – заказ
+meal – блюдо, еда
+appetizer – закуска
+soup – суп
+salad – салат
+main course – основное блюдо
+dessert – десерт
+drink – напиток
+coffee – кофе
+tea – чай
+juice – сок
+water – вода
+soda – газировка
+beer – пиво
+wine – вино
+cocktail – коктейль
+tip – чаевые
+bill – счёт
+check – чек
+reservation – бронирование
+table – стол
+chair – стул
+waiter – официант
+waitress – официантка
+chef – шеф-повар
+cook – повар
+kitchen – кухня
+service – обслуживание
+serve – подавать
+dish – блюдо
+plate – тарелка
+fork – вилка
+knife – нож
+spoon – ложка
+napkin – салфетка
+tablecloth – скатерть
+cutlery – столовые приборы
+condiment – приправа
+sauce – соус
+spice – специя
+salt – соль
+pepper – перец
+bread – хлеб
+butter – масло
+appetizer plate – тарелка закусок
+buffet – шведский стол
+takeaway – еда навынос
+delivery – доставка
+dine in – прием пищи в ресторане
+takeout – еда навынос
+fast food – фастфуд
+reservation confirmation – подтверждение бронирования
+food critic – кулинарный критик
+special – специальное блюдо
+recommendation – рекомендация
+customer – посетитель
+guest – гость
+ambience – атмосфера
+decor – декор
+cuisine – кухня (стиль приготовления)
+appetizer menu – меню закусок
+main dish – основное блюдо
+dessert menu – меню десертов
+special offer – специальное предложение
+combo meal – комбо-набор
+portion – порция
+refill – добавка
+gourmet – гурман
+casual – повседневный
+reservation desk – стойка бронирования
+waiter service – обслуживание официантом
+ordering – заказ
+flavor – вкус
+fresh – свежий
+culinary – кулинарный

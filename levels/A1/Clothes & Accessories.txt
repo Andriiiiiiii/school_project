@@ -1,0 +1,70 @@
+shirt - рубашка
+t-shirt - футболка
+blouse - блузка
+sweater - свитер
+jacket - куртка
+coat - пальто
+pants - штаны
+trousers - брюки
+jeans - джинсы
+shorts - шорты
+skirt - юбка
+dress - платье
+suit - костюм
+tie - галстук
+scarf - шарф
+hat - шляпа
+cap - кепка
+gloves - перчатки
+socks - носки
+shoes - обувь
+boots - ботинки
+sandals - сандалии
+belt - ремень
+underwear - нижнее бельё
+bra - бюстгальтер
+pajamas - пижама
+robe - халат
+swimsuit - купальник
+sunglasses - солнцезащитные очки
+watch - часы
+bag - сумка
+purse - кошелёк
+wallet - бумажник
+jewelry - украшения
+necklace - ожерелье
+bracelet - браслет
+ring - кольцо
+earring - серьга
+tie clip - зажим для галстука
+cufflinks - запонки
+umbrella - зонт
+backpack - рюкзак
+briefcase - портфель
+stockings - чулки
+tights - колготки
+beanie - шапка
+headband - повязка
+bow tie - бабочка
+suspenders - подтяжки
+overalls - комбинезон
+raincoat - дождевик
+apron - фартук
+cardigan - кардиган
+polo shirt - поло
+vest - жилет
+sportswear - спортивная одежда
+tracksuit - спортивный костюм
+flip-flops - шлёпанцы
+sneakers - кроссовки
+platform shoes - туфли на платформе
+shawl - шаль
+mittens - варежки
+sunhat - панама
+leg warmer - гетры
+bow - бантик
+trench coat - тренч
+anorak - анорак
+slipper - тапок
+beret - берет
+brooch - брошь

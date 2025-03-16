@@ -1,0 +1,100 @@
+science – наука
+theory – теория
+experiment – эксперимент
+phenomenon – явление
+observation – наблюдение
+hypothesis – гипотеза
+variable – переменная
+data – данные
+analysis – анализ
+synthesis – синтез
+paradigm – парадигма
+model – модель
+simulation – моделирование
+quantitative – количественный
+qualitative – качественный
+empirical – эмпирический
+method – метод
+methodology – методология
+reproducibility – воспроизводимость
+validity – достоверность
+reliability – надежность
+statistical – статистический
+probability – вероятность
+correlation – корреляция
+causation – причинность
+inference – вывод
+deduction – дедукция
+induction – индукция
+variable control – контроль переменных
+experimental design – экспериментальный дизайн
+control group – контрольная группа
+sample size – размер выборки
+standard deviation – стандартное отклонение
+variance – дисперсия
+mean – среднее
+median – медиана
+mode – мода
+hypothesis testing – проверка гипотез
+significance level – уровень значимости
+p-value – p-значение
+statistical significance – статистическая значимость
+regression analysis – регрессионный анализ
+multivariate – многомерный
+factor analysis – факторный анализ
+experimental error – ошибка эксперимента
+margin of error – погрешность
+confidence interval – доверительный интервал
+scientific method – научный метод
+peer review – рецензирование
+publication – публикация
+theoretical framework – теоретическая основа
+research question – исследовательский вопрос
+empirical study – эмпирическое исследование
+instrumentation – инструментирование
+spectroscopy – спектроскопия
+microscopy – микроскопия
+nanotechnology – нанотехнология
+biotechnology – биотехнология
+quantum mechanics – квантовая механика
+relativity – теория относительности
+astrophysics – астрофизика
+cosmology – космология
+particle physics – физика частиц
+nuclear physics – ядерная физика
+thermodynamics – термодинамика
+kinetics – кинетика
+electromagnetism – электромагнетизм
+quantum field theory – квантовая теория поля
+statistical mechanics – статистическая механика
+chaos theory – теория хаоса
+complex systems – сложные системы
+computational physics – вычислительная физика
+molecular biology – молекулярная биология
+genetics – генетика
+genomics – геномика
+proteomics – протеомика
+bioinformatics – биоинформатика
+virology – вирусология
+immunology – иммунология
+neurobiology – нейробиология
+endocrinology – эндокринология
+cell biology – клеточная биология
+microbiology – микробиология
+evolutionary biology – эволюционная биология
+ecology – экология
+environmental science – экологическая наука
+geoscience – геонаука
+seismology – сейсмология
+meteorology – метеорология
+climatology – климатология
+oceanography – океанография
+hydrology – гидрология
+volcanology – вулканология
+paleontology – палеонтология
+archaeology – археология
+anthropology – антропология
+linguistics – лингвистика
+semiotics – семиотика
+scientific inquiry – научное исследование
+research methodology – методология исследования

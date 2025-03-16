@@ -1,16 +1,15 @@
-# utils/helpers.py
 import os
 import random
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS
+from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
 from database import crud
 
 # Кэш для ежедневных слов: ключ – chat_id, значение – 
 # (today, repeated_messages, times, first_time, duration_hours, words_count, repetitions, user_tz, unique_words)
 daily_words_cache = {}
 
-# Хранение уникальных слов предыдущего дня: ключ – chat_id, значение – список строк
+# Хранение уникальных слов предыдущего дня (как они записаны в файле): ключ – chat_id, значение – список строк
 previous_daily_words = {}
 
 def reset_daily_words_cache(chat_id):
@@ -18,8 +17,12 @@ def reset_daily_words_cache(chat_id):
     if chat_id in daily_words_cache:
         del daily_words_cache[chat_id]
 
-def load_words_for_level(level: str):
-    filename = os.path.join(LEVELS_DIR, f"{level}.txt")
+def load_words_for_set(level: str, chosen_set: str):
+    """
+    Загружает слова из файла для выбранного сета.
+    Файл ищется по пути LEVELS_DIR/level/chosen_set.txt.
+    """
+    filename = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
     if not os.path.exists(filename):
         return []
     with open(filename, encoding="utf-8") as f:
@@ -38,16 +41,15 @@ def extract_english(word_line: str) -> str:
         return word_line.split(" - ", 1)[0].strip()
     return word_line.strip()
 
-def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False, selected_set=None):
+def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False, chosen_set=None):
     """
-    Генерирует или возвращает кэшированный список слов дня с учетом следующих правил:
-    
-    Если selected_set передан, то слова загружаются из файла:
-        LEVELS_DIR/level/selected_set.txt
-    Иначе слова загружаются из файла LEVELS_DIR/level.txt.
-    
-    Остальная логика (исключение уже изученных слов, использование остатка предыдущего дня и т.д.) остаётся прежней.
+    Генерирует или возвращает кэшированный список слов дня с учетом следующих правил.
+    Если chosen_set не задан, берется выбранный пользователем сет из глобального словаря,
+    а если пользователь не выбирал – используется основной набор из DEFAULT_SETS.
     """
+    # Локальный импорт для избежания циклического импорта
+    from handlers.settings import user_set_selection
+
     today = datetime.now().strftime("%Y-%m-%d")
     
     if force_reset:
@@ -61,16 +63,12 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             cached[4] == duration_hours and cached[5] == words_count and cached[6] == repetitions):
             return cached[1], cached[2]
         reset_daily_words_cache(chat_id)
+
+    # Определяем выбранный сет: если не передан, пробуем получить из глобального словаря, иначе основной из DEFAULT_SETS
+    if chosen_set is None:
+        chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
     
-    if selected_set:
-        filename = os.path.join(LEVELS_DIR, level, f"{selected_set}.txt")
-        if not os.path.exists(filename):
-            return None
-        with open(filename, encoding="utf-8") as f:
-            file_words = [line.strip() for line in f if line.strip()]
-    else:
-        file_words = load_words_for_level(level)
-    
+    file_words = load_words_for_set(level, chosen_set)
     if not file_words:
         return None
 
@@ -105,6 +103,6 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     user = crud.get_user(chat_id)
     user_tz = user[5] if user and len(user) > 5 and user[5] else "Europe/Moscow"
     times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
-    
+
     daily_words_cache[chat_id] = (today, repeated_messages, times, first_time, duration_hours, words_count, repetitions, user_tz, unique_words)
     return repeated_messages, times

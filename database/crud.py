@@ -1,4 +1,3 @@
-#database/crud.py
 from database.db import cursor, conn
 from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
 
@@ -13,7 +12,7 @@ def add_user(chat_id: int):
         conn.commit()
 
 def get_user(chat_id: int):
-    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users WHERE chat_id = ?", (chat_id,))
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
     return cursor.fetchone()
 
 def get_all_users():
@@ -62,3 +61,10 @@ def get_learned_words(chat_id: int):
     """
     cursor.execute("SELECT word, translation FROM learned_words WHERE chat_id = ?", (chat_id,))
     return cursor.fetchall()
+
+def clear_learned_words_for_user(chat_id: int):
+    """
+    Очищает таблицу выученных слов для указанного пользователя.
+    """
+    cursor.execute("DELETE FROM learned_words WHERE chat_id = ?", (chat_id,))
+    conn.commit()

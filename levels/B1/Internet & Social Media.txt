@@ -1,0 +1,92 @@
+internet – интернет
+website – веб-сайт
+webpage – веб-страница
+link – ссылка
+URL – URL
+browser – браузер
+search engine – поисковая система
+social media – социальные сети
+profile – профиль
+account – аккаунт
+username – имя пользователя
+password – пароль
+login – вход
+logout – выход
+post – публикация
+comment – комментарий
+like – лайк
+share – поделиться
+follow – подписаться
+friend request – запрос на дружбу
+message – сообщение
+direct message – личное сообщение
+timeline – лента
+feed – новостная лента
+update – обновление
+notification – уведомление
+tag – отмечать
+hashtag – хэштег
+trend – тренд
+viral – вирусный
+blog – блог
+vlog – видеоблог
+forum – форум
+community – сообщество
+network – сеть
+influencer – влиятельное лицо
+content – контент
+upload – загружать
+download – скачивать
+stream – транслировать
+podcast – подкаст
+platform – платформа
+privacy – конфиденциальность
+data – данные
+information – информация
+cyberbullying – кибербуллинг
+online safety – интернет-безопасность
+digital footprint – цифровой след
+meme – мем
+emoji – эмодзи
+reaction – реакция
+shareable – легко расшариваемый
+viral video – вирусное видео
+retweet – ретвит
+comment thread – цепочка комментариев
+online community – онлайн-сообщество
+virtual – виртуальный
+profile picture – фотография профиля
+cover photo – обложка
+newsfeed – новостная лента
+engagement rate – коэффициент вовлеченности
+content creator – создатель контента
+social networking – социальное общение
+cyber – кибер
+online forum – онлайн-форум
+digital trend – цифровой тренд
+privacy policy – политика конфиденциальности
+terms of service – условия обслуживания
+virtual reality – виртуальная реальность
+augmented reality – дополненная реальность
+gaming – игры
+streamer – стример
+user-generated content – контент, созданный пользователями
+online challenge – онлайн-вызов
+e-commerce – электронная коммерция
+digital marketing – цифровой маркетинг
+search engine optimization – оптимизация для поисковых систем
+analytics – аналитика
+ad – реклама
+advertisement – реклама
+sponsored – спонсированный
+click – клик
+retweet – ретвит (повтор, поэтому пропускаем – используем вместо этого «share post – поделиться публикацией»)
+share post – поделиться публикацией
+comment box – поле для комментариев
+live stream – прямая трансляция
+blog post – запись в блоге
+digital transformation – цифровая трансформация
+influencer marketing – маркетинг через лидеров мнений
+online challenge – повтор (уже использовано, поэтому заменяем на «viral challenge – вирусный челлендж»)
+viral challenge – вирусный челлендж
+content strategy – стратегия контента

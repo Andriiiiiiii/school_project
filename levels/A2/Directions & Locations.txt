@@ -1,0 +1,80 @@
+left – налево, левый
+right – направо, правый
+straight – прямо
+back – назад
+forward – вперед
+north – север
+south – юг
+east – восток
+west – запад
+map – карта
+route – маршрут
+road – дорога
+street – улица
+avenue – проспект
+intersection – перекрёсток
+corner – угол
+block – квартал
+distance – расстояние
+near – рядом
+far – далеко
+adjacent – смежный
+opposite – напротив
+between – между
+among – среди
+direction – направление
+turn – поворот
+crossroads – перекрёсток
+highway – шоссе
+lane – полоса
+bridge – мост
+tunnel – тоннель
+exit – выход
+entrance – вход
+sign – знак
+landmark – ориентир
+location – местоположение
+address – адрес
+street name – название улицы
+block number – номер квартала
+postal code – почтовый индекс
+GPS – GPS
+coordinate – координата
+map reading – чтение карты
+compass – компас
+satellite – спутник
+traffic – движение
+signal – сигнал
+guidepost – указатель
+direction sign – указатель направления
+path – тропинка
+trail – тропа
+route map – схема маршрута
+destination – пункт назначения
+way – путь
+crossing – переход
+pedestrian – пешеход
+highway exit – съезд с шоссе
+roundabout – кольцевая развязка
+ferry – паром
+station – станция
+terminal – терминал
+dock – док
+port – порт
+gateway – ворота
+vicinity – окрестность
+neighborhood – район
+area – область
+district – район
+suburb – пригород
+center – центр
+outskirts – окраина
+boundary – граница
+margin – край
+hub – центр
+locality – местность
+altitude – высота
+bearing – курс
+elevation – уровень (высота местности)
+orientation – ориентация
+position – положение

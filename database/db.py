@@ -1,4 +1,4 @@
-#database/db.py
+# database/db.py
 import sqlite3
 from config import DB_PATH
 
@@ -13,7 +13,8 @@ def init_db():
             words_per_day INTEGER DEFAULT 5,
             notifications INTEGER DEFAULT 10,
             reminder_time TEXT DEFAULT '09:00',
-            timezone TEXT DEFAULT 'Europe/Moscow'
+            timezone TEXT DEFAULT 'Europe/Moscow',
+            chosen_set TEXT DEFAULT ''
         )
     ''')
     cursor.execute('''
