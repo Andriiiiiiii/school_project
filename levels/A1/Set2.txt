@@ -1,10 +1,3 @@
-apple - яблоко  
-book - книга  
-car - машина, автомобиль  
-dog - собака  
-chair - стул  
-house - дом  
-table - стол  
 cat - кот, кошка  
 tree - дерево  
 water - вода  

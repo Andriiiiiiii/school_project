@@ -1,0 +1,4541 @@
+# bot.py
+# bot.py
+import logging
+from aiogram import Bot, Dispatcher, executor
+from config import BOT_TOKEN
+from services.scheduler import start_scheduler
+from handlers import register_handlers
+import asyncio
+
+logging.basicConfig(
+    level=logging.INFO,
+    filename="logs/bot.log",
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
+
+register_handlers(dp, bot)
+
+# Запускаем планировщик после старта event loop
+async def on_startup(dp):
+    loop = asyncio.get_running_loop()
+    start_scheduler(bot, loop)
+    logger.info("Бот запущен.")
+
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+
+
+# clear_learned_words.py
+# clear_learned_words.py
+from database.db import conn, cursor
+
+def clear_learned_words():
+    cursor.execute("DELETE FROM learned_words")
+    conn.commit()
+    print("Таблица learned_words очищена.")
+
+if __name__ == '__main__':
+    clear_learned_words()
+
+
+# config.py
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Загружает переменные из файла .env
+
+BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_DEFAULT_TOKEN")
+DB_PATH = os.getenv("DB_PATH", "bot.db")
+LEVELS_DIR = os.getenv("LEVELS_DIR", "levels")
+REMINDER_DEFAULT = os.getenv("REMINDER_DEFAULT", "09:00:00")
+REMINDER_START = os.getenv("REMINDER_START", "10:00")  # Формат "HH:MM" или "HH:MM:SS"
+DURATION_HOURS = float(os.getenv("DURATION_HOURS", 10))
+DEFAULT_WORDS_PER_DAY = int(os.getenv("DEFAULT_WORDS_PER_DAY", 5))
+DEFAULT_REPETITIONS = int(os.getenv("DEFAULT_REPETITIONS", 3))
+SERVER_TIMEZONE = os.getenv("SERVER_TIMEZONE", "UTC")
+# Новая переменная для времени сброса списка слов дня (например, "00:00" или любое другое время для теста)
+DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
+
+
+# nohup.out
+nohup: ignoring input
+
+
+# bot.db
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xe8 in position 27: invalid continuation byte
+
+# catch_all_files.py
+import os
+
+def read_files(root_dir):
+    for subdir, dirs, files in os.walk(root_dir):
+        for file in files:
+            file_path = os.path.join(subdir, file)
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+            except Exception as e:
+                content = f"Не удалось прочитать файл: {e}"
+            # Выводим комментарий с названием файла перед кодом
+            print(f"# {file}\n{content}\n")
+
+if __name__ == '__main__':
+    directory = '.'
+    read_files(directory)
+
+
+# clear_my_profile.py
+# clear_my_profile.py
+from database.db import conn, cursor
+
+def clear_my_profile(chat_id):
+    cursor.execute("DELETE FROM users WHERE chat_id = ?", (chat_id,))
+    cursor.execute("DELETE FROM dictionary WHERE chat_id = ?", (chat_id,))
+    cursor.execute("DELETE FROM learned_words WHERE chat_id = ?", (chat_id,))
+    conn.commit()
+    print(f"Профиль пользователя с chat_id {chat_id} успешно удалён.")
+
+if __name__ == '__main__':
+    # Замените YOUR_CHAT_ID на ваш фактический chat_id (число)
+    my_chat_id = 1999873173 
+    clear_my_profile(my_chat_id)
+
+
+# .gitignore
+__pycache__/
+*.pyc
+bot.db
+logs/
+
+
+
+# requirements.txt
+aiogram==2.25.1
+APScheduler==3.11.0
+gTTS==2.5.4
+python-dotenv==1.0.0
+
+
+# .env
+BOT_TOKEN=7547890500:AAGd8LSO_Q6avt1BvU8KIhv8dPEsAAzw6cA
+DB_PATH=bot.db
+LEVELS_DIR=levels
+REMINDER_DEFAULT=09:00
+
+
+
+
+# alter_db.py
+# alter_db.py
+from database.db import conn, cursor
+
+def add_timezone_column():
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN timezone TEXT DEFAULT 'Europe/Moscow'")
+        conn.commit()
+        print("Столбец 'timezone' успешно добавлен.")
+    except Exception as e:
+        print("Ошибка при добавлении столбца:", e)
+
+if __name__ == '__main__':
+    add_timezone_column()
+
+
+# to_gpt.txt
+
+
+# README.md
+
+
+# clear_cache.py
+# clear_user_cache.py
+from utils.helpers import daily_words_cache
+
+def clear_user_cache(chat_id):
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+        print(f"Кэш для пользователя {chat_id} очищен.")
+    else:
+        print(f"Для пользователя {chat_id} кэш не найден.")
+
+if __name__ == '__main__':
+    my_chat_id = 1999873173   # замените на нужный chat_id
+    clear_user_cache(my_chat_id)
+
+
+# C2.txt
+abstruse - трудный для понимания  
+acquiescence - молчаливое согласие  
+adumbrate - предвещать, намечать в общих чертах  
+anachronistic - устаревший, неуместный во времени  
+apocryphal - недостоверный, сомнительный  
+assiduity - усердие, прилежание  
+blandishment - лесть, угодничество  
+bombastic - напыщенный, высокопарный  
+cacophony - какофония, неприятное сочетание звуков  
+cogitation - размышление, обдумывание  
+concatenation - последовательность, цепочка событий  
+contumacious - непокорный, упрямый  
+conundrum - загадка, головоломка  
+corpulent - тучный, полный  
+credulity - доверчивость, легковерие  
+deleterious - вредный, пагубный  
+desultory - несвязный, беспорядочный  
+diaphanous - прозрачный, просвечивающий  
+diffident - застенчивый, неуверенный  
+effulgent - сверкающий, сияющий  
+ephemeral - мимолетный, недолговечный  
+equanimity - хладнокровие, невозмутимость  
+expatiate - распространяться в рассуждениях  
+expropriate - конфисковать, экспроприировать  
+grandiloquent - напыщенный, высокопарный  
+histrionic - театральный, наигранный  
+impecunious - безденежный, бедный  
+inchoate - зачаточный, неразвитый  
+inexorable - неумолимый, непреклонный  
+insouciance - беззаботность, беспечность  
+lachrymose - плаксивый, слезливый  
+languid - вялый, томный  
+malfeasance - должностное преступление  
+meretricious - показной, фальшивый  
+munificent - щедрый, великодушный  
+nadir - низшая точка, упадок  
+nefarious - гнусный, мерзкий  
+obsequious - угодливый, подобострастный  
+pellucid - прозрачный, ясный  
+peremptory - властный, безапелляционный  
+acumen – проницательность, смекалка
+admonitory – предостерегающий
+afflatus – внезапное озарение, вдохновение
+agglomeration – скопление, сгущение
+amalgamate – объединять, смешивать
+ambivalence – двойственность, неопределённость
+amenable – восприимчивый, покорный
+anodyne – обезболивающее, успокаивающее
+anomie – аномия, отсутствие социальных норм
+antipathy – антипатия, отвращение
+antiquated – устаревший, архаичный
+antithetical – противоположный, антагонистичный
+aperture – отверстие, щель
+approbation – одобрение, признание
+arcane – тайный, загадочный
+arrogate – присваивать себе, узурпировать
+ascetic – аскетичный, воздержанный
+aspersion – клевета, порочащие высказывания
+atypical – нетипичный, необычный
+avarice – жадность, скупость
+aver – утверждать, заявлять
+baleful – зловещий, угрожающий
+beatific – блаженный, радостный
+belie – опровергать, искажать
+beneficent – благотворительный, доброжелательный
+benign – доброкачественный, безвредный
+bifurcate – раздваиваться, расходиться
+bilk – обманывать, мошенничать
+bourgeoisie – буржуазия, зажиточное сословие
+bridle – сдерживать, обуздывать
+bucolic – пасторальный, сельский
+burgeon – стремительно расти, разрастаться
+calumniate – клеветать, очернять
+camaraderie – товарищество, дружеская сплочённость
+candor – откровенность, прямота
+capitulation – капитуляция, сдача
+cardinal – основной, первостепенный; кардинальный
+censure – осуждать, порицать
+circumscribe – ограничивать, очерчивать
+circumlocution – эвфемизм, обходное выражение
+circumvention – обход, уклонение
+clamor – шум, вопль
+clarion – ясный, звонкий
+clemency – снисхождение, милосердие
+coda – заключительная часть, финал
+cognizance – осведомлённость, знание
+compendium – краткое изложение, сборник
+complaisance – уступчивость, услужливость
+conflagration – пожарище, крупный пожар
+congenital – врождённый, прирождённый
+connivance – потворство, сговор
+consecrate – освящать, посвящать
+consort – общаться, сопровождать
+constituent – составляющая часть, компонент
+contiguous – смежный, прилегающий
+convergence – схождение, сближение
+conviviality – весёлость, общительность
+corroboration – подтверждение, подкрепление
+cosmopolitan – космополитичный, всемирный
+covetous – жадный, алчный
+crass – грубый, невоспитанный
+credence – доверие, вера
+crestfallen – подавленный, разочарованный
+crux – суть, основной момент
+culpability – виновность, ответственность
+cumbrous – громоздкий, неудобный
+curmudgeon – сварливый, ворчливый человек
+debility – немощь, слабость
+debonair – обаятельный, утончённый
+decadence – упадок, декаданс
+decorum – приличие, благоразумие
+decrepitude – старость, ветхость
+defalcation – растрата, хищение
+defenestration – выбрасывание из окна
+demarcation – разграничение, разделение
+demur – возражать, воздерживаться
+denouement – развязка, итог
+dereliction – халатность, бездействие
+desideratum – необходимое условие, требуемое
+deteriorate – ухудшаться, разлагаться
+didactic – поучительный, наставнический
+disabuse – избавлять от заблуждений
+discerning – проницательный, разборчивый
+discomposure – растерянность, смущение
+disconsolate – безутешный, подавленный
+discrepancy – несоответствие, расхождение
+disdain – презрение, пренебрежение
+disparage – унижать, принижать
+dispassionate – объективный, бесстрастный
+disquisition – трактат, подробное изложение
+dissolution – распад, растворение
+dissonant – несогласный, дисгармоничный
+divagation – отклонение, блуждание
+divestiture – отчуждение, продажа части активов
+dolorous – печальный, скорбный
+doltish – тупой, неразумный
+ebullience – кипучесть, жизнерадостность
+eccentricity – эксцентричность, своеобразие
+eclecticism – эклектизм, смешение стилей
+edification – наставление, просвещение
+efficacy – эффективность, действенность
+elocution – красноречие, дикция
+elucidation – разъяснение, толкование
+emendation – исправление, редактура
+empowerment – наделение полномочиями
+encomium – восхваление, панегирик
+encumbrance – обременение, помеха
+endemic – эндемичный, присущий
+enervating – изнуряющий, ослабляющий
+enfranchise – наделять избирательным правом
+enjoin – предписывать, приказывать
+enmity – вражда, неприязнь
+ennoble – возвышать, благородить
+entreat – умолять, настоятельно просить
+entrenched – укоренившийся, устоявшийся
+epistolary – относящийся к письмам
+errant – заблудший, ошибочный
+erstwhile – бывший, прежний
+espouse – поддерживать, отстаивать
+ethereal – неземной, воздушный
+eulogy – панегирик, хвалебная речь
+exaction – вымогательство, чрезмерный сбор
+exegesis – толкование, анализ (текста)
+exigent – неотложный, настоятельный
+expediency – целесообразность, прагматизм
+expurgation – цензура, вырезание непристойного
+extemporaneous – импровизированный, экспромтный
+extrapolate – экстраполировать, делать вывод
+fastidious – привередливый, дотошный
+fecund – плодородный, плодовитый
+felicitous – удачный, уместный
+ferret – выискивать, выслеживать
+fervor – пыл, жар
+fetid – зловонный, гнилой
+flummox – ставить в тупик, сбивать с толку
+foment – разжигать, подстрекать
+foreboding – предчувствие, мрачное предзнаменование
+forensic – судебный, криминалистический
+fractious – сварливый, капризный
+fructify – приносить плод, обогащать
+fulsome – чрезмерный, избыточный (в отрицательном смысле)
+fungible – взаимозаменяемый
+gainsay – отрицать, противоречить
+galvanize – побуждать, стимулировать
+gambol – скакать, резвиться
+garish – кричащий, вычурный
+gauche – неуклюжий, неотесанный
+germane – уместный, соответствующий
+glib – поверхностный, болтливый
+grandiose – грандиозный, великолепный
+guile – хитрость, коварство
+gustatory – вкусовой, относящийся ко вкусу
+halcyon – безмятежный, спокойный
+harangue – тирада, разглагольствование
+heinous – отвратительный, подлый
+hermetic – герметичный, закрытый
+heterodox – инакомыслящий, нетрадиционный
+histrionics – театральность, наигранность
+homily – нравоучительная речь, поучение
+iconoclast – иконоборец, критик традиций
+idiosyncrasy – особенность, идиосинкразия
+ignominious – позорный, бесчестный
+illicit – незаконный, запретный
+imago – образ, идеал
+imbroglio – путаница, запутанная ситуация
+impetrate – добиться, заполучить
+implacable – неумолимый, непримиримый
+imprecation – проклятие, заклинание
+impugn – оспаривать, опровергать
+inadvertent – непреднамеренный, случайный
+incarnadine – кровавый, алый
+incisive – резкий, проницательный
+incongruity – несуразность, несоответствие
+incontrovertible – неопровержимый, неоспоримый
+incorrigible – неисправимый, неподдающийся исправлению
+indefatigable – неутомимый, неустанный
+indelible – неизгладимый, несмываемый
+indigent – нуждающийся, бедный
+indomitable – неукротимый, непобедимый
+ineffable – невыразимый, непередаваемый
+inextricable – неразрешимый, неразделимый
+ingratiate – льстить, угождать
+inimical – враждебный, неблагоприятный
+inimitable – неподражаемый, уникальный
+inscrutable – непостижимый, загадочный
+insolent – дерзкий, наглый
+instigate – подстрекать, возбуждать
+insuperable – непреодолимый, неодолимый
+intimation – намёк, указание
+intractable – упрямый, неуправляемый
+internecine – губительный, взаиморастворяющийся
+interregnum – межправление, перерыв в управлении
+intransigent – непримиримый, упрямый
+inundate – затоплять, переполнять
+inure – приучать, привыкать
+invective – брань, оскорбления
+inveigh – яростно осуждать, критиковать
+invidious – неблагоприятный, вызывающий зависть
+irascible – раздражительный, вспыльчивый
+irrefragable – неопровержимый, несомненный
+irrevocable – безотзывный, окончательный
+itinerant – кочующий, странствующий
+jejune – банальный, скучный
+jocular – шутливый, остроумный
+judicious – благоразумный, рассудительный
+juncture – переломный момент, стык
+kaleidoscopic – калейдоскопический, многообразный
+lambent – мерцающий, мягко сияющий
+lassitude – вялость, апатия
+latent – скрытый, латентный
+lecherous – похотливый, распутный
+liberality – щедрость, великодушие
+limpid – прозрачный, ясный
+lionize – превозносить, прославлять
+litigious – судебный, конфликтный
+loquacity – многословие, болтливость
+lucid – ясный, понятный
+lurid – кричащий, яркий (иногда мрачный)
+magniloquent – высокопарный, напыщенный
+mawkish – приторно-сентиментальный, надутый
+mellifluous – сладкозвучный, мелодичный
+mendacious – лживый, неправдивый
+mercurial – изменчивый, непостоянный
+metamorphosis – превращение, метаморфоза
+meticulous – скрупулёзный, дотошный
+milieu – окружение, среда
+minatory – угрожающий, пугающий
+miscreant – преступник, негодяй
+misanthrope – человеконенавистник, мизантроп
+miscreance – неверие, сомнение
+modicum – капля, малая мера
+molest – беспокоить, изводить
+monolithic – монолитный, цельный
+monomania – навязчивая идея, мания
+moribund – умирающий, гибнущий
+mordant – едкий, колкий
+multifarious – многообразный, разнообразный
+munificence – великодушие, щедрость
+nascent – зарождающийся, начинающий
+nebulous – туманный, неясный
+nemesis – возмездие, наказание
+neophyte – новичок, неопытный
+noisome – зловонный, противный
+nonplussed – озадаченный, растерянный
+obdurate – непреклонный, упрямый
+obfuscation – запутывание, помутнение
+oblivion – забвение, небытие
+obloquy – порицание, осуждение
+obstreperous – неуправляемый, буйный
+obtuse – тупой, невежественный
+occult – оккультный, скрытый
+odious – отвратительный, ненавистный
+officious – самонадеянный, назойливый
+omniscient – всеведущий
+onus – бремя, обязанность
+opprobrium – позор, порицание
+oscillate – колебаться, качаться
+ostensible – кажущийся, предположительный
+palliate – смягчать, облегчать
+palpable – осязаемый, явный
+panegyric – хвалебная речь, восхваление
+paradoxical – парадоксальный
+paragon – эталон, образец
+pariah – изгой, отверженный
+parsimonious – скупой, бережливый
+partisan – предвзятый, сторонник
+paucity – недостаток, скудость
+pejorative – уничижительный, негативный
+penurious – бедный, скупердяй
+perfidious – вероломный, предательский
+perspicacity – проницательность, остроумие
+pertinacity – упорство, настойчивость
+peruse – тщательно изучать, вникать
+pervasive – всепроникающий, распространённый
+picaresque – пикарескный, приключенческий
+pithy – ёмкий, содержательный
+placidity – спокойствие, умиротворённость
+plangent – звучный, резонансный
+platitude – банальность, банальное высказывание
+plethora – избыток, множество
+plutocracy – власть денег, олигархия
+politic – благоразумный, рассудительный
+porcine – свиной, грубый
+posit – предполагать, утверждать
+postulate – постулировать, выдвигать гипотезу
+prandial – относящийся к приёму пищи
+preclude – исключать, предотвращать
+preeminent – выдающийся, превосходящий
+premonition – предчувствие, предзнаменование
+preponderance – преобладание, превосходство
+prescience – прозорливость, предвидение
+prevaricate – уклоняться от правды, лукавить
+primordial – первобытный, изначальный
+probity – честность, добродетель
+procure – приобретать, добывать
+profligate – расточительный, разгульный
+progeny – потомство, порождение
+prolixity – многословие, избыточность
+propitiate – умиротворять, усмирять
+propound – выдвигать, предлагать
+prosaic – прозаичный, обыденный
+provident – предусмотрительный, экономный
+provincial – провинциальный, ограниченный
+puerile – инфантильный, детский
+pulchritude – красота, прелесть
+punctilious – педантичный, скрупулёзный
+pyrrhic – пиррова победа (с победой, обернувшейся большими потерями)
+quandary – дилемма, затруднительное положение
+querulous – ворчливый, жалобный
+quiescent – бездействующий, спокойный
+quotidian – обыденный, ежедневный
+raconteur – рассказчик, байочник
+rapprochement – сближение, налаживание отношений
+rarefied – разреженный, утончённый
+rebuke – упрекать, отчитывать
+recant – отрекаться, отказываться
+recondite – сокровенный, трудный для понимания
+redoubtable – устрашающий, внушительный
+refulgent – сияющий, блестящий
+remonstrance – протест, возражение
+renunciation – отречение, отказ
+reparation – компенсация, возмещение
+reprobation – осуждение, порицание
+resilient – упругий, жизнестойкий
+resplendent – ослепительный, великолепный
+reticence – сдержанность, молчаливость
+reverberate – отдаваться эхом, резонировать
+rhapsodic – восторженный, экстатичный
+ribald – грубый, непристойный
+rife – изобильный, распространённый
+ruminate – обдумывать, переваривать (в уме)
+salacious – похотливый, непристойный
+sangfroid – хладнокровие, самообладание
+saturnine – мрачный, угрюмый
+scintilla – искра, крошечная частица
+scurrilous – клеветнический, грязный
+sedulous – усердный, старательный
+semaphore – семафор, сигнал
+sentient – чувствующий, осознающий
+solicitous – заботливый, внимательный
+somatic – телесный, соматический
+sonorous – звучный, благозвучный
+sordid – грязный, подлый
+stalwart – стойкий, надёжный
+strident – резкий, пронзительный
+stricture – ограничение, порицание
+subjugation – порабощение, подчинение
+subterfuge – уловка, оправдание
+sublime – возвышенный, великолепный
+subservience – раболепие, покорность
+substantiate – подтверждать, обосновывать
+supplant – заменять, вытеснять
+surfeit – избыток, переизбыток
+sybaritic – распущенный, склонный к роскоши
+sylvan – лесной, пасторальный
+tacit – молчаливый, негласный
+tangential – побочный, несущественный
+temerity – безрассудство, дерзость
+tenebrous – мрачный, темный
+timorous – робкий, боязливый
+torpor – оцепенение, апатия
+tractable – послушный, управляемый
+transcendental – возвышенный, трансцендентальный
+transmutation – превращение, преобразование
+trenchant – острый, резкий
+trenchantness – острота, резкость
+tumultuous – бурный, хаотичный
+unceremonious – неофициальный, грубый
+usurious – ростовщический, свыщенный
+uxorious – чрезмерно любящий свою жену
+vacuous – пустой, бессодержательный
+venial – прощаемый (о грехах), незначительный
+verbatim – дословно, точно
+veracious – правдивый, достоверный
+verisimilar – правдоподобный
+vicissitudinous – переменчивый, изменчивый
+vindictive – мстительный, злопамятный
+virtuosic – виртуозный, мастерский
+visceral – интуитивный, органичный
+vitriolic – едкий, колкий
+wanton – бессмысленный, злонамеренный
+winsome – обаятельный, привлекательный
+wistfulness – тоскливость, печаль
+xenial – гостеприимный, дружелюбный
+xeniality – гостеприимство
+yare – подвижный, ловкий
+zealousness – рьяность, усердие
+zenith – зенит, апогей
+
+
+# B1.txt
+accountant - бухгалтер  
+achievement - достижение  
+advertise - рекламировать  
+agreement - соглашение, договор  
+agriculture - сельское хозяйство  
+alarm - тревога, сигнализация  
+ambition - амбиция, стремление  
+analyze - анализировать  
+announcement - объявление  
+anxiety - тревога, беспокойство  
+architect - архитектор  
+article - статья, артикль  
+assistant - ассистент, помощник  
+atmosphere - атмосфера  
+audience - аудитория, зрители  
+backpack - рюкзак  
+balance - баланс, равновесие  
+behavior - поведение  
+bilingual - двуязычный  
+biography - биография  
+brand - бренд, марка  
+budget - бюджет  
+candidate - кандидат  
+carbohydrate - углевод  
+carnival - карнавал  
+cashier - кассир  
+ceremony - церемония  
+chemistry - химия  
+climate - климат  
+colleague - коллега  
+communicate - общаться  
+comparison - сравнение  
+competition - соревнование, конкуренция  
+complain - жаловаться  
+concentrate - концентрироваться  
+confident - уверенный  
+confirm - подтверждать  
+consequence - последствие  
+considerable - значительный  
+construction - строительство  
+consumer - потребитель  
+contribution - вклад  
+convenience - удобство  
+cooperation - сотрудничество  
+corporate - корпоративный  
+creativity - креативность, творчество  
+critic - критик  
+cultural - культурный  
+currency - валюта  
+deadline - крайний срок, дедлайн  
+decade - десятилетие  
+decoration - украшение, декор  
+democracy - демократия  
+destination - пункт назначения  
+determination - решительность, целеустремленность  
+development - развитие  
+difference - разница, отличие  
+disability - инвалидность, неспособность  
+discount - скидка  
+discrimination - дискриминация  
+documentary - документальный фильм  
+donation - пожертвование  
+earthquake - землетрясение  
+efficiency - эффективность  
+election - выборы  
+electronic - электронный  
+emergency - чрезвычайная ситуация, экстренный случай  
+employment - занятость, трудоустройство  
+encourage - поощрять, вдохновлять  
+engagement - помолвка, обязательство  
+entertainment - развлечение  
+entrepreneur - предприниматель  
+environment - окружающая среда  
+essential - важный, необходимый  
+establish - устанавливать, основывать  
+estimate - оценивать  
+evidence - доказательство  
+evolution - эволюция  
+examine - исследовать, проверять  
+exchange - обмен  
+exhibition - выставка  
+experiment - эксперимент  
+exploration - исследование  
+expression - выражение  
+facilities - удобства, оборудование  
+failure - неудача, провал  
+finance - финансы  
+flexible - гибкий  
+foundation - основание, фундамент  
+generation - поколение  
+government - правительство  
+graduation - выпускной  
+guarantee - гарантия  
+household - домохозяйство, бытовой  
+hurricane - ураган  
+identity - личность, идентичность  
+immigration - иммиграция  
+impression - впечатление  
+improvement - улучшение  
+independence - независимость  
+individual - индивидуальный, личность
+industrial - промышленный
+influence - влияние
+informative - информативный
+injury - травма, повреждение
+inspiration - вдохновение
+instruction - инструкция, руководство
+intellectual - интеллектуальный
+intention - намерение
+interaction - взаимодействие
+investment - инвестиция
+invisible - невидимый
+involvement - участие, вовлеченность
+journalism - журналистика
+justice - справедливость
+landscape - пейзаж
+leadership - руководство, лидерство
+leisure - досуг, свободное время
+license - лицензия
+limitation - ограничение
+location - местоположение
+logical - логичный
+luxury - роскошь
+management - управление
+manufacturer - производитель
+marathon - марафон
+marketing - маркетинг
+maximum - максимум
+mechanism - механизм
+membership - членство
+mentality - менталитет
+minimum - минимум
+minority - меньшинство
+motivation - мотивация
+narrative - повествование
+negotiation - переговоры
+network - сеть
+nomination - номинация
+obligation - обязательство
+observation - наблюдение
+obstacle - препятствие
+occupation - профессия, занятие
+opponent - противник, оппонент
+opportunity - возможность
+optimistic - оптимистичный
+originality - оригинальность
+outcome - результат, исход
+outdoor - уличный, наружный
+output - выход, продукция
+overall - общий, в целом
+overcome - преодолевать
+partnership - партнёрство
+patience - терпение
+payment - оплата
+performance - производительность, выступление
+permanent - постоянный
+permission - разрешение
+personality - личность, характер
+perspective - перспектива
+phenomenon - явление
+pollution - загрязнение
+popularity - популярность
+portion - порция
+possession - владение, имущество
+potential - потенциал
+precaution - предосторожность
+prediction - предсказание
+preparation - подготовка
+prescription - рецепт (медицинский)
+presentation - презентация
+preservation - сохранение
+priority - приоритет
+probability - вероятность
+procedure - процедура
+processing - обработка
+profession - профессия
+progress - прогресс
+promotion - продвижение
+protection - защита
+publication - публикация
+qualification - квалификация
+recognition - признание
+recommendation - рекомендация
+recovery - восстановление
+reduction - сокращение, уменьшение
+reflection - отражение
+reform - реформа
+rejection - отказ
+relationship - отношения
+reliability - надежность
+reputation - репутация
+requirement - требование
+reservation - бронь, резервирование
+residential - жилой
+resolution - решение (задачи, конфликта)
+resource - ресурс
+restriction - ограничение
+retirement - выход на пенсию
+revolution - революция
+risky - рискованный
+satisfaction - удовлетворение
+schedule - расписание
+selection - отбор, выбор
+sensation - ощущение
+sensitivity - чувствительность
+separation - разделение
+session - сессия, заседание
+significance - значимость
+similarity - сходство
+situation - ситуация
+skilled - опытный, квалифицированный
+sociable - общительный
+solution - решение
+sponsorship - спонсорство
+stability - стабильность
+statistics - статистика
+strategy - стратегия
+structure - структура
+suitable - подходящий
+supervision - надзор, контроль
+supply - поставка, снабжение
+survival - выживание
+suspicion - подозрение
+symbolic - символический
+technical - технический
+technique - техника, метод
+technology - технология
+tendency - тенденция
+tournament - турнир
+tradition - традиция
+transaction - сделка, транзакция
+transformation - трансформация
+translation - перевод
+transportation - транспортировка
+trend - тренд, тенденция
+trustworthy - заслуживающий доверия
+unemployment - безработица
+unexpected - неожиданный
+unique - уникальный
+universal - универсальный
+urban - городской
+valuable - ценный
+variation - вариация, изменение
+visibility - видимость
+volunteer - волонтер
+vulnerable - уязвимый
+widespread - широко распространенный
+workshop - мастерская, семинар
+worthwhile - стоящий, заслуживающий внимания
+
+# C1.txt
+aberration - отклонение, аномалия  
+acquiesce - уступать, молчаливо соглашаться  
+adversity - невзгоды, трудности  
+altruism - альтруизм, бескорыстие  
+ameliorate - улучшать, исправлять  
+anachronism - анахронизм, нечто устаревшее  
+anecdotal - анекдотичный, неподтвержденный  
+antagonistic - враждебный, противоборствующий  
+arbitrary - произвольный, случайный  
+articulation - формулировка, четкость речи  
+ascertain - выяснять, удостоверяться  
+assiduous - усердный, прилежный  
+asymmetrical - асимметричный  
+audacity - дерзость, смелость  
+belittle - принижать, умалять  
+benevolent - благожелательный, великодушный  
+boisterous - шумный, бурный  
+brevity - краткость, лаконичность  
+candid - откровенный, искренний  
+capricious - капризный, непредсказуемый  
+circumvent - обходить, перехитрить  
+clandestine - тайный, секретный  
+coherent - связный, логичный  
+collusion - сговор  
+commensurate - соразмерный, соответствующий  
+compelling - убедительный, захватывающий  
+complacent - самодовольный  
+conjecture - догадка, предположение  
+conspicuous - заметный, очевидный  
+contentious - спорный, конфликтный  
+contrived - надуманный, неестественный  
+corroborate - подтверждать, подкреплять  
+credulous - доверчивый  
+culpable - виновный  
+cursory - беглый, поверхностный  
+debilitate - ослаблять  
+delineate - очерчивать, описывать  
+denigrate - клеветать, очернять  
+deprecate - осуждать, протестовать  
+despondent - унылый, подавленный  
+dichotomy - дихотомия, разделение на две части  
+discretionary - дискреционный, произвольный  
+disingenuous - неискренний, лукавый  
+disparity - неравенство, разница  
+disseminate - распространять (информацию)  
+divulge - разглашать, раскрывать  
+egregious - вопиющий, очевидно плохой  
+elucidate - разъяснять, объяснять  
+emphatic - выразительный, подчеркнутый  
+encompass - охватывать, включать  
+ephemeral - мимолетный, недолговечный  
+equivocate - увиливать, говорить двусмысленно  
+esoteric - эзотерический, тайный  
+exonerate - оправдывать, освобождать от вины  
+expedient - целесообразный, выгодный  
+facilitate - облегчать, способствовать  
+fallacy - заблуждение, логическая ошибка  
+fickle - непостоянный, изменчивый  
+garrulous - болтливый  
+gregarious - общительный, стадный  
+hackneyed - банальный, избитый  
+hedonistic - гедонистический, любящий удовольствия  
+impetuous - импульсивный, поспешный  
+incongruous - неуместный, нелогичный  
+insidious - коварный, скрытый  
+juxtaposition - сопоставление  
+loquacious - говорливый, болтливый  
+magnanimous - великодушный  
+mitigate - смягчать, уменьшать  
+obfuscate - запутывать, затруднять понимание  
+ostentatious - показной, хвастливый  
+perfunctory - поверхностный, небрежный  
+pernicious - пагубный, вредный  
+placate - успокаивать, умиротворять  
+pragmatic - прагматичный  
+quintessential - квинтэссенция, наиболее типичный  
+recalcitrant - непокорный, упрямый  
+reiterate - повторять, напоминать  
+repudiate - отрекаться, отвергать  
+sagacious - проницательный, мудрый  
+satiate - насыщать, удовлетворять  
+superfluous - избыточный, ненужный  
+taciturn - молчаливый, неразговорчивый  
+tangential - косвенный, несущественный  
+tenacious - упорный, настойчивый  
+transient - временный, кратковременный  
+ubiquitous - вездесущий, повсеместный  
+verbose - многословный  
+vindicate - оправдывать, доказывать правоту  
+voracious - ненасытный, жадный  
+zealous - рьяный, усердный  
+abate – ослаблять, уменьшать
+aberrant – отклоняющийся от нормы
+abhor – питать отвращение, ненавидеть
+absolve – освобождать от ответственности, прощать
+abstruse – трудный для понимания, заумный
+accretion – увеличение, прирост
+adamant – непреклонный, твердый
+adulation – лесть, подхалимство
+adversarial – состязательный, противоборствующий
+affinity – близость, родство
+aggrandize – возвеличивать, усиливать
+alacrity – готовность, рвение
+alleviation – облегчение, смягчение
+allusion – намек, отсылка
+amorphous – бесформенный, аморфный
+analogous – аналогичный, схожий
+anathema – проклятие, отлучение
+animus – враждебность, предвзятость
+anomalous – аномальный, необычный
+apocryphal – сомнительный, недостоверный
+apposite – уместный, подходящий
+apprise – извещать, информировать
+archetype – архетип, оригинал
+arduous – трудный, изнурительный
+assail – нападать, критиковать
+assimilation – ассимиляция, усвоение
+attenuate – ослаблять, истощать
+aversion – отвращение, антипатия
+axiomatic – самоочевидный
+banal – банальный, избитый
+bastion – бастион, оплот
+bellicose – воинственный, агрессивный
+beneficence – благодеяние, доброта
+boon – благо, преимущество
+bourgeois – буржуазный, мещанский
+brazen – наглый, бесстыдный
+brevity – краткость
+broach – поднять (тему, вопрос)
+burgeoning – стремительно растущий
+burnish – полировать, доводить до блеска
+cacophony – какофония, резкие звуки
+callous – бессердечный, черствый
+candidacy – кандидатура
+capitulate – капитулировать, сдаваться
+captious – придирчивый, каверзный
+carping – брюзжание, придирки
+castigate – подвергать резкой критике
+catalyst – катализатор, движущая сила
+catharsis – катарсис, очищение
+caustic – едкий, язвительный
+celerity – быстрота, скорость
+chagrin – досада, огорчение
+charlatan – шарлатан, обманщик
+chicanery – махинации, уловки
+circumspect – осмотрительный, осторожный
+circumvent – обойти, перехитрить
+clamorous – шумный, крикливый
+clandestine – тайный, скрытый
+coalesce – сливаться, объединяться
+coercion – принуждение, давление
+cogent – убедительный, веский
+cognizant – осведомленный, знающий
+commensurate – соразмерный, соответствующий
+complacency – самодовольство
+complementary – дополняющий, дополнительный
+complicity – соучастие, причастность
+conciliatory – примирительный
+concomitant – сопутствующий, сопровождающий
+confluence – слияние, пересечение
+congenial – близкий по духу, приятный
+conjectural – предположительный
+connote – подразумевать, означать
+consign – передавать, поручать
+consternation – ужас, оцепенение
+contention – спор, разногласие
+contingency – случайность, непредвиденные обстоятельства
+contravene – нарушать, преступать
+conundrum – загадка, головоломка
+convivial – компанейский, жизнерадостный
+corollary – следствие, вывод
+coterie – узкий круг, группа
+credulity – доверчивость
+cryptic – загадочный, таинственный
+culmination – кульминация, вершина
+cupidity – алчность, жадность
+curtail – урезать, сокращать
+cynosure – центр внимания
+dearth – нехватка, недостаток
+debacle – провал, катастрофа
+debunk – разоблачать, развенчивать
+deference – почтительное отношение
+deleterious – вредный, пагубный
+demagogue – демагог
+denizen – житель, обитатель
+depredation – разорение, грабеж
+desiccate – высушивать, иссушать
+despotism – деспотизм, тирания
+diaphanous – прозрачный, тонкий
+diatribe – резкая критика, обличительная речь
+dichotomy – разделение, дихотомия
+diffidence – неуверенность в себе
+dilatory – медлительный, оттягивающий
+dirge – погребальная песнь
+discomfit – приводить в замешательство
+disparate – несопоставимый, различный
+dissension – разногласие, распря
+dissonance – диссонанс, несогласие
+divest – лишать, отнимать
+docile – послушный, покорный
+dogmatic – догматичный, категоричный
+dormant – дремлющий, бездействующий
+duplicity – двуличность, лживость
+ebullient – полный энтузиазма
+eclectic – эклектичный, разносторонний
+effrontery – наглость, нахальство
+embroil – впутывать, вовлекать
+emollient – смягчающий
+empirical – эмпирический, основанный на опыте
+enervate – обессиливать, ослаблять
+ennui – скука, апатия
+epitome – воплощение, олицетворение
+eponymous – одноименный
+equivocal – двусмысленный
+ersatz – суррогатный, заменяющий
+eschew – избегать, сторониться
+evanescent – мимолетный, эфемерный
+exculpate – оправдывать, освобождать от вины
+execrate – проклинать, ненавидеть
+expurgate – очищать от непристойного
+extant – сохранившийся
+facetious – шутливый, остроумный
+factitious – искусственный, поддельный
+fatuous – глупый, бессмысленный
+feckless – беспомощный, безответственный
+florid – вычурный, красочный
+forbearance – терпение, выдержка
+fulminate – резко осуждать
+
+# B2.txt
+abolish - отменять, упразднять  
+accelerate - ускорять  
+accompany - сопровождать  
+accomplish - выполнять, достигать  
+accountability - ответственность, подотчетность  
+accumulate - накапливать  
+acknowledge - признавать, подтверждать  
+activate - активировать  
+adaptation - адаптация, приспособление  
+administer - управлять, осуществлять  
+advocate - защищать, выступать в поддержку  
+affordable - доступный (по цене)  
+aggression - агрессия  
+algorithm - алгоритм  
+alleviate - облегчать, смягчать  
+ambiguous - двусмысленный, неопределенный  
+analyze - анализировать  
+anticipate - предвидеть, ожидать  
+appliance - прибор, устройство  
+articulate - четко выражать, формулировать  
+aspiration - стремление, устремление  
+assessment - оценка  
+assumption - предположение  
+astonishing - удивительный, поразительный  
+authenticity - подлинность, аутентичность  
+awareness - осознание, осведомленность  
+barrier - барьер, преграда  
+beneficiary - получатель выгоды, бенефициар  
+biodiversity - биологическое разнообразие  
+blueprint - чертеж, план  
+breakthrough - прорыв  
+bureaucracy - бюрократия  
+capability - способность, возможность  
+catastrophe - катастрофа  
+censorship - цензура  
+charismatic - харизматичный  
+civilization - цивилизация  
+collaboration - сотрудничество  
+commitment - обязательство, приверженность  
+commodity - товар, продукт  
+comparative - сравнительный  
+competence - компетентность, способность  
+compliance - соответствие, соблюдение  
+component - компонент, составляющая  
+compromise - компромисс  
+computation - вычисление  
+concentration - концентрация, сосредоточенность  
+congestion - перегруженность, затор  
+consensus - согласие, консенсус  
+constraint - ограничение, сдерживающий фактор  
+controversy - спор, противоречие  
+correlation - корреляция, взаимосвязь  
+credibility - доверие, авторитетность  
+crucial - решающий, ключевой  
+cumulative - накопительный, совокупный  
+curriculum - учебный план  
+customization - настройка, адаптация  
+deduction - вывод, вычет  
+democracy - демократия  
+dependency - зависимость  
+deterioration - ухудшение  
+diagnosis - диагноз, диагностика  
+differentiation - дифференциация, различие  
+diplomatic - дипломатический  
+discrimination - дискриминация  
+displacement - перемещение, смещение  
+disruption - нарушение, сбой  
+distinctive - отличительный, характерный  
+diversification - диверсификация, разнообразие  
+documentation - документация  
+domination - господство, доминирование  
+drawback - недостаток, минус  
+drought - засуха  
+durability - прочность, долговечность  
+efficiency - эффективность  
+elaborate - детально разрабатывать, сложный  
+eligibility - право на участие, соответствие требованиям  
+emancipation - освобождение, эмансипация  
+entrepreneur - предприниматель  
+epidemic - эпидемия  
+equilibrium - равновесие, баланс  
+equity - справедливость, равенство, собственный капитал  
+ethics - этика  
+evaluate - оценивать  
+excavation - раскопки  
+expertise - экспертиза, опыт  
+exploration - исследование  
+exploitation - эксплуатация, использование  
+exposure - воздействие, разоблачение  
+fluctuate - колебаться, изменяться  
+forecast - прогноз, прогнозировать  
+formidable - грозный, внушительный  
+fragmentation - раздробленность, фрагментация  
+globalization - глобализация  
+gratitude - благодарность  
+hazardous - опасный, рискованный  
+hypothesis - гипотеза  
+ideology - идеология  
+illuminate - освещать, разъяснять  
+infrastructure - инфраструктура  
+immense - огромный, безмерный
+implementation - внедрение, реализация
+implicit - неявный, скрытый
+incentive - стимул, побуждение
+inclusion - включение, интеграция
+incorporate - включать, объединять
+indigenous - коренной, местный
+inequality - неравенство
+inevitable - неизбежный
+influential - влиятельный
+inherent - присущий, свойственный
+initiative - инициатива
+innovation - инновация, новшество
+insight - понимание, проницательность
+integrate - интегрировать, объединять
+intensive - интенсивный
+intermediate - промежуточный
+intervention - вмешательство
+intricate - сложный, запутанный
+inventory - инвентарь, запас
+irreversible - необратимый
+justification - оправдание, обоснование
+legislation - законодательство
+legitimate - законный, легитимный
+liability - ответственность, обязательство
+linguistic - лингвистический
+magnify - увеличивать, усиливать
+mainstream - основное направление, мейнстрим
+manifestation - проявление, демонстрация
+manipulation - манипуляция
+marginal - незначительный, маргинальный
+mechanism - механизм
+mediation - посредничество
+methodology - методология
+migration - миграция
+minimize - минимизировать
+modification - модификация, изменение
+momentum - импульс, динамика
+monopoly - монополия
+multitude - множество
+negligence - халатность, небрежность
+nomadic - кочевой
+notable - заметный, выдающийся
+notion - понятие, идея
+obligation - обязательство
+observance - соблюдение, выполнение
+obstacle - препятствие
+offset - компенсировать
+optimism - оптимизм
+orientation - ориентация, направленность
+parameter - параметр
+parliament - парламент
+participation - участие
+patronage - покровительство
+perception - восприятие
+perseverance - настойчивость, упорство
+pertinent - уместный, относящийся к делу
+plausible - правдоподобный
+polarization - поляризация
+pollutant - загрязнитель
+precedent - прецедент
+precision - точность
+predominant - преобладающий
+preservation - сохранение, охрана
+prevalent - распространенный
+priority - приоритет
+probability - вероятность
+profound - глубокий, основательный
+prolong - продлевать
+prolific - продуктивный, плодовитый
+proportion - пропорция
+prospect - перспектива, шанс
+prototype - прототип
+proximity - близость
+publicity - публичность, известность
+punctuality - пунктуальность
+quantify - количественно оценивать
+radical - радикальный
+randomness - случайность
+rationalization - рационализация
+reciprocal - взаимный
+reconstruction - реконструкция
+reconsider - пересмотреть
+recovery - восстановление
+redundancy - избыточность, сокращение (на работе)
+reflection - отражение, размышление
+regression - регресс
+rehabilitation - реабилитация
+reinforcement - укрепление, подкрепление
+reluctance - нежелание, неохота
+remedy - средство, мера
+repetition - повторение
+replication - копирование, воспроизведение
+resentment - негодование, обида
+resilience - устойчивость, жизнестойкость
+resolute - решительный
+restriction - ограничение
+retention - удержание, сохранение
+revenue - доход, выручка
+rigorous - строгий, тщательный
+sanction - санкция, разрешение
+scarcity - нехватка, дефицит
+scrutiny - внимательное изучение
+segmentation - сегментация, разделение
+sensitivity - чувствительность
+simulation - моделирование
+skepticism - скептицизм
+sophisticated - сложный, утонченный
+sovereignty - суверенитет
+speculation - предположение, спекуляция
+spontaneity - спонтанность
+stability - стабильность
+standardization - стандартизация
+statistical - статистический
+stimulus - стимул
+stratification - расслоение
+subsidy - субсидия
+sufficiency - достаточность
+suppression - подавление
+sustainability - устойчивое развитие
+synchronization - синхронизация
+synergy - синергия
+tangible - осязаемый, ощутимый
+tolerance - терпимость
+transcend - превосходить
+transformation - преобразование
+transparency - прозрачность
+turbulence - турбулентность
+unification - объединение
+utilization - использование
+validity - действительность, обоснованность
+versatility - универсальность, гибкость
+viability - жизнеспособность
+vigilance - бдительность
+vulnerability - уязвимость
+
+# A2.txt
+airport - аэропорт  
+ambulance - скорая помощь  
+apartment - квартира  
+bakery - пекарня  
+battery - батарея, аккумулятор  
+bicycle - велосипед  
+blanket - одеяло  
+bridge - мост  
+building - здание  
+bus stop - автобусная остановка  
+calendar - календарь  
+camera - камера, фотоаппарат  
+campsite - кемпинг, лагерь  
+candle - свеча  
+cartoon - мультфильм  
+ceiling - потолок  
+celebrate - праздновать  
+champion - чемпион  
+chemistry - химия  
+childhood - детство  
+chopsticks - палочки для еды  
+cinema - кинотеатр  
+classical - классический  
+cloud - облако  
+coast - побережье  
+collect - собирать  
+comb - расчёска, расчёсывать  
+concert - концерт  
+connect - соединять, связывать  
+continue - продолжать  
+cooker - плита, кухонная плита  
+corner - угол  
+countryside - сельская местность  
+crowded - многолюдный  
+curly - кудрявый  
+customer - клиент, покупатель  
+decision - решение  
+dentist - стоматолог  
+department - отдел, департамент  
+desert - пустыня  
+dictionary - словарь  
+direction - направление  
+discount - скидка  
+discussion - обсуждение  
+diving - дайвинг, ныряние  
+downstairs - внизу, на нижнем этаже  
+earthquake - землетрясение  
+education - образование  
+electricity - электричество  
+elevator - лифт  
+employee - сотрудник, работник  
+employer - работодатель  
+envelope - конверт  
+environment - окружающая среда  
+exciting - захватывающий, увлекательный  
+exhibition - выставка  
+experience - опыт  
+experiment - эксперимент  
+factory - фабрика, завод  
+fair - ярмарка, справедливый  
+fashion - мода  
+fence - забор  
+firefighter - пожарный  
+fishing - рыбалка  
+flashlight - фонарик  
+flour - мука  
+furniture - мебель  
+gallery - галерея  
+geography - география  
+grammar - грамматика  
+grocery - продуктовый магазин, бакалея  
+guest - гость  
+haircut - стрижка  
+helicopter - вертолёт  
+history - история  
+homeless - бездомный  
+hospital - больница  
+hurry - спешить, спешка  
+iceberg - айсберг  
+insects - насекомые  
+intelligent - умный, интеллектуальный  
+interview - интервью, собеседование  
+invitation - приглашение  
+jellyfish - медуза  
+journalist - журналист  
+lawyer - адвокат, юрист  
+lemonade - лимонад  
+license - лицензия  
+lighthouse - маяк  
+luggage - багаж  
+mechanical - механический  
+message - сообщение  
+microwave - микроволновая печь, микроволновка  
+mountain - гора  
+museum - музей  
+nervous - нервный, переживающий  
+oven - духовка  
+package - упаковка, посылка  
+painting - картина, живопись  
+passport - паспорт  
+pavement - тротуар
+peacock - павлин
+pepper - перец
+perfume - духи
+pharmacy - аптека
+photographer - фотограф
+planet - планета
+plastic - пластик
+platform - платформа
+pollution - загрязнение
+postcard - открытка
+prediction - предсказание
+presentation - презентация
+pressure - давление
+prize - приз
+punishment - наказание
+puzzle - головоломка
+raincoat - дождевик
+realistic - реалистичный
+reception - приём, ресепшн
+recipe - рецепт (кулинарный)
+recycling - переработка отходов
+relationship - отношения
+relaxing - расслабляющий
+remote - пульт, удалённый
+repair - ремонт, чинить
+reporter - репортёр
+reptile - рептилия
+request - запрос, просьба
+reservation - бронь, резервирование
+respect - уважение
+review - обзор
+rooftop - крыша
+route - маршрут
+rubber - резина
+safe - безопасный, сейф
+sailing - парусный спорт
+sandcastle - песочный замок
+sauce - соус
+scientist - учёный
+sculpture - скульптура
+security - безопасность
+seed - семя
+shampoo - шампунь
+shark - акула
+shelf - полка
+shell - ракушка
+shopping mall - торговый центр
+shortcut - короткий путь
+sidewalk - тротуар
+signpost - указатель
+signal - сигнал
+silver - серебро
+sink - раковина (на кухне), тонуть
+skateboarding - катание на скейтборде
+skyscraper - небоскрёб
+sleepy - сонный
+sleeveless - без рукавов
+slogan - лозунг
+snowboarding - сноубординг
+soap - мыло
+solar - солнечный
+souvenir - сувенир
+spaceship - космический корабль
+spelling - правописание
+spider - паук
+spicy - острый (о еде)
+stadium - стадион
+staircase - лестница
+starfish - морская звезда
+stationery - канцелярские товары
+statue - статуя
+steering wheel - руль
+stew - рагу
+stormy - штормовой
+straw - солома, трубочка
+strawberry jam - клубничное варенье
+strict - строгий
+stripe - полоса
+stubborn - упрямый
+submarine - подводная лодка
+subtitles - субтитры
+successful - успешный
+suitcase - чемодан
+sunbathing - загорание
+sunrise - восход солнца
+sunset - закат
+surfing - серфинг
+sweater - свитер
+swimsuit - купальник
+symbol - символ
+symphony - симфония
+syrup - сироп
+tablecloth - скатерть
+tablet - планшет
+telescope - телескоп
+temperature - температура
+textbook - учебник
+thirsty - испытывающий жажду
+thunderstorm - гроза
+tiger - тигр
+toothache - зубная боль
+tourist - турист
+tower - башня
+traffic jam - пробка (на дороге)
+traffic light - светофор
+translation - перевод
+trash - мусор
+treasure - сокровище
+triangle - треугольник
+trip - поездка
+trophy - трофей
+trousers - брюки
+tulip - тюльпан
+tunnel - туннель
+typewriter - печатная машинка
+umbrella - зонт
+underground - метро
+unicorn - единорог
+universe - вселенная
+vacuum cleaner - пылесос
+valley - долина
+vanilla - ваниль
+vegetarian - вегетарианец
+vehicle - транспортное средство
+vending machine - торговый автомат
+view - вид
+violin - скрипка
+volcano - вулкан
+volleyball - волейбол
+waiter - официант
+wardrobe - гардероб
+warehouse - склад
+waterfall - водопад
+waterproof - водонепроницаемый
+wedding - свадьба
+whale - кит
+wheelchair - инвалидное кресло
+whistle - свисток
+windy - ветреный
+winner - победитель
+wireless - беспроводной
+wristwatch - наручные часы
+x-ray - рентген
+yawn - зевать
+yoga - йога
+zebra - зебра
+zipper - молния (на одежде)
+zoo - зоопарк
+
+# Set2.txt
+cat - кот, кошка  
+tree - дерево  
+water - вода  
+school - школа  
+friend - друг, подруга  
+family - семья  
+mother - мать, мама  
+father - отец, папа  
+
+
+# Set1.txt
+apple - яблоко  
+book - книга  
+car - машина, автомобиль  
+dog - собака  
+chair - стул  
+house - дом  
+table - стол  
+
+
+# text_to_speech.py
+# services/text_to_speech.py
+import os
+import tempfile
+from gtts import gTTS
+
+def generate_speech(text, lang="en"):
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as tf:
+        filename = tf.name
+        tts = gTTS(text=text, lang=lang)
+        tts.save(filename)
+    return filename
+
+
+# scheduler.py
+# services/scheduler.py
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from datetime import datetime, timedelta
+import asyncio
+from aiogram import Bot
+from zoneinfo import ZoneInfo
+from database import crud
+from utils.helpers import get_daily_words_for_user, daily_words_cache, reset_daily_words_cache, previous_daily_words
+from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
+
+FIRST_TIME = REMINDER_START
+
+# Словарь для отслеживания, было ли отправлено напоминание по квизу для каждого пользователя за текущий день
+quiz_reminder_sent = {}
+
+def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
+    """
+    Функция, вызываемая каждые 60 секунд:
+      - Переводит серверное время в локальное время пользователя.
+      - Если текущее локальное время совпадает с одной из временных меток уведомлений, отправляет уведомление слова дня.
+      - Если текущее локальное время совпадает с моментом (FIRST_TIME + DURATION_HOURS),
+        отправляет уведомление "Пройдите квиз чтобы слова добавились в Мой словарь",
+        если оно еще не было отправлено сегодня.
+      - Если локальное время совпадает с DAILY_RESET_TIME, сохраняет текущий список уникальных слов
+        в previous_daily_words и сбрасывает кэш.
+    """
+    now_server = datetime.now(tz=ZoneInfo(SERVER_TIMEZONE))
+    users = crud.get_all_users()
+    for user in users:
+        chat_id = user[0]
+        level = user[1]
+        words_count = user[2]
+        repetitions = user[3]
+        user_tz = user[5] if len(user) > 5 and user[5] else "Europe/Moscow"
+        now_local = now_server.astimezone(ZoneInfo(user_tz))
+        now_local_str = now_local.strftime("%H:%M")
+        local_today_str = now_local.strftime("%Y-%m-%d")
+        
+        # Вычисляем базовое локальное время начала и окончания периода
+        local_base_obj = datetime.strptime(f"{local_today_str} {FIRST_TIME}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
+        local_end_obj = local_base_obj + timedelta(hours=DURATION_HOURS)
+        end_time_str = local_end_obj.strftime("%H:%M")
+        
+        # Получаем список слов дня (это также обновляет кэш, если необходимо)
+        result = get_daily_words_for_user(chat_id, level, words_count, repetitions,
+                                           first_time=FIRST_TIME, duration_hours=DURATION_HOURS)
+        if result is None:
+            continue
+        messages, times = result
+
+        # Отправка обычных уведомлений по расписанию
+        if now_local_str in times:
+            notif_index = times.index(now_local_str)
+            message_text = messages[notif_index] if notif_index < len(messages) else ""
+            asyncio.run_coroutine_threadsafe(
+                bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"),
+                loop
+            )
+        
+        # Если текущее время равно концу периода (FIRST_TIME + DURATION_HOURS)
+        if now_local_str == end_time_str:
+            # Проверяем, было ли уже отправлено уведомление для данного пользователя сегодня
+            if quiz_reminder_sent.get(chat_id) != local_today_str:
+                asyncio.run_coroutine_threadsafe(
+                    bot.send_message(chat_id, "Пройдите квиз чтобы слова добавились в Мой словарь"),
+                    loop
+                )
+                quiz_reminder_sent[chat_id] = local_today_str
+
+        # При наступлении DAILY_RESET_TIME сбрасываем кэш и сохраняем текущий список уникальных слов
+        if now_local.strftime("%H:%M") == DAILY_RESET_TIME:
+            if chat_id in daily_words_cache:
+                entry = daily_words_cache[chat_id]
+                unique_words = entry[8]  # список уникальных слов текущего дня
+                # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
+                learned_raw = crud.get_learned_words(chat_id)
+                learned_set = set(item[0] for item in learned_raw)
+                filtered_unique = [w for w in unique_words if w not in learned_set]
+                previous_daily_words[chat_id] = filtered_unique
+                reset_daily_words_cache(chat_id)
+            # Сбрасываем флаг напоминания, чтобы уведомление отправлялось для нового дня
+            if chat_id in quiz_reminder_sent:
+                del quiz_reminder_sent[chat_id]
+
+def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
+    """
+    Запускает APScheduler, который каждые 60 секунд вызывает scheduler_job.
+    """
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot, loop])
+    scheduler.start()
+    return scheduler
+
+
+# scheduler.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# handlers.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# database.cpython-312.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcb in position 0: invalid continuation byte
+
+# handlers.cpython-312.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcb in position 0: invalid continuation byte
+
+# main.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# config.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# database.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# back.py
+# handlers/back.py
+from aiogram import types
+from keyboards.main_menu import main_menu_keyboard
+
+async def handle_back(callback: types.CallbackQuery):
+    """
+    Обработчик кнопки «Назад».
+    Редактирует сообщение (или отправляет новое) с главным меню.
+    """
+    await callback.message.edit_text("Главное меню:", reply_markup=main_menu_keyboard())
+    await callback.answer()
+
+
+# words.py
+# handlers/words.py
+from aiogram import types, Dispatcher, Bot
+from database import crud
+from keyboards.submenus import words_day_keyboard
+from utils.helpers import get_daily_words_for_user
+from config import REMINDER_START, DURATION_HOURS
+
+async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик кнопки "Слова дня".
+    Возвращает сохранённый набор слов для сегодняшнего дня с временными метками,
+    вычисленными с учетом часового пояса пользователя.
+    """
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
+        return
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+                                       first_time=REMINDER_START, duration_hours=DURATION_HOURS)
+    if result is None:
+        await bot.send_message(chat_id, f"⚠️ Нет слов для уровня {user[1]}.")
+        return
+    messages, times = result
+    total_notifications = len(times)
+    text = "📌 Сегодня вам будут отправлены следующие слова:\n\n"
+    for i in range(total_notifications):
+        t = times[i]
+        msg = messages[i] if i < len(messages) and messages[i] else "(нет слов)"
+        text += f"⏰ {t}:\n{msg}\n\n"
+    text += "Нажмите кнопку ниже для возврата в главное меню."
+    await bot.send_message(chat_id, text, reply_markup=words_day_keyboard())
+    await callback.answer()
+
+def register_words_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        lambda c: send_words_day_schedule(c, bot),
+        lambda c: c.data == "menu:words_day"
+    )
+
+
+# start.py
+# handlers/start.py
+import logging
+from aiogram import types
+from keyboards.main_menu import main_menu_keyboard
+from database import crud
+
+logger = logging.getLogger(__name__)
+
+async def cmd_start(message: types.Message):
+    chat_id = message.chat.id
+    logger.info(f"Received /start from chat_id: {chat_id}")
+    crud.add_user(chat_id)
+    await message.answer(
+        "Добро пожаловать в English Learning Bot!\n\nВыберите действие:",
+        reply_markup=main_menu_keyboard()
+    )
+
+
+# quiz.py
+import random
+from datetime import datetime
+from aiogram import types, Dispatcher, Bot
+import asyncio
+from database import crud
+from utils.quiz_helpers import load_quiz_data
+from keyboards.submenus import quiz_keyboard
+from utils.helpers import get_daily_words_for_user, daily_words_cache
+from config import REMINDER_START, DURATION_HOURS
+
+# Глобальный словарь для хранения состояния квиза для каждого пользователя
+quiz_states = {}
+
+def extract_english(word_line: str) -> str:
+    if " - " in word_line:
+        return word_line.split(" - ", 1)[0].strip()
+    return word_line.strip()
+
+def generate_quiz_questions_from_daily(daily_words, level: str):
+    quiz_data = load_quiz_data(level)
+    if not quiz_data:
+        return []
+    mapping = { item["word"].lower(): item["translation"] for item in quiz_data }
+    questions = []
+    for word in daily_words:
+        word_lc = word.lower()
+        if word_lc not in mapping:
+            continue
+        correct_translation = mapping[word_lc]
+        pool = [d["translation"] for d in quiz_data if d["translation"] != correct_translation]
+        if len(pool) >= 3:
+            distractors = random.sample(pool, 3)
+        else:
+            distractors = random.choices(pool, k=3)
+        options = [correct_translation] + distractors
+        random.shuffle(options)
+        correct_index = options.index(correct_translation)
+        questions.append({
+            "word": word,
+            "correct": correct_translation,
+            "options": options,
+            "correct_index": correct_index
+        })
+    return questions
+
+async def start_quiz(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+        return
+    level = user[1]
+    # Получаем набор слов дня из кэша или генерируем новый, если его нет
+    if chat_id in daily_words_cache:
+        daily_entry = daily_words_cache[chat_id]
+    else:
+        result = get_daily_words_for_user(chat_id, level, user[2], user[3],
+                                           first_time=REMINDER_START, duration_hours=DURATION_HOURS)
+        if result is None:
+            await bot.send_message(chat_id, "Нет слов для квиза.")
+            return
+        daily_entry = daily_words_cache[chat_id]
+    # Извлекаем английские слова (удаляем префикс "🔹 " и берём часть до " - ")
+    raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
+    daily_words = set(extract_english(line) for line in raw_words)
+    # Фильтруем уже выученные слова
+    learned = set(word for word, _ in crud.get_learned_words(chat_id))
+    filtered_words = daily_words - learned
+    if not filtered_words:
+        await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
+        return
+    questions = generate_quiz_questions_from_daily(list(filtered_words), level)
+    if not questions:
+        await bot.send_message(chat_id, "Нет данных для квиза.")
+        return
+    quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
+    await send_quiz_question(chat_id, bot)
+    await callback.answer()
+
+async def send_quiz_question(chat_id, bot: Bot):
+    state = quiz_states.get(chat_id)
+    if not state:
+        return
+    current_index = state["current_index"]
+    questions = state["questions"]
+    if current_index >= len(questions):
+        await bot.send_message(chat_id, f"Квиз завершён! Правильных ответов: {state['correct']} из {len(questions)}.")
+        del quiz_states[chat_id]
+        return
+    question = questions[current_index]
+    text = f"Вопрос {current_index+1}:\nКакой перевод слова '{question['word']}'?"
+    keyboard = quiz_keyboard(question['options'], current_index)
+    await bot.send_message(chat_id, text, reply_markup=keyboard)
+
+async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
+    if callback.data == "quiz:back":
+        from keyboards.main_menu import main_menu_keyboard
+        await bot.send_message(callback.from_user.id, "Главное меню", reply_markup=main_menu_keyboard())
+        if callback.from_user.id in quiz_states:
+            del quiz_states[callback.from_user.id]
+        await callback.answer()
+        return
+    if callback.data == "quiz:stop":
+        from keyboards.main_menu import main_menu_keyboard
+        await bot.send_message(callback.from_user.id, "Квиз остановлен.", reply_markup=main_menu_keyboard())
+        if callback.from_user.id in quiz_states:
+            del quiz_states[callback.from_user.id]
+        await callback.answer()
+        return
+
+    data = callback.data.split(":")
+    if len(data) != 4:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    _, _, q_index_str, option_index_str = data
+    try:
+        q_index = int(q_index_str)
+        option_index = int(option_index_str)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    chat_id = callback.from_user.id
+    state = quiz_states.get(chat_id)
+    if not state:
+        await callback.answer("Квиз не найден.", show_alert=True)
+        return
+    if q_index != state["current_index"]:
+        await callback.answer("Неверная последовательность вопросов.", show_alert=True)
+        return
+    question = state["questions"][q_index]
+    if option_index == question["correct_index"]:
+        # При правильном ответе добавляем слово в "Мой словарь"
+        crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
+        state["correct"] += 1
+        await callback.answer("Правильно!")
+    else:
+        await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
+    state["current_index"] += 1
+    await send_quiz_question(chat_id, bot)
+
+def register_quiz_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        lambda c: start_quiz(c, bot),
+        lambda c: c.data == "quiz:start"
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_quiz_answer(c, bot),
+        lambda c: c.data and c.data.startswith("quiz:")
+    )
+
+
+# settings.py
+# handlers/settings.py
+from aiogram import types, Dispatcher, Bot
+from keyboards.submenus import (
+    notification_settings_menu_keyboard, 
+    settings_menu_keyboard
+)
+from keyboards.main_menu import main_menu_keyboard
+from database import crud
+from functools import partial
+from utils.helpers import daily_words_cache, LEVELS_DIR  # убедитесь, что LEVELS_DIR импортируется из config
+import os
+
+# Глобальный словарь для хранения состояния ввода (какой параметр ожидается от пользователя)
+pending_settings = {}
+
+# Глобальный словарь для хранения выбранного сета пользователем (ключ: chat_id, значение: имя сета)
+user_set_selection = {}
+
+# Сопоставление смещения UTC с названием города/региона
+timezones_map = {
+    2: "Калининград",
+    3: "Москва",
+    4: "Самара",
+    5: "Екатеринбург",
+    6: "Омск",
+    7: "Красноярск",
+    8: "Иркутск",
+    9: "Якутское",
+    10: "Владивосток",
+    11: "Магаданское",
+    12: "Камчатское"
+}
+
+async def show_settings_callback(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    await bot.send_message(chat_id, "Настройки бота:", reply_markup=settings_menu_keyboard())
+    await callback.answer()
+
+async def process_settings_choice_callback(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик выбора пункта меню настроек.
+    """
+    chat_id = callback.from_user.id
+    try:
+        _, option = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+
+    if option == "level":
+        levels = ["A1", "A2", "B1", "B2", "C1", "C2"]
+        keyboard = types.InlineKeyboardMarkup(row_width=3)
+        for lvl in levels:
+            keyboard.add(types.InlineKeyboardButton(lvl, callback_data=f"set_level:{lvl}"))
+        await bot.send_message(chat_id, "Выберите уровень:", reply_markup=keyboard)
+
+    elif option == "notifications":
+        await bot.send_message(chat_id, "Настройки уведомлений:", reply_markup=notification_settings_menu_keyboard())
+
+    elif option == "words":
+        pending_settings[chat_id] = "words"
+        await bot.send_message(chat_id, "Введите количество слов в день (от 1 до 20):", reply_markup=notification_settings_menu_keyboard())
+
+    elif option == "repetitions":
+        pending_settings[chat_id] = "repetitions"
+        await bot.send_message(chat_id, "Введите количество повторений (от 1 до 5):", reply_markup=notification_settings_menu_keyboard())
+
+    elif option == "timezone":
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        for offset in range(2, 13):
+            city_name = timezones_map.get(offset, "")
+            tz_label = f"UTC+{offset} {city_name}"
+            callback_data = f"set_timezone:UTC+{offset}"
+            keyboard.add(types.InlineKeyboardButton(tz_label, callback_data=callback_data))
+        keyboard.add(types.InlineKeyboardButton("Назад", callback_data="settings:notifications"))
+        await bot.send_message(chat_id, "Выберите ваш часовой пояс:", reply_markup=keyboard)
+
+    elif option == "set":
+        await process_my_sets(callback, bot)
+
+    elif option == "mysettings":
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
+        else:
+            level = user[1]
+            words_count = user[2]
+            repetitions = user[3]
+            timezone = user[5] if len(user) > 5 and user[5] else "Не задан"
+            set_info = f"\nВыбранный сет: {user_set_selection.get(chat_id, 'Не выбран')}"
+            text = (f"Ваш уровень: {level}\n"
+                    f"Количество слов в день: {words_count}\n"
+                    f"Количество повторений: {repetitions}\n"
+                    f"Ваш часовой пояс: {timezone}" + set_info)
+            await bot.send_message(chat_id, text, reply_markup=settings_menu_keyboard())
+
+    await callback.answer()
+
+async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик кнопки "Мои сеты". Сканирует папку для текущего уровня пользователя
+    и выводит список доступных сетов.
+    """
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
+        return
+    user_level = user[1]
+    level_dir = os.path.join(LEVELS_DIR, user_level)
+    if not os.path.exists(level_dir):
+        await bot.send_message(chat_id, f"Папка для уровня {user_level} не найдена.")
+        return
+    set_files = [f for f in os.listdir(level_dir) if f.endswith(".txt")]
+    if not set_files:
+        await bot.send_message(chat_id, f"В папке {user_level} не найдено сетов.")
+        return
+
+    keyboard = types.InlineKeyboardMarkup(row_width=1)
+    for filename in set_files:
+        set_name = os.path.splitext(filename)[0]
+        keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{set_name}"))
+    keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
+    await bot.send_message(chat_id, f"Доступные сеты для уровня {user_level}:", reply_markup=keyboard)
+
+async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик выбора сета. Читает файл выбранного сета и отправляет список слов пользователю.
+    """
+    chat_id = callback.from_user.id
+    try:
+        _, set_name = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+        return
+
+    user_level = user[1]
+    set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+    if not os.path.exists(set_path):
+        await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+        return
+
+    try:
+        with open(set_path, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        await bot.send_message(chat_id, f"Ошибка при чтении файла: {e}")
+        return
+
+    # Сохраняем выбранный сет для данного пользователя
+    user_set_selection[chat_id] = set_name
+    # Сбрасываем кэш ежедневных слов, чтобы при следующем вызове "Слова дня" использовался выбранный сет
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+
+    await bot.send_message(chat_id, f"Выбран сет {set_name} для уровня {user_level}.\nСлова сета:\n\n{content}",
+                               reply_markup=settings_menu_keyboard())
+    await callback.answer()
+
+async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    try:
+        _, level = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    crud.update_user_level(chat_id, level)
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+    await bot.send_message(chat_id, f"Уровень установлен на {level}.", reply_markup=settings_menu_keyboard())
+    await callback.answer()
+
+async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    try:
+        _, tz = callback.data.split(":", 1)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    if tz.startswith("UTC+"):
+        try:
+            offset = int(tz[4:])
+            tz_mapped = f"Etc/GMT-{offset}"
+        except ValueError:
+            tz_mapped = tz
+    else:
+        tz_mapped = tz
+    crud.update_user_timezone(chat_id, tz_mapped)
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+    await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=notification_settings_menu_keyboard())
+    await callback.answer()
+
+async def process_text_setting(message: types.Message):
+    chat_id = message.chat.id
+    if chat_id not in pending_settings:
+        return
+    setting_type = pending_settings.pop(chat_id)
+    text = message.text.strip()
+    if not text.isdigit():
+        await message.answer("Ошибка: введите корректное число.", reply_markup=notification_settings_menu_keyboard())
+        return
+    value = int(text)
+    if setting_type == "words":
+        if not (1 <= value <= 20):
+            await message.answer("Ошибка: число должно быть от 1 до 20.", reply_markup=notification_settings_menu_keyboard())
+            return
+        crud.update_user_words_per_day(chat_id, value)
+        if chat_id in daily_words_cache:
+            del daily_words_cache[chat_id]
+        await message.answer(f"Количество слов в день установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
+    elif setting_type == "repetitions":
+        if not (1 <= value <= 5):
+            await message.answer("Ошибка: число должно быть от 1 до 5.", reply_markup=notification_settings_menu_keyboard())
+            return
+        crud.update_user_notifications(chat_id, value)
+        if chat_id in daily_words_cache:
+            del daily_words_cache[chat_id]
+        await message.answer(f"Количество повторений установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
+
+async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    await bot.send_message(chat_id, "Настройки бота:", reply_markup=settings_menu_keyboard())
+    await callback.answer()
+
+def register_settings_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        lambda c: show_settings_callback(c, bot),
+        lambda c: c.data == "menu:settings"
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_notification_back(c, bot),
+        lambda c: c.data == "settings:back"
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_settings_choice_callback(c, bot),
+        lambda c: c.data and c.data.startswith("settings:") and c.data != "settings:back"
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_set_level_callback(c, bot),
+        lambda c: c.data and c.data.startswith("set_level:")
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_set_timezone_callback(c, bot),
+        lambda c: c.data and c.data.startswith("set_timezone:")
+    )
+    dp.register_callback_query_handler(
+        lambda c: process_choose_set(c, bot),
+        lambda c: c.data and c.data.startswith("choose_set:")
+    )
+    dp.register_message_handler(process_text_setting, content_types=['text'])
+
+
+# __init__.py
+#handlers/init.py
+
+from .start import cmd_start
+from .words import register_words_handlers
+from .learning import register_learning_handlers
+from .dictionary import register_dictionary_handlers
+from .settings import register_settings_handlers
+from .help import register_help_handlers
+from .back import handle_back  # обработчик кнопки "Назад"
+from .test_level import register_level_test_handlers
+from .quiz import register_quiz_handlers
+
+def register_handlers(dp, bot):
+    dp.register_message_handler(cmd_start, commands=["start"])
+    register_words_handlers(dp, bot)
+    register_learning_handlers(dp, bot)
+    register_dictionary_handlers(dp, bot)
+    register_settings_handlers(dp, bot)
+    register_help_handlers(dp, bot)
+    dp.register_callback_query_handler(handle_back, lambda c: c.data == "menu:back")
+    register_level_test_handlers(dp, bot)
+    register_quiz_handlers(dp, bot)
+
+
+# help.py
+# handlers/help.py
+from aiogram import types, Dispatcher, Bot
+from keyboards.submenus import help_menu_keyboard
+from keyboards.main_menu import main_menu_keyboard
+from functools import partial
+
+async def show_help_callback(callback: types.CallbackQuery, bot: Bot):
+    chat_id = callback.from_user.id
+    await bot.send_message(chat_id, "Выберите пункт помощи:", reply_markup=help_menu_keyboard())
+    await callback.answer()
+
+async def process_help_about_callback(callback: types.CallbackQuery, bot: Bot):
+    await bot.send_message(callback.from_user.id,
+                           "О боте:\nЭтот бот помогает изучать английские слова, тестировать уровень знаний, проводить викторины и организовывать обучение.")
+    await callback.answer()
+
+async def process_help_commands_callback(callback: types.CallbackQuery, bot: Bot):
+    await bot.send_message(callback.from_user.id,
+                           "Список команд:\n/start, /help, /settings, /dictionary, /quiz, /test")
+    await callback.answer()
+
+async def process_help_feedback_callback(callback: types.CallbackQuery, bot: Bot):
+    await bot.send_message(callback.from_user.id,
+                           "Обратная связь: напишите администратору на admin@example.com")
+    await callback.answer()
+
+def register_help_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        partial(show_help_callback, bot=bot),
+        lambda c: c.data == "menu:help"
+    )
+    dp.register_callback_query_handler(
+        partial(process_help_about_callback, bot=bot),
+        lambda c: c.data == "help:about"
+    )
+    dp.register_callback_query_handler(
+        partial(process_help_commands_callback, bot=bot),
+        lambda c: c.data == "help:commands"
+    )
+    dp.register_callback_query_handler(
+        partial(process_help_feedback_callback, bot=bot),
+        lambda c: c.data == "help:feedback"
+    )
+
+
+# test_level.py
+# handlers/test_level.py
+import os
+import random
+from aiogram import types, Dispatcher, Bot
+from database import crud
+
+# Глобальное хранилище состояния теста для каждого пользователя (ключ – chat_id)
+level_test_states = {}
+
+# Список уровней в порядке возрастания сложности
+LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
+
+def load_words_for_level_file(level: str):
+    """
+    Загружает слова из файла levels/<level>.txt.
+    Каждая строка должна иметь формат: "word - translation1, translation2, ..."
+    Возвращает список слов, где каждое слово представлено в виде словаря:
+    { "word": <english>, "translation": <полная строка перевода> }
+    """
+    filename = os.path.join("levels", f"{level}.txt")
+    if not os.path.exists(filename):
+        return []
+    words = []
+    with open(filename, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split(" - ")
+            if len(parts) < 2:
+                continue
+            english = parts[0].strip()
+            translation = parts[1].strip()
+            words.append({"word": english, "translation": translation})
+    return words
+
+def generate_level_test_questions():
+    """
+    Генерирует тестовые вопросы для каждого уровня.
+    Для каждого уровня из LEVELS выбирается 3 случайных слова (если доступно).
+    Для каждого слова генерируются 5 вариантов ответа:
+      - Правильный перевод.
+      - Три ложных перевода, выбранных из того же уровня.
+      - Фиксированная опция "Не знаю" (всегда последняя).
+    Возвращает список вопросов, каждый вопрос – словарь:
+      {
+         "level": <уровень>,
+         "word": <английское слово>,
+         "correct": <правильный перевод>,
+         "options": [вариант1, вариант2, вариант3, вариант4, "Не знаю"],
+         "correct_index": <индекс правильного ответа среди первых 4 вариантов>
+      }
+    """
+    questions = []
+    for level in LEVELS:
+        words = load_words_for_level_file(level)
+        if not words:
+            continue
+        # Если в файле меньше 3 слова, выбираем все; иначе случайно выбираем 3 слова
+        if len(words) < 3:
+            selected = words
+        else:
+            selected = random.sample(words, 3)
+        for entry in selected:
+            correct = entry["translation"]
+            # Выбираем ложные варианты из того же файла, исключая правильный
+            distractor_pool = [w["translation"] for w in words if w["translation"] != correct]
+            if len(distractor_pool) >= 3:
+                distractors = random.sample(distractor_pool, 3)
+            else:
+                distractors = distractor_pool  # если меньше 3, используем имеющиеся
+            # Перемешиваем первые 4 варианта (правильный + ложные)
+            options_temp = [correct] + distractors
+            random.shuffle(options_temp)
+            # Правильный ответ содержится в options_temp; его индекс запоминаем
+            correct_index = options_temp.index(correct)
+            # Добавляем фиксированную опцию "Не знаю" в конец
+            options = options_temp + ["Не знаю"]
+            questions.append({
+                "level": level,
+                "word": entry["word"],
+                "correct": correct,
+                "options": options,
+                "correct_index": correct_index
+            })
+    # Сортируем вопросы по порядку уровней (блоками: сначала A1, затем A2 и т.д.)
+    def level_order(q):
+        try:
+            return LEVELS.index(q["level"])
+        except ValueError:
+            return 999
+    questions.sort(key=level_order)
+    return questions
+
+async def start_level_test(chat_id: int, bot: Bot):
+    """
+    Инициализирует тест для пользователя:
+    - Генерирует вопросы (по 3 на каждый уровень, если данные доступны).
+    - Сохраняет состояние теста в level_test_states.
+    - Отправляет первый вопрос.
+    """
+    questions = generate_level_test_questions()
+    if not questions:
+        await bot.send_message(chat_id, "Нет данных для тестирования. Проверьте файлы уровней.")
+        return
+    level_test_states[chat_id] = {
+        "questions": questions,
+        "current_index": 0,
+        "results": []  # Список True/False для каждого вопроса
+    }
+    await send_next_level_question(chat_id, bot)
+
+async def send_next_level_question(chat_id: int, bot: Bot):
+    """
+    Отправляет следующий вопрос теста пользователю.
+    Если вопросов больше нет, завершает тест и обрабатывает результаты.
+    Формирует клавиатуру с вариантами ответов в два столбца:
+      - Ряд 1: варианты 1 и 2
+      - Ряд 2: варианты 3 и 4
+      - Ряд 3: вариант "Не знаю" и кнопка "Остановить тест"
+    """
+    state = level_test_states.get(chat_id)
+    if not state:
+        return
+    if state["current_index"] >= len(state["questions"]):
+        await finish_level_test(chat_id, bot)
+        return
+    question = state["questions"][state["current_index"]]
+    text = f"Вопрос {state['current_index'] + 1} (Уровень {question['level']}):\nКакой перевод слова «{question['word']}»?"
+    
+    # Создаем клавиатуру с двумя столбцами
+    keyboard = types.InlineKeyboardMarkup()
+    # Первые две кнопки (варианты с индексами 0 и 1)
+    row1 = [
+        types.InlineKeyboardButton(question["options"][0], callback_data=f"lvltest:{state['current_index']}:{0}"),
+        types.InlineKeyboardButton(question["options"][1], callback_data=f"lvltest:{state['current_index']}:{1}")
+    ]
+    # Следующие две кнопки (варианты с индексами 2 и 3)
+    row2 = [
+        types.InlineKeyboardButton(question["options"][2], callback_data=f"lvltest:{state['current_index']}:{2}"),
+        types.InlineKeyboardButton(question["options"][3], callback_data=f"lvltest:{state['current_index']}:{3}")
+    ]
+    # Последняя строка: вариант "Не знаю" (индекс 4) и кнопка "Остановить тест"
+    row3 = [
+        types.InlineKeyboardButton(question["options"][4], callback_data=f"lvltest:{state['current_index']}:{4}"),
+        types.InlineKeyboardButton("Остановить тест", callback_data="lvltest:stop")
+    ]
+    keyboard.row(*row1)
+    keyboard.row(*row2)
+    keyboard.row(*row3)
+    
+    await bot.send_message(chat_id, text, reply_markup=keyboard)
+
+async def handle_level_test_answer(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обрабатывает ответ пользователя:
+    - Если пользователь нажал "Остановить тест", тест завершается.
+    - Иначе, сравнивает выбранный вариант с правильным,
+      сохраняет результат и отправляет следующий вопрос.
+    """
+    if callback.data == "lvltest:stop":
+        # Остановка теста
+        await bot.send_message(callback.from_user.id, "Тест остановлен.")
+        if callback.from_user.id in level_test_states:
+            del level_test_states[callback.from_user.id]
+        await callback.answer()
+        return
+
+    data = callback.data.split(":")
+    if len(data) != 3:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    _, q_index_str, option_index_str = data
+    try:
+        q_index = int(q_index_str)
+        option_index = int(option_index_str)
+    except ValueError:
+        await callback.answer("Неверный формат данных.", show_alert=True)
+        return
+    chat_id = callback.from_user.id
+    state = level_test_states.get(chat_id)
+    if not state or q_index >= len(state["questions"]):
+        await callback.answer("Тест не найден или завершён.", show_alert=True)
+        return
+    question = state["questions"][q_index]
+    is_correct = (option_index == question["correct_index"])
+    state["results"].append(is_correct)
+    state["current_index"] += 1
+    response_text = "Правильно!" if is_correct else f"Неправильно! Правильный ответ: {question['correct']}"
+    await callback.answer(response_text)
+    await send_next_level_question(chat_id, bot)
+
+async def finish_level_test(chat_id: int, bot: Bot):
+    """
+    Завершает тест:
+    - Группирует результаты по уровням.
+    - Для каждого уровня, если пользователь ответил правильно на минимум 2 из 3 вопросов,
+      блок считается пройденным.
+    - Новый уровень определяется как уровень последнего успешно пройденного блока.
+    - Обновляет уровень пользователя в БД и отправляет сводку.
+    Добавляется кнопка "Главное меню" для возврата.
+    """
+    state = level_test_states.get(chat_id)
+    if not state:
+        return
+    results = state["results"]
+    # Подсчитываем результаты для каждого уровня (блок)
+    block_scores = {level: 0 for level in LEVELS}
+    block_counts = {level: 0 for level in LEVELS}
+    for i, question in enumerate(state["questions"]):
+        level = question["level"]
+        block_counts[level] += 1
+        if results[i]:
+            block_scores[level] += 1
+    new_level = "A1"
+    # Определяем новый уровень: каждый уровень считается пройденным, если верных ответов ≥2 из 3
+    for level in LEVELS:
+        if block_counts[level] > 0 and block_scores[level] >= 2:
+            new_level = level
+        else:
+            break
+    # Обновляем уровень пользователя в БД
+    crud.update_user_level(chat_id, new_level)
+    summary = "Тест завершён!\nРезультаты по уровням:\n"
+    for level in LEVELS:
+        if block_counts[level] > 0:
+            summary += f"{level}: {block_scores[level]} из {block_counts[level]}\n"
+    summary += f"\nВаш новый уровень: {new_level}"
+    # Создаем клавиатуру с кнопкой "Главное меню"
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(types.InlineKeyboardButton("Главное меню", callback_data="menu:back"))
+    await bot.send_message(chat_id, summary, reply_markup=keyboard)
+    del level_test_states[chat_id]
+
+def register_level_test_handlers(dp: Dispatcher, bot: Bot):
+    """
+    Регистрирует обработчики для нового теста:
+      - Запуск теста по callback_data "test_level:start"
+      - Обработка ответов с префиксом "lvltest:"
+    """
+    dp.register_callback_query_handler(
+        lambda c: start_level_test(c.from_user.id, bot),
+        lambda c: c.data == "test_level:start"
+    )
+    dp.register_callback_query_handler(
+        lambda c: handle_level_test_answer(c, bot),
+        lambda c: c.data and c.data.startswith("lvltest:")
+    )
+
+
+# learning.py
+# handlers/learning.py
+import random
+from aiogram import types, Dispatcher, Bot
+from keyboards.submenus import learning_menu_keyboard
+from utils.helpers import load_words_for_level
+from database import crud
+from functools import partial
+
+async def start_learning_test(chat_id: int, bot: Bot):
+    user = crud.get_user(chat_id)
+    if not user:
+        return
+    level = user[1]
+    words = load_words_for_level(level)
+    if not words:
+        await bot.send_message(chat_id, f"Нет слов для уровня {level}.")
+        return
+    selected = random.sample(words, min(15, len(words)))
+    text = "Тест уровня знаний:\nВыберите правильный перевод для следующих слов:\n" + "\n".join(selected)
+    await bot.send_message(chat_id, text, reply_markup=learning_menu_keyboard())
+
+async def learning_placeholder(callback: types.CallbackQuery, bot: Bot):
+    await bot.send_message(callback.from_user.id, "Эта функция в разработке.", reply_markup=learning_menu_keyboard())
+    await callback.answer()
+
+async def handle_learning_menu(callback: types.CallbackQuery, bot: Bot):
+    await bot.send_message(callback.from_user.id, "Выберите режим обучения:", reply_markup=learning_menu_keyboard())
+    await callback.answer()
+
+async def handle_learning_test(callback: types.CallbackQuery, bot: Bot):
+    await start_learning_test(callback.from_user.id, bot)
+    await callback.answer()
+
+def register_learning_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        lambda c: handle_learning_menu(c, bot),
+        lambda c: c.data == "menu:learning"
+    )
+    dp.register_callback_query_handler(
+        lambda c: handle_learning_test(c, bot),
+        lambda c: c.data == "learning:test"
+    )
+    dp.register_callback_query_handler(
+        lambda c: learning_placeholder(c, bot),
+        lambda c: c.data in ["learning:quiz", "learning:memorize"]
+    )
+
+
+
+
+# dictionary.py
+#handlers/dictionary.py
+from aiogram import types, Dispatcher, Bot
+from keyboards.submenus import dictionary_menu_keyboard
+from database import crud
+from functools import partial
+
+async def handle_dictionary(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик кнопки "Мой словарь". Теперь выводит выученные слова из таблицы learned_words,
+    где каждая запись отображается в формате "• word — translation".
+    """
+    chat_id = callback.from_user.id
+    learned = crud.get_learned_words(chat_id)
+    if not learned:
+        await bot.send_message(chat_id, "Ваш словарь пуст.", reply_markup=dictionary_menu_keyboard())
+    else:
+        text = "Ваш словарь (выученные слова):\n\n"
+        # Ожидается, что get_learned_words возвращает список кортежей (word, translation)
+        for word, translation in learned:
+            text += f"• {word} — {translation}\n"
+        await bot.send_message(chat_id, text, reply_markup=dictionary_menu_keyboard())
+    await callback.answer()
+
+def register_dictionary_handlers(dp: Dispatcher, bot: Bot):
+    dp.register_callback_query_handler(
+        partial(handle_dictionary, bot=bot),
+        lambda c: c.data == "menu:dictionary"
+    )
+
+
+# quiz.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# premium.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# settings.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# learning.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# help.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# test_level.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# dictionary.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# __init__.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# back.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# words.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# test.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# start.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# crud.py
+#database/crud.py
+from database.db import cursor, conn
+from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
+
+def add_user(chat_id: int):
+    cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
+    if cursor.fetchone() is None:
+        # notifications используется для количества повторений
+        cursor.execute(
+            "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone) VALUES (?, ?, ?, ?, ?, ?)",
+            (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow")
+        )
+        conn.commit()
+
+def get_user(chat_id: int):
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users WHERE chat_id = ?", (chat_id,))
+    return cursor.fetchone()
+
+def get_all_users():
+    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
+    return cursor.fetchall()
+
+def update_user_level(chat_id: int, level: str):
+    cursor.execute("UPDATE users SET level = ? WHERE chat_id = ?", (level, chat_id))
+    conn.commit()
+
+def update_user_words_per_day(chat_id: int, count: int):
+    cursor.execute("UPDATE users SET words_per_day = ? WHERE chat_id = ?", (count, chat_id))
+    conn.commit()
+
+def update_user_notifications(chat_id: int, count: int):
+    cursor.execute("UPDATE users SET notifications = ? WHERE chat_id = ?", (count, chat_id))
+    conn.commit()
+
+def update_user_reminder_time(chat_id: int, time: str):
+    cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (time, chat_id))
+    conn.commit()
+
+def update_user_timezone(chat_id: int, timezone: str):
+    cursor.execute("UPDATE users SET timezone = ? WHERE chat_id = ?", (timezone, chat_id))
+    conn.commit()
+
+def add_word_to_dictionary(chat_id: int, word_data: dict):
+    cursor.execute("""
+        INSERT INTO dictionary (chat_id, word, translation, transcription, example)
+        VALUES (?, ?, ?, ?, ?)
+    """, (chat_id, word_data.get('word'), word_data.get('translation', ''), word_data.get('transcription', ''), word_data.get('example', '')))
+    conn.commit()
+
+def get_user_dictionary(chat_id: int, limit: int = 10, offset: int = 0):
+    cursor.execute("SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", (chat_id, limit, offset))
+    return cursor.fetchall()
+
+def add_learned_word(chat_id: int, word: str, translation: str, learned_date: str):
+    cursor.execute("INSERT INTO learned_words (chat_id, word, translation, learned_date) VALUES (?, ?, ?, ?)", (chat_id, word, translation, learned_date))
+    conn.commit()
+
+def get_learned_words(chat_id: int):
+    """
+    Возвращает список выученных слов для пользователя.
+    Теперь возвращаются кортежи (word, translation).
+    """
+    cursor.execute("SELECT word, translation FROM learned_words WHERE chat_id = ?", (chat_id,))
+    return cursor.fetchall()
+
+
+# db.py
+#database/db.py
+import sqlite3
+from config import DB_PATH
+
+conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+cursor = conn.cursor()
+
+def init_db():
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            chat_id INTEGER PRIMARY KEY,
+            level TEXT DEFAULT 'A1',
+            words_per_day INTEGER DEFAULT 5,
+            notifications INTEGER DEFAULT 10,
+            reminder_time TEXT DEFAULT '09:00',
+            timezone TEXT DEFAULT 'Europe/Moscow'
+        )
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS dictionary (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            chat_id INTEGER,
+            word TEXT,
+            translation TEXT,
+            transcription TEXT,
+            example TEXT
+        )
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS learned_words (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            chat_id INTEGER,
+            word TEXT,
+            translation TEXT,
+            learned_date TEXT
+        )
+    ''')
+    conn.commit()
+
+init_db()
+
+
+# crud.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# db.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# submenus.py
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import random
+
+def main_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("📌 Слова дня", callback_data="menu:words_day"),
+        InlineKeyboardButton("📖 Обучение", callback_data="menu:learning")
+    )
+    keyboard.add(
+        InlineKeyboardButton("📚 Мой словарь", callback_data="menu:dictionary"),
+        InlineKeyboardButton("⚙️ Настройки", callback_data="menu:settings")
+    )
+    keyboard.add(
+        InlineKeyboardButton("🎯 Квиз", callback_data="quiz:start"),
+        InlineKeyboardButton("❓ Помощь", callback_data="menu:help")
+    )
+    return keyboard
+
+def words_day_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(InlineKeyboardButton("Назад", callback_data="menu:back"))
+    return keyboard
+
+def dictionary_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(InlineKeyboardButton("Назад", callback_data="menu:back"))
+    return keyboard
+
+
+def settings_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(
+        InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
+        InlineKeyboardButton("Настройки уведомлений", callback_data="settings:notifications"),
+        InlineKeyboardButton("Выбор сета", callback_data="settings:set"),
+        InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
+        InlineKeyboardButton("Назад", callback_data="menu:back")
+    )
+    return keyboard
+
+def notification_settings_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(
+        InlineKeyboardButton("Количество слов", callback_data="settings:words"),
+        InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
+        InlineKeyboardButton("Выбор часового пояса", callback_data="settings:timezone"),
+        InlineKeyboardButton("Назад", callback_data="settings:back")
+    )
+    return keyboard
+
+def learning_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("📚 Тест (множественный выбор)", callback_data="test_level:start"),
+        InlineKeyboardButton("🎯 Викторина", callback_data="learning:quiz")
+    )
+    keyboard.add(
+        InlineKeyboardButton("📝 Заучивание", callback_data="learning:memorize"),
+        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
+    )
+    return keyboard
+
+def help_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=1)
+    keyboard.add(
+        InlineKeyboardButton("ℹ️ О боте", callback_data="help:about"),
+        InlineKeyboardButton("📜 Список команд", callback_data="help:commands"),
+        InlineKeyboardButton("✉️ Обратная связь", callback_data="help:feedback"),
+        InlineKeyboardButton("Назад", callback_data="menu:back")
+    )
+    return keyboard
+
+def quiz_keyboard(options, question_index):
+    """
+    Создает клавиатуру для квиза.
+    Каждая кнопка для вариантов ответа имеет callback_data в формате "quiz:answer:<question_index>:<option_index>".
+    Дополнительно добавляются кнопки "Назад" и "Остановить квиз".
+    Клавиатура оформлена в два столбца.
+    """
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    for i, option in enumerate(options):
+        keyboard.add(InlineKeyboardButton(option, callback_data=f"quiz:answer:{question_index}:{i}"))
+    keyboard.add(
+        InlineKeyboardButton("Назад", callback_data="quiz:back"),
+        InlineKeyboardButton("Остановить квиз", callback_data="quiz:stop")
+    )
+    return keyboard
+
+
+# main_menu.py
+# keyboards/main_menu.py
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+def main_menu_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("📌 Слова дня", callback_data="menu:words_day"),
+        InlineKeyboardButton("📖 Обучение", callback_data="menu:learning"),
+    )
+    keyboard.add(
+        InlineKeyboardButton("📚 Мой словарь", callback_data="menu:dictionary"),
+        InlineKeyboardButton("⚙️ Настройки", callback_data="menu:settings"),
+    )
+    keyboard.add(
+        InlineKeyboardButton("🎯 Квиз", callback_data="quiz:start"),
+        InlineKeyboardButton("❓ Помощь", callback_data="menu:help")
+    )
+    return keyboard
+
+
+# submenus.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# main_menu.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# helpers.py
+# utils/helpers.py
+import os
+import random
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS
+from database import crud
+
+# Кэш для ежедневных слов: ключ – chat_id, значение –
+# (today, repeated_messages, times, first_time, duration_hours, words_count, repetitions, user_tz, unique_words)
+daily_words_cache = {}
+
+# Хранение уникальных слов предыдущего дня (как они записаны в файле): ключ – chat_id, значение – список строк
+previous_daily_words = {}
+
+def reset_daily_words_cache(chat_id):
+    """Сбрасывает кэш списка слов дня для данного пользователя."""
+    if chat_id in daily_words_cache:
+        del daily_words_cache[chat_id]
+
+def load_words_for_level(level: str, set_name: str = None):
+    """
+    Загружает слова для уровня. Если указан set_name, то ищет файл:
+        LEVELS_DIR / <level> / <set_name>.txt
+    Иначе – файл LEVELS_DIR / <level>.txt
+    """
+    if set_name:
+        filename = os.path.join(LEVELS_DIR, level, f"{set_name}.txt")
+    else:
+        filename = os.path.join(LEVELS_DIR, f"{level}.txt")
+    if not os.path.exists(filename):
+        return []
+    with open(filename, encoding="utf-8") as f:
+        words = [line.strip() for line in f if line.strip()]
+    return words
+
+def compute_notification_times(total_count, first_time, duration_hours, tz="Europe/Moscow"):
+    base = datetime.strptime(first_time, "%H:%M").replace(tzinfo=ZoneInfo(tz))
+    interval = timedelta(hours=duration_hours / total_count)
+    times = [(base + n * interval).strftime("%H:%M") for n in range(total_count)]
+    return times
+
+def extract_english(word_line: str) -> str:
+    """Извлекает английскую часть из строки формата 'word - translation'. Если разделитель не найден – возвращает всю строку."""
+    if " - " in word_line:
+        return word_line.split(" - ", 1)[0].strip()
+    return word_line.strip()
+
+def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False):
+    """
+    Генерирует или возвращает кэшированный список слов дня с учетом следующих правил:
+    
+    1. Если пользователь ещё не изучил все слова из уровня, из файла исключаются слова, уже присутствующие в "моем словаре". 
+       Для сравнения используется только английская часть (извлекается через extract_english).
+    2. Если после фильтрации остается меньше слов, чем задано (например, требуется 8, а осталось 4),
+       итоговый список состоит только из оставшихся уникальных слов.
+    3. Если пользователь изучил все слова из уровня, выбор происходит случайно из всего файла.
+    4. При генерации нового списка (при смене дня или изменении настроек) учитывается остаток предыдущего дня:
+       - Если в previous_daily_words для данного chat_id есть невыученные слова, они включаются в новый список,
+         а затем дополняются новыми уникальными словами до требуемого количества.
+    5. Если force_reset=True (например, при изменении настроек), то сбрасываются кэш и предыдущий остаток.
+    6. Если для пользователя выбран сет (через глобальный словарь user_set_selection), слова загружаются из файла
+       уровня, расположенного в папке с сетами: LEVELS_DIR/<level>/<set_name>.txt
+    """
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    if force_reset:
+        reset_daily_words_cache(chat_id)
+        if chat_id in previous_daily_words:
+            del previous_daily_words[chat_id]
+    
+    if chat_id in daily_words_cache:
+        cached = daily_words_cache[chat_id]
+        if (cached[0] == today and cached[3] == first_time and 
+            cached[4] == duration_hours and cached[5] == words_count and cached[6] == repetitions):
+            return cached[1], cached[2]
+        reset_daily_words_cache(chat_id)
+
+    # Импортируем выбранный сет, если он был выбран, из глобального словаря в handlers/settings.py
+    from handlers.settings import user_set_selection
+    set_name = user_set_selection.get(chat_id)  # Если сет не выбран, будет None
+
+    file_words = load_words_for_level(level, set_name)
+    if not file_words:
+        return None
+
+    learned_raw = crud.get_learned_words(chat_id)
+    learned_set = set(extract_english(item[0]) for item in learned_raw)
+
+    if len(learned_set) >= len(file_words):
+        if len(file_words) >= words_count:
+            unique_words = random.sample(file_words, words_count)
+        else:
+            unique_words = file_words[:]
+    else:
+        available_words = [w for w in file_words if extract_english(w) not in learned_set]
+        leftover = []
+        if chat_id in previous_daily_words:
+            leftover = [w for w in previous_daily_words[chat_id] if extract_english(w) not in learned_set]
+        if len(leftover) >= words_count:
+            unique_words = random.sample(leftover, words_count)
+        else:
+            needed_new = words_count - len(leftover)
+            candidates = [w for w in available_words if w not in leftover]
+            if len(candidates) >= needed_new:
+                new_words = random.sample(candidates, needed_new)
+            else:
+                new_words = candidates
+            unique_words = leftover + new_words
+    
+    messages_unique = ["🔹 " + word for word in unique_words]
+    repeated_messages = messages_unique * repetitions
+    total_notifications = len(unique_words) * repetitions
+
+    user = crud.get_user(chat_id)
+    user_tz = user[5] if user and len(user) > 5 and user[5] else "Europe/Moscow"
+    times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
+
+    daily_words_cache[chat_id] = (today, repeated_messages, times, first_time, duration_hours, words_count, repetitions, user_tz, unique_words)
+    return repeated_messages, times
+
+
+# constants.py
+# utils/constants.py
+levels_order = ["A1", "A2", "B1", "B2", "C1", "C2"]
+
+
+# quiz_helpers.py
+#utils/quiz_helpers.py
+"""
+Файл: utils/quiz_helpers.py
+Описание: Функция для загрузки данных для квиза.
+Ожидается, что для уровня существует файл (например, A1.txt) в папке levels,
+где каждая строка имеет формат:
+    word - translation
+Возвращает список словарей: { "word": word, "translation": translation }
+"""
+
+import os
+
+def load_quiz_data(level: str):
+    filename = os.path.join("levels", f"{level}.txt")
+    if not os.path.exists(filename):
+        return []
+    quiz_items = []
+    with open(filename, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if " - " in line:
+                parts = line.split(" - ", 1)
+                word = parts[0].strip()
+                translation = parts[1].strip()
+                quiz_items.append({"word": word, "translation": translation})
+    return quiz_items
+
+
+# helpers.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# quiz_helpers.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# constants.cpython-311.pyc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa7 in position 0: invalid start byte
+
+# test_crud.py
+# tests/test_crud.py
+import unittest
+from database import crud
+from database.db import conn, cursor
+
+class TestCRUD(unittest.TestCase):
+    test_chat_id = 999999  # Используем уникальный идентификатор для тестирования
+
+    def setUp(self):
+        # Перед каждым тестом удаляем пользователя с тестовым chat_id (если существует)
+        cursor.execute("DELETE FROM users WHERE chat_id = ?", (self.test_chat_id,))
+        cursor.execute("DELETE FROM dictionary WHERE chat_id = ?", (self.test_chat_id,))
+        conn.commit()
+
+    def tearDown(self):
+        # После каждого теста очищаем записи, связанные с тестовым пользователем
+        cursor.execute("DELETE FROM users WHERE chat_id = ?", (self.test_chat_id,))
+        cursor.execute("DELETE FROM dictionary WHERE chat_id = ?", (self.test_chat_id,))
+        conn.commit()
+
+    def test_add_and_get_user(self):
+        """Проверяем, что функция add_user корректно добавляет пользователя, а get_user – его возвращает."""
+        crud.add_user(self.test_chat_id)
+        user = crud.get_user(self.test_chat_id)
+        self.assertIsNotNone(user, "Пользователь должен быть добавлен в базу")
+        # Предполагаем, что структура user: (chat_id, level, words_per_day, notifications, reminder_time)
+        self.assertEqual(user[0], self.test_chat_id)
+        self.assertEqual(user[1], 'A1')     # уровень по умолчанию
+        self.assertEqual(user[2], 5)        # количество слов по умолчанию
+        self.assertEqual(user[3], 10)       # количество уведомлений по умолчанию
+        self.assertEqual(user[4], '09:00')  # время напоминания по умолчанию
+
+    def test_update_user_level(self):
+        """Проверяем, что функция update_user_level обновляет уровень пользователя."""
+        crud.add_user(self.test_chat_id)
+        crud.update_user_level(self.test_chat_id, 'B2')
+        user = crud.get_user(self.test_chat_id)
+        self.assertEqual(user[1], 'B2', "Уровень должен быть обновлен на B2")
+
+    def test_update_user_words_per_day(self):
+        """Проверяем, что функция update_user_words_per_day обновляет число слов в день."""
+        crud.add_user(self.test_chat_id)
+        crud.update_user_words_per_day(self.test_chat_id, 7)
+        user = crud.get_user(self.test_chat_id)
+        self.assertEqual(user[2], 7, "Количество слов должно быть обновлено на 7")
+
+    def test_update_user_notifications(self):
+        """Проверяем, что функция update_user_notifications обновляет число уведомлений."""
+        crud.add_user(self.test_chat_id)
+        crud.update_user_notifications(self.test_chat_id, 15)
+        user = crud.get_user(self.test_chat_id)
+        self.assertEqual(user[3], 15, "Количество уведомлений должно быть обновлено на 15")
+
+    def test_update_user_reminder_time(self):
+        """Проверяем, что функция update_user_reminder_time обновляет время напоминания."""
+        crud.add_user(self.test_chat_id)
+        crud.update_user_reminder_time(self.test_chat_id, "12:30")
+        user = crud.get_user(self.test_chat_id)
+        self.assertEqual(user[4], "12:30", "Время напоминания должно быть обновлено на 12:30")
+
+    def test_add_word_to_dictionary_and_get(self):
+        """Проверяем, что слово добавляется в словарь и его можно извлечь."""
+        crud.add_user(self.test_chat_id)
+        word_data = {
+            "word": "apple",
+            "translation": "яблоко",
+            "transcription": "/ˈæp.əl/",
+            "example": "I ate an apple."
+        }
+        crud.add_word_to_dictionary(self.test_chat_id, word_data)
+        dictionary = crud.get_user_dictionary(self.test_chat_id, limit=10, offset=0)
+        # Проверяем, что словарь не пуст и содержит слово "apple"
+        self.assertGreaterEqual(len(dictionary), 1, "Словарь должен содержать хотя бы одну запись")
+        found = any(entry[0] == "apple" for entry in dictionary)
+        self.assertTrue(found, "Слово 'apple' должно присутствовать в словаре")
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+# test_bot.py
+# tests/test_bot.py
+import unittest
+
+class TestBot(unittest.TestCase):
+    def test_placeholder(self):
+        self.assertTrue(True)
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+# index
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc1 in position 13: invalid start byte
+
+# description
+Unnamed repository; edit this file 'description' to name the repository.
+
+
+# packed-refs
+# pack-refs with: peeled fully-peeled sorted 
+7a5907738b13127fca0decf651f5abaf1c237fea refs/remotes/origin/master
+
+
+# ORIG_HEAD
+9ad54e41776713316baac9671eccc8c9e66c1257
+
+
+# config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@github.com:Andriiiiiiii/english_learning_bot
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
+
+# HEAD
+ref: refs/heads/master
+
+
+# COMMIT_EDITMSG
+ДОБАВЛЕН КВИЗ ПО СЛОВАМ ДНЯ
+
+
+# FETCH_HEAD
+e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a		branch 'master' of github.com:Andriiiiiiii/english_learning_bot
+
+
+# e91c08723379f50d03274f2a7abce1110c89b4
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 2acb97d87624980322cc51d1cfc34347413a30
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 9: invalid start byte
+
+# b4b66fae980d590431981250134e75697483b4
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# c33bec765091f461a92edaadbc37e9daac26ee
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x97 in position 3: invalid start byte
+
+# ed300913d85986c4dddb68e39eae157ec46605
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x88 in position 18: invalid start byte
+
+# dbb4c446cb102ffa5d1f2d40dbebf02fd47a38
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte
+
+# d3e34b587caa21e08f81c1cbd9242f1da41cdc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xfd in position 10: invalid start byte
+
+# a2c44d132b273f7e7528e7470fdac8f4f501c0
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc1 in position 4: invalid start byte
+
+# 59888e4b7e469cc40ca7bc0734dd291a0e6640
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte
+
+# 6f8c47abd688df2db7924a0701622bfe224a95
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 4e3beb6c63c160dab82eeea6aea8e14fe06d5e
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc9 in position 3: invalid continuation byte
+
+# 3d374dd0652ac3cfe35b39f02722437824a8e5
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc8 in position 17: invalid continuation byte
+
+# 685f0a25b53530c20f82b6bacca982fe75e73f
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 69848c9992efba98d71aaa6c147d5e14cd66e9
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xdd in position 2: invalid continuation byte
+
+# 884a3bcc76a7898ca98fa1fa77585b01eefdd5
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# dcbe7ed093972121298ad1b69c5bbd79e056ae
+Не удалось прочитать файл: 'utf-8' codec can't decode bytes in position 2-3: invalid continuation byte
+
+# 2cf570f228f01e2bbd2991624aca4f222c473a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 8702052a226782480cdc7b12f83a6ced611f64
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xdd in position 2: invalid continuation byte
+
+# ba6d000bf1cb2b8c6eaf5aa975955089bc8c6d
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xbd in position 2: invalid start byte
+
+# dd58b430e9aec048c50300c73e8fcd16a238ed
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte
+
+# 8ee286c28fbdf34909d7a073563e04273e9d5e
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# 1fba6cc35c48141051f22f77135edb688e9285
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte
+
+# 6744a296e26aa1a7da2d7ad934966196169790
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 1d267c98714960d5fb5d5204c6f1acbe1cde2d
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# c4baf1ba036e5e4b8ad1976cad5b0693e0b1ce
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb7 in position 9: invalid start byte
+
+# 46c27fb984300f0cad80d7818cb5b531eaf188
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# afa2594a5523c9f72a7e5fdd44409b91d672da
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 38454ae7356f94a1035eb8dca399a1fbe421a9
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# fc4829f58cdb7b6fe48dc63d6cc4e3fca1d4c9
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# 680d1e34247d8831475c683e2260bdaf38e4cd
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb7 in position 9: invalid start byte
+
+# 424ea4ba96ea393c5266a09c3c6976ec20e208
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 15310e5422eac2797859150d7e784a6602d3e8
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# 6d9e03208feed8dd979b15f79d76b7d4193619
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# edb1789f2cedd993d1bb302bee9dfcc00d7cdf
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc5 in position 2: invalid continuation byte
+
+# f04a8a070d5068c656d4e63ed32837e2515673
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd0 in position 18: invalid continuation byte
+
+# 114e72bc18d0207415c8e5382048840d98faa2
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# 66939d0adb97c66febd95fb7eef178f391b610
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte
+
+# 0fc4dec47a6c23ef4908226fc0073cf167cf11
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x88 in position 18: invalid start byte
+
+# 5001a5f01c92e2415af19dbff3d4c2cec57d11
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc5 in position 2: invalid continuation byte
+
+# b4db9f80c44243501cbfd05c21e65d2a88c642
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb7 in position 9: invalid start byte
+
+# 282483695f293fbddd9541c4e6ef9863432daf
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcd in position 2: invalid continuation byte
+
+# bfc9a830be0f7104b30f3daea3164fa23748fd
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xbd in position 2: invalid start byte
+
+# 66947809bceeb46a221aa6f6a6b478d9f81b3a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# c19bd1990d0bc22e4215c802b118d13af07f88
+Не удалось прочитать файл: 'utf-8' codec can't decode bytes in position 2-3: invalid continuation byte
+
+# 48637ff64c21ce86fb40df5ac7dd26bd7d4e03
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcd in position 2: invalid continuation byte
+
+# 093be44b58749313381ddacf07d04b2f5ab498
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 891ec87363730d45345703142521146d420572
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xed in position 2: invalid continuation byte
+
+# df0f7c0b68ef26cf6877b0456a5287e0a0868c
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 5e4b6eab25fa780539e3250caeadd7bce4971a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcd in position 2: invalid continuation byte
+
+# 3040b198d21ca75806394e87cd8acf325321ec
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 98da98cd7a9b3c914c63fc66b6feb2b2cfa248
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte
+
+# 1f0e67e1acbaff777c63b13c70489c6a48dedf
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xbd in position 2: invalid start byte
+
+# 2454e1868d72de757c582d433e58ec1f782beb
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 24f8fdfa4addc3521d2c126c376c3cfc779920
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte
+
+# 93bd7559f8084e2664a9936099d67ade80af48
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# b6922141e1dfc2508a7f61791ecc9da05a6ad7
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte
+
+# 650143333a5563a5ca40ff263e6abe90b01bb8
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 4c1696434bea3dfc579ddba4499f5f15be1375
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x88 in position 18: invalid start byte
+
+# 819769b6baddd4377e7a18bb04246e57d44840
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc8 in position 17: invalid continuation byte
+
+# 242b4311e897653955fff0a4591b327c7855a3
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x88 in position 18: invalid start byte
+
+# 7180cee55202698fdeb7ae7a273b6c6b23ae67
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb0 in position 7: invalid start byte
+
+# 0ba9c928897dde5fe064d0e995b99e405c7a93
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 32e0e084b3b175baec71a9cb4548cdaf1d4ebe
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd4 in position 20: invalid continuation byte
+
+# 926488a6a978c3efbaab40c4c0118e48d4c942
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcd in position 2: invalid continuation byte
+
+# a92f241d0d1214758f8d733e7c4d36dea2080f
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb0 in position 7: invalid start byte
+
+# pack-a1131ba229b68494a64bbe36bc6d4d0f3b084e8d.pack
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9f in position 12: invalid start byte
+
+# pack-a1131ba229b68494a64bbe36bc6d4d0f3b084e8d.rev
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xde in position 27: invalid continuation byte
+
+# pack-a1131ba229b68494a64bbe36bc6d4d0f3b084e8d.idx
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+
+# pack-0ad1fe0ab05d8d0a0f63f21ab2fbcd44502b750d.idx
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+
+# pack-0ad1fe0ab05d8d0a0f63f21ab2fbcd44502b750d.rev
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd1 in position 509: invalid continuation byte
+
+# pack-0ad1fe0ab05d8d0a0f63f21ab2fbcd44502b750d.pack
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 12: invalid start byte
+
+# 18fc4c2f0d577d611fa2a67b7eac481f7cbd4b
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 543fca0e295132d8c8b86c32fce7a0389c4a37
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd4 in position 20: invalid continuation byte
+
+# e8a911a1ae845f477d8a8a16c6cc8af4e5e50b
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x88 in position 18: invalid start byte
+
+# 131a9c3c4c92de6094325dfd38f0f12ed2a6c3
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte
+
+# 4569a50ec8a3113767f4bfd5400ec16de17f07
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xca in position 18: invalid continuation byte
+
+# 2541503d0b0c16b782615273245522d7c33022
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# defbd416c210cdd351fd14a8b5b1d78f184d37
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x92 in position 3: invalid start byte
+
+# d0ffca75620ae517a5a0f8d57ab48bf25882af
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8f in position 3: invalid start byte
+
+# 0a9dbdb441ca032187e3423f29f7d9c67b782a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# b4d1c317a37d35573182cc5cbfb9b3ced6f03e
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# dbc11ed2d5c4cff275a7af573a81b4d1073ef1
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# 1da095751ed942a45b759a8b61f4d3253579dc
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# d47d869dcb593bcdf4920be8e7798d22105def
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 168a9c80c806361d28b5271ed0a5c4aca08bda
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 81219bdd58e573325adb63df0427e7350c291a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# d90d5cdec95b266c0a0733dce431a5620b0f93
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x98 in position 3: invalid start byte
+
+# abeacc6cad359caed80f8e79806779f7708d58
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xca in position 18: invalid continuation byte
+
+# cbbb02bd150c9091ff325ed902ad294dd415ac
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa5 in position 2: invalid start byte
+
+# 33627a1dd11bbc79f2c571d158830b90edfae7
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 5cf492dee2763c446125b86dc132aa57214391
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x93 in position 3: invalid start byte
+
+# 2f030e206800ed5a75ac23e404881f70d538fe
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa5 in position 2: invalid start byte
+
+# 3a7381e83add9e850bd45880b5cc699920d175
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 5c55eeedc418274216738dde04fcb3b572ff85
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xd5 in position 2: invalid continuation byte
+
+# bc8daaa4ad0318bc304dd3416f018f8a6e6c02
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 24935a5599d8b42471ef2abf0c2f793ee99971
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb0 in position 7: invalid start byte
+
+# 193a25a3e2c4e93ea5264f960e68ddb5996686
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xa5 in position 2: invalid start byte
+
+# 4caa5ea1b814c8f4d029288ef15b30cd4a1739
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc3 in position 6: invalid continuation byte
+
+# 11dc28d4d8b55d50fa56b69448208453278d9c
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 978dc32c7ff613fb446ad8bfef243dc8615260
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 88aecf06423d5a108caef8c6f1da297e068200
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# e8642775564cdd2bd729cd7a9b7acf5ed2e28d
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 46ca9d36d1271a1de49a87f02bee34d5854507
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 51c1177868a9a7c93a6e0712713db74794e0f4
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x95 in position 2: invalid start byte
+
+# 96ebb2e356d8bbfb3dcaa3e7b5a55977d16ac7
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 2110183670e8e598abc776d3d331a56fd5d803
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x97 in position 3: invalid start byte
+
+# d7878f958707ac7ff74f1f2295f75d2e4f3a8b
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc1 in position 4: invalid start byte
+
+# a4e7c0108ef5ebf676ae0f0892aead44b86c5c
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc5 in position 2: invalid continuation byte
+
+# 943c40ba8b8616916f7ba2464d3afc6d1a5982
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 0ba8dfd6afca0f67b3ca665b76df32f18a111d
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# d34829e1d1f40f32806d62734ef44f596fbfc5
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xad in position 2: invalid start byte
+
+# 5c9c337ac78c0270d818cf75ed4f9a3bf71e0a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# 6fd99382a2a1b775d60eb3a51e8c02dc462177
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# d8726f7dcc02e69be306a548fad01123bd43c3
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x91 in position 3: invalid start byte
+
+# d98620a777b9b05dcbfb6c35539c16380fa169
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xdd in position 2: invalid continuation byte
+
+# e5ce15ee9c9b6485670b8949cc3a035682012a
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 15: invalid start byte
+
+# 423cec57fda0d0107ef6dc05d8388dcceb7d9e
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x98 in position 3: invalid start byte
+
+# a4ecce9883584ae9b443e759bfe5b3f5d92ef4
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc8 in position 17: invalid continuation byte
+
+# 33f69612bc03d5ff8b386970b40ad3df941456
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 9: invalid start byte
+
+# a89c2a3ccb62a3e1c657371b26b485131268e6
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x85 in position 2: invalid start byte
+
+# 51827e4997358d4061f3cf6ec124ccbce9247c
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xcd in position 2: invalid continuation byte
+
+# d54e41776713316baac9671eccc8c9e66c1257
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x9d in position 2: invalid start byte
+
+# a268f806c11cc8e3550fc2041bf84e5d572a2c
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8e in position 5: invalid start byte
+
+# bb41d7462b53bcb8a809a3aa93d009160ad201
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xb5 in position 2: invalid start byte
+
+# d6ba56ef2f6c608db8b50ed1d255228c979e02
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# 0b49e143a20170d90c04ae65f1f56eb432b801
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xdd in position 4: invalid continuation byte
+
+# 35460cbb486cad4216746ee76bddcaeee6b189
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xca in position 18: invalid continuation byte
+
+# 3a8c18e7c3640321301b383d137bf7b6e7adeb
+Не удалось прочитать файл: 'utf-8' codec can't decode bytes in position 2-3: invalid continuation byte
+
+# bb139377de5f365d9be2cceab7ab88ae6b84e7
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xce in position 19: invalid continuation byte
+
+# 84a52c030639b7c03ada8925ec41af07f02863
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0x8d in position 2: invalid start byte
+
+# 764cb9e6684f9c7b5a4af7c1ecca1ab88c4678
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc3 in position 6: invalid continuation byte
+
+# 66f14fc4b2884a4995799bd2fa11263fff4a6d
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xdf in position 4: invalid continuation byte
+
+# pre-receive.sample
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+
+# pre-rebase.sample
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+
+# pre-applypatch.sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+
+# sendemail-validate.sample
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+
+# applypatch-msg.sample
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+
+# commit-msg.sample
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+
+# pre-commit.sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+
+# pre-merge-commit.sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+
+# post-update.sample
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+
+# push-to-checkout.sample
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+
+# pre-push.sample
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+
+# update.sample
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+
+# prepare-commit-msg.sample
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+
+# fsmonitor-watchman.sample
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+
+# exclude
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+
+# master
+e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a
+
+
+# HEAD
+ref: refs/remotes/origin/master
+
+
+# master
+e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a
+
+
+# HEAD
+0000000000000000000000000000000000000000 7a5907738b13127fca0decf651f5abaf1c237fea Andriiiiiiii <terentev.a@phystech.edu> 1739391355 +0300	clone: from github.com:Andriiiiiiii/english_learning_bot
+7a5907738b13127fca0decf651f5abaf1c237fea c91da095751ed942a45b759a8b61f4d3253579dc Andriiiiiiii <terentev.a@phystech.edu> 1739405769 +0300	commit: Добавил тестирование, почти заработал функционал выдачи слов. Не отсылает уведомления
+c91da095751ed942a45b759a8b61f4d3253579dc 803143804b7b5b3444e4a4c898b6884c2d3db49c Andriiiiiiii <terentev.a@phystech.edu> 1740702934 +0300	pull origin master: Fast-forward
+803143804b7b5b3444e4a4c898b6884c2d3db49c 9ad54e41776713316baac9671eccc8c9e66c1257 Andriiiiiiii <terentev.a@phystech.edu> 1741097544 +0300	commit: ДОБАВЛЕН КВИЗ ПО СЛОВАМ ДНЯ
+9ad54e41776713316baac9671eccc8c9e66c1257 e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a Andriiiiiiii <terentev.a@phystech.edu> 1741764500 +0300	pull origin master: Fast-forward
+
+
+# master
+0000000000000000000000000000000000000000 7a5907738b13127fca0decf651f5abaf1c237fea Andriiiiiiii <terentev.a@phystech.edu> 1739391355 +0300	clone: from github.com:Andriiiiiiii/english_learning_bot
+7a5907738b13127fca0decf651f5abaf1c237fea c91da095751ed942a45b759a8b61f4d3253579dc Andriiiiiiii <terentev.a@phystech.edu> 1739405769 +0300	commit: Добавил тестирование, почти заработал функционал выдачи слов. Не отсылает уведомления
+c91da095751ed942a45b759a8b61f4d3253579dc 803143804b7b5b3444e4a4c898b6884c2d3db49c Andriiiiiiii <terentev.a@phystech.edu> 1740702934 +0300	pull origin master: Fast-forward
+803143804b7b5b3444e4a4c898b6884c2d3db49c 9ad54e41776713316baac9671eccc8c9e66c1257 Andriiiiiiii <terentev.a@phystech.edu> 1741097544 +0300	commit: ДОБАВЛЕН КВИЗ ПО СЛОВАМ ДНЯ
+9ad54e41776713316baac9671eccc8c9e66c1257 e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a Andriiiiiiii <terentev.a@phystech.edu> 1741764500 +0300	pull origin master: Fast-forward
+
+
+# HEAD
+0000000000000000000000000000000000000000 7a5907738b13127fca0decf651f5abaf1c237fea Andriiiiiiii <terentev.a@phystech.edu> 1739391355 +0300	clone: from github.com:Andriiiiiiii/english_learning_bot
+
+
+# master
+7a5907738b13127fca0decf651f5abaf1c237fea c91da095751ed942a45b759a8b61f4d3253579dc Andriiiiiiii <terentev.a@phystech.edu> 1739405796 +0300	update by push
+c91da095751ed942a45b759a8b61f4d3253579dc 803143804b7b5b3444e4a4c898b6884c2d3db49c Andriiiiiiii <terentev.a@phystech.edu> 1740702934 +0300	pull origin master: fast-forward
+803143804b7b5b3444e4a4c898b6884c2d3db49c 9ad54e41776713316baac9671eccc8c9e66c1257 Andriiiiiiii <terentev.a@phystech.edu> 1741097553 +0300	update by push
+9ad54e41776713316baac9671eccc8c9e66c1257 e55c9c337ac78c0270d818cf75ed4f9a3bf71e0a Andriiiiiiii <terentev.a@phystech.edu> 1741764500 +0300	pull origin master: fast-forward
+
+
+# bot.log
+Не удалось прочитать файл: 'utf-8' codec can't decode byte 0xc1 in position 677: invalid start byte
+

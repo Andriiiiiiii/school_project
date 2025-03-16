@@ -3,21 +3,23 @@ from datetime import datetime
 from aiogram import types, Dispatcher, Bot
 import asyncio
 from database import crud
-from utils.quiz_helpers import load_quiz_data
+from utils.quiz_helpers import load_quiz_data, load_quiz_data_for_set
 from keyboards.submenus import quiz_keyboard
-from utils.helpers import get_daily_words_for_user, daily_words_cache
+from utils.helpers import get_daily_words_for_user, daily_words_cache, extract_english
 from config import REMINDER_START, DURATION_HOURS
+from handlers.settings import user_set_selection  # импорт выбранного сета
 
 # Глобальный словарь для хранения состояния квиза для каждого пользователя
 quiz_states = {}
 
-def extract_english(word_line: str) -> str:
-    if " - " in word_line:
-        return word_line.split(" - ", 1)[0].strip()
-    return word_line.strip()
-
-def generate_quiz_questions_from_daily(daily_words, level: str):
-    quiz_data = load_quiz_data(level)
+def generate_quiz_questions_from_daily(daily_words, level: str, quiz_data=None):
+    """
+    Генерирует вопросы для квиза из списка daily_words.
+    Если параметр quiz_data не передан, данные загружаются из файла levels/<level>.txt.
+    Если quiz_data передан, он используется для формирования вариантов ответов.
+    """
+    if quiz_data is None:
+        quiz_data = load_quiz_data(level)
     if not quiz_data:
         return []
     mapping = { item["word"].lower(): item["translation"] for item in quiz_data }
@@ -49,30 +51,41 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     if not user:
         await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
         return
+
     level = user[1]
-    # Получаем набор слов дня из кэша или генерируем новый, если его нет
+    # Получаем ежедневные слова из кэша или генерируем их, если их ещё нет
     if chat_id in daily_words_cache:
         daily_entry = daily_words_cache[chat_id]
     else:
         result = get_daily_words_for_user(chat_id, level, user[2], user[3],
-                                           first_time=REMINDER_START, duration_hours=DURATION_HOURS)
+                                           first_time=REMINDER_START,
+                                           duration_hours=DURATION_HOURS)
         if result is None:
             await bot.send_message(chat_id, "Нет слов для квиза.")
             return
         daily_entry = daily_words_cache[chat_id]
-    # Извлекаем английские слова (удаляем префикс "🔹 " и берём часть до " - ")
+
+    # Извлекаем "чистые" строки без префикса "🔹 "
     raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
     daily_words = set(extract_english(line) for line in raw_words)
-    # Фильтруем уже выученные слова
     learned = set(word for word, _ in crud.get_learned_words(chat_id))
     filtered_words = daily_words - learned
     if not filtered_words:
         await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
         return
-    questions = generate_quiz_questions_from_daily(list(filtered_words), level)
+
+    # Если пользователь выбрал сет, загружаем квиз-данные из соответствующего файла
+    selected_set = user_set_selection.get(chat_id)
+    if selected_set:
+        quiz_data = load_quiz_data_for_set(level, selected_set)
+    else:
+        quiz_data = load_quiz_data(level)
+
+    questions = generate_quiz_questions_from_daily(list(filtered_words), level, quiz_data=quiz_data)
     if not questions:
         await bot.send_message(chat_id, "Нет данных для квиза.")
         return
+
     quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
     await send_quiz_question(chat_id, bot)
     await callback.answer()
@@ -88,7 +101,7 @@ async def send_quiz_question(chat_id, bot: Bot):
         del quiz_states[chat_id]
         return
     question = questions[current_index]
-    text = f"Вопрос {current_index+1}:\nКакой перевод слова '{question['word']}'?"
+    text = f"Вопрос {current_index + 1}:\nКакой перевод слова '{question['word']}'?"
     keyboard = quiz_keyboard(question['options'], current_index)
     await bot.send_message(chat_id, text, reply_markup=keyboard)
 
@@ -100,6 +113,7 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
             del quiz_states[callback.from_user.id]
         await callback.answer()
         return
+
     if callback.data == "quiz:stop":
         from keyboards.main_menu import main_menu_keyboard
         await bot.send_message(callback.from_user.id, "Квиз остановлен.", reply_markup=main_menu_keyboard())
@@ -112,6 +126,7 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     if len(data) != 4:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
+
     _, _, q_index_str, option_index_str = data
     try:
         q_index = int(q_index_str)
@@ -119,6 +134,7 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
+
     chat_id = callback.from_user.id
     state = quiz_states.get(chat_id)
     if not state:
@@ -127,9 +143,9 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     if q_index != state["current_index"]:
         await callback.answer("Неверная последовательность вопросов.", show_alert=True)
         return
+
     question = state["questions"][q_index]
     if option_index == question["correct_index"]:
-        # При правильном ответе добавляем слово в "Мой словарь"
         crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
         state["correct"] += 1
         await callback.answer("Правильно!")
