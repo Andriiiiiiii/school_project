@@ -6,9 +6,10 @@ import logging
 from aiogram import Bot
 from zoneinfo import ZoneInfo
 from database import crud
-from utils.helpers import get_daily_words_for_user, daily_words_cache, reset_daily_words_cache, previous_daily_words
+from utils.helpers import get_daily_words_for_user, daily_words_manager, previous_daily_words_manager, reset_daily_words_cache
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
+logger = logging.getLogger(__name__)
 FIRST_TIME = REMINDER_START
 
 # Словарь для отслеживания, было ли отправлено напоминание по квизу для каждого пользователя за текущий день
@@ -29,8 +30,12 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
     try:
         now_server = datetime.now(tz=ZoneInfo(SERVER_TIMEZONE))
     except Exception as e:
-        logging.error(f"Ошибка при установке серверной временной зоны {SERVER_TIMEZONE}: {e}")
+        logger.error(f"Ошибка при установке серверной временной зоны {SERVER_TIMEZONE}: {e}")
         now_server = datetime.now(tz=ZoneInfo("UTC"))  # Используем UTC как запасной вариант
+    
+    # Регулярная очистка истекших записей в кэше
+    daily_words_manager.clean_expired()
+    previous_daily_words_manager.clean_expired()
     
     users = crud.get_all_users()
     for user in users:
@@ -47,14 +52,14 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
             now_local = now_server.astimezone(ZoneInfo(user_tz))
         except Exception as e:
             # В случае ошибки используем значение по умолчанию
-            logging.error(f"Неверный часовой пояс {user_tz} для пользователя {chat_id}: {e}")
+            logger.error(f"Неверный часовой пояс {user_tz} для пользователя {chat_id}: {e}")
             user_tz = "Europe/Moscow"
             try:
                 now_local = now_server.astimezone(ZoneInfo(user_tz))
                 # Обновляем часовой пояс пользователя на корректное значение
                 crud.update_user_timezone(chat_id, user_tz)
             except Exception as e2:
-                logging.critical(f"Критическая ошибка с часовым поясом: {e2}")
+                logger.critical(f"Критическая ошибка с часовым поясом: {e2}")
                 now_local = now_server  # Используем серверное время как крайний случай
         
         now_local_str = now_local.strftime("%H:%M")
@@ -66,7 +71,7 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
             local_end_obj = local_base_obj + timedelta(hours=DURATION_HOURS)
             end_time_str = local_end_obj.strftime("%H:%M")
         except Exception as e:
-            logging.error(f"Ошибка вычисления времен для пользователя {chat_id}: {e}")
+            logger.error(f"Ошибка вычисления времен для пользователя {chat_id}: {e}")
             continue
         
         # Получаем список слов дня (это также обновляет кэш, если необходимо)
@@ -98,20 +103,29 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
 
             # При наступлении DAILY_RESET_TIME сбрасываем кэш и сохраняем текущий список уникальных слов
             if now_local.strftime("%H:%M") == DAILY_RESET_TIME:
-                if chat_id in daily_words_cache:
-                    entry = daily_words_cache[chat_id]
-                    unique_words = entry[8]  # список уникальных слов текущего дня
+                cached_data = daily_words_manager.get(chat_id)
+                if cached_data:
+                    # Извлекаем список уникальных слов
+                    unique_words = cached_data[8]
+                    
                     # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
                     learned_raw = crud.get_learned_words(chat_id)
                     learned_set = set(item[0] for item in learned_raw)
                     filtered_unique = [w for w in unique_words if w not in learned_set]
-                    previous_daily_words[chat_id] = filtered_unique
+                    
+                    # Сохраняем отфильтрованные слова в кэш предыдущего дня
+                    previous_daily_words_manager.set(chat_id, filtered_unique)
+                    
+                    # Сбрасываем ежедневный кэш
                     reset_daily_words_cache(chat_id)
+                    
+                    logger.debug(f"Daily reset for user {chat_id}: saved {len(filtered_unique)} words for next day")
+                
                 # Сбрасываем флаг напоминания, чтобы уведомление отправлялось для нового дня
                 if chat_id in quiz_reminder_sent:
                     del quiz_reminder_sent[chat_id]
         except Exception as e:
-            logging.error(f"Ошибка обработки пользователя {chat_id}: {e}")
+            logger.error(f"Ошибка обработки пользователя {chat_id}: {e}")
             continue
 
 def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
@@ -120,5 +134,8 @@ def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
     """
     scheduler = AsyncIOScheduler()
     scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot, loop])
+    # Добавляем задачу для регулярной очистки кэша (каждые 6 часов)
+    scheduler.add_job(lambda: daily_words_manager.clean_expired(), 'interval', hours=6)
+    scheduler.add_job(lambda: previous_daily_words_manager.clean_expired(), 'interval', hours=6)
     scheduler.start()
     return scheduler

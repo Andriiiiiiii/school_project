@@ -10108,3 +10108,78 @@ TypeError: get_daily_words_for_user() got an unexpected keyword argument 'chosen
 2025-04-03 23:15:07,844 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:16:04 MSK)" was missed by 0:00:03.040011
 2025-04-03 23:15:09,386 - INFO - Stop polling...
 2025-04-03 23:15:09,387 - WARNING - Goodbye!
+2025-04-03 23:44:28,023 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-03 23:44:29,118 - WARNING - Updates were skipped successfully.
+2025-04-03 23:44:29,121 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:44:29,121 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-03 23:44:29,121 - INFO - Scheduler started
+2025-04-03 23:44:29,121 - INFO - Бот запущен.
+2025-04-03 23:44:29,122 - INFO - Start polling.
+2025-04-03 23:44:37,560 - INFO - Received /start from chat_id: 380675615
+2025-04-03 23:45:29,130 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:46:29 MSK)" (scheduled at 2025-04-03 23:45:29.121137+03:00)
+2025-04-03 23:45:29,135 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:46:29 MSK)" executed successfully
+2025-04-03 23:46:29,124 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:47:29 MSK)" (scheduled at 2025-04-03 23:46:29.121137+03:00)
+2025-04-03 23:46:29,124 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:47:29 MSK)" executed successfully
+2025-04-03 23:47:29,124 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:48:29 MSK)" (scheduled at 2025-04-03 23:47:29.121137+03:00)
+2025-04-03 23:47:29,125 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:48:29 MSK)" executed successfully
+2025-04-03 23:48:29,123 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:49:29 MSK)" (scheduled at 2025-04-03 23:48:29.121137+03:00)
+2025-04-03 23:48:29,124 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:49:29 MSK)" executed successfully
+2025-04-03 23:49:29,125 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:50:29 MSK)" (scheduled at 2025-04-03 23:49:29.121137+03:00)
+2025-04-03 23:49:29,125 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:50:29 MSK)" executed successfully
+2025-04-03 23:50:29,124 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:51:29 MSK)" (scheduled at 2025-04-03 23:50:29.121137+03:00)
+2025-04-03 23:50:29,125 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:51:29 MSK)" executed successfully
+2025-04-03 23:51:29,124 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:52:29 MSK)" (scheduled at 2025-04-03 23:51:29.121137+03:00)
+2025-04-03 23:51:29,125 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:52:29 MSK)" executed successfully
+2025-04-03 23:52:29,127 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:53:29 MSK)" (scheduled at 2025-04-03 23:52:29.121137+03:00)
+2025-04-03 23:52:29,128 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-03 23:53:29 MSK)" executed successfully
+2025-04-03 23:53:03,848 - INFO - Stop polling...
+2025-04-03 23:53:03,848 - WARNING - Goodbye!
+2025-04-03 23:53:06,115 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-03 23:53:06,343 - WARNING - Updates were skipped successfully.
+2025-04-03 23:53:06,346 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:06,346 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:06,346 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:06,347 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-03 23:53:06,347 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:53:06,347 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:53:06,347 - INFO - Scheduler started
+2025-04-03 23:53:06,347 - INFO - Бот запущен.
+2025-04-03 23:53:06,348 - INFO - Start polling.
+2025-04-03 23:53:10,188 - INFO - Received /start from chat_id: 380675615
+2025-04-03 23:53:11,348 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-03 23:53:11,348 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-03 23:53:29,256 - INFO - Stop polling...
+2025-04-03 23:53:29,257 - WARNING - Goodbye!
+2025-04-03 23:53:46,970 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-03 23:53:47,236 - WARNING - Updates were skipped successfully.
+2025-04-03 23:53:47,238 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:47,238 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:47,238 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:53:47,238 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-03 23:53:47,238 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:53:47,238 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:53:47,238 - INFO - Scheduler started
+2025-04-03 23:53:47,238 - INFO - Бот запущен.
+2025-04-03 23:53:47,239 - INFO - Start polling.
+2025-04-03 23:53:50,671 - INFO - Received /start from chat_id: 380675615
+2025-04-03 23:53:52,864 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-03 23:53:52,864 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-03 23:53:54,620 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-03 23:53:54,620 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-03 23:54:30,676 - INFO - Stop polling...
+2025-04-03 23:54:30,676 - WARNING - Goodbye!
+2025-04-03 23:54:33,697 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-03 23:54:34,015 - WARNING - Updates were skipped successfully.
+2025-04-03 23:54:34,017 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:54:34,017 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:54:34,017 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-03 23:54:34,017 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-03 23:54:34,017 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:54:34,018 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-03 23:54:34,018 - INFO - Scheduler started
+2025-04-03 23:54:34,018 - INFO - Бот запущен.
+2025-04-03 23:54:34,018 - INFO - Start polling.
+2025-04-03 23:54:36,614 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-03 23:54:36,614 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-03 23:55:13,740 - INFO - Stop polling...
+2025-04-03 23:55:13,741 - WARNING - Goodbye!

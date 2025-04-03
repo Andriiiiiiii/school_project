@@ -6,10 +6,13 @@ from keyboards.submenus import (
 from keyboards.main_menu import main_menu_keyboard
 from database import crud
 from functools import partial
-from utils.helpers import daily_words_cache, LEVELS_DIR, reset_daily_words_cache
+from utils.helpers import reset_daily_words_cache, LEVELS_DIR
 import os
 import logging
 from zoneinfo import ZoneInfo
+
+# Настройка логирования
+logger = logging.getLogger(__name__)
 
 # Глобальный словарь для хранения состояния ввода (какой параметр ожидается от пользователя)
 pending_settings = {}
@@ -192,8 +195,7 @@ async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
     crud.update_user_level(chat_id, level)
-    if chat_id in daily_words_cache:
-        del daily_words_cache[chat_id]
+    reset_daily_words_cache(chat_id)
     await bot.send_message(chat_id, f"Уровень установлен на {level}.", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
@@ -223,21 +225,20 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
                 
             # Проверяем валидность полученного часового пояса
             if not is_valid_timezone(tz_mapped):
-                logging.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
+                logger.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
                 tz_mapped = "Europe/Moscow"  # Значение по умолчанию
         except ValueError:
-            logging.error(f"Ошибка преобразования часового пояса {tz} для пользователя {chat_id}")
+            logger.error(f"Ошибка преобразования часового пояса {tz} для пользователя {chat_id}")
             tz_mapped = "Europe/Moscow"  # Значение по умолчанию при ошибке
     else:
         tz_mapped = tz
         # Проверяем валидность если пояс передан напрямую
         if not is_valid_timezone(tz_mapped):
-            logging.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
+            logger.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
             tz_mapped = "Europe/Moscow"  # Значение по умолчанию
     
     crud.update_user_timezone(chat_id, tz_mapped)
-    if chat_id in daily_words_cache:
-        del daily_words_cache[chat_id]
+    reset_daily_words_cache(chat_id)
     await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=notification_settings_menu_keyboard())
     await callback.answer()
 
@@ -256,16 +257,14 @@ async def process_text_setting(message: types.Message):
             await message.answer("Ошибка: число должно быть от 1 до 20.", reply_markup=notification_settings_menu_keyboard())
             return
         crud.update_user_words_per_day(chat_id, value)
-        if chat_id in daily_words_cache:
-            del daily_words_cache[chat_id]
+        reset_daily_words_cache(chat_id)
         await message.answer(f"Количество слов в день установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
     elif setting_type == "repetitions":
         if not (1 <= value <= 5):
             await message.answer("Ошибка: число должно быть от 1 до 5.", reply_markup=notification_settings_menu_keyboard())
             return
         crud.update_user_notifications(chat_id, value)
-        if chat_id in daily_words_cache:
-            del daily_words_cache[chat_id]
+        reset_daily_words_cache(chat_id)
         await message.answer(f"Количество повторений установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
 
 async def process_notification_back(callback: types.CallbackQuery, bot: Bot):

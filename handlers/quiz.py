@@ -5,8 +5,12 @@ import asyncio
 from database import crud
 from utils.quiz_helpers import load_quiz_data
 from keyboards.submenus import quiz_keyboard
-from utils.helpers import get_daily_words_for_user, daily_words_cache
+from utils.helpers import get_daily_words_for_user, daily_words_manager
 from config import REMINDER_START, DURATION_HOURS
+import logging
+
+# Настройка логирования
+logger = logging.getLogger(__name__)
 
 # Глобальный словарь для хранения состояния квиза для каждого пользователя
 quiz_states = {}
@@ -19,6 +23,7 @@ def extract_english(word_line: str) -> str:
 def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None):
     quiz_data = load_quiz_data(level, chosen_set)
     if not quiz_data:
+        logger.warning(f"No quiz data found for level {level}, set {chosen_set}")
         return []
     mapping = { item["word"].lower(): item["translation"] for item in quiz_data }
     questions = []
@@ -54,27 +59,43 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     from handlers.settings import user_set_selection
     chosen_set = user_set_selection.get(chat_id)
     
-    # Получаем слова дня с учётом выбранного сета (кэш обновляется, если выбран новый сет)
-    result = get_daily_words_for_user(chat_id, level, user[2], user[3],
-                                       first_time=REMINDER_START, duration_hours=DURATION_HOURS, chosen_set=chosen_set)
-    if result is None:
-        await bot.send_message(chat_id, "Нет слов для квиза.")
-        return
-    # Получаем запись из кэша
-    daily_entry = daily_words_cache[chat_id]
-    raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
-    daily_words = set(extract_english(line) for line in raw_words)
-    learned = set(word for word, _ in crud.get_learned_words(chat_id))
-    filtered_words = daily_words - learned
-    if not filtered_words:
-        await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
-        return
-    questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
-    if not questions:
-        await bot.send_message(chat_id, "Нет данных для квиза.")
-        return
-    quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
-    await send_quiz_question(chat_id, bot)
+    try:
+        # Получаем слова дня с учётом выбранного сета (кэш обновляется, если выбран новый сет)
+        result = get_daily_words_for_user(chat_id, level, user[2], user[3],
+                                           first_time=REMINDER_START, duration_hours=DURATION_HOURS, chosen_set=chosen_set)
+        if result is None:
+            await bot.send_message(chat_id, "Нет слов для квиза.")
+            return
+        
+        # Получаем запись из кэша
+        cached_data = daily_words_manager.get(chat_id)
+        if not cached_data:
+            await bot.send_message(chat_id, "Ошибка получения данных из кэша.")
+            logger.error(f"Cache miss for user {chat_id} after get_daily_words_for_user call")
+            return
+            
+        daily_entry = cached_data
+        raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
+        daily_words = set(extract_english(line) for line in raw_words)
+        
+        learned = set(word for word, _ in crud.get_learned_words(chat_id))
+        filtered_words = daily_words - learned
+        
+        if not filtered_words:
+            await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
+            return
+            
+        questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
+        if not questions:
+            await bot.send_message(chat_id, "Нет данных для квиза.")
+            return
+            
+        quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
+        await send_quiz_question(chat_id, bot)
+    except Exception as e:
+        logger.error(f"Error starting quiz for user {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка при запуске квиза. Пожалуйста, попробуйте позже.")
+    
     await callback.answer()
 
 async def send_quiz_question(chat_id, bot: Bot):
@@ -108,34 +129,42 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
         await callback.answer()
         return
 
-    data = callback.data.split(":")
-    if len(data) != 4:
-        await callback.answer("Неверный формат данных.", show_alert=True)
-        return
-    _, _, q_index_str, option_index_str = data
     try:
-        q_index = int(q_index_str)
-        option_index = int(option_index_str)
-    except ValueError:
-        await callback.answer("Неверный формат данных.", show_alert=True)
-        return
-    chat_id = callback.from_user.id
-    state = quiz_states.get(chat_id)
-    if not state:
-        await callback.answer("Квиз не найден.", show_alert=True)
-        return
-    if q_index != state["current_index"]:
-        await callback.answer("Неверная последовательность вопросов.", show_alert=True)
-        return
-    question = state["questions"][q_index]
-    if option_index == question["correct_index"]:
-        crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
-        state["correct"] += 1
-        await callback.answer("Правильно!")
-    else:
-        await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
-    state["current_index"] += 1
-    await send_quiz_question(chat_id, bot)
+        data = callback.data.split(":")
+        if len(data) != 4:
+            await callback.answer("Неверный формат данных.", show_alert=True)
+            return
+        _, _, q_index_str, option_index_str = data
+        try:
+            q_index = int(q_index_str)
+            option_index = int(option_index_str)
+        except ValueError:
+            await callback.answer("Неверный формат данных.", show_alert=True)
+            return
+        chat_id = callback.from_user.id
+        state = quiz_states.get(chat_id)
+        if not state:
+            await callback.answer("Квиз не найден.", show_alert=True)
+            return
+        if q_index != state["current_index"]:
+            await callback.answer("Неверная последовательность вопросов.", show_alert=True)
+            return
+        question = state["questions"][q_index]
+        if option_index == question["correct_index"]:
+            try:
+                crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
+                state["correct"] += 1
+                await callback.answer("Правильно!")
+            except Exception as e:
+                logger.error(f"Error adding learned word for user {chat_id}: {e}")
+                await callback.answer("Правильно, но возникла ошибка при сохранении результата.")
+        else:
+            await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
+        state["current_index"] += 1
+        await send_quiz_question(chat_id, bot)
+    except Exception as e:
+        logger.error(f"Error processing quiz answer: {e}")
+        await callback.answer("Произошла ошибка при обработке ответа.")
 
 def register_quiz_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
