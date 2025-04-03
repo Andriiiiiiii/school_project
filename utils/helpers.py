@@ -96,6 +96,7 @@ def extract_english(word_line: str) -> str:
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False, chosen_set=None):
     """
     Генерирует или возвращает кэшированный список слов дня.
+    Улучшенная версия с более понятной логикой выбора слов.
     """
     # Локальный импорт для избежания циклического импорта
     try:
@@ -107,11 +108,13 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         
+        # Принудительный сброс кэша если запрошено
         if force_reset:
             reset_daily_words_cache(chat_id)
             if chat_id in previous_daily_words:
                 del previous_daily_words[chat_id]
         
+        # Проверка кэша - возвращаем если данные актуальны
         if chat_id in daily_words_cache:
             cached = daily_words_cache[chat_id]
             if (cached[0] == today and cached[3] == first_time and 
@@ -119,60 +122,110 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 return cached[1], cached[2]
             reset_daily_words_cache(chat_id)
 
-        # Определяем выбранный сет
+        # Определяем выбранный сет слов
         if chosen_set is None:
             chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
         
+        # Загружаем слова из выбранного сета
         file_words = load_words_for_set(level, chosen_set)
         if not file_words:
             logger.warning(f"No words found for level {level}, set {chosen_set}")
             return None
 
-        # Получаем выученные слова
+        # Получаем список уже выученных слов
         try:
             learned_raw = crud.get_learned_words(chat_id)
+            # Всегда используем extract_english для унификации формата
             learned_set = set(extract_english(item[0]) for item in learned_raw)
         except Exception as e:
             logger.error(f"Error getting learned words for user {chat_id}: {e}")
             learned_set = set()
 
-        # Логика выбора слов
-        try:
-            if len(learned_set) >= len(file_words):
-                if len(file_words) >= words_count:
-                    unique_words = random.sample(file_words, words_count)
-                else:
-                    unique_words = file_words[:]
-            else:
-                available_words = [w for w in file_words if extract_english(w) not in learned_set]
-                leftover = []
-                if chat_id in previous_daily_words:
-                    leftover = [w for w in previous_daily_words[chat_id] if extract_english(w) not in learned_set]
-                if len(leftover) >= words_count:
-                    unique_words = random.sample(leftover, words_count)
-                else:
-                    needed_new = words_count - len(leftover)
-                    candidates = [w for w in available_words if w not in leftover]
-                    if len(candidates) >= needed_new:
-                        new_words = random.sample(candidates, needed_new)
-                    else:
-                        new_words = candidates
-                    unique_words = leftover + new_words
-        except ValueError as e:
-            logger.error(f"Error sampling words: {e}")
-            # Запасной вариант: берём первые words_count слов или все доступные
-            unique_words = file_words[:words_count] if len(file_words) >= words_count else file_words[:]
+        # Выбираем слова для изучения по более ясной логике
+        unique_words = []
         
-        # Создаем сообщения и времена
+        # Определяем невыученные слова из файла
+        available_words = []
+        for word in file_words:
+            eng_word = extract_english(word)
+            if eng_word not in learned_set:
+                available_words.append(word)
+        
+        # Получаем невыученные слова из предыдущего дня
+        leftover_words = []
+        if chat_id in previous_daily_words:
+            for word in previous_daily_words[chat_id]:
+                eng_word = extract_english(word)
+                if eng_word not in learned_set:
+                    leftover_words.append(word)
+        
+        # Логика выбора слов:
+        # 1. Сначала используем невыученные слова из предыдущего дня (если есть)
+        # 2. Затем добавляем новые невыученные слова
+        # 3. Если все слова выучены, выбираем случайные слова из основного набора
+        
+        # Добавляем сначала слова из предыдущего дня (не более words_count)
+        if leftover_words:
+            if len(leftover_words) <= words_count:
+                unique_words.extend(leftover_words)
+            else:
+                unique_words.extend(random.sample(leftover_words, words_count))
+        
+        # Добавляем новые невыученные слова, если место еще осталось
+        if len(unique_words) < words_count and available_words:
+            # Фильтруем слова, которые уже добавлены из leftover_words
+            remaining_available = [w for w in available_words if w not in unique_words]
+            
+            # Определяем, сколько слов нужно добавить
+            words_needed = words_count - len(unique_words)
+            
+            if remaining_available:
+                if len(remaining_available) <= words_needed:
+                    unique_words.extend(remaining_available)
+                else:
+                    unique_words.extend(random.sample(remaining_available, words_needed))
+        
+        # Если после всех попыток слов меньше, чем words_count, добавляем случайные слова
+        if len(unique_words) < words_count:
+            # Определяем, сколько дополнительных слов нужно
+            words_needed = words_count - len(unique_words)
+            
+            # Создаем пул слов, которые еще не включены
+            remaining_words = [w for w in file_words if w not in unique_words]
+            
+            if remaining_words:
+                if len(remaining_words) <= words_needed:
+                    unique_words.extend(remaining_words)
+                else:
+                    unique_words.extend(random.sample(remaining_words, words_needed))
+            # Если remaining_words пуст, дублируем уже выбранные слова
+            elif unique_words:
+                # Дублируем имеющиеся слова до достижения words_count
+                while len(unique_words) < words_count:
+                    unique_words.append(random.choice(unique_words))
+            else:
+                # В крайнем случае, если вообще нет слов, используем первые words_count из файла
+                unique_words = file_words[:words_count] if len(file_words) >= words_count else file_words[:]
+                logger.warning(f"Falling back to using random words for user {chat_id} due to insufficient data")
+        
+        # Определяем, выучены ли все слова в наборе
+        all_learned = len(available_words) == 0 and len(file_words) > 0
+        
+        # Создаем сообщения для отправки
         try:
-            messages_unique = ["🔹 " + word for word in unique_words]
+            if all_learned:
+                prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:\n\n"
+                messages_unique = [prefix_message] + ["🔹 " + word for word in unique_words]
+            else:
+                messages_unique = ["🔹 " + word for word in unique_words]
+                
             repeated_messages = messages_unique * repetitions
-            total_notifications = len(unique_words) * repetitions
+            total_notifications = len(repeated_messages)
         except Exception as e:
             logger.error(f"Error creating messages: {e}")
             messages_unique = ["🔹 Error loading words"]
             repeated_messages = messages_unique * repetitions
-            total_notifications = len(messages_unique) * repetitions
+            total_notifications = len(repeated_messages)
 
         # Получаем часовой пояс пользователя
         try:
@@ -192,4 +245,4 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     except Exception as e:
         logger.error(f"Unhandled error in get_daily_words_for_user for chat_id {chat_id}: {e}")
         # Возвращаем минимальный набор данных в случае ошибки
-        return ["🔹 Error loading daily words"], ["12:00"]
+        return ["🔹 Error loading daily words"], ["12:00"]      

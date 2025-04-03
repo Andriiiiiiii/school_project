@@ -10365,3 +10365,16 @@ IndexError: list index out of range
 2025-04-04 00:25:49,712 - WARNING - No words found for level A1, set Essential Everyday Words
 2025-04-04 00:25:57,871 - INFO - Stop polling...
 2025-04-04 00:25:57,871 - WARNING - Goodbye!
+2025-04-04 00:52:33,048 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 00:52:33,194 - WARNING - Updates were skipped successfully.
+2025-04-04 00:52:33,198 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:52:33,199 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 00:52:33,199 - INFO - Scheduler started
+2025-04-04 00:52:33,199 - INFO - Бот запущен.
+2025-04-04 00:52:33,199 - INFO - Start polling.
+2025-04-04 00:52:40,409 - INFO - Received /start from chat_id: 380675615
+2025-04-04 00:52:40,409 - INFO - User 380675615 already exists
+2025-04-04 00:52:42,530 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:52:42,530 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:53:08,345 - INFO - Stop polling...
+2025-04-04 00:53:08,346 - WARNING - Goodbye!

@@ -3,6 +3,10 @@ import os
 import random
 from aiogram import types, Dispatcher, Bot
 from database import crud
+import logging
+
+# Настройка логирования
+logger = logging.getLogger(__name__)
 
 # Глобальное хранилище состояния теста для каждого пользователя (ключ – chat_id)
 level_test_states = {}
@@ -69,36 +73,49 @@ def load_words_for_level_file(level: str):
 def generate_level_test_questions():
     """
     Генерирует тестовые вопросы для каждого уровня.
+    Улучшенная версия, которая использует отвлекающие варианты из других уровней
+    вместо искусственных надписей "Вариант N".
     """
     try:
         questions = []
+        # Заранее загрузим слова для всех уровней для формирования пула отвлекающих вариантов
+        all_words_by_level = {}
+        all_translations = []
+        
+        for level in LEVELS:
+            words = load_words_for_level_file(level)
+            if words:
+                all_words_by_level[level] = words
+                # Сразу формируем общий пул переводов для отвлекающих вариантов
+                all_translations.extend([w["translation"] for w in words])
+        
         for level in LEVELS:
             try:
-                words = load_words_for_level_file(level)
+                words = all_words_by_level.get(level, [])
                 if not words:
                     logger.warning(f"No words found for level {level}")
                     continue
-                    
+                
                 # Если в файле меньше 3 слова, выбираем все; иначе случайно выбираем 3 слова
                 if len(words) < 3:
                     selected = words
                 else:
                     selected = random.sample(words, 3)
-                    
+                
                 for entry in selected:
                     try:
                         correct = entry["translation"]
-                        # Выбираем ложные варианты из того же файла, исключая правильный
-                        distractor_pool = [w["translation"] for w in words if w["translation"] != correct]
+                        # Формируем пул отвлекающих вариантов из всех уровней, исключая правильный
+                        distractor_pool = [t for t in all_translations if t != correct]
                         
                         if len(distractor_pool) >= 3:
+                            # Если достаточно уникальных вариантов, выбираем без повторений
                             distractors = random.sample(distractor_pool, 3)
                         else:
-                            distractors = distractor_pool  # если меньше 3, используем имеющиеся
-                            # Если не хватает, добавляем случайные строки
-                            while len(distractors) < 3:
-                                distractors.append(f"Вариант {len(distractors) + 1}")
-                                
+                            # Если недостаточно вариантов, используем random.choices с возможными повторениями
+                            # Это лучше, чем искусственные "Вариант N"
+                            distractors = random.choices(distractor_pool, k=3) if distractor_pool else ["???", "???", "???"]
+                        
                         # Перемешиваем первые 4 варианта (правильный + ложные)
                         options_temp = [correct] + distractors
                         random.shuffle(options_temp)
@@ -125,7 +142,7 @@ def generate_level_test_questions():
             except Exception as e:
                 logger.error(f"Error generating questions for level {level}: {e}")
                 continue
-                
+        
         # Сортируем вопросы по порядку уровней
         def level_order(q):
             try:
@@ -139,62 +156,6 @@ def generate_level_test_questions():
     except Exception as e:
         logger.error(f"Error in generate_level_test_questions: {e}")
         return []
-    """
-    Генерирует тестовые вопросы для каждого уровня.
-    Для каждого уровня из LEVELS выбирается 3 случайных слова (если доступно).
-    Для каждого слова генерируются 5 вариантов ответа:
-      - Правильный перевод.
-      - Три ложных перевода, выбранных из того же уровня.
-      - Фиксированная опция "Не знаю" (всегда последняя).
-    Возвращает список вопросов, каждый вопрос – словарь:
-      {
-         "level": <уровень>,
-         "word": <английское слово>,
-         "correct": <правильный перевод>,
-         "options": [вариант1, вариант2, вариант3, вариант4, "Не знаю"],
-         "correct_index": <индекс правильного ответа среди первых 4 вариантов>
-      }
-    """
-    questions = []
-    for level in LEVELS:
-        words = load_words_for_level_file(level)
-        if not words:
-            continue
-        # Если в файле меньше 3 слова, выбираем все; иначе случайно выбираем 3 слова
-        if len(words) < 3:
-            selected = words
-        else:
-            selected = random.sample(words, 3)
-        for entry in selected:
-            correct = entry["translation"]
-            # Выбираем ложные варианты из того же файла, исключая правильный
-            distractor_pool = [w["translation"] for w in words if w["translation"] != correct]
-            if len(distractor_pool) >= 3:
-                distractors = random.sample(distractor_pool, 3)
-            else:
-                distractors = distractor_pool  # если меньше 3, используем имеющиеся
-            # Перемешиваем первые 4 варианта (правильный + ложные)
-            options_temp = [correct] + distractors
-            random.shuffle(options_temp)
-            # Правильный ответ содержится в options_temp; его индекс запоминаем
-            correct_index = options_temp.index(correct)
-            # Добавляем фиксированную опцию "Не знаю" в конец
-            options = options_temp + ["Не знаю"]
-            questions.append({
-                "level": level,
-                "word": entry["word"],
-                "correct": correct,
-                "options": options,
-                "correct_index": correct_index
-            })
-    # Сортируем вопросы по порядку уровней (блоками: сначала A1, затем A2 и т.д.)
-    def level_order(q):
-        try:
-            return LEVELS.index(q["level"])
-        except ValueError:
-            return 999
-    questions.sort(key=level_order)
-    return questions
 
 async def start_level_test(chat_id: int, bot: Bot):
     """

@@ -20,35 +20,57 @@ def extract_english(word_line: str) -> str:
     if " - " in word_line:
         return word_line.split(" - ", 1)[0].strip()
     return word_line.strip()
-
 def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None):
+    """
+    Генерирует вопросы для квиза на основе слов дня.
+    Улучшенная версия, которая избегает дубликатов вариантов ответов, где это возможно.
+    """
     quiz_data = load_quiz_data(level, chosen_set)
     if not quiz_data:
         logger.warning(f"No quiz data found for level {level}, set {chosen_set}")
         return []
-    mapping = { item["word"].lower(): item["translation"] for item in quiz_data }
+    
+    mapping = {item["word"].lower(): item["translation"] for item in quiz_data}
+    translations_set = set(item["translation"] for item in quiz_data)
     questions = []
+    
     for word in daily_words:
         word_lc = word.lower()
         if word_lc not in mapping:
             continue
+        
         correct_translation = mapping[word_lc]
-        pool = [d["translation"] for d in quiz_data if d["translation"] != correct_translation]
+        
+        # Создаем пул отвлекающих вариантов, исключая правильный ответ
+        pool = list(translations_set - {correct_translation})
+        
+        # Выбираем отвлекающие варианты в зависимости от размера пула
         if len(pool) >= 3:
+            # Если достаточно вариантов, используем random.sample для уникальных вариантов
             distractors = random.sample(pool, 3)
         else:
-            distractors = random.choices(pool, k=3)
+            # Если недостаточно вариантов, используем random.choices, что может дать дубликаты,
+            # но это лучше, чем искусственные варианты
+            if pool:
+                distractors = random.choices(pool, k=3)
+            else:
+                # В крайнем случае, если совсем нет отвлекающих вариантов
+                logger.warning(f"No distractors available for word '{word}'")
+                distractors = ["???", "???", "???"]
+        
         options = [correct_translation] + distractors
         random.shuffle(options)
         correct_index = options.index(correct_translation)
+        
         questions.append({
             "word": word,
             "correct": correct_translation,
             "options": options,
             "correct_index": correct_index
         })
+    
     return questions
-
+    
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """
     Инициализирует квиз для пользователя.
