@@ -8,6 +8,8 @@ from database import crud
 from functools import partial
 from utils.helpers import daily_words_cache, LEVELS_DIR, reset_daily_words_cache
 import os
+import logging
+from zoneinfo import ZoneInfo
 
 # Глобальный словарь для хранения состояния ввода (какой параметр ожидается от пользователя)
 pending_settings = {}
@@ -29,6 +31,29 @@ timezones_map = {
     11: "Магаданское",
     12: "Камчатское"
 }
+
+# Словарь соответствия российских часовых поясов стандартным IANA идентификаторам
+russian_tzs = {
+    2: "Europe/Kaliningrad",  # UTC+2
+    3: "Europe/Moscow",       # UTC+3
+    4: "Europe/Samara",       # UTC+4
+    5: "Asia/Yekaterinburg",  # UTC+5
+    6: "Asia/Omsk",           # UTC+6
+    7: "Asia/Krasnoyarsk",    # UTC+7
+    8: "Asia/Irkutsk",        # UTC+8
+    9: "Asia/Yakutsk",        # UTC+9
+    10: "Asia/Vladivostok",   # UTC+10
+    11: "Asia/Magadan",       # UTC+11
+    12: "Asia/Kamchatka"      # UTC+12
+}
+
+def is_valid_timezone(tz_name):
+    """Проверяет валидность часового пояса."""
+    try:
+        ZoneInfo(tz_name)
+        return True
+    except Exception:
+        return False
 
 async def show_settings_callback(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
@@ -173,20 +198,43 @@ async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
 
 async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик выбора часового пояса. Корректно преобразует UTC+X в стандартный IANA идентификатор.
+    """
     chat_id = callback.from_user.id
     try:
         _, tz = callback.data.split(":", 1)
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
+    
+    # Преобразуем формат UTC+ в стандартный IANA формат
     if tz.startswith("UTC+"):
         try:
             offset = int(tz[4:])
-            tz_mapped = f"Etc/GMT-{offset}"
+            
+            # Используем российские часовые пояса, где это возможно
+            if offset in russian_tzs:
+                tz_mapped = russian_tzs[offset]
+            else:
+                # Правильное преобразование: UTC+X соответствует Etc/GMT-X 
+                # (в POSIX знак инвертирован)
+                tz_mapped = f"Etc/GMT-{offset}"
+                
+            # Проверяем валидность полученного часового пояса
+            if not is_valid_timezone(tz_mapped):
+                logging.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
+                tz_mapped = "Europe/Moscow"  # Значение по умолчанию
         except ValueError:
-            tz_mapped = tz
+            logging.error(f"Ошибка преобразования часового пояса {tz} для пользователя {chat_id}")
+            tz_mapped = "Europe/Moscow"  # Значение по умолчанию при ошибке
     else:
         tz_mapped = tz
+        # Проверяем валидность если пояс передан напрямую
+        if not is_valid_timezone(tz_mapped):
+            logging.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
+            tz_mapped = "Europe/Moscow"  # Значение по умолчанию
+    
     crud.update_user_timezone(chat_id, tz_mapped)
     if chat_id in daily_words_cache:
         del daily_words_cache[chat_id]
