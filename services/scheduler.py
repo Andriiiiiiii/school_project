@@ -1,4 +1,6 @@
 # services/scheduler.py
+
+import random
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime, timedelta
 import asyncio
@@ -15,10 +17,20 @@ FIRST_TIME = REMINDER_START
 # Словарь для отслеживания, было ли отправлено напоминание по квизу для каждого пользователя за текущий день
 quiz_reminder_sent = {}
 
+# Кэш информации о пользователях для сокращения запросов к БД
+user_cache = {}
+# Время последнего обновления кэша (в формате временной метки)
+last_cache_update = 0
+# Интервал обновления кэша в секундах (каждые 15 минут)
+CACHE_UPDATE_INTERVAL = 15 * 60
+
 def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
     """
-    Функция, вызываемая каждые 60 секунд.
+    Оптимизированная функция, вызываемая каждую минуту.
+    Использует кэширование и оптимизации для снижения нагрузки на БД.
     """
+    global last_cache_update, user_cache
+    
     try:
         # Получаем серверное время с установленной временной зоной
         try:
@@ -27,21 +39,125 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
             logger.error(f"Ошибка при установке серверной временной зоны {SERVER_TIMEZONE}: {e}")
             now_server = datetime.now(tz=ZoneInfo("UTC"))  # Используем UTC как запасной вариант
         
-        # Получаем всех пользователей
-        try:
-            users = crud.get_all_users()
-        except Exception as e:
-            logger.error(f"Error getting users from database: {e}")
-            users = []
-            
-        for user in users:
+        current_time = now_server.timestamp()
+        
+        # Обновляем кэш пользователей, если прошло достаточно времени
+        if current_time - last_cache_update > CACHE_UPDATE_INTERVAL:
             try:
-                process_user(user, now_server, bot, loop)
+                user_cache = {user[0]: user for user in crud.get_all_users()}
+                last_cache_update = current_time
+                logger.debug(f"Updated user cache with {len(user_cache)} users")
             except Exception as e:
-                logger.error(f"Error processing user {user[0] if user else 'unknown'}: {e}")
-                continue
+                logger.error(f"Error updating user cache: {e}")
+                # В случае ошибки, все равно используем имеющиеся данные
+                if not user_cache:
+                    # Только если кэш пуст, пытаемся получить свежие данные
+                    try:
+                        user_cache = {user[0]: user for user in crud.get_all_users()}
+                    except Exception as e2:
+                        logger.error(f"Failed to get users after cache update error: {e2}")
+                        user_cache = {}
+        
+        # Если нет пользователей, нечего обрабатывать
+        if not user_cache:
+            return
+            
+        # Получаем текущую минуту для оптимизации проверок
+        current_minute_str = now_server.strftime("%M")
+        
+        # Обрабатываем каждого пользователя
+        for chat_id, user in user_cache.items():
+            try:
+                # Определяем часовой пояс пользователя
+                timezone = user[5] if len(user) > 5 and user[5] else "Europe/Moscow"
+                
+                # Получаем локальное время для пользователя
+                try:
+                    now_local = now_server.astimezone(ZoneInfo(timezone))
+                except Exception:
+                    now_local = now_server.astimezone(ZoneInfo("Europe/Moscow"))
+                    
+                # Получаем строку часа и минуты для проверки уведомлений
+                now_local_str = now_local.strftime("%H:%M")
+                
+                # Если полночь по времени пользователя, обрабатываем сброс данных
+                if now_local.hour == 0 and now_local.minute == 0:
+                    process_daily_reset(chat_id)
+                    continue  # Пропускаем дальнейшую обработку, чтобы не отправлять уведомления
+                
+                # Полная обработка пользователя только если наступило точное время уведомления
+                # или время для проверки квиза (близкое к концу периода)
+                needs_processing = False
+                
+                # Проверяем, есть ли уведомления в текущее время
+                try:
+                    # Получаем данные для слов дня с минимальной обработкой
+                    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+                                                 first_time=FIRST_TIME, duration_hours=DURATION_HOURS)
+                    if result:
+                        messages, times = result
+                        # Если текущее время есть в списке запланированных, обрабатываем
+                        if now_local_str in times:
+                            needs_processing = True
+                except Exception as e:
+                    logger.error(f"Error checking notification times for user {chat_id}: {e}")
+                
+                # Вычисляем время для отправки напоминания о квизе
+                try:
+                    local_today_str = now_local.strftime("%Y-%m-%d")
+                    local_base_obj = datetime.strptime(f"{local_today_str} {FIRST_TIME}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(timezone))
+                    local_end_obj = local_base_obj + timedelta(hours=DURATION_HOURS)
+                    
+                    # Проверяем, близко ли текущее время к окончанию периода (в пределах 3 минут)
+                    time_diff = abs((now_local - local_end_obj).total_seconds() / 60)
+                    if time_diff <= 3 and quiz_reminder_sent.get(chat_id) != local_today_str:
+                        needs_processing = True
+                except Exception as e:
+                    logger.error(f"Error calculating quiz reminder time for user {chat_id}: {e}")
+                
+                # Только если требуется обработка, вызываем полную функцию
+                if needs_processing:
+                    process_user(user, now_server, bot, loop)
+            except Exception as e:
+                logger.error(f"Error processing user {chat_id}: {e}")
     except Exception as e:
         logger.error(f"Unhandled error in scheduler_job: {e}")
+    
+    try:
+        # Попытка сохранить время последнего запуска
+        from bot import save_last_run_time  # Импортируем здесь, чтобы избежать циклических импортов
+        save_last_run_time(now_server)
+    except Exception as e:
+        logger.error(f"Error saving scheduler run time: {e}")
+
+def process_daily_reset(chat_id):
+    """Обработка ежедневного сброса данных для пользователя."""
+    try:
+        if chat_id in daily_words_cache:
+            entry = daily_words_cache[chat_id]
+            unique_words = entry[8]  # список уникальных слов текущего дня
+            
+            # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
+            learned_raw = crud.get_learned_words(chat_id)
+            learned_set = set(extract_english(item[0]) for item in learned_raw)
+            filtered_unique = [w for w in unique_words if extract_english(w) not in learned_set]
+            
+            if filtered_unique:  # Сохраняем только если есть невыученные слова
+                previous_daily_words[chat_id] = filtered_unique
+            elif chat_id in previous_daily_words:
+                # Если все слова выучены, удаляем запись из previous_daily_words
+                del previous_daily_words[chat_id]
+                
+            # Сбрасываем кэш для генерации нового списка слов на завтра
+            reset_daily_words_cache(chat_id)
+        
+        # Сбрасываем флаг напоминания
+        if chat_id in quiz_reminder_sent:
+            del quiz_reminder_sent[chat_id]
+            
+        logger.debug(f"Daily reset completed for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error processing daily reset for user {chat_id}: {e}")
 
 def process_user(user, now_server, bot, loop):
     """
@@ -107,13 +223,22 @@ def process_user(user, now_server, bot, loop):
                     bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"),
                     loop
                 )
+                logger.info(f"Sent notification to user {chat_id} at {now_local_str}")
             except Exception as e:
                 logger.error(f"Error sending notification to user {chat_id}: {e}")
         
-        # Если текущее время равно концу периода (FIRST_TIME + DURATION_HOURS)
-        if now_local_str == end_time_str:
-            # Проверяем, было ли уже отправлено уведомление для данного пользователя сегодня
-            if quiz_reminder_sent.get(chat_id) != local_today_str:
+        # ИСПРАВЛЕННЫЙ КОД: Используем временное окно вместо точного сравнения
+        # Вычисляем разницу в минутах между текущим временем и временем окончания
+        try:
+            # Преобразуем current_time и end_time в datetime-объекты для корректного сравнения
+            current_time = datetime.strptime(f"{local_today_str} {now_local_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
+            end_time = datetime.strptime(f"{local_today_str} {end_time_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
+            
+            # Вычисляем разницу в минутах
+            time_diff_minutes = abs((current_time - end_time).total_seconds() / 60)
+            
+            # Используем временное окно в 3 минуты вместо точного времени
+            if time_diff_minutes <= 3 and quiz_reminder_sent.get(chat_id) != local_today_str:
                 try:
                     # Адаптируем сообщение в зависимости от режима (обычный/повторение)
                     if is_revision_mode:
@@ -126,42 +251,25 @@ def process_user(user, now_server, bot, loop):
                         loop
                     )
                     quiz_reminder_sent[chat_id] = local_today_str
+                    logger.info(f"Sent quiz reminder to user {chat_id}")
                 except Exception as e:
                     logger.error(f"Error sending quiz reminder to user {chat_id}: {e}")
-
-        # При наступлении DAILY_RESET_TIME сбрасываем кэш и сохраняем текущий список уникальных слов
-        if now_local.strftime("%H:%M") == DAILY_RESET_TIME:
-            try:
-                if chat_id in daily_words_cache:
-                    entry = daily_words_cache[chat_id]
-                    unique_words = entry[8]  # список уникальных слов текущего дня
-                    # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
-                    learned_raw = crud.get_learned_words(chat_id)
-                    learned_set = set(extract_english(item[0]) for item in learned_raw)
-                    filtered_unique = [w for w in unique_words if extract_english(w) not in learned_set]
-                    
-                    if filtered_unique:  # Сохраняем только если есть невыученные слова
-                        previous_daily_words[chat_id] = filtered_unique
-                    elif chat_id in previous_daily_words:
-                        # Если все слова выучены, удаляем запись из previous_daily_words
-                        del previous_daily_words[chat_id]
-                        
-                    # Сбрасываем кэш для генерации нового списка слов на завтра
-                    reset_daily_words_cache(chat_id)
-                
-                # Сбрасываем флаг напоминания, чтобы уведомление отправлялось для нового дня
-                if chat_id in quiz_reminder_sent:
-                    del quiz_reminder_sent[chat_id]
-            except Exception as e:
-                logger.error(f"Error processing daily reset for user {chat_id}: {e}")
+        except Exception as e:
+            logger.error(f"Error checking quiz reminder time for user {chat_id}: {e}")
+            
     except Exception as e:
         logger.error(f"Error processing daily words for user {chat_id}: {e}")
 
 def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
     """
-    Запускает APScheduler, который каждые 60 секунд вызывает scheduler_job.
+    Запускает APScheduler, который каждую минуту вызывает scheduler_job.
+    Оптимизированная версия с более умной логикой.
     """
     scheduler = AsyncIOScheduler()
+    
+    # Запускаем основную задачу каждую минуту для точности
     scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot, loop])
+    
     scheduler.start()
+    logger.info("Scheduler started with optimized configuration")
     return scheduler

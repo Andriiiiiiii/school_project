@@ -10399,3 +10399,55 @@ IndexError: list index out of range
 2025-04-04 01:12:25,091 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:13:25 MSK)" executed successfully
 2025-04-04 01:13:13,249 - INFO - Stop polling...
 2025-04-04 01:13:13,250 - WARNING - Goodbye!
+2025-04-04 01:27:50,906 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 01:27:51,051 - WARNING - Updates were skipped successfully.
+2025-04-04 01:27:51,054 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 01:27:51,054 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 01:27:51,054 - INFO - Scheduler started
+2025-04-04 01:27:51,054 - INFO - Scheduler started with optimized configuration
+2025-04-04 01:27:51,054 - INFO - Бот запущен.
+2025-04-04 01:27:51,055 - INFO - Start polling.
+2025-04-04 01:27:53,779 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:27:53,779 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:28:01,976 - INFO - Received /start from chat_id: 380675615
+2025-04-04 01:28:01,977 - INFO - User 380675615 already exists
+2025-04-04 01:28:38,794 - INFO - Stop polling...
+2025-04-04 01:28:38,796 - WARNING - Goodbye!
+2025-04-04 01:29:02,405 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 01:29:02,557 - WARNING - Updates were skipped successfully.
+2025-04-04 01:29:02,560 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 01:29:02,561 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 01:29:02,561 - INFO - Scheduler started
+2025-04-04 01:29:02,561 - INFO - Scheduler started with optimized configuration
+2025-04-04 01:29:02,561 - INFO - Бот запущен.
+2025-04-04 01:29:02,561 - INFO - Start polling.
+2025-04-04 01:29:07,895 - INFO - Received /start from chat_id: 380675615
+2025-04-04 01:29:07,895 - INFO - User 380675615 already exists
+2025-04-04 01:29:09,203 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:29:09,203 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:30:02,572 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:31:02 MSK)" (scheduled at 2025-04-04 01:30:02.560568+03:00)
+2025-04-04 01:30:02,574 - INFO - Sent notification to user 380675615 at 01:30
+2025-04-04 01:30:02,586 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:30:02,586 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:30:02,629 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:31:02 MSK)" executed successfully
+2025-04-04 01:31:02,573 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:32:02 MSK)" (scheduled at 2025-04-04 01:31:02.560568+03:00)
+2025-04-04 01:31:02,574 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:31:02,574 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:31:02,575 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:32:02 MSK)" executed successfully
+2025-04-04 01:32:02,571 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:33:02 MSK)" (scheduled at 2025-04-04 01:32:02.560568+03:00)
+2025-04-04 01:32:02,573 - INFO - Sent notification to user 380675615 at 01:32
+2025-04-04 01:32:02,573 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:32:02,573 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:32:02,576 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:33:02 MSK)" executed successfully
+2025-04-04 01:33:02,572 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:34:02 MSK)" (scheduled at 2025-04-04 01:33:02.560568+03:00)
+2025-04-04 01:33:02,572 - INFO - Sent notification to user 380675615 at 01:33
+2025-04-04 01:33:02,573 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:33:02,573 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:33:02,575 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:34:02 MSK)" executed successfully
+2025-04-04 01:34:02,571 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:35:02 MSK)" (scheduled at 2025-04-04 01:34:02.560568+03:00)
+2025-04-04 01:34:02,572 - INFO - Sent notification to user 380675615 at 01:34
+2025-04-04 01:34:02,573 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:34:02,573 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:34:02,575 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:35:02 MSK)" executed successfully
+2025-04-04 01:34:20,958 - INFO - Stop polling...
+2025-04-04 01:34:20,960 - WARNING - Goodbye!
