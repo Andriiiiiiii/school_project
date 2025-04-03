@@ -47,57 +47,71 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None):
             "correct_index": correct_index
         })
     return questions
-
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
+    """
+    Инициализирует квиз для пользователя.
+    """
     chat_id = callback.from_user.id
-    user = crud.get_user(chat_id)
-    if not user:
-        await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
-        return
-    level = user[1]
-    # Получаем выбранный сет, если он есть
-    from handlers.settings import user_set_selection
-    chosen_set = user_set_selection.get(chat_id)
-    
     try:
-        # Получаем слова дня с учётом выбранного сета (кэш обновляется, если выбран новый сет)
-        result = get_daily_words_for_user(chat_id, level, user[2], user[3],
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            return
+        level = user[1]
+        
+        # Получаем выбранный сет, если он есть
+        try:
+            from handlers.settings import user_set_selection
+            chosen_set = user_set_selection.get(chat_id)
+        except ImportError:
+            logger.error("Error importing user_set_selection, using default set")
+            chosen_set = None
+        
+        # Получаем слова дня
+        try:
+            result = get_daily_words_for_user(chat_id, level, user[2], user[3],
                                            first_time=REMINDER_START, duration_hours=DURATION_HOURS, chosen_set=chosen_set)
-        if result is None:
-            await bot.send_message(chat_id, "Нет слов для квиза.")
-            return
-        
-        # Получаем запись из кэша
-        cached_data = daily_words_manager.get(chat_id)
-        if not cached_data:
-            await bot.send_message(chat_id, "Ошибка получения данных из кэша.")
-            logger.error(f"Cache miss for user {chat_id} after get_daily_words_for_user call")
-            return
+            if result is None:
+                await bot.send_message(chat_id, "Нет слов для квиза.")
+                return
+                
+            # Получаем запись из кэша
+            daily_entry = daily_words_cache[chat_id]
+            raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
+            daily_words = set(extract_english(line) for line in raw_words)
             
-        daily_entry = cached_data
-        raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
-        daily_words = set(extract_english(line) for line in raw_words)
-        
-        learned = set(word for word, _ in crud.get_learned_words(chat_id))
-        filtered_words = daily_words - learned
-        
-        if not filtered_words:
-            await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
-            return
+            # Получаем выученные слова
+            try:
+                learned = set(word for word, _ in crud.get_learned_words(chat_id))
+            except Exception as e:
+                logger.error(f"Error getting learned words for user {chat_id}: {e}")
+                learned = set()
+                
+            filtered_words = daily_words - learned
             
-        questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
-        if not questions:
-            await bot.send_message(chat_id, "Нет данных для квиза.")
-            return
-            
-        quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
-        await send_quiz_question(chat_id, bot)
+            if not filtered_words:
+                await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены.")
+                return
+                
+            # Генерируем вопросы для квиза
+            questions = generate_quiz_questions_from_daily(list(filtered_words), level, chosen_set)
+            if not questions:
+                await bot.send_message(chat_id, "Нет данных для квиза.")
+                return
+                
+            quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
+            await send_quiz_question(chat_id, bot)
+        except KeyError:
+            logger.error(f"Cache miss for user {chat_id}")
+            await bot.send_message(chat_id, "Ошибка при получении слов дня. Пожалуйста, попробуйте позже.")
+        except Exception as e:
+            logger.error(f"Error setting up quiz for user {chat_id}: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при настройке квиза. Пожалуйста, попробуйте позже.")
     except Exception as e:
-        logger.error(f"Error starting quiz for user {chat_id}: {e}")
-        await bot.send_message(chat_id, "Произошла ошибка при запуске квиза. Пожалуйста, попробуйте позже.")
+        logger.error(f"Unhandled error in start_quiz for user {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла неожиданная ошибка. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
-
 async def send_quiz_question(chat_id, bot: Bot):
     state = quiz_states.get(chat_id)
     if not state:

@@ -125,66 +125,105 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
 
 async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
     """
-    Обработчик кнопки "Мои сеты". Сканирует папку для текущего уровня пользователя
-    и выводит список доступных сетов.
+    Обработчик кнопки "Мои сеты". Сканирует папку для текущего уровня пользователя.
     """
     chat_id = callback.from_user.id
-    user = crud.get_user(chat_id)
-    if not user:
-        await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
-        return
-    user_level = user[1]
-    level_dir = os.path.join(LEVELS_DIR, user_level)
-    if not os.path.exists(level_dir):
-        await bot.send_message(chat_id, f"Папка для уровня {user_level} не найдена.")
-        return
-    set_files = [f for f in os.listdir(level_dir) if f.endswith(".txt")]
-    if not set_files:
-        await bot.send_message(chat_id, f"В папке {user_level} не найдено сетов.")
-        return
+    try:
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
+            return
+            
+        user_level = user[1]
+        level_dir = os.path.join(LEVELS_DIR, user_level)
+        
+        if not os.path.exists(level_dir):
+            logger.warning(f"Level directory not found: {level_dir}")
+            await bot.send_message(chat_id, f"Папка для уровня {user_level} не найдена.")
+            return
+            
+        try:
+            set_files = [f for f in os.listdir(level_dir) if f.endswith(".txt")]
+        except PermissionError:
+            logger.error(f"Permission denied when accessing directory: {level_dir}")
+            await bot.send_message(chat_id, f"Ошибка доступа к папке уровня {user_level}.")
+            return
+        except Exception as e:
+            logger.error(f"Error listing directory {level_dir}: {e}")
+            await bot.send_message(chat_id, f"Ошибка при чтении папки уровня {user_level}.")
+            return
+            
+        if not set_files:
+            await bot.send_message(chat_id, f"В папке {user_level} не найдено сетов.")
+            return
 
-    keyboard = types.InlineKeyboardMarkup(row_width=1)
-    for filename in set_files:
-        set_name = os.path.splitext(filename)[0]
-        keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{set_name}"))
-    keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
-    await bot.send_message(chat_id, f"Доступные сеты для уровня {user_level}:", reply_markup=keyboard)
-
+        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        for filename in set_files:
+            set_name = os.path.splitext(filename)[0]
+            keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{set_name}"))
+        keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
+        
+        await bot.send_message(chat_id, f"Доступные сеты для уровня {user_level}:", reply_markup=keyboard)
+    except Exception as e:
+        logger.error(f"Unexpected error in process_my_sets for user {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка при получении списка сетов. Пожалуйста, попробуйте позже.")
+    
 async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
     """
-    Обработчик выбора сета. Читает файл выбранного сета и отправляет список слов пользователю.
-    Также очищает кэш 'Слова дня', чтобы при следующем обращении он пересчитал слова по новому сету.
+    Обработчик выбора сета. Читает файл выбранного сета.
     """
     chat_id = callback.from_user.id
     try:
-        _, set_name = callback.data.split(":", 1)
-    except ValueError:
-        await callback.answer("Неверный формат данных.", show_alert=True)
-        return
+        try:
+            _, set_name = callback.data.split(":", 1)
+        except ValueError:
+            await callback.answer("Неверный формат данных.", show_alert=True)
+            return
 
-    user = crud.get_user(chat_id)
-    if not user:
-        await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
-        return
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            return
 
-    user_level = user[1]
-    set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
-    if not os.path.exists(set_path):
-        await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
-        return
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        
+        if not os.path.exists(set_path):
+            logger.warning(f"Set file not found: {set_path}")
+            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+            return
+        
+        content = ""
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            logger.warning(f"Unicode decode error for file {set_path}, trying cp1251 encoding")
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Failed to read file with alternative encoding: {e}")
+                await bot.send_message(chat_id, f"Ошибка при чтении файла: неподдерживаемая кодировка.")
+                return
+        except PermissionError:
+            logger.error(f"Permission denied when reading file: {set_path}")
+            await bot.send_message(chat_id, f"Ошибка доступа при чтении файла.")
+            return
+        except Exception as e:
+            logger.error(f"Error reading file {set_path}: {e}")
+            await bot.send_message(chat_id, f"Ошибка при чтении файла: {e}")
+            return
 
-    try:
-        with open(set_path, "r", encoding="utf-8") as f:
-            content = f.read()
+        user_set_selection[chat_id] = set_name
+        reset_daily_words_cache(chat_id)  # очищаем кэш 'Слова дня' при смене сета
+
+        await bot.send_message(chat_id, f"Выбран сет {set_name} для уровня {user_level}.\nСлова сета:\n\n{content}",
+                                  reply_markup=settings_menu_keyboard())
     except Exception as e:
-        await bot.send_message(chat_id, f"Ошибка при чтении файла: {e}")
-        return
-
-    user_set_selection[chat_id] = set_name
-    reset_daily_words_cache(chat_id)  # очищаем кэш 'Слова дня' при смене сета
-
-    await bot.send_message(chat_id, f"Выбран сет {set_name} для уровня {user_level}.\nСлова сета:\n\n{content}",
-                               reply_markup=settings_menu_keyboard())
+        logger.error(f"Unexpected error in process_choose_set for user {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка при выборе сета. Пожалуйста, попробуйте позже.")
+    
     await callback.answer()
 
 async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):

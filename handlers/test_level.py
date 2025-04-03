@@ -14,27 +14,131 @@ def load_words_for_level_file(level: str):
     """
     Загружает слова из файла levels/<level>.txt.
     Каждая строка должна иметь формат: "word - translation1, translation2, ..."
-    Возвращает список слов, где каждое слово представлено в виде словаря:
-    { "word": <english>, "translation": <полная строка перевода> }
     """
     filename = os.path.join("levels", f"{level}.txt")
-    if not os.path.exists(filename):
-        return []
     words = []
-    with open(filename, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            parts = line.split(" - ")
-            if len(parts) < 2:
-                continue
-            english = parts[0].strip()
-            translation = parts[1].strip()
-            words.append({"word": english, "translation": translation})
-    return words
+    
+    try:
+        if not os.path.exists(filename):
+            logger.warning(f"Level file not found: {filename}")
+            return words
+            
+        with open(filename, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                parts = line.split(" - ")
+                if len(parts) < 2:
+                    continue
+                english = parts[0].strip()
+                translation = parts[1].strip()
+                words.append({"word": english, "translation": translation})
+                
+        logger.debug(f"Loaded {len(words)} words from level {level}")
+        return words
+    except FileNotFoundError:
+        logger.error(f"Level file not found: {filename}")
+        return words
+    except PermissionError:
+        logger.error(f"Permission denied when accessing level file: {filename}")
+        return words
+    except UnicodeDecodeError:
+        logger.warning(f"Unicode decode error in file {filename}, trying with cp1251 encoding")
+        try:
+            with open(filename, encoding="cp1251") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    parts = line.split(" - ")
+                    if len(parts) < 2:
+                        continue
+                    english = parts[0].strip()
+                    translation = parts[1].strip()
+                    words.append({"word": english, "translation": translation})
+            logger.debug(f"Loaded {len(words)} words from level {level} with cp1251 encoding")
+            return words
+        except Exception as e:
+            logger.error(f"Failed to load file with alternative encoding: {e}")
+            return words
+    except Exception as e:
+        logger.error(f"Error loading words from level {level}: {e}")
+        return words
 
 def generate_level_test_questions():
+    """
+    Генерирует тестовые вопросы для каждого уровня.
+    """
+    try:
+        questions = []
+        for level in LEVELS:
+            try:
+                words = load_words_for_level_file(level)
+                if not words:
+                    logger.warning(f"No words found for level {level}")
+                    continue
+                    
+                # Если в файле меньше 3 слова, выбираем все; иначе случайно выбираем 3 слова
+                if len(words) < 3:
+                    selected = words
+                else:
+                    selected = random.sample(words, 3)
+                    
+                for entry in selected:
+                    try:
+                        correct = entry["translation"]
+                        # Выбираем ложные варианты из того же файла, исключая правильный
+                        distractor_pool = [w["translation"] for w in words if w["translation"] != correct]
+                        
+                        if len(distractor_pool) >= 3:
+                            distractors = random.sample(distractor_pool, 3)
+                        else:
+                            distractors = distractor_pool  # если меньше 3, используем имеющиеся
+                            # Если не хватает, добавляем случайные строки
+                            while len(distractors) < 3:
+                                distractors.append(f"Вариант {len(distractors) + 1}")
+                                
+                        # Перемешиваем первые 4 варианта (правильный + ложные)
+                        options_temp = [correct] + distractors
+                        random.shuffle(options_temp)
+                        
+                        # Правильный ответ содержится в options_temp; его индекс запоминаем
+                        correct_index = options_temp.index(correct)
+                        
+                        # Добавляем фиксированную опцию "Не знаю" в конец
+                        options = options_temp + ["Не знаю"]
+                        
+                        questions.append({
+                            "level": level,
+                            "word": entry["word"],
+                            "correct": correct,
+                            "options": options,
+                            "correct_index": correct_index
+                        })
+                    except KeyError as e:
+                        logger.error(f"Missing required key in word entry for level {level}: {e}")
+                        continue
+                    except Exception as e:
+                        logger.error(f"Error processing question for level {level}: {e}")
+                        continue
+            except Exception as e:
+                logger.error(f"Error generating questions for level {level}: {e}")
+                continue
+                
+        # Сортируем вопросы по порядку уровней
+        def level_order(q):
+            try:
+                return LEVELS.index(q["level"])
+            except ValueError:
+                return 999
+        questions.sort(key=level_order)
+        
+        logger.info(f"Generated {len(questions)} level test questions")
+        return questions
+    except Exception as e:
+        logger.error(f"Error in generate_level_test_questions: {e}")
+        return []
     """
     Генерирует тестовые вопросы для каждого уровня.
     Для каждого уровня из LEVELS выбирается 3 случайных слова (если доступно).
