@@ -1,70 +1,179 @@
-from database.db import cursor, conn
+# database/crud.py
+import logging
+from database.db import conn, cursor, db_manager
 from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
 
+# Настройка логирования
+logger = logging.getLogger(__name__)
+
 def add_user(chat_id: int):
-    cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
-    if cursor.fetchone() is None:
-        # notifications используется для количества повторений
-        cursor.execute(
-            "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone) VALUES (?, ?, ?, ?, ?, ?)",
-            (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow")
-        )
-        conn.commit()
+    """Добавляет нового пользователя в базу данных, если он еще не существует."""
+    try:
+        # Проверяем существование пользователя
+        cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
+        if cursor.fetchone() is None:
+            # notifications используется для количества повторений
+            with db_manager.transaction() as tx_conn:
+                tx_conn.execute(
+                    "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone) VALUES (?, ?, ?, ?, ?, ?)",
+                    (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow")
+                )
+            logger.info(f"Added new user with chat_id: {chat_id}")
+    except Exception as e:
+        logger.error(f"Error adding user {chat_id}: {e}")
+        raise
 
 def get_user(chat_id: int):
-    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", (chat_id,))
-    return cursor.fetchone()
+    """Получает информацию о пользователе по его chat_id."""
+    try:
+        cursor.execute(
+            "SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", 
+            (chat_id,)
+        )
+        return cursor.fetchone()
+    except Exception as e:
+        logger.error(f"Error getting user {chat_id}: {e}")
+        return None
 
 def get_all_users():
-    cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
-    return cursor.fetchall()
+    """Получает список всех пользователей."""
+    try:
+        cursor.execute("SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone FROM users")
+        return cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting all users: {e}")
+        return []
 
 def update_user_level(chat_id: int, level: str):
-    cursor.execute("UPDATE users SET level = ? WHERE chat_id = ?", (level, chat_id))
-    conn.commit()
+    """Обновляет уровень пользователя."""
+    try:
+        cursor.execute("UPDATE users SET level = ? WHERE chat_id = ?", (level, chat_id))
+        conn.commit()
+        logger.debug(f"Updated level to {level} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating level for user {chat_id}: {e}")
+        raise
 
 def update_user_words_per_day(chat_id: int, count: int):
-    cursor.execute("UPDATE users SET words_per_day = ? WHERE chat_id = ?", (count, chat_id))
-    conn.commit()
+    """Обновляет количество слов в день для пользователя."""
+    try:
+        cursor.execute("UPDATE users SET words_per_day = ? WHERE chat_id = ?", (count, chat_id))
+        conn.commit()
+        logger.debug(f"Updated words_per_day to {count} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating words_per_day for user {chat_id}: {e}")
+        raise
 
 def update_user_notifications(chat_id: int, count: int):
-    cursor.execute("UPDATE users SET notifications = ? WHERE chat_id = ?", (count, chat_id))
-    conn.commit()
+    """Обновляет количество уведомлений для пользователя."""
+    try:
+        cursor.execute("UPDATE users SET notifications = ? WHERE chat_id = ?", (count, chat_id))
+        conn.commit()
+        logger.debug(f"Updated notifications to {count} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating notifications for user {chat_id}: {e}")
+        raise
 
 def update_user_reminder_time(chat_id: int, time: str):
-    cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (time, chat_id))
-    conn.commit()
+    """Обновляет время напоминания для пользователя."""
+    try:
+        cursor.execute("UPDATE users SET reminder_time = ? WHERE chat_id = ?", (time, chat_id))
+        conn.commit()
+        logger.debug(f"Updated reminder_time to {time} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating reminder_time for user {chat_id}: {e}")
+        raise
 
 def update_user_timezone(chat_id: int, timezone: str):
-    cursor.execute("UPDATE users SET timezone = ? WHERE chat_id = ?", (timezone, chat_id))
-    conn.commit()
+    """Обновляет часовой пояс пользователя."""
+    try:
+        cursor.execute("UPDATE users SET timezone = ? WHERE chat_id = ?", (timezone, chat_id))
+        conn.commit()
+        logger.debug(f"Updated timezone to {timezone} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating timezone for user {chat_id}: {e}")
+        raise
 
 def add_word_to_dictionary(chat_id: int, word_data: dict):
-    cursor.execute("""
-        INSERT INTO dictionary (chat_id, word, translation, transcription, example)
-        VALUES (?, ?, ?, ?, ?)
-    """, (chat_id, word_data.get('word'), word_data.get('translation', ''), word_data.get('transcription', ''), word_data.get('example', '')))
-    conn.commit()
+    """Добавляет слово в словарь пользователя."""
+    try:
+        cursor.execute(
+            """
+            INSERT INTO dictionary (chat_id, word, translation, transcription, example)
+            VALUES (?, ?, ?, ?, ?)
+            """, 
+            (chat_id, word_data.get('word'), word_data.get('translation', ''), 
+             word_data.get('transcription', ''), word_data.get('example', ''))
+        )
+        conn.commit()
+        logger.debug(f"Added word '{word_data.get('word')}' to dictionary for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error adding word to dictionary for user {chat_id}: {e}")
+        raise
 
 def get_user_dictionary(chat_id: int, limit: int = 10, offset: int = 0):
-    cursor.execute("SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", (chat_id, limit, offset))
-    return cursor.fetchall()
+    """Получает словарь пользователя с пагинацией."""
+    try:
+        cursor.execute(
+            "SELECT word, translation, transcription, example FROM dictionary WHERE chat_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", 
+            (chat_id, limit, offset)
+        )
+        return cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting dictionary for user {chat_id}: {e}")
+        return []
 
 def add_learned_word(chat_id: int, word: str, translation: str, learned_date: str):
-    cursor.execute("INSERT INTO learned_words (chat_id, word, translation, learned_date) VALUES (?, ?, ?, ?)", (chat_id, word, translation, learned_date))
-    conn.commit()
+    """Добавляет выученное слово в список пользователя."""
+    try:
+        # Транзакция для обеспечения атомарности операции
+        with db_manager.transaction() as tx_conn:
+            tx_cursor = tx_conn.cursor()
+            # Проверяем, не добавлено ли это слово уже
+            tx_cursor.execute(
+                "SELECT COUNT(*) FROM learned_words WHERE chat_id = ? AND word = ?", 
+                (chat_id, word)
+            )
+            count = tx_cursor.fetchone()[0]
+            # Если слово не найдено, добавляем его
+            if count == 0:
+                tx_cursor.execute(
+                    "INSERT INTO learned_words (chat_id, word, translation, learned_date) VALUES (?, ?, ?, ?)", 
+                    (chat_id, word, translation, learned_date)
+                )
+                logger.debug(f"Added learned word '{word}' for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error adding learned word for user {chat_id}: {e}")
+        raise
 
 def get_learned_words(chat_id: int):
     """
     Возвращает список выученных слов для пользователя.
-    Теперь возвращаются кортежи (word, translation).
+    Возвращаются кортежи (word, translation).
     """
-    cursor.execute("SELECT word, translation FROM learned_words WHERE chat_id = ?", (chat_id,))
-    return cursor.fetchall()
+    try:
+        cursor.execute("SELECT word, translation FROM learned_words WHERE chat_id = ?", (chat_id,))
+        return cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting learned words for user {chat_id}: {e}")
+        return []
 
 def clear_learned_words_for_user(chat_id: int):
-    """
-    Очищает таблицу выученных слов для указанного пользователя.
-    """
-    cursor.execute("DELETE FROM learned_words WHERE chat_id = ?", (chat_id,))
-    conn.commit()
+    """Очищает таблицу выученных слов для указанного пользователя."""
+    try:
+        cursor.execute("DELETE FROM learned_words WHERE chat_id = ?", (chat_id,))
+        conn.commit()
+        logger.info(f"Cleared learned words for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error clearing learned words for user {chat_id}: {e}")
+        raise
+
+def update_user_chosen_set(chat_id: int, set_name: str):
+    """Обновляет выбранный набор слов для пользователя."""
+    try:
+        cursor.execute("UPDATE users SET chosen_set = ? WHERE chat_id = ?", (set_name, chat_id))
+        conn.commit()
+        logger.debug(f"Updated chosen_set to '{set_name}' for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating chosen_set for user {chat_id}: {e}")
+        raise

@@ -10183,3 +10183,172 @@ TypeError: get_daily_words_for_user() got an unexpected keyword argument 'chosen
 2025-04-03 23:54:36,614 - WARNING - No words found for level A1, set Essential Everyday Words
 2025-04-03 23:55:13,740 - INFO - Stop polling...
 2025-04-03 23:55:13,741 - WARNING - Goodbye!
+2025-04-04 00:01:12,739 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 00:01:13,064 - WARNING - Updates were skipped successfully.
+2025-04-04 00:01:13,068 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:13,068 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:13,068 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:13,069 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 00:01:13,069 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:01:13,069 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:01:13,069 - INFO - Scheduler started
+2025-04-04 00:01:13,069 - INFO - Бот запущен.
+2025-04-04 00:01:13,070 - INFO - Start polling.
+2025-04-04 00:01:19,622 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 19, in send_words_day_schedule
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+                                               ~~~~^^^
+IndexError: list index out of range
+2025-04-04 00:01:26,166 - INFO - Stop polling...
+2025-04-04 00:01:26,166 - WARNING - Goodbye!
+2025-04-04 00:01:30,957 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 00:01:31,305 - WARNING - Updates were skipped successfully.
+2025-04-04 00:01:31,307 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:31,308 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:31,308 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:01:31,308 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 00:01:31,308 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:01:31,308 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:01:31,308 - INFO - Scheduler started
+2025-04-04 00:01:31,308 - INFO - Бот запущен.
+2025-04-04 00:01:31,309 - INFO - Start polling.
+2025-04-04 00:01:34,562 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 106, in process_settings_choice_callback
+    await process_my_sets(callback, bot)
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 136, in process_my_sets
+    user_level = user[1]
+                 ~~~~^^^
+IndexError: list index out of range
+2025-04-04 00:01:37,177 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-18' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    level = user[1]
+            ~~~~^^^
+IndexError: list index out of range
+2025-04-04 00:01:45,745 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-36' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=IndexError('list index out of range')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 19, in send_words_day_schedule
+    result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+                                               ~~~~^^^
+IndexError: list index out of range
+2025-04-04 00:02:12,230 - INFO - Stop polling...
+2025-04-04 00:02:12,230 - WARNING - Goodbye!
+2025-04-04 00:04:40,573 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 00:04:40,842 - WARNING - Updates were skipped successfully.
+2025-04-04 00:04:40,844 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:04:40,844 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:04:40,844 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:04:40,844 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 00:04:40,845 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:04:40,845 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:04:40,845 - INFO - Scheduler started
+2025-04-04 00:04:40,845 - INFO - Бот запущен.
+2025-04-04 00:04:40,845 - INFO - Start polling.
+2025-04-04 00:04:59,857 - INFO - Received /start from chat_id: 380675615
+2025-04-04 00:05:11,426 - INFO - Received /start from chat_id: 380675615
+2025-04-04 00:05:40,857 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:06:40 MSK)" (scheduled at 2025-04-04 00:05:40.844143+03:00)
+2025-04-04 00:05:40,871 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:05:40,871 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:05:40,871 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:06:40 MSK)" executed successfully
+2025-04-04 00:06:40,884 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:07:40 MSK)" (scheduled at 2025-04-04 00:06:40.844143+03:00)
+2025-04-04 00:06:40,885 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:06:40,885 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:06:40,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:07:40 MSK)" executed successfully
+2025-04-04 00:07:40,847 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:08:40 MSK)" (scheduled at 2025-04-04 00:07:40.844143+03:00)
+2025-04-04 00:07:40,848 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:07:40,848 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:07:40,848 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:08:40 MSK)" executed successfully
+2025-04-04 00:08:40,847 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:09:40 MSK)" (scheduled at 2025-04-04 00:08:40.844143+03:00)
+2025-04-04 00:08:40,848 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:08:40,848 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:08:40,848 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:09:40 MSK)" executed successfully
+2025-04-04 00:09:11,577 - INFO - Stop polling...
+2025-04-04 00:09:11,578 - WARNING - Goodbye!
+2025-04-04 00:09:13,672 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 00:09:13,831 - WARNING - Updates were skipped successfully.
+2025-04-04 00:09:13,833 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:09:13,833 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:09:13,833 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 00:09:13,834 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 00:09:13,834 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:09:13,834 - INFO - Added job "start_scheduler.<locals>.<lambda>" to job store "default"
+2025-04-04 00:09:13,834 - INFO - Scheduler started
+2025-04-04 00:09:13,834 - INFO - Бот запущен.
+2025-04-04 00:09:13,834 - INFO - Start polling.
+2025-04-04 00:09:20,876 - INFO - Received /start from chat_id: 380675615
+2025-04-04 00:09:20,880 - INFO - Added new user with chat_id: 380675615
+2025-04-04 00:09:20,880 - INFO - Added new user with chat_id 380675615
+2025-04-04 00:09:23,055 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:09:23,055 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:10:13,836 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:11:13 MSK)" (scheduled at 2025-04-04 00:10:13.833257+03:00)
+2025-04-04 00:10:13,838 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 00:10:13,838 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 00:10:13,838 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 00:11:13 MSK)" executed successfully
+2025-04-04 00:11:06,156 - INFO - Stop polling...
+2025-04-04 00:11:06,157 - WARNING - Goodbye!
