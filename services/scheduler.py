@@ -6,7 +6,7 @@ import logging
 from aiogram import Bot
 from zoneinfo import ZoneInfo
 from database import crud
-from utils.helpers import get_daily_words_for_user, daily_words_manager, previous_daily_words_manager, reset_daily_words_cache
+from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
 logger = logging.getLogger(__name__)
@@ -136,15 +136,11 @@ def process_user(user, now_server, bot, loop):
     except Exception as e:
         logger.error(f"Error processing daily words for user {chat_id}: {e}")
 
-        
 def start_scheduler(bot: Bot, loop: asyncio.AbstractEventLoop):
     """
     Запускает APScheduler, который каждые 60 секунд вызывает scheduler_job.
     """
     scheduler = AsyncIOScheduler()
     scheduler.add_job(scheduler_job, 'interval', minutes=1, args=[bot, loop])
-    # Добавляем задачу для регулярной очистки кэша (каждые 6 часов)
-    scheduler.add_job(lambda: daily_words_manager.clean_expired(), 'interval', hours=6)
-    scheduler.add_job(lambda: previous_daily_words_manager.clean_expired(), 'interval', hours=6)
     scheduler.start()
     return scheduler

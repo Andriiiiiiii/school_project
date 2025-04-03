@@ -1,3 +1,4 @@
+# handlers/quiz.py
 import random
 from datetime import datetime
 from aiogram import types, Dispatcher, Bot
@@ -5,7 +6,7 @@ import asyncio
 from database import crud
 from utils.quiz_helpers import load_quiz_data
 from keyboards.submenus import quiz_keyboard
-from utils.helpers import get_daily_words_for_user, daily_words_manager
+from utils.helpers import get_daily_words_for_user, daily_words_cache
 from config import REMINDER_START, DURATION_HOURS
 import logging
 
@@ -47,6 +48,7 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None):
             "correct_index": correct_index
         })
     return questions
+
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """
     Инициализирует квиз для пользователя.
@@ -76,6 +78,11 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
                 return
                 
             # Получаем запись из кэша
+            if chat_id not in daily_words_cache:
+                logger.error(f"Cache miss for user {chat_id}")
+                await bot.send_message(chat_id, "Ошибка при получении слов дня. Пожалуйста, попробуйте позже.")
+                return
+                
             daily_entry = daily_words_cache[chat_id]
             raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
             daily_words = set(extract_english(line) for line in raw_words)
@@ -101,8 +108,8 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
                 
             quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0}
             await send_quiz_question(chat_id, bot)
-        except KeyError:
-            logger.error(f"Cache miss for user {chat_id}")
+        except KeyError as e:
+            logger.error(f"Cache error for user {chat_id}: {e}")
             await bot.send_message(chat_id, "Ошибка при получении слов дня. Пожалуйста, попробуйте позже.")
         except Exception as e:
             logger.error(f"Error setting up quiz for user {chat_id}: {e}")
@@ -112,58 +119,66 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
         await bot.send_message(chat_id, "Произошла неожиданная ошибка. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
+
 async def send_quiz_question(chat_id, bot: Bot):
-    state = quiz_states.get(chat_id)
-    if not state:
-        return
-    current_index = state["current_index"]
-    questions = state["questions"]
-    if current_index >= len(questions):
-        await bot.send_message(chat_id, f"Квиз завершён! Правильных ответов: {state['correct']} из {len(questions)}.")
-        del quiz_states[chat_id]
-        return
-    question = questions[current_index]
-    text = f"Вопрос {current_index+1}:\nКакой перевод слова '{question['word']}'?"
-    keyboard = quiz_keyboard(question['options'], current_index)
-    await bot.send_message(chat_id, text, reply_markup=keyboard)
+    try:
+        state = quiz_states.get(chat_id)
+        if not state:
+            return
+        current_index = state["current_index"]
+        questions = state["questions"]
+        if current_index >= len(questions):
+            await bot.send_message(chat_id, f"Квиз завершён! Правильных ответов: {state['correct']} из {len(questions)}.")
+            del quiz_states[chat_id]
+            return
+        question = questions[current_index]
+        text = f"Вопрос {current_index+1}:\nКакой перевод слова '{question['word']}'?"
+        keyboard = quiz_keyboard(question['options'], current_index)
+        await bot.send_message(chat_id, text, reply_markup=keyboard)
+    except Exception as e:
+        logger.error(f"Error sending quiz question to user {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.")
 
 async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
-    if callback.data == "quiz:back":
-        from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(callback.from_user.id, "Главное меню", reply_markup=main_menu_keyboard())
-        if callback.from_user.id in quiz_states:
-            del quiz_states[callback.from_user.id]
-        await callback.answer()
-        return
-    if callback.data == "quiz:stop":
-        from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(callback.from_user.id, "Квиз остановлен.", reply_markup=main_menu_keyboard())
-        if callback.from_user.id in quiz_states:
-            del quiz_states[callback.from_user.id]
-        await callback.answer()
-        return
-
+    chat_id = callback.from_user.id
+    
     try:
+        if callback.data == "quiz:back":
+            from keyboards.main_menu import main_menu_keyboard
+            await bot.send_message(chat_id, "Главное меню", reply_markup=main_menu_keyboard())
+            if chat_id in quiz_states:
+                del quiz_states[chat_id]
+            await callback.answer()
+            return
+            
+        if callback.data == "quiz:stop":
+            from keyboards.main_menu import main_menu_keyboard
+            await bot.send_message(chat_id, "Квиз остановлен.", reply_markup=main_menu_keyboard())
+            if chat_id in quiz_states:
+                del quiz_states[chat_id]
+            await callback.answer()
+            return
+
         data = callback.data.split(":")
         if len(data) != 4:
             await callback.answer("Неверный формат данных.", show_alert=True)
             return
+            
         _, _, q_index_str, option_index_str = data
-        try:
-            q_index = int(q_index_str)
-            option_index = int(option_index_str)
-        except ValueError:
-            await callback.answer("Неверный формат данных.", show_alert=True)
-            return
-        chat_id = callback.from_user.id
+        q_index = int(q_index_str)
+        option_index = int(option_index_str)
+        
         state = quiz_states.get(chat_id)
         if not state:
             await callback.answer("Квиз не найден.", show_alert=True)
             return
+            
         if q_index != state["current_index"]:
             await callback.answer("Неверная последовательность вопросов.", show_alert=True)
             return
+            
         question = state["questions"][q_index]
+        
         if option_index == question["correct_index"]:
             try:
                 crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
@@ -174,8 +189,12 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
                 await callback.answer("Правильно, но возникла ошибка при сохранении результата.")
         else:
             await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
+            
         state["current_index"] += 1
         await send_quiz_question(chat_id, bot)
+    except ValueError as e:
+        logger.error(f"Value error processing quiz answer: {e}")
+        await callback.answer("Ошибка в формате данных ответа.")
     except Exception as e:
         logger.error(f"Error processing quiz answer: {e}")
         await callback.answer("Произошла ошибка при обработке ответа.")
