@@ -6,7 +6,7 @@ import logging
 from aiogram import Bot
 from zoneinfo import ZoneInfo
 from database import crud
-from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache
+from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache, extract_english
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
 logger = logging.getLogger(__name__)
@@ -91,10 +91,17 @@ def process_user(user, now_server, bot, loop):
             return
         messages, times = result
 
+        # Проверяем, находимся ли мы в режиме повторения
+        is_revision_mode = False
+        if chat_id in daily_words_cache:
+            entry = daily_words_cache[chat_id]
+            if len(entry) > 9:  # Проверяем наличие флага режима повторения
+                is_revision_mode = entry[9]
+
         # Отправка обычных уведомлений по расписанию
         if now_local_str in times:
             notif_index = times.index(now_local_str)
-            message_text = messages[notif_index] if notif_index < len(messages) else ""
+            message_text = messages[notif_index] if notif_index < len(messages) else "(нет слов)"
             try:
                 asyncio.run_coroutine_threadsafe(
                     bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"),
@@ -108,8 +115,14 @@ def process_user(user, now_server, bot, loop):
             # Проверяем, было ли уже отправлено уведомление для данного пользователя сегодня
             if quiz_reminder_sent.get(chat_id) != local_today_str:
                 try:
+                    # Адаптируем сообщение в зависимости от режима (обычный/повторение)
+                    if is_revision_mode:
+                        reminder_message = "Пройдите квиз для повторения выученных слов. Это поможет закрепить знания!"
+                    else:
+                        reminder_message = "Пройдите квиз, чтобы добавить слова в Ваш словарь."
+                        
                     asyncio.run_coroutine_threadsafe(
-                        bot.send_message(chat_id, "Пройдите квиз чтобы слова добавились в Мой словарь"),
+                        bot.send_message(chat_id, reminder_message),
                         loop
                     )
                     quiz_reminder_sent[chat_id] = local_today_str
@@ -124,10 +137,18 @@ def process_user(user, now_server, bot, loop):
                     unique_words = entry[8]  # список уникальных слов текущего дня
                     # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
                     learned_raw = crud.get_learned_words(chat_id)
-                    learned_set = set(item[0] for item in learned_raw)
-                    filtered_unique = [w for w in unique_words if w not in learned_set]
-                    previous_daily_words[chat_id] = filtered_unique
+                    learned_set = set(extract_english(item[0]) for item in learned_raw)
+                    filtered_unique = [w for w in unique_words if extract_english(w) not in learned_set]
+                    
+                    if filtered_unique:  # Сохраняем только если есть невыученные слова
+                        previous_daily_words[chat_id] = filtered_unique
+                    elif chat_id in previous_daily_words:
+                        # Если все слова выучены, удаляем запись из previous_daily_words
+                        del previous_daily_words[chat_id]
+                        
+                    # Сбрасываем кэш для генерации нового списка слов на завтра
                     reset_daily_words_cache(chat_id)
+                
                 # Сбрасываем флаг напоминания, чтобы уведомление отправлялось для нового дня
                 if chat_id in quiz_reminder_sent:
                     del quiz_reminder_sent[chat_id]

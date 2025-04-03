@@ -10378,3 +10378,24 @@ IndexError: list index out of range
 2025-04-04 00:52:42,530 - WARNING - No words found for level A1, set Essential Everyday Words
 2025-04-04 00:53:08,345 - INFO - Stop polling...
 2025-04-04 00:53:08,346 - WARNING - Goodbye!
+2025-04-04 01:10:24,922 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 01:10:25,080 - WARNING - Updates were skipped successfully.
+2025-04-04 01:10:25,084 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 01:10:25,084 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 01:10:25,084 - INFO - Scheduler started
+2025-04-04 01:10:25,085 - INFO - Бот запущен.
+2025-04-04 01:10:25,085 - INFO - Start polling.
+2025-04-04 01:10:32,619 - INFO - Received /start from chat_id: 380675615
+2025-04-04 01:10:32,619 - INFO - User 380675615 already exists
+2025-04-04 01:10:34,849 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:10:34,849 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:11:25,086 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:12:25 MSK)" (scheduled at 2025-04-04 01:11:25.083860+03:00)
+2025-04-04 01:11:25,088 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:11:25,088 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:11:25,088 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:12:25 MSK)" executed successfully
+2025-04-04 01:12:25,090 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:13:25 MSK)" (scheduled at 2025-04-04 01:12:25.083860+03:00)
+2025-04-04 01:12:25,091 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:12:25,091 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:12:25,091 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:13:25 MSK)" executed successfully
+2025-04-04 01:13:13,249 - INFO - Stop polling...
+2025-04-04 01:13:13,250 - WARNING - Goodbye!

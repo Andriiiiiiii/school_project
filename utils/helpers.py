@@ -74,10 +74,6 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
         logger.error(f"Invalid time format '{first_time}': {e}")
         # Возвращаем равномерно распределенные времена как запасной вариант
         return [f"{int(i * 24 / total_count):02d}:00" for i in range(total_count)]
-    except ZoneInfoNotFoundError as e:
-        logger.error(f"Invalid timezone '{tz}': {e}")
-        # Используем UTC как запасной вариант
-        return compute_notification_times(total_count, first_time, duration_hours, "UTC")
     except Exception as e:
         logger.error(f"Error computing notification times: {e}")
         # Простой запасной вариант в случае ошибки
@@ -96,7 +92,11 @@ def extract_english(word_line: str) -> str:
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False, chosen_set=None):
     """
     Генерирует или возвращает кэшированный список слов дня.
-    Улучшенная версия с более понятной логикой выбора слов.
+    Улучшенная версия с более понятной логикой выбора слов и режимом повторения.
+    
+    Возвращает:
+    - tuple (messages, times) - список сообщений для отправки и времена отправки
+    - None в случае ошибки
     """
     # Локальный импорт для избежания циклического импорта
     try:
@@ -141,9 +141,6 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             logger.error(f"Error getting learned words for user {chat_id}: {e}")
             learned_set = set()
 
-        # Выбираем слова для изучения по более ясной логике
-        unique_words = []
-        
         # Определяем невыученные слова из файла
         available_words = []
         for word in file_words:
@@ -159,62 +156,57 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 if eng_word not in learned_set:
                     leftover_words.append(word)
         
-        # Логика выбора слов:
-        # 1. Сначала используем невыученные слова из предыдущего дня (если есть)
-        # 2. Затем добавляем новые невыученные слова
-        # 3. Если все слова выучены, выбираем случайные слова из основного набора
+        # Определяем, в режиме повторения мы или нет
+        is_revision_mode = len(available_words) == 0 and len(file_words) > 0
         
-        # Добавляем сначала слова из предыдущего дня (не более words_count)
-        if leftover_words:
-            if len(leftover_words) <= words_count:
-                unique_words.extend(leftover_words)
+        unique_words = []
+        prefix_message = ""
+        
+        if is_revision_mode:
+            # Режим повторения - все слова уже выучены
+            prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:\n\n"
+            # Выбираем случайные слова из всего набора для повторения
+            if len(file_words) <= words_count:
+                unique_words = file_words.copy()
             else:
-                unique_words.extend(random.sample(leftover_words, words_count))
-        
-        # Добавляем новые невыученные слова, если место еще осталось
-        if len(unique_words) < words_count and available_words:
-            # Фильтруем слова, которые уже добавлены из leftover_words
-            remaining_available = [w for w in available_words if w not in unique_words]
+                unique_words = random.sample(file_words, words_count)
+        else:
+            # Обычный режим - есть невыученные слова
             
-            # Определяем, сколько слов нужно добавить
-            words_needed = words_count - len(unique_words)
-            
-            if remaining_available:
-                if len(remaining_available) <= words_needed:
-                    unique_words.extend(remaining_available)
+            # 1. Сначала добавляем невыученные слова из предыдущего дня
+            if leftover_words:
+                if len(leftover_words) <= words_count:
+                    unique_words.extend(leftover_words)
                 else:
-                    unique_words.extend(random.sample(remaining_available, words_needed))
-        
-        # Если после всех попыток слов меньше, чем words_count, добавляем случайные слова
-        if len(unique_words) < words_count:
-            # Определяем, сколько дополнительных слов нужно
-            words_needed = words_count - len(unique_words)
+                    unique_words.extend(random.sample(leftover_words, words_count))
             
-            # Создаем пул слов, которые еще не включены
-            remaining_words = [w for w in file_words if w not in unique_words]
+            # 2. Затем добавляем новые невыученные слова, если место еще осталось
+            if len(unique_words) < words_count:
+                words_needed = words_count - len(unique_words)
+                remaining_available = [w for w in available_words if w not in unique_words]
+                
+                if remaining_available:
+                    if len(remaining_available) <= words_needed:
+                        unique_words.extend(remaining_available)
+                    else:
+                        unique_words.extend(random.sample(remaining_available, words_needed))
             
-            if remaining_words:
-                if len(remaining_words) <= words_needed:
-                    unique_words.extend(remaining_words)
+            # Проверяем, меньше ли слов, чем запрошено
+            if len(unique_words) < words_count:
+                # Если недостаточно слов, добавляем уведомление
+                total_words = len(available_words) + len(leftover_words)
+                # Убираем дубликаты
+                total_unique = len(set([extract_english(w) for w in (available_words + leftover_words)]))
+                
+                if total_unique > 0:
+                    prefix_message = f"⚠️ Осталось всего {total_unique} невыученных слов в этом наборе!\n\n"
                 else:
-                    unique_words.extend(random.sample(remaining_words, words_needed))
-            # Если remaining_words пуст, дублируем уже выбранные слова
-            elif unique_words:
-                # Дублируем имеющиеся слова до достижения words_count
-                while len(unique_words) < words_count:
-                    unique_words.append(random.choice(unique_words))
-            else:
-                # В крайнем случае, если вообще нет слов, используем первые words_count из файла
-                unique_words = file_words[:words_count] if len(file_words) >= words_count else file_words[:]
-                logger.warning(f"Falling back to using random words for user {chat_id} due to insufficient data")
-        
-        # Определяем, выучены ли все слова в наборе
-        all_learned = len(available_words) == 0 and len(file_words) > 0
+                    # На всякий случай, хотя этот случай должен обрабатываться в is_revision_mode
+                    prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе.\n\n"
         
         # Создаем сообщения для отправки
         try:
-            if all_learned:
-                prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:\n\n"
+            if prefix_message:
                 messages_unique = [prefix_message] + ["🔹 " + word for word in unique_words]
             else:
                 messages_unique = ["🔹 " + word for word in unique_words]
@@ -238,11 +230,12 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         # Вычисляем времена уведомлений
         times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
 
-        # Сохраняем в кэш
-        daily_words_cache[chat_id] = (today, repeated_messages, times, first_time, duration_hours, words_count, repetitions, user_tz, unique_words)
+        # Сохраняем в кэш с добавлением флага режима повторения
+        daily_words_cache[chat_id] = (today, repeated_messages, times, first_time, duration_hours, 
+                                    words_count, repetitions, user_tz, unique_words, is_revision_mode)
         
         return repeated_messages, times
     except Exception as e:
         logger.error(f"Unhandled error in get_daily_words_for_user for chat_id {chat_id}: {e}")
         # Возвращаем минимальный набор данных в случае ошибки
-        return ["🔹 Error loading daily words"], ["12:00"]      
+        return ["🔹 Error loading daily words"], ["12:00"]
