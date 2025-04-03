@@ -146,16 +146,31 @@ def add_learned_word(chat_id: int, word: str, translation: str, learned_date: st
         logger.error(f"Error adding learned word for user {chat_id}: {e}")
         raise
 
+# В файле database/crud.py исправляем функцию get_learned_words
+
 def get_learned_words(chat_id: int):
     """
     Возвращает список выученных слов для пользователя.
     Возвращаются кортежи (word, translation).
+    Исправленная версия с дополнительной защитой от ошибок и логированием.
     """
     try:
-        cursor.execute("SELECT word, translation FROM learned_words WHERE chat_id = ?", (chat_id,))
-        return cursor.fetchall()
+        # Используем здесь явную блокировку для избежания конфликтов при чтении
+        # Это особенно важно на серверах с несколькими процессами
+        with db_manager.get_cursor() as cursor:
+            cursor.execute(
+                "SELECT word, translation FROM learned_words WHERE chat_id = ?", 
+                (chat_id,)
+            )
+            result = cursor.fetchall()
+            logger.debug(f"Retrieved {len(result)} learned words for user {chat_id}")
+            return result
+    except sqlite3.Error as sql_error:
+        logger.error(f"SQLite error getting learned words for user {chat_id}: {sql_error}")
+        # В случае ошибки базы данных возвращаем пустой список
+        return []
     except Exception as e:
-        logger.error(f"Error getting learned words for user {chat_id}: {e}")
+        logger.error(f"Unexpected error getting learned words for user {chat_id}: {e}")
         return []
 
 def clear_learned_words_for_user(chat_id: int):

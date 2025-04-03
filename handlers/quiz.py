@@ -74,9 +74,12 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None, is_r
     
     return questions
 
+# Исправление в handlers/quiz.py, функция start_quiz
+
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """
     Инициализирует квиз для пользователя.
+    Исправленная версия, корректно проверяющая выученные слова.
     """
     chat_id = callback.from_user.id
     try:
@@ -93,6 +96,16 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
         except ImportError:
             logger.error("Error importing user_set_selection, using default set")
             chosen_set = None
+        
+        # Получаем список уже выученных слов из БД - это ПЕРВЫЙ шаг!
+        try:
+            learned_raw = crud.get_learned_words(chat_id)
+            # Всегда используем extract_english для унификации формата
+            learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
+            logger.info(f"User {chat_id} has {len(learned_set)} learned words")
+        except Exception as e:
+            logger.error(f"Error getting learned words for user {chat_id}: {e}")
+            learned_set = set()
         
         # Получаем слова дня
         try:
@@ -115,32 +128,43 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
             if raw_words and (raw_words[0].startswith("🎓") or raw_words[0].startswith("⚠️")):
                 raw_words = raw_words[1:]
                 
-            daily_words = set(extract_english(line) for line in raw_words)
+            # Извлекаем английские слова и приводим к нижнему регистру
+            daily_words = [extract_english(line).lower() for line in raw_words]
+            # Преобразуем в множество для более быстрой фильтрации
+            daily_words_set = set(daily_words)
             
-            # Определяем, находимся ли мы в режиме повторения
+            # Определяем режим повторения правильно на основе данных кэша
             is_revision_mode = len(daily_entry) > 9 and daily_entry[9]
+            logger.info(f"User {chat_id} in revision mode: {is_revision_mode}")
             
-            # Если режим повторения, нам не нужно фильтровать выученные слова
-            if not is_revision_mode:
-                # Получаем выученные слова только в обычном режиме
-                try:
-                    learned = set(word for word, _ in crud.get_learned_words(chat_id))
-                except Exception as e:
-                    logger.error(f"Error getting learned words for user {chat_id}: {e}")
-                    learned = set()
-                    
-                filtered_words = daily_words - learned
-                
-                if not filtered_words:
-                    # Особое сообщение если все слова дня уже выучены, но мы не в режиме повторения
-                    await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены! Попробуйте завтра или выберите новый набор слов.")
-                    return
-                    
-                quiz_words = list(filtered_words)
-            else:
-                # В режиме повторения используем все слова дня
+            # Для тестирования запишем в лог
+            logger.info(f"Daily words for user {chat_id}: {daily_words_set}")
+            logger.info(f"Learned words for user {chat_id}: {learned_set}")
+            
+            # Фильтруем слова - независимо от режима повторения
+            # Сначала находим непройденные слова (те, которых нет в выученных)
+            unlearned_words = daily_words_set - learned_set
+            logger.info(f"Unlearned words for user {chat_id}: {unlearned_words}")
+            
+            # Решение о запуске квиза зависит от режима и наличия невыученных слов
+            if not unlearned_words and not is_revision_mode:
+                # Все слова выучены, но мы не в режиме повторения - сообщаем об этом
+                await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены! Попробуйте завтра или выберите новый набор слов.")
+                return
+            
+            # Определяем, какие слова использовать в квизе
+            if is_revision_mode:
+                # В режиме повторения используем все слова дня, так как они уже выучены
                 quiz_words = list(daily_words)
-                
+            else:
+                # В обычном режиме используем только невыученные слова
+                quiz_words = list(unlearned_words)
+                # Проверяем, остались ли слова после фильтрации
+                if not quiz_words:
+                    # Этот случай уже обработан выше, но для уверенности
+                    await bot.send_message(chat_id, "Нет данных для квиза. Возможно, все слова уже выучены.")
+                    return
+            
             # Генерируем вопросы для квиза с учетом режима повторения
             questions = generate_quiz_questions_from_daily(quiz_words, level, chosen_set, is_revision_mode)
             if not questions:
@@ -156,8 +180,11 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
             # Добавляем информативное сообщение перед началом квиза
             if is_revision_mode:
                 await bot.send_message(chat_id, "📝 Режим повторения: слова уже добавлены в Ваш словарь.")
+            else:
+                await bot.send_message(chat_id, "📝 Квиз по невыученным словам: правильные ответы будут добавлены в Ваш словарь.")
                 
             await send_quiz_question(chat_id, bot)
+            
         except KeyError as e:
             logger.error(f"Cache error for user {chat_id}: {e}")
             await bot.send_message(chat_id, "Ошибка при получении слов дня. Пожалуйста, попробуйте позже.")
@@ -217,6 +244,9 @@ async def send_quiz_question(chat_id, bot: Bot):
         logger.error(f"Error sending quiz question to user {chat_id}: {e}")
         await bot.send_message(chat_id, "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.")
 
+
+# В файле handlers/quiz.py исправляем функцию process_quiz_answer
+
 async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
     
@@ -261,16 +291,28 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
         if option_index == question["correct_index"]:
             # Правильный ответ
             try:
+                # Проверяем, не добавлено ли это слово уже в выученные
+                current_learned = crud.get_learned_words(chat_id)
+                current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)
+                word_to_learn = extract_english(question["word"]).lower()
+                
                 # Добавляем слово в изученные только если не находимся в режиме повторения
-                if not is_revision:
+                # И если это слово еще не выучено
+                if not is_revision and word_to_learn not in current_learned_words:
+                    # Добавляем слово в таблицу выученных
                     crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
+                    logger.info(f"Added word '{question['word']}' to learned for user {chat_id}")
                     await callback.answer("Правильно! Слово добавлено в словарь.")
-                else:
+                elif is_revision:
                     # В режиме повторения не сохраняем слово повторно
                     await callback.answer("Правильно! (Слово уже в вашем словаре)")
+                else:
+                    # Если слово уже было выучено ранее
+                    await callback.answer("Правильно! (Слово уже было в вашем словаре)")
+                    
                 state["correct"] += 1
             except Exception as e:
-                logger.error(f"Error adding learned word for user {chat_id}: {e}")
+                logger.error(f"Error handling correct answer for user {chat_id}: {e}")
                 await callback.answer("Правильно, но возникла ошибка при сохранении результата.")
         else:
             # Неправильный ответ
@@ -284,7 +326,7 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     except Exception as e:
         logger.error(f"Error processing quiz answer: {e}")
         await callback.answer("Произошла ошибка при обработке ответа.")
-
+        
 def register_quiz_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
         lambda c: start_quiz(c, bot),

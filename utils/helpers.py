@@ -14,13 +14,33 @@ daily_words_cache = {}
 
 # Хранение уникальных слов предыдущего дня
 previous_daily_words = {}
+# Добавьте в utils/helpers.py улучшенную функцию сброса кэша
 
 def reset_daily_words_cache(chat_id):
-    """Сбрасывает кэш списка слов дня для данного пользователя."""
+    """
+    Сбрасывает кэш списка слов дня для данного пользователя.
+    Улучшенная версия с более подробным логированием.
+    """
     try:
         if chat_id in daily_words_cache:
+            logger.info(f"Resetting daily words cache for user {chat_id}")
+            # Сохраняем данные в лог для отладки
+            entry = daily_words_cache[chat_id]
+            if len(entry) > 9:
+                is_revision = entry[9]
+                logger.debug(f"User {chat_id} was in revision mode: {is_revision}")
+            
+            # Удаляем запись из кэша
             del daily_words_cache[chat_id]
             logger.debug(f"Cache reset for user {chat_id}")
+            
+            # Проверяем успешность удаления
+            if chat_id not in daily_words_cache:
+                logger.info(f"Cache successfully reset for user {chat_id}")
+            else:
+                logger.error(f"Failed to reset cache for user {chat_id}")
+        else:
+            logger.debug(f"No cache found for user {chat_id}, nothing to reset")
     except Exception as e:
         logger.error(f"Error resetting cache for user {chat_id}: {e}")
 
@@ -79,12 +99,37 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
         # Простой запасной вариант в случае ошибки
         return ["12:00"] * total_count
 
+# В файле utils/helpers.py исправляем функцию extract_english
+
 def extract_english(word_line: str) -> str:
-    """Извлекает английскую часть из строки формата 'word - translation'."""
+    """
+    Извлекает английскую часть из строки формата 'word - translation'.
+    Улучшенная версия для более надежной работы.
+    """
     try:
+        if not word_line or not isinstance(word_line, str):
+            logger.error(f"Invalid input to extract_english: {word_line}")
+            return ""
+            
+        # Стандартный формат 'word - translation'
         if " - " in word_line:
             return word_line.split(" - ", 1)[0].strip()
-        return word_line.strip()
+            
+        # Альтернативный формат 'word – translation' (с длинным тире)
+        if " – " in word_line:
+            return word_line.split(" – ", 1)[0].strip()
+            
+        # Альтернативный формат 'word: translation'
+        if ": " in word_line:
+            return word_line.split(": ", 1)[0].strip()
+            
+        # Если строка начинается с emoji или специальных символов, удаляем их
+        cleaned_line = word_line.strip()
+        if cleaned_line and (cleaned_line[0] in ['🔹', '📌', '⏰', '⚠️', '🎓']):
+            cleaned_line = cleaned_line[1:].strip()
+            
+        # Если разделитель не найден, возвращаем всю строку
+        return cleaned_line
     except Exception as e:
         logger.error(f"Error extracting English word from '{word_line}': {e}")
         return word_line.strip() if isinstance(word_line, str) else ""

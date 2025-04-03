@@ -10451,3 +10451,17 @@ IndexError: list index out of range
 2025-04-04 01:34:02,575 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-04 01:35:02 MSK)" executed successfully
 2025-04-04 01:34:20,958 - INFO - Stop polling...
 2025-04-04 01:34:20,960 - WARNING - Goodbye!
+2025-04-04 01:51:24,672 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-04 01:51:24,816 - WARNING - Updates were skipped successfully.
+2025-04-04 01:51:24,818 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-04 01:51:24,818 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-04 01:51:24,818 - INFO - Scheduler started
+2025-04-04 01:51:24,819 - INFO - Scheduler started with optimized configuration
+2025-04-04 01:51:24,819 - INFO - Бот запущен.
+2025-04-04 01:51:24,819 - INFO - Start polling.
+2025-04-04 01:51:31,784 - INFO - Received /start from chat_id: 380675615
+2025-04-04 01:51:31,785 - INFO - User 380675615 already exists
+2025-04-04 01:51:35,037 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-04 01:51:35,037 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-04 01:51:41,414 - INFO - Stop polling...
+2025-04-04 01:51:41,414 - WARNING - Goodbye!
