@@ -9,16 +9,17 @@ from config import REMINDER_START, DURATION_HOURS
 async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик кнопки "Слова дня". Возвращает набор слов на сегодня с улучшенным форматированием.
+    Исправлено: редактирует существующее сообщение вместо отправки нового.
     """
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     
     if not user:
-        await bot.send_message(
-            chat_id, 
+        await callback.message.edit_text(
             "⚠️ Профиль не найден. Пожалуйста, используйте /start для создания профиля.",
             parse_mode="Markdown"
         )
+        await callback.answer()
         return
     
     result = get_daily_words_for_user(
@@ -27,11 +28,11 @@ async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
     )
     
     if result is None:
-        await bot.send_message(
-            chat_id, 
+        await callback.message.edit_text(
             f"⚠️ Нет слов для уровня {user[1]}.",
             parse_mode="Markdown"
         )
+        await callback.answer()
         return
     
     messages, times = result
@@ -39,8 +40,7 @@ async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
     # Используем визуальный помощник для форматирования сообщения
     formatted_message = format_daily_words_message(messages, times)
     
-    await bot.send_message(
-        chat_id, 
+    await callback.message.edit_text(
         formatted_message,
         parse_mode="Markdown", 
         reply_markup=words_day_keyboard()

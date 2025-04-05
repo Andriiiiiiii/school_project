@@ -18,11 +18,11 @@ BULLET_STYLES = {
 }
 
 SECTION_DIVIDERS = {
-    "light": "─" * 30,
-    "medium": "━" * 30,
-    "heavy": "═" * 30,
-    "double": "═══════════════════════════",
-    "decorated": "•───────────────────────•",
+    "light": "─",
+    "medium": "━",
+    "heavy": "═",
+    "double": "═",
+    "decorated": "•─•",
     "star": "✧･ﾟ: *✧･ﾟ:* *:･ﾟ✧*:･ﾟ✧"
 }
 
@@ -157,8 +157,7 @@ def extract_english(word_line: str) -> str:
 
 def format_daily_words_message(messages: List[str], times: List[str]) -> str:
     """Форматирует сообщение со словами дня с улучшенным визуальным представлением."""
-    header = format_header("📚 Словарь на сегодня", top_divider=SECTION_DIVIDERS["decorated"], 
-                          bottom_divider=SECTION_DIVIDERS["decorated"])
+    header = "📚 Словарь на сегодня"
     
     result = f"{header}\n\n"
     
@@ -195,13 +194,12 @@ def format_daily_words_message(messages: List[str], times: List[str]) -> str:
     return result
 
 def format_dictionary_message(words: List[Tuple[str, str]]) -> str:
+    
     """Форматирует записи словаря с улучшенным визуальным представлением."""
     if not words:
         return "📚 *Ваш словарь пуст*\n\nПройдите квизы, чтобы добавить слова в свой словарь!"
     
-    header = format_header("📚 Ваш словарь", 
-                          top_divider=SECTION_DIVIDERS["decorated"],
-                          bottom_divider=SECTION_DIVIDERS["decorated"])
+    header = "📚 Ваш словарь"
     
     result = f"{header}\n\n"
     
@@ -226,7 +224,7 @@ def format_level_test_question(q_index: int, total: int, level: str, word: str) 
     """Форматирует вопрос теста уровня с визуальными улучшениями."""
     progress = format_progress_bar(q_index + 1, total)
     
-    header = format_header(f"📊 Тест уровня: {level}", bottom_divider=SECTION_DIVIDERS["light"])
+    header = f"📊 Тест уровня: {level}"
     
     result = f"{header}\n\n"
     result += f"{progress}\n\n"
@@ -237,9 +235,7 @@ def format_level_test_question(q_index: int, total: int, level: str, word: str) 
 
 def format_level_test_results(results_by_level: dict, new_level: str) -> str:
     """Форматирует результаты теста уровня с визуальными улучшениями."""
-    header = format_header("📊 Результаты теста уровня", 
-                          top_divider=SECTION_DIVIDERS["decorated"],
-                          bottom_divider=SECTION_DIVIDERS["decorated"])
+    header = "📊 Результаты теста уровня"
     
     result = f"{header}\n\n"
     
@@ -249,7 +245,7 @@ def format_level_test_results(results_by_level: dict, new_level: str) -> str:
         progress = format_progress_bar(score, total, 10)
         result += f"*{level}*: {score}/{total} {progress}\n"
     
-    result += f"\n{SECTION_DIVIDERS['light']}\n\n"
+    result += f"\n"
     result += f"🎓 *Ваш уровень теперь: {new_level}*\n\n"
     
     if new_level == "A1":
@@ -265,9 +261,7 @@ def format_level_test_results(results_by_level: dict, new_level: str) -> str:
 
 def format_settings_overview(user_settings: dict) -> str:
     """Форматирует настройки пользователя с визуальными улучшениями."""
-    header = format_header("⚙️ Ваши настройки", 
-                          top_divider=SECTION_DIVIDERS["decorated"],
-                          bottom_divider=SECTION_DIVIDERS["decorated"])
+    header = "⚙️ Ваши настройки"
     
     result = f"{header}\n\n"
     
@@ -279,3 +273,35 @@ def format_settings_overview(user_settings: dict) -> str:
     result += f"📚 *Выбранный набор*: {user_settings.get('chosen_set', 'Не выбран')}\n"
     
     return result
+
+def format_result_message(correct: int, total: int, is_revision: bool = False) -> str:
+    """Форматирует сообщение с результатами квиза."""
+    percentage = (correct / total) * 100 if total > 0 else 0
+    
+    # Выбираем эмодзи на основе результата
+    if percentage >= 90:
+        emoji = "🎉"
+    elif percentage >= 70:
+        emoji = "👍"
+    elif percentage >= 50:
+        emoji = "👌"
+    else:
+        emoji = "🔄"
+        
+    progress = format_progress_bar(correct, total, 20)
+    
+    header = f"{emoji} Квиз завершен! {emoji}"
+    
+    message = f"{header}\n\n"
+    message += f"*Счет:* {correct} из {total} ({percentage:.1f}%)\n{progress}\n\n"
+    
+    if is_revision:
+        message += "Вы были в *режиме повторения*. Эти слова уже в вашем словаре.\n\n"
+        if percentage < 70:
+            message += "💡 *Совет:* Рассмотрите возможность повторного изучения этих слов для улучшения запоминания."
+    else:
+        message += "Правильные ответы добавлены в ваш словарь.\n\n"
+        if percentage < 70:
+            message += "💡 *Совет:* Попробуйте квиз снова завтра, чтобы освоить слова, которые вы пропустили."
+            
+    return message

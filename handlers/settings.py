@@ -1,7 +1,9 @@
 from aiogram import types, Dispatcher, Bot
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from keyboards.submenus import (
     notification_settings_menu_keyboard, 
-    settings_menu_keyboard
+    settings_menu_keyboard,
+    level_selection_keyboard  # Добавляем импорт для функции выбора уровня
 )
 from keyboards.main_menu import main_menu_keyboard
 from database import crud
@@ -65,13 +67,14 @@ def is_valid_timezone(tz_name):
         return False
 
 async def show_settings_callback(callback: types.CallbackQuery, bot: Bot):
-    chat_id = callback.from_user.id
-    await bot.send_message(chat_id, "Настройки бота:", reply_markup=settings_menu_keyboard())
+    """Редактируем сообщение вместо отправки нового"""
+    await callback.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_settings_choice_callback(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик выбора пункта меню настроек.
+    Обновлен для использования новых клавиатур и улучшенного UX.
     """
     chat_id = callback.from_user.id
     try:
@@ -81,51 +84,79 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
         return
 
     if option == "level":
-        levels = ["A1", "A2", "B1", "B2", "C1", "C2"]
-        keyboard = types.InlineKeyboardMarkup(row_width=3)
-        for lvl in levels:
-            keyboard.add(types.InlineKeyboardButton(lvl, callback_data=f"set_level:{lvl}"))
-        await bot.send_message(chat_id, "Выберите уровень:", reply_markup=keyboard)
+        # Используем функцию выбора уровня
+        await callback.message.edit_text(
+            "🔤 *Выберите уровень сложности:*\n\n"
+            "🟢 *A1-A2* - Начальный уровень\n"
+            "🟡 *B1-B2* - Средний уровень\n"
+            "🔴 *C1-C2* - Продвинутый уровень", 
+            parse_mode="Markdown",
+            reply_markup=level_selection_keyboard()
+        )
 
     elif option == "notifications":
-        await bot.send_message(chat_id, "Настройки уведомлений:", reply_markup=notification_settings_menu_keyboard())
+        await callback.message.edit_text(
+            "⚙️ *Настройки уведомлений*\n\n"
+            "Здесь вы можете настроить частоту и количество уведомлений, "
+            "а также свой часовой пояс для правильного времени доставки.",
+            parse_mode="Markdown",
+            reply_markup=notification_settings_menu_keyboard()
+        )
 
     elif option == "words":
         pending_settings[chat_id] = "words"
-        await bot.send_message(chat_id, "Введите количество слов в день (от 1 до 20):", reply_markup=notification_settings_menu_keyboard())
+        keyboard = InlineKeyboardMarkup()
+        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:back"))
+        
+        await callback.message.edit_text(
+            "📊 *Количество слов в день*\n\n"
+            "Выберите оптимальное количество новых слов для изучения ежедневно. "
+            "Рекомендуется от 5 до 15 слов для эффективного обучения.\n\n"
+            "Введите число от 1 до 20:",
+            parse_mode="Markdown",
+            reply_markup=keyboard
+        )
 
     elif option == "repetitions":
         pending_settings[chat_id] = "repetitions"
-        await bot.send_message(chat_id, "Введите количество повторений (от 1 до 5):", reply_markup=notification_settings_menu_keyboard())
+        keyboard = InlineKeyboardMarkup()
+        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:back"))
+        
+        await callback.message.edit_text(
+            "🔄 *Количество повторений*\n\n"
+            "Выберите, сколько раз вы хотите повторять каждое слово в течение дня. "
+            "Повторение помогает лучше запомнить слова.\n\n"
+            "Введите число от 1 до 5:",
+            parse_mode="Markdown",
+            reply_markup=keyboard
+        )
 
     elif option == "timezone":
-        keyboard = types.InlineKeyboardMarkup(row_width=1)
+        keyboard = InlineKeyboardMarkup(row_width=2)
+        
         for offset in range(2, 13):
             city_name = timezones_map.get(offset, "")
             tz_label = f"UTC+{offset} {city_name}"
             callback_data = f"set_timezone:UTC+{offset}"
-            keyboard.add(types.InlineKeyboardButton(tz_label, callback_data=callback_data))
-        keyboard.add(types.InlineKeyboardButton("Назад", callback_data="settings:notifications"))
-        await bot.send_message(chat_id, "Выберите ваш часовой пояс:", reply_markup=keyboard)
+            
+            keyboard.insert(InlineKeyboardButton(tz_label, callback_data=callback_data))
+            
+        # Добавляем кнопку Назад
+        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:back"))
+        
+        await callback.message.edit_text(
+            "🌐 *Выберите ваш часовой пояс*\n\n"
+            "Это позволит отправлять уведомления в удобное для вас время.",
+            parse_mode="Markdown",
+            reply_markup=keyboard
+        )
 
     elif option == "set":
         await process_my_sets(callback, bot)
 
     elif option == "mysettings":
-        user = crud.get_user(chat_id)
-        if not user:
-            await bot.send_message(chat_id, "Профиль не найден. Пожалуйста, используйте /start.")
-        else:
-            level = user[1]
-            words_count = user[2]
-            repetitions = user[3]
-            timezone = user[5] if len(user) > 5 and user[5] else "Не задан"
-            set_info = f"\nВыбранный сет: {user_set_selection.get(chat_id, 'Не выбран')}"
-            text = (f"Ваш уровень: {level}\n"
-                    f"Количество слов в день: {words_count}\n"
-                    f"Количество повторений: {repetitions}\n"
-                    f"Ваш часовой пояс: {timezone}" + set_info)
-            await bot.send_message(chat_id, text, reply_markup=settings_menu_keyboard())
+        # Обновленная функция для более красивого отображения настроек
+        await process_settings_mysettings(callback, bot)
 
     await callback.answer()
 
@@ -392,8 +423,8 @@ async def process_text_setting(message: types.Message):
         await message.answer(f"Количество повторений установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
 
 async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
-    chat_id = callback.from_user.id
-    await bot.send_message(chat_id, "Настройки бота:", reply_markup=settings_menu_keyboard())
+    """Исправление: Редактируем существующее сообщение вместо отправки нового"""
+    await callback.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
@@ -445,33 +476,47 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
 
 
 async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
-    """Display user settings with enhanced formatting"""
+    """Отображает настройки пользователя с улучшенным форматированием"""
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     
     if not user:
-        await bot.send_message(
-            chat_id, 
-            "⚠️ Profile not found. Please use /start.",
-            parse_mode="Markdown"
+        await callback.message.edit_text(
+            "⚠️ *Профиль не найден.*\n\nПожалуйста, используйте /start.",
+            parse_mode="Markdown",
+            reply_markup=types.InlineKeyboardMarkup().add(
+                InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
+            )
         )
     else:
-        # Create a dictionary of user settings
+        # Создаем словарь настроек пользователя
         user_settings = {
             "level": user[1],
             "words_per_day": user[2],
             "repetitions": user[3],
-            "timezone": user[5] if len(user) > 5 and user[5] else "Not set",
-            "chosen_set": user_set_selection.get(chat_id, "Not selected")
+            "timezone": user[5] if len(user) > 5 and user[5] else "Не задан",
+            "chosen_set": user_set_selection.get(chat_id, "Не выбран")
         }
         
-        # Use the visual helper to format the settings
-        formatted_settings = format_settings_overview(user_settings)
+        # Красивое форматирование
+        message = "👤 *Ваш профиль*\n\n"
+        message += f"🔤 *Уровень:* {user_settings['level']}\n"
+        message += f"📊 *Слов в день:* {user_settings['words_per_day']}\n"
+        message += f"🔄 *Повторений:* {user_settings['repetitions']}\n"
+        message += f"🌐 *Часовой пояс:* {user_settings['timezone']}\n"
+        message += f"📚 *Выбранный набор:* {user_settings['chosen_set']}\n\n"
         
-        await bot.send_message(
-            chat_id, 
-            formatted_settings,
-            parse_mode="Markdown", 
+        # Добавляем статистику, если есть
+        try:
+            learned_words = crud.get_learned_words(chat_id)
+            message += f"📈 *Статистика*\n"
+            message += f"📝 Выучено слов: {len(learned_words)}\n"
+        except Exception as e:
+            logger.error(f"Ошибка при получении статистики: {e}")
+        
+        await callback.message.edit_text(
+            message,
+            parse_mode="Markdown",
             reply_markup=settings_menu_keyboard()
         )
 

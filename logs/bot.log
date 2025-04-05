@@ -12471,3 +12471,1940 @@ Traceback (most recent call last):
 NameError: name 'main_menu_keyboard' is not defined
 2025-04-05 20:14:21,106 - INFO - Stop polling...
 2025-04-05 20:14:21,107 - WARNING - Goodbye!
+2025-04-05 20:17:39,052 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:17:39,215 - WARNING - Updates were skipped successfully.
+2025-04-05 20:17:39,217 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:17:39,218 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:17:39,218 - INFO - Scheduler started
+2025-04-05 20:17:39,218 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:17:39,218 - INFO - Бот запущен.
+2025-04-05 20:17:39,218 - INFO - Start polling.
+2025-04-05 20:17:42,087 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:17:42,087 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:17:45,180 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:17:45,180 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:17:45,180 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:18:39,224 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:19:39 MSK)" (scheduled at 2025-04-05 20:18:39.217571+03:00)
+2025-04-05 20:18:39,225 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:18:39,225 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:18:39,226 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:18:39,226 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:18:39,251 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:19:39 MSK)" executed successfully
+2025-04-05 20:19:39,223 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:20:39 MSK)" (scheduled at 2025-04-05 20:19:39.217571+03:00)
+2025-04-05 20:19:39,223 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:19:39,223 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:19:39,223 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:19:39,223 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:19:39,223 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:20:39 MSK)" executed successfully
+2025-04-05 20:20:39,222 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:21:39 MSK)" (scheduled at 2025-04-05 20:20:39.217571+03:00)
+2025-04-05 20:20:39,223 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:20:39,223 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:20:39,223 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:20:39,223 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:20:39,223 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:21:39 MSK)" executed successfully
+2025-04-05 20:21:39,226 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:22:39 MSK)" (scheduled at 2025-04-05 20:21:39.217571+03:00)
+2025-04-05 20:21:39,226 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:21:39,227 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:21:39,227 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:21:39,227 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:21:39,228 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:22:39 MSK)" executed successfully
+2025-04-05 20:22:39,223 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:23:39 MSK)" (scheduled at 2025-04-05 20:22:39.217571+03:00)
+2025-04-05 20:22:39,224 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:22:39,224 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:22:39,224 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:22:39,224 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:22:39,225 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:23:39 MSK)" executed successfully
+2025-04-05 20:22:58,386 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:22:58,387 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:23:39,223 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:24:39 MSK)" (scheduled at 2025-04-05 20:23:39.217571+03:00)
+2025-04-05 20:23:39,223 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:23:39,223 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:23:39,224 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:24:39 MSK)" executed successfully
+2025-04-05 20:24:39,234 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:25:39 MSK)" (scheduled at 2025-04-05 20:24:39.217571+03:00)
+2025-04-05 20:24:39,234 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:24:39,234 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:24:39,235 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:25:39 MSK)" executed successfully
+2025-04-05 20:25:39,234 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:26:39 MSK)" (scheduled at 2025-04-05 20:25:39.217571+03:00)
+2025-04-05 20:25:39,235 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:25:39,235 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:25:39,236 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:26:39 MSK)" executed successfully
+2025-04-05 20:26:39,232 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:27:39 MSK)" (scheduled at 2025-04-05 20:26:39.217571+03:00)
+2025-04-05 20:26:39,233 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:26:39,233 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:26:39,234 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:27:39 MSK)" executed successfully
+2025-04-05 20:27:39,233 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:28:39 MSK)" (scheduled at 2025-04-05 20:27:39.217571+03:00)
+2025-04-05 20:27:39,234 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:27:39,234 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:27:39,236 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:28:39 MSK)" executed successfully
+2025-04-05 20:28:39,231 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:29:39 MSK)" (scheduled at 2025-04-05 20:28:39.217571+03:00)
+2025-04-05 20:28:39,232 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:28:39,232 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:28:39,233 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:29:39 MSK)" executed successfully
+2025-04-05 20:29:39,232 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:30:39 MSK)" (scheduled at 2025-04-05 20:29:39.217571+03:00)
+2025-04-05 20:29:39,233 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:29:39,233 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:29:39,234 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:30:39 MSK)" executed successfully
+2025-04-05 20:30:39,234 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:31:39 MSK)" (scheduled at 2025-04-05 20:30:39.217571+03:00)
+2025-04-05 20:30:39,235 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:30:39,235 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:30:39,236 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:31:39 MSK)" executed successfully
+2025-04-05 20:31:39,230 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:32:39 MSK)" (scheduled at 2025-04-05 20:31:39.217571+03:00)
+2025-04-05 20:31:39,231 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:31:39,232 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:31:39,233 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:32:39 MSK)" executed successfully
+2025-04-05 20:31:56,108 - INFO - Stop polling...
+2025-04-05 20:31:56,109 - WARNING - Goodbye!
+2025-04-05 20:31:57,204 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:31:57,393 - WARNING - Updates were skipped successfully.
+2025-04-05 20:31:57,397 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:31:57,399 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:31:57,399 - INFO - Scheduler started
+2025-04-05 20:31:57,399 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:31:57,399 - INFO - Бот запущен.
+2025-04-05 20:31:57,399 - INFO - Start polling.
+2025-04-05 20:32:17,848 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:32:17,848 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:32:17,849 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 30, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 61, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:32:21,198 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:32:21,198 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:32:22,447 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:32:22,448 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:32:22,448 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-23' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 30, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 61, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:32:26,940 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:32:26,940 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:32:26,940 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-36' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 30, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 61, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:32:57,407 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:33:57 MSK)" (scheduled at 2025-04-05 20:32:57.397545+03:00)
+2025-04-05 20:32:57,409 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:32:57,409 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:32:57,413 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:32:57,413 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:32:57,442 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:33:57 MSK)" executed successfully
+2025-04-05 20:33:48,512 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:33:48,513 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:33:48,513 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:33:57,398 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:34:57 MSK)" (scheduled at 2025-04-05 20:33:57.397545+03:00)
+2025-04-05 20:33:57,398 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:33:57,398 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:33:57,398 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:34:57 MSK)" executed successfully
+2025-04-05 20:34:09,438 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:34:09,438 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:34:09,438 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:34:57,402 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:35:57 MSK)" (scheduled at 2025-04-05 20:34:57.397545+03:00)
+2025-04-05 20:34:57,402 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:34:57,402 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:34:57,403 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:35:57 MSK)" executed successfully
+2025-04-05 20:35:45,178 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:35:45,178 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:35:45,178 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:35:57,403 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:36:57 MSK)" (scheduled at 2025-04-05 20:35:57.397545+03:00)
+2025-04-05 20:35:57,403 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:35:57,403 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:35:57,408 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:36:57 MSK)" executed successfully
+2025-04-05 20:36:11,717 - INFO - Stop polling...
+2025-04-05 20:36:11,718 - WARNING - Goodbye!
+2025-04-05 20:43:42,175 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:43:42,333 - WARNING - Updates were skipped successfully.
+2025-04-05 20:43:42,335 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:43:42,335 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:43:42,335 - INFO - Scheduler started
+2025-04-05 20:43:42,335 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:43:42,335 - INFO - Бот запущен.
+2025-04-05 20:43:42,336 - INFO - Start polling.
+2025-04-05 20:43:48,972 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:43:48,972 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:43:48,973 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:43:52,303 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:43:52,303 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:43:58,740 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:43:58,740 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:43:58,740 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:00,662 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:00,662 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:01,960 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:01,960 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:07,312 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:07,312 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:28,077 - INFO - Получена команда /start от chat_id: 380675615
+2025-04-05 20:44:28,077 - ERROR - Ошибка в cmd_start для chat_id 380675615: name 'crud' is not defined
+2025-04-05 20:44:28,077 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-63' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:44:29,286 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:29,286 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:31,398 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:31,398 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:42,337 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:45:42 MSK)" (scheduled at 2025-04-05 20:44:42.335043+03:00)
+2025-04-05 20:44:42,339 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:42,339 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:44:42,359 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:45:42 MSK)" executed successfully
+2025-04-05 20:44:58,220 - INFO - У пользователя 380675615 есть 8 выученных слов
+2025-04-05 20:44:58,220 - INFO - Пользователь 380675615 в режиме повторения: True
+2025-04-05 20:44:58,220 - INFO - Подготовлено 17 слов для квиза пользователя 380675615
+2025-04-05 20:44:58,221 - WARNING - Word 'поздравляем! вы выучили все слова в этом наборе. вот некоторые для повторения:' (extracted as 'поздравляем! вы выучили все слова в этом наборе. вот некоторые для повторения:') not found in quiz data mapping
+2025-04-05 20:44:58,221 - WARNING - Word 'поздравляем! вы выучили все слова в этом наборе. вот некоторые для повторения:' (extracted as 'поздравляем! вы выучили все слова в этом наборе. вот некоторые для повторения:') not found in quiz data mapping
+2025-04-05 20:44:59,220 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:44:59,220 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:45:17,281 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:45:17,282 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:45:17,282 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:45:42,344 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:46:42 MSK)" (scheduled at 2025-04-05 20:45:42.335043+03:00)
+2025-04-05 20:45:42,345 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:46:42 MSK)" executed successfully
+2025-04-05 20:45:53,609 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:45:53,609 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:45:53,609 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-256' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:45:56,232 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:45:56,232 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:45:56,233 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-259' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:45:57,092 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:45:57,092 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:45:57,093 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-262' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:46:03,896 - INFO - Stop polling...
+2025-04-05 20:46:03,897 - WARNING - Goodbye!
+2025-04-05 20:46:57,003 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:46:57,186 - WARNING - Updates were skipped successfully.
+2025-04-05 20:46:57,190 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:46:57,191 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:46:57,191 - INFO - Scheduler started
+2025-04-05 20:46:57,191 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:46:57,191 - INFO - Бот запущен.
+2025-04-05 20:46:57,192 - INFO - Start polling.
+2025-04-05 20:47:15,348 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:47:15,348 - ERROR - Ошибка в cmd_start для chat_id 1999873173: name 'crud' is not defined
+2025-04-05 20:47:15,348 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'main_menu_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 40, in cmd_start
+    user = crud.get_user(chat_id)
+           ^^^^
+NameError: name 'crud' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 71, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+NameError: name 'main_menu_keyboard' is not defined
+2025-04-05 20:47:23,270 - INFO - Stop polling...
+2025-04-05 20:47:23,271 - WARNING - Goodbye!
+2025-04-05 20:49:33,340 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:49:33,499 - WARNING - Updates were skipped successfully.
+2025-04-05 20:49:33,500 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:49:33,500 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:49:33,500 - INFO - Scheduler started
+2025-04-05 20:49:33,500 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:49:33,500 - INFO - Бот запущен.
+2025-04-05 20:49:33,500 - INFO - Start polling.
+2025-04-05 20:49:36,911 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:49:36,912 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:49:42,525 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:49:42,525 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:49:45,825 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:49:45,825 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:49:47,089 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:49:47,089 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:50:04,249 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:50:04,249 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:50:04,249 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:50:33,200 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:50:33,200 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:50:33,502 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:51:33 MSK)" (scheduled at 2025-04-05 20:50:33.500140+03:00)
+2025-04-05 20:50:33,502 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:50:33,502 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:50:33,524 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:51:33 MSK)" executed successfully
+2025-04-05 20:50:39,048 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:50:39,048 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:50:39,048 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:51:00,865 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-173' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError('cmd_profile() takes 1 positional argument but 2 were given')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 128, in <lambda>
+    dp.register_message_handler(lambda msg: cmd_profile(msg, bot), commands=["profile"])
+                                            ^^^^^^^^^^^^^^^^^^^^^
+TypeError: cmd_profile() takes 1 positional argument but 2 were given
+2025-04-05 20:51:33,416 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:51:33,417 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:51:33,501 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:52:33 MSK)" (scheduled at 2025-04-05 20:51:33.500140+03:00)
+2025-04-05 20:51:33,501 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:51:33,501 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:51:33,501 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:52:33 MSK)" executed successfully
+2025-04-05 20:51:55,660 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:51:55,660 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:51:55,660 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:51:58,697 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 20:51:58,697 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 20:51:58,697 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 20:52:33,507 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:53:33 MSK)" (scheduled at 2025-04-05 20:52:33.500140+03:00)
+2025-04-05 20:52:33,508 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:52:33,512 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:52:33,514 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 20:53:33 MSK)" executed successfully
+2025-04-05 20:52:36,804 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:52:36,804 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:53:23,510 - INFO - Stop polling...
+2025-04-05 20:53:23,511 - WARNING - Goodbye!
+2025-04-05 20:58:37,251 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 20:58:37,415 - WARNING - Updates were skipped successfully.
+2025-04-05 20:58:37,420 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 20:58:37,422 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 20:58:37,422 - INFO - Scheduler started
+2025-04-05 20:58:37,422 - INFO - Scheduler started with optimized configuration
+2025-04-05 20:58:37,422 - INFO - Бот запущен.
+2025-04-05 20:58:37,423 - INFO - Start polling.
+2025-04-05 20:58:43,903 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 20:58:43,903 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 20:58:51,974 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 126, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 20:59:09,259 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-47' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 20:59:14,914 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-55' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 20:59:37,424 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:00:37 MSK)" (scheduled at 2025-04-05 20:59:37.420517+03:00)
+2025-04-05 20:59:37,425 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:59:37,425 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:59:37,427 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 20:59:37,427 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 20:59:37,458 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:00:37 MSK)" executed successfully
+2025-04-05 20:59:42,248 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-65' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 20:59:47,222 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-73' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 137, in process_settings_choice_callback
+    row = [InlineKeyboardButton(tz_label, callback_data=callback_data)]
+           ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:00:04,074 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-81' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 157, in process_settings_choice_callback
+    await process_settings_mysettings(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 515, in process_settings_mysettings
+    await callback.message.edit_text(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-04-05 21:00:37,431 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:01:37 MSK)" (scheduled at 2025-04-05 21:00:37.420517+03:00)
+2025-04-05 21:00:37,431 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:00:37,431 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:00:37,431 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:00:37,431 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:00:37,432 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:01:37 MSK)" executed successfully
+2025-04-05 21:00:39,628 - INFO - Stop polling...
+2025-04-05 21:00:39,629 - WARNING - Goodbye!
+2025-04-05 21:00:40,995 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:00:41,102 - WARNING - Updates were skipped successfully.
+2025-04-05 21:00:41,103 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:00:41,103 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:00:41,103 - INFO - Scheduler started
+2025-04-05 21:00:41,103 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:00:41,103 - INFO - Бот запущен.
+2025-04-05 21:00:41,104 - INFO - Start polling.
+2025-04-05 21:00:42,906 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:00:42,906 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:00:46,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:00:46,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:00:48,086 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:00:48,086 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:01:10,156 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-63' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:01:10,842 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-66' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 137, in process_settings_choice_callback
+    row = [InlineKeyboardButton(tz_label, callback_data=callback_data)]
+           ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:01:13,904 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-78' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 137, in process_settings_choice_callback
+    row = [InlineKeyboardButton(tz_label, callback_data=callback_data)]
+           ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:01:16,151 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-86' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 126, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:01:17,003 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-89' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:01:21,127 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-92' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 157, in process_settings_choice_callback
+    await process_settings_mysettings(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 515, in process_settings_mysettings
+    await callback.message.edit_text(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-04-05 21:01:33,612 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:01:33,612 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:01:41,105 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:02:41 MSK)" (scheduled at 2025-04-05 21:01:41.103546+03:00)
+2025-04-05 21:01:41,106 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:01:41,106 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:01:41,108 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:01:41,108 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:01:41,132 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:02:41 MSK)" executed successfully
+2025-04-05 21:02:40,488 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-133' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:02:41,105 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:03:41 MSK)" (scheduled at 2025-04-05 21:02:41.103546+03:00)
+2025-04-05 21:02:41,105 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:02:41,105 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:02:41,106 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:02:41,106 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:02:41,106 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:03:41 MSK)" executed successfully
+2025-04-05 21:02:56,226 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-147' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 126, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:03:01,358 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-155' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 126, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:03:08,197 - INFO - Stop polling...
+2025-04-05 21:03:08,198 - WARNING - Goodbye!
+2025-04-05 21:03:24,889 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:03:24,990 - WARNING - Updates were skipped successfully.
+2025-04-05 21:03:24,991 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:03:24,992 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:03:24,992 - INFO - Scheduler started
+2025-04-05 21:03:24,992 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:03:24,992 - INFO - Бот запущен.
+2025-04-05 21:03:24,992 - INFO - Start polling.
+2025-04-05 21:03:31,167 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:03:31,168 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:03:36,926 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:03:41,110 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-27' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 137, in process_settings_choice_callback
+    row = [InlineKeyboardButton(tz_label, callback_data=callback_data)]
+           ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:03:41,794 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-30' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:03:48,068 - INFO - Stop polling...
+2025-04-05 21:03:48,068 - WARNING - Goodbye!
+2025-04-05 21:07:52,129 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:07:52,245 - WARNING - Updates were skipped successfully.
+2025-04-05 21:07:52,246 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:07:52,247 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:07:52,247 - INFO - Scheduler started
+2025-04-05 21:07:52,247 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:07:52,247 - INFO - Бот запущен.
+2025-04-05 21:07:52,247 - INFO - Start polling.
+2025-04-05 21:08:14,191 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:08:14,191 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:08:17,230 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:08:52,258 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:09:52 MSK)" (scheduled at 2025-04-05 21:08:52.246801+03:00)
+2025-04-05 21:08:52,259 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:08:52,259 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:08:52,262 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:08:52,262 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:08:52,285 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:09:52 MSK)" executed successfully
+2025-04-05 21:09:52,262 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:10:52 MSK)" (scheduled at 2025-04-05 21:09:52.246801+03:00)
+2025-04-05 21:09:52,263 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:09:52,264 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:09:52,264 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:09:52,264 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:09:52,265 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:10:52 MSK)" executed successfully
+2025-04-05 21:10:52,250 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:11:52 MSK)" (scheduled at 2025-04-05 21:10:52.246801+03:00)
+2025-04-05 21:10:52,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:10:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:10:52,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:10:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:10:52,251 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:11:52 MSK)" executed successfully
+2025-04-05 21:11:52,250 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:12:52 MSK)" (scheduled at 2025-04-05 21:11:52.246801+03:00)
+2025-04-05 21:11:52,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:11:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:11:52,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:11:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:11:52,252 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:12:52 MSK)" executed successfully
+2025-04-05 21:12:52,249 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:13:52 MSK)" (scheduled at 2025-04-05 21:12:52.246801+03:00)
+2025-04-05 21:12:52,249 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:12:52,249 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:12:52,249 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:12:52,249 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:12:52,249 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:13:52 MSK)" executed successfully
+2025-04-05 21:12:56,178 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 139, in make_request
+    async with session.post(url, data=req, **kwargs) as response:
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 905, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 142, in make_request
+    raise exceptions.NetworkError(f"aiohttp client throws an error: {e.__class__.__name__}: {e}")
+aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSError: [Errno 104] Connection reset by peer
+2025-04-05 21:13:52,259 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:14:52 MSK)" (scheduled at 2025-04-05 21:13:52.246801+03:00)
+2025-04-05 21:13:52,259 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:13:52,259 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:13:52,260 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:13:52,260 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:13:52,260 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:14:52 MSK)" executed successfully
+2025-04-05 21:13:56,421 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-46' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 113, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:14:52,262 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:15:52 MSK)" (scheduled at 2025-04-05 21:14:52.246801+03:00)
+2025-04-05 21:14:52,263 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:14:52,263 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:14:52,263 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:14:52,263 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:14:52,263 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:15:52 MSK)" executed successfully
+2025-04-05 21:15:02,718 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-52' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 126, in process_settings_choice_callback
+    InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:15:52,256 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:16:52 MSK)" (scheduled at 2025-04-05 21:15:52.246801+03:00)
+2025-04-05 21:15:52,256 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:15:52,256 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:15:52,256 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:15:52,256 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:15:52,256 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:16:52 MSK)" executed successfully
+2025-04-05 21:15:53,946 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-57' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardButton' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 137, in process_settings_choice_callback
+    row = [InlineKeyboardButton(tz_label, callback_data=callback_data)]
+           ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardButton' is not defined
+2025-04-05 21:16:52,251 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:17:52 MSK)" (scheduled at 2025-04-05 21:16:52.246801+03:00)
+2025-04-05 21:16:52,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:16:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:16:52,252 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:16:52,252 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:16:52,252 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:17:52 MSK)" executed successfully
+2025-04-05 21:17:52,249 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:18:52 MSK)" (scheduled at 2025-04-05 21:17:52.246801+03:00)
+2025-04-05 21:17:52,249 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:17:52,249 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:17:52,249 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:17:52,249 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:17:52,249 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:18:52 MSK)" executed successfully
+2025-04-05 21:18:42,366 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-93' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 92, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:18:51,904 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:18:51,904 - INFO - Dictionary cleared for user 1999873173 due to set change
+2025-04-05 21:18:52,248 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:19:52 MSK)" (scheduled at 2025-04-05 21:18:52.246801+03:00)
+2025-04-05 21:18:52,248 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:18:52,248 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:18:52,251 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:19:52 MSK)" executed successfully
+2025-04-05 21:19:52,255 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:20:52 MSK)" (scheduled at 2025-04-05 21:19:52.246801+03:00)
+2025-04-05 21:19:52,255 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:19:52,255 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:19:52,255 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:20:52 MSK)" executed successfully
+2025-04-05 21:20:52,256 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:21:52 MSK)" (scheduled at 2025-04-05 21:20:52.246801+03:00)
+2025-04-05 21:20:52,256 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:20:52,256 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:20:52,257 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:21:52 MSK)" executed successfully
+2025-04-05 21:21:52,253 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:22:52 MSK)" (scheduled at 2025-04-05 21:21:52.246801+03:00)
+2025-04-05 21:21:52,253 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:21:52,253 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:21:52,254 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:22:52 MSK)" executed successfully
+2025-04-05 21:22:52,252 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:23:52 MSK)" (scheduled at 2025-04-05 21:22:52.246801+03:00)
+2025-04-05 21:22:52,252 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:22:52,252 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:22:52,253 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:23:52 MSK)" executed successfully
+2025-04-05 21:23:52,249 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:24:52 MSK)" (scheduled at 2025-04-05 21:23:52.246801+03:00)
+2025-04-05 21:23:52,250 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:23:52,250 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:23:52,251 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:24:52 MSK)" executed successfully
+2025-04-05 21:24:52,251 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:25:52 MSK)" (scheduled at 2025-04-05 21:24:52.246801+03:00)
+2025-04-05 21:24:52,253 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:24:52,253 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:24:52,254 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:25:52 MSK)" executed successfully
+2025-04-05 21:25:52,250 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:26:52 MSK)" (scheduled at 2025-04-05 21:25:52.246801+03:00)
+2025-04-05 21:25:52,250 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:25:52,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:25:52,251 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:26:52 MSK)" executed successfully
+2025-04-05 21:26:52,254 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:27:52 MSK)" (scheduled at 2025-04-05 21:26:52.246801+03:00)
+2025-04-05 21:26:52,254 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:26:52,255 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:26:52,255 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:27:52 MSK)" executed successfully
+2025-04-05 21:27:06,941 - INFO - Stop polling...
+2025-04-05 21:27:06,942 - WARNING - Goodbye!
+2025-04-05 21:27:07,948 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:27:08,111 - WARNING - Updates were skipped successfully.
+2025-04-05 21:27:08,114 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:27:08,114 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:27:08,115 - INFO - Scheduler started
+2025-04-05 21:27:08,115 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:27:08,115 - INFO - Бот запущен.
+2025-04-05 21:27:08,115 - INFO - Start polling.
+2025-04-05 21:27:16,651 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:27:16,651 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:27:20,013 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:27:20,013 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:27:38,638 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 21:27:38,638 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 21:27:38,638 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 21:27:46,328 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-95' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:27:57,558 - INFO - Resetting daily words cache for user 1999873173
+2025-04-05 21:27:57,558 - INFO - Cache successfully reset for user 1999873173
+2025-04-05 21:28:08,119 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:29:08 MSK)" (scheduled at 2025-04-05 21:28:08.114163+03:00)
+2025-04-05 21:28:08,120 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:28:08,120 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:28:08,143 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:29:08 MSK)" executed successfully
+2025-04-05 21:28:18,374 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-151' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:29:06,112 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-156' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:29:08,118 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:30:08 MSK)" (scheduled at 2025-04-05 21:29:08.114163+03:00)
+2025-04-05 21:29:08,118 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:29:08,118 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:29:08,119 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:30:08 MSK)" executed successfully
+2025-04-05 21:30:08,124 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:31:08 MSK)" (scheduled at 2025-04-05 21:30:08.114163+03:00)
+2025-04-05 21:30:08,125 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:30:08,125 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:30:08,127 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:31:08 MSK)" executed successfully
+2025-04-05 21:30:31,008 - INFO - Stop polling...
+2025-04-05 21:30:31,009 - WARNING - Goodbye!
+2025-04-05 21:30:33,832 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:30:34,004 - WARNING - Updates were skipped successfully.
+2025-04-05 21:30:34,007 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:30:34,008 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:30:34,008 - INFO - Scheduler started
+2025-04-05 21:30:34,008 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:30:34,008 - INFO - Бот запущен.
+2025-04-05 21:30:34,008 - INFO - Start polling.
+2025-04-05 21:30:39,704 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:31:34,023 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:32:34 MSK)" (scheduled at 2025-04-05 21:31:34.007111+03:00)
+2025-04-05 21:31:34,023 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:31:34,023 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:31:34,024 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:31:34,024 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:31:34,044 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:32:34 MSK)" executed successfully
+2025-04-05 21:32:34,023 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:33:34 MSK)" (scheduled at 2025-04-05 21:32:34.007111+03:00)
+2025-04-05 21:32:34,024 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:32:34,024 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:32:34,024 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:32:34,024 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:32:34,025 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:33:34 MSK)" executed successfully
+2025-04-05 21:33:07,195 - INFO - Stop polling...
+2025-04-05 21:33:07,196 - WARNING - Goodbye!
+2025-04-05 21:33:08,949 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:33:09,120 - WARNING - Updates were skipped successfully.
+2025-04-05 21:33:09,124 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:33:09,125 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:33:09,125 - INFO - Scheduler started
+2025-04-05 21:33:09,125 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:33:09,125 - INFO - Бот запущен.
+2025-04-05 21:33:09,126 - INFO - Start polling.
+2025-04-05 21:33:38,251 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:33:38,251 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:33:44,469 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:34:09,138 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:35:09 MSK)" (scheduled at 2025-04-05 21:34:09.124062+03:00)
+2025-04-05 21:34:09,139 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:34:09,139 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:34:09,141 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:34:09,141 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:34:09,167 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:35:09 MSK)" executed successfully
+2025-04-05 21:34:31,698 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-123' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 107, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:34:43,642 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-126' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 121, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:34:47,582 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-139' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 107, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:34:50,192 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-142' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 121, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:05,344 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-165' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 134, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup(row_width=2)
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:09,130 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:36:09 MSK)" (scheduled at 2025-04-05 21:35:09.124062+03:00)
+2025-04-05 21:35:09,130 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:35:09,130 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:35:09,130 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:36:09 MSK)" executed successfully
+2025-04-05 21:35:14,296 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-173' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 107, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:15,858 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-181' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 134, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup(row_width=2)
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:29,728 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:35:29,729 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:35:31,397 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:35:31,397 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:35:31,576 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:35:31,576 - INFO - Dictionary cleared for user 380675615 due to set change from 'At Home' to 'Animals and Pets'
+2025-04-05 21:35:31,576 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:35:31,576 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:35:34,236 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-233' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 134, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup(row_width=2)
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:41,349 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-266' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 107, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:35:44,890 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:35:44,890 - INFO - Dictionary cleared for user 380675615 due to set change from 'Animals and Pets' to 'Clothes & Accessories'
+2025-04-05 21:36:01,639 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:36:01,640 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:36:01,640 - INFO - Подготовлено 15 слов для квиза пользователя 380675615
+2025-04-05 21:36:09,128 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:37:09 MSK)" (scheduled at 2025-04-05 21:36:09.124062+03:00)
+2025-04-05 21:36:09,129 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:36:09,129 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:36:09,130 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:37:09 MSK)" executed successfully
+2025-04-05 21:36:14,102 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 21:36:14,103 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 21:36:22,987 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-355' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 107, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:36:25,013 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:36:25,013 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:36:25,513 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-368' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'InlineKeyboardMarkup' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 121, in process_settings_choice_callback
+    keyboard = InlineKeyboardMarkup()
+               ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'InlineKeyboardMarkup' is not defined
+2025-04-05 21:36:27,918 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:36:27,918 - INFO - Dictionary cleared for user 380675615 due to set change from 'Clothes & Accessories' to 'Eating Out'
+2025-04-05 21:36:32,777 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:36:32,778 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:36:32,778 - INFO - Подготовлено 15 слов для квиза пользователя 380675615
+2025-04-05 21:36:48,139 - INFO - Stop polling...
+2025-04-05 21:36:48,139 - WARNING - Goodbye!
+2025-04-05 21:36:49,139 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:36:49,310 - WARNING - Updates were skipped successfully.
+2025-04-05 21:36:49,314 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:36:49,315 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:36:49,315 - INFO - Scheduler started
+2025-04-05 21:36:49,315 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:36:49,315 - INFO - Бот запущен.
+2025-04-05 21:36:49,316 - INFO - Start polling.
+2025-04-05 21:37:13,927 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-94' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:37:20,857 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-102' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:37:22,347 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-105' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 158, in process_settings_choice_callback
+    await process_settings_mysettings(callback, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 516, in process_settings_mysettings
+    await callback.message.edit_text(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-04-05 21:37:49,317 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:38:49 MSK)" (scheduled at 2025-04-05 21:37:49.314306+03:00)
+2025-04-05 21:37:49,320 - WARNING - Set file not found: levels/A2/Everyday Activities & Routines.txt
+2025-04-05 21:37:49,320 - WARNING - No words found for level A2, set Everyday Activities & Routines
+2025-04-05 21:37:49,325 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 21:37:49,325 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 21:37:49,354 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:38:49 MSK)" executed successfully
+2025-04-05 21:38:25,642 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:38:25,642 - INFO - Dictionary cleared for user 380675615 due to set change from 'Eating Out' to 'Directions & Locations'
+2025-04-05 21:38:43,788 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:38:46,212 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:38:46,214 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:38:46,214 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-05 21:38:49,316 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:39:49 MSK)" (scheduled at 2025-04-05 21:38:49.314306+03:00)
+2025-04-05 21:38:49,317 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:39:49 MSK)" executed successfully
+2025-04-05 21:38:52,107 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 21:38:52,107 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 21:38:52,107 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 21:38:57,223 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:38:57,223 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:38:57,223 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-05 21:39:13,176 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:39:15,836 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:39:33,876 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:39:33,876 - INFO - Dictionary cleared for user 1999873173 due to set change from 'At Home' to 'Clothes & Accessories'
+2025-04-05 21:39:33,876 - INFO - Resetting daily words cache for user 1999873173
+2025-04-05 21:39:33,876 - INFO - Cache successfully reset for user 1999873173
+2025-04-05 21:39:39,509 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-05 21:39:39,510 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 21:39:39,513 - INFO - Подготовлено 3 слов для квиза пользователя 1999873173
+2025-04-05 21:39:49,316 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:40:49 MSK)" (scheduled at 2025-04-05 21:39:49.314306+03:00)
+2025-04-05 21:39:49,317 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:40:49 MSK)" executed successfully
+2025-04-05 21:39:54,174 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:39:54,174 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:40:10,398 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:40:10,399 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:40:10,399 - INFO - Подготовлено 3 слов для квиза пользователя 380675615
+2025-04-05 21:40:17,958 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:40:17,958 - INFO - Dictionary cleared for user 1999873173 due to set change
+2025-04-05 21:40:17,958 - INFO - Resetting daily words cache for user 1999873173
+2025-04-05 21:40:17,958 - INFO - Cache successfully reset for user 1999873173
+2025-04-05 21:40:21,278 - INFO - Cleared learned words for user 1999873173
+2025-04-05 21:40:21,278 - INFO - Dictionary cleared for user 1999873173 due to set change from 'Animals and Pets' to 'At Home'
+2025-04-05 21:40:30,434 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:40:30,434 - INFO - Dictionary cleared for user 380675615 due to set change
+2025-04-05 21:40:30,435 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:40:30,435 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:40:41,000 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-665' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'level_selection_keyboard' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/settings.py", line 93, in process_settings_choice_callback
+    reply_markup=level_selection_keyboard()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'level_selection_keyboard' is not defined
+2025-04-05 21:40:44,711 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:40:44,712 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:40:49,315 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:41:49 MSK)" (scheduled at 2025-04-05 21:40:49.314306+03:00)
+2025-04-05 21:40:49,317 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:41:49 MSK)" executed successfully
+2025-04-05 21:40:57,426 - INFO - Stop polling...
+2025-04-05 21:40:57,428 - WARNING - Goodbye!
+2025-04-05 21:40:58,510 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-05 21:40:58,672 - WARNING - Updates were skipped successfully.
+2025-04-05 21:40:58,674 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 21:40:58,675 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 21:40:58,675 - INFO - Scheduler started
+2025-04-05 21:40:58,675 - INFO - Scheduler started with optimized configuration
+2025-04-05 21:40:58,675 - INFO - Бот запущен.
+2025-04-05 21:40:58,675 - INFO - Start polling.
+2025-04-05 21:41:38,164 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:41:38,164 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:41:38,168 - INFO - Подготовлено 3 слов для квиза пользователя 380675615
+2025-04-05 21:41:49,027 - INFO - Cleared learned words for user 380675615
+2025-04-05 21:41:49,027 - INFO - Dictionary cleared for user 380675615 due to set change
+2025-04-05 21:41:49,027 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:41:49,028 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:41:53,037 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-05 21:41:53,038 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-05 21:41:53,038 - INFO - Подготовлено 3 слов для квиза пользователя 380675615
+2025-04-05 21:41:58,676 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:42:58 MSK)" (scheduled at 2025-04-05 21:41:58.674444+03:00)
+2025-04-05 21:41:58,677 - WARNING - Set file not found: levels/C2/Animals and Pets.txt
+2025-04-05 21:41:58,677 - WARNING - No words found for level C2, set Animals and Pets
+2025-04-05 21:41:58,699 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:42:58 MSK)" executed successfully
+2025-04-05 21:42:55,695 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-260' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError('cmd_profile() takes 1 positional argument but 2 were given')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 128, in <lambda>
+    dp.register_message_handler(lambda msg: cmd_profile(msg, bot), commands=["profile"])
+                                            ^^^^^^^^^^^^^^^^^^^^^
+TypeError: cmd_profile() takes 1 positional argument but 2 were given
+2025-04-05 21:42:58,677 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:43:58 MSK)" (scheduled at 2025-04-05 21:42:58.674444+03:00)
+2025-04-05 21:42:58,677 - WARNING - Set file not found: levels/C2/Animals and Pets.txt
+2025-04-05 21:42:58,677 - WARNING - No words found for level C2, set Animals and Pets
+2025-04-05 21:42:58,677 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:43:58 MSK)" executed successfully
+2025-04-05 21:43:12,087 - INFO - Получена команда /start от chat_id: 380675615
+2025-04-05 21:43:12,087 - INFO - Пользователь 380675615 уже существует
+2025-04-05 21:43:58,676 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:44:58 MSK)" (scheduled at 2025-04-05 21:43:58.674444+03:00)
+2025-04-05 21:43:58,676 - WARNING - Set file not found: levels/C2/Animals and Pets.txt
+2025-04-05 21:43:58,676 - WARNING - No words found for level C2, set Animals and Pets
+2025-04-05 21:43:58,677 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:44:58 MSK)" executed successfully
+2025-04-05 21:44:10,718 - INFO - Resetting daily words cache for user 380675615
+2025-04-05 21:44:10,718 - INFO - Cache successfully reset for user 380675615
+2025-04-05 21:44:58,689 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:45:58 MSK)" (scheduled at 2025-04-05 21:44:58.674444+03:00)
+2025-04-05 21:44:58,691 - WARNING - Set file not found: levels/C2/Animals and Pets.txt
+2025-04-05 21:44:58,691 - WARNING - No words found for level C2, set Animals and Pets
+2025-04-05 21:44:58,691 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 21:45:58 MSK)" executed successfully
+2025-04-05 21:45:16,002 - INFO - Stop polling...
+2025-04-05 21:45:16,003 - WARNING - Goodbye!

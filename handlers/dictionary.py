@@ -10,13 +10,13 @@ from utils.sticker_helper import get_clean_sticker
 async def handle_dictionary(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик кнопки "Мой словарь". Показывает выученные слова с улучшенным форматированием.
+    Исправлено: редактирует существующее сообщение вместо отправки нового.
     """
     chat_id = callback.from_user.id
     learned = crud.get_learned_words(chat_id)
     
     if not learned:
-        await bot.send_message(
-            chat_id, 
+        await callback.message.edit_text(
             "📚 *Ваш словарь пуст*\n\nПройдите квизы, чтобы добавить слова в свой словарь!",
             parse_mode="Markdown",
             reply_markup=dictionary_menu_keyboard()
@@ -25,8 +25,7 @@ async def handle_dictionary(callback: types.CallbackQuery, bot: Bot):
         # Используем визуальный помощник для форматирования словаря
         formatted_message = format_dictionary_message(learned)
         
-        await bot.send_message(
-            chat_id, 
+        await callback.message.edit_text(
             formatted_message,
             parse_mode="Markdown", 
             reply_markup=dictionary_menu_keyboard()
@@ -35,13 +34,10 @@ async def handle_dictionary(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
 
 async def handle_clear_dictionary_confirm(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обработчик подтверждения очистки словаря. Показывает диалог подтверждения.
-    """
+    """Обработчик подтверждения очистки словаря. Показывает диалог подтверждения."""
     chat_id = callback.from_user.id
     
-    await bot.send_message(
-        chat_id,
+    await callback.message.edit_text(
         "⚠️ *Вы уверены, что хотите очистить весь словарь?*\n\n"
         "Это действие удалит все выученные слова и не может быть отменено.",
         parse_mode="Markdown",
@@ -59,12 +55,11 @@ async def handle_clear_dictionary_confirmed(callback: types.CallbackQuery, bot: 
         crud.clear_learned_words_for_user(chat_id)
         
         # Отправляем стикер после очистки словаря
-        sticker_id = get_clean_sticker()  # Используем стикер повышения уровня
+        sticker_id = get_clean_sticker()
         if sticker_id:
             await bot.send_sticker(chat_id, sticker_id)
         
-        await bot.send_message(
-            chat_id,
+        await callback.message.edit_text(
             "✅ Ваш словарь успешно очищен.",
             parse_mode="Markdown",
             reply_markup=dictionary_menu_keyboard()
@@ -72,8 +67,7 @@ async def handle_clear_dictionary_confirmed(callback: types.CallbackQuery, bot: 
         
     except Exception as e:
         logger.error(f"Error clearing dictionary for user {chat_id}: {e}")
-        await bot.send_message(
-            chat_id,
+        await callback.message.edit_text(
             "❌ Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.",
             parse_mode="Markdown",
             reply_markup=dictionary_menu_keyboard()

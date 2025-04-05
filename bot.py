@@ -22,15 +22,11 @@ async def on_startup(dp):
     loop = asyncio.get_running_loop()
     start_scheduler(bot, loop)
     
-    # Установка команд бота для вызова меню
-    from aiogram.types import BotCommand, BotCommandScopeDefault
-    commands = [
-        BotCommand(command="menu", description="Показать меню команд"),
-        BotCommand(command="start", description="Перезапуск бота")
-    ]
-    await bot.set_my_commands(commands, scope=BotCommandScopeDefault())
+    # Устанавливаем команды бота
+    from handlers.commands import set_commands
+    await set_commands(bot)
     
-    # Проверка пропущенных уведомлений
+    # Проверяем пропущенные уведомления
     await check_missed_notifications(bot)
     
     logger.info("Бот запущен")
@@ -204,7 +200,6 @@ async def on_startup(dp):
     loop = asyncio.get_running_loop()
     start_scheduler(bot, loop)
     logger.info("Бот запущен.")
-
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup)

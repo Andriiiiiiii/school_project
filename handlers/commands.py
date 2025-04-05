@@ -3,20 +3,31 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from utils.sticker_helper import get_welcome_sticker
 from keyboards.reply_keyboards import get_main_menu_keyboard, get_remove_keyboard
+from keyboards.main_menu import main_menu_keyboard  # Добавляем импорт main_menu_keyboard
+from database import crud  # Добавляем импорт модуля crud
 import logging
 
 logger = logging.getLogger(__name__)
+
+# Полный список команд бота:
+# /start - Перезапуск бота
+# /menu - Главное меню
+# /mode - Выбрать нейросеть
+# /profile - Профиль пользователя
+# /pay - Купить подписку
+# /reset - Сброс контекста
+# /help - Справка и помощь
 
 async def set_commands(bot: Bot):
     """Установка команд бота для меню."""
     commands = [
         BotCommand(command="start", description="Перезапуск"),
+        BotCommand(command="menu", description="Главное меню"),
         BotCommand(command="mode", description="Выбрать нейросеть"),
         BotCommand(command="profile", description="Профиль пользователя"),
         BotCommand(command="pay", description="Купить подписку"),
         BotCommand(command="reset", description="Сброс контекста"),
-        BotCommand(command="help", description="Справка и помощь"),
-        BotCommand(command="menu", description="Главное меню")
+        BotCommand(command="help", description="Справка и помощь")
     ]
     await bot.set_my_commands(commands, scope=BotCommandScopeDefault())
 
@@ -40,11 +51,15 @@ async def cmd_start(message: types.Message, bot: Bot):
         else:
             logger.info(f"Пользователь {chat_id} уже существует")
         
-        # Отправляем приветственное сообщение
+        # Отправляем приветственное сообщение с улучшенным описанием
         await message.answer(
             "👋 *Добро пожаловать в English Learning Bot!*\n\n"
-            "Этот бот поможет вам изучать английские слова, "
-            "тестировать уровень знаний и организовывать обучение.\n\n"
+            "Этот бот поможет вам эффективно изучать английские слова:\n"
+            "• Ежедневные наборы слов на ваш уровень\n"
+            "• Квизы для закрепления и проверки знаний\n"
+            "• Персональный словарь для отслеживания прогресса\n"
+            "• Тестирование для определения вашего уровня\n"
+            "• Система повторений для лучшего запоминания\n\n"
             "Выберите действие:",
             parse_mode="Markdown",
             reply_markup=main_menu_keyboard()
@@ -103,10 +118,12 @@ async def cmd_close_menu(message: types.Message):
         "Меню закрыто. Используйте кнопки ниже или /menu для вызова меню команд:",
         reply_markup=main_menu_keyboard()
     )
-
 def register_command_handlers(dp: Dispatcher, bot: Bot):
     """Регистрация обработчиков команд."""
-    dp.register_message_handler(lambda msg: cmd_start(msg, bot), commands=["start"])
+    # Обработчик команды /start должен быть первым в списке и работать в любом состоянии бота
+    dp.register_message_handler(lambda msg: cmd_start(msg, bot), commands=["start"], state="*")
+    
+    # Остальные команды
     dp.register_message_handler(cmd_mode, commands=["mode"])
     dp.register_message_handler(lambda msg: cmd_profile(msg, bot), commands=["profile"])
     dp.register_message_handler(cmd_pay, commands=["pay"])

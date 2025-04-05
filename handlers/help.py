@@ -5,24 +5,30 @@ from keyboards.main_menu import main_menu_keyboard
 from functools import partial
 
 async def show_help_callback(callback: types.CallbackQuery, bot: Bot):
-    chat_id = callback.from_user.id
-    await bot.send_message(chat_id, "Выберите пункт помощи:", reply_markup=help_menu_keyboard())
+    await callback.message.edit_text("Выберите пункт помощи:", reply_markup=help_menu_keyboard())
     await callback.answer()
 
 async def process_help_about_callback(callback: types.CallbackQuery, bot: Bot):
-    await bot.send_message(callback.from_user.id,
-                           "О боте:\nЭтот бот помогает изучать английские слова, тестировать уровень знаний, проводить викторины и организовывать обучение.")
+    await callback.message.edit_text(
+        "О боте:\nЭтот бот помогает изучать английские слова, тестировать уровень знаний, проводить викторины и организовывать обучение.",
+        reply_markup=help_menu_keyboard()  # Добавляем клавиатуру для возврата
+    )
     await callback.answer()
 
 async def process_help_commands_callback(callback: types.CallbackQuery, bot: Bot):
-    await bot.send_message(callback.from_user.id,
-                           "Список команд:\n/start, /help, /settings, /dictionary, /quiz, /test")
+    await callback.message.edit_text(
+        "Список команд:\n/start - Перезапуск\n/menu - Главное меню\n/mode - Выбрать нейросеть\n/profile - Профиль пользователя\n/pay - Купить подписку\n/reset - Сброс контекста\n/help - Справка и помощь",
+        reply_markup=help_menu_keyboard()  # Добавляем клавиатуру для возврата
+    )
     await callback.answer()
 
 async def process_help_feedback_callback(callback: types.CallbackQuery, bot: Bot):
-    await bot.send_message(callback.from_user.id,
-                           "Обратная связь: напишите администратору на admin@example.com")
+    await callback.message.edit_text(
+        "Обратная связь: напишите администратору на admin@example.com",
+        reply_markup=help_menu_keyboard()  # Добавляем клавиатуру для возврата
+    )
     await callback.answer()
+
 
 def register_help_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(

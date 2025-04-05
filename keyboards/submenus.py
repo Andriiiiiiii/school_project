@@ -47,24 +47,38 @@ def set_change_confirm_keyboard(encoded_set_name):
     return keyboard
 
 def settings_menu_keyboard():
-    keyboard = InlineKeyboardMarkup(row_width=1)
+    """Создает улучшенное двухколоночное меню настроек с эмодзи согласно требованиям."""
+    keyboard = InlineKeyboardMarkup(row_width=2)  # Устанавливаем 2 столбца
+    
+    # Первый столбец: Уровень, Уведомления, Часовой пояс
+    # Второй столбец: Мой профиль, Наборы слов, Назад
     keyboard.add(
-        InlineKeyboardButton("Выбор уровня", callback_data="settings:level"),
-        InlineKeyboardButton("Настройки уведомлений", callback_data="settings:notifications"),
-        InlineKeyboardButton("Выбор сета", callback_data="settings:set"),
-        InlineKeyboardButton("Мои настройки", callback_data="settings:mysettings"),
-        InlineKeyboardButton("Назад", callback_data="menu:back")
+        InlineKeyboardButton("🔤 Уровень", callback_data="settings:level"),
+        InlineKeyboardButton("👤 Мой профиль", callback_data="settings:mysettings")
     )
-    return keyboard
+    keyboard.add(
+        InlineKeyboardButton("⏰ Уведомления", callback_data="settings:notifications"),
+        InlineKeyboardButton("📚 Наборы слов", callback_data="settings:set")
+    )
+    keyboard.add(
+        InlineKeyboardButton("🌐 Часовой пояс", callback_data="settings:timezone"),
+        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
+    )
+    
+    return keyboard   
 
 def notification_settings_menu_keyboard():
-    keyboard = InlineKeyboardMarkup(row_width=1)
+    """Создает улучшенное меню настроек уведомлений с эмодзи."""
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    
     keyboard.add(
-        InlineKeyboardButton("Количество слов", callback_data="settings:words"),
-        InlineKeyboardButton("Количество повторений", callback_data="settings:repetitions"),
-        InlineKeyboardButton("Выбор часового пояса", callback_data="settings:timezone"),
-        InlineKeyboardButton("Назад", callback_data="settings:back")
+        InlineKeyboardButton("📊 Количество слов", callback_data="settings:words"),
+        InlineKeyboardButton("🔄 Количество повторений", callback_data="settings:repetitions")
     )
+    keyboard.add(
+        InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    )
+    
     return keyboard
 
 def learning_menu_keyboard():
@@ -103,4 +117,25 @@ def quiz_keyboard(options, question_index):
         InlineKeyboardButton("Назад", callback_data="quiz:back"),
         InlineKeyboardButton("Остановить квиз", callback_data="quiz:stop")
     )
+    return keyboard
+
+def level_selection_keyboard():
+    """Создает улучшенное меню выбора уровня с эмодзи."""
+    keyboard = InlineKeyboardMarkup(row_width=3)  # Три уровня в ряд
+    
+    # Добавляем кнопки выбора уровня
+    keyboard.add(
+        InlineKeyboardButton("🟢 A1", callback_data="set_level:A1"),
+        InlineKeyboardButton("🟢 A2", callback_data="set_level:A2"),
+        InlineKeyboardButton("🟡 B1", callback_data="set_level:B1")
+    )
+    keyboard.add(
+        InlineKeyboardButton("🟡 B2", callback_data="set_level:B2"),
+        InlineKeyboardButton("🔴 C1", callback_data="set_level:C1"),
+        InlineKeyboardButton("🔴 C2", callback_data="set_level:C2")
+    )
+    keyboard.add(
+        InlineKeyboardButton("🔙 Назад", callback_data="settings:back")
+    )
+    
     return keyboard

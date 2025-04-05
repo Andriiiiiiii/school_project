@@ -20,14 +20,30 @@ async def start_learning_test(chat_id: int, bot: Bot):
     await bot.send_message(chat_id, text, reply_markup=learning_menu_keyboard())
 
 async def learning_placeholder(callback: types.CallbackQuery, bot: Bot):
-    await bot.send_message(callback.from_user.id, "Эта функция в разработке.", reply_markup=learning_menu_keyboard())
+    await callback.message.edit_text(
+        "Эта функция в разработке.", 
+        reply_markup=learning_menu_keyboard()
+    )
     await callback.answer()
 
 async def handle_learning_menu(callback: types.CallbackQuery, bot: Bot):
-    await bot.send_message(callback.from_user.id, "Выберите режим обучения:", reply_markup=learning_menu_keyboard())
+    # Обновляем, чтобы редактировать сообщение вместо отправки нового
+    await callback.message.edit_text("Выберите режим обучения:", reply_markup=learning_menu_keyboard())
     await callback.answer()
 
 async def handle_learning_test(callback: types.CallbackQuery, bot: Bot):
+    # Для этой функции может потребоваться другой подход, так как она запускает тест
+    # Если тест должен открываться в текущем сообщении:
+    user = crud.get_user(callback.from_user.id)
+    if not user:
+        await callback.message.edit_text(
+            "Профиль не найден. Используйте /start.",
+            reply_markup=learning_menu_keyboard()
+        )
+        await callback.answer()
+        return
+    
+    # Если тест требует нового сообщения, оставьте как есть
     await start_learning_test(callback.from_user.id, bot)
     await callback.answer()
 
