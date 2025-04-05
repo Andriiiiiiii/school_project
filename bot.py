@@ -22,11 +22,19 @@ async def on_startup(dp):
     loop = asyncio.get_running_loop()
     start_scheduler(bot, loop)
     
-    # Check for missed notifications due to downtime
+    # Установка команд бота для вызова меню
+    from aiogram.types import BotCommand, BotCommandScopeDefault
+    commands = [
+        BotCommand(command="menu", description="Показать меню команд"),
+        BotCommand(command="start", description="Перезапуск бота")
+    ]
+    await bot.set_my_commands(commands, scope=BotCommandScopeDefault())
+    
+    # Проверка пропущенных уведомлений
     await check_missed_notifications(bot)
     
-    logger.info("Бот запущен.")
-
+    logger.info("Бот запущен")
+    
 # New function to check for missed notifications
 
 async def check_missed_notifications(bot):

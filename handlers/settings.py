@@ -11,6 +11,9 @@ import os
 import logging
 from zoneinfo import ZoneInfo
 
+from utils.visual_helpers import format_settings_overview
+
+
 # Настройка логирования
 logger = logging.getLogger(__name__)
 
@@ -337,3 +340,34 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         lambda c: c.data and c.data.startswith("choose_set:")
     )
     dp.register_message_handler(process_text_setting, content_types=['text'])
+
+async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
+    """Display user settings with enhanced formatting"""
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    
+    if not user:
+        await bot.send_message(
+            chat_id, 
+            "⚠️ Profile not found. Please use /start.",
+            parse_mode="Markdown"
+        )
+    else:
+        # Create a dictionary of user settings
+        user_settings = {
+            "level": user[1],
+            "words_per_day": user[2],
+            "repetitions": user[3],
+            "timezone": user[5] if len(user) > 5 and user[5] else "Not set",
+            "chosen_set": user_set_selection.get(chat_id, "Not selected")
+        }
+        
+        # Use the visual helper to format the settings
+        formatted_settings = format_settings_overview(user_settings)
+        
+        await bot.send_message(
+            chat_id, 
+            formatted_settings,
+            parse_mode="Markdown", 
+            reply_markup=settings_menu_keyboard()
+        )

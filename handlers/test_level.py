@@ -5,6 +5,10 @@ from aiogram import types, Dispatcher, Bot
 from database import crud
 import logging
 
+# Import the visual helpers
+from utils.visual_helpers import format_level_test_question, format_level_test_results
+
+
 # Настройка логирования
 logger = logging.getLogger(__name__)
 
@@ -176,45 +180,56 @@ async def start_level_test(chat_id: int, bot: Bot):
     await send_next_level_question(chat_id, bot)
 
 async def send_next_level_question(chat_id: int, bot: Bot):
-    """
-    Отправляет следующий вопрос теста пользователю.
-    Если вопросов больше нет, завершает тест и обрабатывает результаты.
-    Формирует клавиатуру с вариантами ответов в два столбца:
-      - Ряд 1: варианты 1 и 2
-      - Ряд 2: варианты 3 и 4
-      - Ряд 3: вариант "Не знаю" и кнопка "Остановить тест"
-    """
+    """Send the next level test question with enhanced formatting"""
     state = level_test_states.get(chat_id)
     if not state:
         return
+    
     if state["current_index"] >= len(state["questions"]):
         await finish_level_test(chat_id, bot)
         return
-    question = state["questions"][state["current_index"]]
-    text = f"Вопрос {state['current_index'] + 1} (Уровень {question['level']}):\nКакой перевод слова «{question['word']}»?"
     
-    # Создаем клавиатуру с двумя столбцами
-    keyboard = types.InlineKeyboardMarkup()
-    # Первые две кнопки (варианты с индексами 0 и 1)
+    question = state["questions"][state["current_index"]]
+    
+    # Use the visual helper to format the question
+    formatted_question = format_level_test_question(
+        state["current_index"],
+        len(state["questions"]),
+        question["level"],
+        question["word"]
+    )
+    
+    # Create keyboard with improved layout
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    
+    # First two options
     row1 = [
         types.InlineKeyboardButton(question["options"][0], callback_data=f"lvltest:{state['current_index']}:{0}"),
         types.InlineKeyboardButton(question["options"][1], callback_data=f"lvltest:{state['current_index']}:{1}")
     ]
-    # Следующие две кнопки (варианты с индексами 2 и 3)
+    
+    # Next two options
     row2 = [
         types.InlineKeyboardButton(question["options"][2], callback_data=f"lvltest:{state['current_index']}:{2}"),
         types.InlineKeyboardButton(question["options"][3], callback_data=f"lvltest:{state['current_index']}:{3}")
     ]
-    # Последняя строка: вариант "Не знаю" (индекс 4) и кнопка "Остановить тест"
+    
+    # "Don't know" and "Stop test" buttons
     row3 = [
         types.InlineKeyboardButton(question["options"][4], callback_data=f"lvltest:{state['current_index']}:{4}"),
-        types.InlineKeyboardButton("Остановить тест", callback_data="lvltest:stop")
+        types.InlineKeyboardButton("⛔ Stop Test", callback_data="lvltest:stop")
     ]
+    
     keyboard.row(*row1)
     keyboard.row(*row2)
     keyboard.row(*row3)
     
-    await bot.send_message(chat_id, text, reply_markup=keyboard)
+    await bot.send_message(
+        chat_id, 
+        formatted_question,
+        parse_mode="Markdown", 
+        reply_markup=keyboard
+    )
 
 async def handle_level_test_answer(callback: types.CallbackQuery, bot: Bot):
     """
@@ -256,46 +271,52 @@ async def handle_level_test_answer(callback: types.CallbackQuery, bot: Bot):
     await send_next_level_question(chat_id, bot)
 
 async def finish_level_test(chat_id: int, bot: Bot):
-    """
-    Завершает тест:
-    - Группирует результаты по уровням.
-    - Для каждого уровня, если пользователь ответил правильно на минимум 2 из 3 вопросов,
-      блок считается пройденным.
-    - Новый уровень определяется как уровень последнего успешно пройденного блока.
-    - Обновляет уровень пользователя в БД и отправляет сводку.
-    Добавляется кнопка "Главное меню" для возврата.
-    """
+    """Updated to use improved result formatting"""
     state = level_test_states.get(chat_id)
     if not state:
         return
+    
     results = state["results"]
-    # Подсчитываем результаты для каждого уровня (блок)
-    block_scores = {level: 0 for level in LEVELS}
-    block_counts = {level: 0 for level in LEVELS}
+    
+    # Group results by level
+    results_by_level = {}
     for i, question in enumerate(state["questions"]):
         level = question["level"]
-        block_counts[level] += 1
+        if level not in results_by_level:
+            results_by_level[level] = [0, 0]  # [correct, total]
+        
+        results_by_level[level][1] += 1
         if results[i]:
-            block_scores[level] += 1
+            results_by_level[level][0] += 1
+    
+    # Determine new level
     new_level = "A1"
-    # Определяем новый уровень: каждый уровень считается пройденным, если верных ответов ≥2 из 3
     for level in LEVELS:
-        if block_counts[level] > 0 and block_scores[level] >= 2:
+        score, total = results_by_level.get(level, [0, 0])
+        if total > 0 and score >= 2:
             new_level = level
         else:
             break
-    # Обновляем уровень пользователя в БД
+    
+    # Update user level in database
     crud.update_user_level(chat_id, new_level)
-    summary = "Тест завершён!\nРезультаты по уровням:\n"
-    for level in LEVELS:
-        if block_counts[level] > 0:
-            summary += f"{level}: {block_scores[level]} из {block_counts[level]}\n"
-    summary += f"\nВаш новый уровень: {new_level}"
-    # Создаем клавиатуру с кнопкой "Главное меню"
+    
+    # Use the visual helper to format the results
+    formatted_results = format_level_test_results(results_by_level, new_level)
+    
+    # Create keyboard with main menu button
     keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("Главное меню", callback_data="menu:back"))
-    await bot.send_message(chat_id, summary, reply_markup=keyboard)
+    keyboard.add(types.InlineKeyboardButton("Main Menu", callback_data="menu:back"))
+    
+    await bot.send_message(
+        chat_id, 
+        formatted_results,
+        parse_mode="Markdown", 
+        reply_markup=keyboard
+    )
+    
     del level_test_states[chat_id]
+
 
 def register_level_test_handlers(dp: Dispatcher, bot: Bot):
     """

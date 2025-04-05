@@ -1,6 +1,6 @@
-#handlers/init.py
+# handlers/__init__.py
 
-from .start import cmd_start
+from .commands import register_command_handlers, set_commands
 from .words import register_words_handlers
 from .learning import register_learning_handlers
 from .dictionary import register_dictionary_handlers
@@ -11,7 +11,10 @@ from .test_level import register_level_test_handlers
 from .quiz import register_quiz_handlers
 
 def register_handlers(dp, bot):
-    dp.register_message_handler(cmd_start, commands=["start"])
+    # Регистрируем обработчики команд
+    register_command_handlers(dp, bot)
+    
+    # Регистрируем остальные обработчики
     register_words_handlers(dp, bot)
     register_learning_handlers(dp, bot)
     register_dictionary_handlers(dp, bot)

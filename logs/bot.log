@@ -10465,3 +10465,400 @@ IndexError: list index out of range
 2025-04-04 01:51:35,037 - WARNING - No words found for level A1, set Essential Everyday Words
 2025-04-04 01:51:41,414 - INFO - Stop polling...
 2025-04-04 01:51:41,414 - WARNING - Goodbye!
+2025-04-05 16:37:29,820 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-05 16:37:29,990 - WARNING - Updates were skipped successfully.
+2025-04-05 16:37:30,003 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 16:37:30,005 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 16:37:30,006 - INFO - Scheduler started
+2025-04-05 16:37:30,006 - INFO - Scheduler started with optimized configuration
+2025-04-05 16:37:30,006 - INFO - Бот запущен.
+2025-04-05 16:37:30,006 - INFO - Start polling.
+2025-04-05 16:37:35,884 - INFO - Received /start from chat_id: 1999873173
+2025-04-05 16:37:35,885 - INFO - User 1999873173 already exists
+2025-04-05 16:37:38,950 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:37:38,950 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:37:48,015 - INFO - User 1999873173 has 3 learned words
+2025-04-05 16:37:48,015 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:37:48,015 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:38:19,379 - INFO - User 1999873173 has 3 learned words
+2025-04-05 16:38:19,380 - INFO - User 1999873173 in revision mode: False
+2025-04-05 16:38:19,380 - INFO - Daily words for user 1999873173: {'living room', 'bathroom', 'kitchen'}
+2025-04-05 16:38:19,380 - INFO - Learned words for user 1999873173: {'ice cream', 'dessert', 'fries'}
+2025-04-05 16:38:19,380 - INFO - Unlearned words for user 1999873173: {'living room', 'bathroom', 'kitchen'}
+2025-04-05 16:38:30,016 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:39:30 MSK)" (scheduled at 2025-04-05 16:38:30.002704+03:00)
+2025-04-05 16:38:30,020 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:38:30,020 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:38:30,046 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:39:30 MSK)" executed successfully
+2025-04-05 16:38:35,662 - INFO - Added word 'living room' to learned for user 1999873173
+2025-04-05 16:39:30,013 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:40:30 MSK)" (scheduled at 2025-04-05 16:39:30.002704+03:00)
+2025-04-05 16:39:30,014 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:39:30,014 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:39:30,014 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:40:30 MSK)" executed successfully
+2025-04-05 16:39:38,102 - INFO - User 1999873173 has 4 learned words
+2025-04-05 16:39:38,102 - INFO - User 1999873173 in revision mode: False
+2025-04-05 16:39:38,102 - INFO - Daily words for user 1999873173: {'living room', 'bathroom', 'kitchen'}
+2025-04-05 16:39:38,102 - INFO - Learned words for user 1999873173: {'ice cream', 'dessert', 'fries', 'living room'}
+2025-04-05 16:39:38,102 - INFO - Unlearned words for user 1999873173: {'bathroom', 'kitchen'}
+2025-04-05 16:39:45,080 - INFO - Added word 'bathroom' to learned for user 1999873173
+2025-04-05 16:39:51,341 - INFO - Added word 'kitchen' to learned for user 1999873173
+2025-04-05 16:40:30,010 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:41:30 MSK)" (scheduled at 2025-04-05 16:40:30.002704+03:00)
+2025-04-05 16:40:30,010 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:40:30,011 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:40:30,011 - INFO - Sent notification to user 1999873173 at 16:40
+2025-04-05 16:40:30,013 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:41:30 MSK)" executed successfully
+2025-04-05 16:41:30,005 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:42:30 MSK)" (scheduled at 2025-04-05 16:41:30.002704+03:00)
+2025-04-05 16:41:30,005 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:41:30,005 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:41:30,005 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:42:30 MSK)" executed successfully
+2025-04-05 16:42:08,208 - INFO - Resetting daily words cache for user 1999873173
+2025-04-05 16:42:08,208 - INFO - Cache successfully reset for user 1999873173
+2025-04-05 16:42:30,016 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:43:30 MSK)" (scheduled at 2025-04-05 16:42:30.002704+03:00)
+2025-04-05 16:42:30,016 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:42:30,017 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:42:30,019 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:43:30 MSK)" executed successfully
+2025-04-05 16:43:30,016 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:44:30 MSK)" (scheduled at 2025-04-05 16:43:30.002704+03:00)
+2025-04-05 16:43:30,017 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:43:30,017 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:43:30,017 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:44:30 MSK)" executed successfully
+2025-04-05 16:44:30,014 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:45:30 MSK)" (scheduled at 2025-04-05 16:44:30.002704+03:00)
+2025-04-05 16:44:30,014 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:44:30,014 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:44:30,014 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:45:30 MSK)" executed successfully
+2025-04-05 16:45:30,015 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:46:30 MSK)" (scheduled at 2025-04-05 16:45:30.002704+03:00)
+2025-04-05 16:45:30,015 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:45:30,015 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:45:30,016 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:46:30 MSK)" executed successfully
+2025-04-05 16:46:30,013 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:47:30 MSK)" (scheduled at 2025-04-05 16:46:30.002704+03:00)
+2025-04-05 16:46:30,014 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:46:30,014 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:46:30,014 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:47:30 MSK)" executed successfully
+2025-04-05 16:47:30,013 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:48:30 MSK)" (scheduled at 2025-04-05 16:47:30.002704+03:00)
+2025-04-05 16:47:30,013 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:47:30,013 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:47:30,013 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:48:30 MSK)" executed successfully
+2025-04-05 16:48:30,013 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:49:30 MSK)" (scheduled at 2025-04-05 16:48:30.002704+03:00)
+2025-04-05 16:48:30,014 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:48:30,014 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:48:30,015 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:49:30 MSK)" executed successfully
+2025-04-05 16:49:30,011 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:50:30 MSK)" (scheduled at 2025-04-05 16:49:30.002704+03:00)
+2025-04-05 16:49:30,011 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:49:30,011 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:49:30,011 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:50:30 MSK)" executed successfully
+2025-04-05 16:50:30,011 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:51:30 MSK)" (scheduled at 2025-04-05 16:50:30.002704+03:00)
+2025-04-05 16:50:30,012 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:50:30,012 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:50:30,012 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:51:30 MSK)" executed successfully
+2025-04-05 16:51:30,012 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:52:30 MSK)" (scheduled at 2025-04-05 16:51:30.002704+03:00)
+2025-04-05 16:51:30,013 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:51:30,013 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:51:30,015 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:52:30 MSK)" executed successfully
+2025-04-05 16:52:30,010 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:53:30 MSK)" (scheduled at 2025-04-05 16:52:30.002704+03:00)
+2025-04-05 16:52:30,010 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:52:30,011 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:52:30,011 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:53:30 MSK)" executed successfully
+2025-04-05 16:53:30,010 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:54:30 MSK)" (scheduled at 2025-04-05 16:53:30.002704+03:00)
+2025-04-05 16:53:30,012 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:53:30,012 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:53:30,013 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:54:30 MSK)" executed successfully
+2025-04-05 16:54:30,010 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:55:30 MSK)" (scheduled at 2025-04-05 16:54:30.002704+03:00)
+2025-04-05 16:54:30,013 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:54:30,013 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:54:30,014 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:55:30 MSK)" executed successfully
+2025-04-05 16:55:30,008 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:56:30 MSK)" (scheduled at 2025-04-05 16:55:30.002704+03:00)
+2025-04-05 16:55:30,008 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:55:30,008 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:55:30,008 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:56:30 MSK)" executed successfully
+2025-04-05 16:56:30,009 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:57:30 MSK)" (scheduled at 2025-04-05 16:56:30.002704+03:00)
+2025-04-05 16:56:30,010 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:56:30,010 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:56:30,011 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:57:30 MSK)" executed successfully
+2025-04-05 16:57:30,007 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:58:30 MSK)" (scheduled at 2025-04-05 16:57:30.002704+03:00)
+2025-04-05 16:57:30,007 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:57:30,007 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:57:30,007 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:58:30 MSK)" executed successfully
+2025-04-05 16:58:30,007 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:59:30 MSK)" (scheduled at 2025-04-05 16:58:30.002704+03:00)
+2025-04-05 16:58:30,008 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:58:30,009 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:58:30,009 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 16:59:30 MSK)" executed successfully
+2025-04-05 16:59:30,006 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:00:30 MSK)" (scheduled at 2025-04-05 16:59:30.002704+03:00)
+2025-04-05 16:59:30,007 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 16:59:30,007 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 16:59:30,008 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:00:30 MSK)" executed successfully
+2025-04-05 17:00:30,005 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:01:30 MSK)" (scheduled at 2025-04-05 17:00:30.002704+03:00)
+2025-04-05 17:00:30,005 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:00:30,005 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:00:30,005 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:01:30 MSK)" executed successfully
+2025-04-05 17:01:30,004 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:02:30 MSK)" (scheduled at 2025-04-05 17:01:30.002704+03:00)
+2025-04-05 17:01:30,004 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:01:30,004 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:01:30,004 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:02:30 MSK)" executed successfully
+2025-04-05 17:02:30,005 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:03:30 MSK)" (scheduled at 2025-04-05 17:02:30.002704+03:00)
+2025-04-05 17:02:30,005 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:02:30,005 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:02:30,005 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:03:30 MSK)" executed successfully
+2025-04-05 17:03:30,010 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:04:30 MSK)" (scheduled at 2025-04-05 17:03:30.002704+03:00)
+2025-04-05 17:03:30,010 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:03:30,010 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:03:30,010 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:04:30 MSK)" executed successfully
+2025-04-05 17:04:30,007 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:05:30 MSK)" (scheduled at 2025-04-05 17:04:30.002704+03:00)
+2025-04-05 17:04:30,008 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:04:30,008 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:04:30,008 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:05:30 MSK)" executed successfully
+2025-04-05 17:05:30,009 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:06:30 MSK)" (scheduled at 2025-04-05 17:05:30.002704+03:00)
+2025-04-05 17:05:30,009 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:05:30,009 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:05:30,010 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:06:30 MSK)" executed successfully
+2025-04-05 17:06:30,008 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:07:30 MSK)" (scheduled at 2025-04-05 17:06:30.002704+03:00)
+2025-04-05 17:06:30,009 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:06:30,010 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:06:30,011 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:07:30 MSK)" executed successfully
+2025-04-05 17:07:30,007 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:08:30 MSK)" (scheduled at 2025-04-05 17:07:30.002704+03:00)
+2025-04-05 17:07:30,008 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:07:30,008 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:07:30,008 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:08:30 MSK)" executed successfully
+2025-04-05 17:08:30,007 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:09:30 MSK)" (scheduled at 2025-04-05 17:08:30.002704+03:00)
+2025-04-05 17:08:30,008 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:08:30,008 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:08:30,009 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:09:30 MSK)" executed successfully
+2025-04-05 17:09:30,006 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:10:30 MSK)" (scheduled at 2025-04-05 17:09:30.002704+03:00)
+2025-04-05 17:09:30,006 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:09:30,006 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:09:30,007 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:10:30 MSK)" executed successfully
+2025-04-05 17:09:53,543 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-04-05 17:10:03,728 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-04-05 17:10:13,907 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-04-05 17:10:22,264 - INFO - Received /start from chat_id: 380675615
+2025-04-05 17:10:22,265 - INFO - User 380675615 already exists
+2025-04-05 17:10:24,091 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-04-05 17:10:27,456 - INFO - Stop polling...
+2025-04-05 17:10:27,457 - WARNING - Goodbye!
+2025-04-05 17:10:55,776 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-05 17:10:55,939 - WARNING - Updates were skipped successfully.
+2025-04-05 17:10:55,944 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 17:10:55,945 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 17:10:55,945 - INFO - Scheduler started
+2025-04-05 17:10:55,945 - INFO - Scheduler started with optimized configuration
+2025-04-05 17:10:55,945 - INFO - Бот запущен.
+2025-04-05 17:10:55,945 - INFO - Start polling.
+2025-04-05 17:11:01,695 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 17:11:01,696 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 17:11:10,051 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:11:10,051 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:11:26,715 - INFO - Stop polling...
+2025-04-05 17:11:26,715 - WARNING - Goodbye!
+2025-04-05 17:11:51,512 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-05 17:11:51,702 - WARNING - Updates were skipped successfully.
+2025-04-05 17:11:51,707 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 17:11:51,708 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 17:11:51,708 - INFO - Scheduler started
+2025-04-05 17:11:51,708 - INFO - Scheduler started with optimized configuration
+2025-04-05 17:11:51,708 - INFO - Бот запущен.
+2025-04-05 17:11:51,708 - INFO - Start polling.
+2025-04-05 17:12:33,698 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 17:12:33,699 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 17:12:34,904 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:12:34,904 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:12:51,713 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:13:51 MSK)" (scheduled at 2025-04-05 17:12:51.706908+03:00)
+2025-04-05 17:12:51,714 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:12:51,714 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:12:51,739 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:13:51 MSK)" executed successfully
+2025-04-05 17:12:57,212 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-73' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'is_revision_mode' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 88, in start_quiz
+    if is_revision_mode:
+       ^^^^^^^^^^^^^^^^
+NameError: name 'is_revision_mode' is not defined
+2025-04-05 17:13:02,539 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-86' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'is_revision_mode' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/quiz.py", line 88, in start_quiz
+    if is_revision_mode:
+       ^^^^^^^^^^^^^^^^
+NameError: name 'is_revision_mode' is not defined
+2025-04-05 17:13:51,716 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:14:51 MSK)" (scheduled at 2025-04-05 17:13:51.706908+03:00)
+2025-04-05 17:13:51,717 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:13:51,717 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:13:51,717 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:14:51 MSK)" executed successfully
+2025-04-05 17:14:51,718 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:15:51 MSK)" (scheduled at 2025-04-05 17:14:51.706908+03:00)
+2025-04-05 17:14:51,720 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:14:51,720 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:14:51,721 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:15:51 MSK)" executed successfully
+2025-04-05 17:15:51,722 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:16:51 MSK)" (scheduled at 2025-04-05 17:15:51.706908+03:00)
+2025-04-05 17:15:51,724 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:15:51,724 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:15:51,725 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:16:51 MSK)" executed successfully
+2025-04-05 17:16:51,716 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:17:51 MSK)" (scheduled at 2025-04-05 17:16:51.706908+03:00)
+2025-04-05 17:16:51,716 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:16:51,716 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:16:51,717 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:17:51 MSK)" executed successfully
+2025-04-05 17:17:51,718 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:18:51 MSK)" (scheduled at 2025-04-05 17:17:51.706908+03:00)
+2025-04-05 17:17:51,718 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:17:51,718 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:17:51,721 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:18:51 MSK)" executed successfully
+2025-04-05 17:18:51,715 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:19:51 MSK)" (scheduled at 2025-04-05 17:18:51.706908+03:00)
+2025-04-05 17:18:51,716 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:18:51,716 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:18:51,717 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:19:51 MSK)" executed successfully
+2025-04-05 17:19:51,714 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:20:51 MSK)" (scheduled at 2025-04-05 17:19:51.706908+03:00)
+2025-04-05 17:19:51,715 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:19:51,716 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:19:51,716 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:20:51 MSK)" executed successfully
+2025-04-05 17:20:51,714 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:21:51 MSK)" (scheduled at 2025-04-05 17:20:51.706908+03:00)
+2025-04-05 17:20:51,714 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:20:51,714 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:20:51,714 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:21:51 MSK)" executed successfully
+2025-04-05 17:21:51,713 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:22:51 MSK)" (scheduled at 2025-04-05 17:21:51.706908+03:00)
+2025-04-05 17:21:51,713 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:21:51,713 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:21:51,714 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:22:51 MSK)" executed successfully
+2025-04-05 17:22:51,713 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:23:51 MSK)" (scheduled at 2025-04-05 17:22:51.706908+03:00)
+2025-04-05 17:22:51,713 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:22:51,713 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:22:51,715 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:23:51 MSK)" executed successfully
+2025-04-05 17:23:51,711 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:24:51 MSK)" (scheduled at 2025-04-05 17:23:51.706908+03:00)
+2025-04-05 17:23:51,712 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:23:51,712 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:23:51,712 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:24:51 MSK)" executed successfully
+2025-04-05 17:24:19,406 - INFO - Stop polling...
+2025-04-05 17:24:19,408 - WARNING - Goodbye!
+2025-04-05 17:24:20,972 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-05 17:24:21,147 - WARNING - Updates were skipped successfully.
+2025-04-05 17:24:21,150 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-05 17:24:21,151 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-05 17:24:21,151 - INFO - Scheduler started
+2025-04-05 17:24:21,151 - INFO - Scheduler started with optimized configuration
+2025-04-05 17:24:21,151 - INFO - Бот запущен.
+2025-04-05 17:24:21,151 - INFO - Start polling.
+2025-04-05 17:24:30,188 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 17:24:30,188 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 17:24:46,857 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-05 17:24:46,858 - INFO - Пользователь 1999873173 уже существует
+2025-04-05 17:24:53,795 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:24:53,795 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:25:11,279 - INFO - У пользователя 1999873173 есть 6 выученных слов
+2025-04-05 17:25:11,284 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 17:25:21,157 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:26:21 MSK)" (scheduled at 2025-04-05 17:25:21.150413+03:00)
+2025-04-05 17:25:21,159 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:25:21,159 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:25:21,196 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:26:21 MSK)" executed successfully
+2025-04-05 17:25:23,347 - ERROR - Ошибка при отправке вопроса квиза пользователю 1999873173: Wrong file identifier/http url specified
+2025-04-05 17:25:48,917 - INFO - Resetting daily words cache for user 1999873173
+2025-04-05 17:25:48,917 - INFO - Cache successfully reset for user 1999873173
+2025-04-05 17:26:17,735 - INFO - У пользователя 1999873173 есть 8 выученных слов
+2025-04-05 17:26:17,735 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 17:26:17,735 - WARNING - No quiz data found for level B1, set Art, Music & Culture
+2025-04-05 17:26:21,151 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:27:21 MSK)" (scheduled at 2025-04-05 17:26:21.150413+03:00)
+2025-04-05 17:26:21,152 - WARNING - Set file not found: levels/A1/Essential Everyday Words.txt
+2025-04-05 17:26:21,152 - WARNING - No words found for level A1, set Essential Everyday Words
+2025-04-05 17:26:21,152 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-05 17:27:21 MSK)" executed successfully
+2025-04-05 17:26:33,828 - INFO - У пользователя 1999873173 есть 8 выученных слов
+2025-04-05 17:26:33,828 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 17:26:33,828 - WARNING - No quiz data found for level B1, set Art, Music & Culture
+2025-04-05 17:26:48,770 - INFO - У пользователя 1999873173 есть 8 выученных слов
+2025-04-05 17:26:48,771 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-05 17:26:48,771 - WARNING - No quiz data found for level B1, set Art, Music & Culture
+2025-04-05 17:27:02,313 - INFO - Stop polling...
+2025-04-05 17:27:02,314 - WARNING - Goodbye!

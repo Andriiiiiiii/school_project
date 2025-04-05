@@ -24,7 +24,9 @@ def words_day_keyboard():
 
 def dictionary_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=1)
-    keyboard.add(InlineKeyboardButton("Назад", callback_data="menu:back"))
+    # Удаляем кнопку "View Word Card"
+    # keyboard.add(InlineKeyboardButton("📊 View Word Card", callback_data="dictionary:word_card"))
+    keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="menu:back"))
     return keyboard
 
 
