@@ -1,0 +1,80 @@
+shop – магазин
+store – магазин
+supermarket – супермаркет
+mall – торговый центр
+boutique – бутик
+market – рынок
+purchase – покупка
+buy – покупать
+sell – продавать
+cost – стоимость
+price – цена
+discount – скидка
+sale – распродажа
+bargain – выгодная покупка
+expensive – дорогой
+cheap – дешёвый
+affordable – доступный
+quality – качество
+value – ценность
+cash – наличные
+money – деньги
+coin – монета
+bill – банкнота
+wallet – кошелёк
+purse – сумочка
+credit card – кредитная карта
+debit card – дебетовая карта
+bank – банк
+ATM – банкомат
+payment – оплата
+pay – платить
+change – сдача
+receipt – чек
+invoice – счёт
+refund – возврат денег
+exchange – обмен
+transaction – транзакция
+fee – комиссия
+tip – чаевые
+service charge – плата за обслуживание
+coupon – купон
+voucher – ваучер
+discount code – промокод
+sale event – распродажа
+offer – предложение
+deal – сделка
+installment – рассрочка
+financing – финансирование
+loan – кредит
+interest – процент
+budget – бюджет
+saving – сбережение
+expense – расход
+customer – клиент
+client – клиент
+shopper – покупатель
+cash register – кассовый аппарат
+cashier – кассир
+shopping cart – тележка
+basket – корзина
+order – заказ
+delivery – доставка
+shipping – доставка
+online shopping – онлайн-покупки
+website – сайт
+e-commerce – электронная коммерция
+transaction fee – комиссия за транзакцию
+retail – розничная торговля
+wholesale – оптовая торговля
+invoice number – номер счёта
+receipt number – номер чека
+warranty – гарантия
+guarantee – гарантия
+exchange rate – обменный курс
+profit – прибыль
+loss – убыток
+merchant – торговец
+seller – продавец
+buyer – покупатель
+negotiation – переговоры

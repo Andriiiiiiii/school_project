@@ -1,0 +1,50 @@
+Passport – загранпаспорт  
+Visa – виза  
+Embassy – посольство  
+Customs – таможня  
+Check-in – регистрация на рейс или в отеле  
+Boarding pass – посадочный талон  
+Departure – отправление  
+Arrival – прибытие  
+Layover – пересадка (временная остановка в пути)  
+Itinerary – маршрут поездки  
+Suitcase – чемодан  
+Backpack – рюкзак  
+Luggage – багаж  
+Hostel – бюджетное жильё  
+Accommodation – размещение  
+Tourist – турист  
+Sightseeing – осмотр достопримечательностей  
+Landmark – известное место  
+Souvenir – сувенир  
+Local – местный житель  
+Culture shock – культурный шок  
+Language barrier – языковой барьер  
+Currency – валюта  
+Exchange rate – обменный курс  
+Travel insurance – страховка для путешествий  
+Jet lag – усталость после смены часовых поясов  
+Guidebook – путеводитель  
+Map – карта  
+Translator – переводчик  
+Reservation – бронирование  
+Ticket – билет  
+Fare – стоимость проезда  
+Platform – платформа на вокзале  
+Gate – выход на посадку  
+Aisle – проход (в самолёте, поезде)  
+Window seat – место у окна  
+Pack – собирать вещи  
+Unpack – распаковывать  
+Miss – опоздать (на рейс, поезд)  
+Cancel – отменить  
+Delay – задержка  
+Overbooked – переполненный (рейс, отель)  
+Explore – исследовать  
+Wander – бродить без цели  
+Taste – попробовать (еду, культуру)  
+Photograph – фотографировать  
+Lost – потеряться  
+Adventure – приключение  
+Memorable – запоминающийся  
+Hitchhike – путешествовать автостопом  

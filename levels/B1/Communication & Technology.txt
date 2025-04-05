@@ -1,90 +1,51 @@
-communication – коммуникация
-technology – технология
-internet – интернет
-email – электронная почта
-smartphone – смартфон
-computer – компьютер
-laptop – ноутбук
-tablet – планшет
-software – программное обеспечение
-hardware – оборудование
-application – приложение
-app – приложение
-website – веб-сайт
-browser – браузер
-search engine – поисковая система
-social media – социальные сети
-network – сеть
-Wi-Fi – вай-фай
-password – пароль
-username – имя пользователя
-login – вход
-logout – выход
-update – обновление
-download – скачивать
-upload – загружать
-file – файл
-document – документ
-folder – папка
-cloud – облако
-storage – хранилище
-server – сервер
-database – база данных
-coding – программирование
-programming – программирование
-code – код
-algorithm – алгоритм
-software engineer – программист
-developer – разработчик
-technician – техник
-digital – цифровой
-virtual – виртуальный
-reality – реальность
-augmented reality – дополненная реальность
-artificial intelligence – искусственный интеллект
-machine learning – машинное обучение
-data – данные
-analytics – аналитика
-cyber – кибер
-security – безопасность
-firewall – файрвол
-virus – вирус
-malware – вредоносное ПО
-hacker – хакер
-encryption – шифрование
-network cable – сетевой кабель
-modem – модем
-router – маршрутизатор
-Bluetooth – Bluetooth
-peripheral – периферийное устройство
-gadget – гаджет
-innovation – инновация
-tech-savvy – разбирающийся в технологиях
-online – онлайн
-offline – офлайн
-streaming – потоковое видео/аудио
-podcast – подкаст
-blog – блог
-forum – форум
-chat – чат
-messenger – мессенджер
-video call – видеозвонок
-conference call – конференц-связь
-webinar – вебинар
-virtual meeting – виртуальная встреча
-network security – сетевая безопасность
-user interface – пользовательский интерфейс
-operating system – операционная система
-file transfer – передача файлов
-backup – резервное копирование
-technical support – техническая поддержка
-user manual – руководство пользователя
-digital footprint – цифровой след
-streaming service – потоковый сервис
-e-commerce – электронная коммерция
-online payment – онлайн-платеж
-cybersecurity – кибербезопасность
-cloud computing – облачные вычисления
-virtual reality headset – шлем виртуальной реальности
-smart device – умное устройство
-biometric – биометрический
+Bandwidth – объём доступной передачи данных  
+Signal – уровень связи или передачи информации  
+App – мобильное или компьютерное приложение  
+Keyboard – клавиатура  
+Receiver – приёмник, принимающая сторона  
+Upload – загрузка файла в сеть  
+Download – скачивание из интернета  
+Cloud – облачное хранилище данных  
+Notification – всплывающее сообщение/оповещение  
+Mute – отключить звук  
+Scroll – прокручивать контент  
+Update – обновление программы  
+Reboot – перезапуск устройства  
+Log in – войти в систему  
+Log out – выйти из системы  
+Stream – смотреть/слушать в онлайне без скачивания  
+Video call – видеозвонок  
+Swipe – провести пальцем по экрану  
+Lag – задержка, торможение  
+Viral – стремительно распространяющийся контент  
+Comment – письменная реакция на пост/видео  
+Share – делиться ссылкой или постом  
+Screenshot – снимок экрана  
+Attachment – прикреплённый файл  
+Headphones – наушники  
+Wi-Fi – беспроводное соединение  
+Settings – настройки  
+Microphone – микрофон  
+Bluetooth – способ подключения без проводов  
+Emoji – значок, выражающий эмоцию  
+Hashtag – метка для сортировки контента  
+Subscribe – подписаться на канал/новости  
+Username – имя пользователя  
+Password – пароль  
+Desktop – рабочий стол компьютера  
+Inbox – входящие сообщения  
+Outbox – отправленные сообщения  
+Spam – нежелательная почта  
+Search – поиск информации  
+Engine – система поиска (как в Google)  
+Battery – аккумулятор устройства  
+Charger – устройство для зарядки  
+Screen – экран  
+Speaker – динамик  
+Touchscreen – сенсорный экран  
+Filter – настройка отображения контента  
+Connection – соединение  
+Platform – цифровая платформа (сайт, приложение)  
+Feedback – обратная связь  
+Device – электронное устройство  
+Notification – уведомление  

@@ -1,100 +1,51 @@
-hypothesis – гипотеза
-theory – теория
-experiment – эксперимент
-research – исследование
-discovery – открытие
-innovation – инновация
-breakthrough – прорыв
-technology – технология
-laboratory – лаборатория
-scientist – учёный
-researcher – исследователь
-data – данные
-analysis – анализ
-trial – испытание
-observation – наблюдение
-variable – переменная
-control group – контрольная группа
-sample – образец
-measurement – измерение
-quantitative – количественный
-qualitative – качественный
-evolution theory – теория эволюции
-scientific method – научный метод
-peer review – рецензирование
-publication – публикация
-journal – журнал
-patent – патент
-invention – изобретение
-prototype – прототип
-algorithm – алгоритм
-artificial intelligence – искусственный интеллект
-machine learning – машинное обучение
-robotics – робототехника
-nanotechnology – нанотехнология
-biotechnology – биотехнология
-genetic engineering – генная инженерия
-genome – геном
-DNA – ДНК
-CRISPR – CRISPR
-renewable energy – возобновляемая энергия
-solar power – солнечная энергия
-wind energy – энергия ветра
-hydroelectricity – гидроэнергия
-geothermal – геотермальный
-sustainable – устойчивый
-ecology – экология
-climate change – изменение климата
-carbon footprint – углеродный след
-renewable resource – возобновляемый ресурс
-quantum mechanics – квантовая механика
-relativity – теория относительности
-particle physics – физика частиц
-accelerator – ускоритель
-collider – коллайдер
-antimatter – антиматерия
-energy – энергия
-force – сила
-gravity – гравитация
-electromagnetism – электромагнетизм
-plasma – плазма
-fusion – синтез
-fission – деление
-simulation – моделирование
-computational – вычислительный
-model – модель
-innovation hub – центр инноваций
-startup – стартап
-venture capital – венчурный капитал
-research grant – грант на исследования
-collaboration – сотрудничество
-interdisciplinary – междисциплинарный
-patent pending – патент в ожидании
-scalable – масштабируемый
-disruptive – прорывной
-open source – открытый исходный код
-software – программное обеспечение
-hardware – оборудование
-digital – цифровой
-data mining – добыча данных
-big data – большие данные
-cybersecurity – кибербезопасность
-cloud computing – облачные вычисления
-innovation lab – лаборатория инноваций
-breakthrough technology – прорывная технология
-space exploration – освоение космоса
-satellite – спутник
-interstellar – межзвёздный
-astrophysics – астрофизика
-cosmology – космология
-black hole – чёрная дыра
-supernova – сверхновая
-exoplanet – экзопланета
-telescope – телескоп
-microscope – микроскоп
-digital transformation – цифровая трансформация
-bioinformatics – биоинформатика
-scientific breakthrough – научный прорыв
-research institute – научно-исследовательский институт
-experimental design – план эксперимента
-theoretical framework – теоретическая база
+Lag – временное отставание от инновации  
+Upshot – неожиданный результат эксперимента  
+Foothold – начальная опора в новой сфере или идее  
+Knack – природная способность делать что-то нестандартно  
+Booster – элемент, резко усиливающий эффект  
+Reroute – смена направления исследований или идей  
+Crank – эксцентричный изобретатель, часто маргинальный  
+Pivot – резкое интеллектуальное переориентирование  
+Byproduct – побочный эффект, неожиданное научное следствие  
+Dead-end – тупик в гипотезе или исследовании  
+Outflux – утечка идей или мозгов  
+Rundown – краткий анализ, сжатое изложение  
+Flashpoint – точка, где накапливается и взрывается потенциал  
+Quirk – неожиданное поведение системы  
+Foam – временная, быстро исчезающая инновация  
+Outburst – резкое “вспыхивание” активности или идей  
+Drop-off – резкое снижение интереса или эффекта  
+Workaround – обходной путь вместо официального решения  
+Limbo – состояние научной неопределённости  
+Drizzle – слабый, но устойчивый поток новых данных  
+Mesh – сплетение подходов, дисциплин  
+Snag – мелкая, но мешающая проблема  
+Drip – медленная подача информации или функции  
+Hotspot – очаг активности или прогресса  
+Twist – неожиданное направление в анализе  
+Hinge – ключевая точка, от которой всё зависит  
+Glitch – временный сбой (особенно в данных/моделях)  
+Loop – повторяющееся поведение системы  
+Tilt – изменение баланса в сторону одной гипотезы  
+Patch – временное “заплаточное” решение  
+Trail – цепочка данных/сигналов/экспериментов  
+Slot – окно возможностей или технический “пролаз”  
+Snarl – запутанная научная проблема  
+Burst – вспышка интереса, идей или энергии  
+Drop-in – внешнее дополнение в систему  
+Ripple – разрастающееся последствие  
+Echo – вторичное повторение идеи или эффекта  
+Spin-offery – избыточное создание побочных продуктов  
+Shed – сбрасывание устаревшего подхода  
+Tweakery – постоянная возня с мелкими изменениями  
+Hackery – сомнительная, но креативная наука  
+Ghosting – исчезновение признаков эффекта без причины  
+Snap – резкий переход между состояниями  
+Bend – пластичное искажение системы  
+Swerve – увод в новое направление вопреки плану  
+Jam – интеллектуальная пробка, застой  
+Pulse – кратковременный интеллектуальный всплеск  
+Pinch – узкий момент, требующий точного вмешательства  
+Surge – резкий рост интереса, сигнала, поддержки  
+Fizz – быстрое выгорание идеи  
+Flare – краткая, но яркая научная гипотеза  

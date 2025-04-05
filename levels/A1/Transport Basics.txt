@@ -1,0 +1,70 @@
+car - машина
+bus - автобус
+train - поезд
+airplane - самолёт
+bicycle - велосипед
+motorcycle - мотоцикл
+scooter - скутер
+truck - грузовик
+van - фургон
+taxi - такси
+ferry - паром
+subway - метро
+tram - трамвай
+ship - корабль
+boat - лодка
+helicopter - вертолёт
+rocket - ракета
+engine - двигатель
+wheel - колесо
+road - дорога
+street - улица
+highway - шоссе
+bridge - мост
+tunnel - тоннель
+station - станция
+platform - платформа
+ticket - билет
+fare - тариф
+driver - водитель
+passenger - пассажир
+seat - сиденье
+journey - путешествие
+trip - поездка
+route - маршрут
+map - карта
+speed - скорость
+traffic - движение
+accident - авария
+stop - остановка
+signal - сигнал
+intersection - перекрёсток
+parking - парковка
+garage - гараж
+load - груз
+cargo - товар
+license - водительские права
+road sign - дорожный знак
+fuel - топливо
+gas - бензин
+diesel - дизельное топливо
+electric car - электромобиль
+hybrid - гибрид
+route map - схема маршрута
+brake - тормоз
+accelerator - акселератор
+steering wheel - руль
+horn - гудок
+mirror - зеркало
+lane - полоса
+roundabout - кольцевая развязка
+exit - выход
+entrance - вход
+taxi stand - стоянка такси
+traffic light - светофор
+commute - ездить на работу
+ride - поездка
+distance - расстояние
+vehicle - транспортное средство
+roadway - проезжая часть
+transfer - пересадка

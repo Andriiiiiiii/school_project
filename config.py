@@ -16,10 +16,10 @@ DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
 
 # Основные сеты для каждого уровня
 DEFAULT_SETS = {
-    "A1": "At Home",
-    "A2": "Describing People",
-    "B1": "Art, Music & Culture",
-    "B2": "Science & Innovation",
-    "C1": "Academic & Formal English",
-    "C2": "Advanced Academic Writing"
+    "A1": "A1 Basic 1",
+    "A2": "A2 Basic 1",
+    "B1": "B1 Basic 1",
+    "B2": "B2 Basic 1",
+    "C1": "C1 Basic 1",
+    "C2": "C2 Basic 1"
 }

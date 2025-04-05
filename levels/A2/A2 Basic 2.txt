@@ -1,0 +1,51 @@
+Trip – поездка  
+Journey – путешествие  
+Flight – перелёт  
+Airport – аэропорт  
+Ticket – билет  
+Passport – паспорт  
+Suitcase – чемодан  
+Map – карта  
+Beach – пляж  
+Mountain – гора  
+Lake – озеро  
+Forest – лес  
+Rainy – дождливый  
+Windy – ветрено  
+Snowy – снежно  
+Cloudy – облачно  
+Warm – тёплый  
+Cool – прохладный  
+Season – сезон  
+Spring – весна  
+Summer – лето  
+Autumn – осень  
+Winter – зима  
+Holiday – каникулы / отпуск  
+Free time – свободное время  
+Hobby – хобби  
+Drawing – рисование  
+Dancing – танцы  
+Singing – пение  
+Playing – игра (на инструменте или в игру)  
+Practice – практика / тренироваться  
+Lesson – урок  
+Subject – предмет (в школе)  
+Science – наука  
+History – история  
+Language – язык  
+Speak – говорить  
+Understand – понимать  
+Ask – спрашивать  
+Answer – отвечать  
+Talk – разговаривать  
+Listen – слушать  
+Laugh – смеяться  
+Cry – плакать  
+Feel – чувствовать  
+Need – нуждаться  
+Prefer – предпочитать  
+Hope – надеяться  
+Plan – планировать  
+Travel – путешествовать  
+Stay – оставаться / остановиться (в отеле, у друзей)  

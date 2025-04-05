@@ -1,0 +1,50 @@
+Neighbour – сосед  
+Town – городок  
+Village – деревня  
+Flat – квартира  
+Ceiling – потолок  
+Floor – пол  
+Mirror – зеркало  
+Shower – душ  
+Toothbrush – зубная щётка  
+Towel – полотенце  
+Couch – диван  
+Cup – чашка  
+Fork – вилка  
+Knife – нож  
+Plate – тарелка  
+Fridge – холодильник  
+Market – рынок  
+Cash – наличные  
+Price – цена  
+Cheap – дешёвый  
+Expensive – дорогой  
+Buy – покупать  
+Sell – продавать  
+Waiter – официант  
+Menu – меню  
+Meal – приём пищи  
+Breakfast – завтрак  
+Lunch – обед  
+Dinner – ужин  
+Hungry – голодный  
+Thirsty – испытывающий жажду  
+Sick – больной  
+Healthy – здоровый  
+Doctor – врач  
+Hospital – больница  
+Help – помогать  
+Clean – чистить / чистый  
+Dirty – грязный  
+Fast – быстрый  
+Slow – медленный  
+Easy – лёгкий  
+Difficult – трудный  
+Important – важный  
+Different – разный  
+Together – вместе  
+Alone – один  
+Everyone – все  
+Someone – кто-то  
+Nothing – ничего  
+Everything – всё  

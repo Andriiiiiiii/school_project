@@ -1,100 +1,51 @@
-itinerary – маршрут
-excursion – экскурсия
-expedition – экспедиция
-sojourn – кратковременное пребывание
-wanderlust – жажда путешествий
-pilgrimage – паломничество
-transit – транзит
-layover – пересадка
-embark – отправляться
-disembark – высаживаться
-visa – виза
-consulate – консульство
-embassy – посольство
-customs – таможня
-border crossing – пересечение границы
-travel document – проездной документ
-itinerary planner – планировщик маршрута
-accommodation – жильё
-hostel – хостел
-guesthouse – гостевой дом
-resort – курорт
-boutique hotel – бутик-отель
-homestay – проживание в семье
-vacation rental – аренда для отпуска
-check-in – регистрация
-check-out – выписка
-reservation – бронирование
-confirmation – подтверждение
-itinerary change – изменение маршрута
-travel insurance – туристическая страховка
-exchange rate – обменный курс
-currency – валюта
-foreign exchange – обмен валюты
-travel advisory – туристическое предупреждение
-red tape – бюрократия
-jet lag – смена часовых поясов
-layover – ожидание пересадки
-nonstop – без пересадок
-connecting flight – стыковочный рейс
-departure lounge – зал вылета
-arrival hall – зал прибытия
-boarding gate – выход на посадку
-immigration – иммиграция
-passport control – паспортный контроль
-travel itinerary – план поездки
-travel companion – попутчик
-travelogue – путевые заметки
-backpacking – пеший туризм
-road trip – автомобильное путешествие
-self-drive – самостоятельное вождение
-guided tour – экскурсия с гидом
-sightseeing – осмотр достопримечательностей
-landmark – достопримечательность
-monument – памятник
-heritage site – объект наследия
-UNESCO site – объект ЮНЕСКО
-travel blog – туристический блог
-globetrotter – кругосветный путешественник
-wanderer – странник
-cultural immersion – погружение в культуру
-local cuisine – местная кухня
-culinary tour – гастрономический тур
-off the beaten path – в стороне от проторенных дорог
-scenic route – живописный маршрут
-breathtaking – захватывающий дух
-picturesque – живописный
-remote – удалённый
-secluded – уединённый
-adventure – приключение
-exploration – исследование
-discovery – открытие
-travel diary – дневник путешествий
-journey – путешествие
-expedition – экспедиция
-transit hub – транспортный узел
-travel agency – туристическое агентство
-concierge – консьерж
-last-minute booking – бронирование в последнюю минуту
-off-peak – не в пиковый сезон
-peak season – высокий сезон
-self-guided tour – самостоятельная экскурсия
-guided excursion – экскурсия с гидом
-travel voucher – туристический ваучер
-package tour – туристический пакет
-all-inclusive – всё включено
-budget travel – бюджетное путешествие
-luxury travel – роскошное путешествие
-expedition leader – руководитель экспедиции
-destination – пункт назначения
-port of call – остановка в порту
-cruise – круиз
-ferry – паром
-scenic cruise – живописный круиз
-tourist trap – туристическая ловушка
-travel memoir – мемуары о путешествиях
-route planner – планировщик маршрута
-travel itinerary – маршрут поездки
-cultural exchange – культурный обмен
-visa fee – сбор за визу
-customs declaration – таможенная декларация
+Venture – рискованная или захватывающая поездка  
+Getaway – короткий отпуск, побег от рутины  
+Detour – объезд, путь в обход  
+Wanderlust – страсть к путешествиям  
+Hideaway – укромное, малоизвестное место  
+Scenic – живописный (о дороге, виде)  
+Offbeat – нестандартный, необычный (о маршруте или месте)  
+Transit – перемещение между точками, пересадка  
+Haul – длительное и часто утомительное путешествие  
+Commute – регулярная дорога до работы/учёбы  
+Roam – свободное, бесцельное перемещение  
+Stray – отклониться от маршрута  
+Trek – длительный поход, особенно в природе  
+Drift – медленное, расслабленное перемещение  
+Touchdown – приземление  
+Depart – отправляться (формальное слово)  
+Embark – начинать путешествие (буквально или метафорически)  
+Disembark – сойти с транспорта  
+Layover – пересадка, промежуточная остановка  
+Jetlag – сбой биоритмов после перелёта  
+Customs – таможня  
+Itinerary – маршрут, план поездки  
+Landmark – заметный ориентир или достопримечательность  
+Sight – что-то интересное для осмотра  
+Lodge – временное жильё (неформально)  
+Check-in – регистрация в отеле/аэропорту  
+Check-out – выезд из отеля  
+Host – принимающая сторона  
+Quaint – очаровательный, старомодный (о месте)  
+Bustling – шумный, оживлённый (о городе)  
+Remote – отдалённый, труднодоступный  
+Picturesque – живописный  
+Tranquil – спокойный, умиротворённый  
+Vibrant – яркий, полный жизни (о городе, районе)  
+Hefty – (о стоимости) немалый, тяжёлый  
+Splurge – потратиться, позволить себе роскошь  
+Overbooked – переполненный (рейс, отель)  
+Packed – битком набитый (о месте)  
+Soak in – впитывать (атмосферу, культуру)  
+Take in – охватить взглядом или осмыслить  
+Venture out – осмелиться выйти (в незнакомую среду)  
+Hop on – запрыгнуть (в транспорт/на маршрут)  
+Hit the road – отправиться в путь  
+Travel light – путешествовать налегке  
+Go off the beaten path – выбрать нестандартный маршрут  
+Lose yourself – раствориться в месте, моменте  
+Breathtaking – захватывающий дух  
+Rough it – жить без удобств (в походе, экспедиции)  
+Jetsetter – человек, часто летающий по миру  
+Footpath – пешеходная тропа  
+Red-eye – ночной перелёт  

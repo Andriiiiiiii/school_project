@@ -1,100 +1,50 @@
-environmental degradation – ухудшение окружающей среды
-climate change – изменение климата
-global warming – глобальное потепление
-carbon footprint – углеродный след
-greenhouse gases – парниковые газы
-deforestation – вырубка лесов
-reforestation – лесовосстановление
-biodiversity loss – утрата биоразнообразия
-species extinction – вымирание видов
-habitat destruction – разрушение местообитаний
-pollution – загрязнение
-air pollution – загрязнение воздуха
-water pollution – загрязнение воды
-soil contamination – загрязнение почвы
-ocean acidification – закисление океанов
-waste management – управление отходами
-recycling – переработка
-landfill – свалка
-composting – компостирование
-hazardous waste – опасные отходы
-industrial emissions – промышленные выбросы
-sustainable development – устойчивое развитие
-renewable energy – возобновляемая энергия
-green technology – зеленые технологии
-carbon sequestration – улавливание углерода
-energy efficiency – энергоэффективность
-environmental regulation – экологическое регулирование
-ecological footprint – экологический след
-conservation – охрана природы
-ecosystem services – экосистемные услуги
-sustainable agriculture – устойчивое сельское хозяйство
-organic farming – органическое сельское хозяйство
-water scarcity – нехватка воды
-drought – засуха
-flood risk – риск наводнения
-climate resilience – климатическая устойчивость
-adaptation – адаптация
-mitigation – смягчение последствий
-environmental impact – воздействие на окружающую среду
-environmental justice – экологическая справедливость
-carbon trading – торговля углеродными квотами
-emission reduction – сокращение выбросов
-green infrastructure – зеленая инфраструктура
-urban green spaces – городские зеленые зоны
-sustainable urban planning – устойчивое городское планирование
-smart cities – умные города
-environmental policy – экологическая политика
-climate policy – климатическая политика
-ecological restoration – восстановление экосистем
-invasive species – инвазивные виды
-overfishing – чрезмерный вылов
-habitat fragmentation – фрагментация местообитаний
-land degradation – деградация земель
-desertification – опустынивание
-soil erosion – эрозия почвы
-water conservation – сохранение воды
-energy conservation – энергосбережение
-environmental sustainability – экологическая устойчивость
-green building – экологичное строительство
-LEED certification – сертификация LEED
-eco-friendly – экологически чистый
-sustainable materials – устойчивые материалы
-lifecycle assessment – оценка жизненного цикла
-carbon neutrality – углеродная нейтральность
-zero-waste – ноль отходов
-circular economy – круговая экономика
-renewable resources – возобновляемые ресурсы
-biocapacity – биопотенциал
-ecological balance – экологическое равновесие
-environmental monitoring – экологический мониторинг
-pollution control – контроль загрязнений
-emission standards – нормы выбросов
-climate action – действия по борьбе с изменением климата
-environmental activism – экологический активизм
-conservation effort – усилия по сохранению природы
-natural resource management – управление природными ресурсами
-sustainability report – отчет об устойчивости
-green economy – зеленая экономика
-renewable energy investment – инвестиции в возобновляемую энергию
-energy transition – переход к новой энергетике
-fossil fuel divestment – отказ от ископаемого топлива
-carbon pricing – ценообразование углерода
-emission trading – торговля выбросами
-climate finance – климатическое финансирование
-environmental remediation – очистка загрязненных территорий
-bioremediation – биоремедиация
-phytoremediation – фитореемедиация
-waste-to-energy – преобразование отходов в энергию
-sustainable innovation – устойчивые инновации
-eco-innovation – экологические инновации
-green innovation – зеленые инновации
-environmental stewardship – бережное отношение к природе
-conservation biology – биология сохранения
-ecological research – экологические исследования
-climate modeling – климатическое моделирование
-environmental risk – экологический риск
-hazard assessment – оценка опасностей
-sustainability metrics – показатели устойчивости
-environmental footprint – экологический след
-climate mitigation – смягчение последствий климата
+Peregrinate - перемещаться (перекочёвывать, странствовать — в экологическом контексте миграций)
+Extirpate - искоренять (вид, популяцию)
+Inundate - затапливать, наводнять
+Despoil - разорять, лишать ресурсов
+Decimate - истреблять значительную часть
+Subsidience - оседание (земной поверхности)
+Cataclysm - катастрофа природного масштаба
+Scour - размывать (почву, русло)
+Accrete - нарастать (о геологических слоях, льде)
+Siltation - заиление
+Meander - извиваться (о реке), отклоняться от русла
+Seep - просачиваться (о токсинах, химии)
+Percolate - проникать сквозь (грунт, почву)
+Desiccate - высушивать, обезвоживать
+Effluent - сточные воды (особ. промышленные)
+Putrefy - гнить, разлагаться с запахом
+Leach - вымывать (вещества из почвы)
+Dehisce - раскрываться (о семенных коробочках, но используется в ботанике и биологических темах)
+Slough - сбрасывать, отслаивать (кожу, покров — в переносном смысле об экосистемах)
+Clog - засорять
+Coalesce - сливаться, объединяться
+Fledge - оперяться (о птицах, в текстах о биоразнообразии)
+Roil - мутить (воду, атмосферу)
+Mire - увязнуть (в болоте, но также и метафорически)
+Runnel - ручеёк (устаревшее, поэтическое, но встречается в текстах о ландшафте)
+Quagmire - трясина (буквально и переносно)
+Winnow - отделять (полезное от бесполезного — в текстах об отборе или фильтрации)
+Gnarl - узловатость (в корнях, деревьях)
+Hew - вырубать, отсекать
+Smother - душить, подавлять (естественные процессы, растительность)
+Blight - поражать (растения болезнью)
+Wane - угасать, уменьшаться
+Wax - возрастать (часто с wane)
+Spoilbank - насыпь из отходов шахт
+Chlorosis - побледнение листьев (дефицит хлорофилла)
+Fallow - оставленный под паром (о земле)
+Pelagic - относящийся к открытым водам океана
+Intertidal - прибрежный (зона прилива-отлива)
+Eolian - сформированный ветром
+Ablation - разрушение льда (таяние ледников)
+Fetch - размах волны, определяемый ветром (геофиз. термин)
+Loess - лёсс, пылевая осадочная порода
+Cuspate - остроконечный (берег, дюна)
+Pluvial - связанный с дождями (период, эрозия)
+Littoral - прибрежная зона
+Stygian - мрачный, подземный (редко используется буквально, чаще — как эпитет природных явлений)
+Detritus - обломки, мусор (геолог. и эколог. значение)
+Frondescence - период листвы (цветения листьев)
+Ecotone - переходная зона между экосистемами
+Cryosphere - криосфера (все замёрзшие воды планеты)

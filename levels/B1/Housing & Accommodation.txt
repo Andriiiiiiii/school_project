@@ -1,0 +1,51 @@
+Landlord – хозяин жилья (сдаёт в аренду)  
+Tenant – съёмщик жилья  
+Lease – договор аренды  
+Deposit – залог при аренде  
+Utilities – коммунальные услуги  
+Mortgage – ипотека  
+Rent – арендная плата  
+Eviction – выселение  
+Inspection – осмотр жилья  
+Notice – уведомление (о съезде, например)  
+Lodger – жилец, арендующий комнату  
+Roommate – сосед по комнате  
+Neighbour – сосед  
+Real estate – недвижимость  
+Agent – агент по недвижимости  
+Listing – объявление о продаже/аренде жилья  
+Floorplan – планировка  
+Furnishing – обстановка, мебель  
+Unfurnished – без мебели  
+Spacious – просторный  
+Cramped – тесный  
+Cozy – уютный  
+Modern – современный  
+Run-down – обветшалый, в плохом состоянии  
+Detached – отдельно стоящий дом  
+Semi-detached – дом на две семьи с общей стеной  
+Terraced – дом в ряду одинаковых, «таунхаус»  
+Studio – однокомнатная квартира  
+Loft – мансарда / квартира в промышленном стиле  
+Balcony – балкон  
+Basement – подвал  
+Attic – чердак  
+Porch – крытая веранда/крыльцо  
+Hallway – прихожая, коридор  
+Living room – гостиная  
+Kitchenette – мини-кухня  
+Storage – место для хранения  
+Stairs – лестница  
+Elevator – лифт  
+Gate – ворота  
+Fence – забор  
+Roof – крыша  
+Tile – плитка  
+Carpet – ковровое покрытие  
+Tap – кран (водопроводный)  
+Heating – отопление  
+Air conditioning – кондиционирование  
+Neighborhood – район проживания  
+Commuting – дорога до работы/учёбы  
+Tenancy – срок проживания по аренде  
+Accommodation – жильё (в общем смысле)  

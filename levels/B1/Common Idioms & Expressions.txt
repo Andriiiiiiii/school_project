@@ -1,90 +1,50 @@
-break the ice – растопить лед
-a piece of cake – проще простого
-once in a blue moon – раз в сто лет
-under the weather – нездоровится
-when pigs fly – когда рак на горе свистнет
-beat around the bush – ходить вокруг да около
-bite the bullet – стиснуть зубы
-cost an arm and a leg – стоить целое состояние
-cut to the chase – перейти к делу
-hit the nail on the head – попасть в точку
-let the cat out of the bag – выдать секрет
-spill the beans – раскрыть секрет
-the ball is in your court – теперь твоя очередь
-kick the bucket – отдать концы (умереть)
-hit the sack – пойти спать
-break a leg – ни пуха, ни пера (пожелание удачи)
-pull someone's leg – разыгрывать кого-либо
-go the extra mile – приложить дополнительные усилия
-add fuel to the fire – подливать масла в огонь
-a blessing in disguise – счастливая случайность
-burn the midnight oil – работать допоздна
-call it a day – закончить работу
-cut corners – халтурить, экономить на качестве
-feel under the weather – чувствовать себя плохо
-get out of hand – выйти из-под контроля
-give someone the cold shoulder – отмахнуться, игнорировать
-in hot water – оказаться в беде
-let sleeping dogs lie – не будить лихо, пока оно тихо
-miss the boat – упустить возможность
-on the ball – быстро соображать, быть на высоте
-pull yourself together – взять себя в руки
-so far so good – пока что все хорошо
-speak of the devil – легок на помине
-the best of both worlds – лучшее из двух миров
-the last straw – последняя капля
-time flies – время летит
-to be in the same boat – быть в одной лодке
-to add insult to injury – усугублять ситуацию
-to beat a dead horse – тратить напрасно усилия
-to bend over backwards – очень стараться
-to break the bank – разориться
-to call a spade a spade – называть вещи своими именами
-to cut the mustard – соответствовать ожиданиям
-to cry wolf – поднимать ложную тревогу
-to face the music – встретить последствия
-to get a taste of your own medicine – получить то, что заслуживаешь
-to hit the books – усердно учиться
-to jump on the bandwagon – присоединиться к популярной идее
-to let someone off the hook – отпустить от ответственности
-to miss the mark – не попасть в цель
-to open a can of worms – открыть ящик Пандоры
-to put all your eggs in one basket – рисковать всем
-to rock the boat – создавать проблемы
-to steal someone's thunder – присвоить чужую идею
-to take it with a grain of salt – воспринимать с недоверием
-to throw in the towel – сдаться
-to twist someone's arm – склонить кого-то к действию
-water under the bridge – прошлое, которое уже нельзя изменить
-wrap your head around something – понять что-то сложное
-your guess is as good as mine – и я не знаю
-a dime a dozen – что-то обычное, встречается часто
-a leopard can't change its spots – человек не меняется
-actions speak louder than words – дела говорят громче слов
-all in the same boat – все в одной лодке
-back to the drawing board – начать всё сначала
-call the shots – принимать решения
-do something at the drop of a hat – сделать мгновенно
-get cold feet – испытать сомнения
-hit the road – отправиться в путь
-in the blink of an eye – в мгновение ока
-jump the gun – начать раньше времени
-keep your chin up – не унывать
-leave no stone unturned – не оставить ни одного шанса
-no pain, no gain – без труда не вытащишь и рыбку из пруда
-on thin ice – находиться в опасном положении
-play it by ear – импровизировать
-rain on someone's parade – испортить планы
-see eye to eye – соглашаться
-sink or swim – либо преуспеть, либо потерпеть неудачу
-speak your mind – высказывать своё мнение
-take a rain check – перенести встречу
-the early bird catches the worm – кто рано встает, тому бог подает
-the elephant in the room – очевидная проблема, о которой не говорят
-throw caution to the wind – рискнуть, не думать о последствиях
-turn over a new leaf – начать с чистого листа
-under the table – тайно, в обход правил
-up in the air – в неопределённом состоянии
-bite off more than you can chew – переоценить свои возможности
-to be on cloud nine – быть на седьмом небе
-to call it quits – прекратить, сдаться
+Break the ice – начать общение, снять напряжение  
+Hit the nail on the head – точно попасть в суть  
+Spill the beans – раскрыть секрет  
+Let the cat out of the bag – случайно выдать тайну  
+Once in a blue moon – крайне редко  
+Under the weather – чувствовать себя плохо  
+Bite the bullet – принять трудное решение  
+Go the extra mile – сделать больше, чем нужно  
+A piece of cake – очень легко  
+Cost an arm and a leg – быть очень дорогим  
+Hit the books – усердно учиться  
+Pull someone’s leg – подшучивать  
+Call it a day – закончить на сегодня  
+Burn the midnight oil – работать допоздна  
+Cut corners – делать наспех или некачественно  
+In hot water – быть в неприятной ситуации  
+On the same page – быть единого мнения  
+Bend over backwards – изо всех сил стараться  
+The ball is in your court – теперь твоя очередь решать  
+Speak of the devil – вот и он! (в момент появления человека)  
+Add fuel to the fire – усугубить ситуацию  
+Jump the gun – поторопиться  
+On cloud nine – быть очень счастливым  
+Cry over spilled milk – сожалеть о прошлом, что уже не изменить  
+Be in someone’s shoes – быть на чьём-то месте  
+Out of the blue – неожиданно  
+Beat around the bush – уходить от сути  
+Back to the drawing board – начать заново после неудачи  
+Blow off steam – выпустить пар, разрядиться  
+Go down in flames – провалиться с треском  
+Keep an eye on – присматривать за чем-то  
+By the book – по правилам  
+Not one’s cup of tea – не по вкусу  
+Take something with a grain of salt – не воспринимать слишком серьёзно  
+In the blink of an eye – в мгновение ока  
+Go with the flow – плыть по течению  
+Hit the sack – пойти спать  
+Break a leg – пожелание удачи  
+Let sleeping dogs lie – не ворошить прошлое  
+Put all your eggs in one basket – рисковать всем  
+Play it by ear – действовать по ситуации  
+Be snowed under – быть заваленным делами  
+Bite off more than you can chew – переоценить свои силы  
+Kill two birds with one stone – сделать два дела за раз  
+Take it easy – расслабиться  
+Keep your fingers crossed – держать кулачки  
+Face the music – отвечать за последствия  
+Throw in the towel – сдаться  
+Have second thoughts – сомневаться  
+The tip of the iceberg – малая видимая часть проблемы  

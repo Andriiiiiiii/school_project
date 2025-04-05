@@ -1,0 +1,50 @@
+Wellness – общее состояние благополучия  
+Fitness – физическая форма  
+Routine – повседневный режим, распорядок  
+Balanced – сбалансированный (образ жизни, питание)  
+Workout – тренировка  
+Injury – травма  
+Allergy – аллергия  
+Fatigue – усталость, истощение  
+Stretch – растяжка  
+Hydration – достаточное потребление воды  
+Portion – порция еды  
+Junk food – вредная еда  
+Wholemeal – из цельного зерна  
+Snack – перекус  
+Symptoms – симптомы  
+Diagnosis – диагноз  
+Treatment – лечение  
+Recovery – восстановление  
+Cure – исцеление  
+Immune – защищённый иммунной системой  
+Prevent – предотвращать болезнь  
+Boost – усиливать (иммунитет, энергию)  
+Depression – депрессия  
+Anxiety – тревожность  
+Stress – стрессовое состояние  
+Meditation – практика успокоения ума  
+Mindful – осознанный, внимательный  
+Breathe – дышать  
+Overweight – с избыточным весом  
+Underweight – с недостатком веса  
+Smoking – курение  
+Addiction – зависимость  
+Check-up – профилактический осмотр  
+Prescription – рецепт от врача  
+Dose – доза лекарства  
+Side effects – побочные эффекты  
+Surgery – хирургическое вмешательство  
+Dentist – стоматолог  
+Therapist – психолог или терапевт  
+Sleep – сон  
+Insomnia – бессонница  
+Nap – короткий дневной сон  
+Active – активный  
+Sedentary – сидячий (образ жизни)  
+Stamina – выносливость  
+Wellbeing – общее здоровье и состояние  
+Hygiene – гигиена  
+Relaxation – отдых, расслабление  
+Habit – привычка  
+Resilience – устойчивость к стрессу  

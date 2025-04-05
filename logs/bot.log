@@ -1017,3 +1017,86 @@ sqlite3.OperationalError: no such column: test_words_count
 2025-04-06 01:25:01,730 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:25:58 MSK)" was missed by 0:00:03.280411
 2025-04-06 01:25:49,428 - INFO - Stop polling...
 2025-04-06 01:25:49,429 - WARNING - Goodbye!
+2025-04-06 01:28:37,780 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-06 01:28:37,940 - WARNING - Updates were skipped successfully.
+2025-04-06 01:28:37,945 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-06 01:28:37,946 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-06 01:28:37,946 - INFO - Scheduler started
+2025-04-06 01:28:37,946 - INFO - Scheduler started with optimized configuration
+2025-04-06 01:28:37,946 - INFO - Бот запущен.
+2025-04-06 01:28:37,946 - INFO - Start polling.
+2025-04-06 01:28:49,465 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-06 01:28:49,465 - INFO - Пользователь 1999873173 уже существует
+2025-04-06 01:28:52,196 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:28:52,196 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:29:41,905 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:30:37 MSK)" was missed by 0:00:03.960389
+2025-04-06 01:30:41,839 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:31:37 MSK)" was missed by 0:00:03.893917
+2025-04-06 01:30:54,230 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-06 01:30:54,230 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-06 01:30:54,230 - INFO - Подготовлено 10 слов для квиза пользователя 1999873173
+2025-04-06 01:31:05,388 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:31:05,388 - INFO - Найдено 3 файлов сетов в директории levels/C1
+2025-04-06 01:31:15,767 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-121' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 275, in handle_dictionary_test
+    await callback.message.edit_text(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-04-06 01:31:41,807 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:32:37 MSK)" was missed by 0:00:03.862670
+2025-04-06 01:32:39,858 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:33:37 MSK)" was missed by 0:00:01.913395
+2025-04-06 01:33:41,568 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:34:37 MSK)" was missed by 0:00:03.622748
+2025-04-06 01:34:41,537 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:35:37 MSK)" was missed by 0:00:03.592423
+2025-04-06 01:35:20,973 - INFO - Stop polling...
+2025-04-06 01:35:20,974 - WARNING - Goodbye!
+2025-04-06 01:35:21,955 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-06 01:35:22,114 - WARNING - Updates were skipped successfully.
+2025-04-06 01:35:22,116 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-06 01:35:22,116 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-06 01:35:22,116 - INFO - Scheduler started
+2025-04-06 01:35:22,116 - INFO - Scheduler started with optimized configuration
+2025-04-06 01:35:22,116 - INFO - Бот запущен.
+2025-04-06 01:35:22,116 - INFO - Start polling.
+2025-04-06 01:35:25,471 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-06 01:35:25,471 - INFO - Пользователь 1999873173 уже существует
+2025-04-06 01:35:29,287 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:35:29,287 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:35:32,756 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:35:32,757 - INFO - Найдено 22 файлов сетов в директории levels/C1
+2025-04-06 01:35:39,059 - INFO - Resetting daily words cache for user 1999873173
+2025-04-06 01:35:39,059 - INFO - Cache successfully reset for user 1999873173
+2025-04-06 01:35:39,059 - INFO - Cleared learned words for user 1999873173
+2025-04-06 01:35:42,632 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:35:42,633 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:35:47,773 - INFO - Stop polling...
+2025-04-06 01:35:47,773 - WARNING - Goodbye!

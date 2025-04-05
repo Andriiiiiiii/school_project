@@ -1,0 +1,80 @@
+teacher – учитель
+professor – профессор
+student – студент
+doctor – врач
+nurse – медсестра
+dentist – стоматолог
+pharmacist – фармацевт
+engineer – инженер
+architect – архитектор
+lawyer – юрист
+accountant – бухгалтер
+manager – менеджер
+clerk – клерк
+secretary – секретарь
+receptionist – администратор
+salesman – продавец
+cashier – кассир
+chef – шеф-повар
+cook – повар
+waiter – официант
+waitress – официантка
+bartender – бармен
+pilot – пилот
+driver – водитель
+bus driver – водитель автобуса
+taxi driver – таксист
+police officer – полицейский
+firefighter – пожарный
+soldier – солдат
+military officer – военный офицер
+journalist – журналист
+reporter – репортер
+editor – редактор
+writer – писатель
+author – автор
+musician – музыкант
+singer – певец/певица
+actor – актёр
+actress – актриса
+dancer – танцор/танцовщица
+artist – художник
+photographer – фотограф
+designer – дизайнер
+programmer – программист
+developer – разработчик
+IT specialist – специалист по ИТ
+scientist – учёный
+researcher – исследователь
+analyst – аналитик
+consultant – консультант
+technician – техник
+mechanic – механик
+plumber – сантехник
+electrician – электрик
+carpenter – плотник
+builder – строитель
+farmer – фермер
+gardener – садовник
+butcher – мясник
+baker – пекарь
+fisherman – рыбак
+sailor – моряк
+flight attendant – стюард/стюардесса
+coach – тренер
+trainer – инструктор
+athlete – спортсмен
+referee – судья
+judge – судья
+paralegal – помощник юриста
+social worker – социальный работник
+psychologist – психолог
+therapist – терапевт
+counselor – консультант
+hairdresser – парикмахер
+beautician – косметолог
+barber – парикмахер
+security guard – охранник
+chauffeur – шофёр
+entrepreneur – предприниматель
+executive – руководитель

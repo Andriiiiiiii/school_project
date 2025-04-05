@@ -1,100 +1,51 @@
-academic – академический
-articulate – членораздельный, выразительный
-comprehensive – исчерпывающий
-coherent – последовательный
-scholarly – научный, ученый
-dissertation – диссертация
-hypothesis – гипотеза
-methodology – методология
-paradigm – парадигма
-empirical – эмпирический
-theoretical – теоретический
-conceptual – концептуальный
-analytical – аналитический
-critical – критический
-formal – формальный
-rigorous – строгий
-systematic – систематический
-literature review – обзор литературы
-framework – основа, структура
-thesis – тезис
-scholarly article – научная статья
-academic journal – академический журнал
-citation – цитирование, ссылка
-bibliography – библиография
-peer-reviewed – рецензируемый
-quantitative – количественный
-qualitative – качественный
-empirical evidence – эмпирическое доказательство
-data analysis – анализ данных
-theoretical framework – теоретическая основа
-hypothesis testing – проверка гипотез
-academic integrity – академическая честность
-plagiarism – плагиат
-synthesis – синтез
-argumentation – аргументация
-discourse – дискурс
-rhetoric – риторика
-abstract – аннотация
-summary – резюме
-introduction – введение
-conclusion – заключение
-appendix – приложение
-research proposal – исследовательское предложение
-experimental design – экспериментальный дизайн
-validity – достоверность
-reliability – надежность
-statistical significance – статистическая значимость
-literature gap – пробел в исследованиях
-conceptual framework – концептуальная основа
-interdisciplinary – междисциплинарный
-scholarly debate – научные дебаты
-empirical study – эмпирическое исследование
-academic conference – академическая конференция
-scholarly discourse – научный дискурс
-research methodology – исследовательская методология
-paradigm shift – смена парадигмы
-academic achievement – академические достижения
-formal education – формальное образование
-professional development – профессиональное развитие
-academic performance – успеваемость
-curriculum vitae – резюме (CV)
-academic award – академическая премия
-research funding – финансирование исследований
-scholarly inquiry – научное исследование
-academic pursuit – академическая деятельность
-educational attainment – образовательные достижения
-critical thinking – критическое мышление
-intellectual – интеллектуальный
-dissertation defense – защита диссертации
-research assistant – научный ассистент
-academic seminar – академический семинар
-scholarly research – научное исследование
-empirical research – эмпирическое исследование
-academic rigor – академическая строгость
-theoretical model – теоретическая модель
-peer review – рецензирование
-academic discipline – академическая дисциплина
-scholarly work – научная работа
-theoretical analysis – теоретический анализ
-scholarly investigation – научное исследование
-academic discourse – академический дискурс
-literature analysis – анализ литературы
-research findings – результаты исследования
-academic term – академический термин
-formal language – формальный язык
-scholarly contribution – научный вклад
-academic institution – учебное заведение
-theoretical perspective – теоретическая перспектива
-empirical observation – эмпирическое наблюдение
-academic debate – академические дебаты
-research question – исследовательский вопрос
-conceptual analysis – концептуальный анализ
-academic journal article – статья в научном журнале
-research methodology framework – структура методологии
-academic vocabulary – академическая лексика
-scholarly paradigm – научная парадигма
-intellectual inquiry – интеллектуальное исследование
-formal argument – формальное утверждение
-academic convention – академическая конвенция
-peer evaluation – оценка коллег
+Ubiquitous – повсеместный, распространённый (в скрытом, почти незаметном смысле)  
+Salient – выделяющийся, заметный, особенно значимый  
+Nuanced – тонко дифференцированный, с множеством оттенков  
+Tentative – предварительный, неуверенный, подлежащий уточнению  
+Conducive – способствующий (условие, создающее благоприятную среду)  
+Contentious – спорный, вызывающий полемику  
+Impetus – стимул, движущая сила  
+Repercussion – отложенное негативное последствие  
+Caveat – предостережение, важное ограничение  
+Refutation – логическое опровержение  
+Delineate – точно очерчивать, подробно описывать  
+Underscore – подчёркивать значимость чего-либо  
+Substantiate – подтверждать (аргумент, утверждение)  
+Premise – исходное положение, основа аргумента  
+Conflate – объединять два (разных) понятия в одно  
+Ostensibly – как будто, по видимости (часто в ироничном контексте)  
+Heuristic – приближённый метод мышления или анализа  
+Contingent – зависящий от обстоятельств, условный  
+Provisional – временный, промежуточный  
+Mitigating – смягчающий (фактор, условие)  
+Albeit – хотя и, несмотря на то, что  
+Purported – якобы таковой, приписываемый  
+Disparate – несопоставимый, резко отличный  
+Dichotomy – противопоставление двух сущностей  
+Conundrum – сложная проблема, интеллектуальная головоломка  
+Juxtaposition – сопоставление (особенно контрастное)  
+Ameliorate – улучшать (в трудной ситуации)  
+Undermine – подрывать (позицию, аргумент)  
+Extrapolate – делать вывод за пределами имеющихся данных  
+Commensurate – соразмерный, соответствующий  
+Preclude – предотвращать, исключать возможность  
+Advocate – выступать в защиту идеи  
+Reiterate – повторить для акцента  
+Solicit – настойчиво запрашивать (инфу, мнение, помощь)  
+Alleviate – смягчать (страдание, давление, проблему)  
+Enumerate – перечислять по пунктам  
+Imply – подразумевать  
+Infer – делать вывод  
+Coalesce – объединяться в нечто единое  
+Supersede – вытеснять, заменять  
+Redundant – избыточный  
+Viable – жизнеспособный, осуществимый  
+Feasible – практически осуществимый  
+Pertinent – релевантный, уместный  
+Devoid – лишённый (чего-либо важного)  
+Invoke – апеллировать к (авторитету, закону, чувству)  
+Entail – влечь за собой  
+Supplant – занять чьё-то место, вытеснить  
+Intrinsic – внутренне присущий  
+Discern – распознавать с усилием  
+Offset – компенсировать  
