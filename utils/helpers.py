@@ -49,6 +49,10 @@ def load_words_for_set(level: str, chosen_set: str):
     Загружает слова из файла для выбранного сета.
     Файл ищется по пути LEVELS_DIR/level/chosen_set.txt.
     """
+    if not level or not chosen_set:
+        logger.error(f"Неверные параметры: уровень={level}, сет={chosen_set}")
+        return []
+        
     filename = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
     words = []
     
@@ -170,6 +174,32 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         # Определяем выбранный сет слов
         if chosen_set is None:
             chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
+        
+        # Проверяем существование файла сета для конкретного уровня
+        set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
+        if not os.path.exists(set_file_path):
+            logger.warning(f"Сет '{chosen_set}' не существует для уровня {level}. Путь: {set_file_path}")
+            
+            # Если файл не существует, пробуем установить базовый сет для текущего уровня
+            default_set = DEFAULT_SETS.get(level)
+            if default_set:
+                default_set_path = os.path.join(LEVELS_DIR, level, f"{default_set}.txt")
+                if os.path.exists(default_set_path):
+                    # Обновляем выбранный сет в базе данных и кэше
+                    try:
+                        from database import crud
+                        crud.update_user_chosen_set(chat_id, default_set)
+                        user_set_selection[chat_id] = default_set
+                        chosen_set = default_set
+                        logger.info(f"Автоматически установлен базовый сет '{default_set}' для уровня {level} пользователю {chat_id}")
+                    except Exception as e:
+                        logger.error(f"Ошибка при обновлении сета для пользователя {chat_id}: {e}")
+                else:
+                    logger.error(f"Базовый сет '{default_set}' тоже не существует для уровня {level}. Путь: {default_set_path}")
+                    return None
+            else:
+                logger.error(f"Нет базового сета для уровня {level}")
+                return None
         
         # Загружаем слова из выбранного сета
         file_words = load_words_for_set(level, chosen_set)

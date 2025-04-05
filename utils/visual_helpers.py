@@ -98,8 +98,17 @@ def format_quiz_question(question_number: int, total_questions: int, word: str,
     """Форматирует вопрос квиза с индикатором прогресса."""
     progress = format_progress_bar(question_number, total_questions)
     
+    # Дополнительная проверка - удаляем возможный перевод из слова
+    clean_word = word
+    if " - " in clean_word:
+        clean_word = clean_word.split(" - ", 1)[0].strip()
+    elif " – " in clean_word:
+        clean_word = clean_word.split(" – ", 1)[0].strip()
+    elif ": " in clean_word:
+        clean_word = clean_word.split(": ", 1)[0].strip()
+    
     header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 СЛОВАРНЫЙ КВИЗ"
-    question = f"{header}\n{progress}\n\nВопрос {question_number}/{total_questions}:\n\nКакой перевод слова '*{word}*'?"
+    question = f"{header}\n{progress}\n\nВопрос {question_number}/{total_questions}:\n\nКакой перевод слова '*{clean_word}*'?"
     
     return question
 

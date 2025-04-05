@@ -44,12 +44,50 @@ async def cmd_start(message: types.Message, bot: Bot):
             crud.add_user(chat_id)
             logger.info(f"Добавлен новый пользователь с chat_id {chat_id}")
             
+            # Устанавливаем базовый сет для A1
+            from config import DEFAULT_SETS
+            default_set = DEFAULT_SETS.get("A1")
+            if default_set:
+                try:
+                    crud.update_user_chosen_set(chat_id, default_set)
+                    # Обновляем кэш выбранных сетов
+                    from handlers.settings import user_set_selection
+                    user_set_selection[chat_id] = default_set
+                    logger.info(f"Установлен базовый сет {default_set} для нового пользователя {chat_id}")
+                except Exception as e:
+                    logger.error(f"Ошибка при установке базового сета для нового пользователя {chat_id}: {e}")
+            
             # Отправляем приветственный стикер для новых пользователей
             sticker_id = get_welcome_sticker()
             if sticker_id:
                 await bot.send_sticker(chat_id, sticker_id)
         else:
             logger.info(f"Пользователь {chat_id} уже существует")
+            
+            # Проверяем и устанавливаем базовый сет, если отсутствует
+            from handlers.settings import user_set_selection
+            current_set = None
+            
+            # Проверяем сет в кэше
+            if chat_id in user_set_selection:
+                current_set = user_set_selection[chat_id]
+            
+            # Если нет в кэше, смотрим в базе данных
+            if not current_set and len(user) > 6 and user[6]:
+                current_set = user[6]
+            
+            # Если сет до сих пор не определен, устанавливаем базовый
+            if not current_set:
+                from config import DEFAULT_SETS
+                level = user[1]
+                default_set = DEFAULT_SETS.get(level)
+                if default_set:
+                    try:
+                        crud.update_user_chosen_set(chat_id, default_set)
+                        user_set_selection[chat_id] = default_set
+                        logger.info(f"Установлен базовый сет {default_set} для существующего пользователя {chat_id}")
+                    except Exception as e:
+                        logger.error(f"Ошибка при установке базового сета для существующего пользователя {chat_id}: {e}")
         
         # Отправляем приветственное сообщение с улучшенным описанием
         await message.answer(

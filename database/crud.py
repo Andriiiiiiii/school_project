@@ -12,13 +12,17 @@ def add_user(chat_id: int):
         # Проверяем существование пользователя
         cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (chat_id,))
         if cursor.fetchone() is None:
+            # Берем базовый сет для начального уровня A1
+            from config import DEFAULT_SETS
+            default_set = DEFAULT_SETS.get("A1", "")
+            
             # notifications используется для количества повторений
             with db_manager.transaction() as tx_conn:
                 tx_conn.execute(
-                    "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone) VALUES (?, ?, ?, ?, ?, ?)",
-                    (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow")
+                    "INSERT INTO users (chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (chat_id, 'A1', DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT, "Europe/Moscow", default_set)
                 )
-            logger.info(f"Added new user with chat_id: {chat_id}")
+            logger.info(f"Added new user with chat_id: {chat_id} with default set: {default_set}")
     except Exception as e:
         logger.error(f"Error adding user {chat_id}: {e}")
         raise
@@ -191,4 +195,24 @@ def update_user_chosen_set(chat_id: int, set_name: str):
         logger.debug(f"Updated chosen_set to '{set_name}' for user {chat_id}")
     except Exception as e:
         logger.error(f"Error updating chosen_set for user {chat_id}: {e}")
+        raise
+
+def update_user_test_words_count(chat_id: int, count: int):
+    """Обновляет количество слов для теста."""
+    try:
+        cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+        conn.commit()
+        logger.debug(f"Updated test_words_count to {count} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating test_words_count for user {chat_id}: {e}")
+        raise
+
+def update_user_memorize_words_count(chat_id: int, count: int):
+    """Обновляет количество слов для заучивания."""
+    try:
+        cursor.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (count, chat_id))
+        conn.commit()
+        logger.debug(f"Updated memorize_words_count to {count} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating memorize_words_count for user {chat_id}: {e}")
         raise

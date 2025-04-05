@@ -90,6 +90,7 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """Инициализирует квиз для пользователя."""
     chat_id = callback.from_user.id
     try:
+        from database import crud
         user = crud.get_user(chat_id)
         if not user:
             await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
@@ -316,6 +317,9 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
         if option_index == question["correct_index"]:
             # Правильный ответ
             try:
+                # Явный импорт crud
+                from database import crud
+                
                 # Проверяем, не добавлено ли уже слово в выученные
                 current_learned = crud.get_learned_words(chat_id)
                 current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)

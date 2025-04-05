@@ -84,13 +84,22 @@ def notification_settings_menu_keyboard():
 def learning_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
-        InlineKeyboardButton("📚 Тест (множественный выбор)", callback_data="test_level:start"),
-        InlineKeyboardButton("🎯 Викторина", callback_data="learning:quiz")
+        InlineKeyboardButton("📚 Тест по словарю", callback_data="learning:dictionary_test"),
+        InlineKeyboardButton("📝 Заучивание сета", callback_data="learning:memorize_set")
     )
     keyboard.add(
-        InlineKeyboardButton("📝 Заучивание", callback_data="learning:memorize"),
+        InlineKeyboardButton("⚙️ Настройки обучения", callback_data="learning:settings"),
         InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
+    return keyboard
+
+def learning_settings_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("📊 Настройки теста", callback_data="learning:test_settings"),
+        InlineKeyboardButton("📝 Настройки заучивания", callback_data="learning:memorize_settings")
+    )
+    keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="learning:back"))
     return keyboard
 
 def help_menu_keyboard():

@@ -18,6 +18,7 @@ from utils.sticker_helper import get_congratulation_sticker
 
 import urllib.parse
 
+from config import DEFAULT_SETS
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -174,6 +175,8 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
         user_level = user[1]
         level_dir = os.path.join(LEVELS_DIR, user_level)
         
+        logger.info(f"Проверка директории сетов для пользователя {chat_id}, уровень {user_level}, путь: {level_dir}")
+        
         if not os.path.exists(level_dir):
             logger.warning(f"Level directory not found: {level_dir}")
             await bot.send_message(chat_id, f"Папка для уровня {user_level} не найдена.")
@@ -181,6 +184,7 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
             
         try:
             set_files = [f for f in os.listdir(level_dir) if f.endswith(".txt")]
+            logger.info(f"Найдено {len(set_files)} файлов сетов в директории {level_dir}")
         except PermissionError:
             logger.error(f"Permission denied when accessing directory: {level_dir}")
             await bot.send_message(chat_id, f"Ошибка доступа к папке уровня {user_level}.")
@@ -197,6 +201,12 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
         # Get current set and learned words
         current_set = user_set_selection.get(chat_id, None)
         
+        # Если не в кэше, смотрим в базе данных
+        if not current_set and len(user) > 6 and user[6]:
+            current_set = user[6]
+            # Обновляем кэш для согласованности
+            user_set_selection[chat_id] = current_set
+        
         # Check if user has any learned words
         try:
             learned_words = crud.get_learned_words(chat_id)
@@ -211,25 +221,179 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
             message_text = f"Текущий сет: *{current_set}*\n\n" + message_text
         
         keyboard = types.InlineKeyboardMarkup(row_width=1)
+        
+        # Ограничиваем длину callback_data, чтобы избежать ошибки Button_data_invalid
         for filename in set_files:
             set_name = os.path.splitext(filename)[0]
-            # URL-encode the set name to handle special characters safely
-            encoded_set_name = urllib.parse.quote(set_name)
             
-            # Different callback for different scenarios
-            if current_set and set_name != current_set and has_learned_words:
-                # User has a set and dictionary, needs confirmation to change
-                keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"confirm_set_change:{encoded_set_name}"))
-            else:
-                # First selection or no learned words, no confirmation needed
-                keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{encoded_set_name}"))
+            # Используем индекс вместо имени сета в callback_data для предотвращения ошибки
+            # Сохраняем соответствие в кэше
+            set_index = len(set_files) - set_files.index(filename)  # Начинаем с 1
+            callback_data = f"set_idx:{set_index}" if set_name != current_set or not has_learned_words else f"confirm_idx:{set_index}"
+            
+            # Сохраняем имя сета в глобальный cache для восстановления по индексу
+            if not hasattr(process_my_sets, 'set_cache'):
+                process_my_sets.set_cache = {}
+            process_my_sets.set_cache[f"{chat_id}_{set_index}"] = set_name
+            
+            keyboard.add(types.InlineKeyboardButton(set_name, callback_data=callback_data))
         
         keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
         
         await bot.send_message(chat_id, message_text, parse_mode="Markdown", reply_markup=keyboard)
     except Exception as e:
-        logger.error(f"Unexpected error in process_my_sets for user {chat_id}: {e}")
-        await bot.send_message(chat_id, "Произошла ошибка при получении списка сетов. Пожалуйста, попробуйте позже.")
+        logger.error(f"Необработанная ошибка в process_my_sets для пользователя {chat_id}: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка при получении списка сетов. Пожалуйста, попробуйте позже или обратитесь к администратору.")
+
+async def handle_set_by_index(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора сета по индексу"""
+    chat_id = callback.from_user.id
+    try:
+        _, set_index = callback.data.split(":", 1)
+        set_index = int(set_index)
+        
+        # Получаем имя сета из кэша
+        if not hasattr(process_my_sets, 'set_cache'):
+            process_my_sets.set_cache = {}
+        
+        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        if not set_name:
+            await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
+            return
+        
+        # Получаем пользователя и его уровень
+        user = crud.get_user(chat_id)
+        if not user:
+            await callback.answer("Профиль не найден. Используйте /start.")
+            return
+        
+        user_level = user[1]
+        
+        # Получаем текущий выбранный сет
+        current_set = None
+        if chat_id in user_set_selection:
+            current_set = user_set_selection[chat_id]
+        
+        # Если нет в кэше, смотрим в базе данных
+        if not current_set and len(user) > 6 and user[6]:
+            current_set = user[6]
+        
+        # Проверяем, является ли это сменой сета
+        is_change = current_set and current_set != set_name
+        
+        # Обновляем сет в бд и кэше
+        crud.update_user_chosen_set(chat_id, set_name)
+        user_set_selection[chat_id] = set_name
+        reset_daily_words_cache(chat_id)
+        
+        # Если это смена сета, очищаем словарь
+        if is_change:
+            crud.clear_learned_words_for_user(chat_id)
+        
+        # Отправляем сообщение об успешном выборе сета
+        await callback.message.edit_text(
+            f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n\n"
+            f"{'⚠️ Словарь очищен, так как был выбран новый сет.' if is_change else ''}",
+            parse_mode="Markdown",
+            reply_markup=settings_menu_keyboard()
+        )
+        
+    except ValueError:
+        await callback.answer("Неверный формат данных.")
+    except Exception as e:
+        logger.error(f"Ошибка при выборе сета по индексу: {e}")
+        await callback.answer("Произошла ошибка при выборе сета.")
+
+async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик подтверждения смены сета по индексу"""
+    chat_id = callback.from_user.id
+    try:
+        _, set_index = callback.data.split(":", 1)
+        set_index = int(set_index)
+        
+        # Получаем имя сета из кэша
+        if not hasattr(process_my_sets, 'set_cache'):
+            process_my_sets.set_cache = {}
+        
+        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        if not set_name:
+            await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
+            return
+        
+        # Получаем текущий выбранный сет
+        current_set = None
+        if chat_id in user_set_selection:
+            current_set = user_set_selection[chat_id]
+        
+        # Если нет в кэше, смотрим в базе данных
+        user = crud.get_user(chat_id)
+        if not current_set and user and len(user) > 6 and user[6]:
+            current_set = user[6]
+        
+        # Создаем клавиатуру для подтверждения
+        keyboard = types.InlineKeyboardMarkup(row_width=2)
+        keyboard.add(
+            types.InlineKeyboardButton("✅ Да, сменить", callback_data=f"set_chg_idx:{set_index}"),
+            types.InlineKeyboardButton("❌ Нет, отмена", callback_data="set_change_cancel")
+        )
+        
+        # Отправляем сообщение с подтверждением
+        await callback.message.edit_text(
+            f"⚠️ *Внимание! Смена сета приведет к полному сбросу прогресса.*\n\n"
+            f"Текущий сет: *{current_set}*\n"
+            f"Новый сет: *{set_name}*\n\n"
+            f"При смене сета ваш словарь будет полностью очищен. Вы уверены?",
+            parse_mode="Markdown",
+            reply_markup=keyboard
+        )
+        
+    except ValueError:
+        await callback.answer("Неверный формат данных.")
+    except Exception as e:
+        logger.error(f"Ошибка при подтверждении смены сета: {e}")
+        await callback.answer("Произошла ошибка при подготовке подтверждения.")
+
+async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик подтвержденной смены сета по индексу"""
+    chat_id = callback.from_user.id
+    try:
+        _, set_index = callback.data.split(":", 1)
+        set_index = int(set_index)
+        
+        # Получаем имя сета из кэша
+        if not hasattr(process_my_sets, 'set_cache'):
+            process_my_sets.set_cache = {}
+        
+        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        if not set_name:
+            await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
+            return
+        
+        # Очищаем словарь пользователя
+        crud.clear_learned_words_for_user(chat_id)
+        
+        # Обновляем выбранный сет
+        crud.update_user_chosen_set(chat_id, set_name)
+        user_set_selection[chat_id] = set_name
+        reset_daily_words_cache(chat_id)
+        
+        # Отправляем стикер
+        from utils.sticker_helper import get_congratulation_sticker
+        sticker_id = get_congratulation_sticker()
+        if sticker_id:
+            await bot.send_sticker(chat_id, sticker_id)
+        
+        # Отправляем сообщение об успешной смене сета
+        await callback.message.edit_text(
+            f"✅ Выбран сет '{set_name}'.\n⚠️ Словарь успешно очищен.",
+            reply_markup=settings_menu_keyboard()
+        )
+        
+    except ValueError:
+        await callback.answer("Неверный формат данных.")
+    except Exception as e:
+        logger.error(f"Ошибка при подтвержденной смене сета: {e}")
+        await callback.answer("Произошла ошибка при смене сета.")
 
 # Updated process_choose_set function with both fixes for long messages
 # and for automatically clearing the dictionary when changing sets
@@ -259,10 +423,29 @@ async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
         user_level = user[1]
         set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
         
+        logger.info(f"Проверка пути к файлу сета: {set_path} для пользователя {chat_id}")
+        
+        # Проверяем существование файла сета
         if not os.path.exists(set_path):
-            logger.warning(f"Set file not found: {set_path}")
-            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
-            return
+            # Проверяем, может файл существует с другим регистром
+            parent_dir = os.path.dirname(set_path)
+            file_name = os.path.basename(set_path)
+            
+            if os.path.exists(parent_dir):
+                try:
+                    files = os.listdir(parent_dir)
+                    for file in files:
+                        if file.lower() == file_name.lower():
+                            set_path = os.path.join(parent_dir, file)
+                            logger.info(f"Найден файл с другим регистром: {set_path}")
+                            break
+                except Exception as e:
+                    logger.error(f"Ошибка при поиске файла с другим регистром: {e}")
+            
+            if not os.path.exists(set_path):
+                logger.warning(f"Set file not found: {set_path}")
+                await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}. Пожалуйста, выберите другой сет.")
+                return
         
         content = ""
         try:
@@ -349,9 +532,42 @@ async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
+    
+    # Получаем текущего пользователя
+    user = crud.get_user(chat_id)
+    if not user:
+        await callback.answer("Пользователь не найден.", show_alert=True)
+        return
+    
+    # Проверяем текущий сет пользователя
+    current_set = None
+    if chat_id in user_set_selection:
+        current_set = user_set_selection[chat_id]
+    
+    # Если нет в кэше, смотрим в базе данных
+    if not current_set and len(user) > 6 and user[6]:
+        current_set = user[6]
+    
+    # Обновляем уровень
     crud.update_user_level(chat_id, level)
+    
+    # Если сет не выбран, устанавливаем базовый для нового уровня
+    if not current_set:
+        default_set = DEFAULT_SETS.get(level)
+        if default_set:
+            try:
+                crud.update_user_chosen_set(chat_id, default_set)
+                user_set_selection[chat_id] = default_set
+                current_set = default_set
+                logger.info(f"Установлен базовый сет {default_set} для пользователя {chat_id} при смене уровня на {level}")
+            except Exception as e:
+                logger.error(f"Ошибка при установке базового сета для пользователя {chat_id}: {e}")
+    
+    # Сбрасываем кэш ежедневных слов
     reset_daily_words_cache(chat_id)
-    await bot.send_message(chat_id, f"Уровень установлен на {level}.", reply_markup=settings_menu_keyboard())
+    
+    set_info = f"\nТекущий набор слов: {current_set}" if current_set else ""
+    await bot.send_message(chat_id, f"Уровень установлен на {level}.{set_info}", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot):
@@ -465,6 +681,20 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         lambda c: c.data == "set_change_cancel"
     )
     
+    # Новые обработчики для выбора сета по индексу
+    dp.register_callback_query_handler(
+        partial(handle_set_by_index, bot=bot),
+        lambda c: c.data and c.data.startswith("set_idx:")
+    )
+    dp.register_callback_query_handler(
+        partial(handle_confirm_set_by_index, bot=bot),
+        lambda c: c.data and c.data.startswith("confirm_idx:")
+    )
+    dp.register_callback_query_handler(
+        partial(handle_set_change_confirmed_by_index, bot=bot),
+        lambda c: c.data and c.data.startswith("set_chg_idx:")
+    )
+    
     # Final choose_set handler (keep last)
     dp.register_callback_query_handler(
         partial(process_choose_set, bot=bot),
@@ -489,13 +719,37 @@ async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
             )
         )
     else:
+        # Проверяем и устанавливаем базовый сет, если отсутствует
+        current_set = None
+        
+        # Проверяем сет в кэше
+        if chat_id in user_set_selection:
+            current_set = user_set_selection[chat_id]
+        
+        # Если нет в кэше, смотрим в базе данных
+        if not current_set and len(user) > 6 and user[6]:
+            current_set = user[6]
+        
+        # Если сет до сих пор не определен, устанавливаем базовый
+        if not current_set:
+            level = user[1]
+            default_set = DEFAULT_SETS.get(level)
+            if default_set:
+                try:
+                    crud.update_user_chosen_set(chat_id, default_set)
+                    user_set_selection[chat_id] = default_set
+                    current_set = default_set
+                    logger.info(f"Установлен базовый сет {default_set} для пользователя {chat_id} при просмотре профиля")
+                except Exception as e:
+                    logger.error(f"Ошибка при установке базового сета для пользователя {chat_id}: {e}")
+        
         # Создаем словарь настроек пользователя
         user_settings = {
             "level": user[1],
             "words_per_day": user[2],
             "repetitions": user[3],
             "timezone": user[5] if len(user) > 5 and user[5] else "Не задан",
-            "chosen_set": user_set_selection.get(chat_id, "Не выбран")
+            "chosen_set": current_set or "Не выбран"
         }
         
         # Красивое форматирование

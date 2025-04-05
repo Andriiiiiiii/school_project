@@ -5,6 +5,9 @@ from keyboards.submenus import words_day_keyboard
 from utils.helpers import get_daily_words_for_user
 from utils.visual_helpers import format_daily_words_message
 from config import REMINDER_START, DURATION_HOURS
+import os
+from config import LEVELS_DIR, DEFAULT_SETS
+
 
 async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
     """
@@ -21,6 +24,36 @@ async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
         )
         await callback.answer()
         return
+    
+    # Проверяем соответствие сета уровню
+    from handlers.settings import user_set_selection
+    current_set = user_set_selection.get(chat_id)
+    if not current_set and len(user) > 6:
+        current_set = user[6]
+    
+    # Проверяем существование файла сета для текущего уровня
+    level = user[1]
+    if current_set:
+        set_file_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
+        if not os.path.exists(set_file_path):
+            # Сет не соответствует уровню, пробуем установить базовый
+            default_set = DEFAULT_SETS.get(level)
+            if default_set:
+                default_set_path = os.path.join(LEVELS_DIR, level, f"{default_set}.txt")
+                if os.path.exists(default_set_path):
+                    # Обновляем сет
+                    crud.update_user_chosen_set(chat_id, default_set)
+                    user_set_selection[chat_id] = default_set
+                    reset_daily_words_cache(chat_id)
+                    await callback.message.edit_text(
+                        f"⚠️ Выбранный ранее сет '{current_set}' не соответствует вашему текущему уровню {level}.\n\n"
+                        f"Автоматически установлен базовый сет '{default_set}' для уровня {level}.\n\n"
+                        f"Нажмите 'Слова дня' еще раз для просмотра слов.",
+                        parse_mode="Markdown",
+                        reply_markup=words_day_keyboard()
+                    )
+                    await callback.answer()
+                    return
     
     result = get_daily_words_for_user(
         chat_id, user[1], user[2], user[3],

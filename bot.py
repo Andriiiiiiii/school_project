@@ -19,6 +19,30 @@ MAX_BACKFILL_HOURS = 3  # Maximum hours to look back for missed notifications
 # Modified on_startup function in bot.py
 
 async def on_startup(dp):
+    # Добавляем проверку существования директорий и файлов
+    from config import LEVELS_DIR, DEFAULT_SETS
+    import os
+    # Проверяем основную директорию
+    if not os.path.exists(LEVELS_DIR):
+        logger.error(f"Директория уровней не найдена: {LEVELS_DIR}")
+        os.makedirs(LEVELS_DIR, exist_ok=True)
+        logger.info(f"Создана директория уровней: {LEVELS_DIR}")
+
+    # Проверяем директории для каждого уровня
+    for level in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+        level_dir = os.path.join(LEVELS_DIR, level)
+        if not os.path.exists(level_dir):
+            logger.warning(f"Директория для уровня {level} не найдена: {level_dir}")
+            os.makedirs(level_dir, exist_ok=True)
+            logger.info(f"Создана директория для уровня {level}: {level_dir}")
+        
+        # Проверяем файл стандартного сета
+        default_set = DEFAULT_SETS.get(level)
+        if default_set:
+            set_path = os.path.join(level_dir, f"{default_set}.txt")
+            if not os.path.exists(set_path):
+                logger.warning(f"Файл стандартного сета для уровня {level} не найден: {set_path}")
+
     loop = asyncio.get_running_loop()
     start_scheduler(bot, loop)
     
@@ -26,10 +50,17 @@ async def on_startup(dp):
     from handlers.commands import set_commands
     await set_commands(bot)
     
+
     # Проверяем пропущенные уведомления
     await check_missed_notifications(bot)
-    
-    logger.info("Бот запущен")
+    # Проверяем и добавляем столбцы для настроек обучения
+    try:
+        from alter_db_learning import add_learning_columns
+        add_learning_columns()
+        logger.info("Проверка и добавление столбцов для настроек обучения выполнена.")
+    except Exception as e:
+        logger.error(f"Ошибка при проверке столбцов для настроек обучения: {e}")
+        logger.info("Бот запущен")
     
 # New function to check for missed notifications
 

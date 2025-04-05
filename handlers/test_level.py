@@ -297,10 +297,42 @@ async def finish_level_test(chat_id: int, bot: Bot):
             new_level = level
         else:
             break
-    
+
+    # Получаем текущий выбранный сет пользователя из базы и из кэша
+    current_set = None
+
+    # Проверяем сет в кэше
+    try:
+        from handlers.settings import user_set_selection
+        if chat_id in user_set_selection:
+            current_set = user_set_selection[chat_id]
+    except ImportError:
+        logger.error("Could not import user_set_selection, unable to preserve chosen set")
+
+    # Если нет в кэше, смотрим в базе данных
+    user = crud.get_user(chat_id)
+    if not current_set and user and len(user) > 6:
+        current_set = user[6]
+
     # Update user level in database
     crud.update_user_level(chat_id, new_level)
     
+    # Если сет все еще не выбран, устанавливаем базовый для нового уровня
+    if not current_set:
+        from config import DEFAULT_SETS
+        current_set = DEFAULT_SETS.get(new_level)
+        if current_set:
+            # Обновляем базу данных и кэш
+            crud.update_user_chosen_set(chat_id, current_set)
+            try:
+                from handlers.settings import user_set_selection
+                user_set_selection[chat_id] = current_set
+            except ImportError:
+                logger.error("Could not import user_set_selection, unable to update chosen set in memory")
+
+    # Сбрасываем кэш ежедневных слов
+    reset_daily_words_cache(chat_id)
+
     # Use the visual helper to format the results
     formatted_results = format_level_test_results(results_by_level, new_level)
     
