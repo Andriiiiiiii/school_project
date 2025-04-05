@@ -6,23 +6,22 @@ from typing import List
 logger = logging.getLogger(__name__)
 
 # ID стикеров для поздравлений (нужно заменить на настоящие ID)
-# Эти примеры нужно будет заменить на реальные стикеры из Telegram
 CONGRATULATION_STICKERS = [
-    "CAACAgIAAxkBAAEKX2RlB3TN7AAB3o7Dh4QXsaU6SWHccpQAAjcHAAJlhUhLOh2LB8jQBDswBA",  # Аплодисменты
-    "CAACAgIAAxkBAAEKX2ZlB3VnXKiJ7AABaRpSmMhlg3JFQmQAAkIHAAL2U-hLNLtFY_Tf0GUwBA",  # Победа
-    "CAACAgIAAxkBAAEKX2hlB3V8Tit78f3MF-Z20VkfUvl7KAACbgUAAvLm-UtcQxCPuiDzijAE",    # Отлично
-    "CAACAgIAAxkBAAEKX2plB3WNvnIuI7Cp5fJGW2vkBQgxwwACaQQAAvoLtgz5uFAl45Q-EDAE"     # Молодец
+    "CAACAgIAAxkBAAEOGn9n8VgDNk-LiGKGtIFdoF-mcH7dFwACsUIAAuzowEncnUsSshcY4jYE",  # Аплодисменты
+    "CAACAgIAAxkBAAEOGoNn8VhCLHSxD3n-LgLEb6EHE59psQACqCoAAkRtWUi50I6LZeu10TYE",  # Победа
+    "CAACAgIAAxkBAAEOGodn8VhlbulYsIr_PMipimhuebHVwgACIDsAAo_yUEhLNqxeSlOWvDYE",    # Отлично
+    "CAACAgIAAxkBAAEOGoln8Vh69Z4X9znkmJ1OerOdEkWZyAACbyoAAqAVWEjIcv-tVvXsRTYE"     # Молодец
 ]
 
 # ID стикеров для других ситуаций
-LEVEL_UP_STICKERS = [
-    "CAACAgIAAxkBAAEKX2xlB3WqKpxGw4juDrO-9JYlnwMBBgACSAYAApb6mEtdGC_QpHZMfjAE",  # Новый уровень
-    "CAACAgIAAxkBAAEKX25lB3W7PgabrU-agWQny-gGQsT0cgACTQYAAgw7mEu8TCGVzn1dYDAE"   # Повышение
+CLEAN_STICKERS = [
+    "CAACAgIAAxkBAAEOGmJn8VSOHXIYi01pBkUEsCPEyTDC1AAC1ygAAtzp6Eg7WBFqJXABxjYE",  # Новый уровень
+    "CAACAgIAAxkBAAEOGoVn8VhYr_JhwOAYBk-leBdZde9-FgACgzgAAvxWgEtjNWPp4shPgzYE"   # Повышение
 ]
 
 WELCOME_STICKERS = [
-    "CAACAgIAAxkBAAEKX3BlB3XNCQlI9RgqQFJ_OvCjFd6FsgACSQkAAqHemEvHxS8oKuKavjAE",  # Приветствие
-    "CAACAgIAAxkBAAEKX3JlB3Xh9wnyCQtajdSqxu-2wQk3nwACTQkAAkgGmUtxGVdQyBbR_DAE"   # Рукопожатие
+    "CAACAgIAAxkBAAEOGmJn8VSOHXIYi01pBkUEsCPEyTDC1AAC1ygAAtzp6Eg7WBFqJXABxjYE",  # Приветствие
+    "CAACAgIAAxkBAAEOGmJn8VSOHXIYi01pBkUEsCPEyTDC1AAC1ygAAtzp6Eg7WBFqJXABxjYE"   # Рукопожатие
 ]
 
 def get_random_sticker(sticker_list: List[str]) -> str:
@@ -39,9 +38,9 @@ def get_congratulation_sticker(score_percentage: float = None) -> str:
     """
     return get_random_sticker(CONGRATULATION_STICKERS)
 
-def get_level_up_sticker() -> str:
+def get_clean_sticker() -> str:
     """Возвращает стикер для повышения уровня."""
-    return get_random_sticker(LEVEL_UP_STICKERS)
+    return get_random_sticker(CLEAN_STICKERS)
 
 def get_welcome_sticker() -> str:
     """Возвращает приветственный стикер."""

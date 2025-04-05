@@ -24,11 +24,27 @@ def words_day_keyboard():
 
 def dictionary_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=1)
-    # Удаляем кнопку "View Word Card"
-    # keyboard.add(InlineKeyboardButton("📊 View Word Card", callback_data="dictionary:word_card"))
+    # Add Clear Dictionary button
+    keyboard.add(InlineKeyboardButton("🗑 Очистить словарь", callback_data="dictionary:clear_confirm"))
     keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="menu:back"))
     return keyboard
 
+# New confirmation keyboard for dictionary clearing
+def clear_dictionary_confirm_keyboard():
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("✅ Да, очистить", callback_data="dictionary:clear_confirmed"),
+        InlineKeyboardButton("❌ Нет, отмена", callback_data="dictionary:clear_cancel")
+    )
+    return keyboard
+
+def set_change_confirm_keyboard(encoded_set_name):
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        InlineKeyboardButton("✅ Да, сменить", callback_data=f"set_change_confirmed:{encoded_set_name}"),
+        InlineKeyboardButton("❌ Нет, отмена", callback_data="set_change_cancel")
+    )
+    return keyboard
 
 def settings_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=1)

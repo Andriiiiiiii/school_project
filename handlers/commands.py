@@ -22,9 +22,6 @@ async def set_commands(bot: Bot):
 
 async def cmd_start(message: types.Message, bot: Bot):
     """Обработчик команды /start."""
-    from keyboards.main_menu import main_menu_keyboard
-    from database import crud
-    
     chat_id = message.chat.id
     logger.info(f"Получена команда /start от chat_id: {chat_id}")
     

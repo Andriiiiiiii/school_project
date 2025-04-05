@@ -12,6 +12,9 @@ import logging
 from zoneinfo import ZoneInfo
 
 from utils.visual_helpers import format_settings_overview
+from utils.sticker_helper import get_congratulation_sticker
+
+import urllib.parse
 
 
 # Настройка логирования
@@ -160,26 +163,60 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
             await bot.send_message(chat_id, f"В папке {user_level} не найдено сетов.")
             return
 
+        # Get current set and learned words
+        current_set = user_set_selection.get(chat_id, None)
+        
+        # Check if user has any learned words
+        try:
+            learned_words = crud.get_learned_words(chat_id)
+            has_learned_words = len(learned_words) > 0
+        except Exception as e:
+            logger.error(f"Error checking learned words: {e}")
+            has_learned_words = False
+        
+        # Prepare message with current set info
+        message_text = f"Доступные сеты для уровня {user_level}:"
+        if current_set:
+            message_text = f"Текущий сет: *{current_set}*\n\n" + message_text
+        
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         for filename in set_files:
             set_name = os.path.splitext(filename)[0]
-            keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{set_name}"))
+            # URL-encode the set name to handle special characters safely
+            encoded_set_name = urllib.parse.quote(set_name)
+            
+            # Different callback for different scenarios
+            if current_set and set_name != current_set and has_learned_words:
+                # User has a set and dictionary, needs confirmation to change
+                keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"confirm_set_change:{encoded_set_name}"))
+            else:
+                # First selection or no learned words, no confirmation needed
+                keyboard.add(types.InlineKeyboardButton(set_name, callback_data=f"choose_set:{encoded_set_name}"))
+        
         keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
         
-        await bot.send_message(chat_id, f"Доступные сеты для уровня {user_level}:", reply_markup=keyboard)
+        await bot.send_message(chat_id, message_text, parse_mode="Markdown", reply_markup=keyboard)
     except Exception as e:
         logger.error(f"Unexpected error in process_my_sets for user {chat_id}: {e}")
         await bot.send_message(chat_id, "Произошла ошибка при получении списка сетов. Пожалуйста, попробуйте позже.")
-    
+
+# Updated process_choose_set function with both fixes for long messages
+# and for automatically clearing the dictionary when changing sets
+
 async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик выбора сета. Читает файл выбранного сета.
+    При большом объеме данных показывает только часть слов.
+    При смене сета автоматически очищает словарь пользователя.
     """
     chat_id = callback.from_user.id
     try:
         try:
-            _, set_name = callback.data.split(":", 1)
-        except ValueError:
+            _, encoded_set_name = callback.data.split(":", 1)
+            # URL-decode the set name to get original name with special characters
+            set_name = urllib.parse.unquote(encoded_set_name)
+        except ValueError as e:
+            logger.error(f"Error parsing callback data: {e}, data: {callback.data}")
             await callback.answer("Неверный формат данных.", show_alert=True)
             return
 
@@ -201,7 +238,7 @@ async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
             with open(set_path, "r", encoding="utf-8") as f:
                 content = f.read()
         except UnicodeDecodeError:
-            logger.warning(f"Unicode decode error for file {set_path}, trying cp1251 encoding")
+            logger.warning(f"Unicode decode error in file {set_path}, trying cp1251 encoding")
             try:
                 with open(set_path, "r", encoding="cp1251") as f:
                     content = f.read()
@@ -209,25 +246,70 @@ async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
                 logger.error(f"Failed to read file with alternative encoding: {e}")
                 await bot.send_message(chat_id, f"Ошибка при чтении файла: неподдерживаемая кодировка.")
                 return
-        except PermissionError:
-            logger.error(f"Permission denied when reading file: {set_path}")
-            await bot.send_message(chat_id, f"Ошибка доступа при чтении файла.")
-            return
         except Exception as e:
             logger.error(f"Error reading file {set_path}: {e}")
             await bot.send_message(chat_id, f"Ошибка при чтении файла: {e}")
             return
 
+        # Проверяем, нужно ли очистить словарь (если это смена сета, а не первичный выбор)
+        current_set = user_set_selection.get(chat_id, None)
+        dictionary_cleared = False
+        
+        if current_set and current_set != set_name:
+            # Если это смена сета (а не повторный выбор того же сета), очищаем словарь
+            try:
+                crud.clear_learned_words_for_user(chat_id)
+                dictionary_cleared = True
+                logger.info(f"Dictionary cleared for user {chat_id} due to set change from '{current_set}' to '{set_name}'")
+            except Exception as e:
+                logger.error(f"Error clearing dictionary for user {chat_id}: {e}")
+        
+        # Store the original (non-encoded) set name
         user_set_selection[chat_id] = set_name
         reset_daily_words_cache(chat_id)  # очищаем кэш 'Слова дня' при смене сета
+        
+        # Проверяем длину сообщения и обрезаем при необходимости
+        intro_text = f"Выбран сет {set_name} для уровня {user_level}."
+        
+        # Добавляем уведомление об очистке словаря, если она произошла
+        if dictionary_cleared:
+            intro_text += "\n⚠️ Словарь очищен, так как был выбран новый сет."
+            
+        intro_text += "\nСлова сета:\n\n"
+        
+        # Разделяем содержимое на отдельные слова
+        lines = content.split('\n')
+        
+        # Telegram ограничивает сообщения до ~4096 символов
+        MAX_MESSAGE_LENGTH = 3800  # Оставляем запас для интро и примечания
+        
+        # Если содержимое слишком большое, показываем только часть
+        if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+            # Определяем, сколько строк можем показать
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:  # +100 для запаса
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+            
+            note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+            message_text = intro_text + preview_content + note
+        else:
+            message_text = intro_text + content
 
-        await bot.send_message(chat_id, f"Выбран сет {set_name} для уровня {user_level}.\nСлова сета:\n\n{content}",
-                                  reply_markup=settings_menu_keyboard())
+        await bot.send_message(chat_id, message_text, reply_markup=settings_menu_keyboard())
+        
     except Exception as e:
         logger.error(f"Unexpected error in process_choose_set for user {chat_id}: {e}")
-        await bot.send_message(chat_id, "Произошла ошибка при выборе сета. Пожалуйста, попробуйте позже.")
+        await bot.send_message(chat_id, f"Произошла ошибка при выборе сета: {str(e)}. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
+
 
 async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
@@ -315,31 +397,52 @@ async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
 
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
+    """Register all settings handlers"""
+    # Basic settings handlers
     dp.register_callback_query_handler(
-        lambda c: show_settings_callback(c, bot),
+        partial(show_settings_callback, bot=bot),
         lambda c: c.data == "menu:settings"
     )
     dp.register_callback_query_handler(
-        lambda c: process_notification_back(c, bot),
+        partial(process_notification_back, bot=bot),
         lambda c: c.data == "settings:back"
     )
     dp.register_callback_query_handler(
-        lambda c: process_settings_choice_callback(c, bot),
+        partial(process_settings_choice_callback, bot=bot),
         lambda c: c.data and c.data.startswith("settings:") and c.data != "settings:back"
     )
     dp.register_callback_query_handler(
-        lambda c: process_set_level_callback(c, bot),
+        partial(process_set_level_callback, bot=bot),
         lambda c: c.data and c.data.startswith("set_level:")
     )
     dp.register_callback_query_handler(
-        lambda c: process_set_timezone_callback(c, bot),
+        partial(process_set_timezone_callback, bot=bot),
         lambda c: c.data and c.data.startswith("set_timezone:")
     )
+    
+    # Set change confirmation handlers
     dp.register_callback_query_handler(
-        lambda c: process_choose_set(c, bot),
+        partial(handle_confirm_set_change, bot=bot),
+        lambda c: c.data and c.data.startswith("confirm_set_change:")
+    )
+    dp.register_callback_query_handler(
+        partial(handle_set_change_confirmed, bot=bot),
+        lambda c: c.data and c.data.startswith("set_change_confirmed:")
+    )
+    dp.register_callback_query_handler(
+        partial(handle_set_change_cancelled, bot=bot),
+        lambda c: c.data == "set_change_cancel"
+    )
+    
+    # Final choose_set handler (keep last)
+    dp.register_callback_query_handler(
+        partial(process_choose_set, bot=bot),
         lambda c: c.data and c.data.startswith("choose_set:")
     )
+    
+    # Text input handler
     dp.register_message_handler(process_text_setting, content_types=['text'])
+
 
 async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
     """Display user settings with enhanced formatting"""
@@ -371,3 +474,159 @@ async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
             parse_mode="Markdown", 
             reply_markup=settings_menu_keyboard()
         )
+
+async def handle_confirm_set_change(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик подтверждения смены сета. 
+    Показывает диалог подтверждения с предупреждением о сбросе прогресса.
+    """
+    chat_id = callback.from_user.id
+    try:
+        # Extract encoded set name from callback data
+        _, encoded_set_name = callback.data.split(":", 1)
+        # URL-decode the set name
+        set_name = urllib.parse.unquote(encoded_set_name)
+        
+        # Get current set name
+        current_set = user_set_selection.get(chat_id, "не выбран")
+        
+        # Create confirmation keyboard
+        keyboard = types.InlineKeyboardMarkup(row_width=2)
+        keyboard.add(
+            types.InlineKeyboardButton("✅ Да, сменить", callback_data=f"set_change_confirmed:{encoded_set_name}"),
+            types.InlineKeyboardButton("❌ Нет, отмена", callback_data="set_change_cancel")
+        )
+        
+        # Send confirmation message
+        await bot.send_message(
+            chat_id,
+            f"⚠️ *Внимание! Смена сета приведет к полному сбросу прогресса.*\n\n"
+            f"Текущий сет: *{current_set}*\n"
+            f"Новый сет: *{set_name}*\n\n"
+            f"При смене сета ваш словарь будет полностью очищен. Вы уверены?",
+            parse_mode="Markdown",
+            reply_markup=keyboard
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in handle_confirm_set_change: {e}")
+        await bot.send_message(chat_id, "Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_set_change_confirmed(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик подтверждения смены сета.
+    Очищает словарь и вызывает функцию выбора сета.
+    """
+    chat_id = callback.from_user.id
+    try:
+        # Extract the encoded set name
+        _, encoded_set_name = callback.data.split(":", 1)
+        set_name = urllib.parse.unquote(encoded_set_name)
+        
+        # Clear user's dictionary
+        try:
+            crud.clear_learned_words_for_user(chat_id)
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change")
+        except Exception as e:
+            logger.error(f"Error clearing dictionary: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Get user level
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            await callback.answer()
+            return
+            
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        
+        if not os.path.exists(set_path):
+            logger.warning(f"Set file not found: {set_path}")
+            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+            await callback.answer()
+            return
+        
+        # Read file content
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Error reading file: {e}")
+                await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+                await callback.answer()
+                return
+        except Exception as e:
+            logger.error(f"Error reading file: {e}")
+            await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Store the selected set and reset cache
+        user_set_selection[chat_id] = set_name
+        reset_daily_words_cache(chat_id)
+        
+        # Store the selected set and reset cache
+        user_set_selection[chat_id] = set_name
+        reset_daily_words_cache(chat_id)
+        
+        # Отправляем стикер для смены уровня
+        sticker_id = get_congratulation_sticker()
+        if sticker_id:
+            await bot.send_sticker(chat_id, sticker_id)
+
+        # Format message with truncation for large sets
+        intro_text = f"Выбран сет {set_name} для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
+        
+        # Split content into lines
+        lines = content.split('\n')
+        
+        # Max message length for Telegram
+        MAX_MESSAGE_LENGTH = 3800
+        
+        # Check if content is too large
+        if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+            
+            note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+            message_text = intro_text + preview_content + note
+        else:
+            message_text = intro_text + content
+        
+        # Send the message
+        await bot.send_message(chat_id, message_text, reply_markup=settings_menu_keyboard())
+        
+    except Exception as e:
+        logger.error(f"Error in handle_set_change_confirmed: {e}")
+        await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+
+async def handle_set_change_cancelled(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик отмены смены сета.
+    Возвращает к списку сетов.
+    """
+    chat_id = callback.from_user.id
+    
+    # Возвращаемся к списку сетов
+    await process_my_sets(callback, bot)
+    await callback.answer("Смена сета отменена")
