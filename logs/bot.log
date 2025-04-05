@@ -874,3 +874,146 @@ NameError: name 'reset_daily_words_cache' is not defined
 2025-04-06 01:00:26,996 - INFO - Найдено 3 файлов сетов в директории levels/B2
 2025-04-06 01:00:27,344 - INFO - Stop polling...
 2025-04-06 01:00:27,344 - WARNING - Goodbye!
+2025-04-06 01:05:53,689 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-06 01:05:53,847 - WARNING - Updates were skipped successfully.
+2025-04-06 01:05:53,849 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-06 01:05:53,849 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-06 01:05:53,849 - INFO - Scheduler started
+2025-04-06 01:05:53,849 - INFO - Scheduler started with optimized configuration
+2025-04-06 01:05:53,849 - INFO - Бот запущен.
+2025-04-06 01:05:53,849 - INFO - Start polling.
+2025-04-06 01:06:05,041 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-06 01:06:05,041 - INFO - Пользователь 1999873173 уже существует
+2025-04-06 01:06:57,605 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:07:53 MSK)" was missed by 0:00:03.756164
+2025-04-06 01:07:57,768 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:08:53 MSK)" was missed by 0:00:03.919878
+2025-04-06 01:08:57,757 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:09:53 MSK)" was missed by 0:00:03.908266
+2025-04-06 01:09:55,824 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:10:53 MSK)" was missed by 0:00:01.975118
+2025-04-06 01:10:57,770 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:11:53 MSK)" was missed by 0:00:03.921625
+2025-04-06 01:11:56,355 - INFO - Stop polling...
+2025-04-06 01:11:56,356 - WARNING - Goodbye!
+2025-04-06 01:11:58,287 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-06 01:11:58,446 - WARNING - Updates were skipped successfully.
+2025-04-06 01:11:58,450 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-06 01:11:58,451 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-06 01:11:58,451 - INFO - Scheduler started
+2025-04-06 01:11:58,451 - INFO - Scheduler started with optimized configuration
+2025-04-06 01:11:58,451 - INFO - Бот запущен.
+2025-04-06 01:11:58,452 - INFO - Start polling.
+2025-04-06 01:12:01,999 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:12:01,999 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:12:06,330 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-06 01:12:06,330 - INFO - Найдено 3 файлов сетов в директории levels/A1
+2025-04-06 01:12:09,539 - INFO - Resetting daily words cache for user 1999873173
+2025-04-06 01:12:09,539 - INFO - Cache successfully reset for user 1999873173
+2025-04-06 01:12:09,539 - INFO - Cleared learned words for user 1999873173
+2025-04-06 01:12:15,599 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:12:15,599 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:12:21,288 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-06 01:12:21,288 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-06 01:12:21,288 - INFO - Подготовлено 10 слов для квиза пользователя 1999873173
+2025-04-06 01:12:31,662 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-06 01:12:31,662 - INFO - Найдено 3 файлов сетов в директории levels/A1
+2025-04-06 01:12:35,233 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-06 01:12:35,233 - INFO - Найдено 3 файлов сетов в директории levels/A1
+2025-04-06 01:12:42,347 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-06 01:12:42,347 - INFO - Найдено 3 файлов сетов в директории levels/A1
+2025-04-06 01:12:45,975 - INFO - Resetting daily words cache for user 1999873173
+2025-04-06 01:12:45,975 - INFO - Cache successfully reset for user 1999873173
+2025-04-06 01:12:46,981 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:12:46,981 - INFO - Найдено 3 файлов сетов в директории levels/C1
+2025-04-06 01:12:50,588 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:12:50,588 - INFO - Найдено 3 файлов сетов в директории levels/C1
+2025-04-06 01:12:52,335 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:12:52,335 - INFO - Найдено 3 файлов сетов в директории levels/C1
+2025-04-06 01:12:56,832 - INFO - Cleared learned words for user 1999873173
+2025-04-06 01:13:02,312 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:13:58 MSK)" was missed by 0:00:03.862184
+2025-04-06 01:13:18,318 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C1, путь: levels/C1
+2025-04-06 01:13:18,319 - INFO - Найдено 3 файлов сетов в директории levels/C1
+2025-04-06 01:13:20,846 - INFO - Cleared learned words for user 1999873173
+2025-04-06 01:13:26,543 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:13:26,543 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:14:00,357 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:14:58 MSK)" was missed by 0:00:01.907752
+2025-04-06 01:15:02,200 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:15:58 MSK)" was missed by 0:00:03.750606
+2025-04-06 01:16:02,131 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:16:58 MSK)" was missed by 0:00:03.681521
+2025-04-06 01:17:02,061 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:17:58 MSK)" was missed by 0:00:03.611416
+2025-04-06 01:18:01,992 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:18:58 MSK)" was missed by 0:00:03.542231
+2025-04-06 01:19:00,257 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:19:58 MSK)" was missed by 0:00:01.807639
+2025-04-06 01:20:01,927 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:20:58 MSK)" was missed by 0:00:03.477150
+2025-04-06 01:20:27,463 - INFO - Получена команда /start от chat_id: 380675615
+2025-04-06 01:20:27,463 - INFO - Пользователь 380675615 уже существует
+2025-04-06 01:20:28,823 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:20:28,824 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:20:39,046 - INFO - У пользователя 380675615 есть 4 выученных слов
+2025-04-06 01:20:39,046 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-06 01:20:39,046 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-06 01:20:55,212 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:20:55,212 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:21:01,180 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:21:01,180 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:21:01,919 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:21:58 MSK)" was missed by 0:00:03.469003
+2025-04-06 01:21:19,474 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:21:19,475 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:21:32,012 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:21:32,013 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:21:45,610 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:21:45,610 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:21:48,699 - INFO - Cleared learned words for user 380675615
+2025-04-06 01:21:48,699 - INFO - Resetting daily words cache for user 380675615
+2025-04-06 01:21:48,699 - INFO - Cache successfully reset for user 380675615
+2025-04-06 01:21:59,896 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:21:59,896 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:22:01,684 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:22:58 MSK)" was missed by 0:00:03.234397
+2025-04-06 01:22:06,816 - INFO - Проверка директории сетов для пользователя 380675615, уровень B2, путь: levels/B2
+2025-04-06 01:22:06,816 - INFO - Найдено 3 файлов сетов в директории levels/B2
+2025-04-06 01:22:09,089 - INFO - Resetting daily words cache for user 380675615
+2025-04-06 01:22:09,089 - INFO - Cache successfully reset for user 380675615
+2025-04-06 01:22:09,089 - INFO - Cleared learned words for user 380675615
+2025-04-06 01:22:15,177 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:22:15,177 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-06 01:22:21,381 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-06 01:22:21,382 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-06 01:22:21,382 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-06 01:22:55,133 - INFO - Получен сет 'Advanced Travel Vocabulary' из базы данных для пользователя 380675615
+2025-04-06 01:22:55,133 - INFO - Для пользователя 380675615 с уровнем B2 выбран сет 'Advanced Travel Vocabulary'
+2025-04-06 01:22:55,133 - INFO - Проверка пути к файлу сета: levels/B2/Advanced Travel Vocabulary.txt
+2025-04-06 01:23:00,084 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:23:58 MSK)" was missed by 0:00:01.634109
+2025-04-06 01:23:22,552 - INFO - Получен сет 'Advanced Travel Vocabulary' из базы данных для пользователя 380675615
+2025-04-06 01:23:22,552 - INFO - Для пользователя 380675615 с уровнем B2 выбран сет 'Advanced Travel Vocabulary'
+2025-04-06 01:23:22,552 - INFO - Проверка пути к файлу сета: levels/B2/Advanced Travel Vocabulary.txt
+2025-04-06 01:24:01,707 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:24:58 MSK)" was missed by 0:00:03.257621
+2025-04-06 01:24:05,575 - INFO - Получен сет 'Advanced Travel Vocabulary' из базы данных для пользователя 380675615
+2025-04-06 01:24:05,575 - INFO - Для пользователя 380675615 с уровнем B2 выбран сет 'Advanced Travel Vocabulary'
+2025-04-06 01:24:05,575 - INFO - Проверка пути к файлу сета: levels/B2/Advanced Travel Vocabulary.txt
+2025-04-06 01:24:12,056 - INFO - Получен сет 'Advanced Travel Vocabulary' из базы данных для пользователя 380675615
+2025-04-06 01:24:12,057 - INFO - Для пользователя 380675615 с уровнем B2 выбран сет 'Advanced Travel Vocabulary'
+2025-04-06 01:24:12,057 - INFO - Проверка пути к файлу сета: levels/B2/Advanced Travel Vocabulary.txt
+2025-04-06 01:24:25,664 - ERROR - Error updating test_words_count for user 380675615: no such column: test_words_count
+2025-04-06 01:24:25,664 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-640' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: test_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 252, in process_learning_settings_input
+    crud.update_user_test_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 203, in update_user_test_words_count
+    cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: test_words_count
+2025-04-06 01:24:37,724 - INFO - Получен сет 'Advanced Travel Vocabulary' из базы данных для пользователя 380675615
+2025-04-06 01:24:37,724 - INFO - Для пользователя 380675615 с уровнем B2 выбран сет 'Advanced Travel Vocabulary'
+2025-04-06 01:24:37,724 - INFO - Проверка пути к файлу сета: levels/B2/Advanced Travel Vocabulary.txt
+2025-04-06 01:25:01,730 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-06 01:25:58 MSK)" was missed by 0:00:03.280411
+2025-04-06 01:25:49,428 - INFO - Stop polling...
+2025-04-06 01:25:49,429 - WARNING - Goodbye!

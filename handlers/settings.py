@@ -229,7 +229,7 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
             # Используем индекс вместо имени сета в callback_data для предотвращения ошибки
             # Сохраняем соответствие в кэше
             set_index = len(set_files) - set_files.index(filename)  # Начинаем с 1
-            callback_data = f"set_idx:{set_index}" if set_name != current_set or not has_learned_words else f"confirm_idx:{set_index}"
+            callback_data = f"set_idx:{set_index}" if not has_learned_words else f"confirm_idx:{set_index}"
             
             # Сохраняем имя сета в глобальный cache для восстановления по индексу
             if not hasattr(process_my_sets, 'set_cache'):
