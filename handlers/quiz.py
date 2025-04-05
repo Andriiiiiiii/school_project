@@ -6,11 +6,11 @@ import asyncio
 from database import crud
 from utils.quiz_helpers import load_quiz_data
 from keyboards.submenus import quiz_keyboard
-from utils.helpers import get_daily_words_for_user, daily_words_cache, extract_english
+from utils.helpers import get_daily_words_for_user, daily_words_cache
+from utils.visual_helpers import format_quiz_question, format_result_message, extract_english
 from config import REMINDER_START, DURATION_HOURS
 import logging
 # Импортируем визуальные помощники и работу со стикерами
-from utils.visual_helpers import format_quiz_question, format_result_message, extract_english
 from utils.sticker_helper import get_congratulation_sticker
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -40,10 +40,19 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None, is_r
     
     for word in daily_words:
         word_lc = word.lower()
-        if word_lc not in mapping:
-            continue
         
-        correct_translation = mapping[word_lc]
+        # Пытаемся найти слово в словаре соответствий
+        if word_lc in mapping:
+            correct_translation = mapping[word_lc]
+        else:
+            # Если не нашли слово, пробуем извлечь английскую часть
+            word_extracted = extract_english(word).lower()
+            if word_extracted in mapping:
+                correct_translation = mapping[word_extracted]
+            else:
+                # Если все равно не нашли, логируем и пропускаем
+                logger.warning(f"Word '{word}' (extracted as '{word_extracted}') not found in quiz data mapping")
+                continue
         
         # Создаем пул отвлекающих вариантов, исключая правильный ответ
         pool = list(translations_set - {correct_translation})
@@ -145,13 +154,19 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
                 quiz_words = list(daily_words)
             else:
                 quiz_words = list(unlearned_words)
+                # Доп. проверка для безопасности
                 if not quiz_words:
                     await bot.send_message(chat_id, "Нет данных для квиза. Возможно, все слова уже выучены.")
                     return
             
+            logger.info(f"Подготовлено {len(quiz_words)} слов для квиза пользователя {chat_id}")
+            
             # Генерируем вопросы для квиза
             questions = generate_quiz_questions_from_daily(quiz_words, level, chosen_set, is_revision_mode)
+            
             if not questions:
+                logger.warning(f"Не удалось создать вопросы для квиза из {len(quiz_words)} слов у пользователя {chat_id}")
+                
                 if is_revision_mode:
                     await bot.send_message(chat_id, "Не удалось создать вопросы для повторения. Попробуйте выбрать другой набор слов.")
                 else:
@@ -178,7 +193,7 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     
     await callback.answer()
 
-
+# Остальной код оставляем без изменений
 async def send_quiz_question(chat_id, bot: Bot):
     """Отправляет вопрос квиза."""
     try:
@@ -250,7 +265,6 @@ async def send_quiz_question(chat_id, bot: Bot):
     except Exception as e:
         logger.error(f"Ошибка при отправке вопроса квиза пользователю {chat_id}: {e}")
         await bot.send_message(chat_id, "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.")
-
 
 
 # Функция обработки ответа на вопрос квиза

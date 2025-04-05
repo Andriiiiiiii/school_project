@@ -1,3 +1,4 @@
+# utils/quiz_helpers.py
 """
 Файл: utils/quiz_helpers.py
 Описание: Функция для загрузки данных для квиза.
@@ -36,11 +37,24 @@ def load_quiz_data(level: str, chosen_set: str = None):
                     line = line.strip()
                     if not line:
                         continue
-                    if " - " in line:
-                        parts = line.split(" - ", 1)
-                        word = parts[0].strip()
-                        translation = parts[1].strip()
-                        quiz_items.append({"word": word, "translation": translation})
+                    
+                    # Проверяем различные форматы разделителей
+                    word = None
+                    translation = None
+                    
+                    for separator in [" - ", " – ", ": "]:
+                        if separator in line:
+                            parts = line.split(separator, 1)
+                            if len(parts) == 2:
+                                word = parts[0].strip()
+                                translation = parts[1].strip()
+                                quiz_items.append({"word": word, "translation": translation})
+                                break
+                    
+                    # Если не нашли разделитель, но строка выглядит как слово,
+                    # добавляем ее как есть (это поможет с совместимостью)
+                    if word is None and line and not line.startswith(("#", "//")):
+                        quiz_items.append({"word": line, "translation": line})
             
             logger.debug(f"Loaded {len(quiz_items)} quiz items from {filename}")
             return quiz_items
@@ -52,11 +66,22 @@ def load_quiz_data(level: str, chosen_set: str = None):
                         line = line.strip()
                         if not line:
                             continue
-                        if " - " in line:
-                            parts = line.split(" - ", 1)
-                            word = parts[0].strip()
-                            translation = parts[1].strip()
-                            quiz_items.append({"word": word, "translation": translation})
+                        
+                        # Повторяем ту же логику для другой кодировки
+                        word = None
+                        translation = None
+                        
+                        for separator in [" - ", " – ", ": "]:
+                            if separator in line:
+                                parts = line.split(separator, 1)
+                                if len(parts) == 2:
+                                    word = parts[0].strip()
+                                    translation = parts[1].strip()
+                                    quiz_items.append({"word": word, "translation": translation})
+                                    break
+                        
+                        if word is None and line and not line.startswith(("#", "//")):
+                            quiz_items.append({"word": line, "translation": line})
                 
                 logger.debug(f"Loaded {len(quiz_items)} quiz items from {filename} with cp1251 encoding")
                 return quiz_items
