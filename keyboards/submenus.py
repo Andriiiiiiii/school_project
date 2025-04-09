@@ -82,6 +82,10 @@ def notification_settings_menu_keyboard():
     return keyboard
 
 def learning_menu_keyboard():
+    """
+    Создает клавиатуру для меню обучения.
+    4 кнопки располагаются в 2 строки по 2 столбца.
+    """
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
         InlineKeyboardButton("📚 Тест по словарю", callback_data="learning:dictionary_test"),
@@ -94,6 +98,10 @@ def learning_menu_keyboard():
     return keyboard
 
 def learning_settings_keyboard():
+    """
+    Создает клавиатуру для настроек обучения.
+    3 кнопки в 2 строки: первая строка - 2 кнопки, вторая строка - 1 кнопка.
+    """
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
         InlineKeyboardButton("📊 Настройки теста", callback_data="learning:test_settings"),

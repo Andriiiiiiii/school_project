@@ -60,7 +60,22 @@ async def on_startup(dp):
         logger.info("Проверка и добавление столбцов для настроек обучения выполнена.")
     except Exception as e:
         logger.error(f"Ошибка при проверке столбцов для настроек обучения: {e}")
-        logger.info("Бот запущен")
+        # Добавляем явное создание колонок в случае ошибки
+        try:
+            with db_manager.get_cursor() as cursor:
+                cursor.execute("PRAGMA table_info(users)")
+                result = cursor.fetchall()
+                columns = [row[1] for row in result]
+                
+                if 'test_words_count' not in columns:
+                    cursor.execute("ALTER TABLE users ADD COLUMN test_words_count INTEGER DEFAULT 5")
+                    logger.info("Столбец 'test_words_count' успешно добавлен.")
+                    
+                if 'memorize_words_count' not in columns:
+                    cursor.execute("ALTER TABLE users ADD COLUMN memorize_words_count INTEGER DEFAULT 5")
+                    logger.info("Столбец 'memorize_words_count' успешно добавлен.")
+        except Exception as e2:
+            logger.error(f"Критическая ошибка при добавлении столбцов: {e2}")
     
 # New function to check for missed notifications
 

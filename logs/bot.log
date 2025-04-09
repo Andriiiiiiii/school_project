@@ -1100,3 +1100,623 @@ aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified 
 2025-04-06 01:35:42,633 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
 2025-04-06 01:35:47,773 - INFO - Stop polling...
 2025-04-06 01:35:47,773 - WARNING - Goodbye!
+2025-04-10 00:21:09,708 - INFO - Bot: HabitTrackerBot [@AllHabitsTrackerBot]
+2025-04-10 00:21:09,887 - WARNING - Updates were skipped successfully.
+2025-04-10 00:21:09,892 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:21:09,893 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:21:09,893 - INFO - Scheduler started
+2025-04-10 00:21:09,893 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:21:09,893 - INFO - Бот запущен.
+2025-04-10 00:21:09,893 - INFO - Start polling.
+2025-04-10 00:21:15,175 - ERROR - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 119, in check_result
+    exceptions.ConflictError.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.TerminatedByOtherGetUpdates: Terminated by other getupdates request; make sure that only one bot instance is running
+2025-04-10 00:21:16,814 - INFO - Stop polling...
+2025-04-10 00:21:16,814 - WARNING - Goodbye!
+2025-04-10 00:21:57,332 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:21:57,494 - WARNING - Updates were skipped successfully.
+2025-04-10 00:21:57,496 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:21:57,497 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:21:57,497 - INFO - Scheduler started
+2025-04-10 00:21:57,497 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:21:57,497 - INFO - Бот запущен.
+2025-04-10 00:21:57,497 - INFO - Start polling.
+2025-04-10 00:22:01,145 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:22:01,145 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 00:22:03,949 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:03,950 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:17,846 - INFO - Получен сет 'Advanced Collocations & Phrases' из базы данных для пользователя 1999873173
+2025-04-10 00:22:17,846 - INFO - Проверка пути к файлу сета: levels/C1/Advanced Collocations & Phrases.txt
+2025-04-10 00:22:27,352 - INFO - Resetting daily words cache for user 1999873173
+2025-04-10 00:22:27,352 - INFO - Cache successfully reset for user 1999873173
+2025-04-10 00:22:28,543 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-10 00:22:28,544 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-10 00:22:32,095 - INFO - Cleared learned words for user 1999873173
+2025-04-10 00:22:40,796 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 00:22:40,797 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 00:22:57,500 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:23:57 MSK)" (scheduled at 2025-04-10 00:22:57.496578+03:00)
+2025-04-10 00:22:57,506 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:57,506 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:57,507 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:57,507 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:22:57,533 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:23:57 MSK)" executed successfully
+2025-04-10 00:22:59,477 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-10 00:22:59,477 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-10 00:22:59,477 - INFO - Подготовлено 10 слов для квиза пользователя 1999873173
+2025-04-10 00:23:46,738 - ERROR - Error updating memorize_words_count for user 1999873173: no such column: memorize_words_count
+2025-04-10 00:23:46,738 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-224' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: memorize_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 287, in process_learning_settings_input
+    crud.update_user_memorize_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 213, in update_user_memorize_words_count
+    cursor.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: memorize_words_count
+2025-04-10 00:23:55,257 - ERROR - Error updating test_words_count for user 1999873173: no such column: test_words_count
+2025-04-10 00:23:55,258 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-237' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: test_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 281, in process_learning_settings_input
+    crud.update_user_test_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 203, in update_user_test_words_count
+    cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: test_words_count
+2025-04-10 00:23:57,501 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:24:57 MSK)" (scheduled at 2025-04-10 00:23:57.496578+03:00)
+2025-04-10 00:23:57,502 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:24:57 MSK)" executed successfully
+2025-04-10 00:24:00,195 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 00:24:00,195 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 00:24:36,213 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 00:24:36,213 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 00:24:40,388 - INFO - Stop polling...
+2025-04-10 00:24:40,389 - WARNING - Goodbye!
+2025-04-10 00:30:23,771 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:30:23,941 - WARNING - Updates were skipped successfully.
+2025-04-10 00:30:23,955 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:30:23,960 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:30:23,960 - INFO - Scheduler started
+2025-04-10 00:30:23,960 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:30:23,961 - INFO - Бот запущен.
+2025-04-10 00:30:23,961 - INFO - Start polling.
+2025-04-10 00:30:27,455 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:30:27,455 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:30:42,935 - ERROR - Error updating test_words_count for user 1999873173: no such column: test_words_count
+2025-04-10 00:30:42,935 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-55' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: test_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 282, in process_learning_settings_input
+    crud.update_user_test_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 203, in update_user_test_words_count
+    cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: test_words_count
+2025-04-10 00:30:52,823 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 00:30:52,823 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 00:31:05,308 - ERROR - Error updating test_words_count for user 1999873173: no such column: test_words_count
+2025-04-10 00:31:05,308 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-93' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: test_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 282, in process_learning_settings_input
+    crud.update_user_test_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 203, in update_user_test_words_count
+    cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: test_words_count
+2025-04-10 00:31:08,168 - INFO - Stop polling...
+2025-04-10 00:31:08,168 - WARNING - Goodbye!
+2025-04-10 00:31:38,457 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:31:38,625 - WARNING - Updates were skipped successfully.
+2025-04-10 00:31:38,626 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:31:38,626 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:31:38,626 - INFO - Scheduler started
+2025-04-10 00:31:38,626 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:31:38,626 - INFO - Бот запущен.
+2025-04-10 00:31:38,627 - INFO - Start polling.
+2025-04-10 00:32:13,029 - ERROR - Error updating test_words_count for user 1999873173: no such column: test_words_count
+2025-04-10 00:32:13,029 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-21' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: test_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 282, in process_learning_settings_input
+    crud.update_user_test_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 203, in update_user_test_words_count
+    cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: test_words_count
+2025-04-10 00:32:38,633 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:33:38 MSK)" (scheduled at 2025-04-10 00:32:38.626415+03:00)
+2025-04-10 00:32:38,639 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:32:38,640 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:32:38,642 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:32:38,642 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:32:38,664 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:33:38 MSK)" executed successfully
+2025-04-10 00:33:01,986 - ERROR - Error updating memorize_words_count for user 1999873173: no such column: memorize_words_count
+2025-04-10 00:33:01,987 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-36' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=OperationalError('no such column: memorize_words_count')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 288, in process_learning_settings_input
+    crud.update_user_memorize_words_count(chat_id, value)
+  File "/home/andrii/telegram-bot/english_learning_bot/database/crud.py", line 213, in update_user_memorize_words_count
+    cursor.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (count, chat_id))
+sqlite3.OperationalError: no such column: memorize_words_count
+2025-04-10 00:33:38,631 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:34:38 MSK)" (scheduled at 2025-04-10 00:33:38.626415+03:00)
+2025-04-10 00:33:38,634 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:34:38 MSK)" executed successfully
+2025-04-10 00:34:19,031 - INFO - Stop polling...
+2025-04-10 00:34:19,032 - WARNING - Goodbye!
+2025-04-10 00:36:39,248 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:36:39,434 - WARNING - Updates were skipped successfully.
+2025-04-10 00:36:39,440 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:36:39,441 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:36:39,441 - INFO - Scheduler started
+2025-04-10 00:36:39,441 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:36:39,441 - INFO - Бот запущен.
+2025-04-10 00:36:39,442 - INFO - Start polling.
+2025-04-10 00:36:45,049 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:36:45,049 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 00:36:46,827 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:36:46,828 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:36:48,564 - INFO - У пользователя 1999873173 есть 3 выученных слов
+2025-04-10 00:36:48,564 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-10 00:36:48,565 - INFO - Подготовлено 10 слов для квиза пользователя 1999873173
+2025-04-10 00:37:24,290 - INFO - Stop polling...
+2025-04-10 00:37:24,291 - WARNING - Goodbye!
+2025-04-10 00:37:31,715 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:37:31,885 - WARNING - Updates were skipped successfully.
+2025-04-10 00:37:31,888 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:37:31,889 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:37:31,889 - INFO - Scheduler started
+2025-04-10 00:37:31,889 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:37:31,889 - INFO - Бот запущен.
+2025-04-10 00:37:31,890 - INFO - Start polling.
+2025-04-10 00:37:34,840 - INFO - Stop polling...
+2025-04-10 00:37:34,841 - WARNING - Goodbye!
+2025-04-10 00:38:26,529 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:38:26,712 - WARNING - Updates were skipped successfully.
+2025-04-10 00:38:26,718 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:38:26,719 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:38:26,719 - INFO - Scheduler started
+2025-04-10 00:38:26,719 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:38:26,719 - INFO - Бот запущен.
+2025-04-10 00:38:26,719 - INFO - Start polling.
+2025-04-10 00:38:30,495 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:38:30,504 - INFO - Added new user with chat_id: 1999873173 with default set: A1 Basic 1
+2025-04-10 00:38:30,504 - INFO - Добавлен новый пользователь с chat_id 1999873173
+2025-04-10 00:38:30,504 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 1999873173
+2025-04-10 00:39:26,730 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:40:26 MSK)" (scheduled at 2025-04-10 00:39:26.717577+03:00)
+2025-04-10 00:39:26,731 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:39:26,731 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:39:26,733 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:39:26,733 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:39:26,763 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:40:26 MSK)" executed successfully
+2025-04-10 00:40:26,731 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:41:26 MSK)" (scheduled at 2025-04-10 00:40:26.717577+03:00)
+2025-04-10 00:40:26,734 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:41:26 MSK)" executed successfully
+2025-04-10 00:41:26,729 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:42:26 MSK)" (scheduled at 2025-04-10 00:41:26.717577+03:00)
+2025-04-10 00:41:26,730 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:42:26 MSK)" executed successfully
+2025-04-10 00:42:19,274 - INFO - Stop polling...
+2025-04-10 00:42:19,276 - WARNING - Goodbye!
+2025-04-10 00:42:20,675 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:42:20,841 - WARNING - Updates were skipped successfully.
+2025-04-10 00:42:20,842 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:42:20,842 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:42:20,842 - INFO - Scheduler started
+2025-04-10 00:42:20,842 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:42:20,842 - INFO - Бот запущен.
+2025-04-10 00:42:20,843 - INFO - Start polling.
+2025-04-10 00:42:27,582 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:42:27,583 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 00:42:33,658 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 2
+2025-04-10 00:42:33,659 - INFO - Updated test_words_count to 2 for user 1999873173
+2025-04-10 00:42:33,659 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 2
+2025-04-10 00:42:33,659 - INFO - Проверка обновления: было 5, стало 5
+2025-04-10 00:43:20,849 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:44:20 MSK)" (scheduled at 2025-04-10 00:43:20.842439+03:00)
+2025-04-10 00:43:20,850 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:43:20,850 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:43:20,851 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:43:20,851 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:43:20,871 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:44:20 MSK)" executed successfully
+2025-04-10 00:44:20,851 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:45:20 MSK)" (scheduled at 2025-04-10 00:44:20.842439+03:00)
+2025-04-10 00:44:20,853 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:45:20 MSK)" executed successfully
+2025-04-10 00:45:20,849 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:46:20 MSK)" (scheduled at 2025-04-10 00:45:20.842439+03:00)
+2025-04-10 00:45:20,851 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:46:20 MSK)" executed successfully
+2025-04-10 00:46:20,847 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:47:20 MSK)" (scheduled at 2025-04-10 00:46:20.842439+03:00)
+2025-04-10 00:46:20,849 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:47:20 MSK)" executed successfully
+2025-04-10 00:46:32,840 - INFO - Stop polling...
+2025-04-10 00:46:32,842 - WARNING - Goodbye!
+2025-04-10 00:50:19,146 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:50:19,321 - WARNING - Updates were skipped successfully.
+2025-04-10 00:50:19,326 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:50:19,327 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:50:19,327 - INFO - Scheduler started
+2025-04-10 00:50:19,327 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:50:19,327 - INFO - Бот запущен.
+2025-04-10 00:50:19,328 - INFO - Start polling.
+2025-04-10 00:50:21,923 - INFO - Stop polling...
+2025-04-10 00:50:21,924 - WARNING - Goodbye!
+2025-04-10 00:50:24,969 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:50:25,140 - WARNING - Updates were skipped successfully.
+2025-04-10 00:50:25,143 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:50:25,143 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:50:25,143 - INFO - Scheduler started
+2025-04-10 00:50:25,144 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:50:25,144 - INFO - Бот запущен.
+2025-04-10 00:50:25,144 - INFO - Start polling.
+2025-04-10 00:50:29,505 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 68, in handle_test_settings
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:50:31,800 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-18' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:50:39,351 - INFO - Stop polling...
+2025-04-10 00:50:39,352 - WARNING - Goodbye!
+2025-04-10 00:50:40,886 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:50:41,063 - WARNING - Updates were skipped successfully.
+2025-04-10 00:50:41,065 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:50:41,065 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:50:41,066 - INFO - Scheduler started
+2025-04-10 00:50:41,066 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:50:41,066 - INFO - Бот запущен.
+2025-04-10 00:50:41,066 - INFO - Start polling.
+2025-04-10 00:50:46,481 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:50:46,481 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 00:50:50,253 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:51:00,017 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-17' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:51:05,154 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-31' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:51:10,418 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-44' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:51:12,293 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:51:12,293 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:51:15,732 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-67' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:51:20,951 - INFO - Stop polling...
+2025-04-10 00:51:20,952 - WARNING - Goodbye!
+2025-04-10 00:51:22,829 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:51:23,011 - WARNING - Updates were skipped successfully.
+2025-04-10 00:51:23,013 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:51:23,013 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:51:23,013 - INFO - Scheduler started
+2025-04-10 00:51:23,013 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:51:23,013 - INFO - Бот запущен.
+2025-04-10 00:51:23,014 - INFO - Start polling.
+2025-04-10 00:51:41,972 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:52:23,016 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:53:23 MSK)" (scheduled at 2025-04-10 00:52:23.013005+03:00)
+2025-04-10 00:52:23,018 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:52:23,019 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:52:23,023 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:52:23,023 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:52:23,047 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:53:23 MSK)" executed successfully
+2025-04-10 00:53:23,016 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:54:23 MSK)" (scheduled at 2025-04-10 00:53:23.013005+03:00)
+2025-04-10 00:53:23,018 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 00:54:23 MSK)" executed successfully
+2025-04-10 00:53:33,705 - INFO - Stop polling...
+2025-04-10 00:53:33,706 - WARNING - Goodbye!
+2025-04-10 00:53:35,870 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:53:36,033 - WARNING - Updates were skipped successfully.
+2025-04-10 00:53:36,037 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:53:36,038 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:53:36,038 - INFO - Scheduler started
+2025-04-10 00:53:36,038 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:53:36,038 - INFO - Бот запущен.
+2025-04-10 00:53:36,038 - INFO - Start polling.
+2025-04-10 00:53:40,129 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'ensure_learning_columns_exist' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 51, in handle_learning_menu
+    ensure_learning_columns_exist()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'ensure_learning_columns_exist' is not defined
+2025-04-10 00:53:43,479 - INFO - Stop polling...
+2025-04-10 00:53:43,479 - WARNING - Goodbye!
+2025-04-10 00:54:12,546 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:54:12,709 - WARNING - Updates were skipped successfully.
+2025-04-10 00:54:12,711 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:54:12,712 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:54:12,712 - INFO - Scheduler started
+2025-04-10 00:54:12,712 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:54:12,712 - INFO - Бот запущен.
+2025-04-10 00:54:12,713 - INFO - Start polling.
+2025-04-10 00:54:17,827 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:54:17,827 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 00:54:28,970 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-10 00:54:28,970 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:54:28,970 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:54:28,971 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-10 00:54:28,972 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-10 00:54:58,909 - ERROR - Ошибка при обработке настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-10 00:55:08,020 - INFO - Stop polling...
+2025-04-10 00:55:08,020 - WARNING - Goodbye!
+2025-04-10 00:55:15,403 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 00:55:15,572 - WARNING - Updates were skipped successfully.
+2025-04-10 00:55:15,575 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 00:55:15,575 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 00:55:15,575 - INFO - Scheduler started
+2025-04-10 00:55:15,575 - INFO - Scheduler started with optimized configuration
+2025-04-10 00:55:15,575 - INFO - Бот запущен.
+2025-04-10 00:55:15,576 - INFO - Start polling.
+2025-04-10 00:55:19,204 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 00:55:19,228 - INFO - Added new user with chat_id: 1999873173 with default set: A1 Basic 1
+2025-04-10 00:55:19,229 - INFO - Добавлен новый пользователь с chat_id 1999873173
+2025-04-10 00:55:19,229 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 1999873173
+2025-04-10 00:55:24,641 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:55:24,642 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 00:55:27,171 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-10 00:55:27,172 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-10 00:55:27,172 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-10 00:55:53,654 - ERROR - Ошибка при обработке настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-10 00:56:02,746 - INFO - Stop polling...
+2025-04-10 00:56:02,746 - WARNING - Goodbye!

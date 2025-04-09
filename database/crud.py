@@ -200,9 +200,9 @@ def update_user_chosen_set(chat_id: int, set_name: str):
 def update_user_test_words_count(chat_id: int, count: int):
     """Обновляет количество слов для теста."""
     try:
-        cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
-        conn.commit()
-        logger.debug(f"Updated test_words_count to {count} for user {chat_id}")
+        with db_manager.transaction() as conn:
+            conn.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (count, chat_id))
+        logger.info(f"Updated test_words_count to {count} for user {chat_id}")
     except Exception as e:
         logger.error(f"Error updating test_words_count for user {chat_id}: {e}")
         raise
@@ -210,9 +210,9 @@ def update_user_test_words_count(chat_id: int, count: int):
 def update_user_memorize_words_count(chat_id: int, count: int):
     """Обновляет количество слов для заучивания."""
     try:
-        cursor.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (count, chat_id))
-        conn.commit()
-        logger.debug(f"Updated memorize_words_count to {count} for user {chat_id}")
+        with db_manager.transaction() as conn:
+            conn.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (count, chat_id))
+        logger.info(f"Updated memorize_words_count to {count} for user {chat_id}")
     except Exception as e:
         logger.error(f"Error updating memorize_words_count for user {chat_id}: {e}")
         raise
