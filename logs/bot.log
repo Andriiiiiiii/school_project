@@ -1720,3 +1720,168 @@ NameError: name 'ensure_learning_columns_exist' is not defined
 2025-04-10 00:55:53,654 - ERROR - Ошибка при обработке настроек: 'Bot' object has no attribute 'get_chat_history'
 2025-04-10 00:56:02,746 - INFO - Stop polling...
 2025-04-10 00:56:02,746 - WARNING - Goodbye!
+2025-04-10 01:04:12,602 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:04:12,771 - WARNING - Updates were skipped successfully.
+2025-04-10 01:04:12,776 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:04:12,777 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:04:12,777 - INFO - Scheduler started
+2025-04-10 01:04:12,777 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:04:12,777 - INFO - Бот запущен.
+2025-04-10 01:04:12,778 - INFO - Start polling.
+2025-04-10 01:04:18,965 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:04:18,966 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 01:04:36,237 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-64' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("process_learning_settings_input() missing 1 required positional argument: 'bot'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_learning_settings_input() missing 1 required positional argument: 'bot'
+2025-04-10 01:05:12,789 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:06:12 MSK)" (scheduled at 2025-04-10 01:05:12.775867+03:00)
+2025-04-10 01:05:12,790 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:05:12,790 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:05:12,791 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:05:12,791 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:05:12,812 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:06:12 MSK)" executed successfully
+2025-04-10 01:06:12,777 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:07:12 MSK)" (scheduled at 2025-04-10 01:06:12.775867+03:00)
+2025-04-10 01:06:12,777 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:07:12 MSK)" executed successfully
+2025-04-10 01:07:12,792 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:08:12 MSK)" (scheduled at 2025-04-10 01:07:12.775867+03:00)
+2025-04-10 01:07:12,793 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:08:12 MSK)" executed successfully
+2025-04-10 01:08:12,793 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:09:12 MSK)" (scheduled at 2025-04-10 01:08:12.775867+03:00)
+2025-04-10 01:08:12,797 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:09:12 MSK)" executed successfully
+2025-04-10 01:08:14,538 - INFO - Stop polling...
+2025-04-10 01:08:14,538 - WARNING - Goodbye!
+2025-04-10 01:08:17,012 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:08:17,192 - WARNING - Updates were skipped successfully.
+2025-04-10 01:08:17,195 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:08:17,195 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:08:17,196 - INFO - Scheduler started
+2025-04-10 01:08:17,196 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:08:17,196 - INFO - Бот запущен.
+2025-04-10 01:08:17,196 - INFO - Start polling.
+2025-04-10 01:08:33,144 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:08:33,144 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 01:08:49,445 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 2
+2025-04-10 01:08:49,451 - INFO - Updated test_words_count to 2 for user 1999873173
+2025-04-10 01:08:49,451 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 2
+2025-04-10 01:09:16,475 - INFO - Stop polling...
+2025-04-10 01:09:16,476 - WARNING - Goodbye!
+2025-04-10 01:09:38,632 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:09:38,800 - WARNING - Updates were skipped successfully.
+2025-04-10 01:09:38,801 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:09:38,801 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:09:38,801 - INFO - Scheduler started
+2025-04-10 01:09:38,801 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:09:38,801 - INFO - Бот запущен.
+2025-04-10 01:09:38,802 - INFO - Start polling.
+2025-04-10 01:09:46,763 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:09:46,772 - INFO - Added new user with chat_id: 1999873173 with default set: A1 Basic 1
+2025-04-10 01:09:46,772 - INFO - Добавлен новый пользователь с chat_id 1999873173
+2025-04-10 01:09:46,773 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 1999873173
+2025-04-10 01:09:48,225 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-10 01:09:48,225 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:09:48,225 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:09:48,227 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-10 01:09:48,227 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-10 01:10:14,853 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 2
+2025-04-10 01:10:14,854 - INFO - Updated test_words_count to 2 for user 1999873173
+2025-04-10 01:10:14,855 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 2
+2025-04-10 01:10:17,104 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 01:10:17,104 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 01:10:30,176 - INFO - Получен ввод настройки memorize_words от пользователя 1999873173: 10
+2025-04-10 01:10:30,176 - INFO - Updated memorize_words_count to 10 for user 1999873173
+2025-04-10 01:10:30,176 - INFO - Обновлено количество слов для заучивания у пользователя 1999873173: 10
+2025-04-10 01:10:32,357 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 01:10:32,357 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 01:10:38,813 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:11:38 MSK)" (scheduled at 2025-04-10 01:10:38.801445+03:00)
+2025-04-10 01:10:38,815 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:10:38,816 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:10:38,847 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:11:38 MSK)" executed successfully
+2025-04-10 01:11:38,808 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:12:38 MSK)" (scheduled at 2025-04-10 01:11:38.801445+03:00)
+2025-04-10 01:11:38,810 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:12:38 MSK)" executed successfully
+2025-04-10 01:11:39,787 - INFO - Stop polling...
+2025-04-10 01:11:39,788 - WARNING - Goodbye!
+2025-04-10 01:11:51,889 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:11:52,051 - WARNING - Updates were skipped successfully.
+2025-04-10 01:11:52,053 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:11:52,057 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:11:52,057 - INFO - Scheduler started
+2025-04-10 01:11:52,057 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:11:52,057 - INFO - Бот запущен.
+2025-04-10 01:11:52,057 - INFO - Start polling.
+2025-04-10 01:11:57,485 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:11:57,486 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 01:12:07,347 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 2
+2025-04-10 01:12:07,347 - INFO - Updated test_words_count to 2 for user 1999873173
+2025-04-10 01:12:07,348 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 2
+2025-04-10 01:12:52,055 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:13:52 MSK)" (scheduled at 2025-04-10 01:12:52.053330+03:00)
+2025-04-10 01:12:52,056 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:12:52,056 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:12:52,057 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:12:52,057 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-10 01:12:52,077 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:13:52 MSK)" executed successfully
+2025-04-10 01:13:52,055 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:14:52 MSK)" (scheduled at 2025-04-10 01:13:52.053330+03:00)
+2025-04-10 01:13:52,056 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:14:52 MSK)" executed successfully
+2025-04-10 01:14:52,054 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:15:52 MSK)" (scheduled at 2025-04-10 01:14:52.053330+03:00)
+2025-04-10 01:14:52,055 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:15:52 MSK)" executed successfully
+2025-04-10 01:15:52,055 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:16:52 MSK)" (scheduled at 2025-04-10 01:15:52.053330+03:00)
+2025-04-10 01:15:52,056 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:16:52 MSK)" executed successfully
+2025-04-10 01:16:52,058 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:17:52 MSK)" (scheduled at 2025-04-10 01:16:52.053330+03:00)
+2025-04-10 01:16:52,059 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:17:52 MSK)" executed successfully
+2025-04-10 01:17:52,059 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:18:52 MSK)" (scheduled at 2025-04-10 01:17:52.053330+03:00)
+2025-04-10 01:17:52,061 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:18:52 MSK)" executed successfully
+2025-04-10 01:18:52,058 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:19:52 MSK)" (scheduled at 2025-04-10 01:18:52.053330+03:00)
+2025-04-10 01:18:52,060 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-10 01:19:52 MSK)" executed successfully
+2025-04-10 01:18:59,573 - INFO - Stop polling...
+2025-04-10 01:18:59,574 - WARNING - Goodbye!
+2025-04-10 01:19:01,350 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:19:01,525 - WARNING - Updates were skipped successfully.
+2025-04-10 01:19:01,526 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:19:01,526 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:19:01,526 - INFO - Scheduler started
+2025-04-10 01:19:01,526 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:19:01,526 - INFO - Бот запущен.
+2025-04-10 01:19:01,526 - INFO - Start polling.
+2025-04-10 01:19:11,643 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:19:11,643 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 01:19:20,773 - INFO - Установлено ожидание ввода test_words для пользователя 1999873173
+2025-04-10 01:19:23,137 - INFO - Получено сообщение от пользователя 1999873173: 3
+2025-04-10 01:19:23,137 - INFO - Обработка настройки test_words для пользователя 1999873173: 3
+2025-04-10 01:19:23,138 - INFO - Обновляем test_words_count на 3 для пользователя 1999873173
+2025-04-10 01:19:23,145 - INFO - Updated test_words_count to 3 for user 1999873173
+2025-04-10 01:19:23,145 - INFO - Значение после обновления: 5
+2025-04-10 01:19:24,816 - INFO - Установлено ожидание ввода test_words для пользователя 1999873173
+2025-04-10 01:19:27,648 - INFO - Установлено ожидание ввода test_words для пользователя 1999873173
+2025-04-10 01:19:33,268 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-10 01:19:33,268 - INFO - Проверка пути к файлу сета: levels/A1/A1 Basic 1.txt
+2025-04-10 01:19:43,600 - INFO - Stop polling...
+2025-04-10 01:19:43,600 - WARNING - Goodbye!
+2025-04-10 01:26:17,422 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-10 01:26:17,594 - WARNING - Updates were skipped successfully.
+2025-04-10 01:26:17,599 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-10 01:26:17,600 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-10 01:26:17,600 - INFO - Scheduler started
+2025-04-10 01:26:17,600 - INFO - Scheduler started with optimized configuration
+2025-04-10 01:26:17,600 - INFO - Бот запущен.
+2025-04-10 01:26:17,600 - INFO - Start polling.
+2025-04-10 01:26:23,313 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-10 01:26:23,314 - INFO - Пользователь 1999873173 уже существует
+2025-04-10 01:26:31,944 - INFO - Пользователь 1999873173 переходит в режим ввода test_words
+2025-04-10 01:26:33,622 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 2
+2025-04-10 01:26:33,630 - INFO - Updated test_words_count to 2 for user 1999873173
+2025-04-10 01:26:33,631 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 2
+2025-04-10 01:26:35,639 - INFO - Пользователь 1999873173 переходит в режим ввода test_words
+2025-04-10 01:26:40,449 - INFO - Stop polling...
+2025-04-10 01:26:40,449 - WARNING - Goodbye!
