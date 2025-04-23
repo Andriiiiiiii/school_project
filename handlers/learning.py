@@ -66,7 +66,24 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
         return
     
     # Получаем настроенное количество слов для теста
-    test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
+    # Получаем настроенное количество слов для теста
+    test_words_count = 5  # Значение по умолчанию
+    try:
+        if len(user) > 7 and user[7] is not None:
+            test_words_count = int(user[7])
+            logger.info(f"Получено значение test_words_count из базы: {test_words_count}")
+        else:
+            logger.warning(f"Не удалось получить test_words_count из кортежа пользователя длиной {len(user)}")
+            # Прямой запрос к базе данных
+            with db_manager.get_cursor() as cursor:
+                cursor.execute("SELECT test_words_count FROM users WHERE chat_id = ?", (chat_id,))
+                result = cursor.fetchone()
+                if result and result[0]:
+                    test_words_count = int(result[0])
+                    logger.info(f"Получено значение test_words_count прямым запросом: {test_words_count}")
+    except Exception as e:
+        logger.error(f"Ошибка при получении test_words_count: {e}")
+        
     logger.info(f"Пользователь {chat_id} запускает тест по словарю с {test_words_count} словами")
     
     # Проверяем, хватает ли слов в словаре
@@ -490,23 +507,16 @@ def is_valid_number(text):
 # Обработчик текстовых сообщений для настроек
 # Заменить обе функции (process_learning_settings_input и process_direct_settings_update)
 # на одну оптимизированную функцию:
-
 async def process_learning_settings_input(message: types.Message, bot: Bot):
-    """
-    Обработчик ввода количества слов для теста/заучивания
-    Улучшенная версия, объединяющая logics process_learning_settings_input и process_direct_settings_update
-    """
+    """Обработчик ввода количества слов для теста/заучивания"""
     chat_id = message.chat.id
     text = message.text.strip()
     
     # Проверяем, что это числовое сообщение
     if not text.isdigit():
-        # Если это не числовой ввод и мы не ожидаем ввода от пользователя, 
-        # пропускаем обработку
         if chat_id not in pending_learning_settings:
             return False
         else:
-            # Если мы ожидаем ввод, но пользователь ввел не число, сообщаем об ошибке
             await message.answer(
                 "⚠️ Ошибка: введите корректное число.",
                 reply_markup=learning_settings_keyboard()
@@ -521,15 +531,13 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
         )
         return True
     
-    # Определяем контекст - какие настройки сейчас редактируются
+    # Определяем тип настройки
     setting_type = None
-    
-    # Сначала проверяем прямой контекст (ожидаем ли мы ввод от пользователя)
     if chat_id in pending_learning_settings:
         setting_type = pending_learning_settings[chat_id]
-        logger.info(f"Получен ввод настройки {setting_type} от пользователя {chat_id}: {text}")
+        logger.info(f"Получен ввод настройки {setting_type} от пользователя {chat_id}: {value}")
     else:
-        # Если прямого контекста нет, пробуем определить его из последнего сообщения бота
+        # Если не в контексте, пробуем определить из последнего сообщения
         try:
             async for msg in bot.get_chat_history(chat_id, limit=3):
                 if msg.from_user.is_bot and msg.text:
@@ -542,17 +550,18 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
         except Exception as e:
             logger.error(f"Ошибка при определении контекста настроек: {e}")
     
-    # Если контекст не определен, пропускаем обработку
     if not setting_type:
         return False
     
     try:
         if setting_type == "test_words":
-            # Используем crud функцию для обновления настройки теста
-            crud.update_user_test_words_count(chat_id, value)
+            # Дополнительная логика для обновления настроек теста
+            # Прямое обновление базы данных через SQL для надежности
+            with db_manager.transaction() as conn:
+                conn.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (value, chat_id))
+            
             logger.info(f"Обновлено количество слов для теста у пользователя {chat_id}: {value}")
             
-            # Удаляем пользователя из режима ожидания ввода
             if chat_id in pending_learning_settings:
                 del pending_learning_settings[chat_id]
             
@@ -563,11 +572,12 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
             return True
             
         elif setting_type == "memorize_words":
-            # Используем crud функцию для обновления настройки заучивания
-            crud.update_user_memorize_words_count(chat_id, value)
+            # Аналогично для заучивания
+            with db_manager.transaction() as conn:
+                conn.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (value, chat_id))
+            
             logger.info(f"Обновлено количество слов для заучивания у пользователя {chat_id}: {value}")
             
-            # Удаляем пользователя из режима ожидания ввода
             if chat_id in pending_learning_settings:
                 del pending_learning_settings[chat_id]
             
@@ -578,18 +588,17 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
             return True
     except Exception as e:
         logger.error(f"Ошибка при обновлении настроек для пользователя {chat_id}: {e}")
-        # Удаляем пользователя из режима ожидания ввода даже при ошибке
         if chat_id in pending_learning_settings:
             del pending_learning_settings[chat_id]
-            
+        
         await message.answer(
             "❌ Произошла ошибка при обновлении настроек. Пожалуйста, попробуйте позже.",
             reply_markup=learning_settings_keyboard()
         )
         return True
     
-    # Если дошли сюда, значит не обработали ввод
     return False
+
 
 # Заменить функцию send_learning_test_question на следующую:
 # Добавить в начало файла handlers/learning.py:

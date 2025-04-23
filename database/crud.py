@@ -51,7 +51,7 @@ def get_user(chat_id: int):
     """Получает информацию о пользователе по его chat_id."""
     try:
         cursor.execute(
-            "SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", 
+            "SELECT * FROM users WHERE chat_id = ?", 
             (chat_id,)
         )
         return cursor.fetchone()
