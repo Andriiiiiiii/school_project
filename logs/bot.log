@@ -601,3 +601,623 @@ aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified 
 2025-04-23 16:35:59,640 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
 2025-04-23 16:36:10,334 - INFO - Stop polling...
 2025-04-23 16:36:10,335 - WARNING - Goodbye!
+2025-04-23 16:49:07,307 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 16:49:07,453 - WARNING - Updates were skipped successfully.
+2025-04-23 16:49:07,456 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 16:49:07,457 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 16:49:07,457 - INFO - Scheduler started
+2025-04-23 16:49:07,457 - INFO - Scheduler started with optimized configuration
+2025-04-23 16:49:07,457 - INFO - Бот запущен.
+2025-04-23 16:49:07,457 - INFO - Start polling.
+2025-04-23 16:49:22,550 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 16:49:22,551 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 16:49:23,769 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:49:23,769 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:49:23,769 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:49:32,368 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 16:49:32,368 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:49:32,368 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:49:35,525 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:49:35,528 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:49:35,529 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 16:49:35,530 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 16:49:35,531 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 16:49:35,531 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 16:49:35,531 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:49:35,531 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 16:49:35,532 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 16:49:35,533 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 16:49:35,534 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 16:49:35,534 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 16:49:35,535 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 16:49:35,535 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 16:49:35,536 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 16:49:38,752 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:49:38,752 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 16:49:44,026 - INFO - Cleared learned words for user 1999873173
+2025-04-23 16:49:44,026 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 16:49:44,033 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 16:49:44,033 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 16:49:47,999 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:49:48,000 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:49:48,000 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:49:54,663 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 16:49:54,663 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 16:49:54,664 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 16:49:58,577 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:49:58,577 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 16:50:12,604 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:51:07 MSK)" was missed by 0:00:05.147958
+2025-04-23 16:50:14,903 - INFO - Установлен базовый сет C2 Basic 1 для пользователя 1999873173 при смене уровня на C2
+2025-04-23 16:50:14,903 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 16:50:14,903 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 16:50:18,185 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C2, путь: levels/C2
+2025-04-23 16:50:18,185 - INFO - Найдено 22 файлов сетов в директории levels/C2
+2025-04-23 16:50:20,796 - INFO - Cleared learned words for user 1999873173
+2025-04-23 16:50:20,796 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 16:50:43,684 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 16:50:49,418 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 16:50:54,818 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:50:54,822 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:50:54,822 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:51:12,431 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:52:07 MSK)" was missed by 0:00:04.975326
+2025-04-23 16:51:27,174 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C2, путь: levels/C2
+2025-04-23 16:51:27,176 - INFO - Найдено 22 файлов сетов в директории levels/C2
+2025-04-23 16:52:09,962 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:53:07 MSK)" was missed by 0:00:02.506228
+2025-04-23 16:53:12,532 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:54:07 MSK)" was missed by 0:00:05.076244
+2025-04-23 16:54:12,530 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:55:07 MSK)" was missed by 0:00:05.073696
+2025-04-23 16:55:10,010 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:56:07 MSK)" was missed by 0:00:02.553643
+2025-04-23 16:56:12,559 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:57:07 MSK)" was missed by 0:00:05.102987
+2025-04-23 16:57:06,469 - INFO - Stop polling...
+2025-04-23 16:57:06,470 - WARNING - Goodbye!
+2025-04-23 16:57:07,775 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 16:57:07,932 - WARNING - Updates were skipped successfully.
+2025-04-23 16:57:07,935 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 16:57:07,936 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 16:57:07,936 - INFO - Scheduler started
+2025-04-23 16:57:07,936 - INFO - Scheduler started with optimized configuration
+2025-04-23 16:57:07,936 - INFO - Бот запущен.
+2025-04-23 16:57:07,936 - INFO - Start polling.
+2025-04-23 16:57:14,161 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:57:14,161 - WARNING - Сет 'C2 Basic 1' не существует для уровня C2. Путь: levels/C2/C2 Basic 1.txt
+2025-04-23 16:57:14,161 - ERROR - Базовый сет 'C2 Basic 1' тоже не существует для уровня C2. Путь: levels/C2/C2 Basic 1.txt
+2025-04-23 16:57:23,428 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:57:23,428 - WARNING - Сет 'C2 Basic 1' не существует для уровня C2. Путь: levels/C2/C2 Basic 1.txt
+2025-04-23 16:57:23,429 - ERROR - Базовый сет 'C2 Basic 1' тоже не существует для уровня C2. Путь: levels/C2/C2 Basic 1.txt
+2025-04-23 16:57:27,191 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:57:27,195 - ERROR - Ошибка при проверке сета Advanced Environmental Issues: name 'extract_english' is not defined
+2025-04-23 16:57:27,196 - ERROR - Ошибка при проверке сета Language & Linguistics: name 'extract_english' is not defined
+2025-04-23 16:57:27,197 - ERROR - Ошибка при проверке сета С2 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:57:27,199 - ERROR - Ошибка при проверке сета Philosophy & Existential Questions: name 'extract_english' is not defined
+2025-04-23 16:57:27,200 - ERROR - Ошибка при проверке сета Literary Analysis & Criticism: name 'extract_english' is not defined
+2025-04-23 16:57:27,201 - ERROR - Ошибка при проверке сета Sociopolitical Commentary: name 'extract_english' is not defined
+2025-04-23 16:57:27,202 - ERROR - Ошибка при проверке сета Advanced Scientific Research: name 'extract_english' is not defined
+2025-04-23 16:57:27,204 - ERROR - Ошибка при проверке сета С2 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:57:27,204 - ERROR - Ошибка при проверке сета Art & Cultural Heritage: name 'extract_english' is not defined
+2025-04-23 16:57:27,205 - ERROR - Ошибка при проверке сета Advanced Medical Terms: name 'extract_english' is not defined
+2025-04-23 16:57:27,206 - ERROR - Ошибка при проверке сета Native-level Idioms & Expressions: name 'extract_english' is not defined
+2025-04-23 16:57:27,207 - ERROR - Ошибка при проверке сета Historical Analysis & Interpretation: name 'extract_english' is not defined
+2025-04-23 16:57:27,208 - ERROR - Ошибка при проверке сета Global Economy & Finance: name 'extract_english' is not defined
+2025-04-23 16:57:27,208 - ERROR - Ошибка при проверке сета Advanced Public Speaking & Rhetoric: name 'extract_english' is not defined
+2025-04-23 16:57:27,209 - ERROR - Ошибка при проверке сета Cultural Identity & Diversity: name 'extract_english' is not defined
+2025-04-23 16:57:27,209 - ERROR - Ошибка при проверке сета Innovations & Future Trends: name 'extract_english' is not defined
+2025-04-23 16:57:27,210 - ERROR - Ошибка при проверке сета High-level Business Terminology: name 'extract_english' is not defined
+2025-04-23 16:57:27,210 - ERROR - Ошибка при проверке сета Diplomacy & International Relations: name 'extract_english' is not defined
+2025-04-23 16:57:27,210 - ERROR - Ошибка при проверке сета Advanced Legal Vocabulary: name 'extract_english' is not defined
+2025-04-23 16:57:27,210 - ERROR - Ошибка при проверке сета Advanced Psychology: name 'extract_english' is not defined
+2025-04-23 16:57:27,211 - ERROR - Ошибка при проверке сета Advanced Academic Writing: name 'extract_english' is not defined
+2025-04-23 16:57:27,211 - ERROR - Ошибка при проверке сета Ethics & Moral Dilemmas: name 'extract_english' is not defined
+2025-04-23 16:57:30,445 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C2, путь: levels/C2
+2025-04-23 16:57:30,445 - INFO - Найдено 22 файлов сетов в директории levels/C2
+2025-04-23 16:57:44,728 - INFO - Cleared learned words for user 1999873173
+2025-04-23 16:57:44,729 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 16:57:54,373 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:57:54,373 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:57:54,373 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:58:04,511 - INFO - Проверка директории сетов для пользователя 1999873173, уровень C2, путь: levels/C2
+2025-04-23 16:58:04,511 - INFO - Найдено 22 файлов сетов в директории levels/C2
+2025-04-23 16:58:11,453 - INFO - Установлен базовый сет A1 Basic 1 для пользователя 1999873173 при смене уровня на A1
+2025-04-23 16:58:11,453 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 16:58:11,453 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 16:58:12,973 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:59:07 MSK)" was missed by 0:00:05.037687
+2025-04-23 16:58:14,625 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 16:58:14,625 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 16:58:14,626 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 16:58:17,383 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:58:17,383 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:58:17,383 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:58:26,521 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:58:26,521 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:58:26,521 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 16:58:26,522 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 16:58:33,637 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 16:58:33,637 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 16:58:34,636 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 16:58:34,636 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 16:58:34,637 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 16:58:45,908 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:58:45,909 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 16:58:48,337 - INFO - Cleared learned words for user 1999873173
+2025-04-23 16:58:48,337 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 16:58:57,417 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 16:58:57,417 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:58:57,417 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:58:57,418 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:58:57,418 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:59:10,551 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:00:07 MSK)" was missed by 0:00:02.616342
+2025-04-23 16:59:42,431 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:59:42,431 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:00:13,244 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:01:07 MSK)" was missed by 0:00:05.308727
+2025-04-23 17:01:13,237 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:02:07 MSK)" was missed by 0:00:05.301573
+2025-04-23 17:02:10,581 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:03:07 MSK)" was missed by 0:00:02.645539
+2025-04-23 17:02:18,907 - INFO - Stop polling...
+2025-04-23 17:02:18,908 - WARNING - Goodbye!
+2025-04-23 17:02:19,859 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:02:20,020 - WARNING - Updates were skipped successfully.
+2025-04-23 17:02:20,023 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:02:20,024 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:02:20,024 - INFO - Scheduler started
+2025-04-23 17:02:20,024 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:02:20,024 - INFO - Бот запущен.
+2025-04-23 17:02:20,024 - INFO - Start polling.
+2025-04-23 17:02:23,822 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:02:23,822 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:02:23,822 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:02:26,502 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:02:26,502 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:02:28,588 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:02:28,588 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:02:28,588 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:02:28,588 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:02:30,346 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 17:02:30,346 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 17:02:30,347 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 17:02:30,347 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 17:02:33,540 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:02:33,540 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:02:33,540 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:02:37,524 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 17:02:37,525 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 17:02:37,525 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 17:03:08,373 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:03:14,365 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:03:14,365 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:03:17,957 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:03:17,957 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:03:25,115 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:04:20 MSK)" was missed by 0:00:05.092745
+2025-04-23 17:03:29,052 - ERROR - Ошибка при проверке сета Advanced Environmental Issues: name 'extract_english' is not defined
+2025-04-23 17:03:29,052 - ERROR - Ошибка при проверке сета Language & Linguistics: name 'extract_english' is not defined
+2025-04-23 17:03:29,052 - ERROR - Ошибка при проверке сета С2 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:03:29,052 - ERROR - Ошибка при проверке сета Philosophy & Existential Questions: name 'extract_english' is not defined
+2025-04-23 17:03:29,052 - ERROR - Ошибка при проверке сета Literary Analysis & Criticism: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Sociopolitical Commentary: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Scientific Research: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета С2 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Art & Cultural Heritage: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Medical Terms: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Native-level Idioms & Expressions: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Historical Analysis & Interpretation: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Global Economy & Finance: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Public Speaking & Rhetoric: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Cultural Identity & Diversity: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Innovations & Future Trends: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета High-level Business Terminology: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Diplomacy & International Relations: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Legal Vocabulary: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Psychology: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Advanced Academic Writing: name 'extract_english' is not defined
+2025-04-23 17:03:29,053 - ERROR - Ошибка при проверке сета Ethics & Moral Dilemmas: name 'extract_english' is not defined
+2025-04-23 17:03:34,217 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:03:34,217 - WARNING - Сет 'Days, Months, Seasons' не существует для уровня C2. Путь: levels/C2/Days, Months, Seasons.txt
+2025-04-23 17:03:34,217 - ERROR - Базовый сет 'C2 Basic 1' тоже не существует для уровня C2. Путь: levels/C2/C2 Basic 1.txt
+2025-04-23 17:03:39,460 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:03:39,460 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:03:39,460 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 17:03:39,461 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 17:03:44,646 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:03:44,647 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:03:44,647 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:03:54,147 - INFO - У пользователя 1999873173 есть 5 выученных слов
+2025-04-23 17:03:54,147 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 17:03:54,147 - INFO - Подготовлено 4 слов для квиза пользователя 1999873173
+2025-04-23 17:04:03,550 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:04:10,150 - INFO - Получено значение test_words_count из базы: 4
+2025-04-23 17:04:10,150 - INFO - Пользователь 1999873173 запускает тест по словарю с 4 словами
+2025-04-23 17:04:17,876 - INFO - Получен сет 'Days, Months, Seasons' из базы данных для пользователя 1999873173
+2025-04-23 17:04:17,877 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:04:17,877 - INFO - Пользователь 1999873173 запускает заучивание сета с 7 словами
+2025-04-23 17:04:22,007 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:05:20 MSK)" was missed by 0:00:01.983938
+2025-04-23 17:04:26,622 - INFO - Получен сет 'Days, Months, Seasons' из базы данных для пользователя 1999873173
+2025-04-23 17:04:26,623 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:04:26,623 - INFO - Пользователь 1999873173 запускает заучивание сета с 7 словами
+2025-04-23 17:04:36,375 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:04:41,830 - INFO - Stop polling...
+2025-04-23 17:04:41,831 - WARNING - Goodbye!
+2025-04-23 17:06:26,401 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:06:26,542 - WARNING - Updates were skipped successfully.
+2025-04-23 17:06:26,544 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:06:26,544 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:06:26,545 - INFO - Scheduler started
+2025-04-23 17:06:26,545 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:06:26,545 - INFO - Бот запущен.
+2025-04-23 17:06:26,545 - INFO - Start polling.
+2025-04-23 17:06:43,369 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:06:43,369 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:06:43,369 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:06:57,045 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 17:07:01,650 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:07:03,351 - INFO - Получена команда /start от chat_id: 380675615
+2025-04-23 17:07:03,357 - INFO - Added new user with chat_id: 380675615 with default set: A1 Basic 1
+2025-04-23 17:07:03,357 - INFO - Добавлен новый пользователь с chat_id 380675615
+2025-04-23 17:07:03,357 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 380675615
+2025-04-23 17:07:06,994 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:07:06,995 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:07:06,995 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:07:11,345 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 17:07:11,574 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:07:11,575 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 17:07:11,576 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 17:07:16,823 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-23 17:07:16,823 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-23 17:07:16,827 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-23 17:07:18,718 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:07:31,225 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:08:26 MSK)" was missed by 0:00:04.681746
+2025-04-23 17:07:36,147 - INFO - У пользователя 380675615 есть 4 выученных слов
+2025-04-23 17:07:36,147 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-23 17:07:36,147 - INFO - Подготовлено 1 слов для квиза пользователя 380675615
+2025-04-23 17:07:46,083 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:07:51,257 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:07:51,258 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:07:51,264 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 17:07:51,265 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 17:07:51,265 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 17:07:51,265 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 17:07:51,266 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:07:51,266 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 17:07:51,266 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 17:07:51,267 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 17:07:51,267 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 17:07:51,267 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 17:07:51,268 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 17:07:51,268 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 17:07:51,269 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 17:07:55,462 - INFO - Resetting daily words cache for user 380675615
+2025-04-23 17:07:55,462 - INFO - Cache successfully reset for user 380675615
+2025-04-23 17:08:04,575 - INFO - Проверка директории сетов для пользователя 380675615, уровень A2, путь: levels/A2
+2025-04-23 17:08:04,575 - INFO - Найдено 16 файлов сетов в директории levels/A2
+2025-04-23 17:08:16,946 - INFO - Проверка директории сетов для пользователя 380675615, уровень A2, путь: levels/A2
+2025-04-23 17:08:16,946 - INFO - Найдено 16 файлов сетов в директории levels/A2
+2025-04-23 17:08:22,041 - INFO - Cleared learned words for user 380675615
+2025-04-23 17:08:22,041 - INFO - Dictionary cleared for user 380675615 due to set change by index
+2025-04-23 17:08:28,834 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:09:26 MSK)" was missed by 0:00:02.289932
+2025-04-23 17:08:37,674 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:08:37,674 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:08:37,674 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:08:40,678 - INFO - У пользователя 380675615 есть 0 выученных слов
+2025-04-23 17:08:40,678 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-23 17:08:40,678 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-23 17:08:57,341 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:09:04,699 - INFO - Получено значение test_words_count из базы: 5
+2025-04-23 17:09:04,699 - INFO - Пользователь 380675615 запускает тест по словарю с 5 словами
+2025-04-23 17:09:13,875 - INFO - Получен сет 'A2 Basic 1' из базы данных для пользователя 380675615
+2025-04-23 17:09:13,875 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:09:13,876 - INFO - Пользователь 380675615 запускает заучивание сета с 5 словами
+2025-04-23 17:09:31,147 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:10:26 MSK)" was missed by 0:00:04.603690
+2025-04-23 17:09:36,281 - INFO - Пользователь 380675615 переходит в режим ввода memorize_words
+2025-04-23 17:09:44,001 - INFO - Получен ввод настройки memorize_words от пользователя 380675615: 10
+2025-04-23 17:09:44,002 - INFO - Обновлено количество слов для заучивания у пользователя 380675615: 10
+2025-04-23 17:09:45,802 - INFO - Пользователь 380675615 переходит в режим ввода memorize_words
+2025-04-23 17:09:50,733 - INFO - Получен сет 'A2 Basic 1' из базы данных для пользователя 380675615
+2025-04-23 17:09:50,733 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:09:50,733 - INFO - Пользователь 380675615 запускает заучивание сета с 10 словами
+2025-04-23 17:10:29,378 - INFO - Пользователь 380675615 переходит в режим ввода test_words
+2025-04-23 17:10:31,154 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:11:26 MSK)" was missed by 0:00:04.609827
+2025-04-23 17:10:32,081 - INFO - Пользователь 380675615 переходит в режим ввода memorize_words
+2025-04-23 17:10:40,771 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:10:47,149 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:10:47,153 - ERROR - Ошибка при проверке сета Sports & Hobbies: name 'extract_english' is not defined
+2025-04-23 17:10:47,153 - ERROR - Ошибка при проверке сета Directions & Locations: name 'extract_english' is not defined
+2025-04-23 17:10:47,153 - ERROR - Ошибка при проверке сета Household Objects: name 'extract_english' is not defined
+2025-04-23 17:10:47,153 - ERROR - Ошибка при проверке сета Travel Essentials: name 'extract_english' is not defined
+2025-04-23 17:10:47,154 - ERROR - Ошибка при проверке сета Everyday Activities & Routines: name 'extract_english' is not defined
+2025-04-23 17:10:47,154 - ERROR - Ошибка при проверке сета Jobs and Occupations: name 'extract_english' is not defined
+2025-04-23 17:10:47,154 - ERROR - Ошибка при проверке сета Weather & Nature: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета Festivals & Celebrations: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета Leisure & Free Time: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета A2 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета Emotions & Feelings: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета In the City: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета Eating Out: name 'extract_english' is not defined
+2025-04-23 17:10:47,155 - ERROR - Ошибка при проверке сета Shopping and Money: name 'extract_english' is not defined
+2025-04-23 17:10:47,156 - ERROR - Ошибка при проверке сета Describing People: name 'extract_english' is not defined
+2025-04-23 17:10:47,156 - ERROR - Ошибка при проверке сета A2 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:10:53,053 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:11:04,713 - INFO - Получен ввод настройки memorize_words от пользователя 380675615: 15
+2025-04-23 17:11:04,714 - INFO - Обновлено количество слов для заучивания у пользователя 380675615: 15
+2025-04-23 17:11:15,241 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:11:31,122 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:12:26 MSK)" was missed by 0:00:04.578145
+2025-04-23 17:12:28,965 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:13:26 MSK)" was missed by 0:00:02.420911
+2025-04-23 17:13:11,976 - INFO - Stop polling...
+2025-04-23 17:13:11,977 - WARNING - Goodbye!
+2025-04-23 17:13:12,922 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:13:13,077 - WARNING - Updates were skipped successfully.
+2025-04-23 17:13:13,078 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:13:13,079 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:13:13,079 - INFO - Scheduler started
+2025-04-23 17:13:13,079 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:13:13,079 - INFO - Бот запущен.
+2025-04-23 17:13:13,079 - INFO - Start polling.
+2025-04-23 17:13:14,687 - INFO - Stop polling...
+2025-04-23 17:13:14,687 - WARNING - Goodbye!
+2025-04-23 17:13:16,186 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:13:16,333 - WARNING - Updates were skipped successfully.
+2025-04-23 17:13:16,335 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:13:16,336 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:13:16,336 - INFO - Scheduler started
+2025-04-23 17:13:16,336 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:13:16,336 - INFO - Бот запущен.
+2025-04-23 17:13:16,336 - INFO - Start polling.
+2025-04-23 17:13:29,023 - ERROR - Ошибка при подсчете статистики сета: name 'format_progress_bar' is not defined
+2025-04-23 17:13:42,262 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:13:42,262 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:13:47,145 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:13:47,145 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:13:47,145 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:13:53,253 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:13:53,253 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:14:03,086 - INFO - Stop polling...
+2025-04-23 17:14:03,086 - WARNING - Goodbye!
+2025-04-23 17:14:07,516 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:14:07,680 - WARNING - Updates were skipped successfully.
+2025-04-23 17:14:07,682 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:14:07,682 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:14:07,682 - INFO - Scheduler started
+2025-04-23 17:14:07,682 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:14:07,682 - INFO - Бот запущен.
+2025-04-23 17:14:07,682 - INFO - Start polling.
+2025-04-23 17:14:22,046 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:14:22,198 - WARNING - Updates were skipped successfully.
+2025-04-23 17:14:22,199 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:14:22,200 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:14:22,200 - INFO - Scheduler started
+2025-04-23 17:14:22,200 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:14:22,200 - INFO - Бот запущен.
+2025-04-23 17:14:22,200 - INFO - Start polling.
+2025-04-23 17:14:26,756 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 17:14:26,756 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 17:14:27,792 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:14:27,792 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:14:27,792 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:14:30,556 - ERROR - Ошибка при подсчете статистики сета: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета A1 Basic 2: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета Food Basics: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета Transport Basics: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета School Essentials: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета At Home: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета A1 Basic 1: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета Clothes & Accessories: name 'extract_english' is not defined
+2025-04-23 17:14:30,557 - ERROR - Ошибка при проверке сета Numbers, Colors & Shapes: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета Essential Everyday Words: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета Animals and Pets: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета Family and Friends: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета Common Verbs & Actions: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета Days, Months, Seasons: name 'extract_english' is not defined
+2025-04-23 17:14:30,558 - ERROR - Ошибка при проверке сета My Body & Health: name 'extract_english' is not defined
+2025-04-23 17:14:33,460 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:14:33,460 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:14:34,502 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:14:34,502 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:14:38,624 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:14:38,625 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:14:38,625 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:14:48,533 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 17:14:51,884 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 17:15:24,543 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:16:22 MSK)" was missed by 0:00:02.344250
+2025-04-23 17:15:39,849 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:15:39,850 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:15:42,243 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:15:42,243 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:15:42,252 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:15:42,252 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:15:44,385 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:15:44,385 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:15:44,385 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:15:48,519 - INFO - Установлен режим ожидания количества повторений для пользователя 1999873173
+2025-04-23 17:15:49,880 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 17:15:57,069 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 17:16:26,887 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:17:22 MSK)" was missed by 0:00:04.688133
+2025-04-23 17:17:26,950 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:18:22 MSK)" was missed by 0:00:04.750920
+2025-04-23 17:18:26,941 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:19:22 MSK)" was missed by 0:00:04.741887
+2025-04-23 17:19:24,583 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:20:22 MSK)" was missed by 0:00:02.384089
+2025-04-23 17:20:26,994 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:21:22 MSK)" was missed by 0:00:04.794977
+2025-04-23 17:21:27,086 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:22:22 MSK)" was missed by 0:00:04.887188
+2025-04-23 17:22:27,335 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:23:22 MSK)" was missed by 0:00:05.135550
+2025-04-23 17:23:24,750 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:24:22 MSK)" was missed by 0:00:02.550726
+2025-04-23 17:24:27,415 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:25:22 MSK)" was missed by 0:00:05.215630
+2025-04-23 17:25:27,461 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:26:22 MSK)" was missed by 0:00:05.262251
+2025-04-23 17:26:24,831 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:27:22 MSK)" was missed by 0:00:02.631827
+2025-04-23 17:26:29,774 - INFO - Stop polling...
+2025-04-23 17:26:29,775 - WARNING - Goodbye!
+2025-04-23 17:26:31,364 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:26:31,523 - WARNING - Updates were skipped successfully.
+2025-04-23 17:26:31,528 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:26:31,528 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:26:31,529 - INFO - Scheduler started
+2025-04-23 17:26:31,529 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:26:31,529 - INFO - Бот запущен.
+2025-04-23 17:26:31,530 - INFO - Start polling.
+2025-04-23 17:26:47,216 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:26:47,217 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:26:51,608 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 17:26:56,032 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 17:26:57,377 - INFO - Установлен режим ожидания количества повторений для пользователя 1999873173
+2025-04-23 17:27:04,560 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 17:27:14,646 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 17:27:14,646 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 17:27:33,520 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:28:31 MSK)" was missed by 0:00:01.992655
+2025-04-23 17:28:04,118 - INFO - Stop polling...
+2025-04-23 17:28:04,118 - WARNING - Goodbye!
+2025-04-23 17:28:40,890 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 17:28:41,041 - WARNING - Updates were skipped successfully.
+2025-04-23 17:28:41,045 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 17:28:41,045 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 17:28:41,046 - INFO - Scheduler started
+2025-04-23 17:28:41,046 - INFO - Scheduler started with optimized configuration
+2025-04-23 17:28:41,046 - INFO - Бот запущен.
+2025-04-23 17:28:41,046 - INFO - Start polling.
+2025-04-23 17:28:44,866 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 17:28:44,867 - INFO - Added new user with chat_id: 1999873173 with default set: A1 Basic 1
+2025-04-23 17:28:44,867 - INFO - Добавлен новый пользователь с chat_id 1999873173
+2025-04-23 17:28:44,867 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 1999873173
+2025-04-23 17:28:54,846 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:28:54,846 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:28:58,663 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:28:58,663 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:29:03,347 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:29:03,347 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:29:08,444 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:29:08,444 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:29:08,448 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:29:08,448 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:29:08,448 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:29:10,362 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:29:10,363 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:29:10,363 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:29:11,558 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:29:11,558 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:29:13,730 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:29:13,730 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:29:13,733 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:29:14,860 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:29:14,860 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:29:16,375 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:29:16,375 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:29:16,375 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:29:17,488 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:29:17,488 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:29:27,961 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 17:29:32,978 - INFO - Установлен режим ожидания количества повторений для пользователя 1999873173
+2025-04-23 17:29:44,045 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:29:44,045 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:29:46,337 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:30:41 MSK)" was missed by 0:00:05.292389
+2025-04-23 17:29:50,737 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 17:29:50,737 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 17:29:50,737 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 17:30:04,568 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:30:04,569 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:30:08,277 - INFO - Cleared learned words for user 1999873173
+2025-04-23 17:30:08,278 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 17:30:08,278 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 17:30:08,278 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 17:30:08,278 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-04-23 17:30:13,670 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 17:30:13,670 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 17:30:20,590 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:30:20,590 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 17:30:24,127 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 17:30:24,128 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 17:30:24,128 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 17:30:38,407 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 17:30:38,407 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 17:30:38,407 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 17:30:45,975 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:31:41 MSK)" was missed by 0:00:04.930102
+2025-04-23 17:30:59,401 - INFO - Получено значение test_words_count из базы: 5
+2025-04-23 17:30:59,401 - INFO - Пользователь 1999873173 запускает тест по словарю с 5 словами
+2025-04-23 17:31:04,016 - INFO - Пользователь 1999873173 переходит в режим ввода test_words
+2025-04-23 17:31:10,193 - INFO - Получен ввод настройки test_words от пользователя 1999873173: 3
+2025-04-23 17:31:10,194 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 3
+2025-04-23 17:31:12,798 - INFO - Получено значение test_words_count из базы: 3
+2025-04-23 17:31:12,798 - INFO - Пользователь 1999873173 запускает тест по словарю с 3 словами
+2025-04-23 17:31:18,152 - INFO - Получен сет 'Food Basics' из базы данных для пользователя 1999873173
+2025-04-23 17:31:18,153 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:31:18,153 - INFO - Пользователь 1999873173 запускает заучивание сета с 5 словами
+2025-04-23 17:31:22,296 - INFO - Пользователь 1999873173 переходит в режим ввода memorize_words
+2025-04-23 17:31:25,752 - INFO - Получен ввод настройки memorize_words от пользователя 1999873173: 10
+2025-04-23 17:31:25,753 - INFO - Обновлено количество слов для заучивания у пользователя 1999873173: 10
+2025-04-23 17:31:27,877 - INFO - Получен сет 'Food Basics' из базы данных для пользователя 1999873173
+2025-04-23 17:31:27,877 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:31:27,877 - INFO - Пользователь 1999873173 запускает заучивание сета с 10 словами
+2025-04-23 17:31:45,927 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 17:32:41 MSK)" was missed by 0:00:04.883018
+2025-04-23 17:31:51,001 - INFO - Получен сет 'Food Basics' из базы данных для пользователя 1999873173
+2025-04-23 17:31:51,001 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 17:31:51,001 - INFO - Пользователь 1999873173 запускает заучивание сета с 10 словами

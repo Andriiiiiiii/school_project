@@ -20,26 +20,20 @@ previous_daily_words = {}
 def get_user_settings(chat_id):
     """Получает настройки пользователя для слов и повторений из базы данных."""
     try:
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
-
-        # Получаем настройки пользователя
-        cursor.execute("""
-            SELECT words_per_day, repetitions_per_word 
-            FROM users 
-            WHERE chat_id = ?
-        """, (chat_id,))
-        settings = cursor.fetchone()
-
-        cursor.close()
-        conn.close()
-
-        if settings:
-            return settings
+        from database import crud
+        
+        # Получаем пользователя напрямую из базы данных
+        user = crud.get_user(chat_id)
+        if user:
+            # Используем прямой доступ к полям
+            words_per_day = user[2]
+            repetitions_per_word = user[3]
+            return (words_per_day, repetitions_per_word)
         else:
-            return (5, 3)  # По умолчанию 5 слов и 3 повторения, если настройки не найдены
+            # Значения по умолчанию, если пользователь не найден
+            return (5, 3)
     except Exception as e:
-        logger.error(f"Error fetching user settings from database: {e}")
+        logger.error(f"Error fetching user settings: {e}")
         return (5, 3)  # По умолчанию 5 слов и 3 повторения
 
 def reset_daily_words_cache(chat_id):

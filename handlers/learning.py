@@ -503,10 +503,6 @@ def is_valid_number(text):
     value = int(text)
     return 1 <= value <= 20
 
-
-# Обработчик текстовых сообщений для настроек
-# Заменить обе функции (process_learning_settings_input и process_direct_settings_update)
-# на одну оптимизированную функцию:
 async def process_learning_settings_input(message: types.Message, bot: Bot):
     """Обработчик ввода количества слов для теста/заучивания"""
     chat_id = message.chat.id
@@ -537,26 +533,12 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
         setting_type = pending_learning_settings[chat_id]
         logger.info(f"Получен ввод настройки {setting_type} от пользователя {chat_id}: {value}")
     else:
-        # Если не в контексте, пробуем определить из последнего сообщения
-        try:
-            async for msg in bot.get_chat_history(chat_id, limit=3):
-                if msg.from_user.is_bot and msg.text:
-                    if "Настройки теста по словарю" in msg.text:
-                        setting_type = "test_words"
-                        break
-                    elif "Настройки заучивания сета" in msg.text:
-                        setting_type = "memorize_words"
-                        break
-        except Exception as e:
-            logger.error(f"Ошибка при определении контекста настроек: {e}")
-    
-    if not setting_type:
+        # Если не в контексте, ничего не делаем, т.к. не можем определить тип настройки
         return False
     
     try:
         if setting_type == "test_words":
             # Дополнительная логика для обновления настроек теста
-            # Прямое обновление базы данных через SQL для надежности
             with db_manager.transaction() as conn:
                 conn.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (value, chat_id))
             
@@ -598,7 +580,6 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
         return True
     
     return False
-
 
 # Заменить функцию send_learning_test_question на следующую:
 # Добавить в начало файла handlers/learning.py:
