@@ -11,6 +11,7 @@ from database import crud
 from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache, extract_english
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
+
 logger = logging.getLogger(__name__)
 FIRST_TIME = REMINDER_START
 

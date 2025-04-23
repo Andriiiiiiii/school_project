@@ -235,6 +235,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)  # Устанавливаем уровень INFO для лучшего отслеживания
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)

@@ -4,7 +4,7 @@ import logging
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
-from database import crud
+from database import crud  # Добавляем глобальный импорт
 
 # Настройка логирования
 logger = logging.getLogger(__name__)

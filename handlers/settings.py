@@ -59,6 +59,160 @@ russian_tzs = {
     12: "Asia/Kamchatka"      # UTC+12
 }
 
+# Отдельный глобальный словарь для отслеживания состояний ввода настроек
+# Четко указываем, что это для настроек числа слов/повторений
+settings_input_state = {}
+
+async def process_settings_input(message: types.Message, bot: Bot):
+    """Полностью переработанный обработчик ввода настроек."""
+    chat_id = message.chat.id
+    text = message.text.strip()
+    
+    # Сразу добавляем отладочную информацию
+    logger.info(f"Получено сообщение от {chat_id}: '{text}'")
+    logger.info(f"Текущие состояния ожидания ввода: {pending_settings}")
+    
+    # Проверка на числовой ввод
+    if not text.isdigit():
+        if chat_id in pending_settings:
+            await message.answer(
+                "⚠️ Ошибка: пожалуйста, введите число.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        return False
+    
+    # Числовой ввод получен, проверяем, ожидается ли он
+    if chat_id not in pending_settings:
+        logger.info(f"Пользователь {chat_id} не в режиме ожидания ввода")
+        return False
+    
+    value = int(text)
+    setting_type = pending_settings[chat_id]
+    logger.info(f"Обработка ввода для настройки {setting_type}: {value}")
+    
+    # Обработка ввода количества слов
+    if setting_type == "words":
+        # Проверка диапазона
+        if not (1 <= value <= 20):
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 20.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        # Обновление в базе данных с дополнительной защитой от ошибок
+        try:
+            # Получаем текущие настройки для сравнения "до" и "после"
+            user_before = crud.get_user(chat_id)
+            current_words_before = user_before[2] if user_before else 5
+            
+            # Напрямую используем транзакцию через db_manager
+            with db_manager.transaction() as conn:
+                conn.execute(
+                    "UPDATE users SET words_per_day = ? WHERE chat_id = ?",
+                    (value, chat_id)
+                )
+            
+            # Проверяем, произошло ли обновление
+            user_after = crud.get_user(chat_id)
+            current_words_after = user_after[2] if user_after else current_words_before
+            
+            # Если обновление не произошло, повторяем через crud
+            if current_words_after == current_words_before:
+                logger.warning(f"Первая попытка обновления не сработала, пробуем через crud")
+                crud.update_user_words_per_day(chat_id, value)
+                user_after = crud.get_user(chat_id)
+                current_words_after = user_after[2] if user_after else current_words_before
+            
+            logger.info(f"Значение words_per_day обновлено: {current_words_before} -> {current_words_after}")
+            
+            # Сбрасываем кэш и состояние
+            reset_daily_words_cache(chat_id)
+            del pending_settings[chat_id]
+            
+            # Получаем текущие настройки для отображения
+            current_repetitions = user_after[3] if user_after else 3
+            
+            # Отправляем подтверждение
+            await message.answer(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words_after}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+        
+    # Обработка ввода количества повторений
+    elif setting_type == "repetitions":
+        # Проверка диапазона
+        if not (1 <= value <= 5):
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 5.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        # Обновление в базе данных с дополнительной защитой от ошибок
+        try:
+            # Получаем текущие настройки для сравнения "до" и "после"
+            user_before = crud.get_user(chat_id)
+            current_repetitions_before = user_before[3] if user_before else 3
+            
+            # Напрямую используем транзакцию через db_manager
+            with db_manager.transaction() as conn:
+                conn.execute(
+                    "UPDATE users SET notifications = ? WHERE chat_id = ?",
+                    (value, chat_id)
+                )
+            
+            # Проверяем, произошло ли обновление
+            user_after = crud.get_user(chat_id)
+            current_repetitions_after = user_after[3] if user_after else current_repetitions_before
+            
+            # Если обновление не произошло, повторяем через crud
+            if current_repetitions_after == current_repetitions_before:
+                logger.warning(f"Первая попытка обновления не сработала, пробуем через crud")
+                crud.update_user_notifications(chat_id, value)
+                user_after = crud.get_user(chat_id)
+                current_repetitions_after = user_after[3] if user_after else current_repetitions_before
+            
+            logger.info(f"Значение notifications обновлено: {current_repetitions_before} -> {current_repetitions_after}")
+            
+            # Сбрасываем кэш и состояние
+            reset_daily_words_cache(chat_id)
+            del pending_settings[chat_id]
+            
+            # Получаем текущие настройки для отображения
+            current_words = user_after[2] if user_after else 5
+            
+            # Отправляем подтверждение
+            await message.answer(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions_after}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества повторений: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+    
+    return False
+
 async def update_word_and_repetition_settings(chat_id, words_per_day, repetitions_per_word):
     """Обновляет количество слов и повторений для пользователя в базе данных."""
     try:
@@ -118,48 +272,40 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
             reply_markup=notification_settings_menu_keyboard()
         )
 
+    # В функции process_settings_choice_callback заменить обработку options "words" и "repetitions":
+
     elif option == "words":
         # Получаем текущее значение из базы данных
         user = crud.get_user(chat_id)
-        current_words = user[2] if user else 5  # Значение по умолчанию
-        
-        # Устанавливаем ожидание ввода
-        pending_settings[chat_id] = "words"
-        logger.info(f"Установлен режим ожидания количества слов для пользователя {chat_id}")
-        
-        keyboard = InlineKeyboardMarkup()
-        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+        current_words = user[2] if user else 5
+        current_repetitions = user[3] if user else 3
         
         await callback.message.edit_text(
             f"📊 *Количество слов в день*\n\n"
-            f"Текущее значение: *{current_words}*\n\n"
+            f"Текущие настройки:\n"
+            f"• Количество слов: *{current_words}*\n"
+            f"• Количество повторений: *{current_repetitions}*\n\n"
             f"Выберите оптимальное количество новых слов для изучения ежедневно. "
-            f"Рекомендуется от 5 до 15 слов для эффективного обучения.\n\n"
-            f"Введите число от 1 до 20:",
+            f"Рекомендуется от 5 до 15 слов для эффективного обучения.",
             parse_mode="Markdown",
-            reply_markup=keyboard
+            reply_markup=words_count_keyboard()
         )
 
     elif option == "repetitions":
         # Получаем текущее значение из базы данных
         user = crud.get_user(chat_id)
-        current_repetitions = user[3] if user else 3  # Значение по умолчанию
-        
-        # Устанавливаем ожидание ввода
-        pending_settings[chat_id] = "repetitions"
-        logger.info(f"Установлен режим ожидания количества повторений для пользователя {chat_id}")
-        
-        keyboard = InlineKeyboardMarkup()
-        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+        current_words = user[2] if user else 5
+        current_repetitions = user[3] if user else 3
         
         await callback.message.edit_text(
             f"🔄 *Количество повторений*\n\n"
-            f"Текущее значение: *{current_repetitions}*\n\n"
+            f"Текущие настройки:\n"
+            f"• Количество слов: *{current_words}*\n"
+            f"• Количество повторений: *{current_repetitions}*\n\n"
             f"Выберите, сколько раз вы хотите повторять каждое слово в течение дня. "
-            f"Повторение помогает лучше запомнить слова.\n\n"
-            f"Введите число от 1 до 5:",
+            f"Повторение помогает лучше запомнить слова.",
             parse_mode="Markdown",
-            reply_markup=keyboard
+            reply_markup=repetitions_count_keyboard()
         )
 
     elif option == "timezone":
@@ -190,6 +336,147 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
         await process_settings_mysettings(callback, bot)
 
     await callback.answer()
+
+def words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов."""
+    keyboard = InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+    
+    return keyboard
+
+def repetitions_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 5 для выбора количества повторений."""
+    keyboard = InlineKeyboardMarkup(row_width=5)
+    
+    # Одна строка с кнопками 1-5
+    buttons = [InlineKeyboardButton(str(i), callback_data=f"set_repetitions:{i}") for i in range(1, 6)]
+    keyboard.row(*buttons)
+    
+    # Кнопка "Назад"
+    keyboard.row(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+    
+    return keyboard
+
+# Добавить новые функции-обработчики
+
+async def handle_set_words_count(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов в день."""
+    chat_id = callback.from_user.id
+    try:
+        _, count_str = callback.data.split(":", 1)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Получаем текущие настройки для сравнения
+            user_before = crud.get_user(chat_id)
+            
+            # Обновляем количество слов
+            crud.update_user_words_per_day(chat_id, count)
+            
+            # Сбрасываем кэш
+            reset_daily_words_cache(chat_id)
+            
+            # Получаем обновленные настройки
+            user_after = crud.get_user(chat_id)
+            current_words = user_after[2] if user_after else count
+            current_repetitions = user_after[3] if user_after else 3
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            
+            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {count}")
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_set_repetitions_count(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества повторений."""
+    chat_id = callback.from_user.id
+    try:
+        _, count_str = callback.data.split(":", 1)
+        count = int(count_str)
+        
+        if not (1 <= count <= 5):
+            await callback.answer("Ошибка: недопустимое количество повторений", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Получаем текущие настройки для сравнения
+            user_before = crud.get_user(chat_id)
+            
+            # Обновляем количество повторений
+            crud.update_user_notifications(chat_id, count)
+            
+            # Сбрасываем кэш
+            reset_daily_words_cache(chat_id)
+            
+            # Получаем обновленные настройки
+            user_after = crud.get_user(chat_id)
+            current_words = user_after[2] if user_after else 5
+            current_repetitions = user_after[3] if user_after else count
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            
+            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {count}")
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества повторений: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества повторений: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
 
 async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
     """
@@ -807,18 +1094,18 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
     await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
+# Улучшенный обработчик ввода текста
 async def process_text_setting(message: types.Message, bot: Bot = None):
     """Обработчик ввода числа для настроек (слов или повторений)"""
     chat_id = message.chat.id
     text = message.text.strip()
     
-    # Проверяем, что chat_id есть в словаре ожидания
+    # Проверяем, находится ли пользователь в режиме ожидания ввода
     if chat_id not in pending_settings:
-        # Если нет, значит это не ввод настроек - игнорируем сообщение
+        # Не наш случай, позволяем другим обработчикам обработать сообщение
         return False
-
-    # Получаем тип настройки и сохраняем для использования
-    setting_type = pending_settings[chat_id]
+    
+    logger.info(f"Получен ввод от пользователя {chat_id}: '{text}', режим: {pending_settings[chat_id]}")
     
     # Проверяем, что введено число
     if not text.isdigit():
@@ -829,6 +1116,7 @@ async def process_text_setting(message: types.Message, bot: Bot = None):
         return True
     
     value = int(text)
+    setting_type = pending_settings[chat_id]
     
     # Обработка настройки количества слов
     if setting_type == "words":
@@ -841,19 +1129,32 @@ async def process_text_setting(message: types.Message, bot: Bot = None):
         
         try:
             # Обновляем в базе данных
+            before_update = crud.get_user(chat_id)
+            
+            # Используем правильный метод обновления
             crud.update_user_words_per_day(chat_id, value)
-            # Удаляем из словаря ожидания
-            if chat_id in pending_settings:
-                del pending_settings[chat_id]
-            # Сбрасываем кэш ежедневных слов
+            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {value}")
+            
+            # Сбрасываем кэш
+            from utils.helpers import reset_daily_words_cache
             reset_daily_words_cache(chat_id)
             
-            # Отправляем подтверждение
+            # Удаляем из словаря ожидания
+            del pending_settings[chat_id]
+            
+            # Получаем обновленные данные для отображения
+            after_update = crud.get_user(chat_id)
+            current_words = after_update[2] if after_update else value
+            current_repetitions = after_update[3] if after_update else 3
+            
+            # Отправляем подтверждение с текущими настройками
             await message.answer(
-                f"✅ Количество слов в день установлено на {value}.",
+                f"✅ Настройки обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
                 reply_markup=notification_settings_menu_keyboard()
             )
-            logger.info(f"Пользователь {chat_id} установил количество слов в день: {value}")
         except Exception as e:
             logger.error(f"Ошибка при обновлении количества слов: {e}")
             await message.answer(
@@ -861,6 +1162,8 @@ async def process_text_setting(message: types.Message, bot: Bot = None):
                 reply_markup=notification_settings_menu_keyboard()
             )
         
+        return True
+    
     # Обработка настройки количества повторений
     elif setting_type == "repetitions":
         if not (1 <= value <= 5):
@@ -872,27 +1175,42 @@ async def process_text_setting(message: types.Message, bot: Bot = None):
         
         try:
             # Обновляем в базе данных
+            before_update = crud.get_user(chat_id)
+            
+            # Используем правильный метод обновления
             crud.update_user_notifications(chat_id, value)
-            # Удаляем из словаря ожидания
-            if chat_id in pending_settings:
-                del pending_settings[chat_id]
-            # Сбрасываем кэш ежедневных слов
+            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {value}")
+            
+            # Сбрасываем кэш
+            from utils.helpers import reset_daily_words_cache
             reset_daily_words_cache(chat_id)
             
-            # Отправляем подтверждение
+            # Удаляем из словаря ожидания
+            del pending_settings[chat_id]
+            
+            # Получаем обновленные данные для отображения
+            after_update = crud.get_user(chat_id)
+            current_words = after_update[2] if after_update else 5
+            current_repetitions = after_update[3] if after_update else value
+            
+            # Отправляем подтверждение с текущими настройками
             await message.answer(
-                f"✅ Количество повторений установлено на {value}.",
+                f"✅ Настройки обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
                 reply_markup=notification_settings_menu_keyboard()
             )
-            logger.info(f"Пользователь {chat_id} установил количество повторений: {value}")
         except Exception as e:
             logger.error(f"Ошибка при обновлении количества повторений: {e}")
             await message.answer(
                 "❌ Произошла ошибка при обновлении настроек.",
                 reply_markup=notification_settings_menu_keyboard()
             )
+        
+        return True
     
-    return True
+    return False  # если тип настройки не распознан
 
 async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
     """Обработчик возврата из меню уведомлений в меню настроек"""
@@ -901,6 +1219,24 @@ async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
 
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
     """Register all settings handlers"""
+    # ВАЖНО: Регистрируем обработчик текстовых сообщений ПЕРВЫМ
+    # с более простым условием для гарантированной обработки
+    dp.register_message_handler(
+        partial(process_settings_input, bot=bot),
+        lambda message: bool(message.text) and message.chat.id in pending_settings,
+        state="*",
+        content_types=['text']
+    )
+    # Регистрируем обработчики для кнопок выбора количества слов и повторений
+    dp.register_callback_query_handler(
+        partial(handle_set_words_count, bot=bot),
+        lambda c: c.data and c.data.startswith("set_words:")
+    )
+    
+    dp.register_callback_query_handler(
+        partial(handle_set_repetitions_count, bot=bot),
+        lambda c: c.data and c.data.startswith("set_repetitions:")
+    )
     # Basic settings handlers
     dp.register_callback_query_handler(
         partial(show_settings_callback, bot=bot),
@@ -959,15 +1295,6 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         partial(process_choose_set, bot=bot),
         lambda c: c.data and c.data.startswith("choose_set:")
     )
-    
-    # ВАЖНО: Обработчик текстовых сообщений для настроек
-    # Проверяем не только содержимое, но и наличие chat_id в pending_settings
-    dp.register_message_handler(
-        partial(process_text_setting, bot=bot),
-        lambda message: message.chat.id in pending_settings and message.text,
-        state="*"  # Работаем в любом состоянии бота
-    )
-
 async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
     """Отображает настройки пользователя с улучшенным форматированием и статистикой"""
     chat_id = callback.from_user.id

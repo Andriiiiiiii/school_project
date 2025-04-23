@@ -1221,3 +1221,297 @@ aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified 
 2025-04-23 17:31:51,001 - INFO - Получен сет 'Food Basics' из базы данных для пользователя 1999873173
 2025-04-23 17:31:51,001 - INFO - Файл успешно прочитан с кодировкой utf-8
 2025-04-23 17:31:51,001 - INFO - Пользователь 1999873173 запускает заучивание сета с 10 словами
+2025-04-23 22:16:12,933 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:16:13,132 - WARNING - Updates were skipped successfully.
+2025-04-23 22:16:13,138 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:16:13,139 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:16:13,139 - INFO - Scheduler started
+2025-04-23 22:16:13,139 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:16:13,139 - INFO - Бот запущен.
+2025-04-23 22:16:13,140 - INFO - Start polling.
+2025-04-23 22:16:25,345 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 22:16:25,345 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 22:16:27,071 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:16:27,071 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:16:29,359 - INFO - У пользователя 1999873173 есть 5 выученных слов
+2025-04-23 22:16:29,359 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 22:16:29,359 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 22:16:34,331 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:17:13,141 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:18:13 MSK)" (scheduled at 2025-04-23 22:17:13.138063+03:00)
+2025-04-23 22:17:13,147 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:17:13,148 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:17:13,175 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:18:13 MSK)" executed successfully
+2025-04-23 22:17:27,597 - INFO - Stop polling...
+2025-04-23 22:17:27,598 - WARNING - Goodbye!
+2025-04-23 22:26:03,853 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:26:04,014 - WARNING - Updates were skipped successfully.
+2025-04-23 22:26:04,020 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:26:04,021 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:26:04,022 - INFO - Scheduler started
+2025-04-23 22:26:04,022 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:26:04,022 - INFO - Бот запущен.
+2025-04-23 22:26:04,022 - INFO - Start polling.
+2025-04-23 22:26:14,817 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:26:25,752 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:26:25,753 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:27:04,032 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:28:04 MSK)" (scheduled at 2025-04-23 22:27:04.020679+03:00)
+2025-04-23 22:27:04,039 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:27:04,040 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:27:04,071 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:28:04 MSK)" executed successfully
+2025-04-23 22:28:04,038 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:29:04 MSK)" (scheduled at 2025-04-23 22:28:04.020679+03:00)
+2025-04-23 22:28:04,040 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:29:04 MSK)" executed successfully
+2025-04-23 22:29:04,035 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:30:04 MSK)" (scheduled at 2025-04-23 22:29:04.020679+03:00)
+2025-04-23 22:29:04,036 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:30:04 MSK)" executed successfully
+2025-04-23 22:30:04,035 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:31:04 MSK)" (scheduled at 2025-04-23 22:30:04.020679+03:00)
+2025-04-23 22:30:04,036 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:31:04 MSK)" executed successfully
+2025-04-23 22:31:04,036 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:32:04 MSK)" (scheduled at 2025-04-23 22:31:04.020679+03:00)
+2025-04-23 22:31:04,038 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:32:04 MSK)" executed successfully
+2025-04-23 22:32:04,034 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:33:04 MSK)" (scheduled at 2025-04-23 22:32:04.020679+03:00)
+2025-04-23 22:32:04,034 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:33:04 MSK)" executed successfully
+2025-04-23 22:33:04,035 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:34:04 MSK)" (scheduled at 2025-04-23 22:33:04.020679+03:00)
+2025-04-23 22:33:04,037 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:34:04 MSK)" executed successfully
+2025-04-23 22:34:04,034 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:35:04 MSK)" (scheduled at 2025-04-23 22:34:04.020679+03:00)
+2025-04-23 22:34:04,035 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:35:04 MSK)" executed successfully
+2025-04-23 22:34:48,129 - INFO - Stop polling...
+2025-04-23 22:34:48,129 - WARNING - Goodbye!
+2025-04-23 22:34:49,267 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:34:49,430 - WARNING - Updates were skipped successfully.
+2025-04-23 22:34:49,436 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:34:49,437 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:34:49,437 - INFO - Scheduler started
+2025-04-23 22:34:49,438 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:34:49,438 - INFO - Бот запущен.
+2025-04-23 22:34:49,438 - INFO - Start polling.
+2025-04-23 22:34:51,182 - INFO - Stop polling...
+2025-04-23 22:34:51,183 - WARNING - Goodbye!
+2025-04-23 22:34:52,307 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:34:52,478 - WARNING - Updates were skipped successfully.
+2025-04-23 22:34:52,484 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:34:52,485 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:34:52,485 - INFO - Scheduler started
+2025-04-23 22:34:52,485 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:34:52,485 - INFO - Бот запущен.
+2025-04-23 22:34:52,485 - INFO - Start polling.
+2025-04-23 22:34:59,654 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 22:34:59,654 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 22:35:01,262 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:35:01,262 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:35:09,787 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:35:15,037 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:35:20,085 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:35:37,279 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:35:48,343 - INFO - Пользователь 1999873173 переходит в режим ввода test_words
+2025-04-23 22:35:52,486 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:36:52 MSK)" (scheduled at 2025-04-23 22:35:52.483714+03:00)
+2025-04-23 22:35:52,488 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:35:52,492 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:35:52,520 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:36:52 MSK)" executed successfully
+2025-04-23 22:36:09,841 - INFO - Stop polling...
+2025-04-23 22:36:09,842 - WARNING - Goodbye!
+2025-04-23 22:45:17,913 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:45:18,078 - WARNING - Updates were skipped successfully.
+2025-04-23 22:45:18,079 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:45:18,079 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:45:18,079 - INFO - Scheduler started
+2025-04-23 22:45:18,079 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:45:18,079 - INFO - Бот запущен.
+2025-04-23 22:45:18,079 - INFO - Start polling.
+2025-04-23 22:45:28,509 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 22:45:28,510 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 22:45:45,835 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:45:45,836 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:45:53,968 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:46:05,529 - INFO - Установлен режим ожидания количества повторений для пользователя 1999873173
+2025-04-23 22:46:18,092 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:47:18 MSK)" (scheduled at 2025-04-23 22:46:18.079293+03:00)
+2025-04-23 22:46:18,093 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:46:18,093 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:46:18,120 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:47:18 MSK)" executed successfully
+2025-04-23 22:46:33,948 - INFO - Stop polling...
+2025-04-23 22:46:33,949 - WARNING - Goodbye!
+2025-04-23 22:47:48,188 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:47:48,340 - WARNING - Updates were skipped successfully.
+2025-04-23 22:47:48,341 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:47:48,341 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:47:48,341 - INFO - Scheduler started
+2025-04-23 22:47:48,341 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:47:48,341 - INFO - Бот запущен.
+2025-04-23 22:47:48,341 - INFO - Start polling.
+2025-04-23 22:47:51,628 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 22:47:51,637 - INFO - Added new user with chat_id: 1999873173 with default set: A1 Basic 1
+2025-04-23 22:47:51,638 - INFO - Добавлен новый пользователь с chat_id 1999873173
+2025-04-23 22:47:51,638 - INFO - Установлен базовый сет A1 Basic 1 для нового пользователя 1999873173
+2025-04-23 22:47:57,154 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:48:32,775 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:48:48,356 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:49:48 MSK)" (scheduled at 2025-04-23 22:48:48.341088+03:00)
+2025-04-23 22:48:48,357 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:48:48,357 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:48:48,360 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:48:48,360 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:48:48,385 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:49:48 MSK)" executed successfully
+2025-04-23 22:49:48,357 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:50:48 MSK)" (scheduled at 2025-04-23 22:49:48.341088+03:00)
+2025-04-23 22:49:48,359 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:50:48 MSK)" executed successfully
+2025-04-23 22:50:48,347 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:51:48 MSK)" (scheduled at 2025-04-23 22:50:48.341088+03:00)
+2025-04-23 22:50:48,348 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:51:48 MSK)" executed successfully
+2025-04-23 22:51:48,357 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:52:48 MSK)" (scheduled at 2025-04-23 22:51:48.341088+03:00)
+2025-04-23 22:51:48,358 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:52:48 MSK)" executed successfully
+2025-04-23 22:52:48,355 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:53:48 MSK)" (scheduled at 2025-04-23 22:52:48.341088+03:00)
+2025-04-23 22:52:48,355 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:53:48 MSK)" executed successfully
+2025-04-23 22:53:48,355 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:54:48 MSK)" (scheduled at 2025-04-23 22:53:48.341088+03:00)
+2025-04-23 22:53:48,356 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 22:54:48 MSK)" executed successfully
+2025-04-23 22:54:11,997 - INFO - Stop polling...
+2025-04-23 22:54:11,998 - WARNING - Goodbye!
+2025-04-23 22:54:13,172 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:54:13,341 - WARNING - Updates were skipped successfully.
+2025-04-23 22:54:13,348 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:54:13,349 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:54:13,349 - INFO - Scheduler started
+2025-04-23 22:54:13,349 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:54:13,349 - INFO - Бот запущен.
+2025-04-23 22:54:13,349 - INFO - Start polling.
+2025-04-23 22:54:20,078 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 22:54:20,078 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 22:54:23,897 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:54:31,488 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:54:36,344 - INFO - Установлен режим ожидания количества повторений для пользователя 1999873173
+2025-04-23 22:54:40,673 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:54:45,517 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 22:58:10,761 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 22:58:10,913 - WARNING - Updates were skipped successfully.
+2025-04-23 22:58:10,917 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 22:58:10,918 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 22:58:10,918 - INFO - Scheduler started
+2025-04-23 22:58:10,918 - INFO - Scheduler started with optimized configuration
+2025-04-23 22:58:10,918 - INFO - Бот запущен.
+2025-04-23 22:58:10,918 - INFO - Start polling.
+2025-04-23 22:59:10,932 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:00:10 MSK)" (scheduled at 2025-04-23 22:59:10.917110+03:00)
+2025-04-23 22:59:10,933 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:59:10,933 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:59:10,935 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:59:10,935 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 22:59:10,963 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:00:10 MSK)" executed successfully
+2025-04-23 23:00:10,932 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:01:10 MSK)" (scheduled at 2025-04-23 23:00:10.917110+03:00)
+2025-04-23 23:00:10,934 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:01:10 MSK)" executed successfully
+2025-04-23 23:01:10,927 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:02:10 MSK)" (scheduled at 2025-04-23 23:01:10.917110+03:00)
+2025-04-23 23:01:10,928 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:02:10 MSK)" executed successfully
+2025-04-23 23:02:10,932 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:03:10 MSK)" (scheduled at 2025-04-23 23:02:10.917110+03:00)
+2025-04-23 23:02:10,933 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:03:10 MSK)" executed successfully
+2025-04-23 23:02:19,277 - INFO - Stop polling...
+2025-04-23 23:02:19,277 - WARNING - Goodbye!
+2025-04-23 23:02:20,408 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 23:02:20,568 - WARNING - Updates were skipped successfully.
+2025-04-23 23:02:20,572 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 23:02:20,573 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 23:02:20,573 - INFO - Scheduler started
+2025-04-23 23:02:20,574 - INFO - Scheduler started with optimized configuration
+2025-04-23 23:02:20,574 - INFO - Бот запущен.
+2025-04-23 23:02:20,574 - INFO - Start polling.
+2025-04-23 23:02:31,038 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 23:02:31,038 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 23:02:34,269 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 23:02:42,136 - INFO - Установлен режим ожидания количества слов для пользователя 1999873173
+2025-04-23 23:03:12,719 - INFO - Stop polling...
+2025-04-23 23:03:12,721 - WARNING - Goodbye!
+2025-04-23 23:07:26,797 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 23:07:26,955 - WARNING - Updates were skipped successfully.
+2025-04-23 23:07:26,957 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 23:07:26,958 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 23:07:26,958 - INFO - Scheduler started
+2025-04-23 23:07:26,958 - INFO - Scheduler started with optimized configuration
+2025-04-23 23:07:26,958 - INFO - Бот запущен.
+2025-04-23 23:07:26,958 - INFO - Start polling.
+2025-04-23 23:07:34,257 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 23:07:34,258 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 23:07:43,355 - INFO - Обновлено количество слов для пользователя 1999873173: 13
+2025-04-23 23:07:48,711 - INFO - Обновлено количество повторений для пользователя 1999873173: 2
+2025-04-23 23:07:53,581 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:07:53,581 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:08:06,882 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 23:08:06,883 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 23:08:06,977 - INFO - Обновлено количество слов для пользователя 1999873173: 8
+2025-04-23 23:08:10,539 - INFO - Обновлено количество повторений для пользователя 1999873173: 1
+2025-04-23 23:08:19,283 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:08:19,283 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:08:26,879 - INFO - Пользователь 1999873173 переходит в режим ввода test_words
+2025-04-23 23:08:26,959 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:09:26 MSK)" (scheduled at 2025-04-23 23:08:26.957583+03:00)
+2025-04-23 23:08:26,960 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:08:26,960 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:08:26,991 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:09:26 MSK)" executed successfully
+2025-04-23 23:09:26,959 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:10:26 MSK)" (scheduled at 2025-04-23 23:09:26.957583+03:00)
+2025-04-23 23:09:26,960 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:10:26 MSK)" executed successfully
+2025-04-23 23:09:28,108 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 23:09:28,108 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 23:10:26,971 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:11:26 MSK)" (scheduled at 2025-04-23 23:10:26.957583+03:00)
+2025-04-23 23:10:26,972 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:11:26 MSK)" executed successfully
+2025-04-23 23:11:26,970 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:12:26 MSK)" (scheduled at 2025-04-23 23:11:26.957583+03:00)
+2025-04-23 23:11:26,971 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:12:26 MSK)" executed successfully
+2025-04-23 23:11:39,765 - INFO - Stop polling...
+2025-04-23 23:11:39,766 - WARNING - Goodbye!
+2025-04-23 23:11:40,668 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 23:11:40,826 - WARNING - Updates were skipped successfully.
+2025-04-23 23:11:40,829 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 23:11:40,830 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 23:11:40,830 - INFO - Scheduler started
+2025-04-23 23:11:40,830 - INFO - Scheduler started with optimized configuration
+2025-04-23 23:11:40,830 - INFO - Бот запущен.
+2025-04-23 23:11:40,830 - INFO - Start polling.
+2025-04-23 23:11:45,692 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 23:11:45,692 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 23:12:06,358 - INFO - Updated test_words_count to 12 for user 1999873173
+2025-04-23 23:12:06,359 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 12
+2025-04-23 23:12:11,804 - INFO - Updated memorize_words_count to 20 for user 1999873173
+2025-04-23 23:12:11,808 - INFO - Обновлено количество слов для заучивания у пользователя 1999873173: 20
+2025-04-23 23:12:14,413 - INFO - Получен сет 'A1 Basic 1' из базы данных для пользователя 1999873173
+2025-04-23 23:12:14,413 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-04-23 23:12:14,413 - INFO - Пользователь 1999873173 запускает заучивание сета с 20 словами
+2025-04-23 23:12:19,134 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 23:12:19,134 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 23:12:23,396 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 23:12:23,396 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 23:12:25,667 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 23:12:25,668 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 23:12:32,140 - WARNING - Сет 'A1 Basic 1' не существует для уровня B2. Путь: levels/B2/A1 Basic 1.txt
+2025-04-23 23:12:32,140 - INFO - Автоматически установлен базовый сет 'B2 Basic 1' для уровня B2 пользователю 1999873173
+2025-04-23 23:12:40,830 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:13:40 MSK)" (scheduled at 2025-04-23 23:12:40.829287+03:00)
+2025-04-23 23:12:40,831 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:12:40,831 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:12:40,856 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:13:40 MSK)" executed successfully
+2025-04-23 23:12:42,703 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 23:12:42,703 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 23:12:42,707 - INFO - Подготовлено 8 слов для квиза пользователя 1999873173
+2025-04-23 23:12:47,173 - INFO - Проверка директории сетов для пользователя 1999873173, уровень B2, путь: levels/B2
+2025-04-23 23:12:47,174 - INFO - Найдено 20 файлов сетов в директории levels/B2
+2025-04-23 23:13:02,500 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 23:13:02,500 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 23:13:02,598 - INFO - Обновлено количество слов для пользователя 1999873173: 16
+2025-04-23 23:13:04,789 - INFO - Обновлено количество повторений для пользователя 1999873173: 1
+2025-04-23 23:13:10,282 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:13:10,282 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:13:37,495 - INFO - Stop polling...
+2025-04-23 23:13:37,496 - WARNING - Goodbye!
+2025-04-23 23:13:57,776 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 23:13:57,943 - WARNING - Updates were skipped successfully.
+2025-04-23 23:13:57,947 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 23:13:57,948 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 23:13:57,948 - INFO - Scheduler started
+2025-04-23 23:13:57,949 - INFO - Scheduler started with optimized configuration
+2025-04-23 23:13:57,949 - INFO - Бот запущен.
+2025-04-23 23:13:57,949 - INFO - Start polling.
+2025-04-23 23:14:00,162 - INFO - Stop polling...
+2025-04-23 23:14:00,162 - WARNING - Goodbye!
+2025-04-23 23:14:01,826 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 23:14:01,987 - WARNING - Updates were skipped successfully.
+2025-04-23 23:14:01,988 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 23:14:01,988 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 23:14:01,988 - INFO - Scheduler started
+2025-04-23 23:14:01,988 - INFO - Scheduler started with optimized configuration
+2025-04-23 23:14:01,988 - INFO - Бот запущен.
+2025-04-23 23:14:01,988 - INFO - Start polling.
+2025-04-23 23:15:01,995 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:16:01 MSK)" (scheduled at 2025-04-23 23:15:01.988204+03:00)
+2025-04-23 23:15:01,997 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:15:01,998 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:15:02,002 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:15:02,002 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 23:15:02,025 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:16:01 MSK)" executed successfully
+2025-04-23 23:16:01,994 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:17:01 MSK)" (scheduled at 2025-04-23 23:16:01.988204+03:00)
+2025-04-23 23:16:01,995 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 23:17:01 MSK)" executed successfully
+2025-04-23 23:16:41,153 - INFO - Stop polling...
+2025-04-23 23:16:41,154 - WARNING - Goodbye!

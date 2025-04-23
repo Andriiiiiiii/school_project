@@ -33,6 +33,56 @@ USER_CHOSEN_SET = 6
 USER_TEST_WORDS_COUNT = 7
 USER_MEMORIZE_WORDS_COUNT = 8
 
+def test_words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов в тесте."""
+    keyboard = types.InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
+    
+    return keyboard
+
+def memorize_words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов для заучивания."""
+    keyboard = types.InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
+    
+    return keyboard
+
 # Безопасное получение настроек пользователя с учетом возможных изменений в структуре
 def get_user_setting(user, index, default_value):
     """Безопасно извлекает настройку пользователя с указанным индексом"""
@@ -446,23 +496,19 @@ async def handle_test_settings(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
         return
     
-    # Получаем текущее количество слов для теста (по умолчанию 5)
+    # Получаем текущее количество слов для теста
     test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
-    
-    # Регистрируем ожидание ввода
-    pending_learning_settings[chat_id] = "test_words"
-    logger.info(f"Пользователь {chat_id} переходит в режим ввода test_words")
-    
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
+    memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
     
     await callback.message.edit_text(
         f"📊 *Настройки теста по словарю*\n\n"
-        f"Текущее количество слов в тесте: *{test_words_count}*\n\n"
-        f"Введите новое количество слов (от 1 до 20):\n"
+        f"Текущие настройки:\n"
+        f"• Количество слов в тесте: *{test_words_count}*\n"
+        f"• Количество слов в заучивании: *{memorize_words_count}*\n\n"
+        f"Выберите количество слов для теста (от 1 до 20):\n"
         f"Если в словаре меньше слов, чем указано, будут использованы все доступные слова.",
         parse_mode="Markdown",
-        reply_markup=keyboard
+        reply_markup=test_words_count_keyboard()
     )
     await callback.answer()
 
@@ -476,23 +522,105 @@ async def handle_memorize_settings(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
         return
     
-    # Получаем текущее количество слов для заучивания (по умолчанию 5)
+    # Получаем текущее количество слов для заучивания
+    test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
     memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
-    
-    # Регистрируем ожидание ввода
-    pending_learning_settings[chat_id] = "memorize_words"
-    logger.info(f"Пользователь {chat_id} переходит в режим ввода memorize_words")
-    
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
     
     await callback.message.edit_text(
         f"📝 *Настройки заучивания сета*\n\n"
-        f"Текущее количество слов в заучивании: *{memorize_words_count}*\n\n"
-        f"Введите новое количество слов (от 1 до 20):",
+        f"Текущие настройки:\n"
+        f"• Количество слов в тесте: *{test_words_count}*\n"
+        f"• Количество слов в заучивании: *{memorize_words_count}*\n\n"
+        f"Выберите количество слов для заучивания (от 1 до 20):",
         parse_mode="Markdown",
-        reply_markup=keyboard
+        reply_markup=memorize_words_count_keyboard()
     )
+    await callback.answer()
+
+async def handle_test_count_selection(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов для теста."""
+    chat_id = callback.from_user.id
+    try:
+        _, _, count_str = callback.data.split(":", 2)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Обновляем количество слов для теста
+            crud.update_user_test_words_count(chat_id, count)
+            logger.info(f"Обновлено количество слов для теста у пользователя {chat_id}: {count}")
+            
+            # Получаем обновленные настройки
+            user = crud.get_user(chat_id)
+            test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, count)
+            memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки обучения обновлены!\n\n"
+                f"📊 Количество слов в тесте: *{test_words_count}*\n"
+                f"📝 Количество слов в заучивании: *{memorize_words_count}*",
+                parse_mode="Markdown",
+                reply_markup=learning_settings_keyboard()
+            )
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов для теста: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=learning_settings_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов для теста: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_memorize_count_selection(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов для заучивания."""
+    chat_id = callback.from_user.id
+    try:
+        _, _, count_str = callback.data.split(":", 2)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Обновляем количество слов для заучивания
+            crud.update_user_memorize_words_count(chat_id, count)
+            logger.info(f"Обновлено количество слов для заучивания у пользователя {chat_id}: {count}")
+            
+            # Получаем обновленные настройки
+            user = crud.get_user(chat_id)
+            test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
+            memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, count)
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки обучения обновлены!\n\n"
+                f"📊 Количество слов в тесте: *{test_words_count}*\n"
+                f"📝 Количество слов в заучивании: *{memorize_words_count}*",
+                parse_mode="Markdown",
+                reply_markup=learning_settings_keyboard()
+            )
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов для заучивания: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=learning_settings_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов для заучивания: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
     await callback.answer()
 
 # Отдельная функция для проверки числа
@@ -795,7 +923,16 @@ def register_learning_handlers(dp: Dispatcher, bot: Bot):
         content_types=['text'],
         state="*"  # Обрабатываем в любом состоянии
     )
+    # Регистрируем обработчики для кнопок выбора количества слов
+    dp.register_callback_query_handler(
+        partial(handle_test_count_selection, bot=bot),
+        lambda c: c.data and c.data.startswith("learn:test_count:")
+    )
     
+    dp.register_callback_query_handler(
+        partial(handle_memorize_count_selection, bot=bot),
+        lambda c: c.data and c.data.startswith("learn:memorize_count:")
+    )
     # Остальные обработчики регистрируем после
     dp.register_callback_query_handler(
         partial(handle_learning_menu, bot=bot),
