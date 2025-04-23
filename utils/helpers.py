@@ -16,6 +16,32 @@ daily_words_cache = {}
 previous_daily_words = {}
 # Добавьте в utils/helpers.py улучшенную функцию сброса кэша
 
+
+def get_user_settings(chat_id):
+    """Получает настройки пользователя для слов и повторений из базы данных."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Получаем настройки пользователя
+        cursor.execute("""
+            SELECT words_per_day, repetitions_per_word 
+            FROM users 
+            WHERE chat_id = ?
+        """, (chat_id,))
+        settings = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        if settings:
+            return settings
+        else:
+            return (5, 3)  # По умолчанию 5 слов и 3 повторения, если настройки не найдены
+    except Exception as e:
+        logger.error(f"Error fetching user settings from database: {e}")
+        return (5, 3)  # По умолчанию 5 слов и 3 повторения
+
 def reset_daily_words_cache(chat_id):
     """
     Сбрасывает кэш списка слов дня для данного пользователя.

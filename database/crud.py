@@ -1,10 +1,30 @@
 # database/crud.py
 import logging
+import sqlite3  # Добавляем импорт sqlite3
 from database.db import conn, cursor, db_manager
 from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
+
+def update_user_words_and_repetitions(chat_id, words_per_day, repetitions_per_word):
+    """Обновляет количество слов и повторений для пользователя в базе данных."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Обновляем данные в таблице пользователей
+        cursor.execute("""
+            UPDATE users 
+            SET words_per_day = ?, repetitions_per_word = ? 
+            WHERE chat_id = ?
+        """, (words_per_day, repetitions_per_word, chat_id))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        logger.error(f"Error updating settings in database: {e}")
 
 def add_user(chat_id: int):
     """Добавляет нового пользователя в базу данных, если он еще не существует."""
@@ -149,8 +169,6 @@ def add_learned_word(chat_id: int, word: str, translation: str, learned_date: st
     except Exception as e:
         logger.error(f"Error adding learned word for user {chat_id}: {e}")
         raise
-
-# В файле database/crud.py исправляем функцию get_learned_words
 
 def get_learned_words(chat_id: int):
     """

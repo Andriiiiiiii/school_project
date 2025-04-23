@@ -3,7 +3,7 @@ import random
 from datetime import datetime
 from aiogram import types, Dispatcher, Bot
 import asyncio
-from database import crud
+from database import crud  # Убедимся, что импорт crud глобальный
 from utils.quiz_helpers import load_quiz_data
 from keyboards.submenus import quiz_keyboard
 from utils.helpers import get_daily_words_for_user, daily_words_cache
@@ -85,12 +85,10 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None, is_r
     
     return questions
 
-
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """Инициализирует квиз для пользователя."""
     chat_id = callback.from_user.id
     try:
-        from database import crud
         user = crud.get_user(chat_id)
         if not user:
             await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
@@ -117,7 +115,9 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
         # Получаем слова дня
         try:
             result = get_daily_words_for_user(chat_id, level, user[2], user[3],
-                                           first_time=REMINDER_START, duration_hours=DURATION_HOURS, chosen_set=chosen_set)
+                                          first_time=REMINDER_START, 
+                                          duration_hours=DURATION_HOURS,
+                                          chosen_set=chosen_set)
             if result is None:
                 await bot.send_message(chat_id, "Нет слов для квиза.")
                 return
@@ -151,6 +151,7 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
                 return
             
             # Определяем, какие слова использовать в квизе
+            quiz_words = []
             if is_revision_mode:
                 quiz_words = list(daily_words)
             else:
@@ -194,7 +195,6 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     
     await callback.answer()
 
-# Остальной код оставляем без изменений
 async def send_quiz_question(chat_id, bot: Bot):
     """Отправляет вопрос квиза."""
     try:
@@ -204,55 +204,18 @@ async def send_quiz_question(chat_id, bot: Bot):
         
         current_index = state["current_index"]
         questions = state["questions"]
-        is_revision = state.get("is_revision", False)
         
         if current_index >= len(questions):
-            # Квиз завершен
-            from keyboards.main_menu import main_menu_keyboard
-            
-            # Формируем сообщение с результатами
-            result_message = format_result_message(
-                state['correct'], 
-                len(questions),
-                is_revision
-            )
-            
-            # Создаем клавиатуру
-            keyboard = types.InlineKeyboardMarkup()
-            keyboard.add(types.InlineKeyboardButton("Главное меню", callback_data="menu:back"))
-            
-            if is_revision:
-                keyboard.add(types.InlineKeyboardButton("Выбрать новый набор", callback_data="settings:set"))
-                keyboard.add(types.InlineKeyboardButton("Пройти тест уровня", callback_data="test_level:start"))
-            
-            # Отправляем сообщение с результатами
-            await bot.send_message(
-                chat_id, 
-                result_message,
-                parse_mode="Markdown", 
-                reply_markup=keyboard
-            )
-            
-            # Отправляем стикер поздравления при хорошем результате
-            if state['correct'] / len(questions) >= 0.7:
-                sticker_id = get_congratulation_sticker()
-                if sticker_id:
-                    await bot.send_sticker(chat_id, sticker_id)
-            
+            # Квиз завершен, отправляем результат
+            result_message = format_result_message(state['correct'], len(questions))
+            await bot.send_message(chat_id, result_message)
             del quiz_states[chat_id]
             return
-            
-        # Отправляем вопрос
+        
         question = questions[current_index]
         
         # Форматируем вопрос
-        formatted_question = format_quiz_question(
-            current_index + 1,
-            len(questions),
-            question['word'],
-            question['options'],
-            is_revision
-        )
+        formatted_question = format_quiz_question(current_index + 1, len(questions), question['word'], question['options'])
         
         # Создаем клавиатуру с вариантами ответов
         keyboard = quiz_keyboard(question['options'], current_index)

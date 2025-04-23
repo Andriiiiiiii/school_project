@@ -59,6 +59,15 @@ russian_tzs = {
     12: "Asia/Kamchatka"      # UTC+12
 }
 
+async def update_word_and_repetition_settings(chat_id, words_per_day, repetitions_per_word):
+    """Обновляет количество слов и повторений для пользователя в базе данных."""
+    try:
+        # Обновляем параметры в базе данных
+        crud.update_user_words_and_repetitions(chat_id, words_per_day, repetitions_per_word)
+        logger.info(f"User {chat_id}: updated words per day to {words_per_day} and repetitions to {repetitions_per_word}")
+    except Exception as e:
+        logger.error(f"Error updating user {chat_id} settings: {e}")
+
 def is_valid_timezone(tz_name):
     """Проверяет валидность часового пояса."""
     try:

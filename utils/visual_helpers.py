@@ -87,10 +87,14 @@ def format_word_item(word: str, translation: str, transcription: str = None,
         
     return result
 
+# Добавить функцию format_progress_bar, если её ещё нет:
+
 def format_progress_bar(current: int, total: int, length: int = 10) -> str:
     """Создает текстовую шкалу прогресса."""
     filled_length = int(length * current / total) if total > 0 else 0
-    bar = PROGRESS_FILLED * filled_length + PROGRESS_EMPTY * (length - filled_length)
+    filled = "█" * filled_length
+    empty = "░" * (length - filled_length)
+    bar = filled + empty
     return f"[{bar}] {current}/{total}"
 
 def format_quiz_question(question_number: int, total_questions: int, word: str, 
