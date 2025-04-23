@@ -80,10 +80,10 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                 # Получаем строку часа и минуты для проверки уведомлений
                 now_local_str = now_local.strftime("%H:%M")
                 
-                # Если полночь по времени пользователя, обрабатываем сброс данных
-                if now_local.hour == 0 and now_local.minute == 0:
+                hour_minute = now_local.hour * 60 + now_local.minute
+                if 0 <= hour_minute <= 3:  # От 00:00 до 00:03
                     process_daily_reset(chat_id)
-                    continue  # Пропускаем дальнейшую обработку, чтобы не отправлять уведомления
+                    continue  # Пропускаем дальнейшую обработку
                 
                 # Полная обработка пользователя только если наступило точное время уведомления
                 # или время для проверки квиза (близкое к концу периода)
@@ -133,29 +133,49 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
 def process_daily_reset(chat_id):
     """Обработка ежедневного сброса данных для пользователя."""
     try:
+        # Улучшенная обработка невыученных слов
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
-            unique_words = entry[8]  # список уникальных слов текущего дня
+            unique_words = entry[8] if len(entry) > 8 and entry[8] else []  # список уникальных слов текущего дня
             
-            # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
-            learned_raw = crud.get_learned_words(chat_id)
-            learned_set = set(extract_english(item[0]) for item in learned_raw)
-            filtered_unique = [w for w in unique_words if extract_english(w) not in learned_set]
-            
-            if filtered_unique:  # Сохраняем только если есть невыученные слова
-                previous_daily_words[chat_id] = filtered_unique
-            elif chat_id in previous_daily_words:
-                # Если все слова выучены, удаляем запись из previous_daily_words
-                del previous_daily_words[chat_id]
+            # Получаем выученные слова
+            try:
+                learned_raw = crud.get_learned_words(chat_id)
+                # Создаем множество выученных слов, приводя все к нижнему регистру
+                learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
+                
+                # Фильтруем уникальные слова, оставляя только невыученные
+                filtered_unique = []
+                for word in unique_words:
+                    # Используем улучшенную функцию extract_english для извлечения словарной формы
+                    english_part = extract_english(word).lower()
+                    if english_part and english_part not in learned_set:
+                        filtered_unique.append(word)
+                
+                # Сохраняем невыученные слова для следующего дня
+                if filtered_unique:
+                    previous_daily_words[chat_id] = filtered_unique
+                    logger.info(f"Сохранено {len(filtered_unique)} невыученных слов для пользователя {chat_id}")
+                elif chat_id in previous_daily_words:
+                    # Если все слова выучены, удаляем запись
+                    del previous_daily_words[chat_id]
+                    logger.info(f"Все слова выучены, запись удалена для пользователя {chat_id}")
+            except Exception as e:
+                logger.error(f"Ошибка при получении выученных слов для пользователя {chat_id}: {e}")
+                # В случае ошибки сохраняем все слова
+                if unique_words:
+                    previous_daily_words[chat_id] = unique_words
+                    logger.warning(f"Из-за ошибки сохранены все {len(unique_words)} слов для пользователя {chat_id}")
                 
             # Сбрасываем кэш для генерации нового списка слов на завтра
             reset_daily_words_cache(chat_id)
+            logger.info(f"Кэш сброшен для пользователя {chat_id}")
         
         # Сбрасываем флаг напоминания
         if chat_id in quiz_reminder_sent:
             del quiz_reminder_sent[chat_id]
             
-        logger.debug(f"Daily reset completed for user {chat_id}")
+        logger.info(f"Daily reset completed for user {chat_id}")
     except Exception as e:
         logger.error(f"Error processing daily reset for user {chat_id}: {e}")
 
@@ -230,15 +250,17 @@ def process_user(user, now_server, bot, loop):
         # ИСПРАВЛЕННЫЙ КОД: Используем временное окно вместо точного сравнения
         # Вычисляем разницу в минутах между текущим временем и временем окончания
         try:
-            # Преобразуем current_time и end_time в datetime-объекты для корректного сравнения
-            current_time = datetime.strptime(f"{local_today_str} {now_local_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
-            end_time = datetime.strptime(f"{local_today_str} {end_time_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
+            # Преобразуем текущее время и время окончания в datetime-объекты для корректного сравнения
+            current_time = now_local
+            end_time = local_end_obj
             
-            # Вычисляем разницу в минутах
-            time_diff_minutes = abs((current_time - end_time).total_seconds() / 60)
+            # Проверяем, не отправляли ли мы уже напоминание сегодня
+            reminder_already_sent = quiz_reminder_sent.get(chat_id) == local_today_str
             
-            # Используем временное окно в 3 минуты вместо точного времени
-            if time_diff_minutes <= 3 and quiz_reminder_sent.get(chat_id) != local_today_str:
+            # Отправляем напоминание, если мы в пределах 10 минут от конца и еще не отправляли сегодня
+            time_diff_minutes = (end_time - current_time).total_seconds() / 60
+            
+            if 0 <= time_diff_minutes <= 10 and not reminder_already_sent:
                 try:
                     # Адаптируем сообщение в зависимости от режима (обычный/повторение)
                     if is_revision_mode:

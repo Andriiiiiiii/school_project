@@ -207,8 +207,17 @@ async def send_quiz_question(chat_id, bot: Bot):
         
         if current_index >= len(questions):
             # Квиз завершен, отправляем результат
-            result_message = format_result_message(state['correct'], len(questions))
-            await bot.send_message(chat_id, result_message)
+            result_message = format_result_message(state['correct'], len(questions), state.get('is_revision', False))
+            await bot.send_message(chat_id, result_message, parse_mode="Markdown")
+            
+            # ИСПРАВЛЕНИЕ: Добавляем отправку стикера при хорошем результате
+            score_percentage = (state['correct'] / len(questions)) * 100 if len(questions) > 0 else 0
+            if score_percentage >= 70:
+                from utils.sticker_helper import get_congratulation_sticker
+                sticker_id = get_congratulation_sticker()
+                if sticker_id:
+                    await bot.send_sticker(chat_id, sticker_id)
+            
             del quiz_states[chat_id]
             return
         
@@ -230,8 +239,6 @@ async def send_quiz_question(chat_id, bot: Bot):
         logger.error(f"Ошибка при отправке вопроса квиза пользователю {chat_id}: {e}")
         await bot.send_message(chat_id, "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.")
 
-
-# Функция обработки ответа на вопрос квиза
 async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     """Обрабатывает ответ на вопрос квиза."""
     chat_id = callback.from_user.id
@@ -283,19 +290,21 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
                 # Явный импорт crud
                 from database import crud
                 
-                # Проверяем, не добавлено ли уже слово в выученные
-                current_learned = crud.get_learned_words(chat_id)
-                current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)
+                # Получаем слово для добавления в словарь
                 word_to_learn = extract_english(question["word"]).lower()
                 
-                # Добавляем слово только в обычном режиме и если еще не выучено
+                # Улучшенная логика проверки и добавления слова
+                current_learned = crud.get_learned_words(chat_id)
+                current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)
+                
+                # Добавляем слово в словарь только в обычном режиме и если еще не выучено
                 if not is_revision and word_to_learn not in current_learned_words:
                     crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
                     await callback.answer("Правильно! Слово добавлено в словарь.")
                 elif is_revision:
-                    await callback.answer("Правильно! (Слово уже в вашем словаре)")
+                    await callback.answer("Правильно! (Режим повторения: слово уже в словаре)")
                 else:
-                    await callback.answer("Правильно! (Слово уже было в вашем словаре)")
+                    await callback.answer("Правильно! (Слово уже в словаре)")
                     
                 state["correct"] += 1
             except Exception as e:
@@ -314,7 +323,6 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     except Exception as e:
         logger.error(f"Ошибка при обработке ответа на квиз: {e}")
         await callback.answer("Произошла ошибка при обработке ответа.")
-
 
 def register_quiz_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(

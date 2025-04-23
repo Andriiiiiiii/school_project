@@ -363,7 +363,10 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Произошла ошибка при подготовке подтверждения.")
 
 async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик подтвержденной смены сета по индексу"""
+    """
+    Обработчик подтверждения смены сета по индексу.
+    Теперь просто подготавливает данные и вызывает основную функцию.
+    """
     chat_id = callback.from_user.id
     try:
         _, set_index = callback.data.split(":", 1)
@@ -379,7 +382,14 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
             return
         
         # Очищаем словарь пользователя
-        crud.clear_learned_words_for_user(chat_id)
+        try:
+            crud.clear_learned_words_for_user(chat_id)
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change by index")
+        except Exception as e:
+            logger.error(f"Error clearing dictionary: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
         
         # Обновляем выбранный сет
         crud.update_user_chosen_set(chat_id, set_name)
@@ -387,21 +397,22 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
         reset_daily_words_cache(chat_id)
         
         # Отправляем стикер
-        from utils.sticker_helper import get_congratulation_sticker
         sticker_id = get_congratulation_sticker()
         if sticker_id:
             await bot.send_sticker(chat_id, sticker_id)
         
-        # Отправляем сообщение об успешной смене сета
+        # Получаем уровень пользователя для сообщения
+        user = crud.get_user(chat_id)
+        user_level = user[1] if user else "не определен"
+        
+        # Отправляем сообщение о смене сета
         await callback.message.edit_text(
-            f"✅ Выбран сет '{set_name}'.\n⚠️ Словарь успешно очищен.",
+            f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n⚠️ Словарь успешно очищен.",
             reply_markup=settings_menu_keyboard()
         )
         
-    except ValueError:
-        await callback.answer("Неверный формат данных.")
     except Exception as e:
-        logger.error(f"Ошибка при подтвержденной смене сета: {e}")
+        logger.error(f"Ошибка при подготовке подтвержденной смены сета: {e}")
         await callback.answer("Произошла ошибка при смене сета.")
 
 # Updated process_choose_set function with both fixes for long messages

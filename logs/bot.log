@@ -489,3 +489,115 @@ aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified 
 2025-04-23 16:14:18,463 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:15:13 MSK)" was missed by 0:00:05.204262
 2025-04-23 16:14:52,026 - INFO - Stop polling...
 2025-04-23 16:14:52,027 - WARNING - Goodbye!
+2025-04-23 16:16:33,576 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 16:16:33,741 - WARNING - Updates were skipped successfully.
+2025-04-23 16:16:33,742 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 16:16:33,742 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 16:16:33,743 - INFO - Scheduler started
+2025-04-23 16:16:33,743 - INFO - Scheduler started with optimized configuration
+2025-04-23 16:16:33,743 - INFO - Бот запущен.
+2025-04-23 16:16:33,743 - INFO - Start polling.
+2025-04-23 16:16:42,257 - INFO - Получена команда /start от chat_id: 1999873173
+2025-04-23 16:16:42,257 - INFO - Пользователь 1999873173 уже существует
+2025-04-23 16:16:43,270 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:16:43,270 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:16:43,271 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:16:48,539 - INFO - У пользователя 1999873173 есть 3 выученных слов
+2025-04-23 16:16:48,539 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:16:48,539 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:16:51,243 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:16:55,799 - INFO - Получено значение test_words_count из базы: 4
+2025-04-23 16:16:55,799 - INFO - Пользователь 1999873173 запускает тест по словарю с 4 словами
+2025-04-23 16:16:55,799 - INFO - В словаре пользователя 1999873173 меньше слов (3), чем запрошено (4)
+2025-04-23 16:16:58,468 - INFO - У пользователя 1999873173 есть 3 выученных слов
+2025-04-23 16:16:58,468 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:16:58,468 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:17:00,968 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:17:36,206 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:18:33 MSK)" was missed by 0:00:02.464039
+2025-04-23 16:18:38,871 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:19:33 MSK)" was missed by 0:00:05.128477
+2025-04-23 16:19:38,788 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:20:33 MSK)" was missed by 0:00:05.046016
+2025-04-23 16:20:38,674 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:21:33 MSK)" was missed by 0:00:04.932255
+2025-04-23 16:21:36,159 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:22:33 MSK)" was missed by 0:00:02.416626
+2025-04-23 16:22:38,541 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:23:33 MSK)" was missed by 0:00:04.798464
+2025-04-23 16:23:38,079 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:24:33 MSK)" was missed by 0:00:04.336202
+2025-04-23 16:24:35,911 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:25:33 MSK)" was missed by 0:00:02.168666
+2025-04-23 16:25:38,083 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:26:33 MSK)" was missed by 0:00:04.340200
+2025-04-23 16:26:38,076 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:27:33 MSK)" was missed by 0:00:04.334176
+2025-04-23 16:27:38,080 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:28:33 MSK)" was missed by 0:00:04.337915
+2025-04-23 16:28:35,918 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:29:33 MSK)" was missed by 0:00:02.175964
+2025-04-23 16:29:38,085 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:30:33 MSK)" was missed by 0:00:04.343227
+2025-04-23 16:30:38,384 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:31:33 MSK)" was missed by 0:00:04.642082
+2025-04-23 16:31:38,218 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:32:33 MSK)" was missed by 0:00:04.475640
+2025-04-23 16:32:21,957 - INFO - Stop polling...
+2025-04-23 16:32:21,958 - WARNING - Goodbye!
+2025-04-23 16:32:23,008 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-04-23 16:32:23,160 - WARNING - Updates were skipped successfully.
+2025-04-23 16:32:23,162 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-23 16:32:23,163 - INFO - Added job "scheduler_job" to job store "default"
+2025-04-23 16:32:23,163 - INFO - Scheduler started
+2025-04-23 16:32:23,163 - INFO - Scheduler started with optimized configuration
+2025-04-23 16:32:23,163 - INFO - Бот запущен.
+2025-04-23 16:32:23,163 - INFO - Start polling.
+2025-04-23 16:32:50,510 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:32:50,510 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:32:50,510 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:32:54,561 - INFO - У пользователя 1999873173 есть 3 выученных слов
+2025-04-23 16:32:54,562 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:32:54,562 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:33:00,523 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:33:08,996 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:33:20,227 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:33:21,771 - INFO - У пользователя 1999873173 есть 3 выученных слов
+2025-04-23 16:33:21,772 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:33:21,772 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:33:25,327 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:33:27,677 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:34:23 MSK)" was missed by 0:00:04.515124
+2025-04-23 16:33:41,998 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 16:33:46,973 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:33:46,973 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 16:33:49,633 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:33:49,635 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:33:49,635 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:33:55,548 - ERROR - Ошибка при определении контекста настроек: 'Bot' object has no attribute 'get_chat_history'
+2025-04-23 16:33:59,026 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:34:12,172 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:34:14,219 - INFO - У пользователя 380675615 есть 4 выученных слов
+2025-04-23 16:34:14,219 - INFO - Resetting daily words cache for user 380675615
+2025-04-23 16:34:14,219 - INFO - Cache successfully reset for user 380675615
+2025-04-23 16:34:14,220 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:34:14,220 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:34:14,220 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-23 16:34:14,220 - INFO - Подготовлено 5 слов для квиза пользователя 380675615
+2025-04-23 16:34:16,218 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:34:27,751 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:35:23 MSK)" was missed by 0:00:04.589307
+2025-04-23 16:34:30,306 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:34:30,307 - INFO - Resetting daily words cache for user 380675615
+2025-04-23 16:34:30,307 - INFO - Cache successfully reset for user 380675615
+2025-04-23 16:34:30,307 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:34:30,307 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:35:09,094 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:35:13,800 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-04-23 16:35:13,800 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-04-23 16:35:19,066 - INFO - Cleared learned words for user 1999873173
+2025-04-23 16:35:19,066 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-04-23 16:35:19,066 - INFO - Resetting daily words cache for user 1999873173
+2025-04-23 16:35:19,066 - INFO - Cache successfully reset for user 1999873173
+2025-04-23 16:35:24,694 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:35:24,698 - ERROR - Error getting learned words for user 1999873173: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:35:24,698 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:35:25,557 - WARNING - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-23 16:36:23 MSK)" was missed by 0:00:02.394664
+2025-04-23 16:35:30,235 - INFO - У пользователя 1999873173 есть 0 выученных слов
+2025-04-23 16:35:30,236 - INFO - Пользователь 1999873173 в режиме повторения: False
+2025-04-23 16:35:30,236 - INFO - Подготовлено 5 слов для квиза пользователя 1999873173
+2025-04-23 16:35:48,050 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:35:48,500 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:35:54,397 - INFO - У пользователя 380675615 есть 9 выученных слов
+2025-04-23 16:35:54,397 - INFO - Resetting daily words cache for user 380675615
+2025-04-23 16:35:54,397 - INFO - Cache successfully reset for user 380675615
+2025-04-23 16:35:54,397 - ERROR - Error getting learned words for user 380675615: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:35:54,397 - ERROR - Error getting user timezone: cannot access local variable 'crud' where it is not associated with a value
+2025-04-23 16:35:54,398 - INFO - Пользователь 380675615 в режиме повторения: False
+2025-04-23 16:35:54,398 - INFO - Подготовлено 4 слов для квиза пользователя 380675615
+2025-04-23 16:35:59,640 - ERROR - Error fetching user settings from database: name 'sqlite3' is not defined
+2025-04-23 16:36:10,334 - INFO - Stop polling...
+2025-04-23 16:36:10,335 - WARNING - Goodbye!

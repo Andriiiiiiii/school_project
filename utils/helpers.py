@@ -141,24 +141,19 @@ def extract_english(word_line: str) -> str:
             logger.error(f"Invalid input to extract_english: {word_line}")
             return ""
             
-        # Стандартный формат 'word - translation'
-        if " - " in word_line:
-            return word_line.split(" - ", 1)[0].strip()
-            
-        # Альтернативный формат 'word – translation' (с длинным тире)
-        if " – " in word_line:
-            return word_line.split(" – ", 1)[0].strip()
-            
-        # Альтернативный формат 'word: translation'
-        if ": " in word_line:
-            return word_line.split(": ", 1)[0].strip()
-            
-        # Если строка начинается с emoji или специальных символов, удаляем их
+        # Удаляем ведущие эмодзи или специальные символы
         cleaned_line = word_line.strip()
-        if cleaned_line and (cleaned_line[0] in ['🔹', '📌', '⏰', '⚠️', '🎓']):
-            cleaned_line = cleaned_line[1:].strip()
-            
-        # Если разделитель не найден, возвращаем всю строку
+        for prefix in ['🔹', '📌', '⏰', '⚠️', '🎓', '• ']:
+            if cleaned_line.startswith(prefix):
+                cleaned_line = cleaned_line[len(prefix):].strip()
+                
+        # Проверяем различные форматы разделителей
+        for separator in [" - ", " – ", ": "]:
+            if separator in cleaned_line:
+                result = cleaned_line.split(separator, 1)[0].strip()
+                return result
+                
+        # Если разделитель не найден, возвращаем всю строку (она уже очищена от префиксов)
         return cleaned_line
     except Exception as e:
         logger.error(f"Error extracting English word from '{word_line}': {e}")
@@ -257,8 +252,18 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 if eng_word not in learned_set:
                     leftover_words.append(word)
         
-        # Определяем, в режиме повторения мы или нет
-        is_revision_mode = len(available_words) == 0 and len(file_words) > 0
+        total_available = len(available_words) + len(leftover_words)
+        min_words_threshold = min(3, words_count // 2)  # Минимальный порог невыученных слов
+                
+        is_revision_mode = (total_available == 0) or (total_available < min_words_threshold and len(file_words) > 0)
+                
+        unique_words = []
+        prefix_message = ""
+                
+        if is_revision_mode:
+            # Режим повторения - все или почти все слова уже выучены
+            logger.info(f"Режим повторения активирован для пользователя {chat_id}. Доступно слов: {total_available}")
+            prefix_message = "🎓 Поздравляем! Вы выучили большинство слов в этом наборе. Вот некоторые для повторения:\n\n"
         
         unique_words = []
         prefix_message = ""
