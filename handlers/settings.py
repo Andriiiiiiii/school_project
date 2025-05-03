@@ -392,13 +392,35 @@ async def handle_set_words_count(callback: types.CallbackQuery, bot: Bot):
             # Обновляем количество слов
             crud.update_user_words_per_day(chat_id, count)
             
-            # Сбрасываем кэш
-            reset_daily_words_cache(chat_id)
-            
             # Получаем обновленные настройки
             user_after = crud.get_user(chat_id)
             current_words = user_after[2] if user_after else count
             current_repetitions = user_after[3] if user_after else 3
+            
+            # Сбрасываем кэш и пересчитываем слова дня
+            reset_daily_words_cache(chat_id)
+            
+            # Принудительно пересчитываем слова дня
+            from utils.helpers import get_daily_words_for_user
+            from config import REMINDER_START, DURATION_HOURS
+            
+            # Немедленно обновляем кэш пользователей в планировщике
+            try:
+                from services.scheduler import reset_user_cache
+                reset_user_cache(chat_id)
+                logger.info(f"Кэш пользователя {chat_id} в планировщике обновлен")
+            except ImportError as e:
+                logger.warning(f"Не удалось импортировать reset_user_cache: {e}")
+            except Exception as e:
+                logger.error(f"Ошибка при обновлении кэша пользователя в планировщике: {e}")
+                
+            # Немедленно пересчитываем слова дня и расписание
+            get_daily_words_for_user(chat_id, user_after[1], current_words, current_repetitions,
+                                    first_time=REMINDER_START, duration_hours=DURATION_HOURS,
+                                    force_reset=True)
+            
+            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {count}")
+            logger.info(f"Слова дня и расписание успешно пересчитаны для пользователя {chat_id}")
             
             # Отправляем подтверждение
             await callback.message.edit_text(
@@ -408,8 +430,6 @@ async def handle_set_words_count(callback: types.CallbackQuery, bot: Bot):
                 parse_mode="Markdown",
                 reply_markup=notification_settings_menu_keyboard()
             )
-            
-            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {count}")
             
         except Exception as e:
             logger.error(f"Ошибка при обновлении количества слов: {e}")
@@ -442,13 +462,35 @@ async def handle_set_repetitions_count(callback: types.CallbackQuery, bot: Bot):
             # Обновляем количество повторений
             crud.update_user_notifications(chat_id, count)
             
-            # Сбрасываем кэш
-            reset_daily_words_cache(chat_id)
-            
             # Получаем обновленные настройки
             user_after = crud.get_user(chat_id)
             current_words = user_after[2] if user_after else 5
             current_repetitions = user_after[3] if user_after else count
+            
+            # Сбрасываем кэш
+            reset_daily_words_cache(chat_id)
+            
+            # Принудительно пересчитываем слова дня
+            from utils.helpers import get_daily_words_for_user
+            from config import REMINDER_START, DURATION_HOURS
+            
+            # Немедленно обновляем кэш пользователей в планировщике
+            try:
+                from services.scheduler import reset_user_cache
+                reset_user_cache(chat_id)
+                logger.info(f"Кэш пользователя {chat_id} в планировщике обновлен")
+            except ImportError as e:
+                logger.warning(f"Не удалось импортировать reset_user_cache: {e}")
+            except Exception as e:
+                logger.error(f"Ошибка при обновлении кэша пользователя в планировщике: {e}")
+            
+            # Немедленно пересчитываем слова дня и расписание
+            get_daily_words_for_user(chat_id, user_after[1], current_words, current_repetitions,
+                                   first_time=REMINDER_START, duration_hours=DURATION_HOURS,
+                                   force_reset=True)
+            
+            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {count}")
+            logger.info(f"Слова дня и расписание успешно пересчитаны для пользователя {chat_id}")
             
             # Отправляем подтверждение
             await callback.message.edit_text(
@@ -458,8 +500,6 @@ async def handle_set_repetitions_count(callback: types.CallbackQuery, bot: Bot):
                 parse_mode="Markdown",
                 reply_markup=notification_settings_menu_keyboard()
             )
-            
-            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {count}")
             
         except Exception as e:
             logger.error(f"Ошибка при обновлении количества повторений: {e}")
@@ -1081,9 +1121,69 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
             logger.warning(f"Невалидный часовой пояс {tz_mapped} для пользователя {chat_id}")
             tz_mapped = "Europe/Moscow"  # Значение по умолчанию
     
+    # Обновляем часовой пояс в базе данных
     crud.update_user_timezone(chat_id, tz_mapped)
+    
+    # Сбрасываем кэш ежедневных слов для обновления состояния
     reset_daily_words_cache(chat_id)
-    await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=settings_menu_keyboard())
+    
+    # Получаем актуальные настройки пользователя
+    user_after = crud.get_user(chat_id)
+    if not user_after:
+        logger.error(f"Не удалось получить данные пользователя {chat_id} после обновления часового пояса")
+        await callback.message.edit_text(
+            f"Часовой пояс установлен на {tz}, но не удалось обновить расписание уведомлений.",
+            reply_markup=settings_menu_keyboard()
+        )
+        await callback.answer()
+        return
+    
+    current_words = user_after[2] if user_after else 5
+    current_repetitions = user_after[3] if user_after else 3
+    
+    # Принудительно пересчитываем слова дня и расписание уведомлений
+    try:
+        from utils.helpers import get_daily_words_for_user
+        from config import REMINDER_START, DURATION_HOURS
+        
+        # Немедленно обновляем кэш пользователей в планировщике
+        try:
+            from services.scheduler import reset_user_cache
+            reset_user_cache(chat_id)
+            logger.info(f"Кэш пользователя {chat_id} в планировщике обновлен")
+        except ImportError as e:
+            logger.warning(f"Не удалось импортировать reset_user_cache: {e}")
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении кэша пользователя в планировщике: {e}")
+        
+        # Немедленно пересчитываем слова дня и расписание
+        get_daily_words_for_user(
+            chat_id, 
+            user_after[1], 
+            current_words, 
+            current_repetitions,
+            first_time=REMINDER_START, 
+            duration_hours=DURATION_HOURS,
+            force_reset=True
+        )
+        
+        logger.info(f"Часовой пояс обновлен на {tz_mapped} для пользователя {chat_id}")
+        logger.info(f"Слова дня и расписание успешно пересчитаны для пользователя {chat_id}")
+        
+        # Отправляем уведомление об успешном изменении
+        await callback.message.edit_text(
+            f"✅ Часовой пояс успешно установлен на {tz}!\n\n"
+            f"Уведомления теперь будут приходить по вашему местному времени.\n"
+            f"Новое расписание уведомлений сгенерировано.",
+            reply_markup=settings_menu_keyboard()
+        )
+    except Exception as e:
+        logger.error(f"Ошибка при пересчете расписания после смены часового пояса: {e}")
+        await callback.message.edit_text(
+            f"Часовой пояс установлен на {tz}, но произошла ошибка при обновлении расписания уведомлений.",
+            reply_markup=settings_menu_keyboard()
+        )
+    
     await callback.answer()
 
 async def process_text_setting(message: types.Message, bot: Bot = None):

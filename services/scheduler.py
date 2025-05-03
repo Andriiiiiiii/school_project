@@ -147,6 +147,42 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
     except Exception as e:
         logger.error(f"Error saving scheduler run time: {e}")
 
+def reset_user_cache(chat_id=None):
+    """
+    Сбрасывает кэш пользователей. Если указан chat_id, сбрасывает только для этого пользователя.
+    """
+    global user_cache, last_cache_update
+    
+    try:
+        if chat_id is not None:
+            # Обновляем данные только для указанного пользователя
+            try:
+                user = crud.get_user(chat_id)
+                if user:
+                    if chat_id in user_cache:
+                        user_cache[chat_id] = user
+                    else:
+                        # Если пользователя нет в кэше, добавляем его
+                        user_cache = {**user_cache, chat_id: user}
+                    logger.info(f"Кэш пользователя {chat_id} обновлен")
+                else:
+                    # Удаляем из кэша, если пользователь не найден
+                    if chat_id in user_cache:
+                        del user_cache[chat_id]
+                        logger.info(f"Пользователь {chat_id} удален из кэша, так как не найден в БД")
+            except Exception as e:
+                logger.error(f"Ошибка при обновлении кэша пользователя {chat_id}: {e}")
+                # В случае ошибки удаляем запись из кэша
+                if chat_id in user_cache:
+                    del user_cache[chat_id]
+        else:
+            # Сбрасываем весь кэш
+            user_cache = {}
+            last_cache_update = 0
+            logger.info("Весь кэш пользователей сброшен")
+    except Exception as e:
+        logger.error(f"Непредвиденная ошибка при сбросе кэша пользователей: {e}")
+
 def process_user_batch(batch, now_server, bot, loop):
     """Process a batch of users for notifications."""
     for chat_id, user in batch:

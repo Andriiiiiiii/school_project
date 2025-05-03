@@ -1839,3 +1839,560 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-04-26 11:37:25,410 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-04-26 11:38:25 MSK)" executed successfully
 2025-04-26 11:37:45,435 - INFO - Stop polling...
 2025-04-26 11:37:45,435 - WARNING - Goodbye!
+2025-05-03 20:16:52,667 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-03 20:16:52,822 - WARNING - Updates were skipped successfully.
+2025-05-03 20:16:52,829 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-03 20:16:52,831 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-03 20:16:52,831 - INFO - Scheduler started
+2025-05-03 20:16:52,831 - INFO - Scheduler started with optimized configuration
+2025-05-03 20:16:52,831 - INFO - Бот запущен.
+2025-05-03 20:16:52,832 - INFO - Start polling.
+2025-05-03 20:17:05,452 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:17:05,452 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:17:13,141 - INFO - Проверка директории сетов для пользователя 380675615, уровень C1, путь: levels/C1
+2025-05-03 20:17:13,142 - INFO - Найдено 22 файлов сетов в директории levels/C1
+2025-05-03 20:17:23,147 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-44' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 334, in process_settings_choice_callback
+    await process_settings_mysettings(callback, bot)
+  File "/home/olegb/project/english_learning_bot/handlers/settings.py", line 1457, in process_settings_mysettings
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-05-03 20:17:43,817 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:17:43,817 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:17:43,988 - INFO - Обновлено количество слов для пользователя 380675615: 5
+2025-05-03 20:17:52,836 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:18:52 MSK)" (scheduled at 2025-05-03 20:17:52.829087+03:00)
+2025-05-03 20:17:52,902 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:18:52 MSK)" executed successfully
+2025-05-03 20:17:54,240 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:17:54,245 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:17:54,347 - INFO - Обновлено количество слов для пользователя 380675615: 20
+2025-05-03 20:17:57,320 - INFO - Обновлено количество повторений для пользователя 380675615: 5
+2025-05-03 20:18:02,265 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-113' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Message_too_long')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 48, in send_words_day_schedule
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Message_too_long
+2025-05-03 20:18:13,361 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:18:13,361 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:18:13,471 - INFO - Обновлено количество повторений для пользователя 380675615: 4
+2025-05-03 20:18:17,381 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-147' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Message_too_long')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 48, in send_words_day_schedule
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Message_too_long
+2025-05-03 20:18:20,867 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-151' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Message_too_long')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/words.py", line 48, in send_words_day_schedule
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Message_too_long
+2025-05-03 20:18:29,903 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:18:29,903 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:18:30,086 - INFO - Обновлено количество повторений для пользователя 380675615: 3
+2025-05-03 20:18:52,830 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:19:52 MSK)" (scheduled at 2025-05-03 20:18:52.829087+03:00)
+2025-05-03 20:18:52,831 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:18:52,831 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:18:52,832 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:19:52 MSK)" executed successfully
+2025-05-03 20:18:56,391 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:18:56,391 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:18:56,504 - INFO - Обновлено количество слов для пользователя 380675615: 10
+2025-05-03 20:19:34,588 - INFO - Stop polling...
+2025-05-03 20:19:34,589 - WARNING - Goodbye!
+2025-05-03 20:19:37,084 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-03 20:19:37,309 - WARNING - Updates were skipped successfully.
+2025-05-03 20:19:37,311 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-03 20:19:37,311 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-03 20:19:37,311 - INFO - Scheduler started
+2025-05-03 20:19:37,311 - INFO - Scheduler started with optimized configuration
+2025-05-03 20:19:37,311 - INFO - Бот запущен.
+2025-05-03 20:19:37,312 - INFO - Start polling.
+2025-05-03 20:19:42,240 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:19:42,241 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:20:00,147 - INFO - Проверка директории сетов для пользователя 380675615, уровень C1, путь: levels/C1
+2025-05-03 20:20:00,147 - INFO - Найдено 22 файлов сетов в директории levels/C1
+2025-05-03 20:20:08,289 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:20:08,290 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:20:10,220 - INFO - Проверка директории сетов для пользователя 380675615, уровень A1, путь: levels/A1
+2025-05-03 20:20:10,220 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-03 20:20:15,087 - INFO - Cleared learned words for user 380675615
+2025-05-03 20:20:15,087 - INFO - Dictionary cleared for user 380675615 due to set change by index
+2025-05-03 20:20:15,087 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-05-03 20:20:18,609 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:20:18,609 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:20:28,454 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:20:28,455 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:20:37,317 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:21:37 MSK)" (scheduled at 2025-05-03 20:20:37.311117+03:00)
+2025-05-03 20:20:37,320 - INFO - Sent notification to user 380675615 at 20:20
+2025-05-03 20:20:37,326 - INFO - Sent notification to user 1999873173 at 20:20
+2025-05-03 20:20:37,375 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:21:37 MSK)" executed successfully
+2025-05-03 20:21:07,015 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:21:07,015 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:21:07,128 - INFO - Обновлено количество повторений для пользователя 380675615: 5
+2025-05-03 20:21:14,506 - INFO - Обновлено количество слов для пользователя 380675615: 11
+2025-05-03 20:21:37,322 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:22:37 MSK)" (scheduled at 2025-05-03 20:21:37.311117+03:00)
+2025-05-03 20:21:37,322 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:21:37,323 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:21:37,325 - INFO - Sent notification to user 1999873173 at 20:21
+2025-05-03 20:21:37,327 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:22:37 MSK)" executed successfully
+2025-05-03 20:22:37,314 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:23:37 MSK)" (scheduled at 2025-05-03 20:22:37.311117+03:00)
+2025-05-03 20:22:37,315 - INFO - Sent notification to user 380675615 at 20:22
+2025-05-03 20:22:37,316 - INFO - Sent notification to user 1999873173 at 20:22
+2025-05-03 20:22:37,318 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:23:37 MSK)" executed successfully
+2025-05-03 20:23:21,217 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:23:21,217 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:23:37,318 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:24:37 MSK)" (scheduled at 2025-05-03 20:23:37.311117+03:00)
+2025-05-03 20:23:37,319 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:23:37,319 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:23:37,322 - INFO - Sent notification to user 1999873173 at 20:23
+2025-05-03 20:23:37,324 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:24:37 MSK)" executed successfully
+2025-05-03 20:24:13,858 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:24:13,858 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:24:27,379 - INFO - Проверка директории сетов для пользователя 1999873173, уровень B2, путь: levels/B2
+2025-05-03 20:24:27,380 - INFO - Найдено 20 файлов сетов в директории levels/B2
+2025-05-03 20:24:33,814 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:24:33,814 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:24:33,944 - INFO - Обновлено количество слов для пользователя 1999873173: 10
+2025-05-03 20:24:37,312 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:25:37 MSK)" (scheduled at 2025-05-03 20:24:37.311117+03:00)
+2025-05-03 20:24:37,312 - INFO - Sent notification to user 380675615 at 20:24
+2025-05-03 20:24:37,316 - INFO - Sent notification to user 1999873173 at 20:24
+2025-05-03 20:24:37,317 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:25:37 MSK)" executed successfully
+2025-05-03 20:24:37,811 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:24:37,812 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:24:38,052 - INFO - Обновлено количество повторений для пользователя 1999873173: 2
+2025-05-03 20:25:01,133 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:25:01,134 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:25:01,357 - INFO - Обновлено количество повторений для пользователя 1999873173: 5
+2025-05-03 20:25:37,325 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:26:37 MSK)" (scheduled at 2025-05-03 20:25:37.311117+03:00)
+2025-05-03 20:25:37,326 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:25:37,326 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:25:37,328 - INFO - Sent notification to user 1999873173 at 20:25
+2025-05-03 20:25:37,330 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:26:37 MSK)" executed successfully
+2025-05-03 20:25:48,774 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:25:48,775 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:26:37,320 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:27:37 MSK)" (scheduled at 2025-05-03 20:26:37.311117+03:00)
+2025-05-03 20:26:37,320 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:26:37,320 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:26:37,321 - INFO - Sent notification to user 380675615 at 20:26
+2025-05-03 20:26:37,322 - INFO - Sent notification to user 1999873173 at 20:26
+2025-05-03 20:26:37,323 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:27:37 MSK)" executed successfully
+2025-05-03 20:27:37,320 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:28:37 MSK)" (scheduled at 2025-05-03 20:27:37.311117+03:00)
+2025-05-03 20:27:37,321 - INFO - Sent notification to user 1999873173 at 20:27
+2025-05-03 20:27:37,323 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:28:37 MSK)" executed successfully
+2025-05-03 20:28:37,319 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:29:37 MSK)" (scheduled at 2025-05-03 20:28:37.311117+03:00)
+2025-05-03 20:28:37,320 - INFO - Sent notification to user 380675615 at 20:28
+2025-05-03 20:28:37,320 - INFO - Sent notification to user 1999873173 at 20:28
+2025-05-03 20:28:37,322 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:29:37 MSK)" executed successfully
+2025-05-03 20:29:37,319 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:30:37 MSK)" (scheduled at 2025-05-03 20:29:37.311117+03:00)
+2025-05-03 20:29:37,319 - INFO - Sent notification to user 1999873173 at 20:29
+2025-05-03 20:29:37,321 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:30:37 MSK)" executed successfully
+2025-05-03 20:30:37,318 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:31:37 MSK)" (scheduled at 2025-05-03 20:30:37.311117+03:00)
+2025-05-03 20:30:37,319 - INFO - Sent notification to user 380675615 at 20:30
+2025-05-03 20:30:37,321 - INFO - Sent notification to user 1999873173 at 20:30
+2025-05-03 20:30:37,323 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:31:37 MSK)" executed successfully
+2025-05-03 20:31:29,565 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:31:29,565 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:31:37,317 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:32:37 MSK)" (scheduled at 2025-05-03 20:31:37.311117+03:00)
+2025-05-03 20:31:37,318 - INFO - Sent notification to user 1999873173 at 20:31
+2025-05-03 20:31:37,319 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:32:37 MSK)" executed successfully
+2025-05-03 20:32:37,318 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:33:37 MSK)" (scheduled at 2025-05-03 20:32:37.311117+03:00)
+2025-05-03 20:32:37,318 - INFO - Sent notification to user 380675615 at 20:32
+2025-05-03 20:32:37,319 - INFO - Sent notification to user 1999873173 at 20:32
+2025-05-03 20:32:37,321 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:33:37 MSK)" executed successfully
+2025-05-03 20:33:37,317 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:34:37 MSK)" (scheduled at 2025-05-03 20:33:37.311117+03:00)
+2025-05-03 20:33:37,318 - INFO - Sent notification to user 1999873173 at 20:33
+2025-05-03 20:33:37,320 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:34:37 MSK)" executed successfully
+2025-05-03 20:34:37,316 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:35:37 MSK)" (scheduled at 2025-05-03 20:34:37.311117+03:00)
+2025-05-03 20:34:37,317 - INFO - Sent notification to user 380675615 at 20:34
+2025-05-03 20:34:37,318 - INFO - Sent notification to user 1999873173 at 20:34
+2025-05-03 20:34:37,327 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:35:37 MSK)" executed successfully
+2025-05-03 20:35:37,314 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:36:37 MSK)" (scheduled at 2025-05-03 20:35:37.311117+03:00)
+2025-05-03 20:35:37,314 - INFO - Sent notification to user 1999873173 at 20:35
+2025-05-03 20:35:37,316 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:36:37 MSK)" executed successfully
+2025-05-03 20:36:05,824 - INFO - Проверка директории сетов для пользователя 380675615, уровень A1, путь: levels/A1
+2025-05-03 20:36:05,825 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-03 20:36:06,108 - INFO - User 1999873173 has 0 learned words
+2025-05-03 20:36:06,108 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:36:06,108 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:36:06,116 - INFO - User 1999873173 in revision mode: False
+2025-05-03 20:36:09,886 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:36:09,886 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:36:15,879 - INFO - User 380675615 has 0 learned words
+2025-05-03 20:36:15,879 - INFO - User 380675615 in revision mode: False
+2025-05-03 20:36:37,314 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:37:37 MSK)" (scheduled at 2025-05-03 20:36:37.311117+03:00)
+2025-05-03 20:36:37,323 - INFO - Sent notification to user 380675615 at 20:36
+2025-05-03 20:36:37,324 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:37:37 MSK)" executed successfully
+2025-05-03 20:37:37,320 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:38:37 MSK)" (scheduled at 2025-05-03 20:37:37.311117+03:00)
+2025-05-03 20:37:37,327 - INFO - Sent notification to user 380675615 at 20:37
+2025-05-03 20:37:37,327 - INFO - Sent notification to user 1999873173 at 20:37
+2025-05-03 20:37:37,331 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:38:37 MSK)" executed successfully
+2025-05-03 20:38:37,320 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:39:37 MSK)" (scheduled at 2025-05-03 20:38:37.311117+03:00)
+2025-05-03 20:38:37,320 - INFO - Sent notification to user 380675615 at 20:38
+2025-05-03 20:38:37,321 - INFO - Sent notification to user 1999873173 at 20:38
+2025-05-03 20:38:37,322 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:39:37 MSK)" executed successfully
+2025-05-03 20:39:37,318 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:40:37 MSK)" (scheduled at 2025-05-03 20:39:37.311117+03:00)
+2025-05-03 20:39:37,319 - INFO - Sent notification to user 1999873173 at 20:39
+2025-05-03 20:39:37,328 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:40:37 MSK)" executed successfully
+2025-05-03 20:40:37,317 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:41:37 MSK)" (scheduled at 2025-05-03 20:40:37.311117+03:00)
+2025-05-03 20:40:37,325 - INFO - Sent notification to user 380675615 at 20:40
+2025-05-03 20:40:37,330 - INFO - Sent notification to user 1999873173 at 20:40
+2025-05-03 20:40:37,330 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:41:37 MSK)" executed successfully
+2025-05-03 20:41:37,316 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:42:37 MSK)" (scheduled at 2025-05-03 20:41:37.311117+03:00)
+2025-05-03 20:41:37,317 - INFO - Sent notification to user 380675615 at 20:41
+2025-05-03 20:41:37,325 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:42:37 MSK)" executed successfully
+2025-05-03 20:42:37,316 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:43:37 MSK)" (scheduled at 2025-05-03 20:42:37.311117+03:00)
+2025-05-03 20:42:37,317 - INFO - Sent notification to user 380675615 at 20:42
+2025-05-03 20:42:37,317 - INFO - Sent notification to user 1999873173 at 20:42
+2025-05-03 20:42:37,325 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:43:37 MSK)" executed successfully
+2025-05-03 20:43:23,024 - INFO - Stop polling...
+2025-05-03 20:43:23,026 - WARNING - Goodbye!
+2025-05-03 20:43:25,044 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-03 20:43:25,217 - WARNING - Updates were skipped successfully.
+2025-05-03 20:43:25,223 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-03 20:43:25,224 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-03 20:43:25,224 - INFO - Scheduler started
+2025-05-03 20:43:25,224 - INFO - Scheduler started with optimized configuration
+2025-05-03 20:43:25,224 - INFO - Бот запущен.
+2025-05-03 20:43:25,224 - INFO - Start polling.
+2025-05-03 20:43:34,677 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:43:34,678 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:44:25,237 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:45:25 MSK)" (scheduled at 2025-05-03 20:44:25.222800+03:00)
+2025-05-03 20:44:25,242 - INFO - Sent notification to user 380675615 at 20:44
+2025-05-03 20:44:25,245 - INFO - Sent notification to user 1999873173 at 20:44
+2025-05-03 20:44:25,289 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:45:25 MSK)" executed successfully
+2025-05-03 20:44:33,823 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:44:33,823 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:45:01,296 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:45:01,297 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:45:25,228 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:46:25 MSK)" (scheduled at 2025-05-03 20:45:25.222800+03:00)
+2025-05-03 20:45:25,229 - INFO - Sent notification to user 380675615 at 20:45
+2025-05-03 20:45:25,230 - INFO - Sent notification to user 1999873173 at 20:45
+2025-05-03 20:45:25,234 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:46:25 MSK)" executed successfully
+2025-05-03 20:45:32,436 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:45:32,436 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:45:32,436 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:45:32,436 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:45:32,437 - INFO - Обновлено количество слов для пользователя 1999873173: 15
+2025-05-03 20:45:32,437 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:45:33,727 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:45:33,727 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:45:34,487 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:45:34,487 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:45:34,487 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:45:34,487 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:45:34,488 - INFO - Обновлено количество повторений для пользователя 1999873173: 2
+2025-05-03 20:45:34,488 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:45:36,432 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:45:36,432 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:45:36,432 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:45:36,432 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:45:36,433 - INFO - Обновлено количество повторений для пользователя 1999873173: 3
+2025-05-03 20:45:36,433 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:45:39,754 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:45:39,754 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:45:39,754 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:45:39,754 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:45:39,755 - INFO - Обновлено количество слов для пользователя 380675615: 12
+2025-05-03 20:45:39,755 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:45:43,269 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:45:43,269 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:45:43,269 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:45:43,269 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:45:43,270 - INFO - Обновлено количество повторений для пользователя 380675615: 3
+2025-05-03 20:45:43,270 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:45:50,654 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:45:50,655 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:46:00,651 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:46:00,652 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:46:06,031 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:46:06,037 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:46:06,037 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:46:06,037 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:46:06,039 - INFO - Обновлено количество повторений для пользователя 1999873173: 4
+2025-05-03 20:46:06,039 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:46:25,225 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:47:25 MSK)" (scheduled at 2025-05-03 20:46:25.222800+03:00)
+2025-05-03 20:46:25,225 - INFO - Sent notification to user 1999873173 at 20:46
+2025-05-03 20:46:25,228 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:47:25 MSK)" executed successfully
+2025-05-03 20:47:25,238 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:48:25 MSK)" (scheduled at 2025-05-03 20:47:25.222800+03:00)
+2025-05-03 20:47:25,239 - INFO - Sent notification to user 380675615 at 20:47
+2025-05-03 20:47:25,240 - INFO - Sent notification to user 1999873173 at 20:47
+2025-05-03 20:47:25,244 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:48:25 MSK)" executed successfully
+2025-05-03 20:47:36,120 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:47:36,120 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:47:43,482 - INFO - Проверка директории сетов для пользователя 1999873173, уровень B2, путь: levels/B2
+2025-05-03 20:47:43,482 - INFO - Найдено 20 файлов сетов в директории levels/B2
+2025-05-03 20:47:44,012 - INFO - Проверка директории сетов для пользователя 380675615, уровень A1, путь: levels/A1
+2025-05-03 20:47:44,012 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-03 20:47:49,333 - INFO - Cleared learned words for user 380675615
+2025-05-03 20:47:49,335 - INFO - Dictionary cleared for user 380675615 due to set change by index
+2025-05-03 20:47:49,336 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:47:49,336 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:47:49,336 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-05-03 20:47:53,533 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:47:53,533 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:47:58,104 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:47:58,104 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:47:59,427 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-03 20:47:59,427 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-03 20:48:05,652 - INFO - Cleared learned words for user 1999873173
+2025-05-03 20:48:05,652 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-03 20:48:05,653 - ERROR - Error in handle_set_change_confirmed_by_index: name 'get_congratulation_sticker' is not defined
+2025-05-03 20:48:07,578 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-03 20:48:07,578 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-03 20:48:11,272 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:48:11,273 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:48:11,273 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:48:11,278 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:48:11,279 - INFO - Обновлено количество повторений для пользователя 380675615: 5
+2025-05-03 20:48:11,279 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:48:20,654 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:48:20,654 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:48:25,224 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:49:25 MSK)" (scheduled at 2025-05-03 20:48:25.222800+03:00)
+2025-05-03 20:48:25,224 - INFO - Sent notification to user 380675615 at 20:48
+2025-05-03 20:48:25,225 - INFO - Sent notification to user 1999873173 at 20:48
+2025-05-03 20:48:25,233 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:49:25 MSK)" executed successfully
+2025-05-03 20:49:09,236 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:49:09,236 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:49:25,229 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:50:25 MSK)" (scheduled at 2025-05-03 20:49:25.222800+03:00)
+2025-05-03 20:49:25,230 - INFO - Sent notification to user 380675615 at 20:49
+2025-05-03 20:49:25,230 - INFO - Sent notification to user 1999873173 at 20:49
+2025-05-03 20:49:25,232 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:50:25 MSK)" executed successfully
+2025-05-03 20:49:28,515 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:49:28,515 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:49:52,437 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:49:52,437 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:49:56,531 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:49:56,531 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:49:56,531 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:49:56,531 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:49:56,531 - INFO - Обновлено количество слов для пользователя 1999873173: 5
+2025-05-03 20:49:56,532 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:49:58,783 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:49:58,783 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:49:58,783 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:49:58,784 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:49:58,784 - INFO - Обновлено количество повторений для пользователя 1999873173: 1
+2025-05-03 20:49:58,784 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:50:10,968 - INFO - User 1999873173 has 0 learned words
+2025-05-03 20:50:10,968 - INFO - User 1999873173 in revision mode: False
+2025-05-03 20:50:25,223 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:51:25 MSK)" (scheduled at 2025-05-03 20:50:25.222800+03:00)
+2025-05-03 20:50:25,225 - INFO - Sent notification to user 380675615 at 20:50
+2025-05-03 20:50:25,228 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:51:25 MSK)" executed successfully
+2025-05-03 20:51:25,236 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:52:25 MSK)" (scheduled at 2025-05-03 20:51:25.222800+03:00)
+2025-05-03 20:51:25,237 - INFO - Sent notification to user 380675615 at 20:51
+2025-05-03 20:51:25,240 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:52:25 MSK)" executed successfully
+2025-05-03 20:52:25,239 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:53:25 MSK)" (scheduled at 2025-05-03 20:52:25.222800+03:00)
+2025-05-03 20:52:25,239 - INFO - Sent notification to user 380675615 at 20:52
+2025-05-03 20:52:25,241 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:53:25 MSK)" executed successfully
+2025-05-03 20:53:22,450 - INFO - Stop polling...
+2025-05-03 20:53:22,451 - WARNING - Goodbye!
+2025-05-03 20:53:23,785 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-03 20:53:23,965 - WARNING - Updates were skipped successfully.
+2025-05-03 20:53:23,968 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-03 20:53:23,969 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-03 20:53:23,969 - INFO - Scheduler started
+2025-05-03 20:53:23,969 - INFO - Scheduler started with optimized configuration
+2025-05-03 20:53:23,970 - INFO - Бот запущен.
+2025-05-03 20:53:23,970 - INFO - Start polling.
+2025-05-03 20:53:30,037 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:53:30,037 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:53:39,242 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:53:39,242 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:53:53,874 - INFO - Cleared learned words for user 1999873173
+2025-05-03 20:54:00,960 - INFO - User 1999873173 has 0 learned words
+2025-05-03 20:54:00,960 - INFO - User 1999873173 in revision mode: False
+2025-05-03 20:54:07,159 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:54:07,159 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:54:07,159 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:54:07,159 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:54:07,159 - INFO - Часовой пояс обновлен на Europe/Moscow для пользователя 380675615
+2025-05-03 20:54:07,159 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:54:23,971 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:55:23 MSK)" (scheduled at 2025-05-03 20:54:23.968526+03:00)
+2025-05-03 20:54:23,975 - INFO - Sent notification to user 380675615 at 20:54
+2025-05-03 20:54:24,022 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:55:23 MSK)" executed successfully
+2025-05-03 20:54:24,288 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 20:54:24,288 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 20:54:24,288 - INFO - Кэш пользователя 1999873173 обновлен
+2025-05-03 20:54:24,288 - INFO - Кэш пользователя 1999873173 в планировщике обновлен
+2025-05-03 20:54:24,289 - INFO - Часовой пояс обновлен на Asia/Omsk для пользователя 1999873173
+2025-05-03 20:54:24,289 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 1999873173
+2025-05-03 20:54:51,760 - INFO - User 1999873173 has 3 learned words
+2025-05-03 20:54:51,760 - INFO - User 1999873173 in revision mode: False
+2025-05-03 20:55:03,065 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:55:03,065 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:55:03,065 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:55:03,065 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:55:03,066 - INFO - Часовой пояс обновлен на Asia/Omsk для пользователя 380675615
+2025-05-03 20:55:03,066 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:55:23,979 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:56:23 MSK)" (scheduled at 2025-05-03 20:55:23.968526+03:00)
+2025-05-03 20:55:23,980 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:56:23 MSK)" executed successfully
+2025-05-03 20:55:42,170 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 20:55:42,171 - INFO - Cache successfully reset for user 380675615
+2025-05-03 20:55:42,171 - INFO - Кэш пользователя 380675615 обновлен
+2025-05-03 20:55:42,171 - INFO - Кэш пользователя 380675615 в планировщике обновлен
+2025-05-03 20:55:42,171 - INFO - Обновлено количество слов для пользователя 380675615: 5
+2025-05-03 20:55:42,171 - INFO - Слова дня и расписание успешно пересчитаны для пользователя 380675615
+2025-05-03 20:56:11,321 - INFO - User 380675615 has 0 learned words
+2025-05-03 20:56:11,322 - INFO - User 380675615 in revision mode: False
+2025-05-03 20:56:23,969 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:57:23 MSK)" (scheduled at 2025-05-03 20:56:23.968526+03:00)
+2025-05-03 20:56:23,970 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:57:23 MSK)" executed successfully
+2025-05-03 20:56:30,737 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:56:30,737 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:56:47,974 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 20:56:47,974 - INFO - Пользователь 380675615 уже существует
+2025-05-03 20:57:23,985 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:58:23 MSK)" (scheduled at 2025-05-03 20:57:23.968526+03:00)
+2025-05-03 20:57:23,986 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:58:23 MSK)" executed successfully
+2025-05-03 20:58:23,984 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:59:23 MSK)" (scheduled at 2025-05-03 20:58:23.968526+03:00)
+2025-05-03 20:58:23,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 20:59:23 MSK)" executed successfully
+2025-05-03 20:59:11,649 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-03 20:59:11,650 - INFO - Пользователь 1999873173 уже существует
+2025-05-03 20:59:23,970 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:00:23 MSK)" (scheduled at 2025-05-03 20:59:23.968526+03:00)
+2025-05-03 20:59:23,971 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:00:23 MSK)" executed successfully
+2025-05-03 21:00:23,982 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:01:23 MSK)" (scheduled at 2025-05-03 21:00:23.968526+03:00)
+2025-05-03 21:00:23,984 - INFO - Сохранено 2 невыученных слов для пользователя 380675615
+2025-05-03 21:00:23,984 - INFO - Resetting daily words cache for user 380675615
+2025-05-03 21:00:23,984 - INFO - Cache successfully reset for user 380675615
+2025-05-03 21:00:23,984 - INFO - Кэш сброшен для пользователя 380675615
+2025-05-03 21:00:23,984 - INFO - Daily reset completed for user 380675615
+2025-05-03 21:00:23,984 - INFO - Сохранено 2 невыученных слов для пользователя 1999873173
+2025-05-03 21:00:23,984 - INFO - Resetting daily words cache for user 1999873173
+2025-05-03 21:00:23,985 - INFO - Cache successfully reset for user 1999873173
+2025-05-03 21:00:23,985 - INFO - Кэш сброшен для пользователя 1999873173
+2025-05-03 21:00:23,985 - INFO - Daily reset completed for user 1999873173
+2025-05-03 21:00:23,985 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:01:23 MSK)" executed successfully
+2025-05-03 21:01:21,658 - INFO - Получена команда /start от chat_id: 380675615
+2025-05-03 21:01:21,658 - INFO - Пользователь 380675615 уже существует
+2025-05-03 21:01:23,970 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:02:23 MSK)" (scheduled at 2025-05-03 21:01:23.968526+03:00)
+2025-05-03 21:01:23,970 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:02:23 MSK)" executed successfully
+2025-05-03 21:02:23,970 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:03:23 MSK)" (scheduled at 2025-05-03 21:02:23.968526+03:00)
+2025-05-03 21:02:23,971 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:03:23 MSK)" executed successfully
+2025-05-03 21:03:23,977 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:04:23 MSK)" (scheduled at 2025-05-03 21:03:23.968526+03:00)
+2025-05-03 21:03:23,977 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:04:23 MSK)" executed successfully
+2025-05-03 21:03:57,762 - INFO - Stop polling...
+2025-05-03 21:03:57,763 - WARNING - Goodbye!
