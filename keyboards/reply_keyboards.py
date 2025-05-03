@@ -2,16 +2,9 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 def get_main_menu_keyboard():
-    """Создает выдвигающееся меню с основными командами бота."""
+    """Creates a simplified menu with just the start command."""
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    
-    keyboard.add(KeyboardButton("Перезапуск /start"))
-    keyboard.add(KeyboardButton("Выбрать нейросеть /mode"))
-    keyboard.add(KeyboardButton("Профиль пользователя /profile"))
-    keyboard.add(KeyboardButton("Купить подписку /pay"))
-    keyboard.add(KeyboardButton("Сброс контекста /reset"))
-    keyboard.add(KeyboardButton("Закрыть меню"))
-    
+    keyboard.add(KeyboardButton("/start"))
     return keyboard
 
 def get_remove_keyboard():

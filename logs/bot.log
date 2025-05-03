@@ -2396,3 +2396,1197 @@ aiogram.utils.exceptions.BadRequest: Message_too_long
 2025-05-03 21:03:23,977 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-03 21:04:23 MSK)" executed successfully
 2025-05-03 21:03:57,762 - INFO - Stop polling...
 2025-05-03 21:03:57,763 - WARNING - Goodbye!
+2025-05-04 00:01:30,010 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:01:30,185 - WARNING - Updates were skipped successfully.
+2025-05-04 00:01:30,188 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:01:30,189 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:01:30,189 - INFO - Scheduler started
+2025-05-04 00:01:30,189 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:01:30,189 - INFO - Бот запущен.
+2025-05-04 00:01:30,189 - INFO - Start polling.
+2025-05-04 00:01:35,548 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:01:35,549 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:01:40,621 - INFO - Retrieved test_words_count from database: 12
+2025-05-04 00:01:46,656 - INFO - Updated test_words_count to 12 for user 1999873173
+2025-05-04 00:01:46,656 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 12
+2025-05-04 00:01:48,888 - INFO - Retrieved test_words_count from database: 12
+2025-05-04 00:01:56,380 - INFO - Получен сет 'Family and Friends' из базы данных для пользователя 1999873173
+2025-05-04 00:01:56,380 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-05-04 00:01:56,380 - INFO - Пользователь 1999873173 запускает заучивание сета с 20 словами
+2025-05-04 00:02:05,867 - INFO - Updated memorize_words_count to 5 for user 1999873173
+2025-05-04 00:02:05,868 - INFO - Обновлено количество слов для заучивания у пользователя 1999873173: 5
+2025-05-04 00:02:09,143 - INFO - Получен сет 'Family and Friends' из базы данных для пользователя 1999873173
+2025-05-04 00:02:09,143 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-05-04 00:02:09,143 - INFO - Пользователь 1999873173 запускает заучивание сета с 5 словами
+2025-05-04 00:02:30,200 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:03:30 MSK)" (scheduled at 2025-05-04 00:02:30.188341+03:00)
+2025-05-04 00:02:30,234 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:03:30 MSK)" executed successfully
+2025-05-04 00:03:30,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:04:30 MSK)" (scheduled at 2025-05-04 00:03:30.188341+03:00)
+2025-05-04 00:03:30,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:04:30 MSK)" executed successfully
+2025-05-04 00:04:30,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:05:30 MSK)" (scheduled at 2025-05-04 00:04:30.188341+03:00)
+2025-05-04 00:04:30,196 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:05:30 MSK)" executed successfully
+2025-05-04 00:05:30,197 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:06:30 MSK)" (scheduled at 2025-05-04 00:05:30.188341+03:00)
+2025-05-04 00:05:30,200 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:06:30 MSK)" executed successfully
+2025-05-04 00:06:30,195 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:07:30 MSK)" (scheduled at 2025-05-04 00:06:30.188341+03:00)
+2025-05-04 00:06:30,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:07:30 MSK)" executed successfully
+2025-05-04 00:06:58,285 - INFO - User 1999873173 has 6 learned words
+2025-05-04 00:06:58,285 - INFO - User 1999873173 in revision mode: False
+2025-05-04 00:07:30,201 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:08:30 MSK)" (scheduled at 2025-05-04 00:07:30.188341+03:00)
+2025-05-04 00:07:30,202 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:08:30 MSK)" executed successfully
+2025-05-04 00:08:30,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:09:30 MSK)" (scheduled at 2025-05-04 00:08:30.188341+03:00)
+2025-05-04 00:08:30,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:09:30 MSK)" executed successfully
+2025-05-04 00:09:30,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:10:30 MSK)" (scheduled at 2025-05-04 00:09:30.188341+03:00)
+2025-05-04 00:09:30,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:10:30 MSK)" executed successfully
+2025-05-04 00:10:30,192 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:11:30 MSK)" (scheduled at 2025-05-04 00:10:30.188341+03:00)
+2025-05-04 00:10:30,192 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:11:30 MSK)" executed successfully
+2025-05-04 00:10:38,386 - INFO - Stop polling...
+2025-05-04 00:10:38,387 - WARNING - Goodbye!
+2025-05-04 00:46:42,474 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:46:42,649 - WARNING - Updates were skipped successfully.
+2025-05-04 00:46:42,654 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:46:42,655 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:46:42,655 - INFO - Scheduler started
+2025-05-04 00:46:42,656 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:46:42,656 - INFO - Бот запущен.
+2025-05-04 00:46:42,656 - INFO - Start polling.
+2025-05-04 00:46:50,079 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:46:50,080 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:46:50,080 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:46:50,080 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:46:55,396 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:46:55,396 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:46:55,396 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:46:55,396 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:46:57,234 - INFO - Stop polling...
+2025-05-04 00:46:57,235 - WARNING - Goodbye!
+2025-05-04 00:46:58,817 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:46:58,974 - WARNING - Updates were skipped successfully.
+2025-05-04 00:46:58,977 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:46:58,977 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:46:58,977 - INFO - Scheduler started
+2025-05-04 00:46:58,977 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:46:58,977 - INFO - Бот запущен.
+2025-05-04 00:46:58,978 - INFO - Start polling.
+2025-05-04 00:47:06,767 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:47:06,768 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:47:06,768 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:47:06,768 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:47:10,415 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:47:10,415 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:47:10,415 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:47:10,415 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-28' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:47:58,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:48:58 MSK)" (scheduled at 2025-05-04 00:47:58.976759+03:00)
+2025-05-04 00:47:59,017 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:48:58 MSK)" executed successfully
+2025-05-04 00:48:58,986 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:49:58 MSK)" (scheduled at 2025-05-04 00:48:58.976759+03:00)
+2025-05-04 00:48:58,988 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:49:58 MSK)" executed successfully
+2025-05-04 00:49:07,860 - INFO - User 1999873173 has 11 learned words
+2025-05-04 00:49:07,860 - INFO - User 1999873173 in revision mode: False
+2025-05-04 00:49:58,988 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:50:58 MSK)" (scheduled at 2025-05-04 00:49:58.976759+03:00)
+2025-05-04 00:49:58,990 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:50:58 MSK)" executed successfully
+2025-05-04 00:50:19,876 - INFO - Stop polling...
+2025-05-04 00:50:19,877 - WARNING - Goodbye!
+2025-05-04 00:50:26,445 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:50:26,618 - WARNING - Updates were skipped successfully.
+2025-05-04 00:50:26,619 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:50:26,620 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:50:26,620 - INFO - Scheduler started
+2025-05-04 00:50:26,620 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:50:26,620 - INFO - Бот запущен.
+2025-05-04 00:50:26,620 - INFO - Start polling.
+2025-05-04 00:50:32,350 - INFO - User 1999873173 has 13 learned words
+2025-05-04 00:50:32,351 - INFO - User 1999873173 in revision mode: False
+2025-05-04 00:51:26,628 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:52:26 MSK)" (scheduled at 2025-05-04 00:51:26.619751+03:00)
+2025-05-04 00:51:26,659 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 00:52:26 MSK)" executed successfully
+2025-05-04 00:51:41,316 - INFO - Stop polling...
+2025-05-04 00:51:41,317 - WARNING - Goodbye!
+2025-05-04 00:57:59,294 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:57:59,461 - WARNING - Updates were skipped successfully.
+2025-05-04 00:57:59,463 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:57:59,464 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:57:59,464 - INFO - Scheduler started
+2025-05-04 00:57:59,464 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:57:59,464 - INFO - Бот запущен.
+2025-05-04 00:57:59,464 - INFO - Start polling.
+2025-05-04 00:58:05,103 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:58:05,103 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:58:05,103 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:58:05,104 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:58:11,885 - INFO - Stop polling...
+2025-05-04 00:58:11,885 - WARNING - Goodbye!
+2025-05-04 00:58:13,328 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 00:58:13,489 - WARNING - Updates were skipped successfully.
+2025-05-04 00:58:13,490 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 00:58:13,490 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 00:58:13,490 - INFO - Scheduler started
+2025-05-04 00:58:13,490 - INFO - Scheduler started with optimized configuration
+2025-05-04 00:58:13,490 - INFO - Бот запущен.
+2025-05-04 00:58:13,491 - INFO - Start polling.
+2025-05-04 00:58:22,262 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:58:22,262 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:58:22,262 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:58:22,262 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-30' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:58:57,553 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:58:57,553 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:58:57,553 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:58:57,553 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-78' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:59:12,227 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 00:59:12,227 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 00:59:12,227 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:59:12,227 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-81' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=UnboundLocalError("cannot access local variable 'main_menu_keyboard' where it is not associated with a value")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 110, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 125, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 00:59:13,493 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:00:13 MSK)" (scheduled at 2025-05-04 00:59:13.490548+03:00)
+2025-05-04 00:59:13,523 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:00:13 MSK)" executed successfully
+2025-05-04 01:00:13,493 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:01:13 MSK)" (scheduled at 2025-05-04 01:00:13.490548+03:00)
+2025-05-04 01:00:13,496 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:01:13 MSK)" executed successfully
+2025-05-04 01:01:13,498 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:02:13 MSK)" (scheduled at 2025-05-04 01:01:13.490548+03:00)
+2025-05-04 01:01:13,499 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:02:13 MSK)" executed successfully
+2025-05-04 01:02:09,028 - INFO - Stop polling...
+2025-05-04 01:02:09,028 - WARNING - Goodbye!
+2025-05-04 01:03:48,482 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:03:48,647 - WARNING - Updates were skipped successfully.
+2025-05-04 01:03:48,650 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:03:48,651 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:03:48,651 - INFO - Scheduler started
+2025-05-04 01:03:48,651 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:03:48,651 - INFO - Бот запущен.
+2025-05-04 01:03:48,652 - INFO - Start polling.
+2025-05-04 01:03:51,996 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:03:51,996 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:03:51,996 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:04:09,173 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:04:09,173 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:04:09,173 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:04:22,959 - INFO - User 1999873173 has 18 learned words
+2025-05-04 01:04:22,961 - INFO - User 1999873173 in revision mode: False
+2025-05-04 01:04:48,655 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:05:48 MSK)" (scheduled at 2025-05-04 01:04:48.650661+03:00)
+2025-05-04 01:04:48,683 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:05:48 MSK)" executed successfully
+2025-05-04 01:05:48,668 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:06:48 MSK)" (scheduled at 2025-05-04 01:05:48.650661+03:00)
+2025-05-04 01:05:48,669 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:06:48 MSK)" executed successfully
+2025-05-04 01:06:06,664 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:06:06,664 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:06:06,664 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:06:48,663 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:07:48 MSK)" (scheduled at 2025-05-04 01:06:48.650661+03:00)
+2025-05-04 01:06:48,663 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:07:48 MSK)" executed successfully
+2025-05-04 01:07:48,664 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:08:48 MSK)" (scheduled at 2025-05-04 01:07:48.650661+03:00)
+2025-05-04 01:07:48,665 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:08:48 MSK)" executed successfully
+2025-05-04 01:08:48,663 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:09:48 MSK)" (scheduled at 2025-05-04 01:08:48.650661+03:00)
+2025-05-04 01:08:48,664 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:09:48 MSK)" executed successfully
+2025-05-04 01:09:48,661 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:10:48 MSK)" (scheduled at 2025-05-04 01:09:48.650661+03:00)
+2025-05-04 01:09:48,662 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:10:48 MSK)" executed successfully
+2025-05-04 01:09:55,489 - INFO - Stop polling...
+2025-05-04 01:09:55,489 - WARNING - Goodbye!
+2025-05-04 01:09:57,088 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:09:57,448 - WARNING - Updates were skipped successfully.
+2025-05-04 01:09:57,451 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:09:57,452 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:09:57,452 - INFO - Scheduler started
+2025-05-04 01:09:57,452 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:09:57,452 - INFO - Бот запущен.
+2025-05-04 01:09:57,452 - INFO - Start polling.
+2025-05-04 01:10:00,715 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:10:00,716 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:10:00,721 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:10:00,829 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("Message.answer() missing 1 required positional argument: 'text'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 101, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 122, in cmd_start
+    await message.answer(
+          ^^^^^^^^^^^^^^^
+TypeError: Message.answer() missing 1 required positional argument: 'text'
+2025-05-04 01:10:19,933 - INFO - Stop polling...
+2025-05-04 01:10:19,935 - WARNING - Goodbye!
+2025-05-04 01:10:21,094 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:10:21,263 - WARNING - Updates were skipped successfully.
+2025-05-04 01:10:21,266 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:10:21,267 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:10:21,267 - INFO - Scheduler started
+2025-05-04 01:10:21,267 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:10:21,267 - INFO - Бот запущен.
+2025-05-04 01:10:21,268 - INFO - Start polling.
+2025-05-04 01:10:28,686 - INFO - Stop polling...
+2025-05-04 01:10:28,687 - WARNING - Goodbye!
+2025-05-04 01:10:29,697 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:10:29,872 - WARNING - Updates were skipped successfully.
+2025-05-04 01:10:29,877 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:10:29,878 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:10:29,878 - INFO - Scheduler started
+2025-05-04 01:10:29,879 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:10:29,879 - INFO - Бот запущен.
+2025-05-04 01:10:29,879 - INFO - Start polling.
+2025-05-04 01:10:43,564 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:10:43,564 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:10:43,564 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:10:43,690 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("Message.answer() missing 1 required positional argument: 'text'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 101, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 122, in cmd_start
+    await message.answer(
+          ^^^^^^^^^^^^^^^
+TypeError: Message.answer() missing 1 required positional argument: 'text'
+2025-05-04 01:11:14,162 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:11:14,162 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:11:14,162 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:11:14,353 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("Message.answer() missing 1 required positional argument: 'text'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 101, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 122, in cmd_start
+    await message.answer(
+          ^^^^^^^^^^^^^^^
+TypeError: Message.answer() missing 1 required positional argument: 'text'
+2025-05-04 01:11:20,215 - INFO - User 1999873173 has 23 learned words
+2025-05-04 01:11:20,215 - INFO - User 1999873173 in revision mode: False
+2025-05-04 01:11:29,877 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:12:29 MSK)" (scheduled at 2025-05-04 01:11:29.876925+03:00)
+2025-05-04 01:11:29,905 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:12:29 MSK)" executed successfully
+2025-05-04 01:11:34,821 - ERROR - Ошибка при отправке вопроса квиза пользователю 1999873173: Bot.send_message() missing 1 required positional argument: 'text'
+2025-05-04 01:11:47,399 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:11:47,400 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:11:47,400 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:11:47,547 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-81' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("Message.answer() missing 1 required positional argument: 'text'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 101, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 122, in cmd_start
+    await message.answer(
+          ^^^^^^^^^^^^^^^
+TypeError: Message.answer() missing 1 required positional argument: 'text'
+2025-05-04 01:11:59,188 - INFO - Stop polling...
+2025-05-04 01:11:59,189 - WARNING - Goodbye!
+2025-05-04 01:12:00,309 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:12:00,467 - WARNING - Updates were skipped successfully.
+2025-05-04 01:12:00,470 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:12:00,471 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:12:00,471 - INFO - Scheduler started
+2025-05-04 01:12:00,471 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:12:00,471 - INFO - Бот запущен.
+2025-05-04 01:12:00,471 - INFO - Start polling.
+2025-05-04 01:12:03,154 - INFO - Stop polling...
+2025-05-04 01:12:03,155 - WARNING - Goodbye!
+2025-05-04 01:12:04,966 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:12:05,133 - WARNING - Updates were skipped successfully.
+2025-05-04 01:12:05,135 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:12:05,136 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:12:05,136 - INFO - Scheduler started
+2025-05-04 01:12:05,136 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:12:05,136 - INFO - Бот запущен.
+2025-05-04 01:12:05,136 - INFO - Start polling.
+2025-05-04 01:12:06,967 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:12:06,967 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:12:06,967 - ERROR - Ошибка в cmd_start для chat_id 1999873173: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+2025-05-04 01:12:07,071 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=TypeError("Message.answer() missing 1 required positional argument: 'text'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 101, in cmd_start
+    reply_markup=main_menu_keyboard()
+                 ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'main_menu_keyboard' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 122, in cmd_start
+    await message.answer(
+          ^^^^^^^^^^^^^^^
+TypeError: Message.answer() missing 1 required positional argument: 'text'
+2025-05-04 01:13:05,138 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:14:05 MSK)" (scheduled at 2025-05-04 01:13:05.135493+03:00)
+2025-05-04 01:13:05,200 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:14:05 MSK)" executed successfully
+2025-05-04 01:14:05,138 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:15:05 MSK)" (scheduled at 2025-05-04 01:14:05.135493+03:00)
+2025-05-04 01:14:05,139 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:15:05 MSK)" executed successfully
+2025-05-04 01:14:53,026 - INFO - Stop polling...
+2025-05-04 01:14:53,027 - WARNING - Goodbye!
+2025-05-04 01:14:54,123 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:14:54,291 - WARNING - Updates were skipped successfully.
+2025-05-04 01:14:54,296 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:14:54,297 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:14:54,297 - INFO - Scheduler started
+2025-05-04 01:14:54,297 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:14:54,297 - INFO - Бот запущен.
+2025-05-04 01:14:54,297 - INFO - Start polling.
+2025-05-04 01:14:56,655 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:14:56,656 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:14:56,841 - ERROR - Ошибка в cmd_start для chat_id 1999873173: Text must be non-empty
+2025-05-04 01:14:57,018 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Text must be non-empty')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 109, in cmd_start
+    await message.answer(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 438, in answer
+    return await self.bot.send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Text must be non-empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 126, in cmd_start
+    await message.answer(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 438, in answer
+    return await self.bot.send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Text must be non-empty
+2025-05-04 01:15:14,869 - INFO - Stop polling...
+2025-05-04 01:15:14,870 - WARNING - Goodbye!
+2025-05-04 01:15:16,564 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:15:16,726 - WARNING - Updates were skipped successfully.
+2025-05-04 01:15:16,729 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:15:16,730 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:15:16,730 - INFO - Scheduler started
+2025-05-04 01:15:16,730 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:15:16,730 - INFO - Бот запущен.
+2025-05-04 01:15:16,731 - INFO - Start polling.
+2025-05-04 01:15:20,793 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:15:20,793 - INFO - Пользователь 1999873173 уже существует
+2025-05-04 01:15:20,992 - ERROR - Ошибка в cmd_start для chat_id 1999873173: Text must be non-empty
+2025-05-04 01:15:21,171 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=BadRequest('Text must be non-empty')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 109, in cmd_start
+    await message.answer(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 438, in answer
+    return await self.bot.send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Text must be non-empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/commands.py", line 126, in cmd_start
+    await message.answer(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 438, in answer
+    return await self.bot.send_message(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Text must be non-empty
+2025-05-04 01:16:16,731 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:17:16 MSK)" (scheduled at 2025-05-04 01:16:16.729621+03:00)
+2025-05-04 01:16:16,760 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:17:16 MSK)" executed successfully
+2025-05-04 01:17:16,745 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:18:16 MSK)" (scheduled at 2025-05-04 01:17:16.729621+03:00)
+2025-05-04 01:17:16,745 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:18:16 MSK)" executed successfully
+2025-05-04 01:18:16,746 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:19:16 MSK)" (scheduled at 2025-05-04 01:18:16.729621+03:00)
+2025-05-04 01:18:16,747 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:19:16 MSK)" executed successfully
+2025-05-04 01:19:16,746 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:20:16 MSK)" (scheduled at 2025-05-04 01:19:16.729621+03:00)
+2025-05-04 01:19:16,748 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:20:16 MSK)" executed successfully
+2025-05-04 01:20:16,744 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:21:16 MSK)" (scheduled at 2025-05-04 01:20:16.729621+03:00)
+2025-05-04 01:20:16,745 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:21:16 MSK)" executed successfully
+2025-05-04 01:21:16,746 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:22:16 MSK)" (scheduled at 2025-05-04 01:21:16.729621+03:00)
+2025-05-04 01:21:16,747 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:22:16 MSK)" executed successfully
+2025-05-04 01:22:16,742 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:23:16 MSK)" (scheduled at 2025-05-04 01:22:16.729621+03:00)
+2025-05-04 01:22:16,743 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:23:16 MSK)" executed successfully
+2025-05-04 01:23:16,743 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:24:16 MSK)" (scheduled at 2025-05-04 01:23:16.729621+03:00)
+2025-05-04 01:23:16,743 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 01:24:16 MSK)" executed successfully
+2025-05-04 01:23:24,795 - INFO - Stop polling...
+2025-05-04 01:23:24,795 - WARNING - Goodbye!
+2025-05-04 01:23:25,750 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:23:25,928 - WARNING - Updates were skipped successfully.
+2025-05-04 01:23:25,931 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:23:25,932 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:23:25,932 - INFO - Scheduler started
+2025-05-04 01:23:25,932 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:23:25,932 - INFO - Бот запущен.
+2025-05-04 01:23:25,933 - INFO - Start polling.
+2025-05-04 01:23:30,268 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:24:04,618 - INFO - Stop polling...
+2025-05-04 01:24:04,619 - WARNING - Goodbye!
+2025-05-04 01:24:05,756 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 01:24:05,925 - WARNING - Updates were skipped successfully.
+2025-05-04 01:24:05,929 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 01:24:05,929 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 01:24:05,929 - INFO - Scheduler started
+2025-05-04 01:24:05,929 - INFO - Scheduler started with optimized configuration
+2025-05-04 01:24:05,929 - INFO - Бот запущен.
+2025-05-04 01:24:05,930 - INFO - Start polling.
+2025-05-04 01:24:08,617 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 01:24:12,463 - INFO - Stop polling...
+2025-05-04 01:24:12,464 - WARNING - Goodbye!
+2025-05-04 02:28:31,644 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:28:31,810 - WARNING - Updates were skipped successfully.
+2025-05-04 02:28:31,811 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:28:31,811 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:28:31,811 - INFO - Scheduler started
+2025-05-04 02:28:31,812 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:28:31,812 - INFO - Бот запущен.
+2025-05-04 02:28:31,812 - INFO - Start polling.
+2025-05-04 02:28:35,311 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:28:37,820 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:29:14,644 - INFO - Stop polling...
+2025-05-04 02:29:14,645 - WARNING - Goodbye!
+2025-05-04 02:29:15,695 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:29:15,860 - WARNING - Updates were skipped successfully.
+2025-05-04 02:29:15,864 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:29:15,864 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:29:15,865 - INFO - Scheduler started
+2025-05-04 02:29:15,865 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:29:15,865 - INFO - Бот запущен.
+2025-05-04 02:29:15,865 - INFO - Start polling.
+2025-05-04 02:29:17,578 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:29:57,934 - INFO - Stop polling...
+2025-05-04 02:29:57,935 - WARNING - Goodbye!
+2025-05-04 02:29:58,896 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:29:59,070 - WARNING - Updates were skipped successfully.
+2025-05-04 02:29:59,078 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:29:59,080 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:29:59,081 - INFO - Scheduler started
+2025-05-04 02:29:59,081 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:29:59,081 - INFO - Бот запущен.
+2025-05-04 02:29:59,082 - INFO - Start polling.
+2025-05-04 02:30:01,175 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:30:01,303 - ERROR - Ошибка в cmd_start для chat_id 1999873173: Bot.send_message() missing 1 required positional argument: 'text'
+2025-05-04 02:30:01,416 - ERROR - Повторная ошибка в cmd_start для chat_id 1999873173: Bot.send_message() missing 1 required positional argument: 'text'
+2025-05-04 02:30:21,977 - INFO - Stop polling...
+2025-05-04 02:30:21,978 - WARNING - Goodbye!
+2025-05-04 02:30:23,080 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:30:23,244 - WARNING - Updates were skipped successfully.
+2025-05-04 02:30:23,247 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:30:23,247 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:30:23,247 - INFO - Scheduler started
+2025-05-04 02:30:23,248 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:30:23,248 - INFO - Бот запущен.
+2025-05-04 02:30:23,248 - INFO - Start polling.
+2025-05-04 02:30:24,766 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:30:24,966 - ERROR - Ошибка в cmd_start для chat_id 1999873173: Message text is empty
+2025-05-04 02:30:25,155 - ERROR - Повторная ошибка в cmd_start для chat_id 1999873173: Message text is empty
+2025-05-04 02:31:23,252 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:32:23 MSK)" (scheduled at 2025-05-04 02:31:23.246740+03:00)
+2025-05-04 02:31:23,290 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:32:23 MSK)" executed successfully
+2025-05-04 02:32:23,251 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:33:23 MSK)" (scheduled at 2025-05-04 02:32:23.246740+03:00)
+2025-05-04 02:32:23,253 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:33:23 MSK)" executed successfully
+2025-05-04 02:33:23,251 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:34:23 MSK)" (scheduled at 2025-05-04 02:33:23.246740+03:00)
+2025-05-04 02:33:23,254 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:34:23 MSK)" executed successfully
+2025-05-04 02:33:41,078 - INFO - Stop polling...
+2025-05-04 02:33:41,081 - WARNING - Goodbye!
+2025-05-04 02:33:42,102 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:33:42,269 - WARNING - Updates were skipped successfully.
+2025-05-04 02:33:42,272 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:33:42,273 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:33:42,273 - INFO - Scheduler started
+2025-05-04 02:33:42,273 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:33:42,273 - INFO - Бот запущен.
+2025-05-04 02:33:42,274 - INFO - Start polling.
+2025-05-04 02:33:49,254 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:34:21,406 - INFO - Stop polling...
+2025-05-04 02:34:21,406 - WARNING - Goodbye!
+2025-05-04 02:34:23,854 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:34:24,017 - WARNING - Updates were skipped successfully.
+2025-05-04 02:34:24,022 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:34:24,022 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:34:24,022 - INFO - Scheduler started
+2025-05-04 02:34:24,023 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:34:24,023 - INFO - Бот запущен.
+2025-05-04 02:34:24,023 - INFO - Start polling.
+2025-05-04 02:34:26,355 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:36:51,559 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:36:51,720 - WARNING - Updates were skipped successfully.
+2025-05-04 02:36:51,722 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:36:51,724 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:36:51,724 - INFO - Scheduler started
+2025-05-04 02:36:51,725 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:36:51,725 - INFO - Бот запущен.
+2025-05-04 02:36:51,725 - INFO - Start polling.
+2025-05-04 02:37:02,177 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:37:04,196 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:37:09,067 - INFO - User 1999873173 has 27 learned words
+2025-05-04 02:37:09,067 - INFO - User 1999873173 in revision mode: False
+2025-05-04 02:37:35,433 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:37:51,736 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:38:51 MSK)" (scheduled at 2025-05-04 02:37:51.722404+03:00)
+2025-05-04 02:37:51,769 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:38:51 MSK)" executed successfully
+2025-05-04 02:38:45,856 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:38:50,702 - INFO - Retrieved test_words_count from database: 12
+2025-05-04 02:38:50,793 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-93' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:38:51,725 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:39:51 MSK)" (scheduled at 2025-05-04 02:38:51.722404+03:00)
+2025-05-04 02:38:51,726 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:39:51 MSK)" executed successfully
+2025-05-04 02:38:53,113 - INFO - Retrieved test_words_count from database: 12
+2025-05-04 02:38:53,211 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-97' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:38:57,917 - INFO - Updated test_words_count to 7 for user 1999873173
+2025-05-04 02:38:57,918 - INFO - Обновлено количество слов для теста у пользователя 1999873173: 7
+2025-05-04 02:38:59,487 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:38:59,606 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-121' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:39:00,837 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:39:00,948 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-125' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:39:01,222 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:39:01,308 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-129' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:39:01,823 - INFO - Получен сет 'Family and Friends' из базы данных для пользователя 1999873173
+2025-05-04 02:39:01,823 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-05-04 02:39:01,823 - INFO - Пользователь 1999873173 запускает заучивание сета с 5 словами
+2025-05-04 02:39:01,925 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-133' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 462, in handle_memorize_set
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:39:05,797 - INFO - Stop polling...
+2025-05-04 02:39:05,798 - WARNING - Goodbye!
+2025-05-04 02:39:07,489 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:39:07,651 - WARNING - Updates were skipped successfully.
+2025-05-04 02:39:07,654 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:39:07,655 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:39:07,655 - INFO - Scheduler started
+2025-05-04 02:39:07,655 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:39:07,655 - INFO - Бот запущен.
+2025-05-04 02:39:07,655 - INFO - Start polling.
+2025-05-04 02:39:08,532 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:39:10,496 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:39:10,584 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:39:16,136 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:39:16,219 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-44' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:40:07,667 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:41:07 MSK)" (scheduled at 2025-05-04 02:40:07.654635+03:00)
+2025-05-04 02:40:07,698 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:41:07 MSK)" executed successfully
+2025-05-04 02:40:51,365 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:41:07,671 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:42:07 MSK)" (scheduled at 2025-05-04 02:41:07.654635+03:00)
+2025-05-04 02:41:07,672 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:42:07 MSK)" executed successfully
+2025-05-04 02:41:15,034 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:41:21,248 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:41:21,344 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-80' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:41:23,160 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:41:24,973 - INFO - Stop polling...
+2025-05-04 02:41:24,974 - WARNING - Goodbye!
+2025-05-04 02:41:28,052 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:41:28,231 - WARNING - Updates were skipped successfully.
+2025-05-04 02:41:28,232 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:41:28,232 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:41:28,232 - INFO - Scheduler started
+2025-05-04 02:41:28,232 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:41:28,232 - INFO - Бот запущен.
+2025-05-04 02:41:28,232 - INFO - Start polling.
+2025-05-04 02:41:35,019 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:41:35,107 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'message' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 202, in handle_dictionary_test
+    await send_learning_test_question(chat_id, bot)
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 745, in send_learning_test_question
+    message,
+    ^^^^^^^
+NameError: name 'message' is not defined
+2025-05-04 02:41:44,883 - INFO - Stop polling...
+2025-05-04 02:41:44,883 - WARNING - Goodbye!

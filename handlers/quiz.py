@@ -272,16 +272,39 @@ async def send_quiz_question(chat_id, bot: Bot):
         
         if current_index >= len(questions):
             # Квиз завершен, отправляем результат
+            from utils.visual_helpers import format_result_message
             result_message = format_result_message(state['correct'], len(questions), state.get('is_revision', False))
             await bot.send_message(chat_id, result_message, parse_mode="Markdown")
             
-            # ИСПРАВЛЕНИЕ: Добавляем отправку стикера при хорошем результате
+            # Отправляем стикер при хорошем результате и показываем главное меню
             score_percentage = (state['correct'] / len(questions)) * 100 if len(questions) > 0 else 0
             if score_percentage >= 70:
-                from utils.sticker_helper import get_congratulation_sticker
-                sticker_id = get_congratulation_sticker()
-                if sticker_id:
-                    await bot.send_sticker(chat_id, sticker_id)
+                from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+                await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+                
+                # Add only main menu button
+                from keyboards.reply_keyboards import get_main_menu_keyboard
+                await bot.send_message(
+                    chat_id,
+                    "Квиз завершен.",
+                    reply_markup=get_main_menu_keyboard()
+                )
+            else:
+                # Even if no sticker, still show main menu
+                from keyboards.main_menu import main_menu_keyboard
+                await bot.send_message(
+                    chat_id,
+                    "Выберите действие:",
+                    reply_markup=main_menu_keyboard()
+                )
+                
+                # Add only main menu button
+                from keyboards.reply_keyboards import get_main_menu_keyboard
+                await bot.send_message(
+                    chat_id,
+                    "Квиз завершен.",
+                    reply_markup=get_main_menu_keyboard()
+                )
             
             del quiz_states[chat_id]
             return
@@ -289,9 +312,11 @@ async def send_quiz_question(chat_id, bot: Bot):
         question = questions[current_index]
         
         # Форматируем вопрос
+        from utils.visual_helpers import format_quiz_question
         formatted_question = format_quiz_question(current_index + 1, len(questions), question['word'], question['options'])
         
         # Создаем клавиатуру с вариантами ответов
+        from keyboards.submenus import quiz_keyboard
         keyboard = quiz_keyboard(question['options'], current_index)
         
         await bot.send_message(
@@ -312,7 +337,7 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
         # Обработка возврата и остановки
         if callback.data == "quiz:back":
             from keyboards.main_menu import main_menu_keyboard
-            await bot.send_message(chat_id, "Главное меню", reply_markup=main_menu_keyboard())
+            await bot.send_message(chat_id, "", reply_markup=main_menu_keyboard())
             if chat_id in quiz_states:
                 del quiz_states[chat_id]
             await callback.answer()
@@ -398,3 +423,90 @@ def register_quiz_handlers(dp: Dispatcher, bot: Bot):
         lambda c: process_quiz_answer(c, bot),
         lambda c: c.data and c.data.startswith("quiz:")
     )
+
+async def finish_level_test(chat_id: int, bot: Bot):
+    """Updated to use improved result formatting and show main menu after sticker"""
+    state = level_test_states.get(chat_id)
+    if not state:
+        return
+    
+    results = state["results"]
+    
+    # Group results by level
+    results_by_level = {}
+    for i, question in enumerate(state["questions"]):
+        level = question["level"]
+        if level not in results_by_level:
+            results_by_level[level] = [0, 0]  # [correct, total]
+        
+        results_by_level[level][1] += 1
+        if results[i]:
+            results_by_level[level][0] += 1
+    
+    # Determine new level
+    new_level = "A1"
+    for level in LEVELS:
+        score, total = results_by_level.get(level, [0, 0])
+        if total > 0 and score >= 2:
+            new_level = level
+        else:
+            break
+
+    # Получаем текущий выбранный сет пользователя из базы и из кэша
+    current_set = None
+
+    # Проверяем сет в кэше
+    try:
+        from handlers.settings import user_set_selection
+        if chat_id in user_set_selection:
+            current_set = user_set_selection[chat_id]
+    except ImportError:
+        logger.error("Could not import user_set_selection, unable to preserve chosen set")
+
+    # Если нет в кэше, смотрим в базе данных
+    user = crud.get_user(chat_id)
+    if not current_set and user and len(user) > 6:
+        current_set = user[6]
+
+    # Update user level in database
+    crud.update_user_level(chat_id, new_level)
+    
+    # Если сет все еще не выбран, устанавливаем базовый для нового уровня
+    if not current_set:
+        from config import DEFAULT_SETS
+        current_set = DEFAULT_SETS.get(new_level)
+        if current_set:
+            # Обновляем базу данных и кэш
+            crud.update_user_chosen_set(chat_id, current_set)
+            try:
+                from handlers.settings import user_set_selection
+                user_set_selection[chat_id] = current_set
+            except ImportError:
+                logger.error("Could not import user_set_selection, unable to update chosen set in memory")
+
+    # Сбрасываем кэш ежедневных слов
+    reset_daily_words_cache(chat_id)
+
+    # Use the visual helper to format the results
+    formatted_results = format_level_test_results(results_by_level, new_level)
+    
+    # Send results message first
+    await bot.send_message(
+        chat_id, 
+        formatted_results,
+        parse_mode="Markdown"
+    )
+    
+    # Send sticker and show main menu
+    from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+    await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    
+    # Add the reply keyboard for commands
+    from keyboards.reply_keyboards import get_main_menu_keyboard
+    await bot.send_message(
+        chat_id,
+        "Используйте команды ниже или нажмите на кнопки основного меню:",
+        reply_markup=get_main_menu_keyboard()
+    )
+    
+    del level_test_states[chat_id]

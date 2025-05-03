@@ -739,11 +739,11 @@ async def send_learning_test_question(chat_id, bot: Bot):
     # Создаем клавиатуру с вариантами ответов
     keyboard = learning_quiz_keyboard(question["options"], state["current_index"])
     
+    # Send message with results first
     await bot.send_message(
         chat_id, 
-        formatted_question,
-        parse_mode="Markdown", 
-        reply_markup=keyboard
+        message,
+        parse_mode="Markdown"
     )
 
 async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):
@@ -755,7 +755,7 @@ async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):
     # Обработка навигационных действий
     if callback.data == "learn:back":
         from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(chat_id, "Главное меню", reply_markup=main_menu_keyboard())
+        await bot.send_message(chat_id, "", reply_markup=main_menu_keyboard())
         if chat_id in learning_test_states:
             del learning_test_states[chat_id]
         await callback.answer()
@@ -848,6 +848,7 @@ async def finish_learning_test(chat_id, bot: Bot):
         emoji = "🔄"
     
     # Создаем шкалу прогресса
+    from utils.visual_helpers import format_progress_bar
     progress = format_progress_bar(correct, total, 20)
     
     # Формируем заголовок в зависимости от типа теста
@@ -869,25 +870,42 @@ async def finish_learning_test(chat_id, bot: Bot):
     if percentage < 70:
         message += "💡 *Совет:* Регулярное повторение поможет лучше запомнить слова."
     
-    # Создаем клавиатуру
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("Главное меню", callback_data="menu:back"))
-    keyboard.add(types.InlineKeyboardButton("Вернуться к обучению", callback_data="learning:back"))
-    
+    # Send message with results first
     await bot.send_message(
         chat_id, 
         message,
-        parse_mode="Markdown", 
-        reply_markup=keyboard
+        parse_mode="Markdown"
     )
     
-    # Отправляем стикер при хорошем результате
+    # Отправляем стикер при хорошем результате и показываем главное меню
     if percentage >= 70:
-        from utils.sticker_helper import get_congratulation_sticker
-        sticker_id = get_congratulation_sticker()
-        if sticker_id:
-            await bot.send_sticker(chat_id, sticker_id)
-    
+        from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+        
+        # Add only main menu button
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Тест завершен.",
+            reply_markup=get_main_menu_keyboard()
+        )
+    else:
+        # Even if no sticker, still show main menu
+        from keyboards.main_menu import main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Выберите действие:",
+            reply_markup=main_menu_keyboard()
+        )
+        
+        # Add only main menu button
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Тест завершен.",
+            reply_markup=get_main_menu_keyboard()
+        )
+
     # Удаляем состояние теста
     del learning_test_states[chat_id]
 

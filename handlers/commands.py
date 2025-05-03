@@ -3,21 +3,13 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from utils.sticker_helper import get_welcome_sticker
 from keyboards.reply_keyboards import get_main_menu_keyboard, get_remove_keyboard
-from keyboards.main_menu import main_menu_keyboard  # Добавляем импорт main_menu_keyboard
-from database import crud  # Добавляем импорт модуля crud
+from keyboards.main_menu import main_menu_keyboard  # Make sure this import is present
+from database import crud
 import logging
 
 logger = logging.getLogger(__name__)
 
-# Полный список команд бота:
-# /start - Перезапуск бота
-# /menu - Главное меню
-# /mode - Выбрать нейросеть
-# /profile - Профиль пользователя
-# /pay - Купить подписку
-# /reset - Сброс контекста
-# /help - Справка и помощь
-
+# Make sure this function is at the module level
 async def set_commands(bot: Bot):
     """Установка команд бота для меню."""
     commands = [
@@ -37,6 +29,10 @@ async def cmd_start(message: types.Message, bot: Bot):
     logger.info(f"Получена команда /start от chat_id: {chat_id}")
     
     try:
+        # Import at the function level to avoid issues
+        from keyboards.main_menu import main_menu_keyboard
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        
         # Проверяем, существует ли пользователь
         user = crud.get_user(chat_id)
         if not user:
@@ -61,35 +57,8 @@ async def cmd_start(message: types.Message, bot: Bot):
             sticker_id = get_welcome_sticker()
             if sticker_id:
                 await bot.send_sticker(chat_id, sticker_id)
-        else:
-            logger.info(f"Пользователь {chat_id} уже существует")
-            
-            # Проверяем и устанавливаем базовый сет, если отсутствует
-            from handlers.settings import user_set_selection
-            current_set = None
-            
-            # Проверяем сет в кэше
-            if chat_id in user_set_selection:
-                current_set = user_set_selection[chat_id]
-            
-            # Если нет в кэше, смотрим в базе данных
-            if not current_set and len(user) > 6 and user[6]:
-                current_set = user[6]
-            
-            # Если сет до сих пор не определен, устанавливаем базовый
-            if not current_set:
-                from config import DEFAULT_SETS
-                level = user[1]
-                default_set = DEFAULT_SETS.get(level)
-                if default_set:
-                    try:
-                        crud.update_user_chosen_set(chat_id, default_set)
-                        user_set_selection[chat_id] = default_set
-                        logger.info(f"Установлен базовый сет {default_set} для существующего пользователя {chat_id}")
-                    except Exception as e:
-                        logger.error(f"Ошибка при установке базового сета для существующего пользователя {chat_id}: {e}")
         
-        # Отправляем приветственное сообщение с улучшенным описанием
+        # Отправляем только одно приветственное сообщение с главным меню и reply keyboard
         await message.answer(
             "👋 *Добро пожаловать в English Learning Bot!*\n\n"
             "Этот бот поможет вам эффективно изучать английские слова:\n"
@@ -102,13 +71,31 @@ async def cmd_start(message: types.Message, bot: Bot):
             parse_mode="Markdown",
             reply_markup=main_menu_keyboard()
         )
+        
+        # Set the keyboard without sending additional message
+        await bot.set_chat_menu_button(
+            chat_id=chat_id,
+            menu_button=types.MenuButtonCommands()
+        )
+        
     except Exception as e:
         logger.error(f"Ошибка в cmd_start для chat_id {chat_id}: {e}")
-        await message.answer(
-            "⚠️ Произошла ошибка при инициализации профиля. Пожалуйста, повторите попытку позже.\n\n"
-            "Выберите действие:",
-            reply_markup=main_menu_keyboard()
-        )
+        try:
+            # Import here in case it was missed above
+            from keyboards.main_menu import main_menu_keyboard
+            
+            # В случае ошибки отправляем только одно сообщение
+            await message.answer(
+                "👋 *Добро пожаловать в English Learning Bot!*\n\n"
+                "Выберите действие:",
+                parse_mode="Markdown",
+                reply_markup=main_menu_keyboard()
+            )
+            
+        except Exception as e2:
+            logger.error(f"Повторная ошибка в cmd_start для chat_id {chat_id}: {e2}")
+            # Last resort - try to send something very basic
+            await message.answer("Используйте команду /start для входа в главное меню.")
 
 async def cmd_mode(message: types.Message):
     """Обработчик команды /mode."""

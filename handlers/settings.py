@@ -785,33 +785,29 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
         logger.error(f"Ошибка при подтверждении смены сета: {e}")
         await callback.answer("Произошла ошибка при подготовке подтверждения.")
 
-async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bot: Bot):
+async def handle_set_change_confirmed(callback: types.CallbackQuery, bot: Bot):
     """
-    Обработчик подтверждения смены сета по индексу.
+    Обработчик подтверждения смены сета.
+    Очищает словарь и вызывает функцию выбора сета.
     """
     chat_id = callback.from_user.id
     try:
-        _, set_index = callback.data.split(":", 1)
-        set_index = int(set_index)
+        # Extract the encoded set name
+        _, encoded_set_name = callback.data.split(":", 1)
+        import urllib.parse
+        set_name = urllib.parse.unquote(encoded_set_name)
         
-        # Получаем имя сета из глобального кэша
-        global set_index_cache
-        set_name = set_index_cache.get(f"{chat_id}_{set_index}")
-        if not set_name:
-            await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
-            return
-        
-        # Очищаем словарь пользователя
+        # Clear user's dictionary
         try:
             crud.clear_learned_words_for_user(chat_id)
-            logger.info(f"Dictionary cleared for user {chat_id} due to set change by index")
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change")
         except Exception as e:
             logger.error(f"Error clearing dictionary: {e}")
             await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
             await callback.answer()
             return
         
-        # Получаем уровень пользователя
+        # Get user level
         user = crud.get_user(chat_id)
         if not user:
             await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
@@ -827,18 +823,7 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
             await callback.answer()
             return
         
-        # Обновляем выбранный сет
-        crud.update_user_chosen_set(chat_id, set_name)
-        user_set_selection[chat_id] = set_name
-        reset_daily_words_cache(chat_id)
-        
-        # Отправляем стикер
-        sticker_id = get_congratulation_sticker()
-        if sticker_id:
-            await bot.send_sticker(chat_id, sticker_id)
-        
-        # Читаем содержимое сета
-        content = ""
+        # Read file content
         try:
             with open(set_path, "r", encoding="utf-8") as f:
                 content = f.read()
@@ -847,14 +832,27 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
                 with open(set_path, "r", encoding="cp1251") as f:
                     content = f.read()
             except Exception as e:
-                logger.error(f"Ошибка при чтении файла с альтернативной кодировкой: {e}")
-                content = "Ошибка при чтении содержимого сета."
+                logger.error(f"Error reading file: {e}")
+                await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+                await callback.answer()
+                return
         except Exception as e:
-            logger.error(f"Ошибка при чтении файла сета: {e}")
-            content = "Ошибка при чтении содержимого сета."
+            logger.error(f"Error reading file: {e}")
+            await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
         
-        # Форматируем сообщение с учетом ограничений Telegram
-        intro_text = f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
+        # Store the selected set and reset cache
+        user_set_selection[chat_id] = set_name
+        from utils.helpers import reset_daily_words_cache
+        reset_daily_words_cache(chat_id)
+        
+        # Отправляем стикер и главное меню
+        from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+        
+        # Format message with truncation for large sets
+        intro_text = f"Выбран сет {set_name} для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
         
         # Split content into lines
         lines = content.split('\n')
@@ -881,10 +879,18 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
             message_text = intro_text + content
         
         # Send the message
-        await bot.send_message(chat_id, message_text, reply_markup=settings_menu_keyboard())
+        await bot.send_message(chat_id, message_text)
+        
+        # Add the reply keyboard for commands
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Используйте команды ниже для быстрого доступа:",
+            reply_markup=get_main_menu_keyboard()
+        )
         
     except Exception as e:
-        logger.error(f"Error in handle_set_change_confirmed_by_index: {e}")
+        logger.error(f"Error in handle_set_change_confirmed: {e}")
         await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
@@ -1714,3 +1720,224 @@ async def handle_set_change_cancelled(callback: types.CallbackQuery, bot: Bot):
     # Возвращаемся к списку сетов
     await process_my_sets(callback, bot)
     await callback.answer("Смена сета отменена")
+
+async def handle_set_change_confirmed(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик подтверждения смены сета.
+    Очищает словарь и вызывает функцию выбора сета.
+    """
+    chat_id = callback.from_user.id
+    try:
+        # Extract the encoded set name
+        _, encoded_set_name = callback.data.split(":", 1)
+        import urllib.parse
+        set_name = urllib.parse.unquote(encoded_set_name)
+        
+        # Clear user's dictionary
+        try:
+            crud.clear_learned_words_for_user(chat_id)
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change")
+        except Exception as e:
+            logger.error(f"Error clearing dictionary: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Get user level
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            await callback.answer()
+            return
+            
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        
+        if not os.path.exists(set_path):
+            logger.warning(f"Set file not found: {set_path}")
+            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+            await callback.answer()
+            return
+        
+        # Read file content
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Error reading file: {e}")
+                await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+                await callback.answer()
+                return
+        except Exception as e:
+            logger.error(f"Error reading file: {e}")
+            await bot.send_message(chat_id, f"Ошибка при чтении файла. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Store the selected set and reset cache
+        user_set_selection[chat_id] = set_name
+        from utils.helpers import reset_daily_words_cache
+        reset_daily_words_cache(chat_id)
+        
+        # Отправляем стикер и главное меню
+        from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+        
+        # Format message with truncation for large sets
+        intro_text = f"Выбран сет {set_name} для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
+        
+        # Split content into lines
+        lines = content.split('\n')
+        
+        # Max message length for Telegram
+        MAX_MESSAGE_LENGTH = 3800
+        
+        # Check if content is too large
+        if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+            
+            note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+            message_text = intro_text + preview_content + note
+        else:
+            message_text = intro_text + content
+        
+        # Send the message
+        await bot.send_message(chat_id, message_text)
+        
+        # Add only main menu button
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            reply_markup=get_main_menu_keyboard()
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in handle_set_change_confirmed: {e}")
+        await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bot: Bot):
+    """
+    Обработчик подтверждения смены сета по индексу.
+    """
+    chat_id = callback.from_user.id
+    try:
+        _, set_index = callback.data.split(":", 1)
+        set_index = int(set_index)
+        
+        # Получаем имя сета из глобального кэша
+        global set_index_cache
+        set_name = set_index_cache.get(f"{chat_id}_{set_index}")
+        if not set_name:
+            await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
+            return
+        
+        # Очищаем словарь пользователя
+        try:
+            crud.clear_learned_words_for_user(chat_id)
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change by index")
+        except Exception as e:
+            logger.error(f"Error clearing dictionary: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Получаем уровень пользователя
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            await callback.answer()
+            return
+            
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        
+        if not os.path.exists(set_path):
+            logger.warning(f"Set file not found: {set_path}")
+            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+            await callback.answer()
+            return
+        
+        # Обновляем выбранный сет
+        crud.update_user_chosen_set(chat_id, set_name)
+        user_set_selection[chat_id] = set_name
+        from utils.helpers import reset_daily_words_cache
+        reset_daily_words_cache(chat_id)
+        
+        # Отправляем стикер с главным меню
+        from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+        
+        # Читаем содержимое сета
+        content = ""
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Ошибка при чтении файла с альтернативной кодировкой: {e}")
+                content = "Ошибка при чтении содержимого сета."
+        except Exception as e:
+            logger.error(f"Ошибка при чтении файла сета: {e}")
+            content = "Ошибка при чтении содержимого сета."
+        
+        # Форматируем сообщение с учетом ограничений Telegram
+        intro_text = f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
+        
+        # Split content into lines
+        lines = content.split('\n')
+        
+        # Max message length for Telegram
+        MAX_MESSAGE_LENGTH = 3800
+        
+        # Check if content is too large
+        if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+            
+            note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+            message_text = intro_text + preview_content + note
+        else:
+            message_text = intro_text + content
+        
+        # Send the message
+        await bot.send_message(chat_id, message_text)
+        
+        # Add only main menu button
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Набор слов успешно изменен.",
+            reply_markup=get_main_menu_keyboard()
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in handle_set_change_confirmed_by_index: {e}")
+        await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()

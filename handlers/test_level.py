@@ -271,7 +271,7 @@ async def handle_level_test_answer(callback: types.CallbackQuery, bot: Bot):
     await send_next_level_question(chat_id, bot)
 
 async def finish_level_test(chat_id: int, bot: Bot):
-    """Updated to use improved result formatting"""
+    """Updated to use improved result formatting and show main menu after sticker"""
     state = level_test_states.get(chat_id)
     if not state:
         return
@@ -331,24 +331,33 @@ async def finish_level_test(chat_id: int, bot: Bot):
                 logger.error("Could not import user_set_selection, unable to update chosen set in memory")
 
     # Сбрасываем кэш ежедневных слов
+    from utils.helpers import reset_daily_words_cache
     reset_daily_words_cache(chat_id)
 
     # Use the visual helper to format the results
+    from utils.visual_helpers import format_level_test_results
     formatted_results = format_level_test_results(results_by_level, new_level)
     
-    # Create keyboard with main menu button
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("Main Menu", callback_data="menu:back"))
-    
+    # Send results message first
     await bot.send_message(
         chat_id, 
         formatted_results,
-        parse_mode="Markdown", 
-        reply_markup=keyboard
+        parse_mode="Markdown"
+    )
+    
+    # Send sticker and show main menu
+    from utils.sticker_helper import send_sticker_with_menu, get_congratulation_sticker
+    await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    
+    # Add only main menu button
+    from keyboards.reply_keyboards import get_main_menu_keyboard
+    await bot.send_message(
+        chat_id,
+        "Тест уровня завершен.",
+        reply_markup=get_main_menu_keyboard()
     )
     
     del level_test_states[chat_id]
-
 
 def register_level_test_handlers(dp: Dispatcher, bot: Bot):
     """

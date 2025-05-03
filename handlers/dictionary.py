@@ -54,15 +54,16 @@ async def handle_clear_dictionary_confirmed(callback: types.CallbackQuery, bot: 
         # Очищаем словарь пользователя
         crud.clear_learned_words_for_user(chat_id)
         
-        # Отправляем стикер после очистки словаря
-        sticker_id = get_clean_sticker()
-        if sticker_id:
-            await bot.send_sticker(chat_id, sticker_id)
+        # Отправляем стикер после очистки словаря и показываем главное меню
+        from utils.sticker_helper import send_sticker_with_menu, get_clean_sticker
+        await send_sticker_with_menu(chat_id, bot, get_clean_sticker())
         
-        await callback.message.edit_text(
-            "✅ Ваш словарь успешно очищен.",
-            parse_mode="Markdown",
-            reply_markup=dictionary_menu_keyboard()
+        # Add main menu button with text
+        from keyboards.reply_keyboards import get_main_menu_keyboard
+        await bot.send_message(
+            chat_id,
+            "Словарь успешно очищен.",
+            reply_markup=get_main_menu_keyboard()
         )
         
     except Exception as e:

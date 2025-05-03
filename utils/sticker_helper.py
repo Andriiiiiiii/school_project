@@ -1,7 +1,9 @@
 # utils/sticker_helper.py
 import random
+from aiogram import Bot  # Add this import at the top
 import logging
 from typing import List
+
 
 logger = logging.getLogger(__name__)
 
@@ -45,3 +47,16 @@ def get_clean_sticker() -> str:
 def get_welcome_sticker() -> str:
     """Возвращает приветственный стикер."""
     return get_random_sticker(WELCOME_STICKERS)
+
+async def send_sticker_with_menu(chat_id: int, bot: Bot, sticker_id: str):
+    """Sends a sticker and then displays the main menu."""
+    if sticker_id:
+        await bot.send_sticker(chat_id, sticker_id)
+        
+    # Display main menu
+    from keyboards.main_menu import main_menu_keyboard
+    await bot.send_message(
+        chat_id, 
+        "Выберите действие:",
+        reply_markup=main_menu_keyboard()
+    )
