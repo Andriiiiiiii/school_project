@@ -233,6 +233,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)  # Устанавливаем уровень INFO для лучшего отслеживания
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -372,6 +373,38 @@ if __name__ == '__main__':
     # Замените YOUR_CHAT_ID на ваш фактический chat_id (число)
     my_chat_id = 1999873173 
     clear_my_profile(my_chat_id)
+
+#fix_settings.py
+# fix_settings.py
+import logging
+from database.db import db_manager
+from database import crud
+from utils.helpers import reset_daily_words_cache
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+def fix_update_settings_function():
+    """Проверяет и исправляет функцию обновления настроек в базе данных."""
+    try:
+        # Тестируем соединение с базой данных
+        with db_manager.get_cursor() as cursor:
+            cursor.execute("PRAGMA table_info(users)")
+            columns = cursor.fetchall()
+            
+            logger.info(f"Проверка структуры таблицы users:")
+            for col in columns:
+                logger.info(f"Колонка: {col}")
+                
+        logger.info("Соединение с базой данных работает.")
+        return True
+    except Exception as e:
+        logger.error(f"Ошибка при проверке базы данных: {e}")
+        return False
+
+if __name__ == "__main__":
+    fix_update_settings_function()
 
 #alter_db.py
 # alter_db.py
@@ -735,6 +768,7 @@ from database import crud
 from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache, extract_english
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
+
 logger = logging.getLogger(__name__)
 FIRST_TIME = REMINDER_START
 
@@ -804,10 +838,10 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                 # Получаем строку часа и минуты для проверки уведомлений
                 now_local_str = now_local.strftime("%H:%M")
                 
-                # Если полночь по времени пользователя, обрабатываем сброс данных
-                if now_local.hour == 0 and now_local.minute == 0:
+                hour_minute = now_local.hour * 60 + now_local.minute
+                if 0 <= hour_minute <= 3:  # От 00:00 до 00:03
                     process_daily_reset(chat_id)
-                    continue  # Пропускаем дальнейшую обработку, чтобы не отправлять уведомления
+                    continue  # Пропускаем дальнейшую обработку
                 
                 # Полная обработка пользователя только если наступило точное время уведомления
                 # или время для проверки квиза (близкое к концу периода)
@@ -857,29 +891,49 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
 def process_daily_reset(chat_id):
     """Обработка ежедневного сброса данных для пользователя."""
     try:
+        # Улучшенная обработка невыученных слов
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
-            unique_words = entry[8]  # список уникальных слов текущего дня
+            unique_words = entry[8] if len(entry) > 8 and entry[8] else []  # список уникальных слов текущего дня
             
-            # Фильтруем, чтобы оставить только те слова, которых еще нет в "Моем словаре"
-            learned_raw = crud.get_learned_words(chat_id)
-            learned_set = set(extract_english(item[0]) for item in learned_raw)
-            filtered_unique = [w for w in unique_words if extract_english(w) not in learned_set]
-            
-            if filtered_unique:  # Сохраняем только если есть невыученные слова
-                previous_daily_words[chat_id] = filtered_unique
-            elif chat_id in previous_daily_words:
-                # Если все слова выучены, удаляем запись из previous_daily_words
-                del previous_daily_words[chat_id]
+            # Получаем выученные слова
+            try:
+                learned_raw = crud.get_learned_words(chat_id)
+                # Создаем множество выученных слов, приводя все к нижнему регистру
+                learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
+                
+                # Фильтруем уникальные слова, оставляя только невыученные
+                filtered_unique = []
+                for word in unique_words:
+                    # Используем улучшенную функцию extract_english для извлечения словарной формы
+                    english_part = extract_english(word).lower()
+                    if english_part and english_part not in learned_set:
+                        filtered_unique.append(word)
+                
+                # Сохраняем невыученные слова для следующего дня
+                if filtered_unique:
+                    previous_daily_words[chat_id] = filtered_unique
+                    logger.info(f"Сохранено {len(filtered_unique)} невыученных слов для пользователя {chat_id}")
+                elif chat_id in previous_daily_words:
+                    # Если все слова выучены, удаляем запись
+                    del previous_daily_words[chat_id]
+                    logger.info(f"Все слова выучены, запись удалена для пользователя {chat_id}")
+            except Exception as e:
+                logger.error(f"Ошибка при получении выученных слов для пользователя {chat_id}: {e}")
+                # В случае ошибки сохраняем все слова
+                if unique_words:
+                    previous_daily_words[chat_id] = unique_words
+                    logger.warning(f"Из-за ошибки сохранены все {len(unique_words)} слов для пользователя {chat_id}")
                 
             # Сбрасываем кэш для генерации нового списка слов на завтра
             reset_daily_words_cache(chat_id)
+            logger.info(f"Кэш сброшен для пользователя {chat_id}")
         
         # Сбрасываем флаг напоминания
         if chat_id in quiz_reminder_sent:
             del quiz_reminder_sent[chat_id]
             
-        logger.debug(f"Daily reset completed for user {chat_id}")
+        logger.info(f"Daily reset completed for user {chat_id}")
     except Exception as e:
         logger.error(f"Error processing daily reset for user {chat_id}: {e}")
 
@@ -954,15 +1008,17 @@ def process_user(user, now_server, bot, loop):
         # ИСПРАВЛЕННЫЙ КОД: Используем временное окно вместо точного сравнения
         # Вычисляем разницу в минутах между текущим временем и временем окончания
         try:
-            # Преобразуем current_time и end_time в datetime-объекты для корректного сравнения
-            current_time = datetime.strptime(f"{local_today_str} {now_local_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
-            end_time = datetime.strptime(f"{local_today_str} {end_time_str}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(user_tz))
+            # Преобразуем текущее время и время окончания в datetime-объекты для корректного сравнения
+            current_time = now_local
+            end_time = local_end_obj
             
-            # Вычисляем разницу в минутах
-            time_diff_minutes = abs((current_time - end_time).total_seconds() / 60)
+            # Проверяем, не отправляли ли мы уже напоминание сегодня
+            reminder_already_sent = quiz_reminder_sent.get(chat_id) == local_today_str
             
-            # Используем временное окно в 3 минуты вместо точного времени
-            if time_diff_minutes <= 3 and quiz_reminder_sent.get(chat_id) != local_today_str:
+            # Отправляем напоминание, если мы в пределах 10 минут от конца и еще не отправляли сегодня
+            time_diff_minutes = (end_time - current_time).total_seconds() / 60
+            
+            if 0 <= time_diff_minutes <= 10 and not reminder_already_sent:
                 try:
                     # Адаптируем сообщение в зависимости от режима (обычный/повторение)
                     if is_revision_mode:
@@ -1018,6 +1074,7 @@ from aiogram import types, Dispatcher, Bot
 from database import crud
 from keyboards.submenus import words_day_keyboard
 from utils.helpers import get_daily_words_for_user
+from utils.helpers import get_user_settings
 from utils.visual_helpers import format_daily_words_message
 from config import REMINDER_START, DURATION_HOURS
 import os
@@ -1025,10 +1082,7 @@ from config import LEVELS_DIR, DEFAULT_SETS
 
 
 async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обработчик кнопки "Слова дня". Возвращает набор слов на сегодня с улучшенным форматированием.
-    Исправлено: редактирует существующее сообщение вместо отправки нового.
-    """
+    """Обработчик кнопки 'Слова дня'."""
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     
@@ -1039,42 +1093,16 @@ async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
         )
         await callback.answer()
         return
+
+    # Получаем количество слов и повторений из настроек
+    words_per_day, repetitions_per_word = get_user_settings(chat_id)
     
-    # Проверяем соответствие сета уровню
-    from handlers.settings import user_set_selection
-    current_set = user_set_selection.get(chat_id)
-    if not current_set and len(user) > 6:
-        current_set = user[6]
-    
-    # Проверяем существование файла сета для текущего уровня
-    level = user[1]
-    if current_set:
-        set_file_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
-        if not os.path.exists(set_file_path):
-            # Сет не соответствует уровню, пробуем установить базовый
-            default_set = DEFAULT_SETS.get(level)
-            if default_set:
-                default_set_path = os.path.join(LEVELS_DIR, level, f"{default_set}.txt")
-                if os.path.exists(default_set_path):
-                    # Обновляем сет
-                    crud.update_user_chosen_set(chat_id, default_set)
-                    user_set_selection[chat_id] = default_set
-                    reset_daily_words_cache(chat_id)
-                    await callback.message.edit_text(
-                        f"⚠️ Выбранный ранее сет '{current_set}' не соответствует вашему текущему уровню {level}.\n\n"
-                        f"Автоматически установлен базовый сет '{default_set}' для уровня {level}.\n\n"
-                        f"Нажмите 'Слова дня' еще раз для просмотра слов.",
-                        parse_mode="Markdown",
-                        reply_markup=words_day_keyboard()
-                    )
-                    await callback.answer()
-                    return
-    
+    # Дальше идет логика для создания списка "Слов дня" с учетом новых параметров
     result = get_daily_words_for_user(
-        chat_id, user[1], user[2], user[3],
+        chat_id, user[1], words_per_day, repetitions_per_word,
         first_time=REMINDER_START, duration_hours=DURATION_HOURS
     )
-    
+
     if result is None:
         await callback.message.edit_text(
             f"⚠️ Нет слов для уровня {user[1]}.",
@@ -1084,7 +1112,7 @@ async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
         return
     
     messages, times = result
-    
+
     # Используем визуальный помощник для форматирования сообщения
     formatted_message = format_daily_words_message(messages, times)
     
@@ -1148,7 +1176,7 @@ import random
 from datetime import datetime
 from aiogram import types, Dispatcher, Bot
 import asyncio
-from database import crud
+from database import crud  # Убедимся, что импорт crud глобальный
 from utils.quiz_helpers import load_quiz_data
 from keyboards.submenus import quiz_keyboard
 from utils.helpers import get_daily_words_for_user, daily_words_cache
@@ -1230,12 +1258,10 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None, is_r
     
     return questions
 
-
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     """Инициализирует квиз для пользователя."""
     chat_id = callback.from_user.id
     try:
-        from database import crud
         user = crud.get_user(chat_id)
         if not user:
             await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
@@ -1262,7 +1288,9 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
         # Получаем слова дня
         try:
             result = get_daily_words_for_user(chat_id, level, user[2], user[3],
-                                           first_time=REMINDER_START, duration_hours=DURATION_HOURS, chosen_set=chosen_set)
+                                          first_time=REMINDER_START, 
+                                          duration_hours=DURATION_HOURS,
+                                          chosen_set=chosen_set)
             if result is None:
                 await bot.send_message(chat_id, "Нет слов для квиза.")
                 return
@@ -1296,6 +1324,7 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
                 return
             
             # Определяем, какие слова использовать в квизе
+            quiz_words = []
             if is_revision_mode:
                 quiz_words = list(daily_words)
             else:
@@ -1339,7 +1368,6 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
     
     await callback.answer()
 
-# Остальной код оставляем без изменений
 async def send_quiz_question(chat_id, bot: Bot):
     """Отправляет вопрос квиза."""
     try:
@@ -1349,55 +1377,27 @@ async def send_quiz_question(chat_id, bot: Bot):
         
         current_index = state["current_index"]
         questions = state["questions"]
-        is_revision = state.get("is_revision", False)
         
         if current_index >= len(questions):
-            # Квиз завершен
-            from keyboards.main_menu import main_menu_keyboard
+            # Квиз завершен, отправляем результат
+            result_message = format_result_message(state['correct'], len(questions), state.get('is_revision', False))
+            await bot.send_message(chat_id, result_message, parse_mode="Markdown")
             
-            # Формируем сообщение с результатами
-            result_message = format_result_message(
-                state['correct'], 
-                len(questions),
-                is_revision
-            )
-            
-            # Создаем клавиатуру
-            keyboard = types.InlineKeyboardMarkup()
-            keyboard.add(types.InlineKeyboardButton("Главное меню", callback_data="menu:back"))
-            
-            if is_revision:
-                keyboard.add(types.InlineKeyboardButton("Выбрать новый набор", callback_data="settings:set"))
-                keyboard.add(types.InlineKeyboardButton("Пройти тест уровня", callback_data="test_level:start"))
-            
-            # Отправляем сообщение с результатами
-            await bot.send_message(
-                chat_id, 
-                result_message,
-                parse_mode="Markdown", 
-                reply_markup=keyboard
-            )
-            
-            # Отправляем стикер поздравления при хорошем результате
-            if state['correct'] / len(questions) >= 0.7:
+            # ИСПРАВЛЕНИЕ: Добавляем отправку стикера при хорошем результате
+            score_percentage = (state['correct'] / len(questions)) * 100 if len(questions) > 0 else 0
+            if score_percentage >= 70:
+                from utils.sticker_helper import get_congratulation_sticker
                 sticker_id = get_congratulation_sticker()
                 if sticker_id:
                     await bot.send_sticker(chat_id, sticker_id)
             
             del quiz_states[chat_id]
             return
-            
-        # Отправляем вопрос
+        
         question = questions[current_index]
         
         # Форматируем вопрос
-        formatted_question = format_quiz_question(
-            current_index + 1,
-            len(questions),
-            question['word'],
-            question['options'],
-            is_revision
-        )
+        formatted_question = format_quiz_question(current_index + 1, len(questions), question['word'], question['options'])
         
         # Создаем клавиатуру с вариантами ответов
         keyboard = quiz_keyboard(question['options'], current_index)
@@ -1412,8 +1412,6 @@ async def send_quiz_question(chat_id, bot: Bot):
         logger.error(f"Ошибка при отправке вопроса квиза пользователю {chat_id}: {e}")
         await bot.send_message(chat_id, "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.")
 
-
-# Функция обработки ответа на вопрос квиза
 async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
     """Обрабатывает ответ на вопрос квиза."""
     chat_id = callback.from_user.id
@@ -1465,19 +1463,21 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
                 # Явный импорт crud
                 from database import crud
                 
-                # Проверяем, не добавлено ли уже слово в выученные
-                current_learned = crud.get_learned_words(chat_id)
-                current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)
+                # Получаем слово для добавления в словарь
                 word_to_learn = extract_english(question["word"]).lower()
                 
-                # Добавляем слово только в обычном режиме и если еще не выучено
+                # Улучшенная логика проверки и добавления слова
+                current_learned = crud.get_learned_words(chat_id)
+                current_learned_words = set(extract_english(word).lower() for word, _ in current_learned)
+                
+                # Добавляем слово в словарь только в обычном режиме и если еще не выучено
                 if not is_revision and word_to_learn not in current_learned_words:
                     crud.add_learned_word(chat_id, question["word"], question["correct"], datetime.now().strftime("%Y-%m-%d"))
                     await callback.answer("Правильно! Слово добавлено в словарь.")
                 elif is_revision:
-                    await callback.answer("Правильно! (Слово уже в вашем словаре)")
+                    await callback.answer("Правильно! (Режим повторения: слово уже в словаре)")
                 else:
-                    await callback.answer("Правильно! (Слово уже было в вашем словаре)")
+                    await callback.answer("Правильно! (Слово уже в словаре)")
                     
                 state["correct"] += 1
             except Exception as e:
@@ -1497,7 +1497,6 @@ async def process_quiz_answer(callback: types.CallbackQuery, bot: Bot):
         logger.error(f"Ошибка при обработке ответа на квиз: {e}")
         await callback.answer("Произошла ошибка при обработке ответа.")
 
-
 def register_quiz_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
         lambda c: start_quiz(c, bot),
@@ -1509,36 +1508,36 @@ def register_quiz_handlers(dp: Dispatcher, bot: Bot):
     )
 
 #handlers/settings.py
+# handlers/settings.py - начало файла с импортами
 from aiogram import types, Dispatcher, Bot
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from keyboards.submenus import (
     notification_settings_menu_keyboard, 
     settings_menu_keyboard,
-    level_selection_keyboard  # Добавляем импорт для функции выбора уровня
+    level_selection_keyboard
 )
 from keyboards.main_menu import main_menu_keyboard
 from database import crud
 from functools import partial
-from utils.helpers import reset_daily_words_cache, LEVELS_DIR
+from utils.helpers import reset_daily_words_cache, extract_english
 import os
 import logging
 from zoneinfo import ZoneInfo
-
-from utils.visual_helpers import format_settings_overview
-from utils.sticker_helper import get_congratulation_sticker
-
-import urllib.parse
-
-from config import DEFAULT_SETS
+import sqlite3
+from config import DEFAULT_SETS, DB_PATH, LEVELS_DIR
+from utils.visual_helpers import format_progress_bar
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
 
-# Глобальный словарь для хранения состояния ввода (какой параметр ожидается от пользователя)
+# Глобальный словарь для хранения состояния ввода
 pending_settings = {}
 
-# Глобальный словарь для хранения выбранного сета пользователем (ключ: chat_id, значение: имя сета)
+# Глобальный словарь для хранения выбранного сета пользователем
 user_set_selection = {}
+
+# Глобальный словарь для хранения индексов и имен сетов
+set_index_cache = {}
 
 # Сопоставление смещения UTC с названием города/региона
 timezones_map = {
@@ -1570,6 +1569,169 @@ russian_tzs = {
     12: "Asia/Kamchatka"      # UTC+12
 }
 
+# Отдельный глобальный словарь для отслеживания состояний ввода настроек
+# Четко указываем, что это для настроек числа слов/повторений
+settings_input_state = {}
+
+async def process_settings_input(message: types.Message, bot: Bot):
+    """Полностью переработанный обработчик ввода настроек."""
+    chat_id = message.chat.id
+    text = message.text.strip()
+    
+    # Сразу добавляем отладочную информацию
+    logger.info(f"Получено сообщение от {chat_id}: '{text}'")
+    logger.info(f"Текущие состояния ожидания ввода: {pending_settings}")
+    
+    # Проверка на числовой ввод
+    if not text.isdigit():
+        if chat_id in pending_settings:
+            await message.answer(
+                "⚠️ Ошибка: пожалуйста, введите число.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        return False
+    
+    # Числовой ввод получен, проверяем, ожидается ли он
+    if chat_id not in pending_settings:
+        logger.info(f"Пользователь {chat_id} не в режиме ожидания ввода")
+        return False
+    
+    value = int(text)
+    setting_type = pending_settings[chat_id]
+    logger.info(f"Обработка ввода для настройки {setting_type}: {value}")
+    
+    # Обработка ввода количества слов
+    if setting_type == "words":
+        # Проверка диапазона
+        if not (1 <= value <= 20):
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 20.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        # Обновление в базе данных с дополнительной защитой от ошибок
+        try:
+            # Получаем текущие настройки для сравнения "до" и "после"
+            user_before = crud.get_user(chat_id)
+            current_words_before = user_before[2] if user_before else 5
+            
+            # Напрямую используем транзакцию через db_manager
+            with db_manager.transaction() as conn:
+                conn.execute(
+                    "UPDATE users SET words_per_day = ? WHERE chat_id = ?",
+                    (value, chat_id)
+                )
+            
+            # Проверяем, произошло ли обновление
+            user_after = crud.get_user(chat_id)
+            current_words_after = user_after[2] if user_after else current_words_before
+            
+            # Если обновление не произошло, повторяем через crud
+            if current_words_after == current_words_before:
+                logger.warning(f"Первая попытка обновления не сработала, пробуем через crud")
+                crud.update_user_words_per_day(chat_id, value)
+                user_after = crud.get_user(chat_id)
+                current_words_after = user_after[2] if user_after else current_words_before
+            
+            logger.info(f"Значение words_per_day обновлено: {current_words_before} -> {current_words_after}")
+            
+            # Сбрасываем кэш и состояние
+            reset_daily_words_cache(chat_id)
+            del pending_settings[chat_id]
+            
+            # Получаем текущие настройки для отображения
+            current_repetitions = user_after[3] if user_after else 3
+            
+            # Отправляем подтверждение
+            await message.answer(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words_after}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+        
+    # Обработка ввода количества повторений
+    elif setting_type == "repetitions":
+        # Проверка диапазона
+        if not (1 <= value <= 5):
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 5.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        # Обновление в базе данных с дополнительной защитой от ошибок
+        try:
+            # Получаем текущие настройки для сравнения "до" и "после"
+            user_before = crud.get_user(chat_id)
+            current_repetitions_before = user_before[3] if user_before else 3
+            
+            # Напрямую используем транзакцию через db_manager
+            with db_manager.transaction() as conn:
+                conn.execute(
+                    "UPDATE users SET notifications = ? WHERE chat_id = ?",
+                    (value, chat_id)
+                )
+            
+            # Проверяем, произошло ли обновление
+            user_after = crud.get_user(chat_id)
+            current_repetitions_after = user_after[3] if user_after else current_repetitions_before
+            
+            # Если обновление не произошло, повторяем через crud
+            if current_repetitions_after == current_repetitions_before:
+                logger.warning(f"Первая попытка обновления не сработала, пробуем через crud")
+                crud.update_user_notifications(chat_id, value)
+                user_after = crud.get_user(chat_id)
+                current_repetitions_after = user_after[3] if user_after else current_repetitions_before
+            
+            logger.info(f"Значение notifications обновлено: {current_repetitions_before} -> {current_repetitions_after}")
+            
+            # Сбрасываем кэш и состояние
+            reset_daily_words_cache(chat_id)
+            del pending_settings[chat_id]
+            
+            # Получаем текущие настройки для отображения
+            current_words = user_after[2] if user_after else 5
+            
+            # Отправляем подтверждение
+            await message.answer(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions_after}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества повторений: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+    
+    return False
+
+async def update_word_and_repetition_settings(chat_id, words_per_day, repetitions_per_word):
+    """Обновляет количество слов и повторений для пользователя в базе данных."""
+    try:
+        # Обновляем параметры в базе данных
+        crud.update_user_words_and_repetitions(chat_id, words_per_day, repetitions_per_word)
+        logger.info(f"User {chat_id}: updated words per day to {words_per_day} and repetitions to {repetitions_per_word}")
+    except Exception as e:
+        logger.error(f"Error updating user {chat_id} settings: {e}")
+
 def is_valid_timezone(tz_name):
     """Проверяет валидность часового пояса."""
     try:
@@ -1586,11 +1748,16 @@ async def show_settings_callback(callback: types.CallbackQuery, bot: Bot):
 async def process_settings_choice_callback(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик выбора пункта меню настроек.
-    Обновлен для использования новых клавиатур и улучшенного UX.
+    Полностью переписан для решения проблем с уведомлениями.
     """
     chat_id = callback.from_user.id
     try:
-        _, option = callback.data.split(":", 1)
+        data_parts = callback.data.split(":", 1)
+        if len(data_parts) != 2:
+            await callback.answer("Неверный формат данных.", show_alert=True)
+            return
+        
+        _, option = data_parts
     except ValueError:
         await callback.answer("Неверный формат данных.", show_alert=True)
         return
@@ -1615,32 +1782,40 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
             reply_markup=notification_settings_menu_keyboard()
         )
 
+    # В функции process_settings_choice_callback заменить обработку options "words" и "repetitions":
+
     elif option == "words":
-        pending_settings[chat_id] = "words"
-        keyboard = InlineKeyboardMarkup()
-        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:back"))
+        # Получаем текущее значение из базы данных
+        user = crud.get_user(chat_id)
+        current_words = user[2] if user else 5
+        current_repetitions = user[3] if user else 3
         
         await callback.message.edit_text(
-            "📊 *Количество слов в день*\n\n"
-            "Выберите оптимальное количество новых слов для изучения ежедневно. "
-            "Рекомендуется от 5 до 15 слов для эффективного обучения.\n\n"
-            "Введите число от 1 до 20:",
+            f"📊 *Количество слов в день*\n\n"
+            f"Текущие настройки:\n"
+            f"• Количество слов: *{current_words}*\n"
+            f"• Количество повторений: *{current_repetitions}*\n\n"
+            f"Выберите оптимальное количество новых слов для изучения ежедневно. "
+            f"Рекомендуется от 5 до 15 слов для эффективного обучения.",
             parse_mode="Markdown",
-            reply_markup=keyboard
+            reply_markup=words_count_keyboard()
         )
 
     elif option == "repetitions":
-        pending_settings[chat_id] = "repetitions"
-        keyboard = InlineKeyboardMarkup()
-        keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="settings:back"))
+        # Получаем текущее значение из базы данных
+        user = crud.get_user(chat_id)
+        current_words = user[2] if user else 5
+        current_repetitions = user[3] if user else 3
         
         await callback.message.edit_text(
-            "🔄 *Количество повторений*\n\n"
-            "Выберите, сколько раз вы хотите повторять каждое слово в течение дня. "
-            "Повторение помогает лучше запомнить слова.\n\n"
-            "Введите число от 1 до 5:",
+            f"🔄 *Количество повторений*\n\n"
+            f"Текущие настройки:\n"
+            f"• Количество слов: *{current_words}*\n"
+            f"• Количество повторений: *{current_repetitions}*\n\n"
+            f"Выберите, сколько раз вы хотите повторять каждое слово в течение дня. "
+            f"Повторение помогает лучше запомнить слова.",
             parse_mode="Markdown",
-            reply_markup=keyboard
+            reply_markup=repetitions_count_keyboard()
         )
 
     elif option == "timezone":
@@ -1671,6 +1846,147 @@ async def process_settings_choice_callback(callback: types.CallbackQuery, bot: B
         await process_settings_mysettings(callback, bot)
 
     await callback.answer()
+
+def words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов."""
+    keyboard = InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [InlineKeyboardButton(str(i), callback_data=f"set_words:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+    
+    return keyboard
+
+def repetitions_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 5 для выбора количества повторений."""
+    keyboard = InlineKeyboardMarkup(row_width=5)
+    
+    # Одна строка с кнопками 1-5
+    buttons = [InlineKeyboardButton(str(i), callback_data=f"set_repetitions:{i}") for i in range(1, 6)]
+    keyboard.row(*buttons)
+    
+    # Кнопка "Назад"
+    keyboard.row(InlineKeyboardButton("🔙 Назад", callback_data="settings:notifications"))
+    
+    return keyboard
+
+# Добавить новые функции-обработчики
+
+async def handle_set_words_count(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов в день."""
+    chat_id = callback.from_user.id
+    try:
+        _, count_str = callback.data.split(":", 1)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Получаем текущие настройки для сравнения
+            user_before = crud.get_user(chat_id)
+            
+            # Обновляем количество слов
+            crud.update_user_words_per_day(chat_id, count)
+            
+            # Сбрасываем кэш
+            reset_daily_words_cache(chat_id)
+            
+            # Получаем обновленные настройки
+            user_after = crud.get_user(chat_id)
+            current_words = user_after[2] if user_after else count
+            current_repetitions = user_after[3] if user_after else 3
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            
+            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {count}")
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_set_repetitions_count(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества повторений."""
+    chat_id = callback.from_user.id
+    try:
+        _, count_str = callback.data.split(":", 1)
+        count = int(count_str)
+        
+        if not (1 <= count <= 5):
+            await callback.answer("Ошибка: недопустимое количество повторений", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Получаем текущие настройки для сравнения
+            user_before = crud.get_user(chat_id)
+            
+            # Обновляем количество повторений
+            crud.update_user_notifications(chat_id, count)
+            
+            # Сбрасываем кэш
+            reset_daily_words_cache(chat_id)
+            
+            # Получаем обновленные настройки
+            user_after = crud.get_user(chat_id)
+            current_words = user_after[2] if user_after else 5
+            current_repetitions = user_after[3] if user_after else count
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки успешно обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            
+            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {count}")
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества повторений: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества повторений: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
 
 async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
     """
@@ -1718,14 +2034,6 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
             # Обновляем кэш для согласованности
             user_set_selection[chat_id] = current_set
         
-        # Check if user has any learned words
-        try:
-            learned_words = crud.get_learned_words(chat_id)
-            has_learned_words = len(learned_words) > 0
-        except Exception as e:
-            logger.error(f"Error checking learned words: {e}")
-            has_learned_words = False
-        
         # Prepare message with current set info
         message_text = f"Доступные сеты для уровня {user_level}:"
         if current_set:
@@ -1733,23 +2041,28 @@ async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
         
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         
+        # Очищаем предыдущие записи в кэше для этого пользователя
+        global set_index_cache
+        for key in list(set_index_cache.keys()):
+            if key.startswith(f"{chat_id}_"):
+                del set_index_cache[key]
+        
         # Ограничиваем длину callback_data, чтобы избежать ошибки Button_data_invalid
-        for filename in set_files:
+        for idx, filename in enumerate(set_files):
             set_name = os.path.splitext(filename)[0]
             
             # Используем индекс вместо имени сета в callback_data для предотвращения ошибки
-            # Сохраняем соответствие в кэше
-            set_index = len(set_files) - set_files.index(filename)  # Начинаем с 1
-            callback_data = f"set_idx:{set_index}" if not has_learned_words else f"confirm_idx:{set_index}"
+            set_index = idx + 1  # Начинаем с 1
+            
+            # Всегда показываем подтверждение при смене сета, если текущий сет задан
+            callback_data = f"confirm_idx:{set_index}" if current_set and current_set != set_name else f"set_idx:{set_index}"
             
             # Сохраняем имя сета в глобальный cache для восстановления по индексу
-            if not hasattr(process_my_sets, 'set_cache'):
-                process_my_sets.set_cache = {}
-            process_my_sets.set_cache[f"{chat_id}_{set_index}"] = set_name
+            set_index_cache[f"{chat_id}_{set_index}"] = set_name
             
             keyboard.add(types.InlineKeyboardButton(set_name, callback_data=callback_data))
         
-        keyboard.add(types.InlineKeyboardButton("Назад", callback_data="menu:settings"))
+        keyboard.add(types.InlineKeyboardButton("🔙 Назад", callback_data="menu:settings"))
         
         await bot.send_message(chat_id, message_text, parse_mode="Markdown", reply_markup=keyboard)
     except Exception as e:
@@ -1763,11 +2076,9 @@ async def handle_set_by_index(callback: types.CallbackQuery, bot: Bot):
         _, set_index = callback.data.split(":", 1)
         set_index = int(set_index)
         
-        # Получаем имя сета из кэша
-        if not hasattr(process_my_sets, 'set_cache'):
-            process_my_sets.set_cache = {}
-        
-        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        # Получаем имя сета из глобального кэша
+        global set_index_cache
+        set_name = set_index_cache.get(f"{chat_id}_{set_index}")
         if not set_name:
             await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
             return
@@ -1792,22 +2103,62 @@ async def handle_set_by_index(callback: types.CallbackQuery, bot: Bot):
         # Проверяем, является ли это сменой сета
         is_change = current_set and current_set != set_name
         
-        # Обновляем сет в бд и кэше
-        crud.update_user_chosen_set(chat_id, set_name)
-        user_set_selection[chat_id] = set_name
-        reset_daily_words_cache(chat_id)
-        
-        # Если это смена сета, очищаем словарь
+        # Если это смена сета - всегда показываем подтверждение
         if is_change:
-            crud.clear_learned_words_for_user(chat_id)
-        
-        # Отправляем сообщение об успешном выборе сета
-        await callback.message.edit_text(
-            f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n\n"
-            f"{'⚠️ Словарь очищен, так как был выбран новый сет.' if is_change else ''}",
-            parse_mode="Markdown",
-            reply_markup=settings_menu_keyboard()
-        )
+            # Отправляем запрос на подтверждение
+            await handle_confirm_set_by_index(callback, bot)
+        else:
+            # Если это первый выбор сета, просто устанавливаем его
+            crud.update_user_chosen_set(chat_id, set_name)
+            user_set_selection[chat_id] = set_name
+            reset_daily_words_cache(chat_id)
+            
+            # Читаем содержимое сета для отображения
+            set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+            content = ""
+            try:
+                with open(set_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+            except UnicodeDecodeError:
+                try:
+                    with open(set_path, "r", encoding="cp1251") as f:
+                        content = f.read()
+                except Exception as e:
+                    logger.error(f"Ошибка при чтении файла с альтернативной кодировкой: {e}")
+                    content = "Ошибка при чтении содержимого сета."
+            except Exception as e:
+                logger.error(f"Ошибка при чтении файла сета: {e}")
+                content = "Ошибка при чтении содержимого сета."
+            
+            # Форматируем сообщение с содержимым сета
+            intro_text = f"✅ Выбран сет '{set_name}' для уровня {user_level}.\nСлова сета:\n\n"
+            
+            # Ограничиваем длину сообщения
+            MAX_MESSAGE_LENGTH = 3800
+            if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+                lines = content.split('\n')
+                preview_content = ""
+                preview_line_count = 0
+                word_count = len(lines)
+                
+                for line in lines:
+                    if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:
+                        preview_content += line + "\n"
+                        preview_line_count += 1
+                    else:
+                        break
+                
+                note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+                message_text = intro_text + preview_content + note
+            else:
+                message_text = intro_text + content
+            
+            # Отправляем сообщение с информацией о выбранном сете
+            await callback.message.edit_text(
+                message_text,
+                parse_mode="Markdown",
+                reply_markup=settings_menu_keyboard()
+            )
         
     except ValueError:
         await callback.answer("Неверный формат данных.")
@@ -1822,11 +2173,9 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
         _, set_index = callback.data.split(":", 1)
         set_index = int(set_index)
         
-        # Получаем имя сета из кэша
-        if not hasattr(process_my_sets, 'set_cache'):
-            process_my_sets.set_cache = {}
-        
-        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        # Получаем имя сета из глобального кэша
+        global set_index_cache
+        set_name = set_index_cache.get(f"{chat_id}_{set_index}")
         if not set_name:
             await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
             return
@@ -1841,6 +2190,48 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
         if not current_set and user and len(user) > 6 and user[6]:
             current_set = user[6]
         
+        # Читаем содержимое выбранного сета
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        content = ""
+        
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Ошибка при чтении файла с альтернативной кодировкой: {e}")
+                content = "Ошибка при чтении содержимого сета."
+        except Exception as e:
+            logger.error(f"Ошибка при чтении файла сета: {e}")
+            content = "Ошибка при чтении содержимого сета."
+            
+        # Форматируем сообщение для предварительного просмотра сета
+        intro_text = f"ℹ️ *Предварительный просмотр сета '{set_name}'*\n\n"
+        
+        # Ограничиваем длину предварительного просмотра
+        MAX_PREVIEW_LENGTH = 1500
+        
+        if len(content) > MAX_PREVIEW_LENGTH:
+            lines = content.split('\n')
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(preview_content) + len(line) < MAX_PREVIEW_LENGTH:
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+                    
+            preview_text = preview_content + f"\n...и еще {word_count - preview_line_count} слов(а)."
+        else:
+            preview_text = content
+            
         # Создаем клавиатуру для подтверждения
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         keyboard.add(
@@ -1848,12 +2239,17 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
             types.InlineKeyboardButton("❌ Нет, отмена", callback_data="set_change_cancel")
         )
         
-        # Отправляем сообщение с подтверждением
-        await callback.message.edit_text(
+        # Отправляем сообщение с предупреждением и предварительным просмотром сета
+        message = (
             f"⚠️ *Внимание! Смена сета приведет к полному сбросу прогресса.*\n\n"
             f"Текущий сет: *{current_set}*\n"
             f"Новый сет: *{set_name}*\n\n"
-            f"При смене сета ваш словарь будет полностью очищен. Вы уверены?",
+            f"При смене сета ваш словарь будет полностью очищен. Вы уверены?\n\n"
+            f"Содержимое нового сета:\n\n{preview_text}"
+        )
+        
+        await callback.message.edit_text(
+            message,
             parse_mode="Markdown",
             reply_markup=keyboard
         )
@@ -1865,23 +2261,46 @@ async def handle_confirm_set_by_index(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Произошла ошибка при подготовке подтверждения.")
 
 async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик подтвержденной смены сета по индексу"""
+    """
+    Обработчик подтверждения смены сета по индексу.
+    """
     chat_id = callback.from_user.id
     try:
         _, set_index = callback.data.split(":", 1)
         set_index = int(set_index)
         
-        # Получаем имя сета из кэша
-        if not hasattr(process_my_sets, 'set_cache'):
-            process_my_sets.set_cache = {}
-        
-        set_name = process_my_sets.set_cache.get(f"{chat_id}_{set_index}")
+        # Получаем имя сета из глобального кэша
+        global set_index_cache
+        set_name = set_index_cache.get(f"{chat_id}_{set_index}")
         if not set_name:
             await callback.answer("Ошибка: информация о сете не найдена. Пожалуйста, попробуйте снова.")
             return
         
         # Очищаем словарь пользователя
-        crud.clear_learned_words_for_user(chat_id)
+        try:
+            crud.clear_learned_words_for_user(chat_id)
+            logger.info(f"Dictionary cleared for user {chat_id} due to set change by index")
+        except Exception as e:
+            logger.error(f"Error clearing dictionary: {e}")
+            await bot.send_message(chat_id, "Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.")
+            await callback.answer()
+            return
+        
+        # Получаем уровень пользователя
+        user = crud.get_user(chat_id)
+        if not user:
+            await bot.send_message(chat_id, "Профиль не найден. Используйте /start.")
+            await callback.answer()
+            return
+            
+        user_level = user[1]
+        set_path = os.path.join(LEVELS_DIR, user_level, f"{set_name}.txt")
+        
+        if not os.path.exists(set_path):
+            logger.warning(f"Set file not found: {set_path}")
+            await bot.send_message(chat_id, f"Сет {set_name} не найден для уровня {user_level}.")
+            await callback.answer()
+            return
         
         # Обновляем выбранный сет
         crud.update_user_chosen_set(chat_id, set_name)
@@ -1889,22 +2308,61 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
         reset_daily_words_cache(chat_id)
         
         # Отправляем стикер
-        from utils.sticker_helper import get_congratulation_sticker
         sticker_id = get_congratulation_sticker()
         if sticker_id:
             await bot.send_sticker(chat_id, sticker_id)
         
-        # Отправляем сообщение об успешной смене сета
-        await callback.message.edit_text(
-            f"✅ Выбран сет '{set_name}'.\n⚠️ Словарь успешно очищен.",
-            reply_markup=settings_menu_keyboard()
-        )
+        # Читаем содержимое сета
+        content = ""
+        try:
+            with open(set_path, "r", encoding="utf-8") as f:
+                content = f.read()
+        except UnicodeDecodeError:
+            try:
+                with open(set_path, "r", encoding="cp1251") as f:
+                    content = f.read()
+            except Exception as e:
+                logger.error(f"Ошибка при чтении файла с альтернативной кодировкой: {e}")
+                content = "Ошибка при чтении содержимого сета."
+        except Exception as e:
+            logger.error(f"Ошибка при чтении файла сета: {e}")
+            content = "Ошибка при чтении содержимого сета."
         
-    except ValueError:
-        await callback.answer("Неверный формат данных.")
+        # Форматируем сообщение с учетом ограничений Telegram
+        intro_text = f"✅ Выбран сет '{set_name}' для уровня {user_level}.\n⚠️ Словарь успешно очищен.\nСлова сета:\n\n"
+        
+        # Split content into lines
+        lines = content.split('\n')
+        
+        # Max message length for Telegram
+        MAX_MESSAGE_LENGTH = 3800
+        
+        # Check if content is too large
+        if len(intro_text) + len(content) > MAX_MESSAGE_LENGTH:
+            preview_content = ""
+            preview_line_count = 0
+            word_count = len(lines)
+            
+            for line in lines:
+                if len(intro_text) + len(preview_content) + len(line) + 100 < MAX_MESSAGE_LENGTH:
+                    preview_content += line + "\n"
+                    preview_line_count += 1
+                else:
+                    break
+            
+            note = f"\n\n...и еще {word_count - preview_line_count} слов(а). Полный список будет использован в обучении."
+            message_text = intro_text + preview_content + note
+        else:
+            message_text = intro_text + content
+        
+        # Send the message
+        await bot.send_message(chat_id, message_text, reply_markup=settings_menu_keyboard())
+        
     except Exception as e:
-        logger.error(f"Ошибка при подтвержденной смене сета: {e}")
-        await callback.answer("Произошла ошибка при смене сета.")
+        logger.error(f"Error in handle_set_change_confirmed_by_index: {e}")
+        await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
 
 # Updated process_choose_set function with both fixes for long messages
 # and for automatically clearing the dictionary when changing sets
@@ -2035,7 +2493,6 @@ async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
     
     await callback.answer()
 
-
 async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
     try:
@@ -2050,6 +2507,9 @@ async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Пользователь не найден.", show_alert=True)
         return
     
+    # Сохраняем текущий уровень для сравнения
+    current_level = user[1]
+    
     # Проверяем текущий сет пользователя
     current_set = None
     if chat_id in user_set_selection:
@@ -2059,26 +2519,46 @@ async def process_set_level_callback(callback: types.CallbackQuery, bot: Bot):
     if not current_set and len(user) > 6 and user[6]:
         current_set = user[6]
     
-    # Обновляем уровень
+    # Обновляем уровень пользователя
     crud.update_user_level(chat_id, level)
     
-    # Если сет не выбран, устанавливаем базовый для нового уровня
-    if not current_set:
-        default_set = DEFAULT_SETS.get(level)
-        if default_set:
-            try:
-                crud.update_user_chosen_set(chat_id, default_set)
-                user_set_selection[chat_id] = default_set
-                current_set = default_set
-                logger.info(f"Установлен базовый сет {default_set} для пользователя {chat_id} при смене уровня на {level}")
-            except Exception as e:
-                logger.error(f"Ошибка при установке базового сета для пользователя {chat_id}: {e}")
+    # Важно: мы НЕ меняем выбранный сет при смене уровня
+    # Сет будет меняться только при явном выборе пользователем в разделе "Выбор сета"
     
-    # Сбрасываем кэш ежедневных слов
+    # Сбрасываем кэш ежедневных слов для обновления состояния
     reset_daily_words_cache(chat_id)
     
-    set_info = f"\nТекущий набор слов: {current_set}" if current_set else ""
-    await bot.send_message(chat_id, f"Уровень установлен на {level}.{set_info}", reply_markup=settings_menu_keyboard())
+    # Формируем сообщение для пользователя
+    if current_level != level:
+        message = f"Уровень изменен с {current_level} на {level}."
+        if current_set:
+            message += f"\nТекущий набор слов: {current_set}"
+            
+            # Проверяем, существует ли файл сета в новом уровне (для информации)
+            set_file_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
+            set_exists = os.path.exists(set_file_path)
+            
+            # Если файл не существует в новом уровне, предупреждаем пользователя
+            if not set_exists:
+                # Проверяем с учетом возможного различия в регистре
+                try:
+                    level_dir = os.path.join(LEVELS_DIR, level)
+                    if os.path.exists(level_dir):
+                        for file in os.listdir(level_dir):
+                            if file.lower() == f"{current_set}.txt".lower():
+                                set_exists = True
+                                break
+                except Exception as e:
+                    logger.error(f"Ошибка при проверке существования файла сета: {e}")
+                
+                if not set_exists:
+                    message += f"\n\n⚠️ Обратите внимание: выбранный набор '{current_set}' не найден для уровня {level}. Это может привести к ошибкам. Рекомендуется выбрать набор из текущего уровня в разделе 'Выбор сета'."
+    else:
+        message = f"Уровень установлен на {level}."
+        if current_set:
+            message += f"\nТекущий набор слов: {current_set}"
+    
+    await bot.send_message(chat_id, message, reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot):
@@ -2121,41 +2601,152 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
     
     crud.update_user_timezone(chat_id, tz_mapped)
     reset_daily_words_cache(chat_id)
-    await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=notification_settings_menu_keyboard())
+    await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
-async def process_text_setting(message: types.Message):
+# Улучшенный обработчик ввода текста
+async def process_text_setting(message: types.Message, bot: Bot = None):
+    """Обработчик ввода числа для настроек (слов или повторений)"""
     chat_id = message.chat.id
-    if chat_id not in pending_settings:
-        return
-    setting_type = pending_settings.pop(chat_id)
     text = message.text.strip()
+    
+    # Проверяем, находится ли пользователь в режиме ожидания ввода
+    if chat_id not in pending_settings:
+        # Не наш случай, позволяем другим обработчикам обработать сообщение
+        return False
+    
+    logger.info(f"Получен ввод от пользователя {chat_id}: '{text}', режим: {pending_settings[chat_id]}")
+    
+    # Проверяем, что введено число
     if not text.isdigit():
-        await message.answer("Ошибка: введите корректное число.", reply_markup=notification_settings_menu_keyboard())
-        return
+        await message.answer(
+            "⚠️ Ошибка: введите корректное число.",
+            reply_markup=notification_settings_menu_keyboard()
+        )
+        return True
+    
     value = int(text)
+    setting_type = pending_settings[chat_id]
+    
+    # Обработка настройки количества слов
     if setting_type == "words":
         if not (1 <= value <= 20):
-            await message.answer("Ошибка: число должно быть от 1 до 20.", reply_markup=notification_settings_menu_keyboard())
-            return
-        crud.update_user_words_per_day(chat_id, value)
-        reset_daily_words_cache(chat_id)
-        await message.answer(f"Количество слов в день установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 20.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        try:
+            # Обновляем в базе данных
+            before_update = crud.get_user(chat_id)
+            
+            # Используем правильный метод обновления
+            crud.update_user_words_per_day(chat_id, value)
+            logger.info(f"Обновлено количество слов для пользователя {chat_id}: {value}")
+            
+            # Сбрасываем кэш
+            from utils.helpers import reset_daily_words_cache
+            reset_daily_words_cache(chat_id)
+            
+            # Удаляем из словаря ожидания
+            del pending_settings[chat_id]
+            
+            # Получаем обновленные данные для отображения
+            after_update = crud.get_user(chat_id)
+            current_words = after_update[2] if after_update else value
+            current_repetitions = after_update[3] if after_update else 3
+            
+            # Отправляем подтверждение с текущими настройками
+            await message.answer(
+                f"✅ Настройки обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+    
+    # Обработка настройки количества повторений
     elif setting_type == "repetitions":
         if not (1 <= value <= 5):
-            await message.answer("Ошибка: число должно быть от 1 до 5.", reply_markup=notification_settings_menu_keyboard())
-            return
-        crud.update_user_notifications(chat_id, value)
-        reset_daily_words_cache(chat_id)
-        await message.answer(f"Количество повторений установлено на {value}.", reply_markup=notification_settings_menu_keyboard())
+            await message.answer(
+                "⚠️ Ошибка: число должно быть от 1 до 5.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+            return True
+        
+        try:
+            # Обновляем в базе данных
+            before_update = crud.get_user(chat_id)
+            
+            # Используем правильный метод обновления
+            crud.update_user_notifications(chat_id, value)
+            logger.info(f"Обновлено количество повторений для пользователя {chat_id}: {value}")
+            
+            # Сбрасываем кэш
+            from utils.helpers import reset_daily_words_cache
+            reset_daily_words_cache(chat_id)
+            
+            # Удаляем из словаря ожидания
+            del pending_settings[chat_id]
+            
+            # Получаем обновленные данные для отображения
+            after_update = crud.get_user(chat_id)
+            current_words = after_update[2] if after_update else 5
+            current_repetitions = after_update[3] if after_update else value
+            
+            # Отправляем подтверждение с текущими настройками
+            await message.answer(
+                f"✅ Настройки обновлены!\n\n"
+                f"📊 Количество слов в день: *{current_words}*\n"
+                f"🔄 Количество повторений: *{current_repetitions}*",
+                parse_mode="Markdown",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества повторений: {e}")
+            await message.answer(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=notification_settings_menu_keyboard()
+            )
+        
+        return True
+    
+    return False  # если тип настройки не распознан
 
 async def process_notification_back(callback: types.CallbackQuery, bot: Bot):
-    """Исправление: Редактируем существующее сообщение вместо отправки нового"""
+    """Обработчик возврата из меню уведомлений в меню настроек"""
     await callback.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
 def register_settings_handlers(dp: Dispatcher, bot: Bot):
     """Register all settings handlers"""
+    # ВАЖНО: Регистрируем обработчик текстовых сообщений ПЕРВЫМ
+    # с более простым условием для гарантированной обработки
+    dp.register_message_handler(
+        partial(process_settings_input, bot=bot),
+        lambda message: bool(message.text) and message.chat.id in pending_settings,
+        state="*",
+        content_types=['text']
+    )
+    # Регистрируем обработчики для кнопок выбора количества слов и повторений
+    dp.register_callback_query_handler(
+        partial(handle_set_words_count, bot=bot),
+        lambda c: c.data and c.data.startswith("set_words:")
+    )
+    
+    dp.register_callback_query_handler(
+        partial(handle_set_repetitions_count, bot=bot),
+        lambda c: c.data and c.data.startswith("set_repetitions:")
+    )
     # Basic settings handlers
     dp.register_callback_query_handler(
         partial(show_settings_callback, bot=bot),
@@ -2163,12 +2754,15 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
     )
     dp.register_callback_query_handler(
         partial(process_notification_back, bot=bot),
-        lambda c: c.data == "settings:back"
+        lambda c: c.data == "settings:back" or c.data == "notifications:back"
     )
+    
+    # Регистрируем обработчики для настроек и их подменю
     dp.register_callback_query_handler(
         partial(process_settings_choice_callback, bot=bot),
         lambda c: c.data and c.data.startswith("settings:") and c.data != "settings:back"
     )
+    
     dp.register_callback_query_handler(
         partial(process_set_level_callback, bot=bot),
         lambda c: c.data and c.data.startswith("set_level:")
@@ -2192,7 +2786,7 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         lambda c: c.data == "set_change_cancel"
     )
     
-    # Новые обработчики для выбора сета по индексу
+    # Обработчики для выбора сета по индексу
     dp.register_callback_query_handler(
         partial(handle_set_by_index, bot=bot),
         lambda c: c.data and c.data.startswith("set_idx:")
@@ -2211,13 +2805,8 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         partial(process_choose_set, bot=bot),
         lambda c: c.data and c.data.startswith("choose_set:")
     )
-    
-    # Text input handler
-    dp.register_message_handler(process_text_setting, content_types=['text'])
-
-
 async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
-    """Отображает настройки пользователя с улучшенным форматированием"""
+    """Отображает настройки пользователя с улучшенным форматированием и статистикой"""
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     
@@ -2271,13 +2860,99 @@ async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
         message += f"🌐 *Часовой пояс:* {user_settings['timezone']}\n"
         message += f"📚 *Выбранный набор:* {user_settings['chosen_set']}\n\n"
         
-        # Добавляем статистику, если есть
+        # Добавляем статистику выученных слов
         try:
+            # Получаем выученные слова
             learned_words = crud.get_learned_words(chat_id)
+            total_learned = len(learned_words)
+            
             message += f"📈 *Статистика*\n"
-            message += f"📝 Выучено слов: {len(learned_words)}\n"
+            message += f"📝 Выучено слов: {total_learned}\n"
+            
+            # Если есть выбранный сет, подсчитываем количество слов в нем
+            if current_set:
+                level = user_settings['level']
+                set_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
+                
+                try:
+                    if os.path.exists(set_path):
+                        # Читаем слова из сета
+                        with open(set_path, 'r', encoding='utf-8') as f:
+                            set_words = [line.strip() for line in f if line.strip()]
+                        total_set_words = len(set_words)
+                        
+                        # Создаем множество английских слов из выученных
+                        learned_english_words = set(extract_english(word[0]).lower() for word in learned_words)
+                        
+                        # Подсчитываем, сколько слов из текущего сета выучено
+                        learned_from_set = 0
+                        for word in set_words:
+                            english_part = extract_english(word).lower()
+                            if english_part in learned_english_words:
+                                learned_from_set += 1
+                        
+                        # Добавляем информацию о прогрессе в текущем сете
+                        progress_percent = learned_from_set / total_set_words * 100 if total_set_words > 0 else 0
+                        progress_bar = format_progress_bar(learned_from_set, total_set_words, 10)
+                        message += f"📊 Прогресс в текущем сете: {learned_from_set}/{total_set_words} ({progress_percent:.1f}%)\n"
+                        message += f"{progress_bar}\n"
+                except Exception as e:
+                    logger.error(f"Ошибка при подсчете статистики сета: {e}")
+                    message += "Ошибка при получении статистики текущего сета.\n"
+            
+            # Находим выученные сеты
+            level = user_settings['level']
+            level_dir = os.path.join(LEVELS_DIR, level)
+            
+            if os.path.exists(level_dir):
+                try:
+                    # Получаем все файлы сетов для текущего уровня
+                    set_files = [f[:-4] for f in os.listdir(level_dir) if f.endswith('.txt')]
+                    
+                    if set_files:
+                        # Определяем для каждого сета, выучен ли он полностью
+                        completed_sets = []
+                        
+                        for set_name in set_files:
+                            set_path = os.path.join(level_dir, f"{set_name}.txt")
+                            
+                            try:
+                                # Читаем слова из сета
+                                with open(set_path, 'r', encoding='utf-8') as f:
+                                    set_words = [line.strip() for line in f if line.strip()]
+                                
+                                if not set_words:
+                                    continue
+                                
+                                # Проверяем, все ли слова выучены
+                                learned_english_words = set(extract_english(word[0]).lower() for word in learned_words)
+                                all_learned = True
+                                
+                                for word in set_words:
+                                    english_part = extract_english(word).lower()
+                                    if english_part not in learned_english_words:
+                                        all_learned = False
+                                        break
+                                
+                                if all_learned and set_words:
+                                    completed_sets.append(set_name)
+                            except Exception as e:
+                                logger.error(f"Ошибка при проверке сета {set_name}: {e}")
+                        
+                        # Добавляем информацию о выученных сетах
+                        if completed_sets:
+                            message += f"\n🎓 *Выученные сеты ({len(completed_sets)})* 🎓\n"
+                            for set_name in completed_sets:
+                                message += f"✅ {set_name}\n"
+                        else:
+                            message += "\nНет полностью выученных сетов.\n"
+                except Exception as e:
+                    logger.error(f"Ошибка при получении списка сетов: {e}")
+                    message += "Ошибка при получении информации о выученных сетах.\n"
+            
         except Exception as e:
             logger.error(f"Ошибка при получении статистики: {e}")
+            message += "Ошибка при получении статистики.\n"
         
         await callback.message.edit_text(
             message,
@@ -2912,348 +3587,79 @@ pending_learning_settings = {}
 # Глобальный словарь для хранения состояния тестов (как в quiz.py)
 learning_test_states = {}
 
-# Проверяем и добавляем колонки для настроек обучения
-def ensure_learning_columns():
-    """Проверяет и добавляет колонки для настроек обучения"""
+# Добавить в начало файла handlers/learning.py:
+
+# Константы для доступа к полям пользователя
+USER_LEVEL = 1
+USER_WORDS_PER_DAY = 2
+USER_REPETITIONS = 3
+USER_REMINDER_TIME = 4
+USER_TIMEZONE = 5
+USER_CHOSEN_SET = 6
+USER_TEST_WORDS_COUNT = 7
+USER_MEMORIZE_WORDS_COUNT = 8
+
+def test_words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов в тесте."""
+    keyboard = types.InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:test_count:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
+    
+    return keyboard
+
+def memorize_words_count_keyboard():
+    """Создает клавиатуру с кнопками от 1 до 20 для выбора количества слов для заучивания."""
+    keyboard = types.InlineKeyboardMarkup(row_width=5)
+    
+    # Первая строка: 1-5
+    row1 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(1, 6)]
+    keyboard.row(*row1)
+    
+    # Вторая строка: 6-10
+    row2 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(6, 11)]
+    keyboard.row(*row2)
+    
+    # Третья строка: 11-15
+    row3 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(11, 16)]
+    keyboard.row(*row3)
+    
+    # Четвертая строка: 16-20
+    row4 = [types.InlineKeyboardButton(str(i), callback_data=f"learn:memorize_count:{i}") for i in range(16, 21)]
+    keyboard.row(*row4)
+    
+    # Кнопка "Назад"
+    keyboard.row(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
+    
+    return keyboard
+
+# Безопасное получение настроек пользователя с учетом возможных изменений в структуре
+def get_user_setting(user, index, default_value):
+    """Безопасно извлекает настройку пользователя с указанным индексом"""
     try:
-        from database.db import db_manager
-        with db_manager.get_cursor() as cursor:
-            # Проверяем структуру таблицы
-            cursor.execute("PRAGMA table_info(users)")
-            columns = [row[1] for row in cursor.fetchall()]
-            
-            # Добавляем колонки, если их нет
-            if 'test_words_count' not in columns:
-                cursor.execute("ALTER TABLE users ADD COLUMN test_words_count INTEGER DEFAULT 5")
-                
-            if 'memorize_words_count' not in columns:
-                cursor.execute("ALTER TABLE users ADD COLUMN memorize_words_count INTEGER DEFAULT 5")
-                
-            # Комитим изменения
-            db_manager.conn.commit()
-            
-        logger.info("Колонки для настроек обучения проверены")
+        if user and len(user) > index and user[index] is not None:
+            return user[index]
     except Exception as e:
-        logger.error(f"Ошибка при проверке колонок: {e}")
+        logger.error(f"Ошибка при получении настройки с индексом {index}: {e}")
+    return default_value
 
-# Вызывается при импорте модуля
-ensure_learning_columns()
-
-async def handle_learning_menu(callback: types.CallbackQuery, bot: Bot):
-    """Отображает меню обучения"""
-    # Проверяем наличие необходимых колонок
-    
-    await callback.message.edit_text("📚 Выберите режим обучения:", reply_markup=learning_menu_keyboard())
-    await callback.answer()
-
-async def handle_learning_settings(callback: types.CallbackQuery, bot: Bot):
-    """Отображает настройки обучения"""
-    await callback.message.edit_text(
-        "⚙️ *Настройки обучения*\n\n"
-        "Здесь вы можете настроить количество слов для теста и заучивания.",
-        parse_mode="Markdown",
-        reply_markup=learning_settings_keyboard()
-    )
-    await callback.answer()
-
-async def handle_test_settings(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик настроек теста по словарю"""
-    chat_id = callback.from_user.id
-    user = crud.get_user(chat_id)
-    if not user:
-        await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
-        return
-    
-    # Получаем текущее количество слов для теста (по умолчанию 5)
-    test_words_count = user[7] if len(user) > 7 and user[7] else 5
-    
-    # Регистрируем ожидание ввода
-    pending_learning_settings[chat_id] = "test_words"
-    logger.info(f"Пользователь {chat_id} переходит в режим ввода test_words")
-    
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
-    
-    await callback.message.edit_text(
-        f"📊 *Настройки теста по словарю*\n\n"
-        f"Текущее количество слов в тесте: *{test_words_count}*\n\n"
-        f"Введите новое количество слов (от 1 до 20):\n"
-        f"Если в словаре меньше слов, чем указано, будут использованы все доступные слова.",
-        parse_mode="Markdown",
-        reply_markup=keyboard
-    )
-    await callback.answer()
-
-
-
-async def handle_memorize_settings(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик настроек заучивания сета"""
-    chat_id = callback.from_user.id
-    user = crud.get_user(chat_id)
-    if not user:
-        await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
-        return
-    
-    # Получаем текущее количество слов для заучивания (по умолчанию 5)
-    memorize_words_count = user[8] if len(user) > 8 and user[8] else 5
-    
-    # Регистрируем ожидание ввода
-    pending_learning_settings[chat_id] = "memorize_words"
-    logger.info(f"Пользователь {chat_id} переходит в режим ввода memorize_words")
-    
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("🔙 Назад", callback_data="learning:settings"))
-    
-    await callback.message.edit_text(
-        f"📝 *Настройки заучивания сета*\n\n"
-        f"Текущее количество слов в заучивании: *{memorize_words_count}*\n\n"
-        f"Введите новое количество слов (от 1 до 20):",
-        parse_mode="Markdown",
-        reply_markup=keyboard
-    )
-    await callback.answer()
-
-# Отдельная функция для проверки числа
-def is_valid_number(text):
-    """Проверяет, является ли текст числом от 1 до 20"""
-    if not text.isdigit():
-        return False
-    value = int(text)
-    return 1 <= value <= 20
-
-async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик запуска заучивания сета"""
-    chat_id = callback.from_user.id
-    
-    # Получаем информацию о пользователе
-    from database import crud
-    user = crud.get_user(chat_id)
-    if not user:
-        await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
-        return
-    
-    # Получаем уровень и выбранный сет
-    level = user[1]
-    
-    # Проверяем, выбран ли сет в профиле
-    chosen_set = None
-    if len(user) > 6 and user[6]:
-        chosen_set = user[6]
-    
-    # Проверяем в кэше для большей надежности
-    from handlers.settings import user_set_selection
-    if not chosen_set and chat_id in user_set_selection:
-        chosen_set = user_set_selection[chat_id]
-    
-    # Если сет все еще не определен, используем значение по умолчанию
-    if not chosen_set:
-        from config import DEFAULT_SETS
-        chosen_set = DEFAULT_SETS.get(level)
-        if chosen_set:
-            crud.update_user_chosen_set(chat_id, chosen_set)
-            user_set_selection[chat_id] = chosen_set
-    
-    # Проверяем наличие файла сета
-    import os
-    from config import LEVELS_DIR
-    set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
-    if not os.path.exists(set_file_path):
-        await callback.message.edit_text(
-            f"⚠️ Ошибка: не найден файл для сета '{chosen_set}' уровня {level}.\n"
-            f"Пожалуйста, выберите другой сет в настройках.",
-            parse_mode="Markdown",
-            reply_markup=learning_menu_keyboard()
-        )
-        await callback.answer()
-        return
-    
-    # Загружаем слова из сета
-    set_words = []
-    try:
-        with open(set_file_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    set_words.append(line)
-    except UnicodeDecodeError:
-        try:
-            with open(set_file_path, 'r', encoding='cp1251') as f:
-                for line in f:
-                    line = line.strip()
-                    if line:
-                        set_words.append(line)
-        except Exception as e:
-            logger.error(f"Ошибка при чтении файла сета: {e}")
-            await callback.message.edit_text(
-                f"⚠️ Ошибка при чтении файла сета.",
-                parse_mode="Markdown",
-                reply_markup=learning_menu_keyboard()
-            )
-            await callback.answer()
-            return
-    
-    if not set_words:
-        await callback.message.edit_text(
-            f"⚠️ Сет '{chosen_set}' не содержит слов.",
-            parse_mode="Markdown",
-            reply_markup=learning_menu_keyboard()
-        )
-        await callback.answer()
-        return
-    
-    # Получаем количество слов для заучивания
-    memorize_words_count = user[8] if len(user) > 8 and user[8] else 5
-    memorize_words_count = min(memorize_words_count, len(set_words))
-    
-    # Выбираем случайные слова из сета
-    selected_words = random.sample(set_words, memorize_words_count)
-    
-    # Получаем уже выученные слова
-    learned_raw = crud.get_learned_words(chat_id)
-    learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
-    
-    # Загружаем данные для квиза
-    from utils.quiz_helpers import load_quiz_data
-    quiz_data = load_quiz_data(level, chosen_set)
-    if not quiz_data:
-        await callback.message.edit_text(
-            f"⚠️ Ошибка: не удалось загрузить данные квиза для уровня {level}.",
-            parse_mode="Markdown",
-            reply_markup=learning_menu_keyboard()
-        )
-        await callback.answer()
-        return
-    
-    # Создаем словарь соответствия английских слов и их переводов
-    translations = {item["word"].lower(): item["translation"] for item in quiz_data}
-    
-    # Создаем вопросы для заучивания
-    questions = []
-    for word_line in selected_words:
-        english_word = extract_english(word_line).lower()
-        
-        # Определяем правильный перевод
-        if " - " in word_line:
-            correct_translation = word_line.split(" - ", 1)[1].strip()
-        elif " – " in word_line:
-            correct_translation = word_line.split(" – ", 1)[1].strip()
-        elif ": " in word_line:
-            correct_translation = word_line.split(": ", 1)[1].strip()
-        else:
-            # Если нет разделителя, используем перевод из словаря
-            correct_translation = translations.get(english_word, english_word)
-        
-        # Получаем варианты ответов (исключая правильный)
-        options = [correct_translation]
-        all_translations = list(translations.values())
-        
-        # Исключаем правильный ответ из пула дистракторов
-        if correct_translation in all_translations:
-            all_translations.remove(correct_translation)
-        
-        # Добавляем дистракторы
-        if len(all_translations) >= 3:
-            options.extend(random.sample(all_translations, 3))
-        else:
-            options.extend(random.choices(all_translations, k=3) if all_translations else ["???", "???", "???"])
-        
-        # Перемешиваем варианты ответов
-        random.shuffle(options)
-        
-        correct_index = options.index(correct_translation)
-        
-        # Определяем, является ли это повторением или изучением нового слова
-        is_revision = english_word.lower() in learned_set
-        
-        questions.append({
-            "word": english_word,  # Только английское слово вместо всей строки
-            "correct": correct_translation,
-            "options": options,
-            "correct_index": correct_index,
-            "is_revision": is_revision
-        })
-    
-    # Сохраняем состояние теста
-    learning_test_states[chat_id] = {
-        "questions": questions,
-        "current_index": 0,
-        "correct": 0,
-        "is_revision": False,  # Это заучивание, а не повторение
-        "test_type": "memorize"
-    }
-    
-    # Начинаем тест
-    await callback.answer()
-    await send_learning_test_question(chat_id, bot)
-
-# Обработчик текстовых сообщений для настроек
-async def process_learning_settings_input(message: types.Message, bot: Bot):
-    """Обработчик ввода количества слов для теста/заучивания"""
-    chat_id = message.chat.id
-    
-    # Проверяем, ожидаем ли ввод настроек от этого пользователя
-    if chat_id not in pending_learning_settings:
-        logger.debug(f"Chat ID {chat_id} не найден в pending_learning_settings, пропускаем обработку")
-        return False  # Возвращаем False, чтобы другие обработчики могли обработать сообщение
-    
-    setting_type = pending_learning_settings[chat_id]  # Не удаляем пока из словаря
-    text = message.text.strip()
-    
-    logger.info(f"Получен ввод настройки {setting_type} от пользователя {chat_id}: {text}")
-    
-    if not text.isdigit():
-        await message.answer(
-            "⚠️ Ошибка: введите корректное число.",
-            reply_markup=learning_settings_keyboard()
-        )
-        return True  # Возвращаем True, чтобы предотвратить обработку другими обработчиками
-    
-    value = int(text)
-    if not (1 <= value <= 20):
-        await message.answer(
-            "⚠️ Ошибка: число должно быть от 1 до 20.",
-            reply_markup=learning_settings_keyboard()
-        )
-        return True
-    
-    try:
-        if setting_type == "test_words":
-            # Используем crud функцию для обновления настройки теста
-            crud.update_user_test_words_count(chat_id, value)
-            logger.info(f"Обновлено количество слов для теста у пользователя {chat_id}: {value}")
-            
-            # Удаляем пользователя из режима ожидания ввода
-            del pending_learning_settings[chat_id]
-            
-            await message.answer(
-                f"✅ Количество слов для теста успешно установлено на {value}.",
-                reply_markup=learning_settings_keyboard()
-            )
-        elif setting_type == "memorize_words":
-            # Используем crud функцию для обновления настройки заучивания
-            crud.update_user_memorize_words_count(chat_id, value)
-            logger.info(f"Обновлено количество слов для заучивания у пользователя {chat_id}: {value}")
-            
-            # Удаляем пользователя из режима ожидания ввода
-            del pending_learning_settings[chat_id]
-            
-            await message.answer(
-                f"✅ Количество слов для заучивания успешно установлено на {value}.",
-                reply_markup=learning_settings_keyboard()
-            )
-    except Exception as e:
-        logger.error(f"Ошибка при обновлении настроек для пользователя {chat_id}: {e}")
-        # Удаляем пользователя из режима ожидания ввода даже при ошибке
-        if chat_id in pending_learning_settings:
-            del pending_learning_settings[chat_id]
-            
-        await message.answer(
-            "❌ Произошла ошибка при обновлении настроек. Пожалуйста, попробуйте позже.",
-            reply_markup=learning_settings_keyboard()
-        )
-    
-    return True  # Предотвращаем обработку другими обработчиками
-
+# Затем изменить функцию handle_dictionary_test:
 
 async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
     """Обработчик запуска теста по словарю"""
@@ -3276,7 +3682,24 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
         return
     
     # Получаем настроенное количество слов для теста
-    test_words_count = user[7] if len(user) > 7 and user[7] else 5
+    # Получаем настроенное количество слов для теста
+    test_words_count = 5  # Значение по умолчанию
+    try:
+        if len(user) > 7 and user[7] is not None:
+            test_words_count = int(user[7])
+            logger.info(f"Получено значение test_words_count из базы: {test_words_count}")
+        else:
+            logger.warning(f"Не удалось получить test_words_count из кортежа пользователя длиной {len(user)}")
+            # Прямой запрос к базе данных
+            with db_manager.get_cursor() as cursor:
+                cursor.execute("SELECT test_words_count FROM users WHERE chat_id = ?", (chat_id,))
+                result = cursor.fetchone()
+                if result and result[0]:
+                    test_words_count = int(result[0])
+                    logger.info(f"Получено значение test_words_count прямым запросом: {test_words_count}")
+    except Exception as e:
+        logger.error(f"Ошибка при получении test_words_count: {e}")
+        
     logger.info(f"Пользователь {chat_id} запускает тест по словарю с {test_words_count} словами")
     
     # Проверяем, хватает ли слов в словаре
@@ -3288,8 +3711,8 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
     selected_words = random.sample(learned_words, test_words_count)
     
     # Получаем данные для квиза из текущего уровня
-    level = user[1]
-    chosen_set = user[6] if len(user) > 6 and user[6] else None
+    level = get_user_setting(user, USER_LEVEL, "A1")
+    chosen_set = get_user_setting(user, USER_CHOSEN_SET, None)
     
     # Загружаем все данные для квиза
     quiz_data = load_quiz_data(level, chosen_set)
@@ -3352,6 +3775,33 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
     await send_learning_test_question(chat_id, bot)
 
+# Проверяем и добавляем колонки для настроек обучения
+def ensure_learning_columns():
+    """Проверяет и добавляет колонки для настроек обучения"""
+    try:
+        from database.db import db_manager
+        with db_manager.get_cursor() as cursor:
+            # Проверяем структуру таблицы
+            cursor.execute("PRAGMA table_info(users)")
+            columns = [row[1] for row in cursor.fetchall()]
+            
+            # Добавляем колонки, если их нет
+            if 'test_words_count' not in columns:
+                cursor.execute("ALTER TABLE users ADD COLUMN test_words_count INTEGER DEFAULT 5")
+                
+            if 'memorize_words_count' not in columns:
+                cursor.execute("ALTER TABLE users ADD COLUMN memorize_words_count INTEGER DEFAULT 5")
+                
+            # Комитим изменения
+            db_manager.conn.commit()
+            
+        logger.info("Колонки для настроек обучения проверены")
+    except Exception as e:
+        logger.error(f"Ошибка при проверке колонок: {e}")
+
+# Вызывается при импорте модуля
+ensure_learning_columns()
+
 async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
     """Обработчик запуска заучивания сета"""
     chat_id = callback.from_user.id
@@ -3371,15 +3821,27 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
         chosen_set = user[6]
         logger.info(f"Получен сет '{chosen_set}' из базы данных для пользователя {chat_id}")
     
-    # Если сет не найден в базе данных, устанавливаем стандартный
+    # Если сет не найден в базе данных, проверяем его в кэше
+    if not chosen_set:
+        try:
+            from handlers.settings import user_set_selection
+            chosen_set = user_set_selection.get(chat_id)
+            logger.info(f"Получен сет '{chosen_set}' из кэша для пользователя {chat_id}")
+        except ImportError:
+            logger.error("Ошибка импорта user_set_selection, используем набор по умолчанию")
+    
+    # Если сет все еще не найден, устанавливаем стандартный
     if not chosen_set:
         from config import DEFAULT_SETS
         chosen_set = DEFAULT_SETS.get(level)
         if chosen_set:
             # Обновляем базу данных и кэш
             crud.update_user_chosen_set(chat_id, chosen_set)
-            from handlers.settings import user_set_selection
-            user_set_selection[chat_id] = chosen_set
+            try:
+                from handlers.settings import user_set_selection
+                user_set_selection[chat_id] = chosen_set
+            except ImportError:
+                logger.error("Ошибка импорта user_set_selection для обновления кэша")
             logger.info(f"Установлен стандартный сет '{chosen_set}' для пользователя {chat_id}")
         else:
             await callback.message.edit_text(
@@ -3394,40 +3856,64 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
     set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
     
     if not os.path.exists(set_file_path):
-        # Тут логика проверки и поиска файла (сокращено для простоты)
-        await callback.message.edit_text(
-            f"⚠️ Ошибка: не найден файл для сета '{chosen_set}' уровня {level}.\n"
-            f"Пожалуйста, выберите другой сет в настройках.",
-            parse_mode="Markdown",
-            reply_markup=learning_menu_keyboard()
-        )
-        await callback.answer()
-        return
-    
-    # Загружаем слова из сета
-    set_words = []
-    try:
-        with open(set_file_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    set_words.append(line)
-    except UnicodeDecodeError:
+        # Пробуем найти файл с другим регистром
+        found = False
         try:
-            with open(set_file_path, 'r', encoding='cp1251') as f:
-                for line in f:
-                    line = line.strip()
-                    if line:
-                        set_words.append(line)
+            parent_dir = os.path.dirname(set_file_path)
+            if os.path.exists(parent_dir):
+                for file in os.listdir(parent_dir):
+                    if file.lower() == f"{chosen_set}.txt".lower():
+                        set_file_path = os.path.join(parent_dir, file)
+                        found = True
+                        break
         except Exception as e:
-            logger.error(f"Ошибка при чтении файла сета: {e}")
+            logger.error(f"Ошибка при поиске файла с другим регистром: {e}")
+        
+        if not found:
             await callback.message.edit_text(
-                f"⚠️ Ошибка при чтении файла сета.",
+                f"⚠️ Ошибка: не найден файл для сета '{chosen_set}' уровня {level}.\n"
+                f"Пожалуйста, выберите другой сет в настройках.",
                 parse_mode="Markdown",
                 reply_markup=learning_menu_keyboard()
             )
             await callback.answer()
             return
+    
+    # Загружаем слова из сета с улучшенной обработкой ошибок
+    set_words = []
+    try:
+        encodings = ['utf-8', 'cp1251', 'latin-1', 'iso-8859-1']  # Расширенный список кодировок
+        for encoding in encodings:
+            try:
+                with open(set_file_path, 'r', encoding=encoding) as f:
+                    set_words = [line.strip() for line in f if line.strip()]
+                if set_words:  # Если удалось прочитать слова, выходим из цикла
+                    logger.info(f"Файл успешно прочитан с кодировкой {encoding}")
+                    break
+            except UnicodeDecodeError:
+                continue  # Пробуем следующую кодировку
+            except Exception as e:
+                logger.error(f"Ошибка при чтении файла с кодировкой {encoding}: {e}")
+                break
+        
+        if not set_words:
+            logger.error(f"Не удалось прочитать файл сета ни с одной кодировкой: {set_file_path}")
+            await callback.message.edit_text(
+                f"⚠️ Ошибка при чтении файла сета. Пожалуйста, обратитесь к администратору.",
+                parse_mode="Markdown",
+                reply_markup=learning_menu_keyboard()
+            )
+            await callback.answer()
+            return
+    except Exception as e:
+        logger.error(f"Непредвиденная ошибка при чтении файла сета {set_file_path}: {e}")
+        await callback.message.edit_text(
+            f"⚠️ Непредвиденная ошибка при чтении файла сета.",
+            parse_mode="Markdown",
+            reply_markup=learning_menu_keyboard()
+        )
+        await callback.answer()
+        return
     
     if not set_words:
         await callback.message.edit_text(
@@ -3439,7 +3925,21 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
         return
     
     # Получаем количество слов для заучивания из настроек пользователя
-    memorize_words_count = user[8] if len(user) > 8 and user[8] else 5
+    # Используем безопасное получение данных с проверкой длины кортежа
+    memorize_words_count = 5  # Значение по умолчанию
+    try:
+        if len(user) > 8 and user[8] is not None:
+            memorize_words_count = user[8]
+        else:
+            # Если значение отсутствует, пробуем получить его непосредственно из БД
+            with db_manager.get_cursor() as cursor:
+                cursor.execute("SELECT memorize_words_count FROM users WHERE chat_id = ?", (chat_id,))
+                result = cursor.fetchone()
+                if result and result[0] is not None:
+                    memorize_words_count = result[0]
+    except Exception as e:
+        logger.error(f"Ошибка при получении memorize_words_count для пользователя {chat_id}: {e}")
+    
     logger.info(f"Пользователь {chat_id} запускает заучивание сета с {memorize_words_count} словами")
     
     # Проверяем, не превышает ли запрошенное количество слов размер сета
@@ -3475,21 +3975,17 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
         english_part = ""
         russian_part = ""
         
-        if " - " in word_line:
-            parts = word_line.split(" - ", 1)
-            english_part = parts[0].strip()
-            russian_part = parts[1].strip() if len(parts) > 1 else ""
-        elif " – " in word_line:
-            parts = word_line.split(" – ", 1)
-            english_part = parts[0].strip()
-            russian_part = parts[1].strip() if len(parts) > 1 else ""
-        elif ": " in word_line:
-            parts = word_line.split(": ", 1)
-            english_part = parts[0].strip()
-            russian_part = parts[1].strip() if len(parts) > 1 else ""
-        else:
+        # Проверяем различные форматы разделителей
+        for separator in [" - ", " – ", ": "]:
+            if separator in word_line:
+                parts = word_line.split(separator, 1)
+                english_part = parts[0].strip()
+                russian_part = parts[1].strip() if len(parts) > 1 else ""
+                break
+        
+        # Если разделителей не найдено, используем функцию extract_english
+        if not english_part:
             english_part = extract_english(word_line)
-            russian_part = translations.get(english_part.lower(), "")
         
         # Если не удалось выделить перевод, используем словарь переводов
         if not russian_part:
@@ -3531,7 +4027,7 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
         "questions": questions,
         "current_index": 0,
         "correct": 0,
-        "is_revision": False,
+        "is_revision": False,  # Это заучивание, а не повторение
         "test_type": "memorize"
     }
     
@@ -3539,10 +4035,260 @@ async def handle_memorize_set(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
     await send_learning_test_question(chat_id, bot)
 
-async def send_learning_test_question(chat_id, bot: Bot):
-    """Отправляет вопрос теста/заучивания"""
-    from utils.visual_helpers import format_quiz_question
+async def handle_learning_menu(callback: types.CallbackQuery, bot: Bot):
+    """Отображает меню обучения"""
+    # Проверяем наличие необходимых колонок
     
+    await callback.message.edit_text("📚 Выберите режим обучения:", reply_markup=learning_menu_keyboard())
+    await callback.answer()
+
+async def handle_learning_settings(callback: types.CallbackQuery, bot: Bot):
+    """Отображает настройки обучения"""
+    await callback.message.edit_text(
+        "⚙️ *Настройки обучения*\n\n"
+        "Здесь вы можете настроить количество слов для теста и заучивания.",
+        parse_mode="Markdown",
+        reply_markup=learning_settings_keyboard()
+    )
+    await callback.answer()
+
+# Заменить функцию handle_test_settings:
+
+async def handle_test_settings(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик настроек теста по словарю"""
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
+        return
+    
+    # Получаем текущее количество слов для теста
+    test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
+    memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
+    
+    await callback.message.edit_text(
+        f"📊 *Настройки теста по словарю*\n\n"
+        f"Текущие настройки:\n"
+        f"• Количество слов в тесте: *{test_words_count}*\n"
+        f"• Количество слов в заучивании: *{memorize_words_count}*\n\n"
+        f"Выберите количество слов для теста (от 1 до 20):\n"
+        f"Если в словаре меньше слов, чем указано, будут использованы все доступные слова.",
+        parse_mode="Markdown",
+        reply_markup=test_words_count_keyboard()
+    )
+    await callback.answer()
+
+# Заменить функцию handle_memorize_settings:
+
+async def handle_memorize_settings(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик настроек заучивания сета"""
+    chat_id = callback.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
+        return
+    
+    # Получаем текущее количество слов для заучивания
+    test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
+    memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
+    
+    await callback.message.edit_text(
+        f"📝 *Настройки заучивания сета*\n\n"
+        f"Текущие настройки:\n"
+        f"• Количество слов в тесте: *{test_words_count}*\n"
+        f"• Количество слов в заучивании: *{memorize_words_count}*\n\n"
+        f"Выберите количество слов для заучивания (от 1 до 20):",
+        parse_mode="Markdown",
+        reply_markup=memorize_words_count_keyboard()
+    )
+    await callback.answer()
+
+async def handle_test_count_selection(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов для теста."""
+    chat_id = callback.from_user.id
+    try:
+        _, _, count_str = callback.data.split(":", 2)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Обновляем количество слов для теста
+            crud.update_user_test_words_count(chat_id, count)
+            logger.info(f"Обновлено количество слов для теста у пользователя {chat_id}: {count}")
+            
+            # Получаем обновленные настройки
+            user = crud.get_user(chat_id)
+            test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, count)
+            memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, 5)
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки обучения обновлены!\n\n"
+                f"📊 Количество слов в тесте: *{test_words_count}*\n"
+                f"📝 Количество слов в заучивании: *{memorize_words_count}*",
+                parse_mode="Markdown",
+                reply_markup=learning_settings_keyboard()
+            )
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов для теста: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=learning_settings_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов для теста: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+async def handle_memorize_count_selection(callback: types.CallbackQuery, bot: Bot):
+    """Обработчик выбора количества слов для заучивания."""
+    chat_id = callback.from_user.id
+    try:
+        _, _, count_str = callback.data.split(":", 2)
+        count = int(count_str)
+        
+        if not (1 <= count <= 20):
+            await callback.answer("Ошибка: недопустимое количество слов", show_alert=True)
+            return
+        
+        # Обновляем в базе данных
+        try:
+            # Обновляем количество слов для заучивания
+            crud.update_user_memorize_words_count(chat_id, count)
+            logger.info(f"Обновлено количество слов для заучивания у пользователя {chat_id}: {count}")
+            
+            # Получаем обновленные настройки
+            user = crud.get_user(chat_id)
+            test_words_count = get_user_setting(user, USER_TEST_WORDS_COUNT, 5)
+            memorize_words_count = get_user_setting(user, USER_MEMORIZE_WORDS_COUNT, count)
+            
+            # Отправляем подтверждение
+            await callback.message.edit_text(
+                f"✅ Настройки обучения обновлены!\n\n"
+                f"📊 Количество слов в тесте: *{test_words_count}*\n"
+                f"📝 Количество слов в заучивании: *{memorize_words_count}*",
+                parse_mode="Markdown",
+                reply_markup=learning_settings_keyboard()
+            )
+            
+        except Exception as e:
+            logger.error(f"Ошибка при обновлении количества слов для заучивания: {e}")
+            await callback.message.edit_text(
+                "❌ Произошла ошибка при обновлении настроек.",
+                reply_markup=learning_settings_keyboard()
+            )
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике выбора количества слов для заучивания: {e}")
+        await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
+    
+    await callback.answer()
+
+# Отдельная функция для проверки числа
+def is_valid_number(text):
+    """Проверяет, является ли текст числом от 1 до 20"""
+    if not text.isdigit():
+        return False
+    value = int(text)
+    return 1 <= value <= 20
+
+async def process_learning_settings_input(message: types.Message, bot: Bot):
+    """Обработчик ввода количества слов для теста/заучивания"""
+    chat_id = message.chat.id
+    text = message.text.strip()
+    
+    # Проверяем, что это числовое сообщение
+    if not text.isdigit():
+        if chat_id not in pending_learning_settings:
+            return False
+        else:
+            await message.answer(
+                "⚠️ Ошибка: введите корректное число.",
+                reply_markup=learning_settings_keyboard()
+            )
+            return True
+    
+    value = int(text)
+    if not (1 <= value <= 20):
+        await message.answer(
+            "⚠️ Ошибка: число должно быть от 1 до 20.",
+            reply_markup=learning_settings_keyboard()
+        )
+        return True
+    
+    # Определяем тип настройки
+    setting_type = None
+    if chat_id in pending_learning_settings:
+        setting_type = pending_learning_settings[chat_id]
+        logger.info(f"Получен ввод настройки {setting_type} от пользователя {chat_id}: {value}")
+    else:
+        # Если не в контексте, ничего не делаем, т.к. не можем определить тип настройки
+        return False
+    
+    try:
+        if setting_type == "test_words":
+            # Дополнительная логика для обновления настроек теста
+            with db_manager.transaction() as conn:
+                conn.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (value, chat_id))
+            
+            logger.info(f"Обновлено количество слов для теста у пользователя {chat_id}: {value}")
+            
+            if chat_id in pending_learning_settings:
+                del pending_learning_settings[chat_id]
+            
+            await message.answer(
+                f"✅ Количество слов для теста успешно установлено на {value}.",
+                reply_markup=learning_settings_keyboard()
+            )
+            return True
+            
+        elif setting_type == "memorize_words":
+            # Аналогично для заучивания
+            with db_manager.transaction() as conn:
+                conn.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (value, chat_id))
+            
+            logger.info(f"Обновлено количество слов для заучивания у пользователя {chat_id}: {value}")
+            
+            if chat_id in pending_learning_settings:
+                del pending_learning_settings[chat_id]
+            
+            await message.answer(
+                f"✅ Количество слов для заучивания успешно установлено на {value}.",
+                reply_markup=learning_settings_keyboard()
+            )
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка при обновлении настроек для пользователя {chat_id}: {e}")
+        if chat_id in pending_learning_settings:
+            del pending_learning_settings[chat_id]
+        
+        await message.answer(
+            "❌ Произошла ошибка при обновлении настроек. Пожалуйста, попробуйте позже.",
+            reply_markup=learning_settings_keyboard()
+        )
+        return True
+    
+    return False
+
+# Заменить функцию send_learning_test_question на следующую:
+# Добавить в начало файла handlers/learning.py:
+
+def format_progress_bar(current: int, total: int, length: int = 10) -> str:
+    """Создает текстовую шкалу прогресса."""
+    filled_length = int(length * current / total) if total > 0 else 0
+    filled = "█" * filled_length
+    empty = "░" * (length - filled_length)
+    bar = filled + empty
+    return f"[{bar}] {current}/{total}"
+
+
+async def send_learning_test_question(chat_id, bot: Bot):
+    """Отправляет вопрос теста/заучивания с корректным форматированием"""
     state = learning_test_states.get(chat_id)
     if not state:
         return
@@ -3554,26 +4300,24 @@ async def send_learning_test_question(chat_id, bot: Bot):
     question = state["questions"][state["current_index"]]
     test_type = state.get("test_type", "")
     
-    # Добавляем отладочную запись
-    logger.debug(f"Вопрос слово: '{question['word']}', перевод: '{question['correct']}'")
+    # Создаем специализированное форматирование для разных типов тестов
+    current_index = state["current_index"] + 1
+    total_questions = len(state["questions"])
+    progress_bar = format_progress_bar(current_index, total_questions)
     
-    # Определяем заголовок в зависимости от типа теста
+    # Определяем заголовок на основе типа теста
     if test_type == "dictionary":
         title = "📚 ТЕСТ ПО СЛОВАРЮ"
     else:  # memorize
         title = "📝 ЗАУЧИВАНИЕ СЕТА"
     
-    formatted_question = format_quiz_question(
-        state["current_index"] + 1,
-        len(state["questions"]),
-        question["word"],  # Здесь должно быть только английское слово
-        question["options"],
-        question.get("is_revision", False)  # Учитываем режим повторения
+    # Форматируем сообщение с вопросом
+    formatted_question = (
+        f"{title}\n"
+        f"{progress_bar}\n\n"
+        f"Вопрос {current_index}/{total_questions}:\n\n"
+        f"Какой перевод слова '*{question['word']}*'?"
     )
-    
-    # Заменяем заголовок на правильный
-    formatted_question = formatted_question.replace("🎯 СЛОВАРНЫЙ КВИЗ", title)
-    formatted_question = formatted_question.replace("🔄 ПОВТОРЕНИЕ", title)
     
     # Создаем клавиатуру с вариантами ответов
     keyboard = learning_quiz_keyboard(question["options"], state["current_index"])
@@ -3585,90 +4329,132 @@ async def send_learning_test_question(chat_id, bot: Bot):
         reply_markup=keyboard
     )
 
+# Заменить функцию process_learning_test_answer:
+
 async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):
     """Обрабатывает ответ на вопрос теста/заучивания"""
     from datetime import datetime
     
+    chat_id = callback.from_user.id
+    
+    # Обработка навигационных действий
     if callback.data == "learn:back":
         from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(callback.from_user.id, "Главное меню", reply_markup=main_menu_keyboard())
-        if callback.from_user.id in learning_test_states:
-            del learning_test_states[callback.from_user.id]
+        await bot.send_message(chat_id, "Главное меню", reply_markup=main_menu_keyboard())
+        if chat_id in learning_test_states:
+            del learning_test_states[chat_id]
         await callback.answer()
         return
         
     if callback.data == "learn:stop":
-        await bot.send_message(callback.from_user.id, "Тест остановлен.", reply_markup=learning_menu_keyboard())
-        if callback.from_user.id in learning_test_states:
-            del learning_test_states[callback.from_user.id]
+        await bot.send_message(chat_id, "Тест остановлен.", reply_markup=learning_menu_keyboard())
+        if chat_id in learning_test_states:
+            del learning_test_states[chat_id]
         await callback.answer()
         return
 
     # Обработка ответа
-    data = callback.data.split(":")
-    if len(data) != 4:
-        await callback.answer("Неверный формат данных.", show_alert=True)
-        return
+    try:
+        data = callback.data.split(":")
+        if len(data) != 4:
+            await callback.answer("Неверный формат данных.", show_alert=True)
+            return
+            
+        _, _, q_index_str, option_index_str = data
+        q_index = int(q_index_str)
+        option_index = int(option_index_str)
         
-    _, _, q_index_str, option_index_str = data
-    q_index = int(q_index_str)
-    option_index = int(option_index_str)
-    
-    chat_id = callback.from_user.id
-    state = learning_test_states.get(chat_id)
-    if not state:
-        await callback.answer("Тест не найден.", show_alert=True)
-        return
+        state = learning_test_states.get(chat_id)
+        if not state:
+            await callback.answer("Тест не найден.", show_alert=True)
+            return
+            
+        if q_index != state["current_index"]:
+            await callback.answer("Неверная последовательность вопросов.", show_alert=True)
+            return
+            
+        question = state["questions"][q_index]
+        test_type = state.get("test_type", "")
         
-    if q_index != state["current_index"]:
-        await callback.answer("Неверная последовательность вопросов.", show_alert=True)
-        return
+        # Проверяем ответ
+        is_correct = (option_index == question["correct_index"])
         
-    question = state["questions"][q_index]
-    test_type = state.get("test_type", "")
-    
-    # Проверяем ответ
-    if option_index == question["correct_index"]:
-        # Правильный ответ
-        try:
-            # В случае теста по словарю или заучивания сета НЕ добавляем слова в словарь
-            # Слова добавляются в словарь только через квиз
-            if test_type == "dictionary":
-                # Это тест по словарю, слово уже в словаре
-                await callback.answer("Правильно!")
-            elif test_type == "memorize":
-                # Это заучивание сета, слово НЕ добавляется в словарь
-                await callback.answer("Правильно! (Слово не добавляется в словарь)")
-            else:
-                # Неизвестный тип теста, на всякий случай
-                await callback.answer("Правильно!")
-                
-            state["correct"] += 1
-        except Exception as e:
-            logger.error(f"Ошибка при обработке правильного ответа: {e}")
-            await callback.answer("Правильно, но возникла ошибка при обработке результата.")
-    else:
-        # Неправильный ответ
-        await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
-        
-    # Переходим к следующему вопросу
-    state["current_index"] += 1
-    await send_learning_test_question(chat_id, bot)
+        if is_correct:
+            # Правильный ответ
+            try:
+                # Обработка в зависимости от типа теста
+                if test_type == "dictionary":
+                    # Это тест по словарю, слово уже в словаре
+                    await callback.answer("Правильно!")
+                elif test_type == "memorize":
+                    # Это заучивание сета, слово НЕ добавляется в словарь
+                    await callback.answer("Правильно! (Слово не добавляется в словарь)")
+                else:
+                    # Неизвестный тип теста, на всякий случай
+                    await callback.answer("Правильно!")
+                    
+                state["correct"] += 1
+            except Exception as e:
+                logger.error(f"Ошибка при обработке правильного ответа: {e}")
+                await callback.answer("Правильно, но возникла ошибка при обработке результата.")
+        else:
+            # Неправильный ответ
+            await callback.answer(f"Неправильно! Правильный ответ: {question['correct']}")
+            
+        # Переходим к следующему вопросу
+        state["current_index"] += 1
+        await send_learning_test_question(chat_id, bot)
+    except ValueError as e:
+        logger.error(f"Ошибка формата при обработке ответа на тест: {e}")
+        await callback.answer("Ошибка при обработке ответа. Некорректный формат данных.")
+    except Exception as e:
+        logger.error(f"Непредвиденная ошибка при обработке ответа на тест: {e}")
+        await callback.answer("Произошла ошибка при обработке ответа. Пожалуйста, попробуйте снова.")
+
+# Заменить функцию finish_learning_test:
 
 async def finish_learning_test(chat_id, bot: Bot):
     """Завершает тест и показывает результаты"""
-    from utils.visual_helpers import format_result_message
-    
     state = learning_test_states.get(chat_id)
     if not state:
         return
     
     # Формируем сообщение с результатами
-    result_message = format_result_message(
-        state['correct'], 
-        len(state['questions']),
-        state['test_type'] == "dictionary"  # dictionary = всегда режим повторения
-    )
+    correct = state['correct']
+    total = len(state['questions'])
+    percentage = (correct / total) * 100 if total > 0 else 0
+    
+    # Выбираем эмодзи на основе результата
+    if percentage >= 90:
+        emoji = "🎉"
+    elif percentage >= 70:
+        emoji = "👍"
+    elif percentage >= 50:
+        emoji = "👌"
+    else:
+        emoji = "🔄"
+    
+    # Создаем шкалу прогресса
+    progress = format_progress_bar(correct, total, 20)
+    
+    # Формируем заголовок в зависимости от типа теста
+    if state['test_type'] == "dictionary":
+        header = f"{emoji} Тест по словарю завершен! {emoji}"
+    else:  # memorize
+        header = f"{emoji} Заучивание сета завершено! {emoji}"
+    
+    message = f"{header}\n\n"
+    message += f"*Счет:* {correct} из {total} ({percentage:.1f}%)\n{progress}\n\n"
+    
+    # Дополнительная информация в зависимости от типа теста
+    if state['test_type'] == "dictionary":
+        message += "Тест проверял ваше знание слов из вашего словаря.\n\n"
+    else:  # memorize
+        message += "Заучивание не добавляет слова в ваш словарь. Используйте Квиз для этого.\n\n"
+    
+    # Советы в зависимости от результата
+    if percentage < 70:
+        message += "💡 *Совет:* Регулярное повторение поможет лучше запомнить слова."
     
     # Создаем клавиатуру
     keyboard = types.InlineKeyboardMarkup()
@@ -3677,30 +4463,42 @@ async def finish_learning_test(chat_id, bot: Bot):
     
     await bot.send_message(
         chat_id, 
-        result_message,
+        message,
         parse_mode="Markdown", 
         reply_markup=keyboard
     )
     
     # Отправляем стикер при хорошем результате
-    if state['correct'] / len(state['questions']) >= 0.7:
+    if percentage >= 70:
         from utils.sticker_helper import get_congratulation_sticker
         sticker_id = get_congratulation_sticker()
         if sticker_id:
             await bot.send_sticker(chat_id, sticker_id)
     
+    # Удаляем состояние теста
     del learning_test_states[chat_id]
+
+# Заменить функцию register_learning_handlers:
 
 def register_learning_handlers(dp: Dispatcher, bot: Bot):
     """Регистрирует обработчики для меню обучения"""
     # ВАЖНО: Обработчик для ввода настроек регистрируем первым
     dp.register_message_handler(
         partial(process_learning_settings_input, bot=bot),
-        lambda message: message.chat.id in pending_learning_settings and message.text,
+        lambda message: message.text and message.text.strip().isdigit() or message.chat.id in pending_learning_settings,
         content_types=['text'],
         state="*"  # Обрабатываем в любом состоянии
     )
+    # Регистрируем обработчики для кнопок выбора количества слов
+    dp.register_callback_query_handler(
+        partial(handle_test_count_selection, bot=bot),
+        lambda c: c.data and c.data.startswith("learn:test_count:")
+    )
     
+    dp.register_callback_query_handler(
+        partial(handle_memorize_count_selection, bot=bot),
+        lambda c: c.data and c.data.startswith("learn:memorize_count:")
+    )
     # Остальные обработчики регистрируем после
     dp.register_callback_query_handler(
         partial(handle_learning_menu, bot=bot),
@@ -3747,7 +4545,6 @@ def register_learning_handlers(dp: Dispatcher, bot: Bot):
         lambda c: c.data in ["learn:back", "learn:stop"]
     )
 
-
 def learning_quiz_keyboard(options, question_index):
     """Создает клавиатуру для теста обучения с отдельными callback_data."""
     keyboard = types.InlineKeyboardMarkup(row_width=2)
@@ -3758,54 +4555,6 @@ def learning_quiz_keyboard(options, question_index):
         types.InlineKeyboardButton("Остановить тест", callback_data="learn:stop")
     )
     return keyboard
-
-async def process_direct_settings_update(message: types.Message, bot: Bot):
-    """Прямая обработка ввода числовых настроек"""
-    chat_id = message.chat.id
-    text = message.text.strip()
-    
-    # Проверяем, что это числовое сообщение
-    if not text.isdigit():
-        return
-    
-    value = int(text)
-    if not (1 <= value <= 20):
-        await message.answer("⚠️ Ошибка: число должно быть от 1 до 20.")
-        return
-    
-    # Проверяем контекст - какие настройки сейчас редактируются
-    # Получаем последнее сообщение бота
-    try:
-        messages = []
-        async for msg in bot.get_chat_history(chat_id, limit=3):
-            if msg.from_user.is_bot and msg.text:
-                if "Настройки теста по словарю" in msg.text:
-                    # Обновляем количество слов для теста
-                    from database.db import db_manager
-                    with db_manager.get_cursor() as cursor:
-                        cursor.execute("UPDATE users SET test_words_count = ? WHERE chat_id = ?", (value, chat_id))
-                        db_manager.conn.commit()
-                    
-                    await message.answer(
-                        f"✅ Количество слов для теста установлено на {value}.",
-                        reply_markup=learning_settings_keyboard()
-                    )
-                    return
-                    
-                elif "Настройки заучивания сета" in msg.text:
-                    # Обновляем количество слов для заучивания
-                    from database.db import db_manager
-                    with db_manager.get_cursor() as cursor:
-                        cursor.execute("UPDATE users SET memorize_words_count = ? WHERE chat_id = ?", (value, chat_id))
-                        db_manager.conn.commit()
-                    
-                    await message.answer(
-                        f"✅ Количество слов для заучивания установлено на {value}.",
-                        reply_markup=learning_settings_keyboard()
-                    )
-                    return
-    except Exception as e:
-        logger.error(f"Ошибка при обработке настроек: {e}")
 
 #handlers/commands.py
 # handlers/commands.py
@@ -4089,11 +4838,27 @@ def register_dictionary_handlers(dp: Dispatcher, bot: Bot):
 #database/crud.py
 # database/crud.py
 import logging
+import sqlite3  # Добавляем импорт sqlite3
 from database.db import conn, cursor, db_manager
 from config import DEFAULT_WORDS_PER_DAY, DEFAULT_REPETITIONS, REMINDER_DEFAULT
+from config import DB_PATH
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
+
+def update_user_words_and_repetitions(chat_id, words_per_day, repetitions_per_word):
+    """Обновляет количество слов и повторений для пользователя в базе данных."""
+    try:
+        with db_manager.transaction() as conn:
+            conn.execute(
+                "UPDATE users SET words_per_day = ?, notifications = ? WHERE chat_id = ?",
+                (words_per_day, repetitions_per_word, chat_id)
+            )
+        logger.info(f"Updated words_per_day to {words_per_day} and notifications to {repetitions_per_word} for user {chat_id}")
+        return True
+    except Exception as e:
+        logger.error(f"Error updating settings for user {chat_id}: {e}")
+        return False
 
 def add_user(chat_id: int):
     """Добавляет нового пользователя в базу данных, если он еще не существует."""
@@ -4120,7 +4885,7 @@ def get_user(chat_id: int):
     """Получает информацию о пользователе по его chat_id."""
     try:
         cursor.execute(
-            "SELECT chat_id, level, words_per_day, notifications, reminder_time, timezone, chosen_set FROM users WHERE chat_id = ?", 
+            "SELECT * FROM users WHERE chat_id = ?", 
             (chat_id,)
         )
         return cursor.fetchone()
@@ -4238,8 +5003,6 @@ def add_learned_word(chat_id: int, word: str, translation: str, learned_date: st
     except Exception as e:
         logger.error(f"Error adding learned word for user {chat_id}: {e}")
         raise
-
-# В файле database/crud.py исправляем функцию get_learned_words
 
 def get_learned_words(chat_id: int):
     """
@@ -4788,10 +5551,14 @@ def format_word_item(word: str, translation: str, transcription: str = None,
         
     return result
 
+# Добавить функцию format_progress_bar, если её ещё нет:
+
 def format_progress_bar(current: int, total: int, length: int = 10) -> str:
     """Создает текстовую шкалу прогресса."""
     filled_length = int(length * current / total) if total > 0 else 0
-    bar = PROGRESS_FILLED * filled_length + PROGRESS_EMPTY * (length - filled_length)
+    filled = "█" * filled_length
+    empty = "░" * (length - filled_length)
+    bar = filled + empty
     return f"[{bar}] {current}/{total}"
 
 def format_quiz_question(question_number: int, total_questions: int, word: str, 
@@ -5072,7 +5839,7 @@ import logging
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
-from database import crud
+from database import crud  # Добавляем глобальный импорт
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -5083,6 +5850,26 @@ daily_words_cache = {}
 # Хранение уникальных слов предыдущего дня
 previous_daily_words = {}
 # Добавьте в utils/helpers.py улучшенную функцию сброса кэша
+
+
+def get_user_settings(chat_id):
+    """Получает настройки пользователя для слов и повторений из базы данных."""
+    try:
+        from database import crud
+        
+        # Получаем пользователя напрямую из базы данных
+        user = crud.get_user(chat_id)
+        if user:
+            # Используем прямой доступ к полям
+            words_per_day = user[2]
+            repetitions_per_word = user[3]
+            return (words_per_day, repetitions_per_word)
+        else:
+            # Значения по умолчанию, если пользователь не найден
+            return (5, 3)
+    except Exception as e:
+        logger.error(f"Error fetching user settings: {e}")
+        return (5, 3)  # По умолчанию 5 слов и 3 повторения
 
 def reset_daily_words_cache(chat_id):
     """
@@ -5183,24 +5970,19 @@ def extract_english(word_line: str) -> str:
             logger.error(f"Invalid input to extract_english: {word_line}")
             return ""
             
-        # Стандартный формат 'word - translation'
-        if " - " in word_line:
-            return word_line.split(" - ", 1)[0].strip()
-            
-        # Альтернативный формат 'word – translation' (с длинным тире)
-        if " – " in word_line:
-            return word_line.split(" – ", 1)[0].strip()
-            
-        # Альтернативный формат 'word: translation'
-        if ": " in word_line:
-            return word_line.split(": ", 1)[0].strip()
-            
-        # Если строка начинается с emoji или специальных символов, удаляем их
+        # Удаляем ведущие эмодзи или специальные символы
         cleaned_line = word_line.strip()
-        if cleaned_line and (cleaned_line[0] in ['🔹', '📌', '⏰', '⚠️', '🎓']):
-            cleaned_line = cleaned_line[1:].strip()
-            
-        # Если разделитель не найден, возвращаем всю строку
+        for prefix in ['🔹', '📌', '⏰', '⚠️', '🎓', '• ']:
+            if cleaned_line.startswith(prefix):
+                cleaned_line = cleaned_line[len(prefix):].strip()
+                
+        # Проверяем различные форматы разделителей
+        for separator in [" - ", " – ", ": "]:
+            if separator in cleaned_line:
+                result = cleaned_line.split(separator, 1)[0].strip()
+                return result
+                
+        # Если разделитель не найден, возвращаем всю строку (она уже очищена от префиксов)
         return cleaned_line
     except Exception as e:
         logger.error(f"Error extracting English word from '{word_line}': {e}")
@@ -5299,8 +6081,18 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 if eng_word not in learned_set:
                     leftover_words.append(word)
         
-        # Определяем, в режиме повторения мы или нет
-        is_revision_mode = len(available_words) == 0 and len(file_words) > 0
+        total_available = len(available_words) + len(leftover_words)
+        min_words_threshold = min(3, words_count // 2)  # Минимальный порог невыученных слов
+                
+        is_revision_mode = (total_available == 0) or (total_available < min_words_threshold and len(file_words) > 0)
+                
+        unique_words = []
+        prefix_message = ""
+                
+        if is_revision_mode:
+            # Режим повторения - все или почти все слова уже выучены
+            logger.info(f"Режим повторения активирован для пользователя {chat_id}. Доступно слов: {total_available}")
+            prefix_message = "🎓 Поздравляем! Вы выучили большинство слов в этом наборе. Вот некоторые для повторения:\n\n"
         
         unique_words = []
         prefix_message = ""

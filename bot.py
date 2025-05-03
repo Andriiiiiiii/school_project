@@ -16,68 +16,68 @@ from config import SERVER_TIMEZONE
 LAST_RUN_FILE = "last_scheduler_run.pickle"
 MAX_BACKFILL_HOURS = 3  # Maximum hours to look back for missed notifications
 
-# Modified on_startup function in bot.py
-
 async def on_startup(dp):
-    # Добавляем проверку существования директорий и файлов
+    """Initializes the bot on startup with proper directory and database checks."""
+    # Check for required directories
     from config import LEVELS_DIR, DEFAULT_SETS
     import os
-    # Проверяем основную директорию
+    
+    # Check main directory
     if not os.path.exists(LEVELS_DIR):
-        logger.error(f"Директория уровней не найдена: {LEVELS_DIR}")
+        logger.error(f"Levels directory not found: {LEVELS_DIR}")
         os.makedirs(LEVELS_DIR, exist_ok=True)
-        logger.info(f"Создана директория уровней: {LEVELS_DIR}")
+        logger.info(f"Created levels directory: {LEVELS_DIR}")
 
-    # Проверяем директории для каждого уровня
+    # Check directories for each level
     for level in ["A1", "A2", "B1", "B2", "C1", "C2"]:
         level_dir = os.path.join(LEVELS_DIR, level)
         if not os.path.exists(level_dir):
-            logger.warning(f"Директория для уровня {level} не найдена: {level_dir}")
+            logger.warning(f"Directory for level {level} not found: {level_dir}")
             os.makedirs(level_dir, exist_ok=True)
-            logger.info(f"Создана директория для уровня {level}: {level_dir}")
+            logger.info(f"Created directory for level {level}: {level_dir}")
         
-        # Проверяем файл стандартного сета
+        # Check default set file
         default_set = DEFAULT_SETS.get(level)
         if default_set:
             set_path = os.path.join(level_dir, f"{default_set}.txt")
             if not os.path.exists(set_path):
-                logger.warning(f"Файл стандартного сета для уровня {level} не найден: {set_path}")
+                logger.warning(f"Default set file for level {level} not found: {set_path}")
 
+    # Start the scheduler
     loop = asyncio.get_running_loop()
     start_scheduler(bot, loop)
     
-    # Устанавливаем команды бота
+    # Set bot commands
     from handlers.commands import set_commands
     await set_commands(bot)
     
-
-    # Проверяем пропущенные уведомления
+    # Check for missed notifications
     await check_missed_notifications(bot)
-    # Проверяем и добавляем столбцы для настроек обучения
+    
+    # Check and add columns for learning settings
     try:
         from alter_db_learning import add_learning_columns
         add_learning_columns()
-        logger.info("Проверка и добавление столбцов для настроек обучения выполнена.")
+        logger.info("Learning settings columns check completed.")
     except Exception as e:
-        logger.error(f"Ошибка при проверке столбцов для настроек обучения: {e}")
-        # Добавляем явное создание колонок в случае ошибки
+        logger.error(f"Error checking learning settings columns: {e}")
+        # Explicit column creation in case of error
         try:
             with db_manager.get_cursor() as cursor:
                 cursor.execute("PRAGMA table_info(users)")
-                result = cursor.fetchall()
-                columns = [row[1] for row in result]
+                columns = [row[1] for row in cursor.fetchall()]
                 
                 if 'test_words_count' not in columns:
                     cursor.execute("ALTER TABLE users ADD COLUMN test_words_count INTEGER DEFAULT 5")
-                    logger.info("Столбец 'test_words_count' успешно добавлен.")
+                    logger.info("Column 'test_words_count' successfully added.")
                     
                 if 'memorize_words_count' not in columns:
                     cursor.execute("ALTER TABLE users ADD COLUMN memorize_words_count INTEGER DEFAULT 5")
-                    logger.info("Столбец 'memorize_words_count' успешно добавлен.")
+                    logger.info("Column 'memorize_words_count' successfully added.")
         except Exception as e2:
-            logger.error(f"Критическая ошибка при добавлении столбцов: {e2}")
+            logger.error(f"Critical error adding columns: {e2}")
     
-# New function to check for missed notifications
+    logger.info("Bot started successfully.")
 
 async def check_missed_notifications(bot):
     """
@@ -208,8 +208,6 @@ async def check_missed_notifications(bot):
     
     # Save current time as last run time
     save_last_run_time(now_server)
-
-# Helper functions for tracking last run time
 
 def get_last_run_time():
     """Reads the last scheduler run time from file."""

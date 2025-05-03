@@ -150,7 +150,7 @@ def format_result_message(correct: int, total: int, is_revision: bool = False) -
     return message
 
 def extract_english(word_line: str) -> str:
-    """Улучшенная версия extract_english с лучшим форматированием."""
+    """Извлекает английскую часть из строки формата 'word - translation'."""
     try:
         if not word_line or not isinstance(word_line, str):
             return ""

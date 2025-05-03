@@ -1,3 +1,5 @@
+# utils/helpers.py
+
 import os
 import random
 import logging
@@ -5,6 +7,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
 from database import crud  # Добавляем глобальный импорт
+from utils.visual_helpers import extract_english  # Импортируем из правильного модуля
 
 # Настройка логирования
 logger = logging.getLogger(__name__)
@@ -14,8 +17,6 @@ daily_words_cache = {}
 
 # Хранение уникальных слов предыдущего дня
 previous_daily_words = {}
-# Добавьте в utils/helpers.py улучшенную функцию сброса кэша
-
 
 def get_user_settings(chat_id):
     """Получает настройки пользователя для слов и повторений из базы данных."""
@@ -38,23 +39,23 @@ def get_user_settings(chat_id):
 
 def reset_daily_words_cache(chat_id):
     """
-    Сбрасывает кэш списка слов дня для данного пользователя.
-    Улучшенная версия с более подробным логированием.
+    Resets the daily words cache for a user.
+    Improved with better logging and error handling.
     """
     try:
         if chat_id in daily_words_cache:
             logger.info(f"Resetting daily words cache for user {chat_id}")
-            # Сохраняем данные в лог для отладки
+            
+            # Log data for debugging
             entry = daily_words_cache[chat_id]
             if len(entry) > 9:
                 is_revision = entry[9]
                 logger.debug(f"User {chat_id} was in revision mode: {is_revision}")
             
-            # Удаляем запись из кэша
+            # Remove from cache
             del daily_words_cache[chat_id]
-            logger.debug(f"Cache reset for user {chat_id}")
             
-            # Проверяем успешность удаления
+            # Verify deletion
             if chat_id not in daily_words_cache:
                 logger.info(f"Cache successfully reset for user {chat_id}")
             else:
@@ -108,11 +109,41 @@ def load_words_for_set(level: str, chosen_set: str):
         return words
 
 def compute_notification_times(total_count, first_time, duration_hours, tz="Europe/Moscow"):
-    """Вычисляет времена отправки уведомлений."""
+    """
+    Вычисляет времена отправки уведомлений равномерно распределенных в заданном интервале.
+    
+    Args:
+        total_count: Общее количество уведомлений
+        first_time: Время начала в формате "HH:MM"
+        duration_hours: Продолжительность интервала в часах
+        tz: Часовой пояс пользователя
+        
+    Returns:
+        Список времен в формате ["HH:MM", ...]
+    """
     try:
-        base = datetime.strptime(first_time, "%H:%M").replace(tzinfo=ZoneInfo(tz))
-        interval = timedelta(hours=duration_hours / total_count)
-        times = [(base + n * interval).strftime("%H:%M") for n in range(total_count)]
+        # Проверяем формат времени и добавляем секунды если их нет
+        if len(first_time.split(':')) == 2:
+            first_time = f"{first_time}:00"
+            
+        # Создаем объект datetime для базового времени
+        base_time = datetime.strptime(first_time, "%H:%M:%S")
+        
+        # Если всего 1 уведомление, возвращаем только начальное время
+        if total_count <= 1:
+            return [base_time.strftime("%H:%M")]
+            
+        # Вычисляем интервал между уведомлениями (в секундах)
+        interval_seconds = (duration_hours * 3600) / (total_count - 1) if total_count > 1 else 0
+        
+        # Создаем список времен
+        times = []
+        for i in range(total_count):
+            # Добавляем интервал к базовому времени
+            notification_time = base_time + timedelta(seconds=i * interval_seconds)
+            # Форматируем время
+            times.append(notification_time.strftime("%H:%M"))
+            
         return times
     except ValueError as e:
         logger.error(f"Invalid time format '{first_time}': {e}")
@@ -122,36 +153,6 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
         logger.error(f"Error computing notification times: {e}")
         # Простой запасной вариант в случае ошибки
         return ["12:00"] * total_count
-
-# В файле utils/helpers.py исправляем функцию extract_english
-
-def extract_english(word_line: str) -> str:
-    """
-    Извлекает английскую часть из строки формата 'word - translation'.
-    Улучшенная версия для более надежной работы.
-    """
-    try:
-        if not word_line or not isinstance(word_line, str):
-            logger.error(f"Invalid input to extract_english: {word_line}")
-            return ""
-            
-        # Удаляем ведущие эмодзи или специальные символы
-        cleaned_line = word_line.strip()
-        for prefix in ['🔹', '📌', '⏰', '⚠️', '🎓', '• ']:
-            if cleaned_line.startswith(prefix):
-                cleaned_line = cleaned_line[len(prefix):].strip()
-                
-        # Проверяем различные форматы разделителей
-        for separator in [" - ", " – ", ": "]:
-            if separator in cleaned_line:
-                result = cleaned_line.split(separator, 1)[0].strip()
-                return result
-                
-        # Если разделитель не найден, возвращаем всю строку (она уже очищена от префиксов)
-        return cleaned_line
-    except Exception as e:
-        logger.error(f"Error extracting English word from '{word_line}': {e}")
-        return word_line.strip() if isinstance(word_line, str) else ""
 
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, force_reset=False, chosen_set=None):
     """
@@ -202,7 +203,6 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 if os.path.exists(default_set_path):
                     # Обновляем выбранный сет в базе данных и кэше
                     try:
-                        from database import crud
                         crud.update_user_chosen_set(chat_id, default_set)
                         user_set_selection[chat_id] = default_set
                         chosen_set = default_set
@@ -225,8 +225,8 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         # Получаем список уже выученных слов
         try:
             learned_raw = crud.get_learned_words(chat_id)
-            # Всегда используем extract_english для унификации формата
-            learned_set = set(extract_english(item[0]) for item in learned_raw)
+            # Всегда используем extract_english для унификации формата и приведения к нижнему регистру
+            learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
         except Exception as e:
             logger.error(f"Error getting learned words for user {chat_id}: {e}")
             learned_set = set()
@@ -234,7 +234,7 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         # Определяем невыученные слова из файла
         available_words = []
         for word in file_words:
-            eng_word = extract_english(word)
+            eng_word = extract_english(word).lower()
             if eng_word not in learned_set:
                 available_words.append(word)
         
@@ -242,29 +242,28 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         leftover_words = []
         if chat_id in previous_daily_words:
             for word in previous_daily_words[chat_id]:
-                eng_word = extract_english(word)
+                eng_word = extract_english(word).lower()
                 if eng_word not in learned_set:
                     leftover_words.append(word)
         
+        # Определяем общее количество доступных невыученных слов
         total_available = len(available_words) + len(leftover_words)
-        min_words_threshold = min(3, words_count // 2)  # Минимальный порог невыученных слов
-                
-        is_revision_mode = (total_available == 0) or (total_available < min_words_threshold and len(file_words) > 0)
-                
-        unique_words = []
-        prefix_message = ""
-                
-        if is_revision_mode:
-            # Режим повторения - все или почти все слова уже выучены
-            logger.info(f"Режим повторения активирован для пользователя {chat_id}. Доступно слов: {total_available}")
-            prefix_message = "🎓 Поздравляем! Вы выучили большинство слов в этом наборе. Вот некоторые для повторения:\n\n"
         
+        # Минимальный порог невыученных слов - если меньше, переходим в режим повторения
+        min_words_threshold = min(3, words_count // 2)  # Минимальный порог невыученных слов
+        
+        # Определяем, нужен ли режим повторения (все или почти все слова выучены)
+        is_revision_mode = (total_available == 0) or (total_available < min_words_threshold and len(file_words) > 0)
+        
+        # Инициализируем переменные
         unique_words = []
         prefix_message = ""
         
         if is_revision_mode:
             # Режим повторения - все слова уже выучены
+            logger.info(f"Режим повторения активирован для пользователя {chat_id}. Доступно слов: {total_available}")
             prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:\n\n"
+            
             # Выбираем случайные слова из всего набора для повторения
             if len(file_words) <= words_count:
                 unique_words = file_words.copy()
@@ -295,13 +294,12 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             if len(unique_words) < words_count:
                 # Если недостаточно слов, добавляем уведомление
                 total_words = len(available_words) + len(leftover_words)
-                # Убираем дубликаты
-                total_unique = len(set([extract_english(w) for w in (available_words + leftover_words)]))
+                # Убираем дубликаты для точного подсчета
+                total_unique = len(set([extract_english(w).lower() for w in (available_words + leftover_words)]))
                 
                 if total_unique > 0:
                     prefix_message = f"⚠️ Осталось всего {total_unique} невыученных слов в этом наборе!\n\n"
                 else:
-                    # На всякий случай, хотя этот случай должен обрабатываться в is_revision_mode
                     prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе.\n\n"
         
         # Создаем сообщения для отправки
@@ -311,7 +309,13 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             else:
                 messages_unique = ["🔹 " + word for word in unique_words]
                 
-            repeated_messages = messages_unique * repetitions
+            # Создаем список сообщений с повторениями
+            repeated_messages = []
+            
+            # Добавляем уникальные слова repetitions раз
+            for _ in range(repetitions):
+                repeated_messages.extend(messages_unique)
+                
             total_notifications = len(repeated_messages)
         except Exception as e:
             logger.error(f"Error creating messages: {e}")
@@ -327,7 +331,7 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             logger.error(f"Error getting user timezone: {e}")
             user_tz = "Europe/Moscow"
 
-        # Вычисляем времена уведомлений
+        # Вычисляем времена уведомлений равномерно в промежутке времени
         times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
 
         # Сохраняем в кэш с добавлением флага режима повторения

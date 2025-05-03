@@ -8,7 +8,8 @@ import logging
 from aiogram import Bot
 from zoneinfo import ZoneInfo
 from database import crud
-from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache, extract_english
+from utils.helpers import get_daily_words_for_user, daily_words_cache, previous_daily_words, reset_daily_words_cache
+from utils.visual_helpers import extract_english  # Импортируем из правильного модуля
 from config import REMINDER_START, DURATION_HOURS, SERVER_TIMEZONE, DAILY_RESET_TIME
 
 
@@ -41,6 +42,7 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
             now_server = datetime.now(tz=ZoneInfo("UTC"))  # Используем UTC как запасной вариант
         
         current_time = now_server.timestamp()
+        server_date = now_server.strftime("%Y-%m-%d")
         
         # Обновляем кэш пользователей, если прошло достаточно времени
         if current_time - last_cache_update > CACHE_UPDATE_INTERVAL:
@@ -62,11 +64,9 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
         # Если нет пользователей, нечего обрабатывать
         if not user_cache:
             return
-            
-        # Получаем текущую минуту для оптимизации проверок
-        current_minute_str = now_server.strftime("%M")
         
         # Обрабатываем каждого пользователя
+        processed_count = 0
         for chat_id, user in user_cache.items():
             try:
                 # Определяем часовой пояс пользователя
@@ -76,15 +76,24 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                 try:
                     now_local = now_server.astimezone(ZoneInfo(timezone))
                 except Exception:
+                    logger.error(f"Invalid timezone {timezone} for user {chat_id}")
                     now_local = now_server.astimezone(ZoneInfo("Europe/Moscow"))
                     
+                # Проверяем на сброс по местной полночи (00:00-00:03)
+                local_hour = now_local.hour
+                local_minute = now_local.minute
+                local_date = now_local.strftime("%Y-%m-%d")
+                
+                # Проверка на полночь для сброса ежедневных слов
+                is_midnight_reset_time = (local_hour == 0 and local_minute <= 3)
+                
+                if is_midnight_reset_time:
+                    process_daily_reset(chat_id)
+                    processed_count += 1
+                    continue  # Пропускаем дальнейшую обработку
+                
                 # Получаем строку часа и минуты для проверки уведомлений
                 now_local_str = now_local.strftime("%H:%M")
-                
-                hour_minute = now_local.hour * 60 + now_local.minute
-                if 0 <= hour_minute <= 3:  # От 00:00 до 00:03
-                    process_daily_reset(chat_id)
-                    continue  # Пропускаем дальнейшую обработку
                 
                 # Полная обработка пользователя только если наступило точное время уведомления
                 # или время для проверки квиза (близкое к концу периода)
@@ -119,6 +128,13 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                 # Только если требуется обработка, вызываем полную функцию
                 if needs_processing:
                     process_user(user, now_server, bot, loop)
+                    processed_count += 1
+                    
+                # Небольшая задержка после обработки каждых 10 пользователей
+                if processed_count > 0 and processed_count % 10 == 0:
+                    # Добавляем небольшую задержку для снижения нагрузки
+                    asyncio.run_coroutine_threadsafe(asyncio.sleep(0.2), loop)
+                    
             except Exception as e:
                 logger.error(f"Error processing user {chat_id}: {e}")
     except Exception as e:
@@ -131,10 +147,79 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
     except Exception as e:
         logger.error(f"Error saving scheduler run time: {e}")
 
+def process_user_batch(batch, now_server, bot, loop):
+    """Process a batch of users for notifications."""
+    for chat_id, user in batch:
+        try:
+            # Get user's timezone
+            timezone = user[5] if len(user) > 5 and user[5] else "Europe/Moscow"
+            
+            try:
+                now_local = now_server.astimezone(ZoneInfo(timezone))
+            except Exception:
+                logger.error(f"Invalid timezone {timezone} for user {chat_id}")
+                now_local = now_server.astimezone(ZoneInfo("Europe/Moscow"))
+                
+            # Check for daily reset (00:00-00:03)
+            hour_minute = now_local.hour * 60 + now_local.minute
+            if 0 <= hour_minute <= 3:
+                process_daily_reset(chat_id)
+                continue
+            
+            # Only process users that need notifications at this exact minute
+            now_local_str = now_local.strftime("%H:%M")
+            
+            # Check if there are scheduled notifications at current time
+            needs_processing = False
+            try:
+                result = get_daily_words_for_user(chat_id, user[1], user[2], user[3],
+                                             first_time=FIRST_TIME, duration_hours=DURATION_HOURS)
+                if result and now_local_str in result[1]:  # Check if current time is in notification times
+                    needs_processing = True
+            except Exception as e:
+                logger.error(f"Error checking notification times for user {chat_id}: {e}")
+            
+            # Check for quiz reminder
+            try:
+                local_today_str = now_local.strftime("%Y-%m-%d")
+                local_base_obj = datetime.strptime(f"{local_today_str} {FIRST_TIME}", "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo(timezone))
+                local_end_obj = local_base_obj + timedelta(hours=DURATION_HOURS)
+                
+                # Send reminder if within 3 minutes of end time and not already sent today
+                time_diff = abs((now_local - local_end_obj).total_seconds() / 60)
+                if time_diff <= 3 and quiz_reminder_sent.get(chat_id) != local_today_str:
+                    needs_processing = True
+            except Exception as e:
+                logger.error(f"Error calculating quiz reminder time for user {chat_id}: {e}")
+            
+            # Only process users that need notifications
+            if needs_processing:
+                process_user(user, now_server, bot, loop)
+                
+        except Exception as e:
+            logger.error(f"Error processing user {chat_id}: {e}")
+
 def process_daily_reset(chat_id):
-    """Обработка ежедневного сброса данных для пользователя."""
+    """
+    Обработка ежедневного сброса данных для пользователя.
+    Выполняется в 00:00 по локальному времени пользователя.
+    Сохраняет невыученные слова для следующего дня и сбрасывает кэш.
+    """
     try:
-        # Улучшенная обработка невыученных слов
+        # Проверяем, были ли уже сброшены слова сегодня
+        today = datetime.now().strftime("%Y-%m-%d")
+        reset_key = f"{chat_id}_reset_{today}"
+        
+        # Используем простой механизм для избежания двойного сброса
+        if hasattr(process_daily_reset, 'processed_resets') and reset_key in process_daily_reset.processed_resets:
+            logger.debug(f"Daily reset already performed for user {chat_id} today")
+            return
+            
+        # Инициализируем словарь если его еще нет
+        if not hasattr(process_daily_reset, 'processed_resets'):
+            process_daily_reset.processed_resets = set()
+        
+        # Обработка невыученных слов
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
             unique_words = entry[8] if len(entry) > 8 and entry[8] else []  # список уникальных слов текущего дня
@@ -148,7 +233,7 @@ def process_daily_reset(chat_id):
                 # Фильтруем уникальные слова, оставляя только невыученные
                 filtered_unique = []
                 for word in unique_words:
-                    # Используем улучшенную функцию extract_english для извлечения словарной формы
+                    # Извлекаем словарную форму и приводим к нижнему регистру
                     english_part = extract_english(word).lower()
                     if english_part and english_part not in learned_set:
                         filtered_unique.append(word)
@@ -163,7 +248,7 @@ def process_daily_reset(chat_id):
                     logger.info(f"Все слова выучены, запись удалена для пользователя {chat_id}")
             except Exception as e:
                 logger.error(f"Ошибка при получении выученных слов для пользователя {chat_id}: {e}")
-                # В случае ошибки сохраняем все слова
+                # В случае ошибки сохраняем все слова для следующего дня
                 if unique_words:
                     previous_daily_words[chat_id] = unique_words
                     logger.warning(f"Из-за ошибки сохранены все {len(unique_words)} слов для пользователя {chat_id}")
@@ -172,9 +257,22 @@ def process_daily_reset(chat_id):
             reset_daily_words_cache(chat_id)
             logger.info(f"Кэш сброшен для пользователя {chat_id}")
         
-        # Сбрасываем флаг напоминания
+        # Сбрасываем флаг напоминания о квизе
         if chat_id in quiz_reminder_sent:
             del quiz_reminder_sent[chat_id]
+        
+        # Отмечаем что сброс выполнен для этого пользователя сегодня
+        process_daily_reset.processed_resets.add(reset_key)
+        
+        # Очищаем старые записи в processed_resets (оставляем только за 2 дня)
+        if len(process_daily_reset.processed_resets) > 1000:
+            # Определяем вчерашнюю дату для сохранения только свежих записей
+            yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+            today = datetime.now().strftime("%Y-%m-%d")
+            process_daily_reset.processed_resets = {
+                key for key in process_daily_reset.processed_resets 
+                if today in key or yesterday in key
+            }
             
         logger.info(f"Daily reset completed for user {chat_id}")
     except Exception as e:

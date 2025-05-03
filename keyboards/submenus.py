@@ -29,7 +29,6 @@ def dictionary_menu_keyboard():
     keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="menu:back"))
     return keyboard
 
-# New confirmation keyboard for dictionary clearing
 def clear_dictionary_confirm_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
@@ -111,13 +110,17 @@ def learning_settings_keyboard():
     return keyboard
 
 def help_menu_keyboard():
+    """Создает клавиатуру для меню помощи с улучшенным форматированием."""
     keyboard = InlineKeyboardMarkup(row_width=1)
+    
     keyboard.add(
         InlineKeyboardButton("ℹ️ О боте", callback_data="help:about"),
-        InlineKeyboardButton("📜 Список команд", callback_data="help:commands"),
+        InlineKeyboardButton("🔍 Разделы бота", callback_data="help:commands"),
+        InlineKeyboardButton("💡 Советы по обучению", callback_data="help:tips"),
         InlineKeyboardButton("✉️ Обратная связь", callback_data="help:feedback"),
-        InlineKeyboardButton("Назад", callback_data="menu:back")
+        InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
+    
     return keyboard
 
 def quiz_keyboard(options, question_index):

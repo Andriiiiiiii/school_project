@@ -59,8 +59,6 @@ russian_tzs = {
     12: "Asia/Kamchatka"      # UTC+12
 }
 
-# Отдельный глобальный словарь для отслеживания состояний ввода настроек
-# Четко указываем, что это для настроек числа слов/повторений
 settings_input_state = {}
 
 async def process_settings_input(message: types.Message, bot: Bot):
@@ -375,8 +373,6 @@ def repetitions_count_keyboard():
     
     return keyboard
 
-# Добавить новые функции-обработчики
-
 async def handle_set_words_count(callback: types.CallbackQuery, bot: Bot):
     """Обработчик выбора количества слов в день."""
     chat_id = callback.from_user.id
@@ -476,7 +472,6 @@ async def handle_set_repetitions_count(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Произошла ошибка. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
-
 
 async def process_my_sets(callback: types.CallbackQuery, bot: Bot):
     """
@@ -854,9 +849,6 @@ async def handle_set_change_confirmed_by_index(callback: types.CallbackQuery, bo
     
     await callback.answer()
 
-# Updated process_choose_set function with both fixes for long messages
-# and for automatically clearing the dictionary when changing sets
-
 async def process_choose_set(callback: types.CallbackQuery, bot: Bot):
     """
     Обработчик выбора сета. Читает файл выбранного сета.
@@ -1094,7 +1086,6 @@ async def process_set_timezone_callback(callback: types.CallbackQuery, bot: Bot)
     await bot.send_message(chat_id, f"Часовой пояс установлен на {tz}.", reply_markup=settings_menu_keyboard())
     await callback.answer()
 
-# Улучшенный обработчик ввода текста
 async def process_text_setting(message: types.Message, bot: Bot = None):
     """Обработчик ввода числа для настроек (слов или повторений)"""
     chat_id = message.chat.id
@@ -1295,8 +1286,12 @@ def register_settings_handlers(dp: Dispatcher, bot: Bot):
         partial(process_choose_set, bot=bot),
         lambda c: c.data and c.data.startswith("choose_set:")
     )
+
 async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
-    """Отображает настройки пользователя с улучшенным форматированием и статистикой"""
+    """
+    Displays user settings with improved formatting and statistics.
+    Handles edge cases better and creates a more visually appealing display.
+    """
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     
@@ -1308,147 +1303,162 @@ async def process_settings_mysettings(callback: types.CallbackQuery, bot: Bot):
                 InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
             )
         )
-    else:
-        # Проверяем и устанавливаем базовый сет, если отсутствует
-        current_set = None
+        return
+    
+    # Check and set default set if missing
+    current_set = None
+    
+    # Check set in cache
+    if chat_id in user_set_selection:
+        current_set = user_set_selection[chat_id]
+    
+    # If not in cache, check database
+    if not current_set and len(user) > 6 and user[6]:
+        current_set = user[6]
+    
+    # If still not set, use default for level
+    if not current_set:
+        level = user[1]
+        default_set = DEFAULT_SETS.get(level)
+        if default_set:
+            try:
+                crud.update_user_chosen_set(chat_id, default_set)
+                user_set_selection[chat_id] = default_set
+                current_set = default_set
+                logger.info(f"Set default set {default_set} for user {chat_id} during profile view")
+            except Exception as e:
+                logger.error(f"Error setting default set for user {chat_id}: {e}")
+    
+    # Create user settings dictionary
+    user_settings = {
+        "level": user[1],
+        "words_per_day": user[2],
+        "repetitions": user[3],
+        "timezone": user[5] if len(user) > 5 and user[5] else "Не задан",
+        "chosen_set": current_set or "Не выбран",
+        "test_words_count": user[7] if len(user) > 7 and user[7] else 5,
+        "memorize_words_count": user[8] if len(user) > 8 and user[8] else 5
+    }
+    
+    # Format with nice formatting
+    message = "👤 *Ваш профиль*\n\n"
+    message += f"🔤 *Уровень:* {user_settings['level']}\n"
+    message += f"📊 *Слов в день:* {user_settings['words_per_day']}\n"
+    message += f"🔄 *Повторений:* {user_settings['repetitions']}\n"
+    message += f"🌐 *Часовой пояс:* {user_settings['timezone']}\n"
+    message += f"📚 *Выбранный набор:* {user_settings['chosen_set']}\n"
+    message += f"📝 *Слов в тесте:* {user_settings['test_words_count']}\n"
+    message += f"📖 *Слов в заучивании:* {user_settings['memorize_words_count']}\n\n"
+    
+    # Add statistics
+    try:
+        # Get learned words
+        learned_words = crud.get_learned_words(chat_id)
+        total_learned = len(learned_words)
         
-        # Проверяем сет в кэше
-        if chat_id in user_set_selection:
-            current_set = user_set_selection[chat_id]
+        message += f"📈 *Статистика*\n"
+        message += f"📝 Выучено слов: {total_learned}\n"
         
-        # Если нет в кэше, смотрим в базе данных
-        if not current_set and len(user) > 6 and user[6]:
-            current_set = user[6]
-        
-        # Если сет до сих пор не определен, устанавливаем базовый
-        if not current_set:
-            level = user[1]
-            default_set = DEFAULT_SETS.get(level)
-            if default_set:
-                try:
-                    crud.update_user_chosen_set(chat_id, default_set)
-                    user_set_selection[chat_id] = default_set
-                    current_set = default_set
-                    logger.info(f"Установлен базовый сет {default_set} для пользователя {chat_id} при просмотре профиля")
-                except Exception as e:
-                    logger.error(f"Ошибка при установке базового сета для пользователя {chat_id}: {e}")
-        
-        # Создаем словарь настроек пользователя
-        user_settings = {
-            "level": user[1],
-            "words_per_day": user[2],
-            "repetitions": user[3],
-            "timezone": user[5] if len(user) > 5 and user[5] else "Не задан",
-            "chosen_set": current_set or "Не выбран"
-        }
-        
-        # Красивое форматирование
-        message = "👤 *Ваш профиль*\n\n"
-        message += f"🔤 *Уровень:* {user_settings['level']}\n"
-        message += f"📊 *Слов в день:* {user_settings['words_per_day']}\n"
-        message += f"🔄 *Повторений:* {user_settings['repetitions']}\n"
-        message += f"🌐 *Часовой пояс:* {user_settings['timezone']}\n"
-        message += f"📚 *Выбранный набор:* {user_settings['chosen_set']}\n\n"
-        
-        # Добавляем статистику выученных слов
-        try:
-            # Получаем выученные слова
-            learned_words = crud.get_learned_words(chat_id)
-            total_learned = len(learned_words)
+        # If there's a chosen set, count words in it
+        if current_set:
+            level = user_settings['level']
+            set_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
             
-            message += f"📈 *Статистика*\n"
-            message += f"📝 Выучено слов: {total_learned}\n"
-            
-            # Если есть выбранный сет, подсчитываем количество слов в нем
-            if current_set:
-                level = user_settings['level']
-                set_path = os.path.join(LEVELS_DIR, level, f"{current_set}.txt")
-                
+            if os.path.exists(set_path):
                 try:
-                    if os.path.exists(set_path):
-                        # Читаем слова из сета
-                        with open(set_path, 'r', encoding='utf-8') as f:
-                            set_words = [line.strip() for line in f if line.strip()]
+                    # Try different encodings
+                    encodings = ['utf-8', 'cp1251']
+                    set_words = []
+                    
+                    for encoding in encodings:
+                        try:
+                            with open(set_path, 'r', encoding=encoding) as f:
+                                set_words = [line.strip() for line in f if line.strip()]
+                            if set_words:
+                                break
+                        except UnicodeDecodeError:
+                            continue
+                    
+                    if set_words:
                         total_set_words = len(set_words)
                         
-                        # Создаем множество английских слов из выученных
+                        # Create set of learned English words
                         learned_english_words = set(extract_english(word[0]).lower() for word in learned_words)
                         
-                        # Подсчитываем, сколько слов из текущего сета выучено
+                        # Count words from set that are learned
                         learned_from_set = 0
                         for word in set_words:
                             english_part = extract_english(word).lower()
                             if english_part in learned_english_words:
                                 learned_from_set += 1
                         
-                        # Добавляем информацию о прогрессе в текущем сете
+                        # Add progress info
                         progress_percent = learned_from_set / total_set_words * 100 if total_set_words > 0 else 0
                         progress_bar = format_progress_bar(learned_from_set, total_set_words, 10)
                         message += f"📊 Прогресс в текущем сете: {learned_from_set}/{total_set_words} ({progress_percent:.1f}%)\n"
                         message += f"{progress_bar}\n"
                 except Exception as e:
-                    logger.error(f"Ошибка при подсчете статистики сета: {e}")
-                    message += "Ошибка при получении статистики текущего сета.\n"
+                    logger.error(f"Error calculating set statistics: {e}")
             
-            # Находим выученные сеты
-            level = user_settings['level']
+            # Find completed sets
             level_dir = os.path.join(LEVELS_DIR, level)
-            
             if os.path.exists(level_dir):
                 try:
-                    # Получаем все файлы сетов для текущего уровня
                     set_files = [f[:-4] for f in os.listdir(level_dir) if f.endswith('.txt')]
+                    completed_sets = []
                     
-                    if set_files:
-                        # Определяем для каждого сета, выучен ли он полностью
-                        completed_sets = []
-                        
-                        for set_name in set_files:
-                            set_path = os.path.join(level_dir, f"{set_name}.txt")
-                            
+                    for set_name in set_files:
+                        set_path = os.path.join(level_dir, f"{set_name}.txt")
+                        if os.path.exists(set_path):
                             try:
-                                # Читаем слова из сета
-                                with open(set_path, 'r', encoding='utf-8') as f:
-                                    set_words = [line.strip() for line in f if line.strip()]
+                                # Try different encodings
+                                for encoding in encodings:
+                                    try:
+                                        with open(set_path, 'r', encoding=encoding) as f:
+                                            set_words = [line.strip() for line in f if line.strip()]
+                                        if set_words:
+                                            break
+                                    except UnicodeDecodeError:
+                                        continue
                                 
-                                if not set_words:
-                                    continue
-                                
-                                # Проверяем, все ли слова выучены
-                                learned_english_words = set(extract_english(word[0]).lower() for word in learned_words)
-                                all_learned = True
-                                
-                                for word in set_words:
-                                    english_part = extract_english(word).lower()
-                                    if english_part not in learned_english_words:
-                                        all_learned = False
-                                        break
-                                
-                                if all_learned and set_words:
-                                    completed_sets.append(set_name)
+                                if set_words:
+                                    # Check if all words are learned
+                                    learned_english_words = set(extract_english(word[0]).lower() for word in learned_words)
+                                    all_learned = True
+                                    
+                                    for word in set_words:
+                                        english_part = extract_english(word).lower()
+                                        if english_part not in learned_english_words:
+                                            all_learned = False
+                                            break
+                                    
+                                    if all_learned:
+                                        completed_sets.append(set_name)
                             except Exception as e:
-                                logger.error(f"Ошибка при проверке сета {set_name}: {e}")
-                        
-                        # Добавляем информацию о выученных сетах
-                        if completed_sets:
-                            message += f"\n🎓 *Выученные сеты ({len(completed_sets)})* 🎓\n"
-                            for set_name in completed_sets:
-                                message += f"✅ {set_name}\n"
-                        else:
-                            message += "\nНет полностью выученных сетов.\n"
+                                logger.error(f"Error checking set {set_name}: {e}")
+                    
+                    # Add completed sets info
+                    if completed_sets:
+                        message += f"\n🎓 *Выученные сеты ({len(completed_sets)})* 🎓\n"
+                        for set_name in completed_sets[:5]:  # Limit to 5 to avoid message too long
+                            message += f"✅ {set_name}\n"
+                        if len(completed_sets) > 5:
+                            message += f"...и еще {len(completed_sets)-5} сетов\n"
+                    else:
+                        message += "\nНет полностью выученных сетов.\n"
                 except Exception as e:
-                    logger.error(f"Ошибка при получении списка сетов: {e}")
-                    message += "Ошибка при получении информации о выученных сетах.\n"
-            
-        except Exception as e:
-            logger.error(f"Ошибка при получении статистики: {e}")
-            message += "Ошибка при получении статистики.\n"
+                    logger.error(f"Error getting completed sets: {e}")
         
-        await callback.message.edit_text(
-            message,
-            parse_mode="Markdown",
-            reply_markup=settings_menu_keyboard()
-        )
+    except Exception as e:
+        logger.error(f"Error getting statistics: {e}")
+        message += "Ошибка при получении статистики.\n"
+    
+    # Send the formatted message
+    await callback.message.edit_text(
+        message,
+        parse_mode="Markdown",
+        reply_markup=settings_menu_keyboard()
+    )
 
 async def handle_confirm_set_change(callback: types.CallbackQuery, bot: Bot):
     """
@@ -1593,7 +1603,6 @@ async def handle_set_change_confirmed(callback: types.CallbackQuery, bot: Bot):
         await bot.send_message(chat_id, f"Произошла ошибка при смене сета: {str(e)}. Пожалуйста, попробуйте позже.")
     
     await callback.answer()
-
 
 async def handle_set_change_cancelled(callback: types.CallbackQuery, bot: Bot):
     """

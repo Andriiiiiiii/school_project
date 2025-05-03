@@ -86,7 +86,10 @@ def generate_quiz_questions_from_daily(daily_words, level, chosen_set=None, is_r
     return questions
 
 async def start_quiz(callback: types.CallbackQuery, bot: Bot):
-    """Инициализирует квиз для пользователя."""
+    """
+    Initializes a quiz for the user.
+    Enhanced with better error handling and using shared quiz utilities.
+    """
     chat_id = callback.from_user.id
     try:
         user = crud.get_user(chat_id)
@@ -95,103 +98,165 @@ async def start_quiz(callback: types.CallbackQuery, bot: Bot):
             return
         level = user[1]
         
-        # Получаем выбранный сет, если он есть
+        # Get chosen set from settings
         try:
             from handlers.settings import user_set_selection
             chosen_set = user_set_selection.get(chat_id)
         except ImportError:
-            logger.error("Ошибка импорта user_set_selection, используем набор по умолчанию")
+            logger.error("Error importing user_set_selection, using default set")
             chosen_set = None
         
-        # Получаем список уже выученных слов из БД
+        # Get learned words efficiently
         try:
             learned_raw = crud.get_learned_words(chat_id)
             learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
-            logger.info(f"У пользователя {chat_id} есть {len(learned_set)} выученных слов")
+            logger.info(f"User {chat_id} has {len(learned_set)} learned words")
         except Exception as e:
-            logger.error(f"Ошибка получения выученных слов для пользователя {chat_id}: {e}")
+            logger.error(f"Error getting learned words for user {chat_id}: {e}")
             learned_set = set()
         
-        # Получаем слова дня
+        # Get daily words with proper error handling
         try:
-            result = get_daily_words_for_user(chat_id, level, user[2], user[3],
-                                          first_time=REMINDER_START, 
-                                          duration_hours=DURATION_HOURS,
-                                          chosen_set=chosen_set)
+            result = get_daily_words_for_user(
+                chat_id, level, user[2], user[3],
+                first_time=REMINDER_START, 
+                duration_hours=DURATION_HOURS,
+                chosen_set=chosen_set
+            )
+            
             if result is None:
-                await bot.send_message(chat_id, "Нет слов для квиза.")
+                await bot.send_message(chat_id, "⚠️ Нет слов для квиза.")
                 return
                 
-            # Получаем запись из кэша
+            # Get the cache entry
             if chat_id not in daily_words_cache:
-                logger.error(f"Кэш не найден для пользователя {chat_id}")
+                logger.error(f"Cache not found for user {chat_id}")
                 await bot.send_message(chat_id, "Ошибка при получении слов дня. Пожалуйста, попробуйте позже.")
                 return
                 
+            # Process the words
             daily_entry = daily_words_cache[chat_id]
             raw_words = [msg.replace("🔹 ", "").strip() for msg in daily_entry[1]]
             
-            # Удаляем возможное префиксное сообщение
+            # Remove prefix message if present
             if raw_words and (raw_words[0].startswith("🎓") or raw_words[0].startswith("⚠️")):
                 raw_words = raw_words[1:]
                 
-            # Извлекаем английские слова и приводим к нижнему регистру
+            # Extract English words and normalize to lowercase
             daily_words = [extract_english(line).lower() for line in raw_words]
             daily_words_set = set(daily_words)
             
-            # Определяем режим повторения
+            # Check revision mode
             is_revision_mode = len(daily_entry) > 9 and daily_entry[9]
-            logger.info(f"Пользователь {chat_id} в режиме повторения: {is_revision_mode}")
+            logger.info(f"User {chat_id} in revision mode: {is_revision_mode}")
             
-            # Фильтруем слова
+            # Filter unlearned words
             unlearned_words = daily_words_set - learned_set
             
-            if not unlearned_words and not is_revision_mode:
-                await bot.send_message(chat_id, "Все слова из раздела 'Слова дня' уже выучены! Попробуйте завтра или выберите новый набор слов.")
-                return
-            
-            # Определяем, какие слова использовать в квизе
+            # Determine which words to use in the quiz
             quiz_words = []
             if is_revision_mode:
                 quiz_words = list(daily_words)
+                await bot.send_message(
+                    chat_id, 
+                    "📝 *Режим повторения*: слова уже добавлены в Ваш словарь.",
+                    parse_mode="Markdown"
+                )
             else:
                 quiz_words = list(unlearned_words)
-                # Доп. проверка для безопасности
                 if not quiz_words:
-                    await bot.send_message(chat_id, "Нет данных для квиза. Возможно, все слова уже выучены.")
+                    await bot.send_message(
+                        chat_id, 
+                        "Все слова из раздела 'Слова дня' уже выучены! Попробуйте завтра или выберите новый набор слов."
+                    )
                     return
+                await bot.send_message(
+                    chat_id, 
+                    "📝 *Квиз по новым словам*: правильные ответы будут добавлены в Ваш словарь.",
+                    parse_mode="Markdown"
+                )
             
-            logger.info(f"Подготовлено {len(quiz_words)} слов для квиза пользователя {chat_id}")
+            # Generate questions using the shared utility
+            from utils.quiz_helpers import load_quiz_data
+            quiz_data = load_quiz_data(level, chosen_set)
             
-            # Генерируем вопросы для квиза
-            questions = generate_quiz_questions_from_daily(quiz_words, level, chosen_set, is_revision_mode)
-            
-            if not questions:
-                logger.warning(f"Не удалось создать вопросы для квиза из {len(quiz_words)} слов у пользователя {chat_id}")
-                
-                if is_revision_mode:
-                    await bot.send_message(chat_id, "Не удалось создать вопросы для повторения. Попробуйте выбрать другой набор слов.")
-                else:
-                    await bot.send_message(chat_id, "Нет данных для квиза. Возможно, все слова уже выучены.")
+            if not quiz_data:
+                await bot.send_message(
+                    chat_id, 
+                    f"⚠️ Ошибка: не удалось загрузить данные квиза для уровня {level}."
+                )
                 return
                 
-            # Сохраняем состояние квиза
-            quiz_states[chat_id] = {"questions": questions, "current_index": 0, "correct": 0, "is_revision": is_revision_mode}
+            # Create translation mapping
+            translations = {item["word"].lower(): item["translation"] for item in quiz_data}
+            all_translations = list(translations.values())
             
-            # Информационное сообщение перед началом квиза
-            if is_revision_mode:
-                await bot.send_message(chat_id, "📝 *Режим повторения*: слова уже добавлены в Ваш словарь.", parse_mode="Markdown")
-            else:
-                await bot.send_message(chat_id, "📝 *Квиз по невыученным словам*: правильные ответы будут добавлены в Ваш словарь.", parse_mode="Markdown")
+            # Create questions
+            from utils.quiz_utils import generate_quiz_options
+            
+            questions = []
+            for word in quiz_words:
+                # Find the correct translation
+                if word in translations:
+                    correct_translation = translations[word]
+                else:
+                    # Try to find it in the quiz data
+                    found = False
+                    for item in quiz_data:
+                        if extract_english(item["word"]).lower() == word:
+                            correct_translation = item["translation"]
+                            found = True
+                            break
+                            
+                    if not found:
+                        logger.warning(f"Translation not found for word '{word}'")
+                        continue
                 
+                # Generate options with the utility function
+                options, correct_index = generate_quiz_options(
+                    correct_translation, 
+                    all_translations, 
+                    4  # 4 options including the correct one
+                )
+                
+                questions.append({
+                    "word": word,
+                    "correct": correct_translation,
+                    "options": options,
+                    "correct_index": correct_index,
+                    "is_revision": is_revision_mode
+                })
+            
+            if not questions:
+                await bot.send_message(
+                    chat_id, 
+                    "⚠️ Не удалось создать вопросы для квиза."
+                )
+                return
+                
+            # Save quiz state
+            quiz_states[chat_id] = {
+                "questions": questions,
+                "current_index": 0,
+                "correct": 0,
+                "is_revision": is_revision_mode
+            }
+            
+            # Start the quiz
             await send_quiz_question(chat_id, bot)
             
         except Exception as e:
-            logger.error(f"Ошибка при настройке квиза для пользователя {chat_id}: {e}")
-            await bot.send_message(chat_id, "Произошла ошибка при настройке квиза. Пожалуйста, попробуйте позже.")
+            logger.error(f"Error setting up quiz for user {chat_id}: {e}")
+            await bot.send_message(
+                chat_id, 
+                "Произошла ошибка при настройке квиза. Пожалуйста, попробуйте позже."
+            )
     except Exception as e:
-        logger.error(f"Необработанная ошибка в start_quiz для пользователя {chat_id}: {e}")
-        await bot.send_message(chat_id, "Произошла неожиданная ошибка. Пожалуйста, попробуйте позже.")
+        logger.error(f"Unhandled error in start_quiz for user {chat_id}: {e}")
+        await bot.send_message(
+            chat_id, 
+            "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже."
+        )
     
     await callback.answer()
 

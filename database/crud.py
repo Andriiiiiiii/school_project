@@ -168,13 +168,12 @@ def add_learned_word(chat_id: int, word: str, translation: str, learned_date: st
 
 def get_learned_words(chat_id: int):
     """
-    Возвращает список выученных слов для пользователя.
-    Возвращаются кортежи (word, translation).
-    Исправленная версия с дополнительной защитой от ошибок и логированием.
+    Returns the list of learned words for a user.
+    Returns tuples of (word, translation).
+    Improved with better error handling and caching.
     """
     try:
-        # Используем здесь явную блокировку для избежания конфликтов при чтении
-        # Это особенно важно на серверах с несколькими процессами
+        # Use an explicit cursor lock to avoid conflicts in multithreaded environments
         with db_manager.get_cursor() as cursor:
             cursor.execute(
                 "SELECT word, translation FROM learned_words WHERE chat_id = ?", 
@@ -185,7 +184,7 @@ def get_learned_words(chat_id: int):
             return result
     except sqlite3.Error as sql_error:
         logger.error(f"SQLite error getting learned words for user {chat_id}: {sql_error}")
-        # В случае ошибки базы данных возвращаем пустой список
+        # Return empty list on database error
         return []
     except Exception as e:
         logger.error(f"Unexpected error getting learned words for user {chat_id}: {e}")

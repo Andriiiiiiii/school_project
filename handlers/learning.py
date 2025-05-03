@@ -94,16 +94,20 @@ def get_user_setting(user, index, default_value):
     return default_value
 
 # Затем изменить функцию handle_dictionary_test:
+# handlers/learning.py - Replace handle_dictionary_test function
 
 async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик запуска теста по словарю"""
+    """
+    Launches a test based on the user's dictionary.
+    Uses optimized shared quiz utility functions.
+    """
     chat_id = callback.from_user.id
     user = crud.get_user(chat_id)
     if not user:
         await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
         return
     
-    # Получаем словарь пользователя
+    # Get user's dictionary
     learned_words = crud.get_learned_words(chat_id)
     if not learned_words:
         await callback.message.edit_text(
@@ -115,40 +119,37 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
         await callback.answer()
         return
     
-    # Получаем настроенное количество слов для теста
-    # Получаем настроенное количество слов для теста
-    test_words_count = 5  # Значение по умолчанию
+    # Get test words count from user settings (safely)
+    test_words_count = 5  # Default value
     try:
+        # First try getting from user tuple if it has enough fields
         if len(user) > 7 and user[7] is not None:
             test_words_count = int(user[7])
-            logger.info(f"Получено значение test_words_count из базы: {test_words_count}")
+            logger.info(f"Retrieved test_words_count from database: {test_words_count}")
         else:
-            logger.warning(f"Не удалось получить test_words_count из кортежа пользователя длиной {len(user)}")
-            # Прямой запрос к базе данных
+            # Direct database query as fallback
             with db_manager.get_cursor() as cursor:
                 cursor.execute("SELECT test_words_count FROM users WHERE chat_id = ?", (chat_id,))
                 result = cursor.fetchone()
                 if result and result[0]:
                     test_words_count = int(result[0])
-                    logger.info(f"Получено значение test_words_count прямым запросом: {test_words_count}")
+                    logger.info(f"Retrieved test_words_count via direct query: {test_words_count}")
     except Exception as e:
-        logger.error(f"Ошибка при получении test_words_count: {e}")
-        
-    logger.info(f"Пользователь {chat_id} запускает тест по словарю с {test_words_count} словами")
+        logger.error(f"Error retrieving test_words_count: {e}")
     
-    # Проверяем, хватает ли слов в словаре
+    # Make sure we don't request more words than exist in dictionary
     if test_words_count > len(learned_words):
-        logger.info(f"В словаре пользователя {chat_id} меньше слов ({len(learned_words)}), чем запрошено ({test_words_count})")
         test_words_count = len(learned_words)
     
-    # Выбираем случайные слова из словаря
+    # Select random words from dictionary
     selected_words = random.sample(learned_words, test_words_count)
     
-    # Получаем данные для квиза из текущего уровня
-    level = get_user_setting(user, USER_LEVEL, "A1")
-    chosen_set = get_user_setting(user, USER_CHOSEN_SET, None)
+    # Get quiz data for the user's level and chosen set
+    level = user[1]
+    chosen_set = user[6] if len(user) > 6 and user[6] else None
     
-    # Загружаем все данные для квиза
+    # Load quiz data from the current level
+    from utils.quiz_helpers import load_quiz_data
     quiz_data = load_quiz_data(level, chosen_set)
     if not quiz_data:
         await callback.message.edit_text(
@@ -159,44 +160,35 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
         await callback.answer()
         return
     
-    # Создаем словарь соответствия английских слов и их переводов
+    # Create translation mapping
     translations = {item["word"].lower(): item["translation"] for item in quiz_data}
+    all_translations = list(translations.values())
     
-    # Создаем вопросы для теста
+    # Create questions using the shared utility
+    from utils.quiz_utils import generate_quiz_options
+    
     questions = []
     for word, translation in selected_words:
         english_word = extract_english(word).lower()
         correct_translation = translation
         
-        # Получаем варианты ответов (исключая правильный)
-        options = [correct_translation]
-        all_translations = list(translations.values())
-        
-        # Исключаем правильный ответ из пула дистракторов
-        if correct_translation in all_translations:
-            all_translations.remove(correct_translation)
-        
-        # Добавляем дистракторы
-        if len(all_translations) >= 3:
-            options.extend(random.sample(all_translations, 3))
-        else:
-            options.extend(random.choices(all_translations, k=3) if all_translations else ["???", "???", "???"])
-        
-        # Перемешиваем варианты ответов
-        random.shuffle(options)
-        
-        correct_index = options.index(correct_translation)
+        # Generate options with the utility function
+        options, correct_index = generate_quiz_options(
+            correct_translation, 
+            all_translations, 
+            4  # 4 options including the correct one
+        )
         
         questions.append({
             "word": word,
             "correct": correct_translation,
             "options": options,
             "correct_index": correct_index,
-            "is_revision": True,  # Это тест по словарю, режим проверки
-            "test_type": "dictionary"  # Указываем тип теста для логики обработки ответов
+            "is_revision": True,  # Dictionary test is always revision mode
+            "test_type": "dictionary"
         })
     
-    # Сохраняем состояние теста
+    # Save test state
     learning_test_states[chat_id] = {
         "questions": questions,
         "current_index": 0,
@@ -205,7 +197,7 @@ async def handle_dictionary_test(callback: types.CallbackQuery, bot: Bot):
         "test_type": "dictionary"
     }
     
-    # Начинаем тест
+    # Start the test
     await callback.answer()
     await send_learning_test_question(chat_id, bot)
 
@@ -486,8 +478,6 @@ async def handle_learning_settings(callback: types.CallbackQuery, bot: Bot):
     )
     await callback.answer()
 
-# Заменить функцию handle_test_settings:
-
 async def handle_test_settings(callback: types.CallbackQuery, bot: Bot):
     """Обработчик настроек теста по словарю"""
     chat_id = callback.from_user.id
@@ -511,8 +501,6 @@ async def handle_test_settings(callback: types.CallbackQuery, bot: Bot):
         reply_markup=test_words_count_keyboard()
     )
     await callback.answer()
-
-# Заменить функцию handle_memorize_settings:
 
 async def handle_memorize_settings(callback: types.CallbackQuery, bot: Bot):
     """Обработчик настроек заучивания сета"""
@@ -623,7 +611,6 @@ async def handle_memorize_count_selection(callback: types.CallbackQuery, bot: Bo
     
     await callback.answer()
 
-# Отдельная функция для проверки числа
 def is_valid_number(text):
     """Проверяет, является ли текст числом от 1 до 20"""
     if not text.isdigit():
@@ -709,9 +696,6 @@ async def process_learning_settings_input(message: types.Message, bot: Bot):
     
     return False
 
-# Заменить функцию send_learning_test_question на следующую:
-# Добавить в начало файла handlers/learning.py:
-
 def format_progress_bar(current: int, total: int, length: int = 10) -> str:
     """Создает текстовую шкалу прогресса."""
     filled_length = int(length * current / total) if total > 0 else 0
@@ -719,7 +703,6 @@ def format_progress_bar(current: int, total: int, length: int = 10) -> str:
     empty = "░" * (length - filled_length)
     bar = filled + empty
     return f"[{bar}] {current}/{total}"
-
 
 async def send_learning_test_question(chat_id, bot: Bot):
     """Отправляет вопрос теста/заучивания с корректным форматированием"""
@@ -762,8 +745,6 @@ async def send_learning_test_question(chat_id, bot: Bot):
         parse_mode="Markdown", 
         reply_markup=keyboard
     )
-
-# Заменить функцию process_learning_test_answer:
 
 async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):
     """Обрабатывает ответ на вопрос теста/заучивания"""
@@ -845,8 +826,6 @@ async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):
         logger.error(f"Непредвиденная ошибка при обработке ответа на тест: {e}")
         await callback.answer("Произошла ошибка при обработке ответа. Пожалуйста, попробуйте снова.")
 
-# Заменить функцию finish_learning_test:
-
 async def finish_learning_test(chat_id, bot: Bot):
     """Завершает тест и показывает результаты"""
     state = learning_test_states.get(chat_id)
@@ -911,8 +890,6 @@ async def finish_learning_test(chat_id, bot: Bot):
     
     # Удаляем состояние теста
     del learning_test_states[chat_id]
-
-# Заменить функцию register_learning_handlers:
 
 def register_learning_handlers(dp: Dispatcher, bot: Bot):
     """Регистрирует обработчики для меню обучения"""
