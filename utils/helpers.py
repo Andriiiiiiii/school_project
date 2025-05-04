@@ -162,6 +162,7 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     Возвращает:
     - tuple (messages, times) - список сообщений для отправки и времена отправки
     - None в случае ошибки
+    - tuple (None, None, default_set) если требуется подтверждение для смены сета
     """
     # Локальный импорт для избежания циклического импорта
     try:
@@ -191,31 +192,37 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         if chosen_set is None:
             chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
         
+        # Получаем базовый сет для текущего уровня
+        default_set = DEFAULT_SETS.get(level)
+        
+        # Проверяем несоответствие между сетом и уровнем
+        set_level_mismatch = False
+        
+        # Если в имени сета есть префикс уровня (A1, A2, B1, B2, C1, C2)
+        for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+            if chosen_set and chosen_set.startswith(prefix) and prefix != level:
+                set_level_mismatch = True
+                logger.info(f"Выбранный сет '{chosen_set}' не соответствует текущему уровню '{level}'")
+                break
+        
         # Проверяем существование файла сета для конкретного уровня
         set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
-        if not os.path.exists(set_file_path):
-            logger.warning(f"Сет '{chosen_set}' не существует для уровня {level}. Путь: {set_file_path}")
+        if not os.path.exists(set_file_path) or set_level_mismatch:
+            logger.warning(f"Сет '{chosen_set}' не существует для уровня {level} или не соответствует уровню. Путь: {set_file_path}")
             
-            # Если файл не существует, пробуем установить базовый сет для текущего уровня
-            default_set = DEFAULT_SETS.get(level)
+            # Если у нас есть базовый сет для текущего уровня, предлагаем его
             if default_set:
                 default_set_path = os.path.join(LEVELS_DIR, level, f"{default_set}.txt")
                 if os.path.exists(default_set_path):
-                    # Обновляем выбранный сет в базе данных и кэше
-                    try:
-                        crud.update_user_chosen_set(chat_id, default_set)
-                        user_set_selection[chat_id] = default_set
-                        chosen_set = default_set
-                        logger.info(f"Автоматически установлен базовый сет '{default_set}' для уровня {level} пользователю {chat_id}")
-                    except Exception as e:
-                        logger.error(f"Ошибка при обновлении сета для пользователя {chat_id}: {e}")
+                    # Возвращаем специальное значение для запроса подтверждения
+                    return None, None, default_set
                 else:
-                    logger.error(f"Базовый сет '{default_set}' тоже не существует для уровня {level}. Путь: {default_set_path}")
+                    logger.error(f"Базовый сет '{default_set}' не существует для уровня {level}. Путь: {default_set_path}")
                     return None
             else:
                 logger.error(f"Нет базового сета для уровня {level}")
                 return None
-        
+
         # Загружаем слова из выбранного сета
         file_words = load_words_for_set(level, chosen_set)
         if not file_words:

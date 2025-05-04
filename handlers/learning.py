@@ -739,11 +739,12 @@ async def send_learning_test_question(chat_id, bot: Bot):
     # Создаем клавиатуру с вариантами ответов
     keyboard = learning_quiz_keyboard(question["options"], state["current_index"])
     
-    # Send message with results first
+    # Отправляем сообщение с форматированным вопросом и клавиатурой
     await bot.send_message(
         chat_id, 
-        message,
-        parse_mode="Markdown"
+        formatted_question,
+        parse_mode="Markdown",
+        reply_markup=keyboard
     )
 
 async def process_learning_test_answer(callback: types.CallbackQuery, bot: Bot):

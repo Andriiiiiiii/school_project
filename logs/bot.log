@@ -3590,3 +3590,620 @@ Traceback (most recent call last):
 NameError: name 'message' is not defined
 2025-05-04 02:41:44,883 - INFO - Stop polling...
 2025-05-04 02:41:44,883 - WARNING - Goodbye!
+2025-05-04 02:48:29,958 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:48:30,134 - WARNING - Updates were skipped successfully.
+2025-05-04 02:48:30,135 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:48:30,136 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:48:30,136 - INFO - Scheduler started
+2025-05-04 02:48:30,136 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:48:30,136 - INFO - Бот запущен.
+2025-05-04 02:48:30,136 - INFO - Start polling.
+2025-05-04 02:48:36,563 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:48:43,883 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:48:46,061 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-35' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageTextIsEmpty('Message text is empty')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 759, in process_learning_test_answer
+    await bot.send_message(chat_id, "", reply_markup=main_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageTextIsEmpty: Message text is empty
+2025-05-04 02:48:52,027 - INFO - Retrieved test_words_count from database: 7
+2025-05-04 02:48:53,148 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-49' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageTextIsEmpty('Message text is empty')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 759, in process_learning_test_answer
+    await bot.send_message(chat_id, "", reply_markup=main_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageTextIsEmpty: Message text is empty
+2025-05-04 02:49:00,056 - INFO - Получен сет 'Family and Friends' из базы данных для пользователя 1999873173
+2025-05-04 02:49:00,057 - INFO - Файл успешно прочитан с кодировкой utf-8
+2025-05-04 02:49:00,057 - INFO - Пользователь 1999873173 запускает заучивание сета с 5 словами
+2025-05-04 02:49:13,013 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-63' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageTextIsEmpty('Message text is empty')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/learning.py", line 759, in process_learning_test_answer
+    await bot.send_message(chat_id, "", reply_markup=main_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageTextIsEmpty: Message text is empty
+2025-05-04 02:49:30,138 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:50:30 MSK)" (scheduled at 2025-05-04 02:49:30.135732+03:00)
+2025-05-04 02:49:30,163 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:50:30 MSK)" executed successfully
+2025-05-04 02:49:32,228 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:49:32,229 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:49:40,125 - ERROR - Error checking set Sports & Hobbies: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,125 - ERROR - Error checking set Directions & Locations: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Household Objects: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Travel Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Everyday Activities & Routines: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Jobs and Occupations: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Weather & Nature: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Festivals & Celebrations: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Leisure & Free Time: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set A2 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Emotions & Feelings: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set In the City: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Eating Out: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Shopping and Money: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set Describing People: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:40,126 - ERROR - Error checking set A2 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:49:53,501 - INFO - Stop polling...
+2025-05-04 02:49:53,502 - WARNING - Goodbye!
+2025-05-04 02:50:48,583 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:50:48,741 - WARNING - Updates were skipped successfully.
+2025-05-04 02:50:48,742 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:50:48,742 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:50:48,742 - INFO - Scheduler started
+2025-05-04 02:50:48,742 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:50:48,742 - INFO - Бот запущен.
+2025-05-04 02:50:48,743 - INFO - Start polling.
+2025-05-04 02:50:50,201 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:50:55,865 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:50:55,865 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:50:56,845 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 02:50:56,846 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 02:50:58,605 - INFO - Cleared learned words for user 1999873173
+2025-05-04 02:50:58,605 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-04 02:51:00,367 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:51:48,750 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:52:48 MSK)" (scheduled at 2025-05-04 02:51:48.742421+03:00)
+2025-05-04 02:51:48,752 - WARNING - Сет 'Days, Months, Seasons' не существует для уровня A2. Путь: levels/A2/Days, Months, Seasons.txt
+2025-05-04 02:51:48,753 - INFO - Автоматически установлен базовый сет 'A2 Basic 1' для уровня A2 пользователю 1999873173
+2025-05-04 02:51:48,779 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:52:48 MSK)" executed successfully
+2025-05-04 02:52:48,749 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:53:48 MSK)" (scheduled at 2025-05-04 02:52:48.742421+03:00)
+2025-05-04 02:52:48,750 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:53:48 MSK)" executed successfully
+2025-05-04 02:53:48,747 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:54:48 MSK)" (scheduled at 2025-05-04 02:53:48.742421+03:00)
+2025-05-04 02:53:48,747 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:54:48 MSK)" executed successfully
+2025-05-04 02:54:48,746 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:55:48 MSK)" (scheduled at 2025-05-04 02:54:48.742421+03:00)
+2025-05-04 02:54:48,747 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:55:48 MSK)" executed successfully
+2025-05-04 02:55:31,191 - INFO - Stop polling...
+2025-05-04 02:55:31,191 - WARNING - Goodbye!
+2025-05-04 02:55:32,739 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 02:55:32,901 - WARNING - Updates were skipped successfully.
+2025-05-04 02:55:32,904 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 02:55:32,905 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 02:55:32,905 - INFO - Scheduler started
+2025-05-04 02:55:32,905 - INFO - Scheduler started with optimized configuration
+2025-05-04 02:55:32,905 - INFO - Бот запущен.
+2025-05-04 02:55:32,905 - INFO - Start polling.
+2025-05-04 02:55:35,724 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:55:49,179 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:55:49,180 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:56:08,628 - INFO - User 1999873173 has 0 learned words
+2025-05-04 02:56:08,629 - INFO - User 1999873173 in revision mode: False
+2025-05-04 02:56:32,914 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:57:32 MSK)" (scheduled at 2025-05-04 02:56:32.904565+03:00)
+2025-05-04 02:56:32,946 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:57:32 MSK)" executed successfully
+2025-05-04 02:56:44,947 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:56:44,947 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:57:25,736 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:57:25,736 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:57:32,914 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:58:32 MSK)" (scheduled at 2025-05-04 02:57:32.904565+03:00)
+2025-05-04 02:57:32,915 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:58:32 MSK)" executed successfully
+2025-05-04 02:57:47,272 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 02:57:47,272 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 02:57:49,155 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:49,155 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 02:57:54,644 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 02:57:54,644 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 02:58:04,765 - ERROR - Ошибка при обработке ответа на квиз: Message text is empty
+2025-05-04 02:58:11,883 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:58:11,883 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:58:17,476 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A2, путь: levels/A2
+2025-05-04 02:58:17,477 - INFO - Найдено 16 файлов сетов в директории levels/A2
+2025-05-04 02:58:19,707 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 02:58:19,707 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 02:58:32,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:59:32 MSK)" (scheduled at 2025-05-04 02:58:32.904565+03:00)
+2025-05-04 02:58:32,907 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 02:58:32,907 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 02:58:32,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 02:59:32 MSK)" executed successfully
+2025-05-04 02:58:33,331 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A2, путь: levels/A2
+2025-05-04 02:58:33,331 - INFO - Найдено 16 файлов сетов в директории levels/A2
+2025-05-04 02:58:35,434 - INFO - Cleared learned words for user 1999873173
+2025-05-04 02:58:35,434 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-04 02:58:50,797 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:58:57,541 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:59:01,256 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A2, путь: levels/A2
+2025-05-04 02:59:01,256 - INFO - Найдено 16 файлов сетов в директории levels/A2
+2025-05-04 02:59:03,695 - INFO - Cleared learned words for user 1999873173
+2025-05-04 02:59:03,695 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-04 02:59:05,699 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 02:59:18,186 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 02:59:18,186 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 02:59:22,208 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 02:59:32,906 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:00:32 MSK)" (scheduled at 2025-05-04 02:59:32.904565+03:00)
+2025-05-04 02:59:32,907 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 02:59:32,907 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 02:59:32,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:00:32 MSK)" executed successfully
+2025-05-04 02:59:40,347 - INFO - Cleared learned words for user 1999873173
+2025-05-04 02:59:40,347 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-454' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'logger' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 97, in handle_confirm_set_change
+    logger.info(f"Словарь очищен для пользователя {chat_id} при смене сета")
+    ^^^^^^
+NameError: name 'logger' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 99, in handle_confirm_set_change
+    logger.error(f"Ошибка при очистке словаря: {e}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/english_learning_bot/handlers/words.py", line 157, in handle_confirm_set_change
+    logger.error(f"Ошибка при подтверждении смены сета: {e}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+2025-05-04 03:00:32,917 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:01:32 MSK)" (scheduled at 2025-05-04 03:00:32.904565+03:00)
+2025-05-04 03:00:32,918 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 03:00:32,918 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 03:00:32,918 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:01:32 MSK)" executed successfully
+2025-05-04 03:01:32,917 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:02:32 MSK)" (scheduled at 2025-05-04 03:01:32.904565+03:00)
+2025-05-04 03:01:32,917 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 03:01:32,917 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 03:01:32,918 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:02:32 MSK)" executed successfully
+2025-05-04 03:01:53,500 - INFO - Stop polling...
+2025-05-04 03:01:53,500 - WARNING - Goodbye!
+2025-05-04 03:01:54,799 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 03:01:54,961 - WARNING - Updates were skipped successfully.
+2025-05-04 03:01:54,962 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 03:01:54,962 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 03:01:54,962 - INFO - Scheduler started
+2025-05-04 03:01:54,962 - INFO - Scheduler started with optimized configuration
+2025-05-04 03:01:54,962 - INFO - Бот запущен.
+2025-05-04 03:01:54,963 - INFO - Start polling.
+2025-05-04 03:01:56,960 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:01:59,176 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:01:59,176 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:03,436 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:10,888 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:02:13,017 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,017 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:13,018 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:20,913 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:02:20,914 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:02:25,540 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:02:25,541 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:02:29,413 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:29,413 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:41,710 - INFO - User 1999873173 has 0 learned words
+2025-05-04 03:02:41,710 - INFO - User 1999873173 in revision mode: False
+2025-05-04 03:02:41,846 - WARNING - Quiz file not found: levels/A1/A2 Basic 1.txt
+2025-05-04 03:02:54,965 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:03:54 MSK)" (scheduled at 2025-05-04 03:02:54.962457+03:00)
+2025-05-04 03:02:54,994 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:03:54 MSK)" executed successfully
+2025-05-04 03:02:56,689 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:02:56,689 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:03:54,970 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:04:54 MSK)" (scheduled at 2025-05-04 03:03:54.962457+03:00)
+2025-05-04 03:03:54,972 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:04:54 MSK)" executed successfully
+2025-05-04 03:04:54,964 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:05:54 MSK)" (scheduled at 2025-05-04 03:04:54.962457+03:00)
+2025-05-04 03:04:54,965 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:05:54 MSK)" executed successfully
+2025-05-04 03:05:31,885 - INFO - Stop polling...
+2025-05-04 03:05:31,885 - WARNING - Goodbye!
+2025-05-04 03:05:33,020 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 03:05:33,179 - WARNING - Updates were skipped successfully.
+2025-05-04 03:05:33,182 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 03:05:33,183 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 03:05:33,183 - INFO - Scheduler started
+2025-05-04 03:05:33,183 - INFO - Scheduler started with optimized configuration
+2025-05-04 03:05:33,183 - INFO - Бот запущен.
+2025-05-04 03:05:33,183 - INFO - Start polling.
+2025-05-04 03:05:34,873 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:05:36,761 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:36,762 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:45,220 - INFO - User 1999873173 has 0 learned words
+2025-05-04 03:05:45,220 - INFO - User 1999873173 in revision mode: False
+2025-05-04 03:05:47,718 - ERROR - Ошибка при обработке ответа на квиз: Message text is empty
+2025-05-04 03:05:51,938 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:05:51,938 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:06:33,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:07:33 MSK)" (scheduled at 2025-05-04 03:06:33.182577+03:00)
+2025-05-04 03:06:33,226 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:07:33 MSK)" executed successfully
+2025-05-04 03:07:33,199 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:08:33 MSK)" (scheduled at 2025-05-04 03:07:33.182577+03:00)
+2025-05-04 03:07:33,200 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:08:33 MSK)" executed successfully
+2025-05-04 03:08:33,197 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:09:33 MSK)" (scheduled at 2025-05-04 03:08:33.182577+03:00)
+2025-05-04 03:08:33,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:09:33 MSK)" executed successfully
+2025-05-04 03:09:33,197 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:10:33 MSK)" (scheduled at 2025-05-04 03:09:33.182577+03:00)
+2025-05-04 03:09:33,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:10:33 MSK)" executed successfully
+2025-05-04 03:10:33,196 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:11:33 MSK)" (scheduled at 2025-05-04 03:10:33.182577+03:00)
+2025-05-04 03:10:33,197 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:11:33 MSK)" executed successfully
+2025-05-04 03:11:33,197 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:12:33 MSK)" (scheduled at 2025-05-04 03:11:33.182577+03:00)
+2025-05-04 03:11:33,199 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:12:33 MSK)" executed successfully
+2025-05-04 03:12:09,801 - INFO - Stop polling...
+2025-05-04 03:12:09,801 - WARNING - Goodbye!
+2025-05-04 03:12:10,711 - INFO - Bot: English_trainer [@EnglishLearning_trainer_bot]
+2025-05-04 03:12:10,876 - WARNING - Updates were skipped successfully.
+2025-05-04 03:12:10,878 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-04 03:12:10,878 - INFO - Added job "scheduler_job" to job store "default"
+2025-05-04 03:12:10,878 - INFO - Scheduler started
+2025-05-04 03:12:10,878 - INFO - Scheduler started with optimized configuration
+2025-05-04 03:12:10,878 - INFO - Бот запущен.
+2025-05-04 03:12:10,879 - INFO - Start polling.
+2025-05-04 03:12:14,452 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:12:16,553 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:16,553 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:12:22,224 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:12:22,225 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:13:06,099 - ERROR - Error checking set A1 Basic 2: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,099 - ERROR - Error checking set Food Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,099 - ERROR - Error checking set Transport Basics: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,099 - ERROR - Error checking set School Essentials: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,099 - ERROR - Error checking set At Home: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,099 - ERROR - Error checking set A1 Basic 1: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Clothes & Accessories: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Numbers, Colors & Shapes: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Essential Everyday Words: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Animals and Pets: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Family and Friends: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Common Verbs & Actions: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set Days, Months, Seasons: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:06,100 - ERROR - Error checking set My Body & Health: cannot access local variable 'encodings' where it is not associated with a value
+2025-05-04 03:13:09,381 - INFO - Resetting daily words cache for user 1999873173
+2025-05-04 03:13:09,381 - INFO - Cache successfully reset for user 1999873173
+2025-05-04 03:13:10,880 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:14:10 MSK)" (scheduled at 2025-05-04 03:13:10.878109+03:00)
+2025-05-04 03:13:10,883 - INFO - Выбранный сет 'A2 Basic 1' не соответствует текущему уровню 'C1'
+2025-05-04 03:13:10,883 - WARNING - Сет 'A2 Basic 1' не существует для уровня C1 или не соответствует уровню. Путь: levels/C1/A2 Basic 1.txt
+2025-05-04 03:13:10,883 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 03:13:10,907 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:14:10 MSK)" executed successfully
+2025-05-04 03:13:11,575 - INFO - Выбранный сет 'A2 Basic 1' не соответствует текущему уровню 'C1'
+2025-05-04 03:13:11,575 - WARNING - Сет 'A2 Basic 1' не существует для уровня C1 или не соответствует уровню. Путь: levels/C1/A2 Basic 1.txt
+2025-05-04 03:13:21,721 - INFO - Выбранный сет 'A2 Basic 1' не соответствует текущему уровню 'A1'
+2025-05-04 03:13:21,721 - WARNING - Сет 'A2 Basic 1' не существует для уровня A1 или не соответствует уровню. Путь: levels/A1/A2 Basic 1.txt
+2025-05-04 03:13:26,250 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:13:26,250 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:13:28,194 - INFO - Cleared learned words for user 1999873173
+2025-05-04 03:13:28,194 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-04 03:13:29,894 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:13:32,807 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:13:32,808 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:13:54,411 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:14:01,948 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:14:04,536 - INFO - Проверка директории сетов для пользователя 1999873173, уровень A1, путь: levels/A1
+2025-05-04 03:14:04,536 - INFO - Найдено 14 файлов сетов в директории levels/A1
+2025-05-04 03:14:06,641 - INFO - Cleared learned words for user 1999873173
+2025-05-04 03:14:06,641 - INFO - Dictionary cleared for user 1999873173 due to set change by index
+2025-05-04 03:14:08,203 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:14:10,880 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:15:10 MSK)" (scheduled at 2025-05-04 03:14:10.878109+03:00)
+2025-05-04 03:14:10,881 - WARNING - Сет 'Days, Months, Seasons' не существует для уровня C1 или не соответствует уровню. Путь: levels/C1/Days, Months, Seasons.txt
+2025-05-04 03:14:10,881 - ERROR - Error checking notification times for user 1999873173: too many values to unpack (expected 2)
+2025-05-04 03:14:10,881 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:15:10 MSK)" executed successfully
+2025-05-04 03:14:14,259 - WARNING - Сет 'Days, Months, Seasons' не существует для уровня A2 или не соответствует уровню. Путь: levels/A2/Days, Months, Seasons.txt
+2025-05-04 03:14:17,019 - INFO - Cleared learned words for user 1999873173
+2025-05-04 03:14:17,019 - INFO - Словарь очищен для пользователя 1999873173 при смене сета
+2025-05-04 03:14:17,019 - INFO - Сет изменен на 'A2 Basic 1' для пользователя 1999873173
+2025-05-04 03:14:28,721 - INFO - Получена команда /start от chat_id: 1999873173
+2025-05-04 03:15:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:16:10 MSK)" (scheduled at 2025-05-04 03:15:10.878109+03:00)
+2025-05-04 03:15:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:16:10 MSK)" executed successfully
+2025-05-04 03:16:10,883 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:17:10 MSK)" (scheduled at 2025-05-04 03:16:10.878109+03:00)
+2025-05-04 03:16:10,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:17:10 MSK)" executed successfully
+2025-05-04 03:17:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:18:10 MSK)" (scheduled at 2025-05-04 03:17:10.878109+03:00)
+2025-05-04 03:17:10,881 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:18:10 MSK)" executed successfully
+2025-05-04 03:18:10,879 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:19:10 MSK)" (scheduled at 2025-05-04 03:18:10.878109+03:00)
+2025-05-04 03:18:10,880 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:19:10 MSK)" executed successfully
+2025-05-04 03:19:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:20:10 MSK)" (scheduled at 2025-05-04 03:19:10.878109+03:00)
+2025-05-04 03:19:10,886 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:20:10 MSK)" executed successfully
+2025-05-04 03:20:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:21:10 MSK)" (scheduled at 2025-05-04 03:20:10.878109+03:00)
+2025-05-04 03:20:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:21:10 MSK)" executed successfully
+2025-05-04 03:21:10,884 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:22:10 MSK)" (scheduled at 2025-05-04 03:21:10.878109+03:00)
+2025-05-04 03:21:10,886 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:22:10 MSK)" executed successfully
+2025-05-04 03:22:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:23:10 MSK)" (scheduled at 2025-05-04 03:22:10.878109+03:00)
+2025-05-04 03:22:10,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:23:10 MSK)" executed successfully
+2025-05-04 03:23:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:24:10 MSK)" (scheduled at 2025-05-04 03:23:10.878109+03:00)
+2025-05-04 03:23:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:24:10 MSK)" executed successfully
+2025-05-04 03:24:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:25:10 MSK)" (scheduled at 2025-05-04 03:24:10.878109+03:00)
+2025-05-04 03:24:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:25:10 MSK)" executed successfully
+2025-05-04 03:25:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:26:10 MSK)" (scheduled at 2025-05-04 03:25:10.878109+03:00)
+2025-05-04 03:25:10,882 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:26:10 MSK)" executed successfully
+2025-05-04 03:26:10,880 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:27:10 MSK)" (scheduled at 2025-05-04 03:26:10.878109+03:00)
+2025-05-04 03:26:10,880 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:27:10 MSK)" executed successfully
+2025-05-04 03:27:10,896 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:28:10 MSK)" (scheduled at 2025-05-04 03:27:10.878109+03:00)
+2025-05-04 03:27:10,897 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:28:10 MSK)" executed successfully
+2025-05-04 03:28:10,894 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:29:10 MSK)" (scheduled at 2025-05-04 03:28:10.878109+03:00)
+2025-05-04 03:28:10,896 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:29:10 MSK)" executed successfully
+2025-05-04 03:29:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:30:10 MSK)" (scheduled at 2025-05-04 03:29:10.878109+03:00)
+2025-05-04 03:29:10,894 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:30:10 MSK)" executed successfully
+2025-05-04 03:30:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:31:10 MSK)" (scheduled at 2025-05-04 03:30:10.878109+03:00)
+2025-05-04 03:30:10,893 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:31:10 MSK)" executed successfully
+2025-05-04 03:31:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:32:10 MSK)" (scheduled at 2025-05-04 03:31:10.878109+03:00)
+2025-05-04 03:31:10,895 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:32:10 MSK)" executed successfully
+2025-05-04 03:32:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:33:10 MSK)" (scheduled at 2025-05-04 03:32:10.878109+03:00)
+2025-05-04 03:32:10,894 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:33:10 MSK)" executed successfully
+2025-05-04 03:33:10,891 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:34:10 MSK)" (scheduled at 2025-05-04 03:33:10.878109+03:00)
+2025-05-04 03:33:10,891 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:34:10 MSK)" executed successfully
+2025-05-04 03:34:10,890 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:35:10 MSK)" (scheduled at 2025-05-04 03:34:10.878109+03:00)
+2025-05-04 03:34:10,891 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:35:10 MSK)" executed successfully
+2025-05-04 03:35:10,890 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:36:10 MSK)" (scheduled at 2025-05-04 03:35:10.878109+03:00)
+2025-05-04 03:35:10,892 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:36:10 MSK)" executed successfully
+2025-05-04 03:36:10,889 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:37:10 MSK)" (scheduled at 2025-05-04 03:36:10.878109+03:00)
+2025-05-04 03:36:10,891 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:37:10 MSK)" executed successfully
+2025-05-04 03:37:10,889 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:38:10 MSK)" (scheduled at 2025-05-04 03:37:10.878109+03:00)
+2025-05-04 03:37:10,890 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:38:10 MSK)" executed successfully
+2025-05-04 03:38:10,888 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:39:10 MSK)" (scheduled at 2025-05-04 03:38:10.878109+03:00)
+2025-05-04 03:38:10,890 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:39:10 MSK)" executed successfully
+2025-05-04 03:39:10,888 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:40:10 MSK)" (scheduled at 2025-05-04 03:39:10.878109+03:00)
+2025-05-04 03:39:10,888 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:40:10 MSK)" executed successfully
+2025-05-04 03:40:10,888 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:41:10 MSK)" (scheduled at 2025-05-04 03:40:10.878109+03:00)
+2025-05-04 03:40:10,890 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:41:10 MSK)" executed successfully
+2025-05-04 03:41:10,887 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:42:10 MSK)" (scheduled at 2025-05-04 03:41:10.878109+03:00)
+2025-05-04 03:41:10,889 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:42:10 MSK)" executed successfully
+2025-05-04 03:42:10,887 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:43:10 MSK)" (scheduled at 2025-05-04 03:42:10.878109+03:00)
+2025-05-04 03:42:10,888 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:43:10 MSK)" executed successfully
+2025-05-04 03:43:10,886 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:44:10 MSK)" (scheduled at 2025-05-04 03:43:10.878109+03:00)
+2025-05-04 03:43:10,888 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:44:10 MSK)" executed successfully
+2025-05-04 03:44:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:45:10 MSK)" (scheduled at 2025-05-04 03:44:10.878109+03:00)
+2025-05-04 03:44:10,887 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:45:10 MSK)" executed successfully
+2025-05-04 03:45:10,886 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:46:10 MSK)" (scheduled at 2025-05-04 03:45:10.878109+03:00)
+2025-05-04 03:45:10,888 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:46:10 MSK)" executed successfully
+2025-05-04 03:46:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:47:10 MSK)" (scheduled at 2025-05-04 03:46:10.878109+03:00)
+2025-05-04 03:46:10,887 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:47:10 MSK)" executed successfully
+2025-05-04 03:47:10,884 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:48:10 MSK)" (scheduled at 2025-05-04 03:47:10.878109+03:00)
+2025-05-04 03:47:10,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:48:10 MSK)" executed successfully
+2025-05-04 03:48:10,883 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:49:10 MSK)" (scheduled at 2025-05-04 03:48:10.878109+03:00)
+2025-05-04 03:48:10,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:49:10 MSK)" executed successfully
+2025-05-04 03:49:10,883 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:50:10 MSK)" (scheduled at 2025-05-04 03:49:10.878109+03:00)
+2025-05-04 03:49:10,884 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:50:10 MSK)" executed successfully
+2025-05-04 03:50:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:51:10 MSK)" (scheduled at 2025-05-04 03:50:10.878109+03:00)
+2025-05-04 03:50:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:51:10 MSK)" executed successfully
+2025-05-04 03:51:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:52:10 MSK)" (scheduled at 2025-05-04 03:51:10.878109+03:00)
+2025-05-04 03:51:10,882 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:52:10 MSK)" executed successfully
+2025-05-04 03:52:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:53:10 MSK)" (scheduled at 2025-05-04 03:52:10.878109+03:00)
+2025-05-04 03:52:10,882 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:53:10 MSK)" executed successfully
+2025-05-04 03:53:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:54:10 MSK)" (scheduled at 2025-05-04 03:53:10.878109+03:00)
+2025-05-04 03:53:10,882 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:54:10 MSK)" executed successfully
+2025-05-04 03:54:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:55:10 MSK)" (scheduled at 2025-05-04 03:54:10.878109+03:00)
+2025-05-04 03:54:10,886 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:55:10 MSK)" executed successfully
+2025-05-04 03:55:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:56:10 MSK)" (scheduled at 2025-05-04 03:55:10.878109+03:00)
+2025-05-04 03:55:10,886 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:56:10 MSK)" executed successfully
+2025-05-04 03:56:10,885 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:57:10 MSK)" (scheduled at 2025-05-04 03:56:10.878109+03:00)
+2025-05-04 03:56:10,886 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:57:10 MSK)" executed successfully
+2025-05-04 03:57:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:58:10 MSK)" (scheduled at 2025-05-04 03:57:10.878109+03:00)
+2025-05-04 03:57:10,884 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:58:10 MSK)" executed successfully
+2025-05-04 03:58:10,883 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:59:10 MSK)" (scheduled at 2025-05-04 03:58:10.878109+03:00)
+2025-05-04 03:58:10,885 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 03:59:10 MSK)" executed successfully
+2025-05-04 03:59:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:00:10 MSK)" (scheduled at 2025-05-04 03:59:10.878109+03:00)
+2025-05-04 03:59:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:00:10 MSK)" executed successfully
+2025-05-04 04:00:10,882 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:01:10 MSK)" (scheduled at 2025-05-04 04:00:10.878109+03:00)
+2025-05-04 04:00:10,884 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:01:10 MSK)" executed successfully
+2025-05-04 04:01:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:02:10 MSK)" (scheduled at 2025-05-04 04:01:10.878109+03:00)
+2025-05-04 04:01:10,883 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:02:10 MSK)" executed successfully
+2025-05-04 04:02:10,881 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:03:10 MSK)" (scheduled at 2025-05-04 04:02:10.878109+03:00)
+2025-05-04 04:02:10,882 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:03:10 MSK)" executed successfully
+2025-05-04 04:03:10,886 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:04:10 MSK)" (scheduled at 2025-05-04 04:03:10.878109+03:00)
+2025-05-04 04:03:10,887 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:04:10 MSK)" executed successfully
+2025-05-04 04:04:10,894 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:05:10 MSK)" (scheduled at 2025-05-04 04:04:10.878109+03:00)
+2025-05-04 04:04:10,894 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:05:10 MSK)" executed successfully
+2025-05-04 04:05:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:06:10 MSK)" (scheduled at 2025-05-04 04:05:10.878109+03:00)
+2025-05-04 04:05:10,894 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:06:10 MSK)" executed successfully
+2025-05-04 04:06:10,893 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:07:10 MSK)" (scheduled at 2025-05-04 04:06:10.878109+03:00)
+2025-05-04 04:06:10,895 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:07:10 MSK)" executed successfully
+2025-05-04 04:07:10,892 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:08:10 MSK)" (scheduled at 2025-05-04 04:07:10.878109+03:00)
+2025-05-04 04:07:10,893 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:08:10 MSK)" executed successfully
+2025-05-04 04:08:10,892 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:09:10 MSK)" (scheduled at 2025-05-04 04:08:10.878109+03:00)
+2025-05-04 04:08:10,893 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:09:10 MSK)" executed successfully
+2025-05-04 04:09:10,891 - INFO - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:10:10 MSK)" (scheduled at 2025-05-04 04:09:10.878109+03:00)
+2025-05-04 04:09:10,892 - INFO - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-04 04:10:10 MSK)" executed successfully
+2025-05-04 04:09:22,173 - INFO - Stop polling...
+2025-05-04 04:09:22,173 - WARNING - Goodbye!
