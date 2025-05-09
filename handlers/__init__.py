@@ -11,10 +11,12 @@ from .test_level import register_level_test_handlers
 from .quiz import register_quiz_handlers
 
 def register_handlers(dp, bot):
-    # Регистрируем обработчики команд
-    register_command_handlers(dp, bot)
+    """Регистрирует обработчики команд и других событий."""
+    # Важно: регистрируем обработчики квиза ПЕРВЫМИ
+    register_quiz_handlers(dp, bot)
     
-    # Регистрируем остальные обработчики
+    # Затем остальные обработчики
+    register_command_handlers(dp, bot)
     register_words_handlers(dp, bot)
     register_learning_handlers(dp, bot)
     register_dictionary_handlers(dp, bot)
@@ -22,4 +24,3 @@ def register_handlers(dp, bot):
     register_help_handlers(dp, bot)
     dp.register_callback_query_handler(handle_back, lambda c: c.data == "menu:back")
     register_level_test_handlers(dp, bot)
-    register_quiz_handlers(dp, bot)

@@ -174,3 +174,37 @@ def process_quiz_answer(answer_index: int,
     state["current_index"] += 1
     
     return is_correct, feedback
+
+def format_poll_explanation(current_index: int, total: int, is_revision: bool = False) -> str:
+    """
+    Форматирует пояснение для встроенного опроса Telegram.
+    Новая функция.
+    
+    Args:
+        current_index: Текущий индекс вопроса (с 1)
+        total: Общее количество вопросов
+        is_revision: Флаг режима повторения
+    
+    Returns:
+        Строка с пояснением для опроса
+    """
+    header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 КВИЗ"
+    return f"{header} | Вопрос {current_index}/{total}"
+
+def clean_word_for_poll(word: str) -> str:
+    """
+    Очищает слово от дополнительных данных для опроса.
+    Новая функция.
+    
+    Args:
+        word: Исходное слово, возможно содержащее разделители и перевод
+        
+    Returns:
+        Очищенное слово для отображения в опросе
+    """
+    clean_word = word
+    for separator in [" - ", " – ", ": "]:
+        if separator in clean_word:
+            clean_word = clean_word.split(separator, 1)[0].strip()
+            break
+    return clean_word
