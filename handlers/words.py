@@ -1,190 +1,143 @@
 # handlers/words.py
-from aiogram import types, Dispatcher, Bot
+from __future__ import annotations
+
+import logging
+from functools import partial
+from pathlib import Path
+
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from config import DURATION_HOURS, LEVELS_DIR, REMINDER_START
 from database import crud
 from keyboards.submenus import words_day_keyboard
-from utils.helpers import get_daily_words_for_user, reset_daily_words_cache
-from utils.helpers import get_user_settings
+from utils.helpers import (
+    get_daily_words_for_user,
+    get_user_settings,
+    reset_daily_words_cache,
+)
+from utils.sticker_helper import get_clean_sticker
 from utils.visual_helpers import format_daily_words_message
-from config import REMINDER_START, DURATION_HOURS
-import os
-from config import LEVELS_DIR, DEFAULT_SETS
-import logging
 
-# Настройка логирования
 logger = logging.getLogger(__name__)
 
-async def send_words_day_schedule(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик кнопки 'Слова дня'."""
-    chat_id = callback.from_user.id
-    user = crud.get_user(chat_id)
-    
-    if not user:
-        await callback.message.edit_text(
-            "⚠️ Профиль не найден. Пожалуйста, используйте /start для создания профиля.",
-            parse_mode="Markdown"
-        )
-        await callback.answer()
-        return
+# ──────────────────────────────── ВСПОМОГАТЕЛЬНЫЕ ──────────────────────────
+def _level_dir(level: str) -> Path:
+    """Папка уровня."""
+    return Path(LEVELS_DIR) / level
 
-    # Получаем количество слов и повторений из настроек
-    words_per_day, repetitions_per_word = get_user_settings(chat_id)
-    
-    # Дальше идет логика для создания списка "Слов дня" с учетом новых параметров
+
+def _confirm_keyboard(default_set: str) -> InlineKeyboardMarkup:
+    kb = InlineKeyboardMarkup(row_width=2)
+    kb.add(
+        InlineKeyboardButton("✅ Да, сменить", callback_data=f"confirm_set_change:{default_set}"),
+        InlineKeyboardButton("❌ Нет, отмена", callback_data="menu:back"),
+    )
+    return kb
+
+
+async def _send_daily_words(
+    cb: types.CallbackQuery,
+    chat_id: int,
+    level: str,
+    words_per_day: int,
+    reps_per_word: int,
+) -> None:
+    """Отправка «Слов дня» (или сообщение-ошибку)."""
     result = get_daily_words_for_user(
-        chat_id, user[1], words_per_day, repetitions_per_word,
-        first_time=REMINDER_START, duration_hours=DURATION_HOURS
+        chat_id,
+        level,
+        words_per_day,
+        reps_per_word,
+        first_time=REMINDER_START,
+        duration_hours=DURATION_HOURS,
     )
 
-    # Проверка на необходимость смены сета
+    # ——— нет слов (нет файла/уровня) ————————————————————————————————
     if result is None:
-        await callback.message.edit_text(
-            f"⚠️ Нет слов для уровня {user[1]}.",
-            parse_mode="Markdown"
-        )
-        await callback.answer()
+        await cb.message.edit_text(f"⚠️ Нет слов для уровня {level}.", parse_mode="Markdown")
+        await cb.answer()
         return
-    elif len(result) == 3 and result[0] is None and result[1] is None:
-        # Нужно подтверждение смены сета
-        default_set = result[2]
-        # Создаем клавиатуру для подтверждения
-        keyboard = types.InlineKeyboardMarkup(row_width=2)
-        keyboard.add(
-            types.InlineKeyboardButton("✅ Да, сменить", callback_data=f"confirm_set_change:{default_set}"),
-            types.InlineKeyboardButton("❌ Нет, отмена", callback_data="menu:back")
-        )
-        
-        # Получаем текущий выбранный сет для отображения
-        current_set = None
-        if len(user) > 6 and user[6]:
-            current_set = user[6]
-        else:
-            try:
-                from handlers.settings import user_set_selection
-                current_set = user_set_selection.get(chat_id)
-            except ImportError:
-                pass
-        
-        if not current_set:
-            current_set = "не выбран"
-        
-        await callback.message.edit_text(
-            f"⚠️ *Внимание! Смена сета приведет к полному сбросу прогресса.*\n\n"
+
+    # ——— требуется подтверждение смены сета ————————————————
+    if len(result) == 3 and result[:2] == (None, None):
+        default_set: str = result[2]
+        current_set = crud.get_user(chat_id)[6] or "не выбран"
+        text = (
+            "⚠️ *Внимание! Смена сета сбросит прогресс.*\n\n"
             f"Текущий сет: *{current_set}*\n"
-            f"Текущий уровень: *{user[1]}*\n\n"
-            f"Выбранный сет не соответствует текущему уровню. "
-            f"Хотите сменить его на базовый сет *{default_set}* для уровня {user[1]}?\n\n"
-            f"При смене сета ваш словарь будет полностью очищен. Вы уверены?",
-            parse_mode="Markdown",
-            reply_markup=keyboard
+            f"Текущий уровень: *{level}*\n\n"
+            f"Сет не соответствует уровню.\n"
+            f"Сменить на базовый *{default_set}*?\n"
         )
-        await callback.answer()
+        await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=_confirm_keyboard(default_set))
+        await cb.answer()
         return
-    
+
+    # ——— обычный вывод слов ————————————————————————————————
     messages, times = result
-
-    # Используем визуальный помощник для форматирования сообщения
-    formatted_message = format_daily_words_message(messages, times)
-    
-    await callback.message.edit_text(
-        formatted_message,
-        parse_mode="Markdown", 
-        reply_markup=words_day_keyboard()
+    await cb.message.edit_text(
+        format_daily_words_message(messages, times),
+        parse_mode="Markdown",
+        reply_markup=words_day_keyboard(),
     )
-    
-    await callback.answer()
+    await cb.answer()
 
-async def handle_confirm_set_change(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик подтверждения смены сета на базовый для нового уровня."""
-    chat_id = callback.from_user.id
-    
+
+# ─────────────────────────── «СЛОВА ДНЯ» КНОПКА ────────────────────────────
+async def send_words_day_schedule(cb: types.CallbackQuery, bot: Bot) -> None:
+    chat_id = cb.from_user.id
+    user = crud.get_user(chat_id)
+    if not user:
+        await cb.message.edit_text("⚠️ Профиль не найден. Используйте /start.", parse_mode="Markdown")
+        await cb.answer()
+        return
+
+    words, reps = get_user_settings(chat_id)
+    await _send_daily_words(cb, chat_id, user[1], words, reps)
+
+
+# ─────────────────────── ПОДТВЕРЖДЕНИЕ СМЕНЫ СЕТА ──────────────────────────
+async def handle_confirm_set_change(cb: types.CallbackQuery, bot: Bot) -> None:
+    chat_id = cb.from_user.id
+    _, default_set = cb.data.split(":", 1)
+    user = crud.get_user(chat_id)
+
+    if not user:
+        await cb.answer("Профиль не найден.", show_alert=True)
+        return
+
+    level = user[1]
+
     try:
-        _, default_set = callback.data.split(":", 1)
-        
-        # Получаем информацию о пользователе
-        user = crud.get_user(chat_id)
-        if not user:
-            await callback.answer("Профиль не найден. Используйте /start.", show_alert=True)
-            return
-            
-        level = user[1]
-        
-        # Очищаем словарь пользователя
-        try:
-            crud.clear_learned_words_for_user(chat_id)
-            logger.info(f"Словарь очищен для пользователя {chat_id} при смене сета")
-        except Exception as e:
-            logger.error(f"Ошибка при очистке словаря: {e}")
-            await callback.message.edit_text(
-                "❌ Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.",
-                reply_markup=words_day_keyboard()
-            )
-            await callback.answer()
-            return
-        
-        # Обновляем выбранный сет в базе данных и кэше
-        try:
-            crud.update_user_chosen_set(chat_id, default_set)
-            from handlers.settings import user_set_selection
-            user_set_selection[chat_id] = default_set
-            reset_daily_words_cache(chat_id)
-            logger.info(f"Сет изменен на '{default_set}' для пользователя {chat_id}")
-        except Exception as e:
-            logger.error(f"Ошибка при обновлении сета: {e}")
-            await callback.message.edit_text(
-                "❌ Произошла ошибка при обновлении сета. Пожалуйста, попробуйте позже.",
-                reply_markup=words_day_keyboard()
-            )
-            await callback.answer()
-            return
-        
-        # Получаем слова для нового сета
-        words_per_day, repetitions_per_word = get_user_settings(chat_id)
-        result = get_daily_words_for_user(
-            chat_id, level, words_per_day, repetitions_per_word,
-            first_time=REMINDER_START, duration_hours=DURATION_HOURS
-        )
-        
-        if result is None:
-            await callback.message.edit_text(
-                f"⚠️ Не удалось получить слова для уровня {level} и сета {default_set}.",
-                parse_mode="Markdown",
-                reply_markup=words_day_keyboard()
-            )
-            await callback.answer()
-            return
-            
-        messages, times = result
-        
-        # Отправляем стикер для смены сета
-        from utils.sticker_helper import get_clean_sticker
-        sticker_id = get_clean_sticker()
-        if sticker_id:
-            await bot.send_sticker(chat_id, sticker_id)
-        
-        # Используем визуальный помощник для форматирования сообщения
-        formatted_message = format_daily_words_message(messages, times)
-        
-        await callback.message.edit_text(
-            f"✅ Сет успешно изменен на '{default_set}'.\n⚠️ Словарь очищен.\n\n" + formatted_message,
-            parse_mode="Markdown", 
-            reply_markup=words_day_keyboard()
-        )
-        
-    except Exception as e:
-        logger.error(f"Ошибка при подтверждении смены сета: {e}")
-        await callback.message.edit_text(
-            "❌ Произошла ошибка. Пожалуйста, попробуйте позже.",
-            reply_markup=words_day_keyboard()
-        )
-    
-    await callback.answer()
+        crud.clear_learned_words_for_user(chat_id)
+        crud.update_user_chosen_set(chat_id, default_set)
 
-def register_words_handlers(dp: Dispatcher, bot: Bot):
+        # синхронизируем кэш выбранных сетов
+        from handlers.settings import user_set_selection
+
+        user_set_selection[chat_id] = default_set
+        reset_daily_words_cache(chat_id)
+
+        # стикер-информер
+        stick = get_clean_sticker()
+        if stick:
+            await bot.send_sticker(chat_id, stick)
+
+        words, reps = get_user_settings(chat_id)
+        await _send_daily_words(cb, chat_id, level, words, reps)
+
+    except Exception as exc:
+        logger.exception("Ошибка смены сета: %s", exc)
+        await cb.message.edit_text("❌ Ошибка смены сета. Попробуйте позже.", reply_markup=words_day_keyboard())
+        await cb.answer()
+
+
+# ──────────────────────────── РЕГИСТРАЦИЯ ─────────────────────────────────
+def register_words_handlers(dp: Dispatcher, bot: Bot) -> None:
     dp.register_callback_query_handler(
-        lambda c: send_words_day_schedule(c, bot),
-        lambda c: c.data == "menu:words_day"
+        partial(send_words_day_schedule, bot=bot), lambda c: c.data == "menu:words_day"
     )
     dp.register_callback_query_handler(
-        lambda c: handle_confirm_set_change(c, bot),
-        lambda c: c.data and c.data.startswith("confirm_set_change:")
+        partial(handle_confirm_set_change, bot=bot), lambda c: c.data.startswith("confirm_set_change:")
     )

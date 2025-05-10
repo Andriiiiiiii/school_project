@@ -1,104 +1,101 @@
-# Updated dictionary handlers in handlers/dictionary.py
+# handlers/dictionary.py
+"""
+Обработчики «Мой словарь»:
+ • Просмотр списка выученных слов
+ • Подтверждение очистки
+ • Очистка словаря
+ • Отмена очистки
+"""
 
-from aiogram import types, Dispatcher, Bot
-from keyboards.submenus import dictionary_menu_keyboard, clear_dictionary_confirm_keyboard
-from database import crud
+import logging
 from functools import partial
-from utils.visual_helpers import format_dictionary_message
-from utils.sticker_helper import get_clean_sticker
 
-async def handle_dictionary(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обработчик кнопки "Мой словарь". Показывает выученные слова с улучшенным форматированием.
-    Исправлено: редактирует существующее сообщение вместо отправки нового.
-    """
+from aiogram import Bot, Dispatcher, types
+
+from database import crud
+from keyboards.submenus import dictionary_menu_keyboard, clear_dictionary_confirm_keyboard
+from keyboards.reply_keyboards import get_main_menu_keyboard
+from utils.sticker_helper import send_sticker_with_menu, get_clean_sticker
+from utils.visual_helpers import format_dictionary_message
+
+logger = logging.getLogger(__name__)
+
+
+async def show_dictionary(callback: types.CallbackQuery, bot: Bot):
+    """Показывает выученные слова или сообщение о пустом словаре."""
     chat_id = callback.from_user.id
     learned = crud.get_learned_words(chat_id)
-    
+
     if not learned:
-        await callback.message.edit_text(
-            "📚 *Ваш словарь пуст*\n\nПройдите квизы, чтобы добавить слова в свой словарь!",
-            parse_mode="Markdown",
-            reply_markup=dictionary_menu_keyboard()
+        text = (
+            "📚 *Ваш словарь пуст*\n\n"
+            "Пройдите квизы, чтобы добавить слова в свой словарь!"
         )
     else:
-        # Используем визуальный помощник для форматирования словаря
-        formatted_message = format_dictionary_message(learned)
-        
-        await callback.message.edit_text(
-            formatted_message,
-            parse_mode="Markdown", 
-            reply_markup=dictionary_menu_keyboard()
-        )
-    
+        text = format_dictionary_message(learned)
+
+    await callback.message.edit_text(
+        text,
+        parse_mode="Markdown",
+        reply_markup=dictionary_menu_keyboard()
+    )
     await callback.answer()
 
-async def handle_clear_dictionary_confirm(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик подтверждения очистки словаря. Показывает диалог подтверждения."""
-    chat_id = callback.from_user.id
-    
+
+async def confirm_clear(callback: types.CallbackQuery, bot: Bot):
+    """Запрашивает подтверждение очистки словаря."""
     await callback.message.edit_text(
         "⚠️ *Вы уверены, что хотите очистить весь словарь?*\n\n"
         "Это действие удалит все выученные слова и не может быть отменено.",
         parse_mode="Markdown",
         reply_markup=clear_dictionary_confirm_keyboard()
     )
-    
     await callback.answer()
 
-async def handle_clear_dictionary_confirmed(callback: types.CallbackQuery, bot: Bot):
-    """Обработчик положительного подтверждения очистки словаря."""
+
+async def clear_dictionary(callback: types.CallbackQuery, bot: Bot):
+    """Очищает словарь пользователя и показывает главное меню."""
     chat_id = callback.from_user.id
-    
     try:
-        # Очищаем словарь пользователя
         crud.clear_learned_words_for_user(chat_id)
-        
-        # Отправляем стикер после очистки словаря и показываем главное меню
-        from utils.sticker_helper import send_sticker_with_menu, get_clean_sticker
+        # Стикер + меню
         await send_sticker_with_menu(chat_id, bot, get_clean_sticker())
-        
-        # Add main menu button with text
-        from keyboards.reply_keyboards import get_main_menu_keyboard
         await bot.send_message(
             chat_id,
             "Словарь успешно очищен.",
             reply_markup=get_main_menu_keyboard()
         )
-        
     except Exception as e:
-        logger.error(f"Error clearing dictionary for user {chat_id}: {e}")
+        logger.error("Error clearing dictionary for user %s: %s", chat_id, e)
+        # Возвращаем пользователя к просмотру словаря с ошибкой
         await callback.message.edit_text(
             "❌ Произошла ошибка при очистке словаря. Пожалуйста, попробуйте позже.",
             parse_mode="Markdown",
             reply_markup=dictionary_menu_keyboard()
         )
-    
     await callback.answer()
 
-async def handle_clear_dictionary_cancelled(callback: types.CallbackQuery, bot: Bot):
-    """
-    Обработчик отмены очистки словаря. Возвращает к просмотру словаря.
-    """
-    chat_id = callback.from_user.id
-    
-    await handle_dictionary(callback, bot)
+
+async def cancel_clear(callback: types.CallbackQuery, bot: Bot):
+    """Отменяет очистку и возвращает к просмотру словаря."""
+    await show_dictionary(callback, bot)
     await callback.answer("Очистка словаря отменена")
+
 
 def register_dictionary_handlers(dp: Dispatcher, bot: Bot):
     dp.register_callback_query_handler(
-        partial(handle_dictionary, bot=bot),
+        partial(show_dictionary, bot=bot),
         lambda c: c.data == "menu:dictionary"
     )
     dp.register_callback_query_handler(
-        partial(handle_clear_dictionary_confirm, bot=bot),
+        partial(confirm_clear, bot=bot),
         lambda c: c.data == "dictionary:clear_confirm"
     )
     dp.register_callback_query_handler(
-        partial(handle_clear_dictionary_confirmed, bot=bot),
+        partial(clear_dictionary, bot=bot),
         lambda c: c.data == "dictionary:clear_confirmed"
     )
     dp.register_callback_query_handler(
-        partial(handle_clear_dictionary_cancelled, bot=bot),
+        partial(cancel_clear, bot=bot),
         lambda c: c.data == "dictionary:clear_cancel"
     )
