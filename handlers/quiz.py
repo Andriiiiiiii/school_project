@@ -1,4 +1,5 @@
-# handlers/quiz.py
+# Полное исправление файла handlers/quiz.py
+
 """
 Квиз «Слова дня»: встроенные quiz-поллы с навигацией.
 """
@@ -16,7 +17,7 @@ from utils.helpers import daily_words_cache, get_daily_words_for_user
 from utils.quiz_helpers import load_quiz_data
 from utils.quiz_utils import generate_quiz_options
 from utils.sticker_helper import get_congratulation_sticker, send_sticker_with_menu
-from utils.visual_helpers import extract_english, format_result_message
+from utils.visual_helpers import extract_english, format_progress_bar, format_result_message
 
 logger = logging.getLogger(__name__)
 
@@ -30,11 +31,13 @@ nav_messages: dict[int, int] = {}
 # ───────────────────────────────────────────────────────────────
 
 
-def _make_nav(prefix: str, allow_next: bool = False) -> InlineKeyboardMarkup:
+def _make_nav(prefix: str) -> InlineKeyboardMarkup:
+    """Создает клавиатуру навигации с двумя кнопками в ряд."""
     kb = InlineKeyboardMarkup(row_width=2)
-    kb.add(InlineKeyboardButton("🔙 Назад", callback_data=f"{prefix}:back"))
-    if allow_next:
-        kb.add(InlineKeyboardButton("▶️ Дальше", callback_data=f"{prefix}:next"))
+    kb.add(
+        InlineKeyboardButton("🛑 Закончить квиз", callback_data=f"{prefix}:back"),
+        InlineKeyboardButton("⏭️ Следующее слово", callback_data=f"{prefix}:skip")
+    )
     return kb
 
 
@@ -66,14 +69,93 @@ def _generate_questions(daily: list[str], level: str, chosen_set: str | None, re
     return questions
 
 
+async def _send_question(chat_id: int, bot: Bot) -> None:
+    """Отправляет вопрос пользователю с кнопками навигации."""
+    state = quiz_states.get(chat_id)
+    if not state:
+        return
+
+    idx = state["current"]
+    if idx >= len(state["questions"]):
+        # Если вопросы закончились, завершаем квиз
+        await _finish_quiz(chat_id, bot)
+        return
+
+    q = state["questions"][idx]
+
+    poll: Poll = await bot.send_poll(
+        chat_id=chat_id,
+        question=f"Какой перевод слова «{extract_english(q['word'])}»?",
+        options=q["options"],
+        type="quiz",
+        correct_option_id=q["correct_index"],
+        explanation=f"Вопрос {idx+1}/{len(state['questions'])}"
+                    + (" | Повторение" if q["is_revision"] else ""),
+        is_anonymous=False,
+    )
+    pid = str(poll.poll.id)
+    poll_to_user[pid] = chat_id
+    poll_to_index[pid] = idx
+
+    # Отправляем сообщение с прогрессом и кнопками навигации
+    total_questions = len(state["questions"])
+    progress_bar = format_progress_bar(idx + 1, total_questions, 10)
+    
+    # Удаляем предыдущее сообщение с навигацией, если оно есть
+    old_msg_id = nav_messages.pop(chat_id, None)
+    if old_msg_id:
+        try:
+            await bot.delete_message(chat_id, old_msg_id)
+        except Exception as e:
+            logger.error(f"Не удалось удалить старое сообщение: {e}")
+    
+    # Отправляем новое сообщение с навигацией
+    try:
+        msg = await bot.send_message(
+            chat_id,
+            f"📊 Прогресс: {idx+1}/{total_questions}\n{progress_bar}",
+            reply_markup=_make_nav("quiz")
+        )
+        nav_messages[chat_id] = msg.message_id
+    except Exception as e:
+        logger.error(f"Ошибка при отправке сообщения с навигацией: {e}")
+
+
+async def _finish_quiz(chat_id: int, bot: Bot) -> None:
+    """Завершает квиз и отображает результаты."""
+    state = quiz_states.pop(chat_id, None)
+    if not state:
+        return
+
+    # Удаляем последнее сообщение с навигацией
+    old_msg_id = nav_messages.pop(chat_id, None)
+    if old_msg_id:
+        try:
+            await bot.delete_message(chat_id, old_msg_id)
+        except Exception:
+            pass
+
+    correct, total = state["correct"], len(state["questions"])
+    result = format_result_message(correct, total, state["revision"])
+    await bot.send_message(chat_id, result, parse_mode="Markdown")
+    
+    if correct / total >= 0.7:
+        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    else:
+        from keyboards.main_menu import main_menu_keyboard
+        await bot.send_message(chat_id, "Квиз завершён.", reply_markup=main_menu_keyboard())
+
+
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
+    """Начинает квиз со словами дня."""
     chat_id = cb.from_user.id
     logger.info("StartQuiz chat=%s", chat_id)
 
-    # Убираем старую навигацию
-    if nav_messages.get(chat_id):
+    # Удаляем старую навигацию
+    old_msg_id = nav_messages.pop(chat_id, None)
+    if old_msg_id:
         try:
-            await bot.delete_message(chat_id, nav_messages.pop(chat_id))
+            await bot.delete_message(chat_id, old_msg_id)
         except Exception:
             pass
 
@@ -105,13 +187,20 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
         await cb.answer()
         return
 
-    raw = [m.replace("🔹 ", "").strip() for m in entry[1]]
-    if raw and raw[0].startswith(("🎓", "⚠️")):
-        raw.pop(0)
+    # Используем уникальные слова из кэша (позиция 8)
+    if len(entry) > 8 and entry[8]:
+        # Используем уникальные слова из кэша
+        unique_words = entry[8]
+    else:
+        # Если уникальные слова не доступны, извлекаем их из сообщений
+        raw = [m.replace("🔹 ", "").strip() for m in entry[1]]
+        if raw and raw[0].startswith(("🎓", "⚠️")):
+            raw.pop(0)
+        unique_words = raw
 
-    daily = [extract_english(r).lower() for r in raw if r]
     revision = bool(len(entry) > 9 and entry[9])
-    source = daily if revision else [w for w in daily if w not in learned]
+    source = unique_words if revision else [w for w in unique_words if extract_english(w).lower() not in learned]
+    
     if not source:
         await bot.send_message(chat_id, "Все слова уже выучены! Попробуйте завтра.")
         await cb.answer()
@@ -135,63 +224,40 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
     await cb.answer()
 
 
-async def _send_question(chat_id: int, bot: Bot) -> None:
-    state = quiz_states.get(chat_id)
-    if not state:
-        return
-
-    idx = state["current"]
-    if idx >= len(state["questions"]):
-        return
-
-    q = state["questions"][idx]
-    # Удаляем предыдущую навигацию
-    if nav_messages.get(chat_id):
-        try:
-            await bot.delete_message(chat_id, nav_messages.pop(chat_id))
-        except Exception:
-            pass
-
-    poll: Poll = await bot.send_poll(
-        chat_id=chat_id,
-        question=f"Какой перевод слова «{extract_english(q['word'])}»?",
-        options=q["options"],
-        type="quiz",
-        correct_option_id=q["correct_index"],
-        explanation=f"Вопрос {idx+1}/{len(state['questions'])}"
-                    + (" | Повторение" if q["is_revision"] else ""),
-        is_anonymous=False,
-    )
-    pid = str(poll.poll.id)
-    poll_to_user[pid] = chat_id
-    poll_to_index[pid] = idx
-
-    msg = await bot.send_message(
-        chat_id,
-        f"Прогресс: {idx+1}/{len(state['questions'])}",
-        reply_markup=_make_nav("quiz", allow_next=False)
-    )
-    nav_messages[chat_id] = msg.message_id
-
-
 async def handle_poll_answer(ans: PollAnswer) -> None:
+    """Обрабатывает ответ на вопрос квиза."""
     pid = str(ans.poll_id)
-    chat_id = poll_to_user.pop(pid, None)
-    idx = poll_to_index.pop(pid, None)
+    chat_id = poll_to_user.get(pid)
+    idx = poll_to_index.get(pid)
+    
     if chat_id is None or idx is None or chat_id not in quiz_states:
         logger.warning("Unknown poll id=%s", pid)
         return
 
-    state = quiz_states[chat_id]
-    if idx in state["answered"]:
+    # Удаляем из словарей, чтобы не обрабатывать повторно
+    poll_to_user.pop(pid, None)
+    poll_to_index.pop(pid, None)
+
+    state = quiz_states.get(chat_id)
+    if not state or idx in state["answered"]:
         return
+    
     state["answered"].add(idx)
+    bot = Bot.get_current()
 
     q = state["questions"][idx]
     chosen = ans.option_ids[0] if ans.option_ids else None
     text = q["options"][chosen] if chosen is not None else None
     correct = (text == q["correct"])
     logger.info("PollAns chat=%s idx=%d chose=%s ok=%s", chat_id, idx, text, correct)
+
+    # Удаляем предыдущее сообщение с навигацией
+    old_msg_id = nav_messages.pop(chat_id, None)
+    if old_msg_id:
+        try:
+            await bot.delete_message(chat_id, old_msg_id)
+        except Exception:
+            pass
 
     if correct:
         state["correct"] += 1
@@ -203,41 +269,56 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
                     datetime.now().strftime("%Y-%m-%d")
                 )
 
-    await Bot.get_current().send_message(
-        chat_id,
-        "✅ Верно!" if correct else f"❌ Неверно. Правильный ответ: {q['correct']}"
-    )
+        # Отправляем сообщение о правильном ответе
+        await bot.send_message(chat_id, "✅ Верно!")
+        
+        # Переходим к следующему вопросу
+        state["current"] += 1
+        if state["current"] >= len(state["questions"]):
+            await _finish_quiz(chat_id, bot)
+        else:
+            await _send_question(chat_id, bot)
+    else:
+        # Отправляем сообщение о неправильном ответе
+        await bot.send_message(
+            chat_id,
+            f"❌ Неверно. Правильный ответ: {q['correct']}"
+        )
 
-    # Новая навигация «Назад/Дальше»
-    if nav_messages.get(chat_id):
+        # Отправляем новое сообщение с навигацией и прогрессом
+        total_questions = len(state["questions"])
+        current_question = idx + 1
+        progress_bar = format_progress_bar(current_question, total_questions, 10)
+        
         try:
-            await Bot.get_current().delete_message(chat_id, nav_messages.pop(chat_id))
-        except Exception:
-            pass
-
-    msg = await Bot.get_current().send_message(
-        chat_id,
-        f"Ответ обработан. Прогресс: {idx+1}/{len(state['questions'])}",
-        reply_markup=_make_nav("quiz", allow_next=True)
-    )
-    nav_messages[chat_id] = msg.message_id
+            msg = await bot.send_message(
+                chat_id,
+                f"📊 Прогресс: {current_question}/{total_questions}\n{progress_bar}",
+                reply_markup=_make_nav("quiz")
+            )
+            nav_messages[chat_id] = msg.message_id
+        except Exception as e:
+            logger.error(f"Ошибка при отправке сообщения с навигацией после неправильного ответа: {e}")
 
 
 async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
+    """Обрабатывает нажатия на кнопки навигации квиза."""
     chat_id = cb.from_user.id
-    action = cb.data  # "quiz:back" или "quiz:next"
+    action = cb.data  # "quiz:back" или "quiz:skip"
 
-    # удаляем старую навигацию
-    if nav_messages.get(chat_id):
+    # Удаляем старую навигацию
+    old_msg_id = nav_messages.pop(chat_id, None)
+    if old_msg_id:
         try:
-            await bot.delete_message(chat_id, nav_messages.pop(chat_id))
+            await bot.delete_message(chat_id, old_msg_id)
         except Exception:
             pass
 
     if action == "quiz:back":
+        # Завершаем квиз и возвращаемся в главное меню
         quiz_states.pop(chat_id, None)
         from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(chat_id, "Возврат в главное меню.", reply_markup=main_menu_keyboard())
+        await bot.send_message(chat_id, "Квиз завершен.", reply_markup=main_menu_keyboard())
         await cb.answer()
         return
 
@@ -245,46 +326,39 @@ async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
     if not st:
         await cb.answer("Сессия неактивна.", show_alert=True)
         return
-    if st["current"] not in st["answered"]:
-        await cb.answer("Сначала ответьте на текущий вопрос!", show_alert=True)
-        return
 
-    st["current"] += 1
-    if st["current"] >= len(st["questions"]):
-        # Финал
-        correct, total = st["correct"], len(st["questions"])
-        result = format_result_message(correct, total, st["revision"])
-        await bot.send_message(chat_id, result, parse_mode="Markdown")
-        if correct / total >= 0.7:
-            await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    # Обработка кнопки "Следующее слово" - пропускаем текущий вопрос
+    if action == "quiz:skip":
+        # Если вопрос еще не отвечен, отмечаем его как отвеченный (но не правильно)
+        if st["current"] not in st["answered"]:
+            st["answered"].add(st["current"])
+        
+        # Переходим к следующему вопросу
+        st["current"] += 1
+        if st["current"] >= len(st["questions"]):
+            await _finish_quiz(chat_id, bot)
         else:
-            from keyboards.main_menu import main_menu_keyboard
-            await bot.send_message(chat_id, "Квиз завершён.", reply_markup=main_menu_keyboard())
-        quiz_states.pop(chat_id, None)
-    else:
-        await _send_question(chat_id, bot)
-
-    await cb.answer()
+            await _send_question(chat_id, bot)
+        
+        await cb.answer()
+        return
 
 
 def register_quiz_handlers(dp: Dispatcher, bot: Bot) -> None:
     """
     Регистрирует хендлеры для квиза «Слова дня».
     """
-    # Только свои PollAnswer
-    dp.register_poll_answer_handler(
-        handle_poll_answer,
-        lambda ans: str(ans.poll_id) in poll_to_user
-    )
+    # Обработка ответов на poll
+    dp.register_poll_answer_handler(handle_poll_answer)
 
-    # Запуск
+    # Запуск квиза
     dp.register_callback_query_handler(
         lambda cb: asyncio.create_task(start_quiz(cb, bot)),
         lambda cb: cb.data == "quiz:start"
     )
 
-    # Навигация «Назад/Дальше»
+    # Навигация
     dp.register_callback_query_handler(
         lambda cb: asyncio.create_task(process_quiz_navigation(cb, bot)),
-        lambda cb: cb.data in ("quiz:back", "quiz:next")
+        lambda cb: cb.data in ("quiz:back", "quiz:skip")
     )
