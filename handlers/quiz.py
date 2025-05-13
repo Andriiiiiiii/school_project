@@ -348,17 +348,22 @@ def register_quiz_handlers(dp: Dispatcher, bot: Bot) -> None:
     """
     Регистрирует хендлеры для квиза «Слова дня».
     """
-    # Обработка ответов на poll
-    dp.register_poll_answer_handler(handle_poll_answer)
 
-    # Запуск квиза
-    dp.register_callback_query_handler(
-        lambda cb: asyncio.create_task(start_quiz(cb, bot)),
-        lambda cb: cb.data == "quiz:start"
+    # ↳ 1.  ОБРАБОТКА ОТВЕТА НА POLL
+    #     фильтруем по таблице poll_to_user, чтобы   QUIZ   ловил ТОЛЬКО свои poll-id
+    dp.register_poll_answer_handler(
+        handle_poll_answer,
+        lambda ans: str(ans.poll_id) in poll_to_user,
     )
 
-    # Навигация
+    # ↳ 2.  ЗАПУСК КВИЗА
+    dp.register_callback_query_handler(
+        lambda cb: asyncio.create_task(start_quiz(cb, bot)),
+        lambda cb: cb.data == "quiz:start",
+    )
+
+    # ↳ 3.  НАВИГАЦИЯ
     dp.register_callback_query_handler(
         lambda cb: asyncio.create_task(process_quiz_navigation(cb, bot)),
-        lambda cb: cb.data in ("quiz:back", "quiz:skip")
+        lambda cb: cb.data in ("quiz:back", "quiz:skip"),
     )
