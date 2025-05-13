@@ -1,12 +1,9 @@
-# handlers/learning.py
 """
-Раздел «Обучение»
-▪ Тест по словарю (dtest)
-▪ Заучивание сета (mtest)
-
-Работает через встроенные Telegram-quiz-poll.
+handlers/learning.py — раздел «Обучение»
+• dtest – тест по словарю
+• mtest – заучивание сета
+• learning settings – настройка количества слов в режимах
 """
-
 from __future__ import annotations
 
 import asyncio
@@ -23,7 +20,10 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Poll, Poll
 from config import DEFAULT_SETS, LEVELS_DIR
 from database import crud
 from keyboards.main_menu import main_menu_keyboard
-from keyboards.submenus import learning_menu_keyboard
+from keyboards.submenus import (
+    learning_menu_keyboard,
+    learning_settings_keyboard,  # базовый: две кнопки «Настройки теста/заучивания» + «Назад»
+)
 from utils.helpers import extract_english
 from utils.quiz_helpers import load_quiz_data
 from utils.quiz_utils import generate_quiz_options
@@ -32,9 +32,9 @@ from utils.visual_helpers import format_progress_bar
 
 logger = logging.getLogger(__name__)
 
-# ───────────────────────── helpers ──────────────────────────
-_RX_SPACES    = re.compile(r"\s+")
-_RX_VARIANTS  = re.compile(r"[;,/]|(?:\s+или\s+)", re.I)
+# ───────────────────────── вспомогательные функции ─────────────────────────
+_RX_SPACES = re.compile(r"\s+")
+_RX_VARIANTS = re.compile(r"[;,/]|(?:\s+или\s+)", re.I)
 
 
 def _normalize(txt: str) -> str:
@@ -68,16 +68,17 @@ def _read_set_words(level: str, name: str) -> List[str]:
 def _make_nav(prefix: str) -> InlineKeyboardMarkup:
     kb = InlineKeyboardMarkup(row_width=2)
     kb.add(
-        InlineKeyboardButton("🛑 Закончить",  callback_data=f"{prefix}:back"),
+        InlineKeyboardButton("🛑 Закончить", callback_data=f"{prefix}:back"),
         InlineKeyboardButton("⏭️ Следующее", callback_data=f"{prefix}:skip"),
     )
     return kb
 
-# ───────────────────────── state ────────────────────────────
+
+# ────────────────────────── состояние сессий ────────────────────────────────
 @dataclass
 class LearningState:
     questions: List[Dict[str, Any]]
-    prefix: str
+    prefix: str  # dtest | mtest
     current: int = 0
     correct: int = 0
     answered: set[int] = field(default_factory=set)
@@ -85,12 +86,23 @@ class LearningState:
 
 states: Dict[int, LearningState] = {}
 
-#   ключевые таблицы ТОЛЬКО для «Обучения»
+# таблицы именно для «learning»
 lpoll2user: Dict[str, int] = {}
-lpoll2idx:  Dict[str, int] = {}
-lnav_msgs:  Dict[int, int] = {}
+lpoll2idx: Dict[str, int] = {}
+lnav_msgs: Dict[int, int] = {}
 
-# ───────────────────────── builders ─────────────────────────
+# ────────────────────────── keyboards dynamic ──────────────────────────────
+def _number_keyboard(prefix: str, current: int) -> InlineKeyboardMarkup:
+    """Клавиатура 1-20 (4×5) и кнопка «Назад»."""
+    kb = InlineKeyboardMarkup(row_width=5)
+    for n in range(1, 21):
+        txt = f"{n}{' ✅' if n == current else ''}"
+        kb.insert(InlineKeyboardButton(txt, callback_data=f"{prefix}{n}"))
+    kb.add(InlineKeyboardButton("🔙 Назад", callback_data="learning:back"))
+    return kb
+
+
+# ────────────────────────── question builders ──────────────────────────────
 def _make_question_list(
     words: List[str],
     translations_map: Dict[str, str],
@@ -107,21 +119,21 @@ def _make_question_list(
                     rus = src.split(sep, 1)[1].strip()
                     break
         if not rus:
-            logger.warning("Learning: skip «%s» (нет перевода)", src)
+            logger.warning("Learning: skip word '%s' (no translation)", src)
             continue
         rus = rus.strip()
         opts, _ = generate_quiz_options(rus, all_trans, 4)
         opts = [o.strip() for o in opts]
-        idx = opts.index(rus) if rus in opts else 0
-        opts[0], opts[idx] = opts[idx], opts[0]  # гарантируем наличие правильного
+        if rus not in opts:
+            opts[0] = rus
         res.append(
-            dict(
-                word=eng,
-                correct=rus,
-                options=opts,
-                correct_index=opts.index(rus),
-                is_revision=revision_flags.get(eng.lower(), False),
-            )
+            {
+                "word": eng,
+                "correct": rus,
+                "options": opts,
+                "correct_index": opts.index(rus),
+                "is_revision": revision_flags.get(eng.lower(), False),
+            }
         )
     return res
 
@@ -130,25 +142,25 @@ def build_dict_test(chat: int, user: tuple) -> List[Dict[str, Any]]:
     learned = crud.get_learned_words(chat)
     if not learned:
         return []
-    count = min(_get_user_val(user, 7, 5), len(learned))
-    sample = random.sample(learned, count)
+    cnt = min(_get_user_val(user, 7, 5), len(learned))
+    sample = random.sample(learned, cnt)
     level, chosen_set = user[1], _get_user_val(user, 6, None)
     quiz_data = load_quiz_data(level, chosen_set)
     all_tr = [d["translation"].strip() for d in quiz_data]
     return _make_question_list(
-        [eng for eng, _ in sample],
-        {eng.lower(): rus.strip() for eng, rus in sample},
+        [w for w, _ in sample],
+        {w.lower(): t.strip() for w, t in sample},
         all_tr,
-        {extract_english(e).lower(): True for e, _ in sample},
+        {extract_english(w).lower(): True for w, _ in sample},
     )
 
 
 def build_memorize(chat: int, user: tuple) -> List[Dict[str, Any]]:
     level = user[1]
     chosen_set = _get_user_val(user, 6, None) or DEFAULT_SETS.get(level)
-    set_words = _read_set_words(level, chosen_set)
-    count = min(_get_user_val(user, 8, 5), len(set_words))
-    sample = random.sample(set_words, count)
+    words = _read_set_words(level, chosen_set)
+    cnt = min(_get_user_val(user, 8, 5), len(words))
+    sample = random.sample(words, cnt)
     quiz_data = load_quiz_data(level, chosen_set)
     translations = {d["word"].lower(): d["translation"].strip() for d in quiz_data}
     all_tr = [d["translation"].strip() for d in quiz_data]
@@ -157,8 +169,9 @@ def build_memorize(chat: int, user: tuple) -> List[Dict[str, Any]]:
         sample, translations, all_tr, {w: w in learned for w in translations}
     )
 
-# ───────────────────────── runtime helpers ──────────────────
-async def _delete_nav(bot: Bot, chat: int) -> None:
+
+# ────────────────────────── helpers (send / finish) ────────────────────────
+async def _delete_nav(bot: Bot, chat: int):
     mid = lnav_msgs.pop(chat, None)
     if mid:
         try:
@@ -167,7 +180,7 @@ async def _delete_nav(bot: Bot, chat: int) -> None:
             pass
 
 
-async def _send_question(chat: int, bot: Bot) -> None:
+async def _send_question(chat: int, bot: Bot):
     st = states.get(chat)
     if not st:
         return
@@ -175,7 +188,7 @@ async def _send_question(chat: int, bot: Bot) -> None:
         return await _finish(chat, bot)
 
     q = st.questions[st.current]
-    poll: Poll = await bot.send_poll(
+    poll = await bot.send_poll(
         chat_id=chat,
         question=f"Перевод слова «{extract_english(q['word'])}»?",
         options=q["options"],
@@ -187,8 +200,7 @@ async def _send_question(chat: int, bot: Bot) -> None:
     pid = str(poll.poll.id)
     lpoll2user[pid] = chat
     lpoll2idx[pid] = st.current
-    logger.debug("Learning: send poll %s ➜ chat=%s idx=%d | lpoll2user=%s",
-                 pid, chat, st.current, lpoll2user)
+    logger.debug("Learning: poll sent pid=%s chat=%s idx=%d", pid, chat, st.current)
 
     await _delete_nav(bot, chat)
     bar = format_progress_bar(st.current + 1, len(st.questions), 10)
@@ -201,7 +213,7 @@ async def _send_question(chat: int, bot: Bot) -> None:
     lnav_msgs[chat] = msg.message_id
 
 
-async def _finish(chat: int, bot: Bot) -> None:
+async def _finish(chat: int, bot: Bot):
     st = states.pop(chat, None)
     if not st:
         return
@@ -209,48 +221,39 @@ async def _finish(chat: int, bot: Bot) -> None:
     total = len(st.questions)
     perc = st.correct / total * 100 if total else 0
     bar = format_progress_bar(st.correct, total, 20)
-    title = ("📚 Тест по словарю завершён!"
-             if st.prefix == "dtest" else "📝 Заучивание сета завершено!")
-    text = f"{title}\n\n*Счёт:* {st.correct}/{total} ({perc:.1f} %)\n{bar}"
+    title = "📚 Тест по словарю завершён!" if st.prefix == "dtest" else "📝 Заучивание сета завершено!"
+    txt = f"{title}\n\n*Счёт:* {st.correct}/{total} ({perc:.1f} %)\n{bar}"
     if perc < 70:
-        text += "\n\n💡 Повторяйте слова чаще."
-    await bot.send_message(chat, text, parse_mode="Markdown")
+        txt += "\n\n💡 Повторяйте слова чаще."
+    await bot.send_message(chat, txt, parse_mode="Markdown")
     if perc >= 70:
         await send_sticker_with_menu(chat, bot, get_congratulation_sticker())
     else:
         await bot.send_message(chat, "Тест завершён.", reply_markup=main_menu_keyboard())
 
-# ───────────────────────── poll-answer ───────────────────────
-async def poll_answer_handler(ans: PollAnswer) -> None:
+
+# ────────────────────────── poll-answer handler ────────────────────────────
+async def poll_answer_handler(ans: PollAnswer):
     pid = str(ans.poll_id)
     chat = lpoll2user.get(pid)
     qidx = lpoll2idx.get(pid)
-
-    logger.debug("Learning: poll_answer %s | in_table=%s lpoll2user=%s",
-                 pid, pid in lpoll2user, lpoll2user)
-
+    logger.debug("Learning: poll_answer pid=%s chat=%s in_table=%s", pid, chat, pid in lpoll2user)
     if chat is None or qidx is None or chat not in states:
-        return  # чужой poll
-
+        return  # not ours
     lpoll2user.pop(pid, None)
     lpoll2idx.pop(pid, None)
-
     st = states[chat]
     if qidx in st.answered:
         return
     st.answered.add(qidx)
-
     q = st.questions[qidx]
     chosen_idx = ans.option_ids[0] if ans.option_ids else None
     chosen_txt = q["options"][chosen_idx] if chosen_idx is not None else None
     ok = _is_correct(chosen_txt, q["correct"])
-
-    logger.debug("Learning: chat=%s qidx=%d chosen=%s correct=%s ok=%s",
-                 chat, qidx, chosen_txt, q["correct"], ok)
+    logger.debug("Learning: answer chat=%s idx=%d chosen=%s ok=%s", chat, qidx, chosen_txt, ok)
 
     bot = Bot.get_current()
     await _delete_nav(bot, chat)
-
     if ok:
         st.correct += 1
         await bot.send_message(chat, "✅ Верно!")
@@ -267,74 +270,158 @@ async def poll_answer_handler(ans: PollAnswer) -> None:
         )
         lnav_msgs[chat] = msg.message_id
 
-# ───────────────────────── nav buttons ───────────────────────
-async def nav_callback(cb: types.CallbackQuery, bot: Bot) -> None:
+
+# ────────────────────────── settings handlers ──────────────────────────────
+async def _update_user_setting(chat: int, field: str, value: int):
+    """Обновляем поле в БД (7 – test_words, 8 – memorize_words)."""
+    try:
+        if field == "test":
+            crud.set_test_words(chat, value)
+        else:
+            crud.set_memorize_words(chat, value)
+        logger.info("Learning: update %s_words → %d (chat=%s)", field, value, chat)
+    except AttributeError:
+        idx = 7 if field == "test" else 8
+        crud.update_user_field(chat, idx, value)
+        logger.info("Learning: fallback update field idx=%d value=%d", idx, value)
+    except Exception as e:
+        logger.error("Learning: cannot update setting (%s_words=%d) – %s", field, value, e)
+        raise
+
+
+async def handle_learning_settings(cb: types.CallbackQuery, bot: Bot):
     chat = cb.from_user.id
-    _, cmd = cb.data.split(":", 1)
-    await _delete_nav(bot, chat)
+    data = cb.data
+    user = crud.get_user(chat)
+    if not user:
+        return await cb.answer("Профиль не найден", show_alert=True)
 
-    if cmd == "back":
-        states.pop(chat, None)
-        await bot.send_message(chat, "Возврат в главное меню.", reply_markup=main_menu_keyboard())
-        return await cb.answer()
+    # --- Кнопка «Назад» из подменю настроек
+    if data == "learning:back":
+        return await cb.message.edit_text(
+            "📚 Выберите режим обучения:", reply_markup=learning_menu_keyboard()
+        )
 
-    st = states.get(chat)
-    if not st:
-        return await cb.answer("Сессия неактивна.", show_alert=True)
+    # --- открываем подменю «Настройки обучения»
+    if data == "learning:settings":
+        return await cb.message.edit_text(
+            "⚙️ Настройки обучения:", reply_markup=learning_settings_keyboard()
+        )
 
-    if cmd == "skip":
-        if st.current not in st.answered:
-            st.answered.add(st.current)
-        st.current += 1
-        await _send_question(chat, bot)
-        return await cb.answer()
+    # --- открываем выбор чисел
+    if data == "learning:test_settings":
+        cur = _get_user_val(user, 7, 5)
+        kb = _number_keyboard("set_test_words:", cur)
+        return await cb.message.edit_text("🔢 Сколько слов задать в тесте?", reply_markup=kb)
 
-# ───────────────────────── start helpers ─────────────────────
+    if data == "learning:memorize_settings":
+        cur = _get_user_val(user, 8, 5)
+        kb = _number_keyboard("set_memorize_words:", cur)
+        return await cb.message.edit_text("🔢 Сколько слов задать в заучивании?", reply_markup=kb)
+
+    # --- выбор конкретного числа
+    if data.startswith("set_test_words:"):
+        val = int(data.split(":")[1])
+        await _update_user_setting(chat, "test", val)
+        await cb.answer(f"Сохранено: {val} слов в тесте")
+        # Вернуться в меню настроек
+        return await handle_learning_settings(cb, bot)
+
+    if data.startswith("set_memorize_words:"):
+        val = int(data.split(":")[1])
+        await _update_user_setting(chat, "mem", val)
+        await cb.answer(f"Сохранено: {val} слов в заучивании")
+        return await handle_learning_settings(cb, bot)
+
+    # неизвестный коллбек – не страшно
+    logger.warning("Learning settings: unhandled %s", data)
+    await cb.answer()
+
+
+# ────────────────────────── start learning modes ───────────────────────────
 async def _start(cb: types.CallbackQuery, bot: Bot, builder):
     chat = cb.from_user.id
     user = crud.get_user(chat)
     if not user:
         return await cb.answer("Профиль не найден.", show_alert=True)
-
-    questions = builder(chat, user)
-    if not questions:
+    qs = builder(chat, user)
+    if not qs:
         return await cb.answer("Нет данных для теста.", show_alert=True)
-
     prefix = "dtest" if builder is build_dict_test else "mtest"
-    states[chat] = LearningState(questions=questions, prefix=prefix)
-    logger.debug("Learning: new session chat=%s prefix=%s qs=%d", chat, prefix, len(questions))
-
+    states[chat] = LearningState(qs, prefix)
+    logger.debug("Learning: new session chat=%s prefix=%s qs=%d", chat, prefix, len(qs))
     await cb.answer()
     await _send_question(chat, bot)
 
-# ───────────────────────── registration ──────────────────────
-def register_learning_handlers(dp: Dispatcher, bot: Bot | None = None) -> None:
 
-    # 1) ответ на poll  ▼   обрабатываем ТОЛЬКО если poll-id в таблице
+# ────────────────────────── registration ───────────────────────────────────
+def register_learning_handlers(dp: Dispatcher, bot: Bot | None = None):
+    # ответы на Quiz-poll
     dp.register_poll_answer_handler(
-        poll_answer_handler,
-        lambda ans: str(ans.poll_id) in lpoll2user,
+        poll_answer_handler, lambda a: str(a.poll_id) in lpoll2user
     )
 
-    # 2) запуск двух режимов
+    # запуск режимов
     dp.register_callback_query_handler(
-        lambda cb: asyncio.create_task(_start(cb, bot, build_dict_test)),
-        lambda cb: cb.data == "learning:dictionary_test",
+        lambda c: asyncio.create_task(_start(c, bot, build_dict_test)),
+        lambda c: c.data == "learning:dictionary_test",
     )
     dp.register_callback_query_handler(
-        lambda cb: asyncio.create_task(_start(cb, bot, build_memorize)),
-        lambda cb: cb.data == "learning:memorize_set",
-    )
-
-    # 3) навигация
-    dp.register_callback_query_handler(
-        lambda cb: asyncio.create_task(nav_callback(cb, bot)),
-        lambda cb: cb.data.startswith(("dtest:", "mtest:")),
+        lambda c: asyncio.create_task(_start(c, bot, build_memorize)),
+        lambda c: c.data == "learning:memorize_set",
     )
 
-    # меню «Обучение»
+    # навигация «следующее / закончить» внутри сессии
     dp.register_callback_query_handler(
-        lambda cb: cb.message.edit_text("📚 Выберите режим обучения:",
-                                        reply_markup=learning_menu_keyboard()),
-        lambda cb: cb.data == "menu:learning",
+        lambda c: asyncio.create_task(nav_callback(c, bot)),
+        lambda c: c.data.startswith(("dtest:", "mtest:")),
     )
+
+    # открыть главное меню «Обучение»
+    dp.register_callback_query_handler(
+        lambda c: c.message.edit_text(
+            "📚 Выберите режим обучения:", reply_markup=learning_menu_keyboard()
+        ),
+        lambda c: c.data == "menu:learning",
+    )
+
+    # настройки обучения (включая «Назад»)
+    dp.register_callback_query_handler(
+        lambda c: asyncio.create_task(handle_learning_settings(c, bot)),
+        lambda c: c.data.startswith(
+            (
+                "learning:settings",
+                "learning:test_settings",
+                "learning:memorize_settings",
+                "set_test_words:",
+                "set_memorize_words:",
+                "learning:back",
+            )
+        ),
+    )
+
+    # fallback для логирования нематченных callback из обучающих меню
+    async def _unhandled(cb: types.CallbackQuery):
+        logger.warning("Learning: UNHANDLED callback %s", cb.data)
+        await cb.answer()
+
+    dp.register_callback_query_handler(_unhandled, lambda c: c.data.startswith("learning:"))
+
+
+# ────────────────────────── nav callback (skip/back) ───────────────────────
+async def nav_callback(cb: types.CallbackQuery, bot: Bot):
+    chat = cb.from_user.id
+    prefix, action = cb.data.split(":", 1)
+    st = states.get(chat)
+    if not st or st.prefix != prefix:
+        return await cb.answer()
+
+    if action == "skip":
+        # пропустить вопрос
+        st.current += 1
+        await cb.answer("Вопрос пропущен")
+        await _send_question(chat, bot)
+    elif action == "back":
+        # досрочно завершить
+        await cb.answer("Сессия завершена")
+        await _finish(chat, bot)

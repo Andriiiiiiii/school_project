@@ -1,9 +1,13 @@
 # bot.py
 """
-Запуск Telegram-бота для English Learning.
-Настраивает логи, диспетчер, задачи планировщика и обработку пропущенных уведомлений.
-"""
+Запуск Telegram‑бота (bot.py)
 
+Изменения:
+• добавлен универсальный fallback‑хендлер для callback‑query,
+  который пишет в лог всё, что никак не обработалось — поможет искать проблемы.
+• логи aiogram’а и AsyncIO переведены в DEBUG, чтобы видеть больше внутренней ⁠
+  информации при диагностике.
+"""
 import asyncio
 import logging
 import pickle
@@ -25,33 +29,27 @@ from services.scheduler import start_scheduler
 from utils.helpers import get_daily_words_for_user, daily_words_cache
 from database import crud
 
-# ───────────────────────────────────────────────────────────────
-#   Настройка логирования
-# ───────────────────────────────────────────────────────────────
+# ───────────────────────── логирование ─────────────────────────────
 LOG_DIR = Path("logs")
 LOG_DIR.mkdir(exist_ok=True)
 logging.basicConfig(
-    level=logging.DEBUG,  # можно сменить на INFO
+    level=logging.DEBUG,
     filename=LOG_DIR / "bot.log",
-    format="%(asctime)s - %(levelname)s - %(message)s",
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
 )
+# более подробные логи из aiogram и AsyncIO ‑ помогут при отладке
+for name in ("aiogram", "asyncio"):
+    logging.getLogger(name).setLevel(logging.DEBUG)
+
 logger = logging.getLogger(__name__)
 
-# ───────────────────────────────────────────────────────────────
-#   Файл для хранения времени последнего запуска восстановления
-# ───────────────────────────────────────────────────────────────
+# ───────────────────────── misc helpers (как было) ────────────────
 LAST_RUN_FILE = Path("last_scheduler_run.pickle")
 MAX_BACKFILL_HOURS = 3
 
-# ───────────────────────────────────────────────────────────────
-#   Инициализация бота и диспетчера
-# ───────────────────────────────────────────────────────────────
 bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot)
 
-# ───────────────────────────────────────────────────────────────
-#   Хранилище для флага напоминания квиза
-# ───────────────────────────────────────────────────────────────
 try:
     from utils.helpers import quiz_reminder_sent
 except (ImportError, AttributeError):
@@ -139,33 +137,28 @@ async def _recover_missed_notifications() -> None:
     logger.info("Восстановлено %d уведомлений", recovered)
     _save_last_run(now_srv)
 
-
-async def on_startup(dispatcher: Dispatcher) -> None:
-    # создаём директорию с наборами уровней
+# ───────────────────────── fallback для callback‑query ────────────
+async def _log_unhandled_callback(cb: types.CallbackQuery):
+    """Ловим ВСЕ callback‑query, которые не были перехвачены другими хендлерами."""
+    logger.warning("UNHANDLED callback data: %s", cb.data)
+    await cb.answer()
+    
+# ───────────────────────── on_startup ─────────────────────────────
+async def on_startup(dispatcher: Dispatcher):
     Path(LEVELS_DIR).mkdir(exist_ok=True)
-
-    # запускаем планировщик напоминаний
     start_scheduler(bot, asyncio.get_running_loop())
-
-    # регистрируем команды в меню Telegram
     from handlers.commands import set_commands
     await set_commands(bot)
-
-    # восстанавливаем пропущенные уведомления
     await _recover_missed_notifications()
-
     logger.info("Бот успешно запущен.")
 
-
-# ───────────────────────────────────────────────────────────────
-#   Основной запуск
-# ───────────────────────────────────────────────────────────────
+# ───────────────────────── регистрация хендлеров ─────────────────
 register_handlers(dp, bot)
 
+# fallback‑хендлер на САМОМ ПОСЛЕДНЕМ месте
+dp.register_callback_query_handler(_log_unhandled_callback, lambda _: True)
+
+# ───────────────────────── старт polling ─────────────────────────
 if __name__ == "__main__":
-    executor.start_polling(
-        dp,
-        on_startup=on_startup,
-        skip_updates=True,
-        allowed_updates=types.AllowedUpdates.all(),
-    )
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=True,
+                           allowed_updates=types.AllowedUpdates.all())
