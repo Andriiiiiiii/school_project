@@ -226,12 +226,12 @@ async def _finish(chat: int, bot: Bot):
     if perc < 70:
         txt += "\n\n💡 Повторяйте слова чаще."
     await bot.send_message(chat, txt, parse_mode="Markdown")
-    if perc >= 70:
-        await send_sticker_with_menu(chat, bot, get_congratulation_sticker())
-    else:
-        await bot.send_message(chat, "Тест завершён.", reply_markup=main_menu_keyboard())
-
-
+    
+    # Удаляем отправку стикера
+    # if perc >= 70:
+    #     await send_sticker_with_menu(chat, bot, get_congratulation_sticker())
+    # else:
+    await bot.send_message(chat, "Тест завершён.", reply_markup=main_menu_keyboard())
 # ────────────────────────── poll-answer handler ────────────────────────────
 async def poll_answer_handler(ans: PollAnswer):
     pid = str(ans.poll_id)

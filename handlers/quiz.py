@@ -139,11 +139,12 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     result = format_result_message(correct, total, state["revision"])
     await bot.send_message(chat_id, result, parse_mode="Markdown")
     
-    if correct / total >= 0.7:
-        await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
-    else:
-        from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(chat_id, "Квиз завершён.", reply_markup=main_menu_keyboard())
+    # Удаляем отправку стикера
+    # if correct / total >= 0.7:
+    #     await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    # else:
+    from keyboards.main_menu import main_menu_keyboard
+    await bot.send_message(chat_id, "Квиз завершён.", reply_markup=main_menu_keyboard())
 
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:

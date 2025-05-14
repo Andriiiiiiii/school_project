@@ -51,9 +51,10 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
                 user_set_selection[chat_id] = default_set
                 logger.info("Базовый сет %s назначен пользователю %s", default_set, chat_id)
 
-            sticker_id = get_welcome_sticker()
-            if sticker_id:
-                await bot.send_sticker(chat_id, sticker_id)
+            # Удаляем отправку стикера
+            # sticker_id = get_welcome_sticker()
+            # if sticker_id:
+            #     await bot.send_sticker(chat_id, sticker_id)
 
         # ─── приветственное сообщение + главное меню ───────────────────────
         await message.answer(
@@ -77,7 +78,6 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
             parse_mode="Markdown",
             reply_markup=main_menu_keyboard(),
         )
-
 
 # ──────────────────────── ОСТАЛЬНЫЕ КОМАНДЫ ────────────────────────────────
 async def cmd_mode(message: types.Message) -> None:

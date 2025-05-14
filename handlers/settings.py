@@ -131,13 +131,15 @@ def _reschedule(chat_id: int):
     except Exception:
         pass
 
-def _numeric_keyboard(prefix: str, rng: range, back_cb: str) -> InlineKeyboardMarkup:
+def _numeric_keyboard(prefix: str, rng: range, back_cb: str, current: int = None) -> InlineKeyboardMarkup:
+    """Создает клавиатуру с числами, отмечая текущий выбор галочкой."""
     kb = InlineKeyboardMarkup(row_width=5)
     for n in rng:
-        kb.insert(InlineKeyboardButton(str(n), callback_data=f"{prefix}:{n}"))
+        # Добавляем зеленую галочку к текущему выбранному значению
+        txt = f"{n}{' ✅' if n == current else ''}"
+        kb.insert(InlineKeyboardButton(txt, callback_data=f"{prefix}:{n}"))
     kb.add(InlineKeyboardButton("🔙 Назад", callback_data=back_cb))
     return kb
-
 # ───────────────────────── ОБРАБОТКА ЧИСЛОВОГО ВВОДА ───────────────────────
 async def process_settings_input(message: types.Message, bot: Bot):
     chat_id, txt = message.chat.id, message.text.strip()
@@ -196,22 +198,25 @@ async def process_settings_choice_callback(cb: types.CallbackQuery, bot: Bot):
             reply_markup=notification_settings_menu_keyboard(),
         )
 
+
     elif option == "words":
+        current_words = user[2]  # Текущее количество слов
         await cb.message.edit_text(
-            f"📊 *Количество слов в день*\n\nТекущее: *{user[2]}*",
+            f"📊 *Количество слов в день*\n\nТекущее: *{current_words}*",
             parse_mode="Markdown",
-            reply_markup=_numeric_keyboard("set_words", WORDS_RANGE, "settings:notifications"),
+            reply_markup=_numeric_keyboard("set_words", WORDS_RANGE, "settings:notifications", current=current_words),
         )
 
     elif option == "repetitions":
+        current_reps = user[3]  # Текущее количество повторений
         await cb.message.edit_text(
-            f"🔄 *Количество повторений*\n\nТекущее: *{user[3]}*",
+            f"🔄 *Количество повторений*\n\nТекущее: *{current_reps}*",
             parse_mode="Markdown",
             reply_markup=_numeric_keyboard(
-                "set_repetitions", REPS_RANGE, "settings:notifications"
+                "set_repetitions", REPS_RANGE, "settings:notifications", current=current_reps
             ),
         )
-
+        
     elif option == "timezone":
         kb = InlineKeyboardMarkup(row_width=3)
         for off in range(2, 13):
@@ -272,12 +277,12 @@ async def process_set_timezone_callback(cb: types.CallbackQuery, bot: Bot):
 
 # ─────────────────────────────── УРОВЕНЬ ───────────────────────────────────
 async def process_set_level_callback(cb: types.CallbackQuery, bot: Bot):
+    """Устанавливает новый уровень для пользователя без сброса кэша слов дня."""
     _, level = cb.data.split(":", 1)
     crud.update_user_level(cb.from_user.id, level)
-    reset_daily_words_cache(cb.from_user.id)
+    # Удаляем строку с reset_daily_words_cache, чтобы не сбрасывать кэш
     await cb.message.edit_text(f"🔤 Уровень изменён на {level}.", reply_markup=settings_menu_keyboard())
     await cb.answer()
-
 # ─────────────────────────── МОИ СЕТЫ (СПИСОК) ────────────────────────────
 async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     chat_id = cb.from_user.id
@@ -369,7 +374,8 @@ async def handle_set_change_confirmed_by_index(
     await cb.message.edit_text(
         _shorten(intro, content), parse_mode="Markdown", reply_markup=settings_menu_keyboard()
     )
-    await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    # Удаляем отправку стикера
+    # await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
     await cb.answer()
 
 async def handle_set_change_cancelled(cb: types.CallbackQuery, bot: Bot):

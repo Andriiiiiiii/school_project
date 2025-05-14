@@ -58,8 +58,8 @@ async def clear_dictionary(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
     try:
         crud.clear_learned_words_for_user(chat_id)
-        # Стикер + меню
-        await send_sticker_with_menu(chat_id, bot, get_clean_sticker())
+        # Удаляем отправку стикера
+        # await send_sticker_with_menu(chat_id, bot, get_clean_sticker())
         await bot.send_message(
             chat_id,
             "Словарь успешно очищен.",
@@ -74,7 +74,6 @@ async def clear_dictionary(callback: types.CallbackQuery, bot: Bot):
             reply_markup=dictionary_menu_keyboard()
         )
     await callback.answer()
-
 
 async def cancel_clear(callback: types.CallbackQuery, bot: Bot):
     """Отменяет очистку и возвращает к просмотру словаря."""

@@ -176,12 +176,15 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         
         # Принудительный сброс кэша если запрошено
         if force_reset:
-            reset_daily_words_cache(chat_id)
+            if chat_id in daily_words_cache:
+                logger.info(f"Force reset daily words cache for user {chat_id}")
+                del daily_words_cache[chat_id]
             if chat_id in previous_daily_words:
+                logger.info(f"Force reset previous daily words for user {chat_id}")
                 del previous_daily_words[chat_id]
         
         # Проверка кэша - возвращаем если данные актуальны
-        if chat_id in daily_words_cache:
+        if chat_id in daily_words_cache and not force_reset:
             cached = daily_words_cache[chat_id]
             if (cached[0] == today and cached[3] == first_time and 
                 cached[4] == duration_hours and cached[5] == words_count and cached[6] == repetitions):
