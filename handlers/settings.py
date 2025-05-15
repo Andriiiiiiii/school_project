@@ -176,7 +176,10 @@ async def process_settings_input(message: types.Message, bot: Bot):
 
 # ───────────────────────────── МЕНЮ НАСТРОЕК ───────────────────────────────
 async def show_settings_callback(cb: types.CallbackQuery, bot: Bot):
-    await cb.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())
+    await cb.message.edit_text(
+        "🏠 Персонализация:\n\nВыберите раздел для настройки:",
+        reply_markup=settings_menu_keyboard()
+    )
     await cb.answer()
 
 async def process_settings_choice_callback(cb: types.CallbackQuery, bot: Bot):

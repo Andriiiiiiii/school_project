@@ -148,7 +148,7 @@ async def on_startup(dispatcher: Dispatcher):
     Path(LEVELS_DIR).mkdir(exist_ok=True)
     start_scheduler(bot, asyncio.get_running_loop())
     from handlers.commands import set_commands
-    await set_commands(bot)
+    await set_commands(bot)  # Устанавливаем команды и кнопку меню при запуске
     await _recover_missed_notifications()
     logger.info("Бот успешно запущен.")
 

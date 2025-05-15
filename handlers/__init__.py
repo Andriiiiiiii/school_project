@@ -13,15 +13,19 @@ from .dictionary import register_dictionary_handlers
 from .settings import register_settings_handlers
 from .help import register_help_handlers
 from .back import handle_back
-
+from .onboarding import register_onboarding_handlers
 
 def register_handlers(dp: Dispatcher, bot: Bot) -> None:
     """
     Регистрирует все обработчики в нужном порядке:
+      0. Онбординг новых пользователей
       1. Poll-квизы и обучение
       2. Основные разделы
       3. Навигация «Назад» и тест уровня
     """
+    # 0. Онбординг для новых пользователей
+    register_onboarding_handlers(dp, bot)
+    
     # 1. Poll-квизы и режим «Обучение» (включая тест по словарю)
     register_quiz_handlers(dp, bot)
     register_learning_handlers(dp, bot)

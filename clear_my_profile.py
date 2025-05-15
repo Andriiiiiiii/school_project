@@ -20,5 +20,5 @@ def clear_my_profile(chat_id):
 
 if __name__ == '__main__':
     # Замените YOUR_CHAT_ID на ваш фактический chat_id (число)
-    my_chat_id = 380675615
+    my_chat_id = 1999873173
     clear_my_profile(my_chat_id)

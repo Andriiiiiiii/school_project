@@ -299,7 +299,7 @@ async def handle_learning_settings(cb: types.CallbackQuery, bot: Bot):
     # --- Кнопка «Назад» из подменю настроек
     if data == "learning:back":
         return await cb.message.edit_text(
-            "📚 Выберите режим обучения:", reply_markup=learning_menu_keyboard()
+            "🏋️ Выберите режим практики:", reply_markup=learning_menu_keyboard()
         )
 
     # --- открываем подменю «Настройки обучения»
