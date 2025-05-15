@@ -72,9 +72,9 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
         await message.answer(
             "👋 *Добро пожаловать в English Learning Bot!*\n\n"
             "• Ежедневные наборы слов\n"
-            "• Квизы для закрепления\n"
+            "• Тест для закрепления\n"
             "• Персональный словарь\n"
-            "• Тестирование уровня\n\n"
+            "• Практика набора и словаря\n\n"
             "Выберите действие:",
             parse_mode="Markdown",
             reply_markup=main_menu_keyboard(),
@@ -230,7 +230,7 @@ async def cmd_quiz(message: types.Message, bot: Bot) -> None:
     from handlers.quiz import _send_question
     await _send_question(chat_id, bot)
     
-    await message.answer("Квиз запущен! Отвечайте на вопросы в опросах выше.")
+    await message.answer("Тест дня запущен! Отвечайте на вопросы в опросах выше.")
 
 async def cmd_dictionary(message: types.Message, bot: Bot) -> None:
     """Показывает словарь пользователя."""

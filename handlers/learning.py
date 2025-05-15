@@ -221,7 +221,7 @@ async def _finish(chat: int, bot: Bot):
     total = len(st.questions)
     perc = st.correct / total * 100 if total else 0
     bar = format_progress_bar(st.correct, total, 20)
-    title = "📚 Тест по словарю завершён!" if st.prefix == "dtest" else "📝 Заучивание сета завершено!"
+    title = "📚 Тест по словарю завершён!" if st.prefix == "dtest" else "📝 Заучивание набора завершено!"
     txt = f"{title}\n\n*Счёт:* {st.correct}/{total} ({perc:.1f} %)\n{bar}"
     if perc < 70:
         txt += "\n\n💡 Повторяйте слова чаще."

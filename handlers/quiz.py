@@ -144,7 +144,7 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     #     await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
     # else:
     from keyboards.main_menu import main_menu_keyboard
-    await bot.send_message(chat_id, "Квиз завершён.", reply_markup=main_menu_keyboard())
+    await bot.send_message(chat_id, "Тест завершён.", reply_markup=main_menu_keyboard())
 
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
@@ -184,7 +184,7 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
     )
     entry = daily_words_cache.get(chat_id)
     if not entry:
-        await bot.send_message(chat_id, "⚠️ Нет слов для квиза.")
+        await bot.send_message(chat_id, "⚠️ Нет слов для теста.")
         await cb.answer()
         return
 
@@ -319,7 +319,7 @@ async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
         # Завершаем квиз и возвращаемся в главное меню
         quiz_states.pop(chat_id, None)
         from keyboards.main_menu import main_menu_keyboard
-        await bot.send_message(chat_id, "Квиз завершен.", reply_markup=main_menu_keyboard())
+        await bot.send_message(chat_id, "Тест завершен.", reply_markup=main_menu_keyboard())
         await cb.answer()
         return
 

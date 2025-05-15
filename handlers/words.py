@@ -66,10 +66,10 @@ async def _send_daily_words(
         default_set = DEFAULT_SETS.get(level, "")
         text = (
             "⚠️ *Внимание!*\n\n"
-            f"Текущий сет: *{chosen_set}*\n"
+            f"Текущий набор: *{chosen_set}*\n"
             f"Текущий уровень: *{level}*\n\n"
-            f"Вы выбрали уровень не соответствующий текущему сету.\n"
-            f"Сменить сет на базовый *{default_set}* для текущего уровня?\n"
+            f"Вы выбрали уровень не соответствующий текущему набору.\n"
+            f"Сменить набор на базовый *{default_set}* для текущего уровня?\n"
         )
         await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=_confirm_keyboard(default_set))
         await cb.answer()
@@ -96,10 +96,10 @@ async def _send_daily_words(
         default_set: str = result[2]
         current_set = crud.get_user(chat_id)[6] or "не выбран"
         text = (
-            "⚠️ *Внимание! Смена сета сбросит прогресс.*\n\n"
-            f"Текущий сет: *{current_set}*\n"
+            "⚠️ *Внимание! Смена набора сбросит прогресс.*\n\n"
+            f"Текущий набор: *{current_set}*\n"
             f"Текущий уровень: *{level}*\n\n"
-            f"Сет не соответствует уровню.\n"
+            f"Набор не соответствует уровню.\n"
             f"Сменить на базовый *{default_set}*?\n"
         )
         await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=_confirm_keyboard(default_set))
@@ -181,11 +181,11 @@ async def handle_confirm_set_change(cb: types.CallbackQuery, bot: Bot) -> None:
             parse_mode="Markdown",
             reply_markup=words_day_keyboard(),
         )
-        await cb.answer("Сет успешно обновлен!")
+        await cb.answer("Набор успешно обновлен!")
 
     except Exception as exc:
         logger.exception("Ошибка смены сета: %s", exc)
-        await cb.message.edit_text("❌ Ошибка смены сета. Попробуйте позже.", reply_markup=words_day_keyboard())
+        await cb.message.edit_text("❌ Ошибка смены набора. Попробуйте позже.", reply_markup=words_day_keyboard())
         await cb.answer()
 
 # ──────────────────────────── РЕГИСТРАЦИЯ ─────────────────────────────────

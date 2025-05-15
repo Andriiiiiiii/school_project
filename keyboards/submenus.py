@@ -88,7 +88,7 @@ def learning_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
         InlineKeyboardButton("📚 Тест по словарю", callback_data="learning:dictionary_test"),
-        InlineKeyboardButton("📝 Заучивание сета", callback_data="learning:memorize_set")
+        InlineKeyboardButton("📝 Тест по набору", callback_data="learning:memorize_set")
     )
     keyboard.add(
         InlineKeyboardButton("⚙️ Настройки обучения", callback_data="learning:settings"),
