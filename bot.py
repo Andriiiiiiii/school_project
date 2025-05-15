@@ -3,10 +3,9 @@
 Запуск Telegram‑бота (bot.py)
 
 Изменения:
-• добавлен универсальный fallback‑хендлер для callback‑query,
-  который пишет в лог всё, что никак не обработалось — поможет искать проблемы.
-• логи aiogram’а и AsyncIO переведены в DEBUG, чтобы видеть больше внутренней ⁠
-  информации при диагностике.
+- добавлен универсальный fallback‑хендлер для callback‑query,
+  который пишет в лог всё, что никак не обработалось — поможет искать проблемы.
+- логи оптимизированы для минимальной загрузки файла логов
 """
 import asyncio
 import logging
@@ -33,15 +32,17 @@ from database import crud
 LOG_DIR = Path("logs")
 LOG_DIR.mkdir(exist_ok=True)
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.WARNING,  # Изменено с DEBUG на WARNING
     filename=LOG_DIR / "bot.log",
     format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
 )
-# более подробные логи из aiogram и AsyncIO ‑ помогут при отладке
+# Уменьшаем подробность логов для внешних библиотек
 for name in ("aiogram", "asyncio"):
-    logging.getLogger(name).setLevel(logging.DEBUG)
+    logging.getLogger(name).setLevel(logging.ERROR)  # Изменено с DEBUG на ERROR
 
 logger = logging.getLogger(__name__)
+# Устанавливаем уровень для основного логгера приложения
+logger.setLevel(logging.INFO)  # Важные сообщения, но не слишком подробно
 
 # ───────────────────────── misc helpers (как было) ────────────────
 LAST_RUN_FILE = Path("last_scheduler_run.pickle")
@@ -162,3 +163,6 @@ dp.register_callback_query_handler(_log_unhandled_callback, lambda _: True)
 if __name__ == "__main__":
     executor.start_polling(dp, on_startup=on_startup, skip_updates=True,
                            allowed_updates=types.AllowedUpdates.all())
+
+# Add this at the end of bot.py
+save_last_run_time = _save_last_run  # Alias for the scheduler to use
