@@ -6,33 +6,52 @@ from database import crud
 
 logger = logging.getLogger(__name__)
 
-async def cmd_start(message: types.Message):
-    """
-    Обработчик команды /start.
-    Создает новую запись для пользователя в базе данных, если его еще нет.
-    """
+# Обновленная функция cmd_start из handlers/commands.py
+
+async def cmd_start(message: types.Message, bot: Bot) -> None:
     chat_id = message.chat.id
-    logger.info(f"Received /start from chat_id: {chat_id}")
-    
+    logger.info("Команда /start от chat_id=%s", chat_id)
+
     try:
-        # Проверяем существует ли пользователь
-        user = crud.get_user(chat_id)
-        if not user:
-            # Если нет - создаем запись
-            crud.add_user(chat_id)
-            logger.info(f"Added new user with chat_id {chat_id}")
-        else:
-            logger.info(f"User {chat_id} already exists")
+        # Явно устанавливаем кнопку меню команд для этого конкретного чата
+        await bot.set_chat_menu_button(chat_id=chat_id, menu_button=MenuButtonCommands())
         
-        # Отправляем приветственное сообщение
+        # ─── регистрация нового пользователя ───────────────────────────────
+        if not crud.get_user(chat_id):
+            crud.add_user(chat_id)
+            logger.info("Создан новый пользователь %s", chat_id)
+
+            default_set = DEFAULT_SETS.get("A1")
+            if default_set:
+                crud.update_user_chosen_set(chat_id, default_set)
+                from handlers.settings import user_set_selection
+
+                user_set_selection[chat_id] = default_set
+                logger.info("Базовый сет %s назначен пользователю %s", default_set, chat_id)
+
+            # Начинаем процесс онбординга для нового пользователя
+            from handlers.onboarding import start_onboarding
+            await start_onboarding(message, bot)
+            return
+
+        # ─── приветственное сообщение + главное меню ───────────────────────
         await message.answer(
-            "Добро пожаловать в English Learning Bot!\n\nВыберите действие:",
-            reply_markup=main_menu_keyboard()
+            "👋 *Добро пожаловать обратно!*\n\n"
+            "🎯 *Как работает бот:*\n"
+            "1️⃣ Каждый день вы получаете новые слова из выбранной темы\n"
+            "2️⃣ Слова приходят в течение дня как уведомления\n" 
+            "3️⃣ Проходите тест дня → выученные слова сохраняются в словарь\n"
+            "4️⃣ Невыученные слова повторятся завтра\n\n"
+            "📚 *Набор слов* — это готовая тема с английскими словами (например: «Базовый A1», «Путешествия B1»)\n\n"
+            "Готовы продолжить изучение?",
+            parse_mode="Markdown",
+            reply_markup=main_menu_keyboard(),
         )
-    except Exception as e:
-        logger.error(f"Error in cmd_start for chat_id {chat_id}: {e}")
-        # В случае ошибки все равно пытаемся отправить меню
+
+    except Exception as exc:  # fallback
+        logger.exception("Ошибка в cmd_start: %s", exc)
         await message.answer(
-            "Произошла ошибка при инициализации профиля. Пожалуйста, повторите попытку позже.\n\nВыберите действие:",
-            reply_markup=main_menu_keyboard()
+            "👋 *Добро пожаловать!*\n\nВыберите действие:",
+            parse_mode="Markdown",
+            reply_markup=main_menu_keyboard(),
         )

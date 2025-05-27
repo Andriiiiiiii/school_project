@@ -168,9 +168,24 @@ def extract_english(word_line: str) -> str:
         logger.error(f"Ошибка при извлечении английского слова из '{word_line}': {e}")
         return word_line.strip() if isinstance(word_line, str) else ""
 
-def format_daily_words_message(messages: List[str], times: List[str]) -> str:
-    """Форматирует сообщение со словами дня с улучшенным визуальным представлением."""
+def format_daily_words_message(messages: List[str], times: List[str], chosen_set: str = None, total_words: int = None) -> str:
+    """
+    Форматирует сообщение со словами дня с улучшенным визуальным представлением.
+    
+    Args:
+        messages: Список сообщений со словами
+        times: Список времен отправки
+        chosen_set: Название выбранного набора слов (опционально)
+        total_words: Общее количество слов в наборе (опционально)
+    """
     header = "📚 Словарь на сегодня"
+    
+    # Добавляем информацию о наборе слов, если она доступна
+    if chosen_set:
+        if total_words:
+            header += f"\nИз набора: *«{chosen_set}»* (~{total_words} слов)"
+        else:
+            header += f"\nИз набора: *«{chosen_set}»*"
     
     result = f"{header}\n\n"
     
@@ -318,3 +333,70 @@ def format_result_message(correct: int, total: int, is_revision: bool = False) -
             message += "💡 *Совет:* Попробуйте квиз снова завтра, чтобы освоить слова, которые вы пропустили."
             
     return message
+
+def truncate_daily_words_message(formatted_message: str, unique_words: List[str], 
+                                 words_count: int, repetitions: int,
+                                 chosen_set: str = None, total_words: int = None) -> str:
+    """
+    Обрезает сообщение со словами дня, если оно слишком длинное для Telegram.
+    
+    Args:
+        formatted_message: Полное отформатированное сообщение
+        unique_words: Список уникальных слов на сегодня
+        words_count: Количество слов в день
+        repetitions: Количество повторений
+        chosen_set: Название набора слов
+        total_words: Общее количество слов в наборе
+        
+    Returns:
+        Обрезанное сообщение, если необходимо, или оригинальное
+    """
+    # Telegram имеет лимит в 4096 символов
+    if len(formatted_message) <= 4000:  # Оставляем запас
+        return formatted_message
+    
+    # Создаем заголовок
+    header = "📚 Словарь на сегодня"
+    if chosen_set:
+        header += f"\nИз набора: *«{chosen_set}»*"
+        if total_words:
+            header += f" (~{total_words} слов)"
+    header += "\n\n"
+    
+    # Определяем, есть ли специальный префикс (режим повторения или предупреждение)
+    prefix_msg = ""
+    clean_words = unique_words
+    if unique_words and (unique_words[0].startswith("🎓") or unique_words[0].startswith("⚠️")):
+        prefix_msg = unique_words[0] + "\n\n"
+        clean_words = unique_words[1:]
+    
+    # Очищаем слова от символов
+    words_list = []
+    for word in clean_words:
+        clean_word = word.replace("🔹 ", "").strip()
+        if clean_word and not (clean_word.startswith("🎓") or clean_word.startswith("⚠️")):
+            words_list.append(f"• {clean_word}")
+    
+    # Определяем максимальное количество слов для показа
+    max_words = 15
+    show_words = words_list[:max_words]
+    
+    # Формируем сокращенное сообщение
+    shortened_message = header + prefix_msg
+    
+    if len(words_list) > max_words:
+        shortened_message += f"*Первые {max_words} из {len(words_list)} слов на сегодня:*\n\n"
+        shortened_message += "\n".join(show_words)
+        shortened_message += f"\n\n...и еще {len(words_list) - max_words} слов"
+    else:
+        shortened_message += f"*Сегодняшние слова ({len(words_list)} уникальных):*\n\n"
+        shortened_message += "\n".join(show_words)
+    
+    # Добавляем примечание о расписании
+    shortened_message += (
+        f"\n\n⚠️ *Примечание:* Из-за большого количества повторений ({repetitions}×) "
+        f"полное расписание не может быть показано. "
+        f"Все слова будут приходить в уведомлениях в течение дня."
+    )
+    
+    return shortened_message

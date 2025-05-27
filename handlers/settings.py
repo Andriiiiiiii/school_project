@@ -74,18 +74,44 @@ def _first_n_words(path: Path, n: int = 30) -> str:
         preview += "\n…"
     return preview or "Файл пуст."
 
-def _shorten(intro: str, body: str) -> str:
+def _shorten(intro: str, body: str, max_length: int = 3800) -> str:
     """Обрезает `body`, чтобы сообщение < 4096 симв."""
-    if len(intro) + len(body) <= MAX_TG_MSG:
+    # Проверяем общую длину
+    total_length = len(intro) + len(body)
+    
+    if total_length <= max_length:
         return intro + body
-    out, length = [], 0
-    for ln in body.splitlines():
-        if len(intro) + length + len(ln) + 100 >= MAX_TG_MSG:
+        
+    # Вычисляем доступное место для body
+    available_for_body = max_length - len(intro) - 100  # запас для сообщения об обрезке
+    
+    if available_for_body <= 0:
+        # Если даже intro слишком длинное
+        return intro[:max_length - 50] + "\n\n⚠️ *Сообщение обрезано*"
+    
+    # Обрезаем body по строкам
+    lines = body.splitlines()
+    result_lines = []
+    current_length = 0
+    
+    for line in lines:
+        if current_length + len(line) + 1 > available_for_body:
             break
-        out.append(ln)
-        length += len(ln) + 1
-    skipped = len(body.splitlines()) - len(out)
-    return intro + "\n".join(out) + f"\n\n…и ещё {skipped} слов(а)."
+        result_lines.append(line)
+        current_length += len(line) + 1
+    
+    # Подсчитываем сколько слов не показано
+    shown_count = len(result_lines)
+    total_count = len(lines)
+    skipped = total_count - shown_count
+    
+    result = intro + "\n".join(result_lines)
+    
+    if skipped > 0:
+        result += f"\n\n...и ещё {skipped} слов(а)."
+        result += "\n\n⚠️ *Примечание:* Показаны не все слова из-за ограничений Telegram."
+    
+    return result
 
 def _is_valid_tz(name: str) -> bool:
     try:
@@ -287,6 +313,7 @@ async def process_set_level_callback(cb: types.CallbackQuery, bot: Bot):
     await cb.message.edit_text(f"🔤 Уровень изменён на {level}.", reply_markup=settings_menu_keyboard())
     await cb.answer()
 # ─────────────────────────── МОИ СЕТЫ (СПИСОК) ────────────────────────────
+
 async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     chat_id = cb.from_user.id
     level = crud.get_user(chat_id)[1]
@@ -307,11 +334,31 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     for idx, name in enumerate(set_files, 1):
         key = f"{chat_id}_{idx}"
         set_index_cache[key] = name
+        
+        # Подсчитываем количество слов в каждом наборе
+        try:
+            set_path = level_dir / f"{name}.txt"
+            with open(set_path, 'r', encoding='utf-8') as f:
+                word_count = len([line for line in f if line.strip()])
+            button_text = f"{name} (~{word_count} слов)"
+        except Exception as e:
+            logger.error(f"Ошибка при подсчете слов в {name}: {e}")
+            button_text = name
+        
+        # Добавляем отметку если это текущий набор
+        if current and current == name:
+            button_text += " ✅"
+        
         cb_name = "confirm_idx" if current and current != name else "set_idx"
-        kb.add(InlineKeyboardButton(name, callback_data=f"{cb_name}:{idx}"))
+        kb.add(InlineKeyboardButton(button_text, callback_data=f"{cb_name}:{idx}"))
 
     kb.add(InlineKeyboardButton("🔙 Назад", callback_data="menu:settings"))
-    text = f"Текущий сет: *{current or 'не выбран'}*\n\nДоступные сеты:"
+    
+    text = f"📚 *Наборы слов для уровня {level}*\n\n"
+    if current:
+        text += f"Текущий набор: *{current}*\n\n"
+    text += "Выберите набор для изучения:"
+    
     await bot.send_message(chat_id, text, parse_mode="Markdown", reply_markup=kb)
 
 # ────────────────────────── ВЫБОР / СМЕНА СЕТА ────────────────────────────
@@ -335,6 +382,14 @@ async def _choose_set(cb: types.CallbackQuery, idx: int, *, confirm: bool):
         level = crud.get_user(cb.from_user.id)[1]
         preview_path = Path(LEVELS_DIR) / level / f"{set_name}.txt"
         preview_text = _first_n_words(preview_path)
+        
+        # Подсчитываем общее количество слов
+        total_words = 50  # значение по умолчанию
+        try:
+            with open(preview_path, 'r', encoding='utf-8') as f:
+                total_words = len([line for line in f if line.strip()])
+        except Exception as e:
+            logger.error(f"Ошибка при подсчете слов: {e}")
 
         kb = InlineKeyboardMarkup(row_width=2)
         kb.add(
@@ -342,9 +397,11 @@ async def _choose_set(cb: types.CallbackQuery, idx: int, *, confirm: bool):
             InlineKeyboardButton("❌ Нет", callback_data="set_change_cancel"),
         )
         await cb.message.edit_text(
-            f"⚠️ Смена сета сбросит прогресс.\n\n"
-            f"Новый сет: *{set_name}*\n\n"
-            f"Первые 30 слов:\n{preview_text}",
+            f"⚠️ *Внимание!* Смена набора сбросит весь ваш прогресс.\n\n"
+            f"Новый набор: *«{set_name}»*\n"
+            f"Всего слов в наборе: *{total_words}*\n\n"
+            f"Первые 30 слов:\n{preview_text}\n\n"
+            f"Вы уверены, что хотите сменить набор?",
             parse_mode="Markdown",
             reply_markup=kb,
         )
@@ -371,14 +428,26 @@ async def handle_set_change_confirmed_by_index(
     reset_daily_words_cache(chat_id)
 
     level = crud.get_user(chat_id)[1]
-    content = _read_file(Path(LEVELS_DIR) / level / f"{set_name}.txt")
+    set_path = Path(LEVELS_DIR) / level / f"{set_name}.txt"
+    content = _read_file(set_path)
+    
+    # Подсчитываем количество слов
+    word_count = len([line for line in content.splitlines() if line.strip()])
 
-    intro = f"✅ Выбран сет «{set_name}» для уровня {level}.\n⚠️ Словарь очищен.\n\n"
-    await cb.message.edit_text(
-        _shorten(intro, content), parse_mode="Markdown", reply_markup=settings_menu_keyboard()
+    intro = (
+        f"✅ *Набор успешно изменен!*\n\n"
+        f"📚 Выбран набор: *«{set_name}»*\n"
+        f"🔤 Уровень: *{level}*\n"
+        f"📊 Всего слов в наборе: *{word_count}*\n"
+        f"⚠️ Ваш словарь был очищен.\n\n"
+        f"Полный список слов из набора:\n\n"
     )
-    # Удаляем отправку стикера
-    # await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
+    
+    await cb.message.edit_text(
+        _shorten(intro, content), 
+        parse_mode="Markdown", 
+        reply_markup=settings_menu_keyboard()
+    )
     await cb.answer()
 
 async def handle_set_change_cancelled(cb: types.CallbackQuery, bot: Bot):
@@ -402,24 +471,47 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
         f"📊 *Слов/день:* {words}\n"
         f"🔄 *Повторений:* {reps}\n"
         f"🌐 *Часовой пояс:* {tz}\n"
-        f"📚 *Набор:* {chosen}\n"
     )
 
-    learned = crud.get_learned_words(chat_id)
-    text += f"\n📝 *Выучено слов:* {len(learned)}\n"
-
+    # Добавляем информацию о наборе с количеством слов
     if chosen != "не выбран":
         set_path = Path(LEVELS_DIR) / level / f"{chosen}.txt"
         if set_path.exists():
-            set_words = [
-                extract_english(w).lower()
-                for w in _read_file(set_path).splitlines()
-                if w.strip()
-            ]
-            learnt_en = {extract_english(w[0]).lower() for w in learned}
-            done = sum(1 for w in set_words if w in learnt_en)
-            bar = format_progress_bar(done, len(set_words), 10)
-            text += f"\n📈 Прогресс: {done}/{len(set_words)}\n{bar}\n"
+            try:
+                set_words = [
+                    extract_english(w).lower()
+                    for w in _read_file(set_path).splitlines()
+                    if w.strip()
+                ]
+                total_words = len(set_words)
+                learnt_en = {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}
+                done = sum(1 for w in set_words if w in learnt_en)
+                
+                text += f"📚 *Набор:* {chosen} ({total_words} слов)\n"
+                text += f"\n📝 *Выучено слов:* {done} из {total_words}\n"
+                
+                bar = format_progress_bar(done, total_words, 10)
+                text += f"\n📈 Прогресс:\n{bar}\n"
+                
+                # Добавляем информацию о том, сколько осталось выучить
+                remaining = total_words - done
+                if remaining > 0:
+                    days_to_complete = (remaining + words - 1) // words  # округление вверх
+                    text += f"\n⏳ *Осталось выучить:* {remaining} слов (~{days_to_complete} дней)"
+                else:
+                    text += f"\n🎉 *Поздравляем!* Вы выучили весь набор!"
+            except Exception as e:
+                logger.error(f"Ошибка при чтении набора: {e}")
+                text += f"📚 *Набор:* {chosen}\n"
+                text += f"\n📝 *Выучено слов:* {len(crud.get_learned_words(chat_id))}\n"
+        else:
+            text += f"📚 *Набор:* {chosen} (файл не найден)\n"
+            text += f"\n📝 *Выучено слов:* {len(crud.get_learned_words(chat_id))}\n"
+    else:
+        text += f"📚 *Набор:* не выбран\n"
+        learned = crud.get_learned_words(chat_id)
+        if learned:
+            text += f"\n📝 *Выучено слов:* {len(learned)}\n"
 
     await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
     await cb.answer()

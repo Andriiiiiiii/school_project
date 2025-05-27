@@ -373,15 +373,31 @@ def process_user(user, now_server, bot, loop):
         if now_local_str in times:
             notif_index = times.index(now_local_str)
             message_text = messages[notif_index] if notif_index < len(messages) else "(нет слов)"
+            
+            # Получаем информацию о наборе слов
+            try:
+                user_data = crud.get_user(chat_id)
+                chosen_set = user_data[6] if user_data and len(user_data) > 6 else None
+                
+                # Формируем заголовок с информацией о наборе
+                notification_header = "📌 Слова дня"
+                if chosen_set:
+                    notification_header += f" из набора «{chosen_set}»"
+                notification_header += ":\n"
+                
+                full_message = notification_header + message_text
+            except Exception as e:
+                logger.error(f"Error getting set info for notification: {e}")
+                full_message = f"📌 Слова дня:\n{message_text}"
+            
             try:
                 asyncio.run_coroutine_threadsafe(
-                    bot.send_message(chat_id, f"📌 Слова дня:\n{message_text}"),
+                    bot.send_message(chat_id, full_message),
                     loop
                 )
                 logger.info(f"Sent notification to user {chat_id} at {now_local_str}")
             except Exception as e:
                 logger.error(f"Error sending notification to user {chat_id}: {e}")
-        
         # ИСПРАВЛЕННЫЙ КОД: Используем временное окно вместо точного сравнения
         # Вычисляем разницу в минутах между текущим временем и временем окончания
         try:

@@ -42,6 +42,8 @@ async def set_commands(bot: Bot) -> None:
 
 
 # ─────────────────────────────── /START ────────────────────────────────────
+
+
 async def cmd_start(message: types.Message, bot: Bot) -> None:
     chat_id = message.chat.id
     logger.info("Команда /start от chat_id=%s", chat_id)
@@ -70,12 +72,15 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
 
         # ─── приветственное сообщение + главное меню ───────────────────────
         await message.answer(
-            "👋 *Добро пожаловать в English Learning Bot!*\n\n"
-            "• Ежедневные наборы слов\n"
-            "• Тест для закрепления\n"
-            "• Персональный словарь\n"
-            "• Практика набора и словаря\n\n"
-            "Выберите действие:",
+            "👋 *Добро пожаловать обратно!*\n\n"
+            "🎯 *Как работает бот:*\n"
+            "1️⃣ Каждый день вы получаете новые слова из выбранной темы\n"
+            "2️⃣ Слова приходят в течение дня как уведомления\n" 
+            "3️⃣ Проходите тест дня → выученные слова сохраняются в словарь\n"
+            "4️⃣ Невыученные слова повторятся завтра\n\n"
+            "📚 *Набор слов* — это готовая тема с ~50 английскими словами\n"
+            "Например: «A1 Basic 1» (базовые слова для начинающих)\n\n"
+            "Готовы продолжить изучение?",
             parse_mode="Markdown",
             reply_markup=main_menu_keyboard(),
         )
@@ -88,7 +93,6 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
             reply_markup=main_menu_keyboard(),
         )
 
-# ──────────────────────── НОВЫЕ ОБРАБОТЧИКИ КОМАНД ────────────────────────────────
 async def cmd_words(message: types.Message, bot: Bot) -> None:
     """Показывает слова дня."""
     chat_id = message.chat.id
@@ -100,9 +104,12 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
 
     # Получаем слова дня напрямую, без использования callback
     from config import REMINDER_START, DURATION_HOURS
-    from utils.helpers import get_user_settings
+    from utils.helpers import get_user_settings, daily_words_cache
+    from utils.visual_helpers import format_daily_words_message, truncate_daily_words_message
     
     words, reps = get_user_settings(chat_id)
+    chosen_set = user[6] if len(user) > 6 else DEFAULT_SETS.get(user[1])
+    
     result = get_daily_words_for_user(
         chat_id, user[1], words, reps,
         first_time=REMINDER_START, duration_hours=DURATION_HOURS
@@ -129,8 +136,41 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
         return
     
     messages, times = result
+    
+    # Подсчитываем количество слов в наборе
+    total_words = 50  # значение по умолчанию
+    try:
+        from pathlib import Path
+        set_file_path = Path(LEVELS_DIR) / user[1] / f"{chosen_set}.txt"
+        if set_file_path.exists():
+            with open(set_file_path, 'r', encoding='utf-8') as f:
+                total_words = len([line for line in f if line.strip()])
+    except Exception as e:
+        logger.error(f"Ошибка при подсчете слов в наборе: {e}")
+    
+    # Форматируем сообщение
+    formatted_message = format_daily_words_message(messages, times, chosen_set, total_words)
+    
+    # Проверяем длину и обрезаем при необходимости
+    if len(formatted_message) > 4000:
+        # Получаем уникальные слова из кэша
+        unique_words = []
+        if chat_id in daily_words_cache:
+            entry = daily_words_cache[chat_id]
+            if len(entry) > 8 and entry[8]:
+                unique_words = entry[8]
+        
+        # Если не можем получить уникальные слова из кэша, используем messages
+        if not unique_words:
+            unique_words = messages
+        
+        formatted_message = truncate_daily_words_message(
+            formatted_message, unique_words, words, reps,
+            chosen_set, total_words
+        )
+    
     await message.answer(
-        format_daily_words_message(messages, times),
+        formatted_message,
         parse_mode="Markdown",
         reply_markup=main_menu_keyboard(),
     )

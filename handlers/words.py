@@ -108,13 +108,49 @@ async def _send_daily_words(
 
     # ——— обычный вывод слов ————————————————————————————————
     messages, times = result
+    
+    # Подсчитываем количество слов в наборе
+    total_words = 50  # значение по умолчанию
+    try:
+        set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+        if set_file_path.exists():
+            with open(set_file_path, 'r', encoding='utf-8') as f:
+                total_words = len([line for line in f if line.strip()])
+    except Exception as e:
+        logger.error(f"Ошибка при подсчете слов в наборе: {e}")
+    
+    # Импортируем функции форматирования
+    from utils.visual_helpers import format_daily_words_message, truncate_daily_words_message
+    from utils.helpers import daily_words_cache
+    
+    # Форматируем сообщение
+    formatted_message = format_daily_words_message(messages, times, chosen_set, total_words)
+    
+    # Проверяем длину и обрезаем при необходимости
+    if len(formatted_message) > 4000:
+        # Получаем уникальные слова из кэша
+        unique_words = []
+        if chat_id in daily_words_cache:
+            entry = daily_words_cache[chat_id]
+            if len(entry) > 8 and entry[8]:
+                unique_words = entry[8]
+        
+        # Если не можем получить уникальные слова из кэша, извлекаем из messages
+        if not unique_words:
+            unique_words = messages
+        
+        formatted_message = truncate_daily_words_message(
+            formatted_message, unique_words, words_per_day, reps_per_word,
+            chosen_set, total_words
+        )
+    
     await cb.message.edit_text(
-        format_daily_words_message(messages, times),
+        formatted_message,
         parse_mode="Markdown",
         reply_markup=words_day_keyboard(),
     )
     await cb.answer()
-# ─────────────────────────── «СЛОВА ДНЯ» КНОПКА ────────────────────────────
+
 async def send_words_day_schedule(cb: types.CallbackQuery, bot: Bot) -> None:
     chat_id = cb.from_user.id
     user = crud.get_user(chat_id)
@@ -128,6 +164,7 @@ async def send_words_day_schedule(cb: types.CallbackQuery, bot: Bot) -> None:
 
 
 # ─────────────────────── ПОДТВЕРЖДЕНИЕ СМЕНЫ СЕТА ──────────────────────────
+
 async def handle_confirm_set_change(cb: types.CallbackQuery, bot: Bot) -> None:
     """Подтверждение смены сета с полной перезагрузкой слов дня."""
     chat_id = cb.from_user.id
@@ -176,18 +213,50 @@ async def handle_confirm_set_change(cb: types.CallbackQuery, bot: Bot) -> None:
             return
             
         messages, times = result
+        
+        # Подсчитываем количество слов в новом наборе
+        total_words = 50  # значение по умолчанию
+        try:
+            set_file_path = Path(LEVELS_DIR) / level / f"{default_set}.txt"
+            if set_file_path.exists():
+                with open(set_file_path, 'r', encoding='utf-8') as f:
+                    total_words = len([line for line in f if line.strip()])
+        except Exception as e:
+            logger.error(f"Ошибка при подсчете слов в наборе: {e}")
+        
+        # Форматируем сообщение с информацией о новом наборе
+        from utils.visual_helpers import truncate_daily_words_message
+        formatted_message = format_daily_words_message(messages, times, default_set, total_words)
+        
+        # Проверяем длину и обрезаем при необходимости
+        if len(formatted_message) > 4000:
+            # Получаем уникальные слова из кэша
+            unique_words = []
+            if chat_id in daily_words_cache:
+                entry = daily_words_cache[chat_id]
+                if len(entry) > 8 and entry[8]:
+                    unique_words = entry[8]
+            
+            # Если не можем получить уникальные слова из кэша, используем messages
+            if not unique_words:
+                unique_words = messages
+            
+            formatted_message = truncate_daily_words_message(
+                formatted_message, unique_words, words, reps,
+                default_set, total_words
+            )
+        
         await cb.message.edit_text(
-            format_daily_words_message(messages, times),
+            formatted_message,
             parse_mode="Markdown",
             reply_markup=words_day_keyboard(),
         )
-        await cb.answer("Набор успешно обновлен!")
+        await cb.answer(f"✅ Набор успешно изменен на «{default_set}»!")
 
     except Exception as exc:
         logger.exception("Ошибка смены сета: %s", exc)
         await cb.message.edit_text("❌ Ошибка смены набора. Попробуйте позже.", reply_markup=words_day_keyboard())
         await cb.answer()
-
 # ──────────────────────────── РЕГИСТРАЦИЯ ─────────────────────────────────
 def register_words_handlers(dp: Dispatcher, bot: Bot) -> None:
     dp.register_callback_query_handler(
