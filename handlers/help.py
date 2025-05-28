@@ -1,9 +1,13 @@
 # handlers/help.py
 
+import logging
 from aiogram import types, Dispatcher, Bot
+from aiogram.utils.exceptions import MessageNotModified
 from keyboards.submenus import help_menu_keyboard
 from keyboards.main_menu import main_menu_keyboard
 from functools import partial
+
+logger = logging.getLogger(__name__)
 
 async def show_help_callback(callback: types.CallbackQuery, bot: Bot):
     """
@@ -23,11 +27,28 @@ async def show_help_callback(callback: types.CallbackQuery, bot: Bot):
         "Выберите раздел для получения подробной информации:"
     )
     
-    await callback.message.edit_text(
-        help_text,
-        parse_mode="Markdown",
-        reply_markup=help_menu_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            help_text,
+            parse_mode="Markdown",
+            reply_markup=help_menu_keyboard()
+        )
+    except MessageNotModified:
+        logger.debug(f"Help message not modified for user {callback.from_user.id}")
+        pass  # Игнорируем, если сообщение не изменилось
+    except Exception as e:
+        logger.error(f"Error editing help message for user {callback.from_user.id}: {e}")
+        # В случае другой ошибки, отправляем новое сообщение
+        try:
+            await bot.send_message(
+                callback.from_user.id,
+                help_text,
+                parse_mode="Markdown",
+                reply_markup=help_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback help message: {send_error}")
+    
     await callback.answer()
 
 async def process_help_about_callback(callback: types.CallbackQuery, bot: Bot):
@@ -59,11 +80,27 @@ async def process_help_about_callback(callback: types.CallbackQuery, bot: Bot):
         "или вы можете выбрать новый набор в настройках"
     )
     
-    await callback.message.edit_text(
-        about_text,
-        parse_mode="Markdown",
-        reply_markup=help_menu_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            about_text,
+            parse_mode="Markdown",
+            reply_markup=help_menu_keyboard()
+        )
+    except MessageNotModified:
+        logger.debug(f"About message not modified for user {callback.from_user.id}")
+        pass  # Игнорируем, если сообщение не изменилось
+    except Exception as e:
+        logger.error(f"Error editing about message for user {callback.from_user.id}: {e}")
+        try:
+            await bot.send_message(
+                callback.from_user.id,
+                about_text,
+                parse_mode="Markdown",
+                reply_markup=help_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback about message: {send_error}")
+    
     await callback.answer()
     
 async def process_help_commands_callback(callback: types.CallbackQuery, bot: Bot):
@@ -89,11 +126,27 @@ async def process_help_commands_callback(callback: types.CallbackQuery, bot: Bot
         "Уровень, количество слов, частота повторений, набор слов, часовой пояс."
     )
     
-    await callback.message.edit_text(
-        commands_text,
-        parse_mode="Markdown",
-        reply_markup=help_menu_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            commands_text,
+            parse_mode="Markdown",
+            reply_markup=help_menu_keyboard()
+        )
+    except MessageNotModified:
+        logger.debug(f"Commands message not modified for user {callback.from_user.id}")
+        pass
+    except Exception as e:
+        logger.error(f"Error editing commands message for user {callback.from_user.id}: {e}")
+        try:
+            await bot.send_message(
+                callback.from_user.id,
+                commands_text,
+                parse_mode="Markdown",
+                reply_markup=help_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback commands message: {send_error}")
+    
     await callback.answer()
 
 async def process_help_tips_callback(callback: types.CallbackQuery, bot: Bot):
@@ -118,11 +171,27 @@ async def process_help_tips_callback(callback: types.CallbackQuery, bot: Bot):
         "• Повторений: 3"
     )
     
-    await callback.message.edit_text(
-        tips_text,
-        parse_mode="Markdown",
-        reply_markup=help_menu_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            tips_text,
+            parse_mode="Markdown",
+            reply_markup=help_menu_keyboard()
+        )
+    except MessageNotModified:
+        logger.debug(f"Tips message not modified for user {callback.from_user.id}")
+        pass
+    except Exception as e:
+        logger.error(f"Error editing tips message for user {callback.from_user.id}: {e}")
+        try:
+            await bot.send_message(
+                callback.from_user.id,
+                tips_text,
+                parse_mode="Markdown",
+                reply_markup=help_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback tips message: {send_error}")
+    
     await callback.answer()
 
 async def process_help_feedback_callback(callback: types.CallbackQuery, bot: Bot):
@@ -139,11 +208,27 @@ async def process_help_feedback_callback(callback: types.CallbackQuery, bot: Bot
         "Мы регулярно обновляем бота и добавляем новые функции, основываясь на отзывах пользователей."
     )
     
-    await callback.message.edit_text(
-        feedback_text,
-        parse_mode="Markdown",
-        reply_markup=help_menu_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            feedback_text,
+            parse_mode="Markdown",
+            reply_markup=help_menu_keyboard()
+        )
+    except MessageNotModified:
+        logger.debug(f"Feedback message not modified for user {callback.from_user.id}")
+        pass
+    except Exception as e:
+        logger.error(f"Error editing feedback message for user {callback.from_user.id}: {e}")
+        try:
+            await bot.send_message(
+                callback.from_user.id,
+                feedback_text,
+                parse_mode="Markdown",
+                reply_markup=help_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback feedback message: {send_error}")
+    
     await callback.answer()
 
 def register_help_handlers(dp: Dispatcher, bot: Bot):
