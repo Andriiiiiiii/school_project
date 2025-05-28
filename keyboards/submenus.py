@@ -50,7 +50,7 @@ def settings_menu_keyboard():
     keyboard = InlineKeyboardMarkup(row_width=2)  # Устанавливаем 2 столбца
     
     # Первый столбец: Уровень, Уведомления, Часовой пояс
-    # Второй столбец: Мой профиль, Наборы слов, Назад
+    # Второй столбец: Мой профиль, Наборы слов, Подписка, Назад
     keyboard.add(
         InlineKeyboardButton("🔤 Уровень", callback_data="settings:level"),
         InlineKeyboardButton("👤 Мой профиль", callback_data="settings:mysettings")
@@ -61,10 +61,13 @@ def settings_menu_keyboard():
     )
     keyboard.add(
         InlineKeyboardButton("🌐 Часовой пояс", callback_data="settings:timezone"),
+        InlineKeyboardButton("💎 Подписка", callback_data="menu:subscription")
+    )
+    keyboard.add(
         InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
     
-    return keyboard   
+    return keyboard 
 
 def notification_settings_menu_keyboard():
     """Создает улучшенное меню настроек уведомлений с эмодзи."""

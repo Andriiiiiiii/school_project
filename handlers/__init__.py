@@ -14,6 +14,7 @@ from .settings import register_settings_handlers
 from .help import register_help_handlers
 from .back import handle_back
 from .onboarding import register_onboarding_handlers
+from .subscription import register_subscription_handlers  # Добавить эту строку
 
 def register_handlers(dp: Dispatcher, bot: Bot) -> None:
     """
@@ -21,7 +22,8 @@ def register_handlers(dp: Dispatcher, bot: Bot) -> None:
       0. Онбординг новых пользователей
       1. Poll-квизы и обучение
       2. Основные разделы
-      3. Навигация «Назад» и тест уровня
+      3. Подписка
+      4. Навигация «Назад» и тест уровня
     """
     # 0. Онбординг для новых пользователей
     register_onboarding_handlers(dp, bot)
@@ -37,9 +39,11 @@ def register_handlers(dp: Dispatcher, bot: Bot) -> None:
     register_settings_handlers(dp, bot)
     register_help_handlers(dp, bot)
 
-    # 3. Навигация «Назад»
+    # 3. Подписка
+    register_subscription_handlers(dp, bot)  # Добавить эту строку
+
+    # 4. Навигация «Назад»
     dp.register_callback_query_handler(
         handle_back,
         lambda c: c.data == "menu:back"
     )
-

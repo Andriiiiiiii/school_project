@@ -1,7 +1,8 @@
 # keyboards/main_menu.py
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-def main_menu_keyboard():
+def main_menu_keyboard(chat_id: int = None):
+    """Создает главное меню без кнопки Premium."""
     keyboard = InlineKeyboardMarkup(row_width=2)
     keyboard.add(
         InlineKeyboardButton("📌 Слова дня", callback_data="menu:words_day"),

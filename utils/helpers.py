@@ -171,6 +171,15 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         logger.error(f"Error importing user_set_selection: {e}")
         user_set_selection = {}
 
+    # Импортируем функции для работы с подпиской
+    try:
+        from utils.subscription_helpers import is_set_available_for_user
+    except ImportError as e:
+        logger.error(f"Error importing subscription helpers: {e}")
+        # Fallback - все наборы доступны
+        def is_set_available_for_user(chat_id, set_name):
+            return True
+
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         
@@ -195,6 +204,25 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         if chosen_set is None:
             chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
         
+        # Проверяем доступность выбранного набора для пользователя
+        if not is_set_available_for_user(chat_id, chosen_set):
+            logger.info(f"Set {chosen_set} is not available for user {chat_id}, switching to free alternative")
+            # Получаем доступные наборы для пользователя
+            try:
+                from utils.subscription_helpers import get_available_sets_for_user
+                available_sets = get_available_sets_for_user(chat_id, level)
+                if available_sets:
+                    chosen_set = available_sets[0]  # Берем первый доступный набор
+                    logger.info(f"Switched to available set {chosen_set} for user {chat_id}")
+                else:
+                    logger.warning(f"No available sets found for user {chat_id}, level {level}")
+                    return None
+            except ImportError:
+                # Fallback к базовому набору
+                chosen_set = DEFAULT_SETS.get(level)
+                if not chosen_set:
+                    return None
+
         # Получаем базовый сет для текущего уровня
         default_set = DEFAULT_SETS.get(level)
         

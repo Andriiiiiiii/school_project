@@ -30,7 +30,83 @@ def _exec(query: str, params: Iterable[Any] | None = None) -> List[Tuple]:
         result = cur.fetchall()
     return result
 
+# В файле database/crud.py добавить эти функции перед функциями update_user_test_words_count и update_user_memorize_words_count:
 
+def update_user_subscription(chat_id: int, status: str, expires_at: str = None, payment_id: str = None):
+    """Обновляет статус подписки пользователя."""
+    try:
+        with db_manager.transaction() as tx:
+            if expires_at and payment_id:
+                tx.execute(
+                    """UPDATE users SET subscription_status = ?, subscription_expires_at = ?, 
+                       subscription_payment_id = ? WHERE chat_id = ?""",
+                    (status, expires_at, payment_id, chat_id)
+                )
+            elif expires_at:
+                tx.execute(
+                    "UPDATE users SET subscription_status = ?, subscription_expires_at = ? WHERE chat_id = ?",
+                    (status, expires_at, chat_id)
+                )
+            else:
+                tx.execute(
+                    "UPDATE users SET subscription_status = ? WHERE chat_id = ?",
+                    (status, chat_id)
+                )
+        logger.info(f"Updated subscription status={status} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating subscription for user {chat_id}: {e}")
+        raise
+
+def get_user_subscription_status(chat_id: int) -> tuple:
+    """Возвращает статус подписки пользователя."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute(
+                """SELECT subscription_status, subscription_expires_at, subscription_payment_id 
+                   FROM users WHERE chat_id = ?""", 
+                (chat_id,)
+            )
+            result = cursor.fetchone()
+            if result:
+                return result[0] or 'free', result[1], result[2]
+            return 'free', None, None
+    except Exception as e:
+        logger.error(f"Error getting subscription status for user {chat_id}: {e}")
+        return 'free', None, None
+
+def is_user_premium(chat_id: int) -> bool:
+    """Проверяет, является ли пользователь премиум (активная подписка)."""
+    try:
+        status, expires_at, _ = get_user_subscription_status(chat_id)
+        
+        if status != 'premium':
+            return False
+            
+        if not expires_at:
+            return False
+            
+        # Проверяем, не истекла ли подписка
+        from datetime import datetime
+        expiry_date = datetime.fromisoformat(expires_at)
+        return datetime.now() < expiry_date
+        
+    except Exception as e:
+        logger.error(f"Error checking premium status for user {chat_id}: {e}")
+        return False
+
+def get_all_premium_users() -> list:
+    """Возвращает список всех премиум пользователей с их данными подписки."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute(
+                """SELECT chat_id, subscription_status, subscription_expires_at, subscription_payment_id 
+                   FROM users WHERE subscription_status = 'premium'"""
+            )
+            return cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting premium users: {e}")
+        return []
+        
 # ───────────────────────── базовые (существовавшие) функции ─────────────────
 def update_user_words_and_repetitions(chat_id, words_per_day, repetitions_per_word):
     try:

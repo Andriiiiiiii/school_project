@@ -430,3 +430,114 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-05-28 10:56:26,911 - INFO - __main__ - Проверка пропущенных уведомлений…
 2025-05-28 10:56:26,914 - INFO - __main__ - Восстановлено 0 уведомлений
 2025-05-28 10:56:26,921 - INFO - __main__ - Бот успешно запущен.
+2025-05-28 11:22:53,375 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-28 11:22:53,539 - INFO - __main__ - Восстановлено 2 уведомлений
+2025-05-28 11:22:53,540 - INFO - __main__ - Бот успешно запущен.
+2025-05-28 11:23:34,850 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-28 11:23:34,851 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-28 11:23:34,853 - INFO - __main__ - Бот успешно запущен.
+2025-05-28 11:24:08,457 - WARNING - utils.subscription_helpers - Could not determine level for set Describing People
+2025-05-28 11:24:08,458 - WARNING - utils.subscription_helpers - Could not determine level for set Directions & Locations
+2025-05-28 11:24:08,458 - WARNING - utils.subscription_helpers - Could not determine level for set Eating Out
+2025-05-28 11:24:08,459 - WARNING - utils.subscription_helpers - Could not determine level for set Emotions & Feelings
+2025-05-28 11:24:08,459 - WARNING - utils.subscription_helpers - Could not determine level for set Everyday Activities & Routines
+2025-05-28 11:24:08,459 - WARNING - utils.subscription_helpers - Could not determine level for set Festivals & Celebrations
+2025-05-28 11:24:08,459 - WARNING - utils.subscription_helpers - Could not determine level for set Household Objects
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set In the City
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set Jobs and Occupations
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set Leisure & Free Time
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set Shopping and Money
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set Sports & Hobbies
+2025-05-28 11:24:08,460 - WARNING - utils.subscription_helpers - Could not determine level for set Travel Essentials
+2025-05-28 11:24:08,461 - WARNING - utils.subscription_helpers - Could not determine level for set Weather & Nature
+2025-05-28 11:24:26,012 - ERROR - services.payment - Error creating payment for user 1999873173: {'type': 'error', 'id': '019715fe-2283-7a6f-b6a9-adbfec4220a0', 'code': 'invalid_credentials', 'description': 'Incorrect password format in the Authorization header. Use Secret key issued in Merchant Profile as the password', 'parameter': 'Authorization'}
+2025-05-28 11:31:37,111 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-28 11:31:37,115 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-28 11:31:37,116 - INFO - __main__ - Бот успешно запущен.
+2025-05-28 11:32:11,479 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-28 11:32:11,481 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-28 11:32:11,482 - INFO - __main__ - Бот успешно запущен.
+2025-05-28 11:32:40,961 - WARNING - utils.subscription_helpers - Could not determine level for set Animals and Pets
+2025-05-28 11:32:40,962 - WARNING - utils.subscription_helpers - Could not determine level for set At Home
+2025-05-28 11:32:40,963 - WARNING - utils.subscription_helpers - Could not determine level for set Clothes & Accessories
+2025-05-28 11:32:40,964 - WARNING - utils.subscription_helpers - Could not determine level for set Common Verbs & Actions
+2025-05-28 11:32:40,965 - WARNING - utils.subscription_helpers - Could not determine level for set Days, Months, Seasons
+2025-05-28 11:32:40,965 - WARNING - utils.subscription_helpers - Could not determine level for set Essential Everyday Words
+2025-05-28 11:32:40,966 - WARNING - utils.subscription_helpers - Could not determine level for set Family and Friends
+2025-05-28 11:32:40,966 - WARNING - utils.subscription_helpers - Could not determine level for set Food Basics
+2025-05-28 11:32:40,966 - WARNING - utils.subscription_helpers - Could not determine level for set My Body & Health
+2025-05-28 11:32:40,967 - WARNING - utils.subscription_helpers - Could not determine level for set Numbers, Colors & Shapes
+2025-05-28 11:32:40,967 - WARNING - utils.subscription_helpers - Could not determine level for set School Essentials
+2025-05-28 11:32:40,967 - WARNING - utils.subscription_helpers - Could not determine level for set Transport Basics
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set Animals and Pets
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set At Home
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set Clothes & Accessories
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set Common Verbs & Actions
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set Days, Months, Seasons
+2025-05-28 11:33:11,786 - WARNING - utils.subscription_helpers - Could not determine level for set Essential Everyday Words
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set Family and Friends
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set Food Basics
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set My Body & Health
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set Numbers, Colors & Shapes
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set School Essentials
+2025-05-28 11:33:11,787 - WARNING - utils.subscription_helpers - Could not determine level for set Transport Basics
+2025-05-28 11:33:16,787 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-28 11:33:16,788 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-28 11:33:16,789 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-28 11:33:16,790 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-28 11:33:16,791 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-28 11:33:16,792 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-28 11:33:16,792 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-28 11:33:16,793 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-28 11:33:16,795 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-28 11:33:16,796 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-28 11:33:16,797 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-28 11:33:16,797 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-28 11:33:16,798 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-28 11:33:16,799 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-28 11:33:16,800 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-28 11:33:16,801 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-28 11:33:16,801 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-28 11:33:16,802 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-28 11:33:16,803 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-28 11:33:16,803 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-28 11:34:18,320 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-28 11:34:18,320 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-28 11:34:18,320 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-28 11:34:18,320 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-28 11:34:18,321 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-28 11:34:18,322 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-28 11:34:24,070 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-28 11:34:24,070 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-28 11:34:24,070 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-28 11:34:24,070 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-28 11:34:24,071 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-28 11:34:24,072 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary

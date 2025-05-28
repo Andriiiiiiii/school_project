@@ -14,6 +14,11 @@ DEFAULT_REPETITIONS = int(os.getenv("DEFAULT_REPETITIONS", 3))
 SERVER_TIMEZONE = os.getenv("SERVER_TIMEZONE", "UTC")
 DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
 
+# ЮKassa настройки
+YOOKASSA_SHOP_ID = os.getenv("YOOKASSA_SHOP_ID")
+YOOKASSA_SECRET_KEY = os.getenv("YOOKASSA_SECRET_KEY")
+SUBSCRIPTION_PRICE = float(os.getenv("SUBSCRIPTION_PRICE", "299.00"))  # рублей в месяц
+
 # Основные сеты для каждого уровня
 DEFAULT_SETS = {
     "A1": "A1 Basic 1",
@@ -22,4 +27,14 @@ DEFAULT_SETS = {
     "B2": "B2 Basic 1",
     "C1": "C1 Basic 1",
     "C2": "C2 Basic 1"
+}
+
+# Бесплатные наборы для каждого уровня
+FREE_SETS = {
+    "A1": ["A1 Basic 1", "A1 Basic 2"],
+    "A2": ["A2 Basic 1", "A2 Basic 2"],
+    "B1": ["B1 Basic 1", "B1 Basic 2"],
+    "B2": ["B2 Basic 1", "B2 Basic 2"],
+    "C1": ["C1 Basic 1", "C1 Basic 2"],
+    "C2": ["C2 Basic 1", "C2 Basic 2"]
 }

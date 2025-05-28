@@ -82,7 +82,7 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
             "Например: «A1 Basic 1» (базовые слова для начинающих)\n\n"
             "Готовы продолжить изучение?",
             parse_mode="Markdown",
-            reply_markup=main_menu_keyboard(),
+            reply_markup=main_menu_keyboard(),  # Передаем chat_id
         )
 
     except Exception as exc:  # fallback
@@ -90,7 +90,7 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
         await message.answer(
             "👋 *Добро пожаловать!*\n\nВыберите действие:",
             parse_mode="Markdown",
-            reply_markup=main_menu_keyboard(),
+            reply_markup=main_menu_keyboard(),  # Передаем chat_id
         )
 
 async def cmd_words(message: types.Message, bot: Bot) -> None:
@@ -160,7 +160,7 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
             if len(entry) > 8 and entry[8]:
                 unique_words = entry[8]
         
-        # Если не можем получить уникальные слова из кэша, используем messages
+        # Если не можем получить уникальные слова из кэша, используемmessages
         if not unique_words:
             unique_words = messages
         
@@ -172,7 +172,7 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
     await message.answer(
         formatted_message,
         parse_mode="Markdown",
-        reply_markup=main_menu_keyboard(),
+        reply_markup=main_menu_keyboard(),  # Передаем chat_id
     )
 
 async def cmd_quiz(message: types.Message, bot: Bot) -> None:
@@ -296,6 +296,7 @@ async def cmd_dictionary(message: types.Message, bot: Bot) -> None:
         reply_markup=dictionary_menu_keyboard()
     )
 
+
 async def cmd_settings(message: types.Message, bot: Bot) -> None:
     """Показывает меню настроек."""
     from keyboards.submenus import settings_menu_keyboard
@@ -306,8 +307,8 @@ async def cmd_settings(message: types.Message, bot: Bot) -> None:
     )
 
 async def cmd_menu(message: types.Message) -> None:
-    await message.answer("📋 Главное меню:", reply_markup=main_menu_keyboard())
-
+    chat_id = message.chat.id
+    await message.answer("📋 Главное меню:", reply_markup=main_menu_keyboard())  # Передаем chat_id
 async def cmd_help(message: types.Message) -> None:
     from keyboards.submenus import help_menu_keyboard
 

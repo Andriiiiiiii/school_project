@@ -322,8 +322,15 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
         await bot.send_message(chat_id, f"Папка уровня {level} не найдена.")
         return
 
-    set_files = sorted(f.stem for f in level_dir.glob("*.txt"))
-    if not set_files:
+    # Импортируем функции для работы с подпиской
+    from utils.subscription_helpers import get_available_sets_for_user, is_set_available_for_user
+    
+    # Получаем все наборы и доступные наборы
+    all_sets = sorted(f.stem for f in level_dir.glob("*.txt"))
+    available_sets = get_available_sets_for_user(chat_id, level)
+    is_premium = crud.is_user_premium(chat_id)
+    
+    if not all_sets:
         await bot.send_message(chat_id, "Сетов не найдено.")
         return
 
@@ -331,7 +338,7 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     kb = InlineKeyboardMarkup(row_width=1)
     set_index_cache.clear()
 
-    for idx, name in enumerate(set_files, 1):
+    for idx, name in enumerate(all_sets, 1):
         key = f"{chat_id}_{idx}"
         set_index_cache[key] = name
         
@@ -345,22 +352,42 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
             logger.error(f"Ошибка при подсчете слов в {name}: {e}")
             button_text = name
         
-        # Добавляем отметку если это текущий набор
-        if current and current == name:
-            button_text += " ✅"
+        # Проверяем доступность набора
+        is_available = is_set_available_for_user(chat_id, name)
         
-        cb_name = "confirm_idx" if current and current != name else "set_idx"
-        kb.add(InlineKeyboardButton(button_text, callback_data=f"{cb_name}:{idx}"))
+        if not is_available:
+            button_text += " 🔒"  # Заблокированный набор
+        elif current and current == name:
+            button_text += " ✅"  # Текущий набор
+        
+        # Определяем callback в зависимости от доступности
+        if is_available:
+            cb_name = "confirm_idx" if current and current != name else "set_idx"
+            kb.add(InlineKeyboardButton(button_text, callback_data=f"{cb_name}:{idx}"))
+        else:
+            # Для заблокированных наборов - переход к подписке
+            kb.add(InlineKeyboardButton(button_text, callback_data="subscription:info"))
 
     kb.add(InlineKeyboardButton("🔙 Назад", callback_data="menu:settings"))
     
+    # Формируем текст сообщения
     text = f"📚 *Наборы слов для уровня {level}*\n\n"
     if current:
         text += f"Текущий набор: *{current}*\n\n"
+    
+    if not is_premium:
+        locked_count = len(all_sets) - len(available_sets)
+        text += f"🆓 Доступно: {len(available_sets)} из {len(all_sets)} наборов\n"
+        if locked_count > 0:
+            text += f"🔒 Заблокировано: {locked_count} наборов\n\n"
+            text += "Получите Premium для доступа ко всем наборам!\n\n"
+    else:
+        text += "💎 Premium: доступны все наборы\n\n"
+    
     text += "Выберите набор для изучения:"
     
     await bot.send_message(chat_id, text, parse_mode="Markdown", reply_markup=kb)
-
+    
 # ────────────────────────── ВЫБОР / СМЕНА СЕТА ────────────────────────────
 async def handle_set_by_index(cb: types.CallbackQuery, bot: Bot):
     _, idx = cb.data.split(":", 1)
