@@ -374,7 +374,6 @@ def process_user(user, now_server, bot, loop):
             notif_index = times.index(now_local_str)
             message_text = messages[notif_index] if notif_index < len(messages) else "(нет слов)"
             
-            # Отправляем только сам текст слова без заголовка
             try:
                 asyncio.run_coroutine_threadsafe(
                     bot.send_message(chat_id, message_text),
@@ -383,7 +382,7 @@ def process_user(user, now_server, bot, loop):
                 logger.info(f"Sent notification to user {chat_id} at {now_local_str}")
             except Exception as e:
                 logger.error(f"Error sending notification to user {chat_id}: {e}")
-                
+        
         # ИСПРАВЛЕННЫЙ КОД: Используем временное окно вместо точного сравнения
         # Вычисляем разницу в минутах между текущим временем и временем окончания
         try:
