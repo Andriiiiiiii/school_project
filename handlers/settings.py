@@ -387,7 +387,7 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     text += "Выберите набор для изучения:"
     
     await bot.send_message(chat_id, text, parse_mode="Markdown", reply_markup=kb)
-    
+
 # ────────────────────────── ВЫБОР / СМЕНА СЕТА ────────────────────────────
 async def handle_set_by_index(cb: types.CallbackQuery, bot: Bot):
     _, idx = cb.data.split(":", 1)
@@ -482,6 +482,7 @@ async def handle_set_change_cancelled(cb: types.CallbackQuery, bot: Bot):
     await cb.answer("Смена сета отменена")
 
 # ───────────────────────── МОИ НАСТРОЙКИ (ПРОФИЛЬ) ────────────────────────
+
 async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
     chat_id = cb.from_user.id
     user = crud.get_user(chat_id)
@@ -515,7 +516,6 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
                 done = sum(1 for w in set_words if w in learnt_en)
                 
                 text += f"📚 *Набор:* {chosen} ({total_words} слов)\n"
-                text += f"\n📝 *Выучено слов:* {done} из {total_words}\n"
                 
                 bar = format_progress_bar(done, total_words, 10)
                 text += f"\n📈 Прогресс:\n{bar}\n"
@@ -530,19 +530,14 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
             except Exception as e:
                 logger.error(f"Ошибка при чтении набора: {e}")
                 text += f"📚 *Набор:* {chosen}\n"
-                text += f"\n📝 *Выучено слов:* {len(crud.get_learned_words(chat_id))}\n"
         else:
             text += f"📚 *Набор:* {chosen} (файл не найден)\n"
-            text += f"\n📝 *Выучено слов:* {len(crud.get_learned_words(chat_id))}\n"
     else:
         text += f"📚 *Набор:* не выбран\n"
-        learned = crud.get_learned_words(chat_id)
-        if learned:
-            text += f"\n📝 *Выучено слов:* {len(learned)}\n"
 
     await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
     await cb.answer()
-
+    
 # ──────────────────────────── BACK-HANDLER ────────────────────────────────
 async def _settings_back(cb: types.CallbackQuery, bot: Bot):
     await cb.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())
