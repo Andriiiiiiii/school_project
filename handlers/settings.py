@@ -347,7 +347,7 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
             set_path = level_dir / f"{name}.txt"
             with open(set_path, 'r', encoding='utf-8') as f:
                 word_count = len([line for line in f if line.strip()])
-            button_text = f"{name} (~{word_count} слов)"
+            button_text = f"{name} ({word_count} слов)"
         except Exception as e:
             logger.error(f"Ошибка при подсчете слов в {name}: {e}")
             button_text = name
@@ -537,7 +537,7 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
 
     await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
     await cb.answer()
-    
+
 # ──────────────────────────── BACK-HANDLER ────────────────────────────────
 async def _settings_back(cb: types.CallbackQuery, bot: Bot):
     await cb.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())

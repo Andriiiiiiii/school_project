@@ -183,7 +183,7 @@ def format_daily_words_message(messages: List[str], times: List[str], chosen_set
     # Добавляем информацию о наборе слов, если она доступна
     if chosen_set:
         if total_words:
-            header += f"\nИз набора: *«{chosen_set}»* (~{total_words} слов)"
+            header += f"\nИз набора: *«{chosen_set}»* ({total_words} слов)"
         else:
             header += f"\nИз набора: *«{chosen_set}»*"
     
