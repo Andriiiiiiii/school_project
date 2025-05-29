@@ -17,7 +17,22 @@ DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
 # ЮKassa настройки
 YOOKASSA_SHOP_ID = os.getenv("YOOKASSA_SHOP_ID")
 YOOKASSA_SECRET_KEY = os.getenv("YOOKASSA_SECRET_KEY")
+
+# Цены подписки для разных периодов (в рублях)
+SUBSCRIPTION_PRICES = {
+    1: 299.00,    # 1 месяц
+    3: 799.00,    # 3 месяца (скидка 11%)
+    6: 1499.00,   # 6 месяцев (скидка 16%)
+    12: 2899.00   # 12 месяцев (скидка 19%)
+}
+
+# Старая переменная для обратной совместимости
 SUBSCRIPTION_PRICE = float(os.getenv("SUBSCRIPTION_PRICE", "299.00"))  # рублей в месяц
+
+# Отладочная информация для ЮKassa (только для разработки)
+import logging
+logger = logging.getLogger(__name__)
+logger.info(f"Config loaded - SHOP_ID: {YOOKASSA_SHOP_ID}, SECRET_KEY: {'***' if YOOKASSA_SECRET_KEY else 'None'}")
 
 # Основные сеты для каждого уровня
 DEFAULT_SETS = {

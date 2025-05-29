@@ -50,6 +50,7 @@ def get_available_sets_for_user(chat_id: int, level: str) -> List[str]:
 def is_set_available_for_user(chat_id: int, set_name: str) -> bool:
     """
     Проверяет, доступен ли конкретный набор для пользователя.
+    Исправленная версия - проверяет по факту наличия набора в доступных наборах пользователя.
     
     Args:
         chat_id: ID пользователя
@@ -59,22 +60,29 @@ def is_set_available_for_user(chat_id: int, set_name: str) -> bool:
         True если набор доступен, False если нет
     """
     try:
-        # Определяем уровень из названия набора
-        level = None
-        for lvl in ["A1", "A2", "B1", "B2", "C1", "C2"]:
-            if set_name.startswith(lvl):
-                level = lvl
-                break
-                
-        if not level:
-            logger.warning(f"Could not determine level for set {set_name}")
+        # Получаем текущий уровень пользователя
+        user = crud.get_user(chat_id)
+        if not user:
+            logger.warning(f"User {chat_id} not found")
             return False
             
-        available_sets = get_available_sets_for_user(chat_id, level)
-        is_available = set_name in available_sets
+        level = user[1]  # Уровень пользователя
         
-        logger.debug(f"Set {set_name} is {'available' if is_available else 'not available'} for user {chat_id}")
-        return is_available
+        # Проверяем статус подписки
+        is_premium = crud.is_user_premium(chat_id)
+        
+        if is_premium:
+            # Для премиум пользователей проверяем, существует ли файл набора в папке их уровня
+            set_file_path = Path(LEVELS_DIR) / level / f"{set_name}.txt"
+            is_available = set_file_path.exists()
+            logger.debug(f"Premium user {chat_id}: set {set_name} is {'available' if is_available else 'not available'} for level {level}")
+            return is_available
+        else:
+            # Для бесплатных пользователей проверяем, есть ли набор в списке бесплатных
+            free_sets = FREE_SETS.get(level, [])
+            is_available = set_name in free_sets
+            logger.debug(f"Free user {chat_id}: set {set_name} is {'available' if is_available else 'not available'} (free sets: {free_sets})")
+            return is_available
         
     except Exception as e:
         logger.error(f"Error checking set availability for user {chat_id}, set {set_name}: {e}")
@@ -179,3 +187,26 @@ def format_subscription_status(chat_id: int) -> str:
     except Exception as e:
         logger.error(f"Error formatting subscription status for user {chat_id}: {e}")
         return "❓ *Статус неизвестен*"
+
+def get_all_sets_for_level(level: str) -> List[str]:
+    """
+    Возвращает все наборы для указанного уровня.
+    Вспомогательная функция для отладки.
+    
+    Args:
+        level: Уровень (A1, A2, B1, B2, C1, C2)
+        
+    Returns:
+        Список всех наборов для уровня
+    """
+    try:
+        level_dir = Path(LEVELS_DIR) / level
+        if not level_dir.exists():
+            return []
+            
+        all_sets = [f.stem for f in level_dir.glob("*.txt")]
+        return sorted(all_sets)
+        
+    except Exception as e:
+        logger.error(f"Error getting all sets for level {level}: {e}")
+        return []

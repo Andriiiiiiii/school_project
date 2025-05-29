@@ -791,3 +791,162 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-05-28 13:14:48,747 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
 2025-05-28 13:14:48,748 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
 2025-05-28 13:14:48,748 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:32:38,229 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:32:38,469 - INFO - __main__ - Восстановлено 55 уведомлений
+2025-05-29 13:32:38,472 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:32:45,509 - ERROR - services.payment - Error creating payment for user 1999873173: {'type': 'error', 'id': '01971b9a-00b1-73f4-bee0-f9845ec5dee2', 'code': 'invalid_credentials', 'description': 'Incorrect password format in the Authorization header. Use Secret key issued in Merchant Profile as the password', 'parameter': 'Authorization'}
+2025-05-29 13:33:41,910 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:34:38 MSK)" was missed by 0:00:03.874921
+2025-05-29 13:34:42,014 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:35:38 MSK)" was missed by 0:00:03.978408
+2025-05-29 13:34:49,905 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:34:50,125 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-05-29 13:34:50,126 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:34:57,758 - ERROR - services.payment - Error creating payment for user 1999873173: {'type': 'error', 'id': '01971b9c-03e7-7985-801b-954078c4a02b', 'code': 'invalid_credentials', 'description': 'Login has illegal format', 'parameter': 'Authorization'}
+2025-05-29 13:35:53,556 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:36:49 MSK)" was missed by 0:00:03.926346
+2025-05-29 13:36:21,999 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:36:22,028 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 13:36:22,030 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:37:23,599 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:38:19 MSK)" was missed by 0:00:03.600532
+2025-05-29 13:38:23,702 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:39:19 MSK)" was missed by 0:00:03.703715
+2025-05-29 13:45:46,681 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:45:46,973 - INFO - __main__ - Восстановлено 3 уведомлений
+2025-05-29 13:45:46,974 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:46:14,714 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-29 13:46:14,716 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-29 13:46:14,717 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-29 13:46:14,718 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-29 13:46:14,719 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-29 13:46:14,720 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-29 13:46:14,720 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-29 13:46:14,721 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-29 13:46:14,725 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-29 13:46:14,726 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-29 13:46:14,727 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-29 13:46:14,728 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-29 13:46:14,728 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-29 13:46:14,729 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-29 13:46:14,730 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-29 13:46:14,731 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-29 13:46:14,731 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-29 13:46:14,732 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-29 13:46:14,733 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-29 13:46:14,734 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:46:17,526 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-29 13:46:17,526 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-29 13:46:17,526 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-29 13:46:17,527 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-29 13:46:17,527 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-29 13:46:17,527 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-29 13:46:17,527 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-29 13:46:17,527 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-29 13:46:17,529 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-29 13:46:17,530 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:46:50,399 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:47:46 MSK)" was missed by 0:00:03.905400
+2025-05-29 13:47:50,360 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:48:46 MSK)" was missed by 0:00:03.866516
+2025-05-29 13:47:53,557 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-29 13:47:53,557 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-29 13:47:53,557 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-29 13:47:53,557 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-29 13:47:53,557 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-29 13:47:53,558 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-29 13:47:53,558 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-29 13:47:53,558 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-29 13:47:53,560 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-29 13:47:53,561 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-29 13:47:53,561 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-29 13:47:53,562 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-29 13:47:53,563 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-29 13:47:53,564 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-29 13:47:53,565 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-29 13:47:53,565 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-29 13:47:53,565 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-29 13:47:53,565 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-29 13:47:53,566 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-29 13:47:53,566 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:48:48,857 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:49:46 MSK)" was missed by 0:00:02.363835
+2025-05-29 13:49:06,745 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-29 13:49:06,745 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-29 13:49:06,745 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-29 13:49:06,746 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-29 13:49:06,746 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-29 13:49:06,746 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-29 13:49:06,747 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-29 13:49:06,747 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-29 13:49:06,749 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-29 13:49:06,750 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-29 13:49:06,750 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-29 13:49:06,750 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-29 13:49:06,750 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-29 13:49:06,750 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:49:50,770 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:50:46 MSK)" was missed by 0:00:04.276365
+2025-05-29 13:50:46,460 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Academic Writing
+2025-05-29 13:50:46,461 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Environmental Issues
+2025-05-29 13:50:46,462 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Legal Vocabulary
+2025-05-29 13:50:46,463 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Medical Terms
+2025-05-29 13:50:46,463 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Psychology
+2025-05-29 13:50:46,464 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Public Speaking & Rhetoric
+2025-05-29 13:50:46,464 - WARNING - utils.subscription_helpers - Could not determine level for set Advanced Scientific Research
+2025-05-29 13:50:46,465 - WARNING - utils.subscription_helpers - Could not determine level for set Art & Cultural Heritage
+2025-05-29 13:50:46,467 - WARNING - utils.subscription_helpers - Could not determine level for set Cultural Identity & Diversity
+2025-05-29 13:50:46,468 - WARNING - utils.subscription_helpers - Could not determine level for set Diplomacy & International Relations
+2025-05-29 13:50:46,468 - WARNING - utils.subscription_helpers - Could not determine level for set Ethics & Moral Dilemmas
+2025-05-29 13:50:46,469 - WARNING - utils.subscription_helpers - Could not determine level for set Global Economy & Finance
+2025-05-29 13:50:46,469 - WARNING - utils.subscription_helpers - Could not determine level for set High-level Business Terminology
+2025-05-29 13:50:46,470 - WARNING - utils.subscription_helpers - Could not determine level for set Historical Analysis & Interpretation
+2025-05-29 13:50:46,470 - WARNING - utils.subscription_helpers - Could not determine level for set Innovations & Future Trends
+2025-05-29 13:50:46,470 - WARNING - utils.subscription_helpers - Could not determine level for set Language & Linguistics
+2025-05-29 13:50:46,471 - WARNING - utils.subscription_helpers - Could not determine level for set Literary Analysis & Criticism
+2025-05-29 13:50:46,471 - WARNING - utils.subscription_helpers - Could not determine level for set Native-level Idioms & Expressions
+2025-05-29 13:50:46,472 - WARNING - utils.subscription_helpers - Could not determine level for set Philosophy & Existential Questions
+2025-05-29 13:50:46,472 - WARNING - utils.subscription_helpers - Could not determine level for set Sociopolitical Commentary
+2025-05-29 13:50:51,515 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:51:46 MSK)" was missed by 0:00:05.022168
+2025-05-29 13:51:51,476 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:52:46 MSK)" was missed by 0:00:04.982733
+2025-05-29 13:52:48,976 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:53:46 MSK)" was missed by 0:00:02.482719
+2025-05-29 13:53:51,463 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:54:46 MSK)" was missed by 0:00:04.969598
+2025-05-29 13:54:36,972 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:54:37,315 - INFO - __main__ - Восстановлено 2 уведомлений
+2025-05-29 13:54:37,320 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:55:37,255 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:55:37,403 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-05-29 13:55:37,405 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:56:45,487 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 13:56:45,487 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 13:56:45,488 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 13:57:49,899 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:58:45 MSK)" was missed by 0:00:04.611478
+2025-05-29 13:58:49,968 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 13:59:45 MSK)" was missed by 0:00:04.680709
+2025-05-29 13:59:47,635 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:00:45 MSK)" was missed by 0:00:02.347999
+2025-05-29 14:00:49,984 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:01:45 MSK)" was missed by 0:00:04.697050
+2025-05-29 14:01:49,990 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:02:45 MSK)" was missed by 0:00:04.702494
+2025-05-29 14:02:49,968 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:03:45 MSK)" was missed by 0:00:04.680758
+2025-05-29 14:03:47,659 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:04:45 MSK)" was missed by 0:00:02.372281
+2025-05-29 14:04:50,103 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:05:45 MSK)" was missed by 0:00:04.815403
+2025-05-29 14:05:50,030 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:06:45 MSK)" was missed by 0:00:04.743066
+2025-05-29 14:10:51,772 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:10:51,774 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:10:51,774 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:11:13,144 - ERROR - handlers.subscription - Error starting payment for user 1999873173: name 'datetime' is not defined
+2025-05-29 14:11:19,241 - ERROR - handlers.subscription - Error starting payment for user 1999873173: name 'datetime' is not defined
+2025-05-29 14:11:39,016 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:11:39,021 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:11:39,022 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:11:50,422 - ERROR - handlers.subscription - Error starting payment for user 1999873173: name 'datetime' is not defined
+2025-05-29 14:12:14,133 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:12:14,140 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:12:14,143 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:12:20,825 - ERROR - handlers.subscription - Error starting payment for user 1999873173: name 'datetime' is not defined
+2025-05-29 14:13:18,889 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:14:13 MSK)" was missed by 0:00:05.001125

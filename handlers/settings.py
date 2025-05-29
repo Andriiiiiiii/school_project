@@ -314,9 +314,16 @@ async def process_set_level_callback(cb: types.CallbackQuery, bot: Bot):
     await cb.answer()
 # ─────────────────────────── МОИ СЕТЫ (СПИСОК) ────────────────────────────
 
+# В файле handlers/settings.py найти функцию process_my_sets и заменить ее на эту:
+
 async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     chat_id = cb.from_user.id
-    level = crud.get_user(chat_id)[1]
+    user = crud.get_user(chat_id)
+    if not user:
+        await bot.send_message(chat_id, "Пользователь не найден.")
+        return
+        
+    level = user[1]
     level_dir = Path(LEVELS_DIR) / level
     if not level_dir.exists():
         await bot.send_message(chat_id, f"Папка уровня {level} не найдена.")
@@ -325,16 +332,18 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     # Импортируем функции для работы с подпиской
     from utils.subscription_helpers import get_available_sets_for_user, is_set_available_for_user
     
-    # Получаем все наборы и доступные наборы
+    # Получаем все наборы для текущего уровня пользователя
     all_sets = sorted(f.stem for f in level_dir.glob("*.txt"))
     available_sets = get_available_sets_for_user(chat_id, level)
     is_premium = crud.is_user_premium(chat_id)
+    
+    logger.info(f"User {chat_id} (level {level}, premium: {is_premium}): {len(all_sets)} total sets, {len(available_sets)} available")
     
     if not all_sets:
         await bot.send_message(chat_id, "Сетов не найдено.")
         return
 
-    current = user_set_selection.get(chat_id) or crud.get_user(chat_id)[6]
+    current = user_set_selection.get(chat_id) or user[6]
     kb = InlineKeyboardMarkup(row_width=1)
     set_index_cache.clear()
 
@@ -353,7 +362,7 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
             button_text = name
         
         # Проверяем доступность набора
-        is_available = is_set_available_for_user(chat_id, name)
+        is_available = name in available_sets  # Используем результат get_available_sets_for_user
         
         if not is_available:
             button_text += " 🔒"  # Заблокированный набор
@@ -373,7 +382,12 @@ async def process_my_sets(cb: types.CallbackQuery, bot: Bot):
     # Формируем текст сообщения
     text = f"📚 *Наборы слов для уровня {level}*\n\n"
     if current:
-        text += f"Текущий набор: *{current}*\n\n"
+        # Проверяем доступность текущего набора
+        current_available = current in available_sets
+        if current_available:
+            text += f"Текущий набор: *{current}*\n\n"
+        else:
+            text += f"Текущий набор: *{current}* 🔒 (требует Premium)\n\n"
     
     if not is_premium:
         locked_count = len(all_sets) - len(available_sets)
