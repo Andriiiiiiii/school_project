@@ -27,6 +27,15 @@ BOT_COMMANDS: list[BotCommand] = [
     BotCommand("help", "Справка"),
 ]
 
+async def check_user_payments(chat_id: int, bot: Bot):
+    """
+    Проверяет и обрабатывает активные платежи пользователя при взаимодействии с ботом.
+    """
+    try:
+        from services.payment import PaymentService
+        await PaymentService.check_and_process_user_payments(chat_id, bot)
+    except Exception as e:
+        logger.error(f"Error checking payments for user {chat_id}: {e}")
 
 async def set_commands(bot: Bot) -> None:
     """Регистрация /команд в клиентском меню."""
@@ -40,15 +49,16 @@ async def set_commands(bot: Bot) -> None:
     except Exception as e:
         logger.error(f"Ошибка при установке кнопки меню: {e}")
 
-
 # ─────────────────────────────── /START ────────────────────────────────────
-
 
 async def cmd_start(message: types.Message, bot: Bot) -> None:
     chat_id = message.chat.id
     logger.info("Команда /start от chat_id=%s", chat_id)
 
     try:
+        # Проверяем активные платежи пользователя
+        await check_user_payments(chat_id, bot)
+        
         # Явно устанавливаем кнопку меню команд для этого конкретного чата
         await bot.set_chat_menu_button(chat_id=chat_id, menu_button=MenuButtonCommands())
         
@@ -82,7 +92,7 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
             "Например: «A1 Basic 1» (базовые слова для начинающих)\n\n"
             "Готовы продолжить изучение?",
             parse_mode="Markdown",
-            reply_markup=main_menu_keyboard(),  # Передаем chat_id
+            reply_markup=main_menu_keyboard(),
         )
 
     except Exception as exc:  # fallback
@@ -90,12 +100,16 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
         await message.answer(
             "👋 *Добро пожаловать!*\n\nВыберите действие:",
             parse_mode="Markdown",
-            reply_markup=main_menu_keyboard(),  # Передаем chat_id
+            reply_markup=main_menu_keyboard(),
         )
 
 async def cmd_words(message: types.Message, bot: Bot) -> None:
     """Показывает слова дня."""
     chat_id = message.chat.id
+    
+    # Проверяем активные платежи пользователя
+    await check_user_payments(chat_id, bot)
+    
     user = crud.get_user(chat_id)
     
     if not user:
@@ -125,10 +139,10 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
         from keyboards.submenus import set_change_confirm_keyboard
         
         text = (
-            "⚠️ *Внимание! Смена сета сбросит прогресс.*\n\n"
-            f"Текущий сет: *{current_set}*\n"
+            "⚠️ *Внимание! Смена набора сбросит весь ваш прогресс.*\n\n"
+            f"Текущий набор: *{current_set}*\n"
             f"Текущий уровень: *{user[1]}*\n\n"
-            f"Сет не соответствует уровню.\n"
+            f"Набор не соответствует уровню.\n"
             f"Сменить на базовый *{default_set}*?\n"
         )
         await message.answer(text, parse_mode="Markdown", 
@@ -141,6 +155,7 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
     total_words = 50  # значение по умолчанию
     try:
         from pathlib import Path
+        from config import LEVELS_DIR
         set_file_path = Path(LEVELS_DIR) / user[1] / f"{chosen_set}.txt"
         if set_file_path.exists():
             with open(set_file_path, 'r', encoding='utf-8') as f:
@@ -172,12 +187,16 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
     await message.answer(
         formatted_message,
         parse_mode="Markdown",
-        reply_markup=main_menu_keyboard(),  # Передаем chat_id
+        reply_markup=main_menu_keyboard(),
     )
 
 async def cmd_quiz(message: types.Message, bot: Bot) -> None:
     """Запускает квиз со словами дня."""
     chat_id = message.chat.id
+    
+    # Проверяем активные платежи пользователя
+    await check_user_payments(chat_id, bot)
+    
     user = crud.get_user(chat_id)
     
     if not user:
@@ -276,6 +295,9 @@ async def cmd_dictionary(message: types.Message, bot: Bot) -> None:
     """Показывает словарь пользователя."""
     chat_id = message.chat.id
     
+    # Проверяем активные платежи пользователя
+    await check_user_payments(chat_id, bot)
+    
     # Получаем выученные слова напрямую
     learned = crud.get_learned_words(chat_id)
     
@@ -296,9 +318,13 @@ async def cmd_dictionary(message: types.Message, bot: Bot) -> None:
         reply_markup=dictionary_menu_keyboard()
     )
 
-
 async def cmd_settings(message: types.Message, bot: Bot) -> None:
     """Показывает меню настроек."""
+    chat_id = message.chat.id
+    
+    # Проверяем активные платежи пользователя
+    await check_user_payments(chat_id, bot)
+    
     from keyboards.submenus import settings_menu_keyboard
     
     await message.answer(
@@ -308,7 +334,18 @@ async def cmd_settings(message: types.Message, bot: Bot) -> None:
 
 async def cmd_menu(message: types.Message) -> None:
     chat_id = message.chat.id
-    await message.answer("📋 Главное меню:", reply_markup=main_menu_keyboard())  # Передаем chat_id
+    
+    # Проверяем активные платежи пользователя (без bot для cmd_menu)
+    try:
+        from services.payment import PaymentService
+        from aiogram import Bot
+        bot = Bot.get_current()
+        await PaymentService.check_and_process_user_payments(chat_id, bot)
+    except Exception as e:
+        logger.error(f"Error checking payments in cmd_menu for user {chat_id}: {e}")
+    
+    await message.answer("📋 Главное меню:", reply_markup=main_menu_keyboard())
+
 async def cmd_help(message: types.Message) -> None:
     from keyboards.submenus import help_menu_keyboard
 

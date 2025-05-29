@@ -1,5 +1,6 @@
 # handlers/subscription.py
 import logging
+from datetime import datetime
 from functools import partial
 
 from aiogram import Bot, Dispatcher, types
@@ -17,9 +18,6 @@ from services.payment import PaymentService
 from utils.subscription_helpers import format_subscription_status, get_premium_sets_for_level
 
 logger = logging.getLogger(__name__)
-
-# Словарь для хранения активных платежей
-active_payments = {}
 
 async def show_subscription_menu(callback: types.CallbackQuery, bot: Bot):
     """Показывает главное меню подписки."""
@@ -106,6 +104,9 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
     
     try:
+        # Сначала проверяем и обрабатываем любые активные платежи пользователя
+        await PaymentService.check_and_process_user_payments(chat_id, bot)
+        
         # Создаем платеж через ЮKassa
         payment_data = PaymentService.create_subscription_payment(chat_id, months)
         
@@ -119,13 +120,14 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
             await callback.answer("Ошибка создания платежа", show_alert=True)
             return
         
-        # Сохраняем информацию о платеже
-        active_payments[chat_id] = {
-            "payment_id": payment_data["payment_id"],
-            "amount": payment_data["amount"],
-            "months": months,
-            "description": payment_data["description"]
-        }
+        # Сохраняем платеж в базу данных
+        PaymentService.save_active_payment(
+            chat_id=chat_id,
+            payment_id=payment_data["payment_id"],
+            amount=float(payment_data["amount"]),
+            months=months,
+            description=payment_data["description"]
+        )
         
         # Проверяем, есть ли активная подписка
         current_status, current_expires, _ = crud.get_user_subscription_status(chat_id)
@@ -148,16 +150,17 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
                 f"📅 Добавляемый период: {period_text}\n"
                 f"💰 Сумма: {payment_data['amount']} руб\n"
                 f"⏰ Текущая подписка действует еще {current_days} дней\n\n"
-                f"После оплаты подписка будет продлена на {period_text}.\n"
-                f"Нажмите кнопку \"Оплатить\" для перехода к оплате."
+                f"После оплаты подписка будет продлена автоматически.\n"
+                f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n\n"
+                f"ℹ️ *Подписка активируется автоматически после оплаты*"
             )
         else:
             message_text = (
                 f"💳 *Оплата Premium подписки*\n\n"
                 f"📅 Период: {period_text}\n"
                 f"💰 Сумма: {payment_data['amount']} руб\n\n"
-                f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n"
-                f"После оплаты нажмите \"Проверить оплату\"."
+                f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n\n"
+                f"ℹ️ *Подписка активируется автоматически после оплаты*"
             )
         
         await callback.message.edit_text(
@@ -178,7 +181,7 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
         await callback.answer("Ошибка создания платежа", show_alert=True)
 
 async def check_payment_status(callback: types.CallbackQuery, bot: Bot):
-    """Проверяет статус платежа."""
+    """Проверяет статус платежа вручную."""
     chat_id = callback.from_user.id
     
     # Извлекаем количество месяцев из callback_data
@@ -187,87 +190,22 @@ async def check_payment_status(callback: types.CallbackQuery, bot: Bot):
     except (IndexError, ValueError):
         months = 1
     
-    if chat_id not in active_payments:
-        await callback.answer("Активных платежей не найдено", show_alert=True)
-        return
-    
     try:
-        payment_id = active_payments[chat_id]["payment_id"]
-        payment_status = PaymentService.check_payment_status(payment_id)
+        # Проверяем и обрабатываем все активные платежи пользователя
+        processed_count = await PaymentService.check_and_process_user_payments(chat_id, bot)
         
-        if not payment_status:
-            await callback.answer("Ошибка проверки статуса платежа", show_alert=True)
-            return
-        
-        if payment_status["status"] == "succeeded" and payment_status["paid"]:
-            # Платеж успешен - активируем/продлеваем подписку
-            
-            # Получаем информацию о текущей подписке
-            current_status, current_expires, _ = crud.get_user_subscription_status(chat_id)
-            is_extension = (current_status == 'premium' and current_expires and 
-                          datetime.fromisoformat(current_expires) > datetime.now())
-            
-            # Вычисляем новую дату окончания с учетом существующей подписки
-            expiry_date = PaymentService.calculate_subscription_expiry(months, chat_id)
-            crud.update_user_subscription(
-                chat_id, 
-                "premium", 
-                expiry_date, 
-                payment_id
-            )
-            
-            # Удаляем из активных платежей
-            del active_payments[chat_id]
-            
-            period_text = {
-                1: "1 месяц",
-                3: "3 месяца",
-                6: "6 месяцев",
-                12: "12 месяцев"
-            }.get(months, f"{months} месяцев")
-            
-            # Формируем сообщение в зависимости от того, продление это или новая подписка
-            if is_extension:
-                # Вычисляем общий срок действия
-                new_expiry = datetime.fromisoformat(expiry_date)
-                total_days = (new_expiry - datetime.now()).days
-                
-                success_message = (
-                    f"🎉 *Подписка успешно продлена!*\n\n"
-                    f"💎 Добавлен период: {period_text}\n"
-                    f"⏰ Общий срок действия: {total_days} дней\n\n"
-                    f"Ваша Premium подписка была продлена. "
-                    f"Вы по-прежнему имеете доступ ко всем наборам слов."
-                )
-            else:
-                success_message = (
-                    f"🎉 *Платеж успешно завершен!*\n\n"
-                    f"💎 Premium подписка активирована на {period_text}!\n\n"
-                    f"Теперь у вас есть доступ ко всем наборам слов. "
-                    f"Перейдите в Настройки → Наборы слов, чтобы выбрать новые наборы для изучения."
-                )
-            
+        if processed_count > 0:
+            await callback.answer("Платеж обработан успешно! 🎉")
+        else:
             await callback.message.edit_text(
-                success_message,
+                "🔄 *Проверка платежа*\n\n"
+                "Платеж не найден или еще обрабатывается.\n"
+                "Попробуйте через несколько минут или обратитесь в поддержку.",
                 parse_mode="Markdown",
                 reply_markup=subscription_menu_keyboard()
             )
-            
-            if is_extension:
-                await callback.answer("Подписка продлена! 🎉")
-            else:
-                await callback.answer("Premium активирован! 🎉")
-            
-        elif payment_status["status"] == "pending":
-            await callback.answer("Платеж в обработке. Попробуйте через несколько минут.", show_alert=True)
-            
-        elif payment_status["status"] == "canceled":
-            await callback.answer("Платеж отменен", show_alert=True)
-            del active_payments[chat_id]
-            
-        else:
-            await callback.answer(f"Статус платежа: {payment_status['status']}", show_alert=True)
-            
+            await callback.answer("Активных платежей не найдено")
+        
     except Exception as e:
         logger.error(f"Error checking payment status for user {chat_id}: {e}")
         await callback.answer("Ошибка проверки статуса платежа", show_alert=True)
@@ -277,6 +215,9 @@ async def show_subscription_status(callback: types.CallbackQuery, bot: Bot):
     chat_id = callback.from_user.id
     
     try:
+        # Сначала проверяем активные платежи
+        await PaymentService.check_and_process_user_payments(chat_id, bot)
+        
         status_text = format_subscription_status(chat_id)
         is_premium = crud.is_user_premium(chat_id)
         

@@ -2,10 +2,11 @@
 import logging
 import uuid
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 from yookassa import Configuration, Payment
 from config import YOOKASSA_SHOP_ID, YOOKASSA_SECRET_KEY, SUBSCRIPTION_PRICES
+from database.db import db_manager
 
 logger = logging.getLogger(__name__)
 
@@ -120,6 +121,72 @@ class PaymentService:
             return None
     
     @staticmethod
+    def save_active_payment(chat_id: int, payment_id: str, amount: float, months: int, description: str):
+        """Сохраняет активный платеж в базу данных."""
+        try:
+            with db_manager.transaction() as conn:
+                conn.execute('''
+                    INSERT INTO active_payments 
+                    (chat_id, payment_id, amount, months, description, created_at, status)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                ''', (chat_id, payment_id, amount, months, description, 
+                      datetime.now().isoformat(), 'pending'))
+            logger.info(f"Saved active payment {payment_id} for user {chat_id}")
+        except Exception as e:
+            logger.error(f"Error saving active payment: {e}")
+    
+    @staticmethod
+    def get_active_payments(chat_id: int = None) -> List[Dict[str, Any]]:
+        """Получает активные платежи из базы данных."""
+        try:
+            with db_manager.get_cursor() as cursor:
+                if chat_id:
+                    cursor.execute('''
+                        SELECT * FROM active_payments 
+                        WHERE chat_id = ? AND processed = FALSE
+                        ORDER BY created_at DESC
+                    ''', (chat_id,))
+                else:
+                    cursor.execute('''
+                        SELECT * FROM active_payments 
+                        WHERE processed = FALSE
+                        ORDER BY created_at DESC
+                    ''')
+                
+                rows = cursor.fetchall()
+                payments = []
+                for row in rows:
+                    payments.append({
+                        'id': row[0],
+                        'chat_id': row[1],
+                        'payment_id': row[2],
+                        'amount': row[3],
+                        'months': row[4],
+                        'description': row[5],
+                        'created_at': row[6],
+                        'status': row[7],
+                        'processed': row[8]
+                    })
+                return payments
+        except Exception as e:
+            logger.error(f"Error getting active payments: {e}")
+            return []
+    
+    @staticmethod
+    def mark_payment_processed(payment_id: str):
+        """Отмечает платеж как обработанный."""
+        try:
+            with db_manager.transaction() as conn:
+                conn.execute('''
+                    UPDATE active_payments 
+                    SET processed = TRUE, status = 'completed'
+                    WHERE payment_id = ?
+                ''', (payment_id,))
+            logger.info(f"Marked payment {payment_id} as processed")
+        except Exception as e:
+            logger.error(f"Error marking payment as processed: {e}")
+    
+    @staticmethod
     def check_payment_status(payment_id: str) -> Optional[Dict[str, Any]]:
         """
         Проверяет статус платежа.
@@ -149,6 +216,184 @@ class PaymentService:
         except Exception as e:
             logger.error(f"Error checking payment status {payment_id}: {e}")
             return None
+    
+    @staticmethod
+    async def check_and_process_user_payments(chat_id: int, bot=None) -> int:
+        """
+        Проверяет и обрабатывает все активные платежи пользователя.
+        
+        Args:
+            chat_id: ID пользователя
+            bot: Экземпляр бота для отправки уведомлений
+            
+        Returns:
+            Количество обработанных платежей
+        """
+        processed_count = 0
+        
+        try:
+            active_payments = PaymentService.get_active_payments(chat_id)
+            
+            for payment_data in active_payments:
+                payment_id = payment_data['payment_id']
+                months = payment_data['months']
+                
+                # Проверяем статус в ЮKassa
+                status = PaymentService.check_payment_status(payment_id)
+                
+                if status and status["status"] == "succeeded" and status["paid"]:
+                    # Платеж успешен - активируем подписку
+                    from database import crud
+                    
+                    # Вычисляем дату окончания подписки
+                    expiry_date = PaymentService.calculate_subscription_expiry(months, chat_id)
+                    
+                    # Обновляем подписку пользователя
+                    crud.update_user_subscription(chat_id, "premium", expiry_date, payment_id)
+                    
+                    # Отмечаем платеж как обработанный
+                    PaymentService.mark_payment_processed(payment_id)
+                    
+                    processed_count += 1
+                    
+                    # Отправляем уведомление пользователю, если передан бот
+                    if bot:
+                        try:
+                            # Определяем тип операции
+                            current_status, current_expires, _ = crud.get_user_subscription_status(chat_id)
+                            is_extension = (current_status == 'premium' and current_expires)
+                            
+                            period_text = {
+                                1: "1 месяц",
+                                3: "3 месяца",
+                                6: "6 месяцев",
+                                12: "12 месяцев"
+                            }.get(months, f"{months} месяцев")
+                            
+                            if is_extension:
+                                message = (
+                                    f"🎉 *Подписка продлена!*\n\n"
+                                    f"💎 Добавлен период: {period_text}\n"
+                                    f"Ваш Premium доступ продлен автоматически!"
+                                )
+                            else:
+                                message = (
+                                    f"🎉 *Premium активирован!*\n\n"
+                                    f"💎 Период: {period_text}\n"
+                                    f"Теперь у вас есть доступ ко всем наборам слов!"
+                                )
+                            
+                            await bot.send_message(chat_id, message, parse_mode="Markdown")
+                            logger.info(f"Sent subscription notification to user {chat_id}")
+                            
+                        except Exception as e:
+                            logger.error(f"Error sending notification to user {chat_id}: {e}")
+                    
+                    logger.info(f"Successfully processed payment {payment_id} for user {chat_id}")
+                
+                elif status and status["status"] == "canceled":
+                    # Платеж отменен
+                    PaymentService.mark_payment_processed(payment_id)
+                    logger.info(f"Payment {payment_id} was canceled")
+        
+        except Exception as e:
+            logger.error(f"Error processing payments for user {chat_id}: {e}")
+        
+        return processed_count
+    
+    @staticmethod
+    async def check_all_active_payments(bot=None) -> int:
+        """
+        Проверяет все активные платежи в системе.
+        Используется в планировщике для автоматической обработки.
+        
+        Args:
+            bot: Экземпляр бота для отправки уведомлений
+            
+        Returns:
+            Количество обработанных платежей
+        """
+        processed_count = 0
+        
+        try:
+            active_payments = PaymentService.get_active_payments()
+            logger.info(f"Checking {len(active_payments)} active payments")
+            
+            for payment_data in active_payments:
+                chat_id = payment_data['chat_id']
+                payment_id = payment_data['payment_id']
+                months = payment_data['months']
+                created_at = payment_data['created_at']
+                
+                # Проверяем возраст платежа - если старше 24 часов, помечаем как истекший
+                try:
+                    created_time = datetime.fromisoformat(created_at)
+                    if datetime.now() - created_time > timedelta(hours=24):
+                        PaymentService.mark_payment_processed(payment_id)
+                        logger.info(f"Marked expired payment {payment_id} as processed")
+                        continue
+                except Exception as e:
+                    logger.error(f"Error parsing payment date: {e}")
+                
+                # Проверяем статус в ЮKassa
+                status = PaymentService.check_payment_status(payment_id)
+                
+                if status and status["status"] == "succeeded" and status["paid"]:
+                    # Платеж успешен - активируем подписку
+                    from database import crud
+                    
+                    try:
+                        # Вычисляем дату окончания подписки
+                        expiry_date = PaymentService.calculate_subscription_expiry(months, chat_id)
+                        
+                        # Обновляем подписку пользователя
+                        crud.update_user_subscription(chat_id, "premium", expiry_date, payment_id)
+                        
+                        # Отмечаем платеж как обработанный
+                        PaymentService.mark_payment_processed(payment_id)
+                        
+                        processed_count += 1
+                        
+                        # Отправляем уведомление пользователю
+                        if bot:
+                            try:
+                                period_text = {
+                                    1: "1 месяц",
+                                    3: "3 месяца",
+                                    6: "6 месяцев",
+                                    12: "12 месяцев"
+                                }.get(months, f"{months} месяцев")
+                                
+                                message = (
+                                    f"🎉 *Premium активирован!*\n\n"
+                                    f"💎 Ваша подписка на {period_text} успешно оплачена!\n"
+                                    f"Теперь у вас есть доступ ко всем наборам слов.\n\n"
+                                    f"Перейдите в Настройки → Наборы слов для выбора новых наборов."
+                                )
+                                
+                                await bot.send_message(chat_id, message, parse_mode="Markdown")
+                                logger.info(f"Sent auto-activation notification to user {chat_id}")
+                                
+                            except Exception as e:
+                                logger.error(f"Error sending auto-notification to user {chat_id}: {e}")
+                        
+                        logger.info(f"Auto-processed payment {payment_id} for user {chat_id}")
+                        
+                    except Exception as e:
+                        logger.error(f"Error processing payment {payment_id}: {e}")
+                
+                elif status and status["status"] == "canceled":
+                    # Платеж отменен
+                    PaymentService.mark_payment_processed(payment_id)
+                    logger.info(f"Auto-marked canceled payment {payment_id} as processed")
+        
+        except Exception as e:
+            logger.error(f"Error in check_all_active_payments: {e}")
+        
+        if processed_count > 0:
+            logger.info(f"Auto-processed {processed_count} payments")
+        
+        return processed_count
     
     @staticmethod
     def process_webhook(data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -213,6 +458,18 @@ class PaymentService:
             # Избегаем циклического импорта
             from database import crud
             
+            # Правильное соответствие месяцев к дням
+            month_to_days = {
+                1: 30,    # 1 месяц = 30 дней
+                3: 90,    # 3 месяца = 90 дней  
+                6: 180,   # 6 месяцев = 180 дней
+                12: 365   # 12 месяцев = 365 дней (1 год)
+            }
+            
+            days = month_to_days.get(months, months * 30)
+            
+            logger.info(f"Calculating expiry: {months} months = {days} days")
+            
             # Если передан chat_id, проверяем существующую подписку
             if chat_id:
                 status, expires_at, _ = crud.get_user_subscription_status(chat_id)
@@ -225,8 +482,7 @@ class PaymentService:
                         
                         # Если подписка еще активна, добавляем новый период к существующему сроку
                         if current_expiry > now:
-                            logger.info(f"Extending existing subscription for user {chat_id}: current expiry {expires_at}, adding {months} months")
-                            days = months * 30
+                            logger.info(f"Extending existing subscription for user {chat_id}: current expiry {expires_at}, adding {days} days")
                             new_expiry = current_expiry + timedelta(days=days)
                             return new_expiry.isoformat()
                         else:
@@ -235,7 +491,6 @@ class PaymentService:
                         logger.error(f"Invalid expiry date format for user {chat_id}: {e}")
             
             # Если нет активной подписки или не передан chat_id, считаем от текущей даты
-            days = months * 30
             expiry_date = datetime.now() + timedelta(days=days)
             logger.info(f"Creating new subscription: {months} months ({days} days) from now")
             return expiry_date.isoformat()

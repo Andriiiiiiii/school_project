@@ -950,3 +950,57 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-05-29 14:12:14,143 - INFO - __main__ - Бот успешно запущен.
 2025-05-29 14:12:20,825 - ERROR - handlers.subscription - Error starting payment for user 1999873173: name 'datetime' is not defined
 2025-05-29 14:13:18,889 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:14:13 MSK)" was missed by 0:00:05.001125
+2025-05-29 14:22:47,911 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:22:47,916 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:22:47,916 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:23:52,022 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:24:47 MSK)" was missed by 0:00:04.286556
+2025-05-29 14:24:52,052 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:25:47 MSK)" was missed by 0:00:04.317388
+2025-05-29 14:25:52,071 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:26:47 MSK)" was missed by 0:00:04.336256
+2025-05-29 14:26:49,914 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:27:47 MSK)" was missed by 0:00:02.179344
+2025-05-29 14:28:20,524 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:28:20,738 - INFO - __main__ - Восстановлено 2 уведомлений
+2025-05-29 14:28:20,738 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:29:24,933 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:30:20 MSK)" was missed by 0:00:04.572187
+2025-05-29 14:30:24,872 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:31:20 MSK)" was missed by 0:00:04.511348
+2025-05-29 14:31:22,619 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:32:20 MSK)" was missed by 0:00:02.258221
+2025-05-29 14:32:25,224 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:33:20 MSK)" was missed by 0:00:04.863486
+2025-05-29 14:33:25,008 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:34:20 MSK)" was missed by 0:00:04.647465
+2025-05-29 14:34:22,729 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:35:20 MSK)" was missed by 0:00:02.368290
+2025-05-29 14:35:25,388 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:36:20 MSK)" was missed by 0:00:05.027761
+2025-05-29 14:36:25,542 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:37:20 MSK)" was missed by 0:00:05.181682
+2025-05-29 14:37:25,585 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:38:20 MSK)" was missed by 0:00:05.224813
+2025-05-29 14:38:22,968 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:39:20 MSK)" was missed by 0:00:02.607610
+2025-05-29 14:39:27,007 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:39:27,009 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:39:27,009 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:40:32,090 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:41:26 MSK)" was missed by 0:00:05.266036
+2025-05-29 14:41:07,648 - INFO - __main__ - Проверка пропущенных уведомлений…
+2025-05-29 14:41:07,648 - INFO - __main__ - Восстановлено 0 уведомлений
+2025-05-29 14:41:07,649 - INFO - __main__ - Бот успешно запущен.
+2025-05-29 14:42:11,865 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:43:07 MSK)" was missed by 0:00:04.473652
+2025-05-29 14:43:12,531 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:44:07 MSK)" was missed by 0:00:05.139290
+2025-05-29 14:44:09,889 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:45:07 MSK)" was missed by 0:00:02.498308
+2025-05-29 14:45:12,513 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:46:07 MSK)" was missed by 0:00:05.121576
+2025-05-29 14:46:12,611 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:47:07 MSK)" was missed by 0:00:05.219515
+2025-05-29 14:47:12,456 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:48:07 MSK)" was missed by 0:00:05.064694
+2025-05-29 14:48:09,850 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:49:07 MSK)" was missed by 0:00:02.458800
+2025-05-29 14:49:12,791 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:50:07 MSK)" was missed by 0:00:05.400307
+2025-05-29 14:50:12,424 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:51:07 MSK)" was missed by 0:00:05.033343
+2025-05-29 14:51:09,704 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:52:07 MSK)" was missed by 0:00:02.312558
+2025-05-29 14:52:12,067 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:53:07 MSK)" was missed by 0:00:04.675531
+2025-05-29 14:53:12,082 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:54:07 MSK)" was missed by 0:00:04.691134
+2025-05-29 14:54:12,104 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:55:07 MSK)" was missed by 0:00:04.712764
+2025-05-29 14:55:09,752 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:56:07 MSK)" was missed by 0:00:02.360671
+2025-05-29 14:56:12,121 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:57:07 MSK)" was missed by 0:00:04.730140
+2025-05-29 14:57:11,960 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:58:07 MSK)" was missed by 0:00:04.568480
+2025-05-29 14:58:12,351 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 14:59:07 MSK)" was missed by 0:00:04.959682
+2025-05-29 14:59:09,853 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-05-29 15:00:07 MSK)" was missed by 0:00:02.461845
+2025-05-29 14:59:34,243 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-05-29 14:59:34,243 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-05-29 14:59:34,243 - INFO - apscheduler.scheduler - Scheduler started
+2025-05-29 14:59:34,243 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-05-29 14:59:34,599 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-05-29 14:59:34,600 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-05-29 14:59:34,850 - INFO - __main__ - Восстановлено 3 уведомлений
+2025-05-29 14:59:34,850 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-05-29 14:59:38,051 - INFO - handlers.commands - Команда /start от chat_id=1999873173

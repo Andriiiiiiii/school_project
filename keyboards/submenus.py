@@ -94,7 +94,7 @@ def learning_menu_keyboard():
         InlineKeyboardButton("📝 Тест по набору", callback_data="learning:memorize_set")
     )
     keyboard.add(
-        InlineKeyboardButton("⚙️ Настройки обучения", callback_data="learning:settings"),
+        InlineKeyboardButton("⚙️ Настройки практики", callback_data="learning:settings"),
         InlineKeyboardButton("🔙 Назад", callback_data="menu:back")
     )
     return keyboard
