@@ -1241,3 +1241,167 @@ aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified 
 2025-06-03 02:13:09,569 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:14:09 MSK)" executed successfully
 2025-06-03 02:14:09,567 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:15:09 MSK)" (scheduled at 2025-06-03 02:14:09.555302+03:00)
 2025-06-03 02:14:09,568 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:15:09 MSK)" executed successfully
+2025-06-03 02:26:39,886 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:26:39,887 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:26:39,891 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:26:39,892 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:26:40,087 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:26:40,088 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:26:40,095 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:26:46,433 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 02:27:05,854 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-62' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=AttributeError("module 'aiogram.types' has no attribute 'MessageNotModified'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 608, in process_settings_mysettings
+    await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 267, in process_settings_choice_callback
+    await process_settings_mysettings(cb, bot)
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 609, in process_settings_mysettings
+    except types.MessageNotModified:
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
+2025-06-03 02:27:09,025 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-03 02:27:28,998 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:27:28,999 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:27:28,999 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:27:28,999 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:27:29,198 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:27:29,198 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:27:29,202 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:27:31,916 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 02:27:40,545 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=AttributeError("module 'aiogram.types' has no attribute 'MessageNotModified'")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 608, in process_settings_mysettings
+    await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 267, in process_settings_choice_callback
+    await process_settings_mysettings(cb, bot)
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 609, in process_settings_mysettings
+    except types.MessageNotModified:
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
+2025-06-03 02:28:29,004 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:29:28 MSK)" (scheduled at 2025-06-03 02:28:28.998269+03:00)
+2025-06-03 02:28:29,004 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 02:28:29,005 - INFO - services.payment - Checking 0 active payments
+2025-06-03 02:28:29,028 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:29:28 MSK)" executed successfully
+2025-06-03 02:29:29,007 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:30:28 MSK)" (scheduled at 2025-06-03 02:29:28.998269+03:00)
+2025-06-03 02:29:29,011 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:30:28 MSK)" executed successfully
+2025-06-03 02:30:29,004 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:31:28 MSK)" (scheduled at 2025-06-03 02:30:28.998269+03:00)
+2025-06-03 02:30:29,006 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:31:28 MSK)" executed successfully
+2025-06-03 02:31:29,004 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:32:28 MSK)" (scheduled at 2025-06-03 02:31:28.998269+03:00)
+2025-06-03 02:31:29,006 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:32:28 MSK)" executed successfully
+2025-06-03 02:32:29,004 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:33:28 MSK)" (scheduled at 2025-06-03 02:32:28.998269+03:00)
+2025-06-03 02:32:29,008 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:33:28 MSK)" executed successfully
+2025-06-03 02:32:32,920 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:32:32,921 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:32:32,921 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:32:32,921 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:32:33,108 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:32:33,108 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:32:33,115 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:33:32,928 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:34:32 MSK)" (scheduled at 2025-06-03 02:33:32.919924+03:00)
+2025-06-03 02:33:32,930 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 02:33:32,931 - INFO - services.payment - Checking 0 active payments
+2025-06-03 02:33:32,960 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:34:32 MSK)" executed successfully
+2025-06-03 02:34:32,935 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:35:32 MSK)" (scheduled at 2025-06-03 02:34:32.919924+03:00)
+2025-06-03 02:34:32,937 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:35:32 MSK)" executed successfully
+2025-06-03 02:35:32,935 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:36:32 MSK)" (scheduled at 2025-06-03 02:35:32.919924+03:00)
+2025-06-03 02:35:32,936 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:36:32 MSK)" executed successfully
+2025-06-03 02:37:13,986 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:37:13,987 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:37:13,988 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:37:13,988 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:37:14,183 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:37:14,183 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:37:14,185 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:37:16,914 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 02:38:13,989 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:39:13 MSK)" (scheduled at 2025-06-03 02:38:13.986050+03:00)
+2025-06-03 02:38:13,990 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 02:38:13,990 - INFO - services.payment - Checking 0 active payments
+2025-06-03 02:38:14,016 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:39:13 MSK)" executed successfully
+2025-06-03 02:38:15,755 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:38:21,437 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:38:25,059 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=предлагать (идею) ok=False
+2025-06-03 02:38:27,330 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=угадывать ok=False
+2025-06-03 02:38:29,331 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=напоминать ok=False
+2025-06-03 02:38:31,612 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=предлагать (идею) ok=True
+2025-06-03 02:38:37,262 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=улучшать ok=False
+2025-06-03 02:38:43,028 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:38:44,623 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=жаловаться ok=True
+2025-06-03 02:38:46,519 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=покидать, уходить ok=True
+2025-06-03 02:38:58,524 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:39:06,737 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=тратить (время или деньги) ok=False
+2025-06-03 02:39:13,988 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:40:13 MSK)" (scheduled at 2025-06-03 02:39:13.986050+03:00)
+2025-06-03 02:39:13,989 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:40:13 MSK)" executed successfully

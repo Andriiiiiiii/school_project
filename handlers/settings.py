@@ -9,6 +9,7 @@ import urllib.parse
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.utils.exceptions import MessageNotModified
 
 from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
 from database import crud
@@ -538,12 +539,14 @@ async def handle_set_change_cancelled(cb: types.CallbackQuery, bot: Bot):
     await cb.answer("Смена сета отменена")
 
 # ───────────────────────── МОИ НАСТРОЙКИ (ПРОФИЛЬ) ────────────────────────
-
 async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
     chat_id = cb.from_user.id
     user = crud.get_user(chat_id)
     if not user:
-        await cb.message.edit_text("Профиль не найден.", reply_markup=main_menu_keyboard())
+        try:
+            await cb.message.edit_text("Профиль не найден.", reply_markup=main_menu_keyboard())
+        except Exception:
+            await bot.send_message(chat_id, "Профиль не найден.", reply_markup=main_menu_keyboard())
         return
 
     level, words, reps, tz = user[1], user[2], user[3], user[5] or "не задан"
@@ -599,18 +602,26 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
     else:
         text += f"📚 *Набор:* не выбран\n"
 
-    # Добавляем информацию о скидке для премиум пользователей
     try:
-        if crud.is_user_premium(chat_id):
-            discount = crud.calculate_streak_discount(chat_id)
-            if discount > 0:
-                text += f"\n💎 *Скидка на продление:* {discount}%"
-    except Exception:
+        await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+    except MessageNotModified:
+        # Игнорируем ошибку, если сообщение не изменилось
+        logger.debug(f"Settings message not modified for user {chat_id}")
         pass
-
-    await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+    except Exception as e:
+        logger.error(f"Error editing settings message for user {chat_id}: {e}")
+        # Fallback - отправляем новое сообщение
+        try:
+            await bot.send_message(
+                chat_id,
+                text,
+                parse_mode="Markdown",
+                reply_markup=settings_menu_keyboard()
+            )
+        except Exception as send_error:
+            logger.error(f"Failed to send fallback settings message: {send_error}")
+    
     await cb.answer()
-
 # ──────────────────────────── BACK-HANDLER ────────────────────────────────
 async def _settings_back(cb: types.CallbackQuery, bot: Bot):
     await cb.message.edit_text("Настройки бота:", reply_markup=settings_menu_keyboard())

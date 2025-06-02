@@ -16,6 +16,7 @@ from keyboards.subscription import (
 )
 from services.payment import PaymentService
 from utils.subscription_helpers import format_subscription_status, get_premium_sets_for_level
+from aiogram.utils.exceptions import MessageNotModified
 
 logger = logging.getLogger(__name__)
 
@@ -56,34 +57,94 @@ async def show_premium_info(callback: types.CallbackQuery, bot: Bot):
     await callback.answer()
 
 async def show_subscription_plans(callback: types.CallbackQuery, bot: Bot):
-    """Показывает планы подписки с ценами."""
-    plans_text = (
-        "💎 *Выберите план Premium подписки*\n\n"
-        "📊 *Доступные планы:*\n\n"
-    )
+    """Показывает планы подписки с ценами и скидками."""
+    chat_id = callback.from_user.id
     
-    # Добавляем информацию о каждом плане (БЕЗ экономии, только расчет на месяц)
-    for months, price in SUBSCRIPTION_PRICES.items():
+    # Получаем информацию о скидке пользователя
+    try:
+        from database.crud import get_user_streak, is_user_premium
+        streak, _ = get_user_streak(chat_id)
+        is_premium = is_user_premium(chat_id)
+        
+        # Рассчитываем скидку только для премиум пользователей
+        if is_premium and streak > 0:
+            discount_percent = min(30, streak)  # Максимум 30%
+        else:
+            discount_percent = 0
+    except Exception as e:
+        logger.error(f"Error getting user discount info: {e}")
+        discount_percent = 0
+        streak = 0
+    
+    plans_text = "💎 <b>Выберите план Premium подписки</b>\n\n"
+    
+    # Добавляем информацию о скидке, если она есть
+    if discount_percent > 0:
+        plans_text += f"🔥 <b>Ваша скидка: {discount_percent}% (за {streak} дней подряд)</b>\n\n"
+    
+    plans_text += "📊 <b>Доступные планы:</b>\n\n"
+    
+    # Добавляем информацию о каждом плане с учетом скидки
+    for months, base_price in SUBSCRIPTION_PRICES.items():
+        # Рассчитываем цену со скидкой
+        if discount_percent > 0:
+            discount_amount = base_price * (discount_percent / 100)
+            final_price = base_price - discount_amount
+        else:
+            final_price = base_price
+            
         if months == 1:
-            plans_text += f"🗓 *1 месяц* - {price:.0f}₽\n\n"
+            if discount_percent > 0:
+                plans_text += f"🗓 <b>1 месяц</b>\n"
+                plans_text += f"   <s>{base_price:.0f}₽</s> → <b>{final_price:.0f}₽</b>\n\n"
+            else:
+                plans_text += f"🗓 <b>1 месяц</b> - {base_price:.0f}₽\n\n"
         elif months == 3:
-            monthly_equivalent = price / months
-            plans_text += f"🗓 *3 месяца* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
+            monthly_equivalent = final_price / months
+            if discount_percent > 0:
+                plans_text += f"🗓 <b>3 месяца</b>\n"
+                plans_text += f"   <s>{base_price:.0f}₽</s> → <b>{final_price:.0f}₽</b> ({monthly_equivalent:.0f}₽/мес)\n\n"
+            else:
+                plans_text += f"🗓 <b>3 месяца</b> - {base_price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
         elif months == 6:
-            monthly_equivalent = price / months
-            plans_text += f"🗓 *6 месяцев* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
+            monthly_equivalent = final_price / months
+            if discount_percent > 0:
+                plans_text += f"🗓 <b>6 месяцев</b>\n"
+                plans_text += f"   <s>{base_price:.0f}₽</s> → <b>{final_price:.0f}₽</b> ({monthly_equivalent:.0f}₽/мес)\n\n"
+            else:
+                plans_text += f"🗓 <b>6 месяцев</b> - {base_price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
         elif months == 12:
-            monthly_equivalent = price / months
-            plans_text += f"🗓 *1 год* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n"
-            plans_text += f"   ⭐ *Самый выгодный план!*\n\n"
+            monthly_equivalent = final_price / months
+            if discount_percent > 0:
+                plans_text += f"🗓 <b>1 год</b>\n"
+                plans_text += f"   <s>{base_price:.0f}₽</s> → <b>{final_price:.0f}₽</b> ({monthly_equivalent:.0f}₽/мес)\n"
+                plans_text += f"   ⭐ <b>Самый выгодный план!</b>\n\n"
+            else:
+                plans_text += f"🗓 <b>1 год</b> - {base_price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n"
+                plans_text += f"   ⭐ <b>Самый выгодный план!</b>\n\n"
+    
+    if discount_percent == 0:
+        plans_text += "💡 <b>Совет:</b> Проходите тесты дня подряд, чтобы получать скидки!\n\n"
     
     plans_text += "Выберите подходящий план:"
     
-    await callback.message.edit_text(
-        plans_text,
-        parse_mode="Markdown",
-        reply_markup=subscription_period_keyboard()
-    )
+    try:
+        await callback.message.edit_text(
+            plans_text,
+            parse_mode="HTML",  # Изменили на HTML
+            reply_markup=subscription_period_keyboard(chat_id)
+        )
+    except MessageNotModified:
+        pass
+    except Exception as e:
+        logger.error(f"Error editing subscription plans message: {e}")
+        await bot.send_message(
+            chat_id,
+            plans_text,
+            parse_mode="HTML",  # Изменили на HTML
+            reply_markup=subscription_period_keyboard(chat_id)
+        )
+    
     await callback.answer()
 
 async def start_payment(callback: types.CallbackQuery, bot: Bot):
@@ -149,9 +210,16 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
         
         # Добавляем информацию о цене и скидке
         if price_info["has_discount"]:
-            message_text += f"💰 Базовая цена: {price_info['base_price']:.0f} руб\n"
+            message_text += f"💰 Базовая цена: <s>{price_info['base_price']:.0f} руб</s>\n"
             message_text += f"🔥 Скидка ({price_info['discount_percent']}%): -{price_info['discount_amount']:.0f} руб\n"
-            message_text += f"💸 К оплате: {price_info['final_price']:.0f} руб\n\n"
+            message_text += f"💸 К оплате: <b>{price_info['final_price']:.0f} руб</b>\n\n"
+            
+            # И измените parse_mode на HTML:
+            await callback.message.edit_text(
+                message_text,
+                parse_mode="HTML",
+                reply_markup=payment_keyboard(payment_data["confirmation_url"], months)
+            )
             
             # Получаем информацию о streak
             try:
