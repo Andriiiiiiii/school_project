@@ -168,7 +168,7 @@ def reset_user_cache(chat_id=None):
         logger.error("Ошибка сброса кэша: %s", e)
 
 def process_daily_reset(chat_id):
-    """Ежедневный сброс данных пользователя (оптимизированный)."""
+    """Ежедневный сброс данных пользователя с проверкой дней подряд."""
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         reset_key = f"{chat_id}_reset_{today}"
@@ -180,7 +180,38 @@ def process_daily_reset(chat_id):
         if not hasattr(process_daily_reset, 'processed_resets'):
             process_daily_reset.processed_resets = set()
         
-        # Обработка невыученных слов
+        # Проверяем и сбрасываем дни подряд если нужно
+        try:
+            from database.crud import get_user_streak, reset_user_streak
+            streak, last_test_date = get_user_streak(chat_id)
+            
+            if streak > 0:
+                yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+                
+                # Если пользователь не проходил тест вчера, сбрасываем streak
+                # Учитываем случай когда last_test_date может быть None
+                should_reset = False
+                if not last_test_date:
+                    should_reset = True  # Нет записи о тестах
+                elif last_test_date < yesterday:
+                    should_reset = True  # Тест был раньше чем вчера
+                elif last_test_date == yesterday:
+                    should_reset = False  # Тест был вчера - streak сохраняем
+                else:
+                    should_reset = False  # Тест был сегодня или в будущем
+                
+                if should_reset:
+                    reset_user_streak(chat_id)
+                    if not PRODUCTION_MODE:
+                        logger.info(f"Reset streak for user {chat_id} - last test: {last_test_date}, yesterday: {yesterday}")
+                else:
+                    if not PRODUCTION_MODE:
+                        logger.info(f"Keeping streak for user {chat_id} - last test: {last_test_date}, yesterday: {yesterday}")
+                        
+        except Exception as e:
+            logger.error(f"Ошибка проверки streak для пользователя {chat_id}: {e}")
+        
+        # Обработка невыученных слов (существующая логика)
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
             unique_words = entry[8] if len(entry) > 8 and entry[8] else []

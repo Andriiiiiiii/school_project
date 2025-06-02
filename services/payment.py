@@ -38,7 +38,7 @@ class PaymentService:
     @staticmethod
     def create_subscription_payment(chat_id: int, months: int = 1) -> Optional[Dict[str, Any]]:
         """
-        Создает платеж для подписки через ЮKassa.
+        Создает платеж для подписки через ЮKassa с учетом скидки за дни подряд.
         
         Args:
             chat_id: ID пользователя
@@ -52,13 +52,11 @@ class PaymentService:
                 logger.error("ЮKassa not initialized")
                 return None
                 
-            # Получаем цену для указанного периода
-            price = SUBSCRIPTION_PRICES.get(months)
-            if not price:
-                logger.error(f"Invalid subscription period: {months} months")
-                return None
-                
-            logger.info(f"Creating payment for user {chat_id}, period: {months} months, amount: {price}")
+            # Получаем цену с учетом скидки
+            price_info = PaymentService.calculate_discounted_price(chat_id, months)
+            final_price = price_info["final_price"]
+            
+            logger.info(f"Creating payment for user {chat_id}, period: {months} months, amount: {final_price}")
             
             # Определяем описание периода
             period_description = {
@@ -68,9 +66,14 @@ class PaymentService:
                 12: "12 месяцев"
             }.get(months, f"{months} месяцев")
             
+            # Формируем описание с учетом скидки
+            description = f"Premium подписка на {period_description} для пользователя {chat_id}"
+            if price_info["has_discount"]:
+                description += f" (скидка {price_info['discount_percent']}%)"
+            
             payment = Payment.create({
                 "amount": {
-                    "value": f"{price:.2f}",
+                    "value": f"{final_price:.2f}",
                     "currency": "RUB"
                 },
                 "confirmation": {
@@ -78,7 +81,7 @@ class PaymentService:
                     "return_url": "https://t.me/your_bot_name"  # Замените на имя вашего бота
                 },
                 "capture": True,
-                "description": f"Premium подписка на {period_description} для пользователя {chat_id}",
+                "description": description,
                 "receipt": {
                     "customer": {
                         "email": "noreply@yourdomain.com"  # Замените на ваш email
@@ -88,7 +91,7 @@ class PaymentService:
                             "description": f"Premium подписка на {period_description}",
                             "quantity": "1.00",
                             "amount": {
-                                "value": f"{price:.2f}",
+                                "value": f"{final_price:.2f}",
                                 "currency": "RUB"
                             },
                             "vat_code": "1",  # Без НДС
@@ -100,7 +103,10 @@ class PaymentService:
                 "metadata": {
                     "chat_id": str(chat_id),
                     "subscription_type": "premium",
-                    "subscription_months": str(months)
+                    "subscription_months": str(months),
+                    "base_price": str(price_info["base_price"]),
+                    "discount_percent": str(price_info["discount_percent"]),
+                    "final_price": str(final_price)
                 }
             }, uuid.uuid4())
             
@@ -112,7 +118,8 @@ class PaymentService:
                 "status": payment.status,
                 "amount": payment.amount.value,
                 "months": months,
-                "description": f"Premium на {period_description}"
+                "description": f"Premium на {period_description}",
+                "price_info": price_info
             }
             
         except Exception as e:
@@ -510,17 +517,14 @@ class PaymentService:
     @staticmethod
     def calculate_savings(months: int) -> Dict[str, Any]:
         """
-        Вычисляет экономию при покупке длительной подписки.
+        Вычисляет информацию о ценах без скидок (базовый расчет).
         
         Args:
             months: Количество месяцев
             
         Returns:
-            Словарь с информацией об экономии
+            Словарь с информацией о ценах
         """
-        if months == 1:
-            return {"savings": 0, "savings_percent": 0}
-            
         monthly_price = SUBSCRIPTION_PRICES[1]
         actual_price = SUBSCRIPTION_PRICES.get(months, monthly_price * months)
         full_price = monthly_price * months
@@ -529,7 +533,55 @@ class PaymentService:
         savings_percent = (savings / full_price) * 100 if full_price > 0 else 0
         
         return {
+            "monthly_equivalent": round(actual_price / months, 2),
+            "base_price": actual_price,
             "savings": savings,
             "savings_percent": round(savings_percent),
-            "monthly_equivalent": round(actual_price / months, 2)
+            "full_price": full_price
         }
+
+    @staticmethod
+    def calculate_discounted_price(chat_id: int, months: int) -> dict:
+        """
+        Вычисляет цену со скидкой на основе дней подряд.
+        
+        Args:
+            chat_id: ID пользователя
+            months: Количество месяцев подписки
+            
+        Returns:
+            Словарь с информацией о цене и скидке
+        """
+        try:
+            from database import crud
+            
+            base_price = SUBSCRIPTION_PRICES.get(months, 299.00)
+            discount_percent = crud.calculate_streak_discount(chat_id)
+            
+            # Валидация скидки
+            discount_percent = max(0, min(30, discount_percent))
+            
+            if discount_percent > 0:
+                discount_amount = base_price * (discount_percent / 100)
+                final_price = base_price - discount_amount
+            else:
+                discount_amount = 0
+                final_price = base_price
+            
+            return {
+                "base_price": base_price,
+                "discount_percent": discount_percent,
+                "discount_amount": discount_amount,
+                "final_price": final_price,
+                "has_discount": discount_percent > 0
+            }
+            
+        except Exception as e:
+            logger.error(f"Error calculating discounted price for user {chat_id}: {e}")
+            return {
+                "base_price": SUBSCRIPTION_PRICES.get(months, 299.00),
+                "discount_percent": 0,
+                "discount_amount": 0,
+                "final_price": SUBSCRIPTION_PRICES.get(months, 299.00),
+                "has_discount": False
+            }

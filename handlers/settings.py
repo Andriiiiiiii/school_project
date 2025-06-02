@@ -549,12 +549,20 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
     level, words, reps, tz = user[1], user[2], user[3], user[5] or "не задан"
     chosen = user_set_selection.get(chat_id) or user[6] or "не выбран"
 
+    # Получаем информацию о днях подряд
+    try:
+        from database.crud import get_user_streak
+        streak, last_test_date = get_user_streak(chat_id)
+    except Exception:
+        streak = 0
+        
     text = (
         "👤 *Ваш профиль*\n\n"
         f"🔤 *Уровень:* {level}\n"
         f"📊 *Слов/день:* {words}\n"
         f"🔄 *Повторений:* {reps}\n"
         f"🌐 *Часовой пояс:* {tz}\n"
+        f"🔥 *Дней подряд:* {streak}\n"
     )
 
     # Добавляем информацию о наборе с количеством слов
@@ -590,6 +598,15 @@ async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
             text += f"📚 *Набор:* {chosen} (файл не найден)\n"
     else:
         text += f"📚 *Набор:* не выбран\n"
+
+    # Добавляем информацию о скидке для премиум пользователей
+    try:
+        if crud.is_user_premium(chat_id):
+            discount = crud.calculate_streak_discount(chat_id)
+            if discount > 0:
+                text += f"\n💎 *Скидка на продление:* {discount}%"
+    except Exception:
+        pass
 
     await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
     await cb.answer()

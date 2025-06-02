@@ -62,27 +62,20 @@ async def show_subscription_plans(callback: types.CallbackQuery, bot: Bot):
         "📊 *Доступные планы:*\n\n"
     )
     
-    # Добавляем информацию о каждом плане
+    # Добавляем информацию о каждом плане (БЕЗ экономии, только расчет на месяц)
     for months, price in SUBSCRIPTION_PRICES.items():
-        savings_info = PaymentService.calculate_savings(months)
-        
         if months == 1:
-            plans_text += f"🗓 *1 месяц* - {price:.0f}₽\n"
+            plans_text += f"🗓 *1 месяц* - {price:.0f}₽\n\n"
         elif months == 3:
-            savings = savings_info['savings']
-            plans_text += f"🗓 *3 месяца* - {price:.0f}₽\n"
-            plans_text += f"   💰 Экономия: {savings:.0f}₽ ({savings_info['savings_percent']}%)\n"
+            monthly_equivalent = price / months
+            plans_text += f"🗓 *3 месяца* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
         elif months == 6:
-            savings = savings_info['savings']
-            plans_text += f"🗓 *6 месяцев* - {price:.0f}₽\n"
-            plans_text += f"   💰 Экономия: {savings:.0f}₽ ({savings_info['savings_percent']}%)\n"
+            monthly_equivalent = price / months
+            plans_text += f"🗓 *6 месяцев* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n\n"
         elif months == 12:
-            savings = savings_info['savings']
-            plans_text += f"🗓 *1 год* - {price:.0f}₽\n"
-            plans_text += f"   💰 Экономия: {savings:.0f}₽ ({savings_info['savings_percent']}%)\n"
-            plans_text += f"   ⭐ *Самый выгодный план!*\n"
-        
-        plans_text += "\n"
+            monthly_equivalent = price / months
+            plans_text += f"🗓 *1 год* - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)\n"
+            plans_text += f"   ⭐ *Самый выгодный план!*\n\n"
     
     plans_text += "Выберите подходящий план:"
     
@@ -106,6 +99,9 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
     try:
         # Сначала проверяем и обрабатываем любые активные платежи пользователя
         await PaymentService.check_and_process_user_payments(chat_id, bot)
+        
+        # Получаем информацию о цене с учетом скидки
+        price_info = PaymentService.calculate_discounted_price(chat_id, months)
         
         # Создаем платеж через ЮKassa
         payment_data = PaymentService.create_subscription_payment(chat_id, months)
@@ -145,23 +141,33 @@ async def start_payment(callback: types.CallbackQuery, bot: Bot):
         # Формируем сообщение в зависимости от того, продление это или новая подписка
         if is_extension:
             current_days = (datetime.fromisoformat(current_expires) - datetime.now()).days
-            message_text = (
-                f"💳 *Продление Premium подписки*\n\n"
-                f"📅 Добавляемый период: {period_text}\n"
-                f"💰 Сумма: {payment_data['amount']} руб\n"
-                f"⏰ Текущая подписка действует еще {current_days} дней\n\n"
-                f"После оплаты подписка будет продлена автоматически.\n"
-                f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n\n"
-                f"ℹ️ *Подписка активируется автоматически после оплаты*"
-            )
+            message_text = f"💳 *Продление Premium подписки*\n\n"
         else:
-            message_text = (
-                f"💳 *Оплата Premium подписки*\n\n"
-                f"📅 Период: {period_text}\n"
-                f"💰 Сумма: {payment_data['amount']} руб\n\n"
-                f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n\n"
-                f"ℹ️ *Подписка активируется автоматически после оплаты*"
-            )
+            message_text = f"💳 *Оплата Premium подписки*\n\n"
+            
+        message_text += f"📅 Период: {period_text}\n"
+        
+        # Добавляем информацию о цене и скидке
+        if price_info["has_discount"]:
+            message_text += f"💰 Базовая цена: {price_info['base_price']:.0f} руб\n"
+            message_text += f"🔥 Скидка ({price_info['discount_percent']}%): -{price_info['discount_amount']:.0f} руб\n"
+            message_text += f"💸 К оплате: {price_info['final_price']:.0f} руб\n\n"
+            
+            # Получаем информацию о streak
+            try:
+                streak, _ = crud.get_user_streak(chat_id)
+                message_text += f"🎯 Ваша серия: {streak} дней подряд\n\n"
+            except Exception:
+                pass
+        else:
+            message_text += f"💰 Сумма: {price_info['final_price']:.0f} руб\n\n"
+        
+        if is_extension:
+            message_text += f"⏰ Текущая подписка действует еще {current_days} дней\n\n"
+            message_text += f"После оплаты подписка будет продлена автоматически.\n"
+        
+        message_text += f"Нажмите кнопку \"Оплатить\" для перехода к оплате.\n\n"
+        message_text += f"ℹ️ *Подписка активируется автоматически после оплаты*"
         
         await callback.message.edit_text(
             message_text,

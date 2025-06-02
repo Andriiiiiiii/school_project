@@ -17,42 +17,21 @@ def subscription_period_keyboard():
     """Создает клавиатуру выбора периода подписки."""
     keyboard = InlineKeyboardMarkup(row_width=1)
     
-    # Импортируем здесь, чтобы избежать циклических импортов
-    try:
-        from services.payment import PaymentService
+    # Добавляем кнопки без лишних расчетов
+    for months, price in SUBSCRIPTION_PRICES.items():
+        if months == 1:
+            text = f"1 месяц - {price:.0f}₽"
+        elif months == 3:
+            monthly_equivalent = price / months
+            text = f"3 мес. - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)"
+        elif months == 6:
+            monthly_equivalent = price / months
+            text = f"6 мес. - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)"
+        elif months == 12:
+            monthly_equivalent = price / months
+            text = f"12 мес. - {price:.0f}₽ ({monthly_equivalent:.0f}₽/мес)"
         
-        for months, price in SUBSCRIPTION_PRICES.items():
-            # Вычисляем экономию
-            savings_info = PaymentService.calculate_savings(months)
-            
-            if months == 1:
-                text = f"1 месяц - {price:.0f}₽"
-            else:
-                savings_percent = savings_info['savings_percent']
-                monthly_equivalent = savings_info['monthly_equivalent']
-                
-                if months == 3:
-                    text = f"3 месяца - {price:.0f}₽ (скидка {savings_percent}%, {monthly_equivalent:.0f}₽/мес)"
-                elif months == 6:
-                    text = f"6 месяцев - {price:.0f}₽ (скидка {savings_percent}%, {monthly_equivalent:.0f}₽/мес)"
-                elif months == 12:
-                    text = f"1 год - {price:.0f}₽ (скидка {savings_percent}%, {monthly_equivalent:.0f}₽/мес)"
-            
-            keyboard.add(InlineKeyboardButton(text, callback_data=f"subscription:buy:{months}"))
-    
-    except ImportError as e:
-        # Fallback если не удается импортировать PaymentService
-        for months, price in SUBSCRIPTION_PRICES.items():
-            if months == 1:
-                text = f"1 месяц - {price:.0f}₽"
-            elif months == 3:
-                text = f"3 месяца - {price:.0f}₽"
-            elif months == 6:
-                text = f"6 месяцев - {price:.0f}₽"
-            elif months == 12:
-                text = f"1 год - {price:.0f}₽"
-            
-            keyboard.add(InlineKeyboardButton(text, callback_data=f"subscription:buy:{months}"))
+        keyboard.add(InlineKeyboardButton(text, callback_data=f"subscription:buy:{months}"))
     
     keyboard.add(InlineKeyboardButton("🔙 Назад", callback_data="subscription:menu"))
     return keyboard

@@ -120,7 +120,6 @@ async def _send_question(chat_id: int, bot: Bot) -> None:
     except Exception as e:
         logger.error(f"Ошибка при отправке сообщения с навигацией: {e}")
 
-
 async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     """Завершает тест и отображает результаты."""
     state = quiz_states.pop(chat_id, None)
@@ -137,15 +136,33 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
 
     correct, total = state["correct"], len(state["questions"])
     result = format_result_message(correct, total, state["revision"])
+    
+    # Увеличиваем streak при прохождении теста дня
+    try:
+        from database.crud import increment_user_streak, get_user_streak
+        from datetime import datetime
+        
+        # Получаем streak до инкремента
+        old_streak, _ = get_user_streak(chat_id)
+        
+        # Инкрементируем streak
+        new_streak = increment_user_streak(chat_id)
+        
+        # Проверяем, увеличился ли streak (значит, это первый тест за день)
+        if new_streak > old_streak:
+            result += f"\n🔥 Дней подряд: {new_streak}"
+            if new_streak >= 7:
+                result += "\n🎯 Отличная последовательность!"
+        else:
+            result += f"\n🔥 Дней подряд: {new_streak} (уже проходили тест сегодня)"
+                
+    except Exception as e:
+        logger.error(f"Ошибка обновления streak для пользователя {chat_id}: {e}")
+    
     await bot.send_message(chat_id, result, parse_mode="Markdown")
     
-    # Удаляем отправку стикера
-    # if correct / total >= 0.7:
-    #     await send_sticker_with_menu(chat_id, bot, get_congratulation_sticker())
-    # else:
     from keyboards.main_menu import main_menu_keyboard
     await bot.send_message(chat_id, "Тест завершён.", reply_markup=main_menu_keyboard())
-
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
     """Начинает тест со словами дня."""
@@ -224,7 +241,6 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
     await _send_question(chat_id, bot)
     await cb.answer()
 
-
 async def handle_poll_answer(ans: PollAnswer) -> None:
     """Обрабатывает ответ на вопрос теста."""
     pid = str(ans.poll_id)
@@ -300,7 +316,6 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
             nav_messages[chat_id] = msg.message_id
         except Exception as e:
             logger.error(f"Ошибка при отправке сообщения с навигацией после неправильного ответа: {e}")
-
 
 async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
     """Обрабатывает нажатия на кнопки навигации теста."""

@@ -375,6 +375,119 @@ def update_user_chosen_set(chat_id: int, set_name: str):
         logger.error(f"Error updating chosen_set for user {chat_id}: {e}")
         raise
 
+def update_user_streak(chat_id: int, days_streak: int, last_test_date: str = None):
+    """Обновляет количество дней подряд пользователя."""
+    try:
+        # Валидация: streak не может быть отрицательным
+        if days_streak < 0:
+            days_streak = 0
+            
+        with db_manager.transaction() as tx:
+            if last_test_date:
+                tx.execute(
+                    "UPDATE users SET days_streak = ?, last_test_date = ? WHERE chat_id = ?",
+                    (days_streak, last_test_date, chat_id)
+                )
+                logger.debug(f"Updated streak to {days_streak} and date to {last_test_date} for user {chat_id}")
+            else:
+                tx.execute(
+                    "UPDATE users SET days_streak = ? WHERE chat_id = ?",
+                    (days_streak, chat_id)
+                )
+                logger.debug(f"Updated streak to {days_streak} for user {chat_id}")
+                
+            # Проверяем что обновление прошло успешно
+            result = tx.execute("SELECT days_streak, last_test_date FROM users WHERE chat_id = ?", (chat_id,)).fetchone()
+            if result:
+                logger.debug(f"Verification: user {chat_id} now has streak={result[0]}, date={result[1]}")
+            else:
+                logger.error(f"User {chat_id} not found after update")
+                
+        logger.info(f"Updated streak to {days_streak} for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error updating streak for user {chat_id}: {e}")
+        raise
+
+def get_user_streak(chat_id: int) -> tuple:
+    """Возвращает количество дней подряд и дату последнего теста."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute(
+                "SELECT days_streak, last_test_date FROM users WHERE chat_id = ?", 
+                (chat_id,)
+            )
+            result = cursor.fetchone()
+            if result:
+                # Валидация: streak не может быть отрицательным
+                streak = max(0, result[0] or 0)
+                date = result[1]
+                logger.debug(f"Retrieved streak={streak}, date={date} for user {chat_id}")
+                return streak, date
+            else:
+                logger.warning(f"User {chat_id} not found when getting streak")
+                return 0, None
+    except Exception as e:
+        logger.error(f"Error getting streak for user {chat_id}: {e}")
+        return 0, None
+
+def increment_user_streak(chat_id: int) -> int:
+    """Увеличивает количество дней подряд на 1 и обновляет дату последнего теста."""
+    try:
+        from datetime import datetime
+        today = datetime.now().strftime("%Y-%m-%d")
+        
+        current_streak, last_test_date = get_user_streak(chat_id)
+        logger.debug(f"Current state for user {chat_id}: streak={current_streak}, last_date={last_test_date}, today={today}")
+        
+        # Проверяем, не проходил ли уже тест сегодня
+        if last_test_date == today:
+            logger.debug(f"User {chat_id} already took test today, keeping streak at {current_streak}")
+            return current_streak  # Уже проходил тест сегодня
+        
+        new_streak = current_streak + 1
+        logger.debug(f"Incrementing streak for user {chat_id}: {current_streak} -> {new_streak}")
+        
+        update_user_streak(chat_id, new_streak, today)
+        
+        # Проверяем что обновление прошло успешно
+        verify_streak, verify_date = get_user_streak(chat_id)
+        logger.debug(f"After update verification: streak={verify_streak}, date={verify_date}")
+        
+        return new_streak
+        
+    except Exception as e:
+        logger.error(f"Error incrementing streak for user {chat_id}: {e}")
+        return 0
+
+def reset_user_streak(chat_id: int):
+    """Сбрасывает количество дней подряд до 0."""
+    try:
+        logger.debug(f"Resetting streak for user {chat_id}")
+        update_user_streak(chat_id, 0, None)
+        logger.info(f"Reset streak for user {chat_id}")
+    except Exception as e:
+        logger.error(f"Error resetting streak for user {chat_id}: {e}")
+
+def calculate_streak_discount(chat_id: int) -> int:
+    """Вычисляет скидку на подписку на основе количества дней подряд."""
+    try:
+        # Проверяем, есть ли у пользователя премиум подписка
+        if not is_user_premium(chat_id):
+            return 0  # Бесплатные пользователи не получают скидку
+        
+        streak, _ = get_user_streak(chat_id)
+        
+        # Валидация: streak не может быть отрицательным
+        streak = max(0, streak)
+        
+        if streak <= 30:
+            return streak  # Скидка равна количеству дней
+        else:
+            return 30  # Максимальная скидка 30%
+            
+    except Exception as e:
+        logger.error(f"Error calculating streak discount for user {chat_id}: {e}")
+        return 0
 
 def update_user_test_words_count(chat_id: int, count: int):
     try:

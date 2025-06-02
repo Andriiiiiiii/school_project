@@ -1056,3 +1056,188 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-06-02 15:30:06,405 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:31:05 MSK)" (scheduled at 2025-06-02 15:30:05.807679+03:00)
 2025-06-02 15:30:06,410 - INFO - services.payment - Checking 0 active payments
 2025-06-02 15:30:06,411 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:31:05 MSK)" executed successfully
+2025-06-03 01:43:59,255 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 01:43:59,255 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 01:43:59,255 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 01:43:59,255 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 01:43:59,412 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 01:43:59,413 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 01:43:59,416 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 01:44:28,419 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 01:44:33,067 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=KeyError('savings')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/subscription.py", line 72, in show_subscription_plans
+    savings = savings_info['savings']
+              ~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'savings'
+2025-06-03 01:45:03,899 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:45:59 MSK)" was missed by 0:00:04.643810
+2025-06-03 01:53:55,315 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 01:53:55,317 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 01:53:55,317 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 01:53:55,317 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 01:53:55,498 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 01:53:55,498 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 01:53:55,514 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 01:54:55,330 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:55:55 MSK)" (scheduled at 2025-06-03 01:54:55.314500+03:00)
+2025-06-03 01:54:55,331 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 01:54:55,334 - INFO - services.payment - Checking 0 active payments
+2025-06-03 01:54:55,363 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:55:55 MSK)" executed successfully
+2025-06-03 01:55:55,322 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:56:55 MSK)" (scheduled at 2025-06-03 01:55:55.314500+03:00)
+2025-06-03 01:55:55,324 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:56:55 MSK)" executed successfully
+2025-06-03 01:56:55,320 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:57:55 MSK)" (scheduled at 2025-06-03 01:56:55.314500+03:00)
+2025-06-03 01:56:55,321 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 01:57:55 MSK)" executed successfully
+2025-06-03 02:03:24,723 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:03:24,725 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:03:24,725 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:03:24,725 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:03:24,904 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:03:24,904 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:03:24,907 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:03:27,476 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 02:03:34,448 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:03:44,831 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:03:47,730 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=приглашать ok=True
+2025-06-03 02:03:49,982 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=улучшать ok=True
+2025-06-03 02:03:53,436 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=брать взаймы ok=True
+2025-06-03 02:04:00,524 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=сохранять / копить ok=False
+2025-06-03 02:04:06,625 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=жаловаться ok=False
+2025-06-03 02:04:08,227 - INFO - database.crud - Updated streak to 1 for user 1999873173
+2025-06-03 02:04:24,725 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:05:24 MSK)" (scheduled at 2025-06-03 02:04:24.722708+03:00)
+2025-06-03 02:04:24,726 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 02:04:24,728 - INFO - services.payment - Checking 0 active payments
+2025-06-03 02:04:24,753 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:05:24 MSK)" executed successfully
+2025-06-03 02:04:26,547 - INFO - handlers.settings - User 1999873173 (level B1, premium: False): 18 total sets, 2 available
+2025-06-03 02:04:45,723 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 02:04:50,799 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=давать взаймы ok=True
+2025-06-03 02:04:54,827 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=брать взаймы ok=False
+2025-06-03 02:05:20,491 - INFO - services.payment - Creating payment for user 1999873173, period: 3 months, amount: 799.0
+2025-06-03 02:05:21,321 - INFO - services.payment - Payment created successfully for user 1999873173: 2fd041f1-000f-5001-8000-1c165f464e53
+2025-06-03 02:05:21,322 - INFO - services.payment - Saved active payment 2fd041f1-000f-5001-8000-1c165f464e53 for user 1999873173
+2025-06-03 02:05:24,726 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:06:24 MSK)" (scheduled at 2025-06-03 02:05:24.722708+03:00)
+2025-06-03 02:05:24,728 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:06:24 MSK)" executed successfully
+2025-06-03 02:06:19,454 - INFO - services.payment - Calculating expiry: 3 months = 90 days
+2025-06-03 02:06:19,454 - INFO - services.payment - Creating new subscription: 3 months (90 days) from now
+2025-06-03 02:06:19,454 - INFO - database.crud - Updated subscription status=premium for user 1999873173
+2025-06-03 02:06:19,454 - INFO - services.payment - Marked payment 2fd041f1-000f-5001-8000-1c165f464e53 as processed
+2025-06-03 02:06:19,562 - INFO - services.payment - Sent subscription notification to user 1999873173
+2025-06-03 02:06:19,562 - INFO - services.payment - Successfully processed payment 2fd041f1-000f-5001-8000-1c165f464e53 for user 1999873173
+2025-06-03 02:06:24,727 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:07:24 MSK)" (scheduled at 2025-06-03 02:06:24.722708+03:00)
+2025-06-03 02:06:24,732 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:07:24 MSK)" executed successfully
+2025-06-03 02:07:24,726 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:08:24 MSK)" (scheduled at 2025-06-03 02:07:24.722708+03:00)
+2025-06-03 02:07:24,727 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:08:24 MSK)" executed successfully
+2025-06-03 02:08:24,737 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:09:24 MSK)" (scheduled at 2025-06-03 02:08:24.722708+03:00)
+2025-06-03 02:08:24,739 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:09:24 MSK)" executed successfully
+2025-06-03 02:09:09,555 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 02:09:09,556 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 02:09:09,556 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 02:09:09,556 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 02:09:09,734 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 02:09:09,734 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 02:09:09,738 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 02:09:12,160 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 02:10:09,563 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:11:09 MSK)" (scheduled at 2025-06-03 02:10:09.555302+03:00)
+2025-06-03 02:10:09,564 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-03 02:10:09,564 - INFO - services.payment - Checking 0 active payments
+2025-06-03 02:10:09,585 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:11:09 MSK)" executed successfully
+2025-06-03 02:11:09,566 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:12:09 MSK)" (scheduled at 2025-06-03 02:11:09.555302+03:00)
+2025-06-03 02:11:09,568 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:12:09 MSK)" executed successfully
+2025-06-03 02:12:08,761 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-70' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 267, in process_settings_choice_callback
+    await process_settings_mysettings(cb, bot)
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 611, in process_settings_mysettings
+    await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-06-03 02:12:09,558 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:13:09 MSK)" (scheduled at 2025-06-03 02:12:09.555302+03:00)
+2025-06-03 02:12:09,560 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:13:09 MSK)" executed successfully
+2025-06-03 02:12:36,976 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-77' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 267, in process_settings_choice_callback
+    await process_settings_mysettings(cb, bot)
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 611, in process_settings_mysettings
+    await cb.message.edit_text(text, parse_mode="Markdown", reply_markup=settings_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-06-03 02:13:09,568 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:14:09 MSK)" (scheduled at 2025-06-03 02:13:09.555302+03:00)
+2025-06-03 02:13:09,569 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:14:09 MSK)" executed successfully
+2025-06-03 02:14:09,567 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:15:09 MSK)" (scheduled at 2025-06-03 02:14:09.555302+03:00)
+2025-06-03 02:14:09,568 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:15:09 MSK)" executed successfully
