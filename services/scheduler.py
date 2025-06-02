@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 FIRST_TIME = REMINDER_START
 
 # Глобальные переменные
-quiz_reminder_sent = {}
+test_reminder_sent = {}
 user_cache = {}
 last_cache_update = 0
 last_payment_check = 0
@@ -97,7 +97,7 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                     if not PRODUCTION_MODE:
                         logger.error("Ошибка проверки уведомлений для пользователя %s: %s", chat_id, e)
                 
-                # Проверка времени напоминания о квизе
+                # Проверка времени напоминания о тесте
                 try:
                     local_today_str = now_local.strftime("%Y-%m-%d")
                     local_base_obj = datetime.strptime(
@@ -106,11 +106,11 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                     local_end_obj = local_base_obj + timedelta(hours=DURATION_HOURS)
                     
                     time_diff = abs((now_local - local_end_obj).total_seconds() / 60)
-                    if time_diff <= 5 and quiz_reminder_sent.get(chat_id) != local_today_str:
+                    if time_diff <= 5 and test_reminder_sent.get(chat_id) != local_today_str:
                         needs_processing = True
                 except Exception as e:
                     if not PRODUCTION_MODE:
-                        logger.error("Ошибка расчета времени квиза для пользователя %s: %s", chat_id, e)
+                        logger.error("Ошибка расчета времени теста для пользователя %s: %s", chat_id, e)
                 
                 if needs_processing:
                     process_user(user, now_server, bot, loop)
@@ -207,9 +207,9 @@ def process_daily_reset(chat_id):
                 
             reset_daily_words_cache(chat_id)
         
-        # Сброс напоминания о квизе
-        if chat_id in quiz_reminder_sent:
-            del quiz_reminder_sent[chat_id]
+        # Сброс напоминания о тесте
+        if chat_id in test_reminder_sent:
+            del test_reminder_sent[chat_id]
         
         process_daily_reset.processed_resets.add(reset_key)
         
@@ -286,32 +286,32 @@ def process_user(user, now_server, bot, loop):
             except Exception as e:
                 logger.error("Ошибка отправки уведомления пользователю %s: %s", chat_id, e)
         
-        # Напоминание о квизе
+        # Напоминание о тесте
         try:
             current_time = now_local
             end_time = local_end_obj
-            reminder_already_sent = quiz_reminder_sent.get(chat_id) == local_today_str
+            reminder_already_sent = test_reminder_sent.get(chat_id) == local_today_str
             time_diff_minutes = (end_time - current_time).total_seconds() / 60
             
             if 0 <= time_diff_minutes <= 15 and not reminder_already_sent:
                 try:
                     if is_revision_mode:
-                        reminder_message = "Пройдите квиз для повторения выученных слов."
+                        reminder_message = "Пройдите тест для повторения выученных слов."
                     else:
-                        reminder_message = "Пройдите квиз, чтобы добавить слова в Ваш словарь."
+                        reminder_message = "Пройдите тест, чтобы добавить слова в Ваш словарь."
                         
                     asyncio.run_coroutine_threadsafe(
                         bot.send_message(chat_id, reminder_message),
                         loop
                     )
-                    quiz_reminder_sent[chat_id] = local_today_str
+                    test_reminder_sent[chat_id] = local_today_str
                     if not PRODUCTION_MODE:
-                        logger.info("Отправлено напоминание о квизе пользователю %s", chat_id)
+                        logger.info("Отправлено напоминание о тесте пользователю %s", chat_id)
                 except Exception as e:
-                    logger.error("Ошибка отправки напоминания о квизе пользователю %s: %s", chat_id, e)
+                    logger.error("Ошибка отправки напоминания о тесте пользователю %s: %s", chat_id, e)
         except Exception as e:
             if not PRODUCTION_MODE:
-                logger.error("Ошибка проверки времени квиза для пользователя %s: %s", chat_id, e)
+                logger.error("Ошибка проверки времени теста для пользователя %s: %s", chat_id, e)
             
     except Exception as e:
         if not PRODUCTION_MODE:

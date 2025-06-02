@@ -99,7 +99,7 @@ def format_progress_bar(current: int, total: int, length: int = 10) -> str:
 
 def format_quiz_question(question_number: int, total_questions: int, word: str, 
                          options: List[str], is_revision: bool = False) -> str:
-    """Форматирует вопрос квиза с индикатором прогресса."""
+    """Форматирует вопрос теста с индикатором прогресса."""
     progress = format_progress_bar(question_number, total_questions)
     
     # Дополнительная проверка - удаляем возможный перевод из слова
@@ -111,13 +111,13 @@ def format_quiz_question(question_number: int, total_questions: int, word: str,
     elif ": " in clean_word:
         clean_word = clean_word.split(": ", 1)[0].strip()
     
-    header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 СЛОВАРНЫЙ КВИЗ"
+    header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 СЛОВАРНЫЙ ТЕСТ"
     question = f"{header}\n{progress}\n\nВопрос {question_number}/{total_questions}:\n\nКакой перевод слова '*{clean_word}*'?"
     
     return question
 
 def format_result_message(correct: int, total: int, is_revision: bool = False) -> str:
-    """Форматирует сообщение с результатами квиза."""
+    """Форматирует сообщение с результатами теста."""
     percentage = (correct / total) * 100 if total > 0 else 0
     
     # Выбираем эмодзи на основе результата
@@ -132,7 +132,7 @@ def format_result_message(correct: int, total: int, is_revision: bool = False) -
         
     progress = format_progress_bar(correct, total, 20)
     
-    header = f"{emoji} Квиз завершен! {emoji}"
+    header = f"{emoji} Тест завершен! {emoji}"
     divider = SECTION_DIVIDERS["decorated"]
     
     message = f"{header}\n{divider}\n\n"
@@ -145,7 +145,7 @@ def format_result_message(correct: int, total: int, is_revision: bool = False) -
     else:
         message += "Правильные ответы добавлены в ваш словарь.\n\n"
         if percentage < 70:
-            message += "💡 *Совет:* Попробуйте квиз снова завтра, чтобы освоить слова, которые вы пропустили."
+            message += "💡 *Совет:* Попробуйте тест снова завтра, чтобы освоить слова, которые вы пропустили."
             
     return message
 
@@ -225,7 +225,7 @@ def format_dictionary_message(words: List[Tuple[str, str]]) -> str:
     
     """Форматирует записи словаря с улучшенным визуальным представлением."""
     if not words:
-        return "📚 *Ваш словарь пуст*\n\nПройдите квизы, чтобы добавить слова в свой словарь!"
+        return "📚 *Ваш словарь пуст*\n\nПройдите тесты, чтобы добавить слова в свой словарь!"
     
     header = "📚 Ваш словарь"
     
@@ -301,38 +301,6 @@ def format_settings_overview(user_settings: dict) -> str:
     result += f"📚 *Выбранный набор*: {user_settings.get('chosen_set', 'Не выбран')}\n"
     
     return result
-
-def format_result_message(correct: int, total: int, is_revision: bool = False) -> str:
-    """Форматирует сообщение с результатами квиза."""
-    percentage = (correct / total) * 100 if total > 0 else 0
-    
-    # Выбираем эмодзи на основе результата
-    if percentage >= 90:
-        emoji = "🎉"
-    elif percentage >= 70:
-        emoji = "👍"
-    elif percentage >= 50:
-        emoji = "👌"
-    else:
-        emoji = "🔄"
-        
-    progress = format_progress_bar(correct, total, 20)
-    
-    header = f"{emoji} Квиз завершен! {emoji}"
-    
-    message = f"{header}\n\n"
-    message += f"*Счет:* {correct} из {total} ({percentage:.1f}%)\n{progress}\n\n"
-    
-    if is_revision:
-        message += "Вы были в *режиме повторения*. Эти слова уже в вашем словаре.\n\n"
-        if percentage < 70:
-            message += "💡 *Совет:* Рассмотрите возможность повторного изучения этих слов для улучшения запоминания."
-    else:
-        message += "Правильные ответы добавлены в ваш словарь.\n\n"
-        if percentage < 70:
-            message += "💡 *Совет:* Попробуйте квиз снова завтра, чтобы освоить слова, которые вы пропустили."
-            
-    return message
 
 def truncate_daily_words_message(formatted_message: str, unique_words: List[str], 
                                  words_count: int, repetitions: int,

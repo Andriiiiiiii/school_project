@@ -1,7 +1,7 @@
 # Полное исправление файла handlers/quiz.py
 
 """
-Квиз «Слова дня»: встроенные quiz-поллы с навигацией.
+Тест «Слова дня»: встроенные quiz-поллы с навигацией.
 """
 
 import asyncio
@@ -35,7 +35,7 @@ def _make_nav(prefix: str) -> InlineKeyboardMarkup:
     """Создает клавиатуру навигации с двумя кнопками в ряд."""
     kb = InlineKeyboardMarkup(row_width=2)
     kb.add(
-        InlineKeyboardButton("🛑 Закончить квиз", callback_data=f"{prefix}:back"),
+        InlineKeyboardButton("🛑 Закончить тест", callback_data=f"{prefix}:back"),
         InlineKeyboardButton("⏭️ Следующее слово", callback_data=f"{prefix}:skip")
     )
     return kb
@@ -77,7 +77,7 @@ async def _send_question(chat_id: int, bot: Bot) -> None:
 
     idx = state["current"]
     if idx >= len(state["questions"]):
-        # Если вопросы закончились, завершаем квиз
+        # Если вопросы закончились, завершаем тест
         await _finish_quiz(chat_id, bot)
         return
 
@@ -122,7 +122,7 @@ async def _send_question(chat_id: int, bot: Bot) -> None:
 
 
 async def _finish_quiz(chat_id: int, bot: Bot) -> None:
-    """Завершает квиз и отображает результаты."""
+    """Завершает тест и отображает результаты."""
     state = quiz_states.pop(chat_id, None)
     if not state:
         return
@@ -148,7 +148,7 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
 
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
-    """Начинает квиз со словами дня."""
+    """Начинает тест со словами дня."""
     chat_id = cb.from_user.id
     logger.info("StartQuiz chat=%s", chat_id)
 
@@ -226,7 +226,7 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
 
 
 async def handle_poll_answer(ans: PollAnswer) -> None:
-    """Обрабатывает ответ на вопрос квиза."""
+    """Обрабатывает ответ на вопрос теста."""
     pid = str(ans.poll_id)
     chat_id = poll_to_user.get(pid)
     idx = poll_to_index.get(pid)
@@ -303,7 +303,7 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
 
 
 async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
-    """Обрабатывает нажатия на кнопки навигации квиза."""
+    """Обрабатывает нажатия на кнопки навигации теста."""
     chat_id = cb.from_user.id
     action = cb.data  # "quiz:back" или "quiz:skip"
 
@@ -316,7 +316,7 @@ async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
             pass
 
     if action == "quiz:back":
-        # Завершаем квиз и возвращаемся в главное меню
+        # Завершаем тест и возвращаемся в главное меню
         quiz_states.pop(chat_id, None)
         from keyboards.main_menu import main_menu_keyboard
         await bot.send_message(chat_id, "Тест завершен.", reply_markup=main_menu_keyboard())
@@ -347,7 +347,7 @@ async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
 
 def register_quiz_handlers(dp: Dispatcher, bot: Bot) -> None:
     """
-    Регистрирует хендлеры для квиза «Слова дня».
+    Регистрирует хендлеры для теста «Слова дня».
     """
 
     # ↳ 1.  ОБРАБОТКА ОТВЕТА НА POLL
@@ -357,7 +357,7 @@ def register_quiz_handlers(dp: Dispatcher, bot: Bot) -> None:
         lambda ans: str(ans.poll_id) in poll_to_user,
     )
 
-    # ↳ 2.  ЗАПУСК КВИЗА
+    # ↳ 2.  ЗАПУСК ТЕСТА
     dp.register_callback_query_handler(
         lambda cb: asyncio.create_task(start_quiz(cb, bot)),
         lambda cb: cb.data == "quiz:start",

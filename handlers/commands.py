@@ -191,7 +191,7 @@ async def cmd_words(message: types.Message, bot: Bot) -> None:
     )
 
 async def cmd_quiz(message: types.Message, bot: Bot) -> None:
-    """Запускает квиз со словами дня."""
+    """Запускает тест со словами дня."""
     chat_id = message.chat.id
     
     # Проверяем активные платежи пользователя
@@ -203,7 +203,7 @@ async def cmd_quiz(message: types.Message, bot: Bot) -> None:
         await message.answer("⚠️ Профиль не найден. Используйте /start.", parse_mode="Markdown")
         return
     
-    # Инициализируем квиз напрямую
+    # Инициализируем тест напрямую
     from config import DURATION_HOURS, REMINDER_START
     from handlers.quiz import quiz_states, poll_to_user, poll_to_index, nav_messages
     from utils.helpers import daily_words_cache, get_daily_words_for_user
@@ -229,7 +229,7 @@ async def cmd_quiz(message: types.Message, bot: Bot) -> None:
     )
     entry = daily_words_cache.get(chat_id)
     if not entry:
-        await message.answer("⚠️ Нет слов для квиза.")
+        await message.answer("⚠️ Нет слов для теста.")
         return
 
     # Используем уникальные слова из кэша
@@ -248,7 +248,7 @@ async def cmd_quiz(message: types.Message, bot: Bot) -> None:
         await message.answer("Все слова уже выучены! Попробуйте завтра.")
         return
 
-    # Подготовка вопросов для квиза
+    # Подготовка вопросов для теста
     quiz_data = load_quiz_data(level, chosen_set)
     if not quiz_data:
         await message.answer("⚠️ Не удалось создать вопросы.")
@@ -276,7 +276,7 @@ async def cmd_quiz(message: types.Message, bot: Bot) -> None:
         await message.answer("⚠️ Не удалось создать вопросы.")
         return
 
-    # Инициализируем состояние квиза
+    # Инициализируем состояние теста
     quiz_states[chat_id] = {
         "questions": questions,
         "current": 0,
@@ -307,7 +307,7 @@ async def cmd_dictionary(message: types.Message, bot: Bot) -> None:
     if not learned:
         text = (
             "📚 *Ваш словарь пуст*\n\n"
-            "Пройдите квизы, чтобы добавить слова в свой словарь!"
+            "Пройдите тесты, чтобы добавить слова в свой словарь!"
         )
     else:
         text = format_dictionary_message(learned)
@@ -353,7 +353,7 @@ async def cmd_help(message: types.Message) -> None:
         "*Справка по боту*\n\n"
         "English Learning Bot помогает изучать английский язык через:\n"
         "• Ежедневные подборки слов\n"
-        "• Квизы и тесты\n"
+        "• Тесты и упражнения\n"
         "• Персональный словарь\n\n"
         "Выберите раздел справки:",
         parse_mode="Markdown",

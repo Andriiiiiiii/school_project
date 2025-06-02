@@ -29,7 +29,7 @@ async def show_dictionary(callback: types.CallbackQuery, bot: Bot):
     if not learned:
         text = (
             "📚 *Ваш словарь пуст*\n\n"
-            "Пройдите квизы, чтобы добавить слова в свой словарь!"
+            "Пройдите тесты, чтобы добавить слова в свой словарь!"
         )
     else:
         text = format_dictionary_message(learned)

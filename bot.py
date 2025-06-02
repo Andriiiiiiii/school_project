@@ -51,11 +51,11 @@ MAX_BACKFILL_HOURS = 2  # Уменьшено для продакшена
 bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot)
 
-# Импорт состояния квиза
+# Импорт состояния теста
 try:
-    from utils.helpers import quiz_reminder_sent
+    from utils.helpers import test_reminder_sent
 except (ImportError, AttributeError):
-    quiz_reminder_sent: dict[int, str] = {}
+    test_reminder_sent: dict[int, str] = {}
 
 def _load_last_run() -> datetime | None:
     """Загружает время последнего запуска планировщика."""

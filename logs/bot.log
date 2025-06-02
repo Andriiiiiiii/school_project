@@ -1004,3 +1004,55 @@ aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSE
 2025-05-29 14:59:34,850 - INFO - __main__ - Восстановлено 3 уведомлений
 2025-05-29 14:59:34,850 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
 2025-05-29 14:59:38,051 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-02 15:13:03,964 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-02 15:13:03,969 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-02 15:13:03,969 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-02 15:13:03,970 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-02 15:13:04,216 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-02 15:13:04,216 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-02 15:13:04,410 - INFO - __main__ - Восстановлено 19 уведомлений
+2025-06-02 15:13:04,411 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-02 15:13:08,039 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-02 15:13:13,743 - INFO - handlers.settings - User 1999873173 (level C2, premium: True): 22 total sets, 22 available
+2025-06-02 15:13:58,493 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-02 15:13:58,495 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-02 15:13:58,495 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-02 15:13:58,495 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-02 15:13:58,939 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-02 15:13:58,939 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-02 15:13:58,942 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-02 15:13:59,108 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-02 15:13:59,255 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-06-02 15:13:59,255 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-06-02 15:13:59,255 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-06-02 15:14:02,691 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-02 15:14:59,791 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:15:58 MSK)" was missed by 0:00:01.298975
+2025-06-02 15:15:10,500 - INFO - handlers.settings - User 1999873173 (level B1, premium: False): 18 total sets, 2 available
+2025-06-02 15:15:22,526 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-02 15:15:52,043 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=отказываться ok=True
+2025-06-02 15:15:55,008 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=избегать ok=False
+2025-06-02 15:15:59,844 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:16:58 MSK)" was missed by 0:00:01.352043
+2025-06-02 15:16:08,813 - INFO - handlers.settings - User 1999873173 (level B1, premium: False): 18 total sets, 2 available
+2025-06-02 15:16:39,101 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-02 15:20:05,807 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-02 15:20:05,808 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-02 15:20:05,808 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-02 15:20:05,808 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-02 15:20:05,981 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-02 15:20:05,981 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-02 15:20:05,985 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-02 15:21:07,240 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:22:05 MSK)" was missed by 0:00:01.433019
+2025-06-02 15:22:07,183 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:23:05 MSK)" was missed by 0:00:01.375798
+2025-06-02 15:23:07,097 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:24:05 MSK)" was missed by 0:00:01.290069
+2025-06-02 15:24:06,457 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:25:05 MSK)" (scheduled at 2025-06-02 15:24:05.807679+03:00)
+2025-06-02 15:24:06,460 - INFO - services.scheduler - Кэш пользователей обновлен: 1 пользователей
+2025-06-02 15:24:06,462 - INFO - services.payment - Checking 0 active payments
+2025-06-02 15:24:06,527 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:25:05 MSK)" executed successfully
+2025-06-02 15:25:07,139 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:26:05 MSK)" was missed by 0:00:01.331852
+2025-06-02 15:26:07,126 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:27:05 MSK)" was missed by 0:00:01.318954
+2025-06-02 15:27:07,136 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:28:05 MSK)" was missed by 0:00:01.328561
+2025-06-02 15:28:07,113 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:29:05 MSK)" was missed by 0:00:01.305334
+2025-06-02 15:29:07,230 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:30:05 MSK)" was missed by 0:00:01.423058
+2025-06-02 15:30:06,405 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:31:05 MSK)" (scheduled at 2025-06-02 15:30:05.807679+03:00)
+2025-06-02 15:30:06,410 - INFO - services.payment - Checking 0 active payments
+2025-06-02 15:30:06,411 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-02 15:31:05 MSK)" executed successfully

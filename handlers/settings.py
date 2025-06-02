@@ -10,7 +10,7 @@ import urllib.parse
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS
+from config import LEVELS_DIR, REMINDER_START, DURATION_HOURS, DEFAULT_SETS
 from database import crud
 from keyboards.main_menu import main_menu_keyboard
 from keyboards.submenus import (
@@ -418,9 +418,19 @@ async def _choose_set(cb: types.CallbackQuery, idx: int, *, confirm: bool):
         await cb.answer("Ошибка. Попробуйте заново.")
         return
 
+    # ИСПРАВЛЕНИЕ: Проверяем, является ли выбранный набор уже текущим
+    chat_id = cb.from_user.id
+    user = crud.get_user(chat_id)
+    current_set = user_set_selection.get(chat_id) or user[6]
+    
+    if current_set == set_name:
+        # Набор уже выбран, показываем его содержимое без смены
+        await _show_current_set_content(cb, set_name, user[1])
+        return
+
     if confirm:
         # показываем первые 30 слов для превью
-        level = crud.get_user(cb.from_user.id)[1]
+        level = user[1]
         preview_path = Path(LEVELS_DIR) / level / f"{set_name}.txt"
         preview_text = _first_n_words(preview_path)
         
@@ -448,6 +458,38 @@ async def _choose_set(cb: types.CallbackQuery, idx: int, *, confirm: bool):
         )
     else:
         await handle_set_change_confirmed_by_index(cb, cb.bot, idx_override=idx)
+
+async def _show_current_set_content(cb: types.CallbackQuery, set_name: str, level: str):
+    """Показывает содержимое уже выбранного набора без смены."""
+    try:
+        set_path = Path(LEVELS_DIR) / level / f"{set_name}.txt"
+        content = _read_file(set_path)
+        
+        # Подсчитываем количество слов
+        word_count = len([line for line in content.splitlines() if line.strip()])
+
+        intro = (
+            f"📚 *Набор «{set_name}» уже выбран*\n\n"
+            f"🔤 Уровень: *{level}*\n"
+            f"📊 Всего слов в наборе: *{word_count}*\n\n"
+            f"Полный список слов из набора:\n\n"
+        )
+        
+        await cb.message.edit_text(
+            _shorten(intro, content), 
+            parse_mode="Markdown", 
+            reply_markup=settings_menu_keyboard()
+        )
+        await cb.answer("Этот набор уже выбран")
+        
+    except Exception as e:
+        logger.error(f"Ошибка при показе содержимого набора: {e}")
+        await cb.message.edit_text(
+            f"📚 *Набор «{set_name}» уже выбран*\n\nНе удалось загрузить содержимое набора.",
+            parse_mode="Markdown", 
+            reply_markup=settings_menu_keyboard()
+        )
+        await cb.answer("Этот набор уже выбран")
 
 async def handle_set_change_confirmed_by_index(
     cb: types.CallbackQuery,

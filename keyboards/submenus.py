@@ -12,7 +12,7 @@ def main_menu_keyboard():
         InlineKeyboardButton("⚙️ Настройки", callback_data="menu:settings")
     )
     keyboard.add(
-        InlineKeyboardButton("🎯 Квиз", callback_data="quiz:start"),
+        InlineKeyboardButton("🎯 Тест", callback_data="quiz:start"),
         InlineKeyboardButton("❓ Помощь", callback_data="menu:help")
     )
     return keyboard
@@ -128,9 +128,9 @@ def help_menu_keyboard():
 
 def quiz_keyboard(options, question_index):
     """
-    Создает клавиатуру для квиза.
+    Создает клавиатуру для теста.
     Каждая кнопка для вариантов ответа имеет callback_data в формате "quiz:answer:<question_index>:<option_index>".
-    Дополнительно добавляются кнопки "Назад" и "Остановить квиз".
+    Дополнительно добавляются кнопки "Назад" и "Остановить тест".
     Клавиатура оформлена в два столбца.
     """
     keyboard = InlineKeyboardMarkup(row_width=2)
@@ -138,7 +138,7 @@ def quiz_keyboard(options, question_index):
         keyboard.add(InlineKeyboardButton(option, callback_data=f"quiz:answer:{question_index}:{i}"))
     keyboard.add(
         InlineKeyboardButton("Назад", callback_data="quiz:back"),
-        InlineKeyboardButton("Остановить квиз", callback_data="quiz:stop")
+        InlineKeyboardButton("Остановить тест", callback_data="quiz:stop")
     )
     return keyboard
 

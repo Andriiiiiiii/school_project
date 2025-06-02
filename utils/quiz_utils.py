@@ -17,7 +17,7 @@ def generate_quiz_options(correct_translation: str,
                           all_translations: List[str], 
                           num_options: int = 4) -> Tuple[List[str], int]:
     """
-    Generates quiz options including the correct answer and distractors.
+    Generates test options including the correct answer and distractors.
     
     Args:
         correct_translation: The correct translation
@@ -57,7 +57,7 @@ def create_quiz_keyboard(options: List[str],
                          question_index: int, 
                          callback_prefix: str = "quiz") -> types.InlineKeyboardMarkup:
     """
-    Creates a keyboard for quiz questions with options.
+    Creates a keyboard for test questions with options.
     
     Args:
         options: List of answer options
@@ -90,12 +90,12 @@ async def send_quiz_question(chat_id: int,
                             format_question_func, 
                             keyboard_func = None):
     """
-    Sends a quiz question to the user.
+    Sends a test question to the user.
     
     Args:
         chat_id: User's chat ID
         bot: Bot instance
-        state: Quiz state dictionary
+        state: Test state dictionary
         format_question_func: Function to format the question text
         keyboard_func: Optional custom keyboard function
     """
@@ -107,7 +107,7 @@ async def send_quiz_question(chat_id: int,
         questions = state["questions"]
         
         if current_index >= len(questions):
-            return  # Signal to finish the quiz
+            return  # Signal to finish the test
         
         question = questions[current_index]
         
@@ -136,7 +136,7 @@ async def send_quiz_question(chat_id: int,
         )
         return True
     except Exception as e:
-        logger.error(f"Error sending quiz question: {e}")
+        logger.error(f"Error sending test question: {e}")
         await bot.send_message(
             chat_id, 
             "Произошла ошибка при отправке вопроса. Пожалуйста, попробуйте позже.",
@@ -148,12 +148,12 @@ def process_quiz_answer(answer_index: int,
                         question_index: int, 
                         state: Dict[str, Any]) -> Tuple[bool, str]:
     """
-    Processes a user's answer to a quiz question.
+    Processes a user's answer to a test question.
     
     Args:
         answer_index: The index of the selected answer
         question_index: The index of the current question
-        state: Quiz state dictionary
+        state: Test state dictionary
         
     Returns:
         Tuple of (is_correct, feedback_message)
@@ -188,7 +188,7 @@ def format_poll_explanation(current_index: int, total: int, is_revision: bool = 
     Returns:
         Строка с пояснением для опроса
     """
-    header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 КВИЗ"
+    header = "🔄 ПОВТОРЕНИЕ" if is_revision else "🎯 ТЕСТ"
     return f"{header} | Вопрос {current_index}/{total}"
 
 def clean_word_for_poll(word: str) -> str:
