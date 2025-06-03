@@ -1474,3 +1474,24 @@ AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
 2025-06-03 14:22:43,744 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:23:41 MSK)" was missed by 0:00:02.223480
 2025-06-03 14:23:15,459 - INFO - handlers.commands - Команда /start от chat_id=1999873173
 2025-06-03 14:23:42,601 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:24:41 MSK)" was missed by 0:00:01.080604
+2025-06-03 15:28:09,286 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 15:28:09,287 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 15:28:09,287 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 15:28:09,287 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 15:28:09,554 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 15:28:09,555 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 15:28:09,688 - ERROR - __main__ - Ошибка восстановления для пользователя 777777: Chat not found
+2025-06-03 15:28:09,858 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-06-03 15:28:09,859 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 15:29:12,944 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 15:30:09 MSK)" was missed by 0:00:03.657954
+2025-06-03 15:30:12,502 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 15:31:09 MSK)" was missed by 0:00:03.214772
+2025-06-03 15:31:12,533 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 15:32:09 MSK)" was missed by 0:00:03.246902
+2025-06-03 15:31:44,970 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 15:31:44,972 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 15:31:44,972 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 15:31:44,972 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 15:31:45,276 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 15:31:45,277 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 15:31:45,286 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 15:31:51,373 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 15:31:57,183 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available

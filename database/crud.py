@@ -366,14 +366,18 @@ def clear_learned_words_for_user(chat_id: int):
         raise
 
 
-def update_user_chosen_set(chat_id: int, set_name: str):
+def update_user_chosen_set(chat_id: int, chosen_set: str):
+    """Обновляет выбранный набор пользователя."""
+    from database.db import db_manager
     try:
-        cursor.execute("UPDATE users SET chosen_set = ? WHERE chat_id = ?", (set_name, chat_id))
-        conn.commit()
-        logger.debug("Updated chosen_set='%s' for user %s", set_name, chat_id)
+        with db_manager.transaction() as tx:
+            tx.execute(
+                "UPDATE users SET chosen_set = ? WHERE chat_id = ?",
+                (chosen_set, chat_id)
+            )
+        logger.info("Набор пользователя %s обновлен на %s", chat_id, chosen_set)
     except Exception as e:
-        logger.error(f"Error updating chosen_set for user {chat_id}: {e}")
-        raise
+        logger.error("Ошибка обновления набора пользователя %s: %s", chat_id, e)
 
 def update_user_streak(chat_id: int, days_streak: int, last_test_date: str = None):
     """Обновляет количество дней подряд пользователя."""

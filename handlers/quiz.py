@@ -220,7 +220,7 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
     revision = bool(len(entry) > 9 and entry[9])
     
     if revision:
-        # В режиме повторения тестируем все слова, поскольку все уже выучены
+        # В режиме повторения тестируем случайные слова из набора
         source = unique_words
     else:
         # В обычном режиме тестируем только невыученные слова
@@ -244,7 +244,7 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
         "questions": questions,
         "current": 0,
         "correct": 0,
-        "revision": revision,
+        "revision": revision,  # ИСПРАВЛЕНИЕ: правильно передаем флаг revision
         "answered": set(),
     }
 
@@ -288,7 +288,8 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
 
     if correct:
         state["correct"] += 1
-        if not q["is_revision"]:
+        # ИСПРАВЛЕНИЕ: добавляем слова в словарь только в обычном режиме (не в режиме повторения)
+        if not state.get("revision", False):
             eng = extract_english(q["word"]).lower()
             if eng not in {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}:
                 crud.add_learned_word(

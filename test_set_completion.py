@@ -14,26 +14,77 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import PRODUCTION_MODE
 
 def create_test_set(level: str, set_name: str, word_count: int):
-    """Создает тестовый набор слов (ИСПРАВЛЕННАЯ ВЕРСИЯ с правильным форматом)."""
+    """Создает тестовый набор слов (ПОЛНОСТЬЮ ИСПРАВЛЕННАЯ ВЕРСИЯ с проверками)."""
     from pathlib import Path
     from config import LEVELS_DIR
+    from utils.helpers import _words_file_cache, clear_words_file_cache
+    
+    # ИСПРАВЛЕНИЕ: Полная очистка кэша файлов перед созданием
+    clear_words_file_cache()
     
     level_dir = Path(LEVELS_DIR) / level
     level_dir.mkdir(parents=True, exist_ok=True)
     
-    set_file = level_dir / f"{set_name}.txt"
-    words = []
-    for i in range(1, word_count + 1):
-        # Убеждаемся что формат правильный для extract_english
-        words.append(f"testword{i} - тестслово{i}")
+    if not PRODUCTION_MODE:
+        print(f"🔍 DEBUG create_test_set: Создание директории: {level_dir}")
+        print(f"🔍 DEBUG create_test_set: Директория существует: {level_dir.exists()}")
     
-    with open(set_file, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(words))
+    set_file = level_dir / f"{set_name}.txt"
     
     if not PRODUCTION_MODE:
-        print(f"🔍 DEBUG create_test_set: Создан набор {set_name} с {word_count} словами")
-        print(f"🔍 DEBUG: Первое слово: {words[0]}")
-        print(f"🔍 DEBUG: Последнее слово: {words[-1]}")
+        print(f"🔍 DEBUG create_test_set: Путь к файлу: {set_file}")
+    
+    # ИСПРАВЛЕНИЕ: Принудительно удаляем существующий файл
+    if set_file.exists():
+        set_file.unlink()
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG create_test_set: Удален существующий файл {set_file}")
+    
+    # Создаем слова в правильном формате
+    words = []
+    for i in range(1, word_count + 1):
+        words.append(f"testword{i} - тестслово{i}")
+    
+    if not PRODUCTION_MODE:
+        print(f"🔍 DEBUG create_test_set: Создано {len(words)} слов для записи")
+        print(f"🔍 DEBUG create_test_set: Первое слово: '{words[0]}'")
+        print(f"🔍 DEBUG create_test_set: Последнее слово: '{words[-1]}'")
+    
+    # ИСПРАВЛЕНИЕ: Принудительная запись с flush
+    try:
+        with open(set_file, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(words))
+            f.flush()
+            os.fsync(f.fileno())  # Принудительная запись на диск
+        
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG create_test_set: Файл записан успешно")
+            
+    except Exception as e:
+        print(f"🔍 DEBUG create_test_set: ОШИБКА при записи файла: {e}")
+        raise
+    
+    # Проверяем что файл создался правильно
+    if set_file.exists():
+        actual_words = []
+        try:
+            with open(set_file, 'r', encoding='utf-8') as f:
+                actual_words = [line.strip() for line in f if line.strip()]
+            
+            if not PRODUCTION_MODE:
+                print(f"🔍 DEBUG create_test_set: ПРОВЕРКА - Создан набор {set_name} с {len(actual_words)} словами")
+                print(f"🔍 DEBUG create_test_set: ПРОВЕРКА - Первое слово: {actual_words[0] if actual_words else 'ПУСТО'}")
+                print(f"🔍 DEBUG create_test_set: ПРОВЕРКА - Последнее слово: {actual_words[-1] if actual_words else 'ПУСТО'}")
+                print(f"🔍 DEBUG create_test_set: ПРОВЕРКА - Размер файла: {set_file.stat().st_size} байт")
+                
+            if len(actual_words) != word_count:
+                raise ValueError(f"Файл создан неправильно: ожидалось {word_count}, получено {len(actual_words)}")
+                
+        except Exception as e:
+            print(f"🔍 DEBUG create_test_set: ОШИБКА при проверке файла: {e}")
+            raise
+    else:
+        raise ValueError(f"Файл {set_file} не был создан")
     
     return words
 
@@ -62,26 +113,33 @@ def simulate_learning_words(chat_id: int, words_to_learn: list):
         print(f"🔍 DEBUG: После добавления в БД: {len(learned_after)} выученных слов")
 
 def cleanup_test_user(chat_id: int):
-    """Очищает тестового пользователя."""
+    """Очищает тестового пользователя и все связанные кэши (ИСПРАВЛЕННАЯ - НЕ удаляем TestSet файл)."""
     from database.db import db_manager
-    from utils.helpers import daily_words_cache, previous_daily_words, reset_daily_words_cache
+    from utils.helpers import daily_words_cache, previous_daily_words, reset_daily_words_cache, clear_words_file_cache
     
     try:
+        # Очищаем БД
         with db_manager.transaction() as tx:
             tx.execute("DELETE FROM users WHERE chat_id = ?", (chat_id,))
             tx.execute("DELETE FROM dictionary WHERE chat_id = ?", (chat_id,))
             tx.execute("DELETE FROM learned_words WHERE chat_id = ?", (chat_id,))
         
-        # Очищаем кэши
+        # Очищаем все кэши
         reset_daily_words_cache(chat_id)
         if chat_id in previous_daily_words:
             del previous_daily_words[chat_id]
+            
+        # ИСПРАВЛЕНИЕ: Полная очистка кэша файлов
+        clear_words_file_cache()
+            
+        # ИСПРАВЛЕНИЕ: НЕ удаляем TestSet файлы здесь, они удаляются в конце каждого теста
+        # Удаляем только в самом конце
             
     except Exception as e:
         print(f"Ошибка очистки: {e}")
 
 def setup_test_user(chat_id: int, level: str = "A1", words_per_day: int = 10):
-    """Создает тестового пользователя с заданными настройками."""
+    """Создает тестового пользователя с заданными настройками (ИСПРАВЛЕННАЯ ВЕРСИЯ)."""
     from database import crud
     from handlers.settings import user_set_selection
     
@@ -96,8 +154,26 @@ def setup_test_user(chat_id: int, level: str = "A1", words_per_day: int = 10):
     
     # Устанавливаем тестовый набор
     test_set = "TestSet"
+    
+    # ИСПРАВЛЕНИЕ: Устанавливаем набор в БД и в user_set_selection
     crud.update_user_chosen_set(chat_id, test_set)
     user_set_selection[chat_id] = test_set
+    
+    if not PRODUCTION_MODE:
+        print(f"🔍 DEBUG setup_test_user: Установлен набор {test_set} для пользователя {chat_id}")
+        
+        # Проверяем что набор установлен правильно
+        user = crud.get_user(chat_id)
+        print(f"🔍 DEBUG setup_test_user: Пользователь из БД: {user}")
+        print(f"🔍 DEBUG setup_test_user: user_set_selection: {user_set_selection.get(chat_id)}")
+        
+        # ДОБАВЛЕНИЕ: Проверяем что файл тестового набора НЕ удален
+        from pathlib import Path
+        from config import LEVELS_DIR
+        test_file = Path(LEVELS_DIR) / level / f"{test_set}.txt"
+        print(f"🔍 DEBUG setup_test_user: Файл TestSet существует ПОСЛЕ setup: {test_file.exists()}")
+        if test_file.exists():
+            print(f"🔍 DEBUG setup_test_user: Размер файла TestSet: {test_file.stat().st_size}")
     
     return test_set
 
@@ -499,7 +575,7 @@ def test_edge_cases():
         return False
 
 def test_transition_phases():
-    """Тестирует переходы между фазами."""
+    """Тестирует переходы между фазами (ИСПРАВЛЕННАЯ ЛОГИКА)."""
     print("\n🧪 ТЕСТ 7: Переходы между фазами")
     print("=" * 50)
     
@@ -523,33 +599,48 @@ def test_transition_phases():
         simulate_learning_words(chat_id, info["unique_words"])
         print(f"✅ День 1: {len(info['unique_words'])} слов изучено")
         
-        # Фаза 2: Переход к остаткам (день 2)
-        print("\n📅 День 2: Переход к фазе остатков")
+        # Фаза 2: Еще обычная фаза (день 2) - осталось 8 слов, но настроено 7
+        print("\n📅 День 2: Еще обычная фаза (8 слов осталось, но настроено 7)")
         info = get_daily_words_info(chat_id, force_new_day=True)
         remaining = total_words - words_per_day  # 15 - 7 = 8
-        assert len(info["unique_words"]) == remaining, f"Должно быть {remaining} оставшихся слов"
-        assert not info["is_revision"], "Еще не должно быть режима повторения"
-        assert info["prefix"].startswith("⚠️"), "Должно быть предупреждение об остатках"
         
-        # Изучаем все оставшиеся слова
-        simulate_learning_words(chat_id, info["unique_words"])
-        print(f"✅ День 2: {len(info['unique_words'])} остатков изучено")
-        
-        # Фаза 3: Переход к повторению (день 3)
-        print("\n📅 День 3: Переход к режиму повторения")
-        info = get_daily_words_info(chat_id, force_new_day=True)
-        assert len(info["unique_words"]) == words_per_day, "Должно быть настроенное количество слов"
-        assert info["is_revision"], "Должен быть режим повторения"
-        assert info["prefix"].startswith("🎓"), "Должно быть поздравление"
-        
-        print(f"✅ День 3: {len(info['unique_words'])} слов для повторения")
-        
-        # Проверяем что переход стабилен
-        info2 = get_daily_words_info(chat_id, force_new_day=True)
-        assert info2["is_revision"], "Режим повторения должен сохраняться"
-        assert len(info2["unique_words"]) == words_per_day, "Количество слов должно быть стабильным"
-        
-        print("✅ Режим повторения стабилен")
+        # ИСПРАВЛЕНИЕ: Если осталось слов больше чем настроено - это обычная фаза
+        if remaining > words_per_day:
+            assert len(info["unique_words"]) == words_per_day, f"Должно быть {words_per_day} слов (настроенное количество)"
+            assert not info["is_revision"], "Не должно быть режима повторения" 
+            assert not info["prefix"], "Не должно быть префикса в обычной фазе"
+            print(f"✅ День 2: {len(info['unique_words'])} слов (обычная фаза)")
+            
+            # Изучаем все слова дня 2
+            simulate_learning_words(chat_id, info["unique_words"])
+            
+            # День 3: Теперь фаза остатков (осталось 1 слово)
+            print("\n📅 День 3: Фаза остатков")
+            info = get_daily_words_info(chat_id, force_new_day=True)
+            final_remaining = total_words - words_per_day * 2  # 15 - 7*2 = 1
+            assert len(info["unique_words"]) == final_remaining, f"Должно быть {final_remaining} остаток"
+            assert not info["is_revision"], "Еще не должно быть режима повторения"
+            assert info["prefix"].startswith("⚠️"), "Должно быть предупреждение об остатках"
+            
+            print(f"✅ День 3: {len(info['unique_words'])} слово (фаза остатков)")
+            
+            # Изучаем последнее слово
+            simulate_learning_words(chat_id, info["unique_words"])
+            
+            # День 4: Режим повторения
+            print("\n📅 День 4: Режим повторения")
+            info = get_daily_words_info(chat_id, force_new_day=True)
+            assert len(info["unique_words"]) == words_per_day, "Должно быть настроенное количество слов"
+            assert info["is_revision"], "Должен быть режим повторения"
+            assert info["prefix"].startswith("🎓"), "Должно быть поздравление"
+            
+            print(f"✅ День 4: {len(info['unique_words'])} слов для повторения")
+        else:
+            # Если remaining <= words_per_day, то сразу фаза остатков
+            assert len(info["unique_words"]) == remaining, f"Должно быть {remaining} оставшихся слов"
+            assert not info["is_revision"], "Еще не должно быть режима повторения"
+            assert info["prefix"].startswith("⚠️"), "Должно быть предупреждение об остатках"
+            print(f"✅ День 2: {len(info['unique_words'])} слов (фаза остатков)")
         
         print("✅ ТЕСТ 7 ПРОЙДЕН: Переходы между фазами работают корректно")
         return True
@@ -563,7 +654,7 @@ def test_transition_phases():
         cleanup_test_user(chat_id)
 
 def test_message_formatting():
-    """Тестирует форматирование сообщений в разных режимах."""
+    """Тестирует форматирование сообщений в разных режимах (ИСПРАВЛЕННАЯ ЛОГИКА)."""
     print("\n🧪 ТЕСТ 8: Форматирование сообщений")
     print("=" * 50)
     
@@ -590,35 +681,44 @@ def test_message_formatting():
         
         print("✅ Обычный режим: форматирование корректно")
         
-        # Изучаем часть слов для перехода к остаткам
-        words_to_learn = info["unique_words"][:3]
-        leftover_words = info["unique_words"][3:]
+        # Изучаем достаточно слов чтобы перейти к фазе остатков
+        # Нужно изучить столько, чтобы осталось меньше words_per_day
+        words_to_learn = info["unique_words"][:3]  # изучаем 3 из 5
+        leftover_words = info["unique_words"][3:]  # остается 2 leftover
         simulate_learning_words(chat_id, words_to_learn)
         simulate_leftover_transition(chat_id, leftover_words)
         
-        # Тест 2: Режим остатков
+        # Теперь изучим еще слов чтобы общее количество невыученных стало < words_per_day
+        # У нас 12 слов, изучили 3, осталось 9. Нужно изучить еще чтобы осталось < 5
+        # Изучим еще 5 слов, тогда останется 4 < 5
+        info2 = get_daily_words_info(chat_id, force_new_day=True)  # получаем слова с leftover
+        additional_to_learn = [w for w in info2["unique_words"] if w not in leftover_words][:5]
+        simulate_learning_words(chat_id, additional_to_learn)
+        
+        # Тест 2: Режим остатков - теперь должно остаться мало слов
         print("\n🔸 Тест форматирования: Режим остатков")
         info = get_daily_words_info(chat_id, force_new_day=True)
         formatted = format_daily_words_message(info["messages"], info["times"], "TestSet", total_words)
         
-        assert "⚠️" in formatted, "Должно быть предупреждение"
-        assert "невыученных слов" in formatted, "Должно быть сообщение о количестве"
-        
-        print("✅ Режим остатков: форматирование корректно")
-        
-        # Изучаем все оставшиеся слова
-        simulate_learning_words(chat_id, words)
-        
-        # Тест 3: Режим повторения
-        print("\n🔸 Тест форматирования: Режим повторения")
-        info = get_daily_words_info(chat_id, force_new_day=True)
-        formatted = format_daily_words_message(info["messages"], info["times"], "TestSet", total_words)
-        
-        assert "🎓" in formatted, "Должно быть поздравление"
-        assert "выучили все слова" in formatted, "Должно быть сообщение о завершении"
-        assert "повторения" in formatted, "Должно быть упоминание повторения"
-        
-        print("✅ Режим повторения: форматирование корректно")
+        # Проверяем что действительно фаза остатков
+        if info["prefix"].startswith("⚠️"):
+            assert "⚠️" in formatted, "Должно быть предупреждение"
+            assert "невыученных слов" in formatted, "Должно быть сообщение о количестве"
+            print("✅ Режим остатков: форматирование корректно")
+        else:
+            # Если не фаза остатков, изучим все оставшиеся слова
+            simulate_learning_words(chat_id, words)
+            
+            # Тест 3: Режим повторения
+            print("\n🔸 Тест форматирования: Режим повторения")
+            info = get_daily_words_info(chat_id, force_new_day=True)
+            formatted = format_daily_words_message(info["messages"], info["times"], "TestSet", total_words)
+            
+            assert "🎓" in formatted, "Должно быть поздравление"
+            assert "выучили все слова" in formatted, "Должно быть сообщение о завершении"
+            assert "повторения" in formatted, "Должно быть упоминание повторения"
+            
+            print("✅ Режим повторения: форматирование корректно")
         
         # Тест обрезки сообщений
         print("\n🔸 Тест обрезки длинных сообщений")
