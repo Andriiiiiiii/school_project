@@ -170,10 +170,8 @@ def extract_english(word_line: str) -> str:
 
 def format_daily_words_message(messages: List[str], times: List[str], chosen_set: str = None, total_words: int = None) -> str:
     """
-    Форматирует сообщение со словами дня (ИСПРАВЛЕННАЯ ВЕРСИЯ без дублирования).
+    Форматирует сообщение со словами дня (ИСПРАВЛЕННАЯ ВЕРСИЯ для правильной работы с префиксами).
     """
-    from utils.helpers import daily_words_cache
-    
     header = "📚 Словарь на сегодня"
     
     # Добавляем информацию о наборе слов
@@ -183,35 +181,34 @@ def format_daily_words_message(messages: List[str], times: List[str], chosen_set
         else:
             header += f"\nИз набора: *«{chosen_set}»*"
     
-    result = f"{header}\n"
+    result = f"{header}\n\n"
     
-    # ИСПРАВЛЕНИЕ: получаем prefix_message из кэша
+    # Проверяем есть ли префиксное сообщение (🎓 или ⚠️)
     prefix_message = ""
-    # Ищем кэш по времени и сообщениям чтобы найти соответствующую запись
-    for chat_id, cache_entry in daily_words_cache.items():
-        if (len(cache_entry) > 10 and cache_entry[1] == messages and cache_entry[2] == times):
-            prefix_message = cache_entry[10]  # prefix_message находится в позиции 10
-            break
+    working_messages = messages[:]
     
-    # Добавляем префиксное сообщение ТОЛЬКО ОДИН РАЗ
+    if messages and (messages[0].startswith("🎓") or messages[0].startswith("⚠️")):
+        prefix_message = messages[0]
+        # Удаляем префиксное сообщение из списка для обработки
+        working_messages = [msg for msg in messages if msg != prefix_message]
+    
+    # Добавляем префиксное сообщение
     if prefix_message:
         result += f"{prefix_message}\n\n"
-    else:
-        result += "\n"
     
     # Группируем слова по времени уведомления
     time_groups = {}
     for i, time in enumerate(times):
-        if i < len(messages):
+        if i < len(working_messages):
             if time not in time_groups:
                 time_groups[time] = []
-            time_groups[time].append(messages[i])
+            time_groups[time].append(working_messages[i])
     
     # Форматируем каждую временную группу
     for time, words in time_groups.items():
         result += f"⏰ *{time}*\n"
         for word in words:
-            # Удаляем префикс эмодзи
+            # Удаляем префикс эмодзи если есть
             word_text = word
             if word.startswith("🔹 "):
                 word_text = word[2:].strip()

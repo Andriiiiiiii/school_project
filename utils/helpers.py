@@ -121,7 +121,7 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, 
                            force_reset=False, chosen_set=None):
     """
-    Генерирует список слов дня (КАРДИНАЛЬНО ИСПРАВЛЕННАЯ ВЕРСИЯ).
+    Генерирует список слов дня (ОТЛАДОЧНАЯ ВЕРСИЯ для выявления проблем).
     """
     # Локальные импорты для избежания циклических зависимостей
     try:
@@ -138,17 +138,23 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         
-        # Принудительный сброс кэша (но НЕ leftover слов для корректной работы)
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Запуск для пользователя {chat_id}, force_reset={force_reset}")
+        
+        # Принудительный сброс кэша
         if force_reset:
             if chat_id in daily_words_cache:
                 del daily_words_cache[chat_id]
-            # НЕ удаляем previous_daily_words при force_reset для тестов
+                if not PRODUCTION_MODE:
+                    print(f"🔍 DEBUG: Кэш сброшен для пользователя {chat_id}")
         
         # Проверка кэша
         if chat_id in daily_words_cache and not force_reset:
             cached = daily_words_cache[chat_id]
             if (cached[0] == today and cached[3] == first_time and 
                 cached[4] == duration_hours and cached[5] == words_count and cached[6] == repetitions):
+                if not PRODUCTION_MODE:
+                    print(f"🔍 DEBUG: Возвращаю из кэша для пользователя {chat_id}")
                 return cached[1], cached[2]
             reset_daily_words_cache(chat_id)
 
@@ -156,6 +162,9 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         if chosen_set is None:
             chosen_set = user_set_selection.get(chat_id, DEFAULT_SETS.get(level))
         
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Выбранный набор: {chosen_set}")
+
         # Проверка доступности набора
         if not is_set_available_for_user(chat_id, chosen_set):
             try:
@@ -190,83 +199,122 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             else:
                 return None
 
-        # Загрузка слов из набора
-        file_words = load_words_for_set(level, chosen_set)
-        if not file_words:
+        # Загрузка всех слов из набора
+        all_words_in_set = load_words_for_set(level, chosen_set)
+        if not all_words_in_set:
             return None
 
-        # Получение выученных слов
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Загружено {len(all_words_in_set)} слов из набора")
+
+        # Получение выученных слов пользователя
         try:
-            learned_raw = crud.get_learned_words(chat_id)
-            learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
+            learned_words_raw = crud.get_learned_words(chat_id)
+            learned_english_words = set()
+            for word_data in learned_words_raw:
+                english_word = extract_english(word_data[0]).lower()
+                learned_english_words.add(english_word)
+            
+            if not PRODUCTION_MODE:
+                print(f"🔍 DEBUG: Выучено слов: {len(learned_english_words)}")
+                if learned_english_words:
+                    print(f"🔍 DEBUG: Первые 5 выученных: {list(learned_english_words)[:5]}")
+                    
         except Exception as e:
             logger.error("Ошибка получения выученных слов для пользователя %s: %s", chat_id, e)
-            learned_set = set()
+            learned_english_words = set()
 
-        # ===== КАРДИНАЛЬНО ИСПРАВЛЕННАЯ ЛОГИКА =====
-        
-        # 1. Определяем ВСЕ невыученные слова из набора
+        # Находим ВСЕ невыученные слова в наборе
         all_unlearned_words = []
-        for word in file_words:
-            eng_word = extract_english(word).lower()
-            if eng_word not in learned_set:
+        for word in all_words_in_set:
+            english_part = extract_english(word).lower()
+            if english_part not in learned_english_words:
                 all_unlearned_words.append(word)
-        
-        total_unlearned_count = len(all_unlearned_words)
-        
-        # 2. Определяем режим повторения
-        is_revision_mode = (total_unlearned_count == 0)
-        
-        # 3. Определяем leftover слова (из предыдущего дня)
+
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Невыученных слов: {len(all_unlearned_words)}")
+
+        # Получаем leftover слова из предыдущего дня (только те, что еще не выучены)
         leftover_words = []
         if chat_id in previous_daily_words:
             for word in previous_daily_words[chat_id]:
-                eng_word = extract_english(word).lower()
-                if eng_word not in learned_set and word in all_unlearned_words:
+                english_part = extract_english(word).lower()
+                # Leftover слово должно быть среди невыученных
+                if english_part not in learned_english_words and word in all_unlearned_words:
                     leftover_words.append(word)
+
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Leftover слов: {len(leftover_words)}")
+
+        # Определяем режим работы
+        total_unlearned = len(all_unlearned_words)
         
-        # 4. Формируем слова дня
-        unique_words = []
-        prefix_message = ""
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Всего невыученных слов: {total_unlearned}")
+            print(f"🔍 DEBUG: Настройка words_count: {words_count}")
         
-        if is_revision_mode:
-            # Режим повторения - все слова выучены
+        # ИСПРАВЛЕННАЯ ЛОГИКА ОПРЕДЕЛЕНИЯ РЕЖИМОВ
+        if total_unlearned == 0:
+            # РЕЖИМ ПОВТОРЕНИЯ: все слова выучены
+            is_revision_mode = True
+            unique_words = random.sample(all_words_in_set, min(words_count, len(all_words_in_set)))
             prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:"
-            unique_words = random.sample(file_words, min(words_count, len(file_words)))
-        
+            
+            if not PRODUCTION_MODE:
+                print(f"🔍 DEBUG: РЕЖИМ ПОВТОРЕНИЯ - {len(unique_words)} слов")
         else:
-            # Обычный режим или режим остатков
+            # ОБЫЧНЫЙ РЕЖИМ или ФАЗА ОСТАТКОВ
+            is_revision_mode = False
+            unique_words = []
             
             # Сначала добавляем leftover слова
             unique_words.extend(leftover_words)
             
             # Затем добавляем новые невыученные слова
             remaining_slots = words_count - len(unique_words)
-            if remaining_slots > 0:
-                # Новые слова = все невыученные минус leftover
-                new_unlearned_words = [w for w in all_unlearned_words if w not in leftover_words]
-                
-                if len(new_unlearned_words) >= remaining_slots:
-                    unique_words.extend(random.sample(new_unlearned_words, remaining_slots))
-                else:
-                    unique_words.extend(new_unlearned_words)
+            new_unlearned_words = [w for w in all_unlearned_words if w not in leftover_words]
             
-            # Определяем, нужно ли предупреждение об остатках
-            actual_count = len(unique_words)
-            if actual_count < words_count:
-                prefix_message = f"⚠️ Осталось всего {actual_count} невыученных слов в этом наборе!"
+            if not PRODUCTION_MODE:
+                print(f"🔍 DEBUG: Remaining slots: {remaining_slots}")
+                print(f"🔍 DEBUG: Новых невыученных слов: {len(new_unlearned_words)}")
+            
+            # КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: ограничиваем количество новых слов доступными
+            if remaining_slots > 0 and new_unlearned_words:
+                words_to_add = min(remaining_slots, len(new_unlearned_words))
+                unique_words.extend(random.sample(new_unlearned_words, words_to_add))
+                
+                if not PRODUCTION_MODE:
+                    print(f"🔍 DEBUG: Добавлено новых слов: {words_to_add}")
+            
+            # Определяем нужно ли предупреждение о фазе остатков
+            actual_word_count = len(unique_words)
+            if actual_word_count < words_count:
+                # ФАЗА ОСТАТКОВ
+                prefix_message = f"⚠️ Осталось всего {actual_word_count} невыученных слов в этом наборе!"
+                if not PRODUCTION_MODE:
+                    print(f"🔍 DEBUG: ФАЗА ОСТАТКОВ - {actual_word_count} слов")
+            else:
+                # ОБЫЧНАЯ ФАЗА
+                prefix_message = ""
+                if not PRODUCTION_MODE:
+                    print(f"🔍 DEBUG: ОБЫЧНАЯ ФАЗА - {actual_word_count} слов")
 
-        # ===== СОЗДАНИЕ СООБЩЕНИЙ =====
-        
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Финальные уникальные слова: {len(unique_words)}")
+            print(f"🔍 DEBUG: Режим повторения: {is_revision_mode}")
+            print(f"🔍 DEBUG: Префикс: {prefix_message[:50] if prefix_message else 'Нет префикса'}")
+
         # Создаем сообщения для уведомлений
         messages_for_notifications = ["🔹 " + word for word in unique_words]
         
+        # Добавляем префиксное сообщение в начало если есть
+        if prefix_message:
+            messages_for_notifications.insert(0, prefix_message)
+        
         # Повторяем сообщения согласно настройке repetitions
         repeated_messages = []
-        for _ in range(repetitions):
+        for rep in range(repetitions):
             repeated_messages.extend(messages_for_notifications)
-        
-        total_notifications = len(repeated_messages)
 
         # Получение часового пояса пользователя
         try:
@@ -276,22 +324,26 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             user_tz = "Europe/Moscow"
 
         # Вычисление времен уведомлений
+        total_notifications = len(repeated_messages)
         times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
 
         # Сохранение в кэш
         daily_words_cache[chat_id] = (
-            today,                    # 0: дата
-            repeated_messages,        # 1: повторяющиеся сообщения
-            times,                   # 2: времена
-            first_time,              # 3: первое время
-            duration_hours,          # 4: продолжительность
-            words_count,             # 5: количество слов
-            repetitions,             # 6: повторения
-            user_tz,                 # 7: часовой пояс
-            unique_words,            # 8: уникальные слова
-            is_revision_mode,        # 9: режим повторения
-            prefix_message           # 10: префиксное сообщение
+            today,                     # 0: дата
+            repeated_messages,         # 1: повторяющиеся сообщения
+            times,                    # 2: времена
+            first_time,               # 3: первое время
+            duration_hours,           # 4: продолжительность
+            words_count,              # 5: количество слов
+            repetitions,              # 6: повторения
+            user_tz,                  # 7: часовой пояс
+            unique_words,             # 8: уникальные слова
+            is_revision_mode,         # 9: режим повторения
+            prefix_message            # 10: префиксное сообщение
         )
+        
+        if not PRODUCTION_MODE:
+            print(f"🔍 DEBUG: Сохранено в кэш для пользователя {chat_id}")
         
         return repeated_messages, times
         
