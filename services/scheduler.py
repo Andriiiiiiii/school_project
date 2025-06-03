@@ -168,7 +168,7 @@ def reset_user_cache(chat_id=None):
         logger.error("Ошибка сброса кэша: %s", e)
 
 def process_daily_reset(chat_id):
-    """Ежедневный сброс данных пользователя с проверкой дней подряд."""
+    """Ежедневный сброс данных пользователя с ИСПРАВЛЕННОЙ обработкой leftover слов."""
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         reset_key = f"{chat_id}_reset_{today}"
@@ -188,17 +188,15 @@ def process_daily_reset(chat_id):
             if streak > 0:
                 yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
                 
-                # Если пользователь не проходил тест вчера, сбрасываем streak
-                # Учитываем случай когда last_test_date может быть None
                 should_reset = False
                 if not last_test_date:
-                    should_reset = True  # Нет записи о тестах
+                    should_reset = True
                 elif last_test_date < yesterday:
-                    should_reset = True  # Тест был раньше чем вчера
+                    should_reset = True
                 elif last_test_date == yesterday:
-                    should_reset = False  # Тест был вчера - streak сохраняем
+                    should_reset = False
                 else:
-                    should_reset = False  # Тест был сегодня или в будущем
+                    should_reset = False
                 
                 if should_reset:
                     reset_user_streak(chat_id)
@@ -211,31 +209,41 @@ def process_daily_reset(chat_id):
         except Exception as e:
             logger.error(f"Ошибка проверки streak для пользователя {chat_id}: {e}")
         
-        # Обработка невыученных слов (существующая логика)
+        # ИСПРАВЛЕННАЯ обработка leftover слов
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
             unique_words = entry[8] if len(entry) > 8 and entry[8] else []
+            is_revision = entry[9] if len(entry) > 9 else False
             
-            try:
-                learned_raw = crud.get_learned_words(chat_id)
-                learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
-                
-                filtered_unique = []
-                for word in unique_words:
-                    english_part = extract_english(word).lower()
-                    if english_part and english_part not in learned_set:
-                        filtered_unique.append(word)
-                
-                if filtered_unique:
-                    previous_daily_words[chat_id] = filtered_unique
-                elif chat_id in previous_daily_words:
-                    del previous_daily_words[chat_id]
+            # Сохраняем leftover слова ТОЛЬКО если это НЕ режим повторения
+            if not is_revision and unique_words:
+                try:
+                    learned_raw = crud.get_learned_words(chat_id)
+                    learned_set = set(extract_english(item[0]).lower() for item in learned_raw)
                     
-            except Exception as e:
-                logger.error("Ошибка обработки выученных слов для пользователя %s: %s", chat_id, e)
-                if unique_words:
-                    previous_daily_words[chat_id] = unique_words
+                    # Фильтруем только действительно невыученные слова
+                    leftover_words = []
+                    for word in unique_words:
+                        english_part = extract_english(word).lower()
+                        if english_part and english_part not in learned_set:
+                            leftover_words.append(word)
+                    
+                    # Сохраняем leftover слова для следующего дня
+                    if leftover_words:
+                        previous_daily_words[chat_id] = leftover_words
+                        if not PRODUCTION_MODE:
+                            logger.info(f"Saved {len(leftover_words)} leftover words for user {chat_id}")
+                    elif chat_id in previous_daily_words:
+                        del previous_daily_words[chat_id]
+                        
+                except Exception as e:
+                    logger.error("Ошибка обработки leftover слов для пользователя %s: %s", chat_id, e)
+            else:
+                # В режиме повторения не сохраняем leftover слова
+                if chat_id in previous_daily_words:
+                    del previous_daily_words[chat_id]
                 
+            # Сбрасываем кэш слов дня
             reset_daily_words_cache(chat_id)
         
         # Сброс напоминания о тесте

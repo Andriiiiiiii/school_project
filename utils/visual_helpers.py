@@ -170,49 +170,48 @@ def extract_english(word_line: str) -> str:
 
 def format_daily_words_message(messages: List[str], times: List[str], chosen_set: str = None, total_words: int = None) -> str:
     """
-    Форматирует сообщение со словами дня с улучшенным визуальным представлением.
-    
-    Args:
-        messages: Список сообщений со словами
-        times: Список времен отправки
-        chosen_set: Название выбранного набора слов (опционально)
-        total_words: Общее количество слов в наборе (опционально)
+    Форматирует сообщение со словами дня (ИСПРАВЛЕННАЯ ВЕРСИЯ без дублирования).
     """
+    from utils.helpers import daily_words_cache
+    
     header = "📚 Словарь на сегодня"
     
-    # Добавляем информацию о наборе слов, если она доступна
+    # Добавляем информацию о наборе слов
     if chosen_set:
         if total_words:
             header += f"\nИз набора: *«{chosen_set}»* ({total_words} слов)"
         else:
             header += f"\nИз набора: *«{chosen_set}»*"
     
-    result = f"{header}\n\n"
+    result = f"{header}\n"
     
-    # Извлекаем любое префиксное сообщение (начинающееся с 🎓 или ⚠️)
+    # ИСПРАВЛЕНИЕ: получаем prefix_message из кэша
     prefix_message = ""
-    word_messages = messages.copy()
+    # Ищем кэш по времени и сообщениям чтобы найти соответствующую запись
+    for chat_id, cache_entry in daily_words_cache.items():
+        if (len(cache_entry) > 10 and cache_entry[1] == messages and cache_entry[2] == times):
+            prefix_message = cache_entry[10]  # prefix_message находится в позиции 10
+            break
     
-    if messages and (messages[0].startswith("🎓") or messages[0].startswith("⚠️")):
-        prefix_message = messages[0]
-        word_messages = messages[1:]
-    
+    # Добавляем префиксное сообщение ТОЛЬКО ОДИН РАЗ
     if prefix_message:
         result += f"{prefix_message}\n\n"
+    else:
+        result += "\n"
     
     # Группируем слова по времени уведомления
     time_groups = {}
     for i, time in enumerate(times):
-        if i < len(word_messages):
+        if i < len(messages):
             if time not in time_groups:
                 time_groups[time] = []
-            time_groups[time].append(word_messages[i])
+            time_groups[time].append(messages[i])
     
     # Форматируем каждую временную группу
     for time, words in time_groups.items():
         result += f"⏰ *{time}*\n"
         for word in words:
-            # Удаляем префикс эмодзи, если он есть, и добавляем наше стандартное форматирование
+            # Удаляем префикс эмодзи
             word_text = word
             if word.startswith("🔹 "):
                 word_text = word[2:].strip()
@@ -307,11 +306,12 @@ def truncate_daily_words_message(formatted_message: str, unique_words: List[str]
                                  chosen_set: str = None, total_words: int = None) -> str:
     """
     Обрезает сообщение со словами дня, если оно слишком длинное для Telegram.
+    Исправленная версия с правильной обработкой окончания набора.
     
     Args:
         formatted_message: Полное отформатированное сообщение
         unique_words: Список уникальных слов на сегодня
-        words_count: Количество слов в день
+        words_count: Количество слов в день (настроенное пользователем)
         repetitions: Количество повторений
         chosen_set: Название набора слов
         total_words: Общее количество слов в наборе
@@ -331,12 +331,20 @@ def truncate_daily_words_message(formatted_message: str, unique_words: List[str]
             header += f" (~{total_words} слов)"
     header += "\n\n"
     
-    # Определяем, есть ли специальный префикс (режим повторения или предупреждение)
+    # Определяем, есть ли специальный префикс
     prefix_msg = ""
     clean_words = unique_words
-    if unique_words and (unique_words[0].startswith("🎓") or unique_words[0].startswith("⚠️")):
+    is_final_words = False
+    is_revision_mode = False
+    
+    if unique_words and unique_words[0].startswith("🎓"):
         prefix_msg = unique_words[0] + "\n\n"
         clean_words = unique_words[1:]
+        is_revision_mode = True
+    elif unique_words and unique_words[0].startswith("⚠️"):
+        prefix_msg = unique_words[0] + "\n\n"
+        clean_words = unique_words[1:]
+        is_final_words = True
     
     # Очищаем слова от символов
     words_list = []
@@ -345,26 +353,37 @@ def truncate_daily_words_message(formatted_message: str, unique_words: List[str]
         if clean_word and not (clean_word.startswith("🎓") or clean_word.startswith("⚠️")):
             words_list.append(f"• {clean_word}")
     
-    # Показываем все уникальные слова, если их не больше 30
-    max_words = min(30, len(words_list))  # Увеличиваем лимит до 30 или показываем все
+    # Показываем все слова если их немного, или первые 30
+    max_words = min(30, len(words_list))
     show_words = words_list[:max_words]
     
     # Формируем сокращенное сообщение
     shortened_message = header + prefix_msg
     
-    if len(words_list) > max_words:
-        shortened_message += f"*Первые {max_words} из {len(words_list)} слов на сегодня:*\n\n"
+    if is_revision_mode:
+        shortened_message += f"*Слова для повторения ({len(words_list)} из {words_count}):*\n\n"
         shortened_message += "\n".join(show_words)
-        shortened_message += f"\n\n...и еще {len(words_list) - max_words} слов"
+        if len(words_list) > max_words:
+            shortened_message += f"\n\n...и еще {len(words_list) - max_words} слов"
+    elif is_final_words:
+        actual_count = len(words_list)
+        shortened_message += f"*Остатки набора ({actual_count} из {words_count} настроенных):*\n\n"
+        shortened_message += "\n".join(show_words)
+        if len(words_list) > max_words:
+            shortened_message += f"\n\n...и еще {len(words_list) - max_words} слов"
     else:
-        shortened_message += f"*Сегодняшние слова ({len(words_list)} уникальных):*\n\n"
-        shortened_message += "\n".join(show_words)
+        if len(words_list) > max_words:
+            shortened_message += f"*Первые {max_words} из {len(words_list)} слов на сегодня:*\n\n"
+            shortened_message += "\n".join(show_words)
+            shortened_message += f"\n\n...и еще {len(words_list) - max_words} слов"
+        else:
+            shortened_message += f"*Сегодняшние слова ({len(words_list)} уникальных):*\n\n"
+            shortened_message += "\n".join(show_words)
     
     # Добавляем примечание о расписании только если много повторений
     if repetitions > 3:
         shortened_message += (
-            f"\n\n⚠️ *Примечание:* Из-за большого количества повторений ({repetitions}×) "
-            f"все слова будут приходить в уведомлениях несколько раз в течение дня."
+            f"\n\n⚠️ *Примечание:* Все слова будут приходить в уведомлениях {repetitions} раз в течение дня."
         )
     
     return shortened_message

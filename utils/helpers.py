@@ -121,7 +121,7 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, 
                            force_reset=False, chosen_set=None):
     """
-    Генерирует список слов дня (оптимизированная версия для продакшена).
+    Генерирует список слов дня (КАРДИНАЛЬНО ИСПРАВЛЕННАЯ ВЕРСИЯ).
     """
     # Локальные импорты для избежания циклических зависимостей
     try:
@@ -138,12 +138,11 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         
-        # Принудительный сброс кэша
+        # Принудительный сброс кэша (но НЕ leftover слов для корректной работы)
         if force_reset:
             if chat_id in daily_words_cache:
                 del daily_words_cache[chat_id]
-            if chat_id in previous_daily_words:
-                del previous_daily_words[chat_id]
+            # НЕ удаляем previous_daily_words при force_reset для тестов
         
         # Проверка кэша
         if chat_id in daily_words_cache and not force_reset:
@@ -204,82 +203,70 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             logger.error("Ошибка получения выученных слов для пользователя %s: %s", chat_id, e)
             learned_set = set()
 
-        # Определение доступных слов
-        available_words = []
+        # ===== КАРДИНАЛЬНО ИСПРАВЛЕННАЯ ЛОГИКА =====
+        
+        # 1. Определяем ВСЕ невыученные слова из набора
+        all_unlearned_words = []
         for word in file_words:
             eng_word = extract_english(word).lower()
             if eng_word not in learned_set:
-                available_words.append(word)
+                all_unlearned_words.append(word)
         
-        # Получение невыученных слов из предыдущего дня
+        total_unlearned_count = len(all_unlearned_words)
+        
+        # 2. Определяем режим повторения
+        is_revision_mode = (total_unlearned_count == 0)
+        
+        # 3. Определяем leftover слова (из предыдущего дня)
         leftover_words = []
         if chat_id in previous_daily_words:
             for word in previous_daily_words[chat_id]:
                 eng_word = extract_english(word).lower()
-                if eng_word not in learned_set:
+                if eng_word not in learned_set and word in all_unlearned_words:
                     leftover_words.append(word)
         
-        total_available = len(available_words) + len(leftover_words)
-        min_words_threshold = min(3, words_count // 2)
-        
-        # Определение режима повторения
-        is_revision_mode = (total_available == 0) or (total_available < min_words_threshold and len(file_words) > 0)
-        
+        # 4. Формируем слова дня
         unique_words = []
         prefix_message = ""
         
         if is_revision_mode:
-            prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:\n\n"
-            
-            if len(file_words) <= words_count:
-                unique_words = file_words.copy()
-            else:
-                unique_words = random.sample(file_words, words_count)
-        else:
-            # Сначала добавляем слова из предыдущего дня
-            if leftover_words:
-                if len(leftover_words) <= words_count:
-                    unique_words.extend(leftover_words)
-                else:
-                    unique_words.extend(random.sample(leftover_words, words_count))
-            
-            # Затем добавляем новые слова
-            if len(unique_words) < words_count:
-                words_needed = words_count - len(unique_words)
-                remaining_available = [w for w in available_words if w not in unique_words]
-                
-                if remaining_available:
-                    if len(remaining_available) <= words_needed:
-                        unique_words.extend(remaining_available)
-                    else:
-                        unique_words.extend(random.sample(remaining_available, words_needed))
-            
-            # Проверка недостатка слов
-            if len(unique_words) < words_count:
-                total_unique = len(set([extract_english(w).lower() for w in (available_words + leftover_words)]))
-                
-                if total_unique > 0:
-                    prefix_message = f"⚠️ Осталось всего {total_unique} невыученных слов в этом наборе!\n\n"
-                else:
-                    prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе.\n\n"
+            # Режим повторения - все слова выучены
+            prefix_message = "🎓 Поздравляем! Вы выучили все слова в этом наборе. Вот некоторые для повторения:"
+            unique_words = random.sample(file_words, min(words_count, len(file_words)))
         
-        # Создание сообщений
-        try:
-            if prefix_message:
-                messages_unique = [prefix_message] + ["🔹 " + word for word in unique_words]
-            else:
-                messages_unique = ["🔹 " + word for word in unique_words]
+        else:
+            # Обычный режим или режим остатков
+            
+            # Сначала добавляем leftover слова
+            unique_words.extend(leftover_words)
+            
+            # Затем добавляем новые невыученные слова
+            remaining_slots = words_count - len(unique_words)
+            if remaining_slots > 0:
+                # Новые слова = все невыученные минус leftover
+                new_unlearned_words = [w for w in all_unlearned_words if w not in leftover_words]
                 
-            repeated_messages = []
-            for _ in range(repetitions):
-                repeated_messages.extend(messages_unique)
-                
-            total_notifications = len(repeated_messages)
-        except Exception as e:
-            logger.error("Ошибка создания сообщений: %s", e)
-            messages_unique = ["🔹 Ошибка загрузки слов"]
-            repeated_messages = messages_unique * repetitions
-            total_notifications = len(repeated_messages)
+                if len(new_unlearned_words) >= remaining_slots:
+                    unique_words.extend(random.sample(new_unlearned_words, remaining_slots))
+                else:
+                    unique_words.extend(new_unlearned_words)
+            
+            # Определяем, нужно ли предупреждение об остатках
+            actual_count = len(unique_words)
+            if actual_count < words_count:
+                prefix_message = f"⚠️ Осталось всего {actual_count} невыученных слов в этом наборе!"
+
+        # ===== СОЗДАНИЕ СООБЩЕНИЙ =====
+        
+        # Создаем сообщения для уведомлений
+        messages_for_notifications = ["🔹 " + word for word in unique_words]
+        
+        # Повторяем сообщения согласно настройке repetitions
+        repeated_messages = []
+        for _ in range(repetitions):
+            repeated_messages.extend(messages_for_notifications)
+        
+        total_notifications = len(repeated_messages)
 
         # Получение часового пояса пользователя
         try:
@@ -292,8 +279,19 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
         times = compute_notification_times(total_notifications, first_time, duration_hours, tz=user_tz)
 
         # Сохранение в кэш
-        daily_words_cache[chat_id] = (today, repeated_messages, times, first_time, duration_hours, 
-                                    words_count, repetitions, user_tz, unique_words, is_revision_mode)
+        daily_words_cache[chat_id] = (
+            today,                    # 0: дата
+            repeated_messages,        # 1: повторяющиеся сообщения
+            times,                   # 2: времена
+            first_time,              # 3: первое время
+            duration_hours,          # 4: продолжительность
+            words_count,             # 5: количество слов
+            repetitions,             # 6: повторения
+            user_tz,                 # 7: часовой пояс
+            unique_words,            # 8: уникальные слова
+            is_revision_mode,        # 9: режим повторения
+            prefix_message           # 10: префиксное сообщение
+        )
         
         return repeated_messages, times
         

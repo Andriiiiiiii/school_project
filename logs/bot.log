@@ -1405,3 +1405,72 @@ AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
 2025-06-03 02:39:06,737 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=тратить (время или деньги) ok=False
 2025-06-03 02:39:13,988 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:40:13 MSK)" (scheduled at 2025-06-03 02:39:13.986050+03:00)
 2025-06-03 02:39:13,989 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 02:40:13 MSK)" executed successfully
+2025-06-03 14:01:11,303 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 14:01:11,305 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 14:01:11,305 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 14:01:11,305 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 14:01:11,575 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 14:01:11,575 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 14:01:11,710 - ERROR - __main__ - Ошибка восстановления для пользователя 777777: Chat not found
+2025-06-03 14:01:11,922 - INFO - __main__ - Восстановлено 2 уведомлений
+2025-06-03 14:01:11,923 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 14:01:12,231 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 14:01:31,397 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 14:01:47,898 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 14:01:55,597 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=нести ok=True
+2025-06-03 14:01:58,436 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=сохранять / копить ok=True
+2025-06-03 14:02:01,350 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=избегать ok=True
+2025-06-03 14:02:03,670 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=забывать ok=True
+2025-06-03 14:02:08,966 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=прибывать ok=True
+2025-06-03 14:02:13,177 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:03:11 MSK)" was missed by 0:00:01.873806
+2025-06-03 14:02:36,496 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:02:36,497 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:02:39,169 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:02:39,170 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:02:45,166 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 14:02:47,750 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=скучать по кому-то / пропустить ok=True
+2025-06-03 14:02:50,585 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=доверять ok=True
+2025-06-03 14:02:56,158 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=нести ok=False
+2025-06-03 14:03:01,980 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=тратить (время или деньги) ok=True
+2025-06-03 14:03:04,445 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=предлагать ok=True
+2025-06-03 14:03:13,554 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:04:11 MSK)" was missed by 0:00:02.250623
+2025-06-03 14:03:19,295 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:03:19,296 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:03:48,602 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-03 14:03:53,959 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=угадывать ok=True
+2025-06-03 14:04:02,704 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=напоминать ok=True
+2025-06-03 14:04:07,383 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=ронять ok=True
+2025-06-03 14:04:10,636 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=спешить ok=True
+2025-06-03 14:04:13,396 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:05:11 MSK)" was missed by 0:00:02.092995
+2025-06-03 14:04:38,102 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:04:38,102 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:04:41,627 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:04:41,628 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:05:13,829 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:06:11 MSK)" was missed by 0:00:02.525894
+2025-06-03 14:05:19,062 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-03 14:05:19,063 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-03 14:06:12,513 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:07:11 MSK)" was missed by 0:00:01.209204
+2025-06-03 14:13:37,978 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 14:13:37,980 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 14:13:37,980 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 14:13:37,980 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 14:13:38,347 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 14:13:38,347 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 14:13:38,643 - ERROR - __main__ - Ошибка восстановления для пользователя 999006: Chat not found
+2025-06-03 14:13:38,644 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 14:13:43,265 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 14:13:59,230 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-03 14:21:41,521 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-03 14:21:41,521 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-03 14:21:41,521 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-03 14:21:41,521 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-03 14:21:41,973 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-03 14:21:41,973 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-03 14:21:42,703 - ERROR - __main__ - Ошибка восстановления для пользователя 777777: Chat not found
+2025-06-03 14:21:42,908 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-06-03 14:21:42,909 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-03 14:21:46,928 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 14:22:01,054 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-03 14:22:43,744 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:23:41 MSK)" was missed by 0:00:02.223480
+2025-06-03 14:23:15,459 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-03 14:23:42,601 - WARNING - apscheduler.executors.default - Run time of job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-03 14:24:41 MSK)" was missed by 0:00:01.080604

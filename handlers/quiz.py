@@ -165,7 +165,7 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     await bot.send_message(chat_id, "Тест завершён.", reply_markup=main_menu_keyboard())
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
-    """Начинает тест со словами дня."""
+    """Начинает тест со словами дня. Исправленная версия с правильной обработкой режима повторения."""
     chat_id = cb.from_user.id
     logger.info("StartQuiz chat=%s", chat_id)
 
@@ -216,11 +216,21 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
             raw.pop(0)
         unique_words = raw
 
+    # ИСПРАВЛЕННАЯ ЛОГИКА ОБРАБОТКИ РЕЖИМА ПОВТОРЕНИЯ
     revision = bool(len(entry) > 9 and entry[9])
-    source = unique_words if revision else [w for w in unique_words if extract_english(w).lower() not in learned]
+    
+    if revision:
+        # В режиме повторения тестируем все слова, поскольку все уже выучены
+        source = unique_words
+    else:
+        # В обычном режиме тестируем только невыученные слова
+        source = [w for w in unique_words if extract_english(w).lower() not in learned]
     
     if not source:
-        await bot.send_message(chat_id, "Все слова уже выучены! Попробуйте завтра.")
+        if revision:
+            await bot.send_message(chat_id, "Нет слов для повторения.")
+        else:
+            await bot.send_message(chat_id, "Все слова уже выучены! Попробуйте завтра.")
         await cb.answer()
         return
 
