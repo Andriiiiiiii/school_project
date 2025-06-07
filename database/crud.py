@@ -10,6 +10,7 @@ import logging
 import sqlite3
 from pathlib import Path
 from typing import Any, Iterable, List, Tuple
+from datetime import datetime, timedelta  # ДОБАВЬТЕ ЭТУ СТРОКУ
 
 from database.db import conn, cursor, db_manager     # существующая инфраструктура
 from config import (
@@ -86,7 +87,7 @@ def is_user_premium(chat_id: int) -> bool:
             return False
             
         # Проверяем, не истекла ли подписка
-        from datetime import datetime
+        from datetime import datetime, timedelta 
         expiry_date = datetime.fromisoformat(expires_at)
         return datetime.now() < expiry_date
         
@@ -382,30 +383,21 @@ def update_user_chosen_set(chat_id: int, chosen_set: str):
 def update_user_streak(chat_id: int, days_streak: int, last_test_date: str = None):
     """Обновляет количество дней подряд пользователя."""
     try:
-        # Валидация: streak не может быть отрицательным
         if days_streak < 0:
             days_streak = 0
             
         with db_manager.transaction() as tx:
-            if last_test_date:
+            if last_test_date is not None:
                 tx.execute(
                     "UPDATE users SET days_streak = ?, last_test_date = ? WHERE chat_id = ?",
                     (days_streak, last_test_date, chat_id)
                 )
-                logger.debug(f"Updated streak to {days_streak} and date to {last_test_date} for user {chat_id}")
             else:
+                # ИСПРАВЛЕНИЕ: правильно сбрасываем дату на NULL
                 tx.execute(
-                    "UPDATE users SET days_streak = ? WHERE chat_id = ?",
+                    "UPDATE users SET days_streak = ?, last_test_date = NULL WHERE chat_id = ?",
                     (days_streak, chat_id)
                 )
-                logger.debug(f"Updated streak to {days_streak} for user {chat_id}")
-                
-            # Проверяем что обновление прошло успешно
-            result = tx.execute("SELECT days_streak, last_test_date FROM users WHERE chat_id = ?", (chat_id,)).fetchone()
-            if result:
-                logger.debug(f"Verification: user {chat_id} now has streak={result[0]}, date={result[1]}")
-            else:
-                logger.error(f"User {chat_id} not found after update")
                 
         logger.info(f"Updated streak to {days_streak} for user {chat_id}")
     except Exception as e:
@@ -435,9 +427,8 @@ def get_user_streak(chat_id: int) -> tuple:
         return 0, None
 
 def increment_user_streak(chat_id: int) -> int:
-    """Увеличивает количество дней подряд на 1 и обновляет дату последнего теста."""
+    """Увеличивает количество дней подряд на 1 и обновляет дату последнего теста. ИСПРАВЛЕННАЯ версия."""
     try:
-        from datetime import datetime
         today = datetime.now().strftime("%Y-%m-%d")
         
         current_streak, last_test_date = get_user_streak(chat_id)
@@ -448,7 +439,19 @@ def increment_user_streak(chat_id: int) -> int:
             logger.debug(f"User {chat_id} already took test today, keeping streak at {current_streak}")
             return current_streak  # Уже проходил тест сегодня
         
-        new_streak = current_streak + 1
+        # Проверяем, был ли пропуск дней
+        yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        
+        if last_test_date is None:
+            # Первый тест вообще
+            new_streak = 1
+        elif last_test_date == yesterday:
+            # Тест был вчера - увеличиваем streak
+            new_streak = current_streak + 1
+        else:
+            # Был пропуск - начинаем заново
+            new_streak = 1
+        
         logger.debug(f"Incrementing streak for user {chat_id}: {current_streak} -> {new_streak}")
         
         update_user_streak(chat_id, new_streak, today)
@@ -467,7 +470,7 @@ def reset_user_streak(chat_id: int):
     """Сбрасывает количество дней подряд до 0."""
     try:
         logger.debug(f"Resetting streak for user {chat_id}")
-        update_user_streak(chat_id, 0, None)
+        update_user_streak(chat_id, 0, None)  # ИСПРАВЛЕНИЕ: передаем None
         logger.info(f"Reset streak for user {chat_id}")
     except Exception as e:
         logger.error(f"Error resetting streak for user {chat_id}: {e}")

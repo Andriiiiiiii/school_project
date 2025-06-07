@@ -121,7 +121,7 @@ async def _send_question(chat_id: int, bot: Bot) -> None:
         logger.error(f"Ошибка при отправке сообщения с навигацией: {e}")
 
 async def _finish_quiz(chat_id: int, bot: Bot) -> None:
-    """Завершает тест и отображает результаты."""
+    """Завершает тест и отображает результаты. ИСПРАВЛЕННАЯ версия без изменения streak."""
     state = quiz_states.pop(chat_id, None)
     if not state:
         return
@@ -137,27 +137,24 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     correct, total = state["correct"], len(state["questions"])
     result = format_result_message(correct, total, state["revision"])
     
-    # Увеличиваем streak при прохождении теста дня
+    # ИСПРАВЛЕНИЕ: Просто показываем текущий streak без изменения
     try:
-        from database.crud import increment_user_streak, get_user_streak
-        from datetime import datetime
-        
-        # Получаем streak до инкремента
-        old_streak, _ = get_user_streak(chat_id)
-        
-        # Инкрементируем streak
-        new_streak = increment_user_streak(chat_id)
-        
-        # Проверяем, увеличился ли streak (значит, это первый тест за день)
-        if new_streak > old_streak:
-            result += f"\n🔥 Дней подряд: {new_streak}"
-            if new_streak >= 7:
+        current_streak = state.get("current_streak", 0)
+        if current_streak > 0:
+            result += f"\n🔥 Дней подряд: {current_streak}"
+            if current_streak >= 7:
                 result += "\n🎯 Отличная последовательность!"
         else:
-            result += f"\n🔥 Дней подряд: {new_streak} (уже проходили тест сегодня)"
-                
+            # Fallback - получаем streak из БД
+            from database.crud import get_user_streak
+            streak, _ = get_user_streak(chat_id)
+            if streak > 0:
+                result += f"\n🔥 Дней подряд: {streak}"
+                if streak >= 7:
+                    result += "\n🎯 Отличная последовательность!"
+                    
     except Exception as e:
-        logger.error(f"Ошибка обновления streak для пользователя {chat_id}: {e}")
+        logger.error(f"Ошибка отображения streak для пользователя {chat_id}: {e}")
     
     await bot.send_message(chat_id, result, parse_mode="Markdown")
     
@@ -165,7 +162,7 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     await bot.send_message(chat_id, "Тест завершён.", reply_markup=main_menu_keyboard())
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
-    """Начинает тест со словами дня. Исправленная версия с правильной обработкой режима повторения."""
+    """Начинает тест со словами дня. Исправленная версия с увеличением streak в начале."""
     chat_id = cb.from_user.id
     logger.info("StartQuiz chat=%s", chat_id)
 
@@ -240,19 +237,43 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
         await cb.answer()
         return
 
+    # ИСПРАВЛЕНИЕ: Увеличиваем streak в НАЧАЛЕ теста
+    current_streak = 0
+    try:
+        from database.crud import increment_user_streak, get_user_streak
+        
+        # Получаем streak до инкремента
+        old_streak, _ = get_user_streak(chat_id)
+        
+        # Инкрементируем streak (функция сама проверяет, не проходился ли уже тест сегодня)
+        current_streak = increment_user_streak(chat_id)
+        
+        if current_streak > old_streak:
+            # Streak увеличился - первый тест за день
+            await bot.send_message(chat_id, f"🔥 Начат тест дня! Дней подряд: {current_streak}")
+            if current_streak >= 7:
+                await bot.send_message(chat_id, "🎯 Отличная последовательность!")
+        else:
+            # Streak не увеличился - уже проходили тест сегодня
+            await bot.send_message(chat_id, f"🔥 Дополнительный тест. Дней подряд: {current_streak}")
+                
+    except Exception as e:
+        logger.error(f"Ошибка обновления streak для пользователя {chat_id}: {e}")
+
     quiz_states[chat_id] = {
         "questions": questions,
         "current": 0,
         "correct": 0,
         "revision": revision,  # ИСПРАВЛЕНИЕ: правильно передаем флаг revision
         "answered": set(),
+        "current_streak": current_streak,  # Сохраняем текущий streak для показа в конце
     }
 
     await _send_question(chat_id, bot)
     await cb.answer()
 
 async def handle_poll_answer(ans: PollAnswer) -> None:
-    """Обрабатывает ответ на вопрос теста."""
+    """Обрабатывает ответ на вопрос теста. ИСПРАВЛЕННАЯ версия с правильным подсчетом."""
     pid = str(ans.poll_id)
     chat_id = poll_to_user.get(pid)
     idx = poll_to_index.get(pid)
@@ -287,15 +308,19 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
             pass
 
     if correct:
+        # ИСПРАВЛЕНИЕ: Увеличиваем счетчик правильных ответов
         state["correct"] += 1
+        
         # ИСПРАВЛЕНИЕ: добавляем слова в словарь только в обычном режиме (не в режиме повторения)
         if not state.get("revision", False):
             eng = extract_english(q["word"]).lower()
-            if eng not in {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}:
+            learned_words = {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}
+            if eng not in learned_words:
                 crud.add_learned_word(
                     chat_id, extract_english(q["word"]), q["correct"],
                     datetime.now().strftime("%Y-%m-%d")
                 )
+                logger.info(f"Added word '{eng}' to dictionary for user {chat_id}")
 
         # Отправляем сообщение о правильном ответе
         await bot.send_message(chat_id, "✅ Верно!")
@@ -327,6 +352,7 @@ async def handle_poll_answer(ans: PollAnswer) -> None:
             nav_messages[chat_id] = msg.message_id
         except Exception as e:
             logger.error(f"Ошибка при отправке сообщения с навигацией после неправильного ответа: {e}")
+
 
 async def process_quiz_navigation(cb: types.CallbackQuery, bot: Bot) -> None:
     """Обрабатывает нажатия на кнопки навигации теста."""

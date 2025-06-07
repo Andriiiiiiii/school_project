@@ -168,7 +168,7 @@ def reset_user_cache(chat_id=None):
         logger.error("Ошибка сброса кэша: %s", e)
 
 def process_daily_reset(chat_id):
-    """Ежедневный сброс данных пользователя с ИСПРАВЛЕННОЙ обработкой leftover слов."""
+    """Ежедневный сброс данных пользователя с ИСПРАВЛЕННОЙ обработкой streak."""
     try:
         today = datetime.now().strftime("%Y-%m-%d")
         reset_key = f"{chat_id}_reset_{today}"
@@ -180,7 +180,7 @@ def process_daily_reset(chat_id):
         if not hasattr(process_daily_reset, 'processed_resets'):
             process_daily_reset.processed_resets = set()
         
-        # Проверяем и сбрасываем дни подряд если нужно
+        # ИСПРАВЛЕННАЯ логика проверки и сброса дней подряд
         try:
             from database.crud import get_user_streak, reset_user_streak
             streak, last_test_date = get_user_streak(chat_id)
@@ -188,28 +188,46 @@ def process_daily_reset(chat_id):
             if streak > 0:
                 yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
                 
+                logger.debug(f"Checking streak for user {chat_id}: streak={streak}, last_test_date={last_test_date}, yesterday={yesterday}")
+                
                 should_reset = False
+                reset_reason = ""
+                
                 if not last_test_date:
+                    # Нет записи о последнем тесте - сбрасываем
                     should_reset = True
+                    reset_reason = "no_test_date"
                 elif last_test_date < yesterday:
+                    # Последний тест был позавчера или раньше - сбрасываем
                     should_reset = True
+                    reset_reason = f"test_too_old_{last_test_date}"
                 elif last_test_date == yesterday:
+                    # Тест был вчера - НЕ сбрасываем
                     should_reset = False
+                    reset_reason = "test_yesterday_ok"
+                elif last_test_date == today:
+                    # Тест уже был сегодня - НЕ сбрасываем
+                    should_reset = False
+                    reset_reason = "test_today_ok"
                 else:
-                    should_reset = False
+                    # Дата в будущем (не должно быть) - сбрасываем
+                    should_reset = True
+                    reset_reason = f"future_date_{last_test_date}"
                 
                 if should_reset:
+                    logger.info(f"Resetting streak for user {chat_id}: reason={reset_reason}, old_streak={streak}")
                     reset_user_streak(chat_id)
+                    
+                    # Если нужно уведомить пользователя о сбросе streak (опционально)
                     if not PRODUCTION_MODE:
-                        logger.info(f"Reset streak for user {chat_id} - last test: {last_test_date}, yesterday: {yesterday}")
+                        logger.info(f"DEBUG: User {chat_id} streak reset from {streak} to 0. Reason: {reset_reason}")
                 else:
-                    if not PRODUCTION_MODE:
-                        logger.info(f"Keeping streak for user {chat_id} - last test: {last_test_date}, yesterday: {yesterday}")
-                        
+                    logger.debug(f"Keeping streak for user {chat_id}: reason={reset_reason}, streak={streak}")
+                    
         except Exception as e:
             logger.error(f"Ошибка проверки streak для пользователя {chat_id}: {e}")
         
-        # ИСПРАВЛЕННАЯ обработка leftover слов
+        # Обработка leftover слов (существующая логика)
         if chat_id in daily_words_cache:
             entry = daily_words_cache[chat_id]
             unique_words = entry[8] if len(entry) > 8 and entry[8] else []
@@ -255,10 +273,10 @@ def process_daily_reset(chat_id):
         # Очистка старых записей
         if len(process_daily_reset.processed_resets) > 1000:
             yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-            today = datetime.now().strftime("%Y-%m-%d")
+            today_check = datetime.now().strftime("%Y-%m-%d")
             process_daily_reset.processed_resets = {
                 key for key in process_daily_reset.processed_resets 
-                if today in key or yesterday in key
+                if today_check in key or yesterday in key
             }
             
         if not PRODUCTION_MODE:

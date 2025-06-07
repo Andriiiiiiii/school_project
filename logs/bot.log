@@ -1495,3 +1495,87 @@ AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
 2025-06-03 15:31:45,286 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
 2025-06-03 15:31:51,373 - INFO - handlers.commands - Команда /start от chat_id=1999873173
 2025-06-03 15:31:57,183 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 00:26:41,780 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 00:26:41,782 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 00:26:41,782 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 00:26:41,782 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 00:26:42,032 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 00:26:42,032 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 00:26:42,048 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 00:27:34,506 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 00:27:41,781 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:28:41 MSK)" (scheduled at 2025-06-08 00:27:41.780437+03:00)
+2025-06-08 00:27:41,781 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 00:27:41,782 - INFO - services.payment - Checking 0 active payments
+2025-06-08 00:27:41,809 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:28:41 MSK)" executed successfully
+2025-06-08 00:27:42,513 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 00:27:42,513 - ERROR - database.crud - Error incrementing streak for user 1999873173: name 'timedelta' is not defined
+2025-06-08 00:27:58,850 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=избегать ok=True
+2025-06-08 00:28:01,588 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=покидать, уходить ok=True
+2025-06-08 00:28:04,687 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=доверять ok=True
+2025-06-08 00:28:07,142 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=скучать по кому-то / пропустить ok=True
+2025-06-08 00:28:41,783 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:29:41 MSK)" (scheduled at 2025-06-08 00:28:41.780437+03:00)
+2025-06-08 00:28:41,784 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:29:41 MSK)" executed successfully
+2025-06-08 00:29:41,788 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:30:41 MSK)" (scheduled at 2025-06-08 00:29:41.780437+03:00)
+2025-06-08 00:29:41,789 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:30:41 MSK)" executed successfully
+2025-06-08 00:30:41,793 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:31:41 MSK)" (scheduled at 2025-06-08 00:30:41.780437+03:00)
+2025-06-08 00:30:41,793 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:31:41 MSK)" executed successfully
+2025-06-08 00:41:26,518 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 00:41:26,518 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 00:41:26,518 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 00:41:26,518 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 00:41:26,706 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 00:41:26,706 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 00:41:26,712 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 00:41:30,481 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 00:41:37,745 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 00:41:37,753 - INFO - database.crud - Updated streak to 1 for user 1999873173
+2025-06-08 00:41:43,709 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 00:41:47,273 - INFO - database.crud - Cleared learned words for user 1999873173
+2025-06-08 00:41:47,273 - INFO - database.crud - Набор пользователя 1999873173 обновлен на B1 Basic 2
+2025-06-08 00:41:47,273 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-08 00:41:49,469 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 00:41:58,773 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 00:42:02,016 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=верить ok=True
+2025-06-08 00:42:02,118 - INFO - handlers.quiz - Added word 'believe' to dictionary for user 1999873173
+2025-06-08 00:42:54,038 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 00:42:54,039 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 00:42:54,039 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 00:42:54,039 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 00:42:54,208 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 00:42:54,208 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 00:42:54,212 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 00:42:56,138 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 00:42:56,264 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-06-08 00:42:56,264 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-06-08 00:42:56,265 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-06-08 00:42:56,265 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-06-08 00:42:59,555 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-06-08 00:43:14,267 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 00:43:14,268 - INFO - database.crud - Updated streak to 1 for user 1999873173
+2025-06-08 00:43:30,558 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=учитель ok=True
+2025-06-08 00:43:30,647 - INFO - handlers.quiz - Added word 'teacher' to dictionary for user 1999873173
+2025-06-08 00:43:32,956 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=приходить ok=True
+2025-06-08 00:43:33,055 - INFO - handlers.quiz - Added word 'come' to dictionary for user 1999873173
+2025-06-08 00:43:35,010 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=стол ok=True
+2025-06-08 00:43:35,098 - INFO - handlers.quiz - Added word 'table' to dictionary for user 1999873173
+2025-06-08 00:43:38,211 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=ночь ok=True
+2025-06-08 00:43:38,301 - INFO - handlers.quiz - Added word 'night' to dictionary for user 1999873173
+2025-06-08 00:43:41,293 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=друг ok=True
+2025-06-08 00:43:41,380 - INFO - handlers.quiz - Added word 'friend' to dictionary for user 1999873173
+2025-06-08 00:43:54,041 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:44:54 MSK)" (scheduled at 2025-06-08 00:43:54.038700+03:00)
+2025-06-08 00:43:54,042 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-08 00:43:54,044 - INFO - services.payment - Checking 0 active payments
+2025-06-08 00:43:54,069 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:44:54 MSK)" executed successfully
+2025-06-08 00:43:59,107 - INFO - services.payment - Creating payment for user 1999873173, period: 1 months, amount: 299.0
+2025-06-08 00:43:59,661 - INFO - services.payment - Payment created successfully for user 1999873173: 2fd6c65f-000f-5001-8000-1172f6350262
+2025-06-08 00:43:59,662 - INFO - services.payment - Saved active payment 2fd6c65f-000f-5001-8000-1172f6350262 for user 1999873173
+2025-06-08 00:44:54,054 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:45:54 MSK)" (scheduled at 2025-06-08 00:44:54.038700+03:00)
+2025-06-08 00:44:54,055 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:45:54 MSK)" executed successfully
+2025-06-08 00:45:08,247 - INFO - services.payment - Calculating expiry: 1 months = 30 days
+2025-06-08 00:45:08,248 - INFO - services.payment - Creating new subscription: 1 months (30 days) from now
+2025-06-08 00:45:08,249 - INFO - database.crud - Updated subscription status=premium for user 1999873173
+2025-06-08 00:45:08,249 - INFO - services.payment - Marked payment 2fd6c65f-000f-5001-8000-1172f6350262 as processed
+2025-06-08 00:45:08,355 - INFO - services.payment - Sent subscription notification to user 1999873173
+2025-06-08 00:45:08,355 - INFO - services.payment - Successfully processed payment 2fd6c65f-000f-5001-8000-1172f6350262 for user 1999873173
+2025-06-08 00:45:54,047 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:46:54 MSK)" (scheduled at 2025-06-08 00:45:54.038700+03:00)
+2025-06-08 00:45:54,050 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:46:54 MSK)" executed successfully
