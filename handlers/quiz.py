@@ -11,7 +11,7 @@ from datetime import datetime
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Poll, PollAnswer
 
-from config import DURATION_HOURS, REMINDER_START
+from config import DURATION_HOURS, REMINDER_START, LEVELS_DIR, DEFAULT_SETS
 from database import crud
 from utils.helpers import daily_words_cache, get_daily_words_for_user
 from utils.quiz_helpers import load_quiz_data
@@ -162,7 +162,7 @@ async def _finish_quiz(chat_id: int, bot: Bot) -> None:
     await bot.send_message(chat_id, "Тест завершён.", reply_markup=main_menu_keyboard())
 
 async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
-    """Начинает тест со словами дня. Исправленная версия с увеличением streak в начале."""
+    """Начинает тест со словами дня с проверкой соответствия уровня и набора."""
     chat_id = cb.from_user.id
     logger.info("StartQuiz chat=%s", chat_id)
 
@@ -181,21 +181,91 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
         return
 
     level = user[1]
+    
     # Опциональный сет из настроек
     try:
         from handlers.settings import user_set_selection
         chosen_set = user_set_selection.get(chat_id)
     except ImportError:
         chosen_set = None
+    
+    # Если набор не найден в кэше, берем из БД
+    if not chosen_set:
+        chosen_set = user[6] if len(user) > 6 and user[6] else None
+    
+    # Если всё ещё не найден, используем DEFAULT_SETS
+    if not chosen_set:
+        chosen_set = DEFAULT_SETS.get(level)
 
-    learned = {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}
+    # ИСПРАВЛЕНИЕ: РАННЯЯ ПРОВЕРКА соответствия уровня и набора
+    if chosen_set and not chosen_set.startswith("TestSet"):
+        set_level_mismatch = False
+        
+        # Проверяем соответствие префикса уровня в названии набора
+        for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+            if chosen_set.startswith(prefix) and prefix != level:
+                set_level_mismatch = True
+                break
+        
+        # Проверяем существование файла для текущего уровня
+        from pathlib import Path
+        set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+        if not set_file_path.exists():
+            set_level_mismatch = True
+        
+        # БЛОКИРОВКА: Если есть несоответствие, показываем сообщение о смене набора
+        if set_level_mismatch:
+            default_set = DEFAULT_SETS.get(level, "")
+            current_set = user[6] or "не выбран"
+            
+            from keyboards.submenus import set_change_confirm_keyboard
+            
+            text = (
+                "⚠️ *Тест дня недоступен!*\n\n"
+                f"Текущий набор: *{current_set}*\n"
+                f"Текущий уровень: *{level}*\n\n"
+                f"Набор не соответствует вашему уровню.\n"
+                f"Необходимо сменить набор на *{default_set}* для уровня {level}.\n\n"
+                "Сменить набор?"
+            )
+            await bot.send_message(chat_id, text, parse_mode="Markdown", 
+                                  reply_markup=set_change_confirm_keyboard(default_set))
+            await cb.answer()
+            return
 
-    # Получаем слова дня
-    get_daily_words_for_user(
+    # Проверяем слова дня (уже после проверки соответствия уровня)
+    result = get_daily_words_for_user(
         chat_id, level, user[2], user[3],
         first_time=REMINDER_START, duration_hours=DURATION_HOURS,
         chosen_set=chosen_set,
     )
+    
+    if result is None:
+        await bot.send_message(chat_id, "⚠️ Нет слов для теста.")
+        await cb.answer()
+        return
+    elif len(result) == 3 and result[:2] == (None, None):
+        # Требуется подтверждение смены сета (другой случай)
+        default_set = result[2]
+        current_set = user[6] or "не выбран"
+        from keyboards.submenus import set_change_confirm_keyboard
+        
+        text = (
+            "⚠️ *Внимание! Смена набора сбросит весь ваш прогресс.*\n\n"
+            f"Текущий набор: *{current_set}*\n"
+            f"Текущий уровень: *{level}*\n\n"
+            f"Набор не соответствует уровню.\n"
+            f"Сменить на базовый *{default_set}*?\n"
+        )
+        await bot.send_message(chat_id, text, parse_mode="Markdown", 
+                              reply_markup=set_change_confirm_keyboard(default_set))
+        await cb.answer()
+        return
+
+    messages, times = result
+    learned = {extract_english(w[0]).lower() for w in crud.get_learned_words(chat_id)}
+
+    # Получаем слова из кэша
     entry = daily_words_cache.get(chat_id)
     if not entry:
         await bot.send_message(chat_id, "⚠️ Нет слов для теста.")
@@ -231,6 +301,7 @@ async def start_quiz(cb: types.CallbackQuery, bot: Bot) -> None:
         await cb.answer()
         return
 
+    # Создаем вопросы (теперь это безопасно, так как проверка уровня уже пройдена)
     questions = _generate_questions(source, level, chosen_set, revision)
     if not questions:
         await bot.send_message(chat_id, "⚠️ Не удалось создать вопросы.")

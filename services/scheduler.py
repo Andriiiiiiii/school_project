@@ -286,7 +286,7 @@ def process_daily_reset(chat_id):
         logger.error("Ошибка ежедневного сброса для пользователя %s: %s", chat_id, e)
 
 def process_user(user, now_server, bot, loop):
-    """Обработка отдельного пользователя (оптимизированная)."""
+    """Обработка отдельного пользователя с проверкой соответствия уровня и набора."""
     chat_id = user[0]
     level = user[1]
     words_count = user[2]
@@ -316,6 +316,14 @@ def process_user(user, now_server, bot, loop):
             chat_id, level, words_count, repetitions,
             first_time=FIRST_TIME, duration_hours=DURATION_HOURS
         )
+        
+        # ИСПРАВЛЕНИЕ: Проверяем результат на несоответствие уровня
+        if result == ("LEVEL_MISMATCH", "LEVEL_MISMATCH", None) or (
+            isinstance(result, tuple) and len(result) == 3 and result[:2] == ("LEVEL_MISMATCH", "LEVEL_MISMATCH")
+        ):
+            logger.info(f"Skipping notifications for user {chat_id} due to level/set mismatch")
+            return  # Не отправляем уведомления при несоответствии уровня и набора
+        
         if result is None:
             return
         
@@ -343,7 +351,7 @@ def process_user(user, now_server, bot, loop):
             except Exception as e:
                 logger.error("Ошибка отправки уведомления пользователю %s: %s", chat_id, e)
         
-        # Напоминание о тесте
+        # Напоминание о тесте только если нет проблем с набором
         try:
             current_time = now_local
             end_time = local_end_obj

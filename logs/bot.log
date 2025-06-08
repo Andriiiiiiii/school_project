@@ -1579,3 +1579,508 @@ AttributeError: module 'aiogram.types' has no attribute 'MessageNotModified'
 2025-06-08 00:45:08,355 - INFO - services.payment - Successfully processed payment 2fd6c65f-000f-5001-8000-1172f6350262 for user 1999873173
 2025-06-08 00:45:54,047 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:46:54 MSK)" (scheduled at 2025-06-08 00:45:54.038700+03:00)
 2025-06-08 00:45:54,050 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 00:46:54 MSK)" executed successfully
+2025-06-08 10:48:03,019 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 10:48:03,021 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 10:48:03,021 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 10:48:03,021 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 10:48:03,137 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 10:48:03,137 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 10:48:03,210 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-08 10:48:03,284 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-06-08 10:48:03,285 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 10:48:07,792 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 10:48:19,527 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 10:49:03,030 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:50:03 MSK)" (scheduled at 2025-06-08 10:49:03.019024+03:00)
+2025-06-08 10:49:03,031 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-08 10:49:03,032 - INFO - services.payment - Checking 0 active payments
+2025-06-08 10:49:03,074 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:50:03 MSK)" executed successfully
+2025-06-08 10:49:38,415 - ERROR - aiogram.dispatcher.dispatcher - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 139, in make_request
+    async with session.post(url, data=req, **kwargs) as response:
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 905, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 142, in make_request
+    raise exceptions.NetworkError(f"aiohttp client throws an error: {e.__class__.__name__}: {e}")
+aiogram.utils.exceptions.NetworkError: Aiohttp client throws an error: ClientOSError: [Errno 104] Connection reset by peer
+2025-06-08 10:50:03,025 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:51:03 MSK)" (scheduled at 2025-06-08 10:50:03.019024+03:00)
+2025-06-08 10:50:03,027 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:51:03 MSK)" executed successfully
+2025-06-08 10:51:03,025 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:52:03 MSK)" (scheduled at 2025-06-08 10:51:03.019024+03:00)
+2025-06-08 10:51:03,029 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:52:03 MSK)" executed successfully
+2025-06-08 10:52:03,025 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:53:03 MSK)" (scheduled at 2025-06-08 10:52:03.019024+03:00)
+2025-06-08 10:52:03,031 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:53:03 MSK)" executed successfully
+2025-06-08 10:53:03,024 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:54:03 MSK)" (scheduled at 2025-06-08 10:53:03.019024+03:00)
+2025-06-08 10:53:03,028 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:54:03 MSK)" executed successfully
+2025-06-08 10:54:03,026 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:55:03 MSK)" (scheduled at 2025-06-08 10:54:03.019024+03:00)
+2025-06-08 10:54:03,027 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:55:03 MSK)" executed successfully
+2025-06-08 10:55:03,081 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:56:03 MSK)" (scheduled at 2025-06-08 10:55:03.019024+03:00)
+2025-06-08 10:55:03,082 - INFO - services.payment - Checking 0 active payments
+2025-06-08 10:55:03,083 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:56:03 MSK)" executed successfully
+2025-06-08 10:56:03,037 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:57:03 MSK)" (scheduled at 2025-06-08 10:56:03.019024+03:00)
+2025-06-08 10:56:03,040 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:57:03 MSK)" executed successfully
+2025-06-08 10:57:03,030 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:58:03 MSK)" (scheduled at 2025-06-08 10:57:03.019024+03:00)
+2025-06-08 10:57:03,033 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:58:03 MSK)" executed successfully
+2025-06-08 10:58:03,028 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:59:03 MSK)" (scheduled at 2025-06-08 10:58:03.019024+03:00)
+2025-06-08 10:58:03,029 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 10:59:03 MSK)" executed successfully
+2025-06-08 10:59:03,035 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:00:03 MSK)" (scheduled at 2025-06-08 10:59:03.019024+03:00)
+2025-06-08 10:59:03,038 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:00:03 MSK)" executed successfully
+2025-06-08 11:00:48,627 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:00:48,630 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:00:48,630 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:00:48,631 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:00:48,939 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:00:48,939 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:00:48,953 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:01:31,268 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:01:31,269 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:01:31,269 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:01:31,270 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:01:31,451 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:01:31,451 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:01:31,459 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:01:31,650 - INFO - handlers.settings - User 1999873173 (level A1, premium: True): 14 total sets, 14 available
+2025-06-08 11:01:31,662 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 11:01:31,750 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/settings.py", line 206, in show_settings_callback
+    await cb.message.edit_text(
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-06-08 11:01:34,960 - INFO - handlers.settings - User 1999873173 (level A1, premium: True): 14 total sets, 14 available
+2025-06-08 11:01:42,784 - INFO - handlers.settings - User 1999873173 (level A1, premium: True): 14 total sets, 14 available
+2025-06-08 11:01:55,674 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:01:58,870 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=книга ok=True
+2025-06-08 11:01:58,982 - INFO - handlers.quiz - Added word 'book' to dictionary for user 1999873173
+2025-06-08 11:02:02,251 - INFO - handlers.quiz - PollAns chat=1999873173 idx=1 chose=комната ok=True
+2025-06-08 11:02:02,363 - INFO - handlers.quiz - Added word 'room' to dictionary for user 1999873173
+2025-06-08 11:02:05,331 - INFO - handlers.quiz - PollAns chat=1999873173 idx=2 chose=солнце ok=True
+2025-06-08 11:02:05,432 - INFO - handlers.quiz - Added word 'sun' to dictionary for user 1999873173
+2025-06-08 11:02:07,857 - INFO - handlers.quiz - PollAns chat=1999873173 idx=3 chose=имя ok=True
+2025-06-08 11:02:07,977 - INFO - handlers.quiz - Added word 'name' to dictionary for user 1999873173
+2025-06-08 11:02:12,408 - INFO - handlers.quiz - PollAns chat=1999873173 idx=4 chose=ученик ok=True
+2025-06-08 11:02:12,517 - INFO - handlers.quiz - Added word 'student' to dictionary for user 1999873173
+2025-06-08 11:02:31,283 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:03:31 MSK)" (scheduled at 2025-06-08 11:02:31.268266+03:00)
+2025-06-08 11:02:31,285 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-06-08 11:02:31,288 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:02:31,344 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:03:31 MSK)" executed successfully
+2025-06-08 11:03:16,752 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-08 11:03:16,923 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-08 11:03:16,924 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-08 11:03:16,925 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-08 11:03:16,925 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-08 11:03:19,853 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-08 11:03:23,438 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-08 11:03:23,442 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-08 11:03:31,274 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:04:31 MSK)" (scheduled at 2025-06-08 11:03:31.268266+03:00)
+2025-06-08 11:03:31,278 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:04:31 MSK)" executed successfully
+2025-06-08 11:03:39,311 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 11:03:41,690 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:03:46,261 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-08 11:04:31,276 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:05:31 MSK)" (scheduled at 2025-06-08 11:04:31.268266+03:00)
+2025-06-08 11:04:31,282 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:05:31 MSK)" executed successfully
+2025-06-08 11:05:31,275 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:06:31 MSK)" (scheduled at 2025-06-08 11:05:31.268266+03:00)
+2025-06-08 11:05:31,277 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:06:31 MSK)" executed successfully
+2025-06-08 11:06:31,275 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:07:31 MSK)" (scheduled at 2025-06-08 11:06:31.268266+03:00)
+2025-06-08 11:06:31,278 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:07:31 MSK)" executed successfully
+2025-06-08 11:38:17,662 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:38:17,663 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:38:17,663 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:38:17,663 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:38:17,857 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:38:17,857 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:38:17,968 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-08 11:38:18,106 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-06-08 11:38:18,107 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:38:48,714 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:38:48,721 - WARNING - handlers.quiz - No translation for Brother – брат
+2025-06-08 11:38:48,721 - WARNING - handlers.quiz - No translation for School – школа
+2025-06-08 11:38:48,722 - WARNING - handlers.quiz - No translation for Day – день
+2025-06-08 11:38:48,722 - WARNING - handlers.quiz - No translation for Door – дверь
+2025-06-08 11:38:48,722 - WARNING - handlers.quiz - No translation for Rain – дождь
+2025-06-08 11:38:50,420 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:38:50,421 - WARNING - handlers.quiz - No translation for Brother – брат
+2025-06-08 11:38:50,421 - WARNING - handlers.quiz - No translation for School – школа
+2025-06-08 11:38:50,421 - WARNING - handlers.quiz - No translation for Day – день
+2025-06-08 11:38:50,421 - WARNING - handlers.quiz - No translation for Door – дверь
+2025-06-08 11:38:50,421 - WARNING - handlers.quiz - No translation for Rain – дождь
+2025-06-08 11:38:53,639 - WARNING - handlers.learning - Cannot create dict test for user 1999873173: level=A2, set=A1 Basic 1 mismatch
+2025-06-08 11:38:55,821 - INFO - handlers.settings - User 1999873173 (level A2, premium: True): 16 total sets, 16 available
+2025-06-08 11:39:08,400 - WARNING - handlers.learning - Cannot create memorize test for user 1999873173: level=A2, set=A1 Basic 1 mismatch
+2025-06-08 11:39:10,024 - INFO - handlers.settings - User 1999873173 (level A2, premium: True): 16 total sets, 16 available
+2025-06-08 11:39:14,082 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:39:14,083 - WARNING - handlers.quiz - No translation for Brother – брат
+2025-06-08 11:39:14,086 - WARNING - handlers.quiz - No translation for School – школа
+2025-06-08 11:39:14,086 - WARNING - handlers.quiz - No translation for Day – день
+2025-06-08 11:39:14,087 - WARNING - handlers.quiz - No translation for Door – дверь
+2025-06-08 11:39:14,087 - WARNING - handlers.quiz - No translation for Rain – дождь
+2025-06-08 11:39:17,668 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:40:17 MSK)" (scheduled at 2025-06-08 11:39:17.662651+03:00)
+2025-06-08 11:39:17,669 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 11:39:17,672 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:39:17,717 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:40:17 MSK)" executed successfully
+2025-06-08 11:40:17,666 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:41:17 MSK)" (scheduled at 2025-06-08 11:40:17.662651+03:00)
+2025-06-08 11:40:17,667 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:41:17 MSK)" executed successfully
+2025-06-08 11:41:17,670 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:42:17 MSK)" (scheduled at 2025-06-08 11:41:17.662651+03:00)
+2025-06-08 11:41:17,676 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:42:17 MSK)" executed successfully
+2025-06-08 11:41:32,762 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:41:32,763 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:41:32,763 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:41:32,763 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:41:32,949 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:41:32,949 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:41:32,957 - WARNING - utils.helpers - Level mismatch for user 1999873173: level=A2, set=A1 Basic 1
+2025-06-08 11:41:32,957 - WARNING - utils.helpers - Set file not found for user 1999873173: levels/A2/A1 Basic 1.txt
+2025-06-08 11:41:32,957 - ERROR - __main__ - Ошибка восстановления для пользователя 1999873173: too many values to unpack (expected 2)
+2025-06-08 11:41:32,958 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:41:42,759 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:41:42,760 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-40' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:41:53,107 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:41:53,108 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-54' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:41:56,488 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-67' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/back.py", line 10, in handle_back
+    await callback.message.edit_text("Главное меню:", reply_markup=main_menu_keyboard())
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-06-08 11:41:57,229 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:41:57,229 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-73' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:41:57,430 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:41:57,430 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-77' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:42:00,305 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:42:00,306 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-81' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:42:01,456 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:42:01,456 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-85' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:42:03,757 - WARNING - handlers.learning - Cannot create memorize test for user 1999873173: level=A2, set=A1 Basic 1 mismatch
+2025-06-08 11:42:09,554 - INFO - database.crud - Cleared learned words for user 1999873173
+2025-06-08 11:42:09,554 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A2 Basic 1
+2025-06-08 11:42:23,688 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:42:23,688 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-144' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:42:28,091 - WARNING - handlers.learning - Cannot create dict test for user 1999873173: level=A1, set=A2 Basic 1 mismatch
+2025-06-08 11:42:32,770 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:43:32 MSK)" (scheduled at 2025-06-08 11:42:32.762771+03:00)
+2025-06-08 11:42:32,772 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 11:42:32,774 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:42:32,829 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:43:32 MSK)" executed successfully
+2025-06-08 11:43:18,771 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:43:18,773 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-169' coro=<Dispatcher._process_polling_updates() done, defined at /home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=NameError("name 'LEVELS_DIR' is not defined")>
+Traceback (most recent call last):
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/andrii/telegram-bot/school_project/handlers/quiz.py", line 212, in start_quiz
+    set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+                         ^^^^^^^^^^
+NameError: name 'LEVELS_DIR' is not defined
+2025-06-08 11:43:32,772 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:44:32 MSK)" (scheduled at 2025-06-08 11:43:32.762771+03:00)
+2025-06-08 11:43:32,774 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:44:32 MSK)" executed successfully
+2025-06-08 11:44:32,777 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:45:32 MSK)" (scheduled at 2025-06-08 11:44:32.762771+03:00)
+2025-06-08 11:44:32,779 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:45:32 MSK)" executed successfully
+2025-06-08 11:45:27,941 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:45:27,942 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:45:27,946 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:45:27,946 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:45:28,189 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:45:28,190 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:45:28,204 - WARNING - utils.helpers - Level mismatch for user 1999873173: level=A1, set=A2 Basic 1
+2025-06-08 11:45:28,204 - WARNING - utils.helpers - Set file not found for user 1999873173: levels/A1/A2 Basic 1.txt
+2025-06-08 11:45:28,205 - ERROR - __main__ - Ошибка восстановления для пользователя 1999873173: too many values to unpack (expected 2)
+2025-06-08 11:45:28,205 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:45:43,086 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:46:03,698 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:46:05,571 - INFO - handlers.settings - User 1999873173 (level A1, premium: True): 14 total sets, 14 available
+2025-06-08 11:46:27,945 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:47:27 MSK)" (scheduled at 2025-06-08 11:46:27.941641+03:00)
+2025-06-08 11:46:27,946 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 11:46:27,950 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:46:27,994 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:47:27 MSK)" executed successfully
+2025-06-08 11:46:30,254 - INFO - database.crud - Cleared learned words for user 1999873173
+2025-06-08 11:46:30,254 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-06-08 11:46:30,254 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-08 11:46:33,960 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:46:39,428 - INFO - handlers.settings - User 1999873173 (level A1, premium: True): 14 total sets, 14 available
+2025-06-08 11:46:50,357 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:46:52,993 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 11:47:27,951 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:48:27 MSK)" (scheduled at 2025-06-08 11:47:27.941641+03:00)
+2025-06-08 11:47:27,952 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:48:27 MSK)" executed successfully
+2025-06-08 11:47:45,530 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 11:48:27,948 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:49:27 MSK)" (scheduled at 2025-06-08 11:48:27.941641+03:00)
+2025-06-08 11:48:27,950 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:49:27 MSK)" executed successfully
+2025-06-08 11:49:27,954 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:50:27 MSK)" (scheduled at 2025-06-08 11:49:27.941641+03:00)
+2025-06-08 11:49:27,956 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:50:27 MSK)" executed successfully
+2025-06-08 11:50:02,957 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 11:50:02,959 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 11:50:02,960 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 11:50:02,960 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 11:50:03,316 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 11:50:03,317 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 11:50:03,322 - WARNING - utils.helpers - Level mismatch for user 1999873173: level=B1, set=A1 Basic 1
+2025-06-08 11:50:03,323 - WARNING - utils.helpers - Set file not found for user 1999873173: levels/B1/A1 Basic 1.txt
+2025-06-08 11:50:03,323 - ERROR - __main__ - Ошибка восстановления для пользователя 1999873173: too many values to unpack (expected 2)
+2025-06-08 11:50:03,323 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 11:50:12,369 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:50:19,009 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:50:25,149 - WARNING - handlers.learning - Cannot create dict test for user 1999873173: level=B1, set=A1 Basic 1 mismatch
+2025-06-08 11:50:40,641 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 11:50:48,718 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:51:02,959 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:52:02 MSK)" (scheduled at 2025-06-08 11:51:02.956558+03:00)
+2025-06-08 11:51:02,960 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 11:51:02,962 - WARNING - utils.helpers - Level mismatch for user 1999873173: level=B1, set=A1 Basic 1
+2025-06-08 11:51:02,964 - WARNING - utils.helpers - Set file not found for user 1999873173: levels/B1/A1 Basic 1.txt
+2025-06-08 11:51:02,966 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:51:03,020 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:52:02 MSK)" executed successfully
+2025-06-08 11:51:10,437 - INFO - handlers.settings - User 1999873173 (level B1, premium: True): 18 total sets, 18 available
+2025-06-08 11:51:23,865 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-08 11:52:02,967 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:53:02 MSK)" (scheduled at 2025-06-08 11:52:02.956558+03:00)
+2025-06-08 11:52:02,971 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:53:02 MSK)" executed successfully
+2025-06-08 11:53:02,963 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:54:02 MSK)" (scheduled at 2025-06-08 11:53:02.956558+03:00)
+2025-06-08 11:53:02,966 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:54:02 MSK)" executed successfully
+2025-06-08 11:54:02,961 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:55:02 MSK)" (scheduled at 2025-06-08 11:54:02.956558+03:00)
+2025-06-08 11:54:02,965 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:55:02 MSK)" executed successfully
+2025-06-08 11:55:02,975 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:56:02 MSK)" (scheduled at 2025-06-08 11:55:02.956558+03:00)
+2025-06-08 11:55:02,980 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:56:02 MSK)" executed successfully
+2025-06-08 11:56:02,974 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:57:02 MSK)" (scheduled at 2025-06-08 11:56:02.956558+03:00)
+2025-06-08 11:56:02,978 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:57:02 MSK)" executed successfully
+2025-06-08 11:56:02,979 - INFO - services.payment - Checking 0 active payments
+2025-06-08 11:57:02,972 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:58:02 MSK)" (scheduled at 2025-06-08 11:57:02.956558+03:00)
+2025-06-08 11:57:02,976 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:58:02 MSK)" executed successfully

@@ -125,7 +125,7 @@ def compute_notification_times(total_count, first_time, duration_hours, tz="Euro
 def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_time, duration_hours, 
                            force_reset=False, chosen_set=None):
     """
-    Генерирует список слов дня.
+    Генерирует список слов дня с блокировкой при несоответствии уровня и набора.
     """
     # Локальные импорты для избежания циклических зависимостей
     try:
@@ -173,6 +173,30 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
             if not chosen_set:
                 chosen_set = DEFAULT_SETS.get(level)
 
+        # ИСПРАВЛЕНИЕ: Строгая проверка соответствия уровня и набора
+        if chosen_set and not chosen_set.startswith("TestSet"):
+            # Проверяем соответствие префикса уровня в названии набора
+            set_level_mismatch = False
+            for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+                if chosen_set.startswith(prefix) and prefix != level:
+                    set_level_mismatch = True
+                    logger.warning(f"Level mismatch for user {chat_id}: level={level}, set={chosen_set}")
+                    break
+            
+            # Проверяем существование файла для текущего уровня
+            set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
+            if not os.path.exists(set_file_path):
+                set_level_mismatch = True
+                logger.warning(f"Set file not found for user {chat_id}: {set_file_path}")
+            
+            # БЛОКИРОВКА: Если есть несоответствие, возвращаем специальный код
+            if set_level_mismatch:
+                default_set = DEFAULT_SETS.get(level)
+                if default_set:
+                    return "LEVEL_MISMATCH", "LEVEL_MISMATCH", default_set
+                else:
+                    return None
+
         # Проверка доступности набора с исключением для тестовых наборов
         if not chosen_set.startswith("TestSet") and not is_set_available_for_user(chat_id, chosen_set):
             try:
@@ -186,28 +210,6 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
                 chosen_set = DEFAULT_SETS.get(level)
                 if not chosen_set:
                     return None
-
-        # Проверка соответствия уровня и набора
-        default_set = DEFAULT_SETS.get(level)
-        set_level_mismatch = False
-        
-        # Для тестовых наборов пропускаем проверку соответствия уровня
-        if not chosen_set.startswith("TestSet"):
-            for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
-                if chosen_set and chosen_set.startswith(prefix) and prefix != level:
-                    set_level_mismatch = True
-                    break
-        
-        set_file_path = os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")
-        if not os.path.exists(set_file_path) or set_level_mismatch:
-            if default_set:
-                default_set_path = os.path.join(LEVELS_DIR, level, f"{default_set}.txt")
-                if os.path.exists(default_set_path):
-                    return None, None, default_set
-                else:
-                    return None
-            else:
-                return None
 
         # Загрузка слов из правильного набора
         all_words_in_set = load_words_for_set(level, chosen_set)
@@ -319,6 +321,7 @@ def get_daily_words_for_user(chat_id, level, words_count, repetitions, first_tim
     except Exception as e:
         logger.error("Критическая ошибка в get_daily_words_for_user для пользователя %s: %s", chat_id, e)
         return ["🔹 Ошибка загрузки слов дня"], ["12:00"]
+
 
 def cleanup_caches():
     """Очистка старых данных из кэшей (для продакшена)."""

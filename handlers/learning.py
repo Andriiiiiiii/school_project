@@ -137,8 +137,30 @@ def _make_question_list(
         )
     return res
 
-
 def build_dict_test(chat: int, user: tuple) -> List[Dict[str, Any]]:
+    """Создает тест по словарю с проверкой соответствия уровня и набора."""
+    # ИСПРАВЛЕНИЕ: Проверяем соответствие уровня и набора
+    level = user[1]
+    chosen_set = _get_user_val(user, 6, None) or DEFAULT_SETS.get(level)
+    
+    # Проверяем несоответствие уровня и набора
+    if chosen_set and not chosen_set.startswith("TestSet"):
+        set_level_mismatch = False
+        for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+            if chosen_set.startswith(prefix) and prefix != level:
+                set_level_mismatch = True
+                break
+        
+        # Проверяем существование файла для текущего уровня
+        from pathlib import Path
+        set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+        if not set_file_path.exists():
+            set_level_mismatch = True
+        
+        if set_level_mismatch:
+            logger.warning(f"Cannot create dict test for user {chat}: level={level}, set={chosen_set} mismatch")
+            return []  # Возвращаем пустой список для блокировки теста
+    
     learned = crud.get_learned_words(chat)
     if not learned:
         return []
@@ -154,11 +176,35 @@ def build_dict_test(chat: int, user: tuple) -> List[Dict[str, Any]]:
         {extract_english(w).lower(): True for w, _ in sample},
     )
 
-
 def build_memorize(chat: int, user: tuple) -> List[Dict[str, Any]]:
+    """Создает тест по набору с проверкой соответствия уровня и набора."""
     level = user[1]
     chosen_set = _get_user_val(user, 6, None) or DEFAULT_SETS.get(level)
-    words = _read_set_words(level, chosen_set)
+    
+    # ИСПРАВЛЕНИЕ: Проверяем соответствие уровня и набора
+    if chosen_set and not chosen_set.startswith("TestSet"):
+        set_level_mismatch = False
+        for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+            if chosen_set.startswith(prefix) and prefix != level:
+                set_level_mismatch = True
+                break
+        
+        # Проверяем существование файла для текущего уровня
+        from pathlib import Path
+        set_file_path = Path(LEVELS_DIR) / level / f"{chosen_set}.txt"
+        if not set_file_path.exists():
+            set_level_mismatch = True
+        
+        if set_level_mismatch:
+            logger.warning(f"Cannot create memorize test for user {chat}: level={level}, set={chosen_set} mismatch")
+            return []  # Возвращаем пустой список для блокировки теста
+    
+    try:
+        words = _read_set_words(level, chosen_set)
+    except FileNotFoundError:
+        logger.warning(f"Set file not found: {level}/{chosen_set}")
+        return []
+    
     cnt = min(_get_user_val(user, 8, 5), len(words))
     sample = random.sample(words, cnt)
     quiz_data = load_quiz_data(level, chosen_set)
@@ -340,19 +386,50 @@ async def handle_learning_settings(cb: types.CallbackQuery, bot: Bot):
 
 # ────────────────────────── start learning modes ───────────────────────────
 async def _start(cb: types.CallbackQuery, bot: Bot, builder):
+    """Запускает режим обучения с проверкой соответствия уровня и набора."""
     chat = cb.from_user.id
     user = crud.get_user(chat)
     if not user:
         return await cb.answer("Профиль не найден.", show_alert=True)
+    
     qs = builder(chat, user)
     if not qs:
+        # ИСПРАВЛЕНИЕ: Показываем специальное сообщение при блокировке
+        level = user[1]
+        chosen_set = user[6] if len(user) > 6 and user[6] else "не выбран"
+        
+        # Проверяем, действительно ли проблема в несоответствии уровня и набора
+        if chosen_set != "не выбран" and not chosen_set.startswith("TestSet"):
+            set_level_mismatch = False
+            for prefix in ["A1", "A2", "B1", "B2", "C1", "C2"]:
+                if chosen_set.startswith(prefix) and prefix != level:
+                    set_level_mismatch = True
+                    break
+            
+            if set_level_mismatch or not os.path.exists(os.path.join(LEVELS_DIR, level, f"{chosen_set}.txt")):
+                default_set = DEFAULT_SETS.get(level, "")
+                from keyboards.submenus import set_change_confirm_keyboard
+                
+                text = (
+                    "⚠️ *Практика недоступна!*\n\n"
+                    f"Текущий набор: *{chosen_set}*\n"
+                    f"Текущий уровень: *{level}*\n\n"
+                    f"Набор не соответствует вашему уровню.\n"
+                    f"Необходимо сменить набор на *{default_set}* для уровня {level}.\n\n"
+                    "Сменить набор?"
+                )
+                await bot.send_message(chat, text, parse_mode="Markdown", 
+                                      reply_markup=set_change_confirm_keyboard(default_set))
+                await cb.answer()
+                return
+        
         return await cb.answer("Нет данных для теста.", show_alert=True)
+    
     prefix = "dtest" if builder is build_dict_test else "mtest"
     states[chat] = LearningState(qs, prefix)
     logger.debug("Learning: new session chat=%s prefix=%s qs=%d", chat, prefix, len(qs))
     await cb.answer()
     await _send_question(chat, bot)
-
 
 # ────────────────────────── registration ───────────────────────────────────
 def register_learning_handlers(dp: Dispatcher, bot: Bot | None = None):

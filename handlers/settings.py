@@ -535,8 +535,14 @@ async def handle_set_change_confirmed_by_index(
     await cb.answer()
 
 async def handle_set_change_cancelled(cb: types.CallbackQuery, bot: Bot):
-    await process_my_sets(cb, bot)
-    await cb.answer("Смена сета отменена")
+    """Отменяет смену набора и возвращает в главное меню."""
+    from keyboards.main_menu import main_menu_keyboard
+    
+    await cb.message.edit_text(
+        "📋 Главное меню:",
+        reply_markup=main_menu_keyboard()
+    )
+    await cb.answer("Смена набора отменена")
 
 # ───────────────────────── МОИ НАСТРОЙКИ (ПРОФИЛЬ) ────────────────────────
 async def process_settings_mysettings(cb: types.CallbackQuery, bot: Bot):
