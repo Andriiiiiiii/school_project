@@ -33,27 +33,23 @@ def level_keyboard():
     return kb
 
 def words_per_day_keyboard():
-    kb = InlineKeyboardMarkup(row_width=5)
+    kb = InlineKeyboardMarkup(row_width=4)
     kb.add(
+        InlineKeyboardButton("1", callback_data="onboarding:words:1"),
         InlineKeyboardButton("3", callback_data="onboarding:words:3"),
         InlineKeyboardButton("5", callback_data="onboarding:words:5"),
-        InlineKeyboardButton("7", callback_data="onboarding:words:7"),
-        InlineKeyboardButton("10", callback_data="onboarding:words:10"),
-        InlineKeyboardButton("15", callback_data="onboarding:words:15")
+        InlineKeyboardButton("7", callback_data="onboarding:words:7")
     )
     return kb
 
 def repetitions_keyboard():
-    kb = InlineKeyboardMarkup(row_width=5)
+    kb = InlineKeyboardMarkup(row_width=3)
     kb.add(
         InlineKeyboardButton("1", callback_data="onboarding:reps:1"),
         InlineKeyboardButton("2", callback_data="onboarding:reps:2"),
-        InlineKeyboardButton("3", callback_data="onboarding:reps:3"),
-        InlineKeyboardButton("4", callback_data="onboarding:reps:4"),
-        InlineKeyboardButton("5", callback_data="onboarding:reps:5")
+        InlineKeyboardButton("3", callback_data="onboarding:reps:3")
     )
     return kb
-
 # Функция начала онбординга (вызывается из cmd_start)
 
 async def start_onboarding(message, bot):
@@ -115,11 +111,13 @@ async def process_onboarding(callback: types.CallbackQuery, bot: Bot):
             except (ImportError, AttributeError):
                 pass
         
-        await callback.message.edit_text(
-            f"Отлично! Вы выбрали уровень {level}.\n\n"
-            "Сколько новых слов вы хотели бы изучать ежедневно? (Рекомендуется 5-10)",
-            reply_markup=words_per_day_keyboard()
-        )
+            await callback.message.edit_text(
+                f"Отлично! Вы выбрали уровень {level}.\n\n"
+                "📊 *Шаг 2 из 3:* Сколько новых слов вы хотели бы изучать ежедневно?\n\n"
+                "💡 *Рекомендовано (3-5)*",
+                parse_mode="Markdown",
+                reply_markup=words_per_day_keyboard()
+            )
     
     # Обработка выбора количества слов
     elif action_type == "words" and state["step"] == "words":
@@ -132,7 +130,9 @@ async def process_onboarding(callback: types.CallbackQuery, bot: Bot):
         
         await callback.message.edit_text(
             f"Вы будете изучать {words} новых слов в день.\n\n"
-            "Сколько раз вы хотели бы видеть каждое слово в течение дня?",
+            "🔄 *Шаг 3 из 3:* Сколько раз вы хотели бы видеть каждое слово в течение дня?\n\n"
+            "💡 *Рекомендовано: 2*",
+            parse_mode="Markdown",
             reply_markup=repetitions_keyboard()
         )
     

@@ -2084,3 +2084,371 @@ NameError: name 'LEVELS_DIR' is not defined
 2025-06-08 11:56:02,979 - INFO - services.payment - Checking 0 active payments
 2025-06-08 11:57:02,972 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:58:02 MSK)" (scheduled at 2025-06-08 11:57:02.956558+03:00)
 2025-06-08 11:57:02,976 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 11:58:02 MSK)" executed successfully
+2025-06-08 13:28:48,772 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 13:28:48,774 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 13:28:48,774 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 13:28:48,774 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 13:28:48,995 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 13:28:48,996 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 13:28:49,102 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-08 13:28:49,324 - INFO - __main__ - Восстановлено 3 уведомлений
+2025-06-08 13:28:49,325 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 13:29:26,621 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-08 13:29:31,306 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-08 13:29:38,909 - WARNING - handlers.learning - Cannot create dict test for user 380675615: level=A2, set=A1 Basic 1 mismatch
+2025-06-08 13:29:43,205 - WARNING - handlers.learning - Cannot create memorize test for user 380675615: level=A2, set=A1 Basic 1 mismatch
+2025-06-08 13:29:48,774 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:30:48 MSK)" (scheduled at 2025-06-08 13:29:48.772296+03:00)
+2025-06-08 13:29:48,775 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 13:29:48,776 - INFO - services.payment - Checking 0 active payments
+2025-06-08 13:29:48,826 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:30:48 MSK)" executed successfully
+2025-06-08 13:30:48,843 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:31:48 MSK)" (scheduled at 2025-06-08 13:30:48.772296+03:00)
+2025-06-08 13:30:48,889 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:31:48 MSK)" executed successfully
+2025-06-08 13:31:48,798 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:32:48 MSK)" (scheduled at 2025-06-08 13:31:48.772296+03:00)
+2025-06-08 13:31:48,801 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:32:48 MSK)" executed successfully
+2025-06-08 13:32:48,778 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:33:48 MSK)" (scheduled at 2025-06-08 13:32:48.772296+03:00)
+2025-06-08 13:32:48,779 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:33:48 MSK)" executed successfully
+2025-06-08 13:49:06,143 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-08 13:49:06,145 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-08 13:49:06,145 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-08 13:49:06,145 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-08 13:49:06,358 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-08 13:49:06,358 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-08 13:49:06,458 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-08 13:49:06,458 - WARNING - utils.helpers - Level mismatch for user 380675615: level=A2, set=A1 Basic 1
+2025-06-08 13:49:06,458 - WARNING - utils.helpers - Set file not found for user 380675615: levels/A2/A1 Basic 1.txt
+2025-06-08 13:49:06,458 - ERROR - __main__ - Ошибка восстановления для пользователя 380675615: too many values to unpack (expected 2)
+2025-06-08 13:49:06,464 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-08 13:49:58,778 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-08 13:50:06,150 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:51:06 MSK)" (scheduled at 2025-06-08 13:50:06.143639+03:00)
+2025-06-08 13:50:06,151 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-08 13:50:06,152 - WARNING - utils.helpers - Level mismatch for user 380675615: level=A2, set=A1 Basic 1
+2025-06-08 13:50:06,152 - WARNING - utils.helpers - Set file not found for user 380675615: levels/A2/A1 Basic 1.txt
+2025-06-08 13:50:06,152 - INFO - services.payment - Checking 0 active payments
+2025-06-08 13:50:06,207 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:51:06 MSK)" executed successfully
+2025-06-08 13:50:12,033 - INFO - handlers.settings - User 380675615 (level A2, premium: False): 16 total sets, 2 available
+2025-06-08 13:50:16,059 - INFO - database.crud - Cleared learned words for user 380675615
+2025-06-08 13:50:16,069 - INFO - database.crud - Набор пользователя 380675615 обновлен на A2 Basic 1
+2025-06-08 13:50:25,621 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-08 13:51:06,165 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:52:06 MSK)" (scheduled at 2025-06-08 13:51:06.143639+03:00)
+2025-06-08 13:51:06,167 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-08 13:52:06 MSK)" executed successfully
+2025-06-09 16:38:33,407 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:38:33,409 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:38:33,409 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:38:33,409 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:38:33,752 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:38:33,753 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:38:33,957 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-09 16:38:34,353 - INFO - __main__ - Восстановлено 4 уведомлений
+2025-06-09 16:38:34,356 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:38:55,057 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:38:55,068 - INFO - database.crud - Updated streak to 2 for user 380675615
+2025-06-09 16:39:22,410 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:39:22,411 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:39:25,087 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:39:33,410 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:40:33 MSK)" (scheduled at 2025-06-09 16:39:33.407552+03:00)
+2025-06-09 16:39:33,418 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:39:33,418 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 16:39:33,474 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:40:33 MSK)" executed successfully
+2025-06-09 16:39:38,138 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:39:38,139 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:39:41,294 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:40:10,329 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-09 16:40:10,332 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-09 16:40:15,389 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-09 16:40:15,391 - INFO - database.crud - Updated streak to 2 for user 1999873173
+2025-06-09 16:41:33,985 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:41:33,986 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:41:33,986 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:41:33,986 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:41:34,283 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:41:34,284 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:41:34,291 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:41:34,799 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-09 16:41:34,802 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-09 16:41:34,806 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-09 16:41:34,806 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-09 16:41:34,807 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-06-09 16:41:34,945 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-06-09 16:41:34,945 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-06-09 16:41:34,945 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-06-09 16:41:34,945 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-06-09 16:41:42,714 - INFO - handlers.settings - User 1999873173 (level A1, premium: False): 14 total sets, 2 available
+2025-06-09 16:41:49,237 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:41:49,445 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-09 16:41:49,445 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-09 16:41:49,446 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:41:49,446 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-09 16:41:52,122 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:42:01,733 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-09 16:42:01,734 - INFO - database.crud - Updated streak to 1 for user 1999873173
+2025-06-09 16:42:03,226 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:42:03,227 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-09 16:42:09,713 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=сумка ok=True
+2025-06-09 16:42:09,928 - INFO - handlers.quiz - Added word 'bag' to dictionary for user 1999873173
+2025-06-09 16:42:10,248 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:42:10,249 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:42:14,628 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:42:20,978 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-06-09 16:42:20,978 - INFO - services.scheduler - Кэш пользователей сброшен для 1999873173
+2025-06-09 16:42:31,015 - INFO - handlers.quiz - StartQuiz chat=1999873173
+2025-06-09 16:42:33,990 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:43:33 MSK)" (scheduled at 2025-06-09 16:42:33.985762+03:00)
+2025-06-09 16:42:33,991 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 16:42:33,993 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:42:34,061 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:43:33 MSK)" executed successfully
+2025-06-09 16:42:36,168 - INFO - handlers.quiz - PollAns chat=1999873173 idx=0 chose=идти ok=True
+2025-06-09 16:42:36,305 - INFO - handlers.quiz - Added word 'go' to dictionary for user 1999873173
+2025-06-09 16:43:33,992 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:44:33 MSK)" (scheduled at 2025-06-09 16:43:33.985762+03:00)
+2025-06-09 16:43:34,001 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:44:33 MSK)" executed successfully
+2025-06-09 16:44:34,002 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:45:33 MSK)" (scheduled at 2025-06-09 16:44:33.985762+03:00)
+2025-06-09 16:44:34,011 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:45:33 MSK)" executed successfully
+2025-06-09 16:45:24,382 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:45:24,383 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:45:24,383 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:45:24,384 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:45:24,791 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:45:24,792 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:45:24,802 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:45:27,107 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:45:27,366 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-09 16:45:27,366 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-09 16:45:27,366 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:45:27,366 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-09 16:45:29,186 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:45:41,189 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:45:41,189 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-09 16:45:47,845 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:45:47,846 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:45:50,592 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:45:50,593 - INFO - database.crud - Updated streak to 2 for user 380675615
+2025-06-09 16:45:58,886 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:45:58,886 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:46:01,855 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:46:01,856 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-09 16:46:11,750 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:46:11,751 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:46:14,673 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:46:14,675 - INFO - database.crud - Updated streak to 2 for user 380675615
+2025-06-09 16:46:24,385 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:47:24 MSK)" (scheduled at 2025-06-09 16:46:24.382652+03:00)
+2025-06-09 16:46:24,392 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 16:46:24,392 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:46:24,438 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:47:24 MSK)" executed successfully
+2025-06-09 16:46:44,047 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:46:44,048 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:46:44,048 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:46:44,048 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:46:44,455 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:46:44,455 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:46:44,460 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:46:45,786 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:46:46,001 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-09 16:46:46,001 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-09 16:46:46,001 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:46:46,001 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-09 16:46:54,637 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:47:44,049 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:48:44 MSK)" (scheduled at 2025-06-09 16:47:44.047580+03:00)
+2025-06-09 16:47:44,050 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 16:47:44,051 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:47:44,110 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:48:44 MSK)" executed successfully
+2025-06-09 16:48:44,054 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:49:44 MSK)" (scheduled at 2025-06-09 16:48:44.047580+03:00)
+2025-06-09 16:48:44,055 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:49:44 MSK)" executed successfully
+2025-06-09 16:49:44,092 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:50:44 MSK)" (scheduled at 2025-06-09 16:49:44.047580+03:00)
+2025-06-09 16:49:44,093 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:50:44 MSK)" executed successfully
+2025-06-09 16:50:44,109 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:51:44 MSK)" (scheduled at 2025-06-09 16:50:44.047580+03:00)
+2025-06-09 16:50:44,110 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:51:44 MSK)" executed successfully
+2025-06-09 16:51:44,110 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:52:44 MSK)" (scheduled at 2025-06-09 16:51:44.047580+03:00)
+2025-06-09 16:51:44,112 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:52:44 MSK)" executed successfully
+2025-06-09 16:52:44,111 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:53:44 MSK)" (scheduled at 2025-06-09 16:52:44.047580+03:00)
+2025-06-09 16:52:44,115 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:53:44 MSK)" executed successfully
+2025-06-09 16:52:44,116 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:53:44,113 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:54:44 MSK)" (scheduled at 2025-06-09 16:53:44.047580+03:00)
+2025-06-09 16:53:44,119 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:54:44 MSK)" executed successfully
+2025-06-09 16:53:45,413 - ERROR - aiogram.dispatcher.dispatcher - Cause exception while getting updates.
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 381, in start_polling
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 110, in get_updates
+    result = await self.request(api.Methods.GET_UPDATES, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 139, in make_request
+    async with session.post(url, data=req, **kwargs) as response:
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1167, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiohttp/client.py", line 586, in _request
+    await resp.start(conn)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 900, in start
+    with self._timer:
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiohttp/helpers.py", line 725, in __exit__
+    raise asyncio.TimeoutError from None
+TimeoutError
+2025-06-09 16:54:44,061 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:55:44 MSK)" (scheduled at 2025-06-09 16:54:44.047580+03:00)
+2025-06-09 16:54:44,064 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:55:44 MSK)" executed successfully
+2025-06-09 16:55:44,061 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:56:44 MSK)" (scheduled at 2025-06-09 16:55:44.047580+03:00)
+2025-06-09 16:55:44,063 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:56:44 MSK)" executed successfully
+2025-06-09 16:56:44,061 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:57:44 MSK)" (scheduled at 2025-06-09 16:56:44.047580+03:00)
+2025-06-09 16:56:44,062 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:57:44 MSK)" executed successfully
+2025-06-09 16:56:49,279 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:56:49,280 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:56:49,280 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:56:49,280 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:56:49,573 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:56:49,573 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:56:49,578 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:56:53,340 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:56:53,505 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-09 16:56:53,505 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-09 16:56:53,506 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:56:53,506 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-09 16:56:54,854 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:56:57,084 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:57:03,567 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 16:57:03,567 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 16:57:03,567 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 16:57:03,567 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 16:57:03,815 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 16:57:03,815 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 16:57:03,818 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 16:57:05,664 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 16:57:05,782 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-06-09 16:57:05,782 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-06-09 16:57:05,783 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:57:05,783 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-06-09 16:57:08,562 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-06-09 16:57:29,034 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:57:29,035 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-09 16:57:34,335 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:57:34,341 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:57:35,768 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:57:35,768 - INFO - database.crud - Updated streak to 2 for user 380675615
+2025-06-09 16:57:41,136 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-06-09 16:57:41,137 - INFO - services.scheduler - Кэш пользователей сброшен для 380675615
+2025-06-09 16:57:42,761 - INFO - handlers.quiz - StartQuiz chat=380675615
+2025-06-09 16:57:42,762 - INFO - database.crud - Updated streak to 1 for user 380675615
+2025-06-09 16:58:03,575 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:59:03 MSK)" (scheduled at 2025-06-09 16:58:03.567035+03:00)
+2025-06-09 16:58:03,575 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 16:58:03,576 - INFO - services.payment - Checking 0 active payments
+2025-06-09 16:58:03,761 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 16:59:03 MSK)" executed successfully
+2025-06-09 16:59:03,574 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:00:03 MSK)" (scheduled at 2025-06-09 16:59:03.567035+03:00)
+2025-06-09 16:59:03,576 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:00:03 MSK)" executed successfully
+2025-06-09 17:00:03,574 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:01:03 MSK)" (scheduled at 2025-06-09 17:00:03.567035+03:00)
+2025-06-09 17:00:03,576 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:01:03 MSK)" executed successfully
+2025-06-09 17:00:35,123 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 17:00:35,125 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 17:00:35,125 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 17:00:35,125 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 17:00:35,870 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 17:00:35,870 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 17:00:35,890 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 17:00:39,106 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-06-09 17:00:41,903 - INFO - handlers.settings - User 380675615 (level A1, premium: False): 14 total sets, 1 available
+2025-06-09 17:01:35,128 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:02:35 MSK)" (scheduled at 2025-06-09 17:01:35.122794+03:00)
+2025-06-09 17:01:35,129 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 17:01:35,131 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:01:35,190 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:02:35 MSK)" executed successfully
+2025-06-09 17:02:35,128 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:03:35 MSK)" (scheduled at 2025-06-09 17:02:35.122794+03:00)
+2025-06-09 17:02:35,131 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:03:35 MSK)" executed successfully
+2025-06-09 17:03:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:04:35 MSK)" (scheduled at 2025-06-09 17:03:35.122794+03:00)
+2025-06-09 17:03:35,127 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:04:35 MSK)" executed successfully
+2025-06-09 17:04:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:05:35 MSK)" (scheduled at 2025-06-09 17:04:35.122794+03:00)
+2025-06-09 17:04:35,128 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:05:35 MSK)" executed successfully
+2025-06-09 17:05:35,125 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:06:35 MSK)" (scheduled at 2025-06-09 17:05:35.122794+03:00)
+2025-06-09 17:05:35,126 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:06:35 MSK)" executed successfully
+2025-06-09 17:06:35,125 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:07:35 MSK)" (scheduled at 2025-06-09 17:06:35.122794+03:00)
+2025-06-09 17:06:35,127 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:07:35 MSK)" executed successfully
+2025-06-09 17:07:35,129 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:08:35 MSK)" (scheduled at 2025-06-09 17:07:35.122794+03:00)
+2025-06-09 17:07:35,134 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:08:35 MSK)" executed successfully
+2025-06-09 17:07:35,139 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:08:35,127 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:09:35 MSK)" (scheduled at 2025-06-09 17:08:35.122794+03:00)
+2025-06-09 17:08:35,128 - INFO - services.scheduler - Отправлено уведомление пользователю 555555 в 17:08
+2025-06-09 17:08:35,135 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:09:35 MSK)" executed successfully
+2025-06-09 17:09:35,127 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:10:35 MSK)" (scheduled at 2025-06-09 17:09:35.122794+03:00)
+2025-06-09 17:09:35,130 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:10:35 MSK)" executed successfully
+2025-06-09 17:10:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:11:35 MSK)" (scheduled at 2025-06-09 17:10:35.122794+03:00)
+2025-06-09 17:10:35,138 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:11:35 MSK)" executed successfully
+2025-06-09 17:11:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:12:35 MSK)" (scheduled at 2025-06-09 17:11:35.122794+03:00)
+2025-06-09 17:11:35,128 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:12:35 MSK)" executed successfully
+2025-06-09 17:12:35,139 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:13:35 MSK)" (scheduled at 2025-06-09 17:12:35.122794+03:00)
+2025-06-09 17:12:35,150 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:13:35 MSK)" executed successfully
+2025-06-09 17:12:35,152 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:13:35,139 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:14:35 MSK)" (scheduled at 2025-06-09 17:13:35.122794+03:00)
+2025-06-09 17:13:35,141 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:14:35 MSK)" executed successfully
+2025-06-09 17:14:35,137 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:15:35 MSK)" (scheduled at 2025-06-09 17:14:35.122794+03:00)
+2025-06-09 17:14:35,145 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:15:35 MSK)" executed successfully
+2025-06-09 17:15:35,137 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:16:35 MSK)" (scheduled at 2025-06-09 17:15:35.122794+03:00)
+2025-06-09 17:15:35,140 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:16:35 MSK)" executed successfully
+2025-06-09 17:16:35,143 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:17:35 MSK)" (scheduled at 2025-06-09 17:16:35.122794+03:00)
+2025-06-09 17:16:35,150 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 17:16:35,151 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:17:35 MSK)" executed successfully
+2025-06-09 17:17:35,134 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:18:35 MSK)" (scheduled at 2025-06-09 17:17:35.122794+03:00)
+2025-06-09 17:17:35,143 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:18:35 MSK)" executed successfully
+2025-06-09 17:18:35,133 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:19:35 MSK)" (scheduled at 2025-06-09 17:18:35.122794+03:00)
+2025-06-09 17:18:35,135 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:18:35,135 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:19:35 MSK)" executed successfully
+2025-06-09 17:19:35,132 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:20:35 MSK)" (scheduled at 2025-06-09 17:19:35.122794+03:00)
+2025-06-09 17:19:35,134 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:20:35 MSK)" executed successfully
+2025-06-09 17:20:35,131 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:21:35 MSK)" (scheduled at 2025-06-09 17:20:35.122794+03:00)
+2025-06-09 17:20:35,132 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:21:35 MSK)" executed successfully
+2025-06-09 17:21:35,130 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:22:35 MSK)" (scheduled at 2025-06-09 17:21:35.122794+03:00)
+2025-06-09 17:21:35,133 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:22:35 MSK)" executed successfully
+2025-06-09 17:22:35,136 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:23:35 MSK)" (scheduled at 2025-06-09 17:22:35.122794+03:00)
+2025-06-09 17:22:35,137 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:23:35 MSK)" executed successfully
+2025-06-09 17:23:35,136 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:23:35 MSK)" (scheduled at 2025-06-09 17:23:35.122794+03:00)
+2025-06-09 17:23:35,139 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:23:35,142 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:24:35 MSK)" executed successfully
+2025-06-09 17:24:35,130 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:25:35 MSK)" (scheduled at 2025-06-09 17:24:35.122794+03:00)
+2025-06-09 17:24:35,133 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:25:35 MSK)" executed successfully
+2025-06-09 17:25:35,134 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:26:35 MSK)" (scheduled at 2025-06-09 17:25:35.122794+03:00)
+2025-06-09 17:25:35,136 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:26:35 MSK)" executed successfully
+2025-06-09 17:26:35,125 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:27:35 MSK)" (scheduled at 2025-06-09 17:26:35.122794+03:00)
+2025-06-09 17:26:35,126 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:27:35 MSK)" executed successfully
+2025-06-09 17:27:35,127 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:28:35 MSK)" (scheduled at 2025-06-09 17:27:35.122794+03:00)
+2025-06-09 17:27:35,136 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:28:35 MSK)" executed successfully
+2025-06-09 17:28:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:29:35 MSK)" (scheduled at 2025-06-09 17:28:35.122794+03:00)
+2025-06-09 17:28:35,135 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:29:35 MSK)" executed successfully
+2025-06-09 17:29:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:30:35 MSK)" (scheduled at 2025-06-09 17:29:35.122794+03:00)
+2025-06-09 17:29:35,128 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:29:35,129 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:30:35 MSK)" executed successfully
+2025-06-09 17:30:35,126 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:31:35 MSK)" (scheduled at 2025-06-09 17:30:35.122794+03:00)
+2025-06-09 17:30:35,129 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:31:35 MSK)" executed successfully
+2025-06-09 17:31:35,140 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:32:35 MSK)" (scheduled at 2025-06-09 17:31:35.122794+03:00)
+2025-06-09 17:31:35,151 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:32:35 MSK)" executed successfully
+2025-06-09 17:32:35,138 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:33:35 MSK)" (scheduled at 2025-06-09 17:32:35.122794+03:00)
+2025-06-09 17:32:35,146 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 17:32:35,147 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:33:35 MSK)" executed successfully
+2025-06-09 17:33:35,138 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:34:35 MSK)" (scheduled at 2025-06-09 17:33:35.122794+03:00)
+2025-06-09 17:33:35,141 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:34:35 MSK)" executed successfully
+2025-06-09 17:34:35,136 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:35:35 MSK)" (scheduled at 2025-06-09 17:34:35.122794+03:00)
+2025-06-09 17:34:35,144 - INFO - services.payment - Checking 0 active payments
+2025-06-09 17:34:35,144 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:35:35 MSK)" executed successfully
+2025-06-09 17:35:35,134 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:36:35 MSK)" (scheduled at 2025-06-09 17:35:35.122794+03:00)
+2025-06-09 17:35:35,142 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:36:35 MSK)" executed successfully
+2025-06-09 17:36:35,141 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:37:35 MSK)" (scheduled at 2025-06-09 17:36:35.122794+03:00)
+2025-06-09 17:36:35,145 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:37:35 MSK)" executed successfully
+2025-06-09 17:37:35,133 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:38:35 MSK)" (scheduled at 2025-06-09 17:37:35.122794+03:00)
+2025-06-09 17:37:35,134 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:38:35 MSK)" executed successfully
+2025-06-09 17:38:35,132 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:39:35 MSK)" (scheduled at 2025-06-09 17:38:35.122794+03:00)
+2025-06-09 17:38:35,134 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 17:39:35 MSK)" executed successfully
+2025-06-09 18:02:01,887 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-06-09 18:02:01,887 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-06-09 18:02:01,888 - INFO - apscheduler.scheduler - Scheduler started
+2025-06-09 18:02:01,888 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-06-09 18:02:02,081 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-06-09 18:02:02,081 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-06-09 18:02:02,208 - ERROR - __main__ - Ошибка восстановления для пользователя 555555: Chat not found
+2025-06-09 18:02:02,371 - INFO - __main__ - Восстановлено 1 уведомлений
+2025-06-09 18:02:02,372 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-06-09 18:02:09,762 - INFO - handlers.settings - User 380675615 (level A1, premium: False): 20 total sets, 1 available
+2025-06-09 18:02:16,965 - INFO - handlers.settings - User 380675615 (level A1, premium: False): 20 total sets, 1 available
+2025-06-09 18:02:20,462 - INFO - handlers.settings - User 380675615 (level A1, premium: False): 20 total sets, 1 available
+2025-06-09 18:03:01,891 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:04:01 MSK)" (scheduled at 2025-06-09 18:03:01.887461+03:00)
+2025-06-09 18:03:01,895 - INFO - services.scheduler - Кэш пользователей обновлен: 3 пользователей
+2025-06-09 18:03:01,897 - INFO - services.payment - Checking 0 active payments
+2025-06-09 18:03:01,953 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:04:01 MSK)" executed successfully
+2025-06-09 18:04:01,895 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:05:01 MSK)" (scheduled at 2025-06-09 18:04:01.887461+03:00)
+2025-06-09 18:04:01,898 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:05:01 MSK)" executed successfully
+2025-06-09 18:05:01,890 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:06:01 MSK)" (scheduled at 2025-06-09 18:05:01.887461+03:00)
+2025-06-09 18:05:01,890 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-06-09 18:06:01 MSK)" executed successfully

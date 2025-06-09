@@ -71,13 +71,14 @@ def scheduler_job(bot: Bot, loop: asyncio.AbstractEventLoop):
                     now_local = now_server.astimezone(ZoneInfo(timezone))
                 except Exception:
                     now_local = now_server.astimezone(ZoneInfo("Europe/Moscow"))
+                    timezone = "Europe/Moscow"
                     
-                # Проверка на полночь для сброса данных
+                # Проверка на полночь для сброса данных (ИСПРАВЛЕНО: передаем часовой пояс)
                 local_hour = now_local.hour
                 local_minute = now_local.minute
                 
                 if local_hour == 0 and local_minute <= 3:
-                    process_daily_reset(chat_id)
+                    process_daily_reset(chat_id, timezone)  # ИСПРАВЛЕНИЕ: передаем часовой пояс пользователя
                     processed_count += 1
                     continue
                 
@@ -167,10 +168,21 @@ def reset_user_cache(chat_id=None):
     except Exception as e:
         logger.error("Ошибка сброса кэша: %s", e)
 
-def process_daily_reset(chat_id):
-    """Ежедневный сброс данных пользователя с ИСПРАВЛЕННОЙ обработкой streak."""
+
+def process_daily_reset(chat_id, user_timezone="Europe/Moscow"):
+    """Ежедневный сброс данных пользователя с ИСПРАВЛЕННОЙ обработкой streak по времени пользователя."""
     try:
-        today = datetime.now().strftime("%Y-%m-%d")
+        # Используем время пользователя, а не сервера
+        try:
+            user_tz = ZoneInfo(user_timezone)
+            now_user = datetime.now(tz=user_tz)
+        except Exception:
+            user_tz = ZoneInfo("Europe/Moscow")
+            now_user = datetime.now(tz=user_tz)
+            
+        today = now_user.strftime("%Y-%m-%d")
+        yesterday = (now_user - timedelta(days=1)).strftime("%Y-%m-%d")
+        
         reset_key = f"{chat_id}_reset_{today}"
         
         # Проверка на повторный сброс
@@ -180,15 +192,13 @@ def process_daily_reset(chat_id):
         if not hasattr(process_daily_reset, 'processed_resets'):
             process_daily_reset.processed_resets = set()
         
-        # ИСПРАВЛЕННАЯ логика проверки и сброса дней подряд
+        # ИСПРАВЛЕННАЯ логика проверки и сброса дней подряд с учетом времени пользователя
         try:
             from database.crud import get_user_streak, reset_user_streak
             streak, last_test_date = get_user_streak(chat_id)
             
             if streak > 0:
-                yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-                
-                logger.debug(f"Checking streak for user {chat_id}: streak={streak}, last_test_date={last_test_date}, yesterday={yesterday}")
+                logger.debug(f"Checking streak for user {chat_id} (TZ: {user_timezone}): streak={streak}, last_test_date={last_test_date}, yesterday={yesterday}, today={today}")
                 
                 should_reset = False
                 reset_reason = ""
@@ -215,7 +225,7 @@ def process_daily_reset(chat_id):
                     reset_reason = f"future_date_{last_test_date}"
                 
                 if should_reset:
-                    logger.info(f"Resetting streak for user {chat_id}: reason={reset_reason}, old_streak={streak}")
+                    logger.info(f"Resetting streak for user {chat_id} (TZ: {user_timezone}): reason={reset_reason}, old_streak={streak}")
                     reset_user_streak(chat_id)
                     
                     # Если нужно уведомить пользователя о сбросе streak (опционально)
@@ -272,15 +282,15 @@ def process_daily_reset(chat_id):
         
         # Очистка старых записей
         if len(process_daily_reset.processed_resets) > 1000:
-            yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-            today_check = datetime.now().strftime("%Y-%m-%d")
+            yesterday_check = (now_user - timedelta(days=1)).strftime("%Y-%m-%d")
+            today_check = now_user.strftime("%Y-%m-%d")
             process_daily_reset.processed_resets = {
                 key for key in process_daily_reset.processed_resets 
-                if today_check in key or yesterday in key
+                if today_check in key or yesterday_check in key
             }
             
         if not PRODUCTION_MODE:
-            logger.info("Ежедневный сброс выполнен для пользователя %s", chat_id)
+            logger.info("Ежедневный сброс выполнен для пользователя %s (TZ: %s)", chat_id, user_timezone)
             
     except Exception as e:
         logger.error("Ошибка ежедневного сброса для пользователя %s: %s", chat_id, e)

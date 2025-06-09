@@ -1,0 +1,23 @@
+advantage – преимущество
+disadvantage – недостаток
+context – контекст
+outcome – результат
+trend – тенденция
+feature – особенность
+function – функция
+predict – предсказывать
+generate – генерировать
+capacity – способность, ёмкость
+interact – взаимодействовать
+respond – реагировать
+shift – сдвигать, менять
+structure – структура
+validity – обоснованность, достоверность
+factor – фактор
+proportion – пропорция
+consistent – последовательный
+emerge – возникать
+subsequent – последующий
+environment – среда
+sufficient – достаточный
+significant – значительный

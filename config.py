@@ -46,12 +46,12 @@ DEFAULT_SETS = {
 
 # Бесплатные наборы для каждого уровня
 FREE_SETS = {
-    "A1": ["A1 Basic 1", "A1 Basic 2"],
-    "A2": ["A2 Basic 1", "A2 Basic 2"],
-    "B1": ["B1 Basic 1", "B1 Basic 2"],
-    "B2": ["B2 Basic 1", "B2 Basic 2"],
-    "C1": ["C1 Basic 1", "C1 Basic 2"],
-    "C2": ["C2 Basic 1", "C2 Basic 2"]
+    "A1": ["A1 Basic 1"],
+    "A2": ["A2 Basic 1"],
+    "B1": ["B1 Basic 1"],
+    "B2": ["B2 Basic 1"],
+    "C1": ["C1 Basic 1"],
+    "C2": ["C2 Basic 1"]
 }
 
 # Настройки для продакшена

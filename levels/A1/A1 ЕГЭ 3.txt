@@ -1,0 +1,20 @@
+run – бегать
+walk – ходить пешком
+fast – быстрый
+slow – медленный
+sleep – спать
+wake up – просыпаться
+think – думать
+know – знать
+need – нуждаться
+want – хотеть
+buy – покупать
+shop – магазин
+money – деньги
+open – открывать
+close – закрывать
+birthday – день рождения
+gift – подарок
+party – вечеринка
+happy – счастливый
+friendship – дружба

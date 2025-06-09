@@ -427,9 +427,18 @@ def get_user_streak(chat_id: int) -> tuple:
         return 0, None
 
 def increment_user_streak(chat_id: int) -> int:
-    """Увеличивает количество дней подряд на 1 и обновляет дату последнего теста. ИСПРАВЛЕННАЯ версия."""
+    """Увеличивает количество дней подряд на 1 и обновляет дату последнего теста. ИСПРАВЛЕННАЯ версия с учетом часового пояса пользователя."""
     try:
-        today = datetime.now().strftime("%Y-%m-%d")
+        # ИСПРАВЛЕНИЕ: получаем часовой пояс пользователя
+        try:
+            user = get_user(chat_id)
+            user_timezone = user[5] if user and len(user) > 5 and user[5] else "Europe/Moscow"
+            from zoneinfo import ZoneInfo
+            user_tz = ZoneInfo(user_timezone)
+            today = datetime.now(tz=user_tz).strftime("%Y-%m-%d")
+        except Exception as e:
+            logger.error(f"Ошибка получения часового пояса для пользователя {chat_id}: {e}")
+            today = datetime.now().strftime("%Y-%m-%d")
         
         current_streak, last_test_date = get_user_streak(chat_id)
         logger.debug(f"Current state for user {chat_id}: streak={current_streak}, last_date={last_test_date}, today={today}")
@@ -440,7 +449,10 @@ def increment_user_streak(chat_id: int) -> int:
             return current_streak  # Уже проходил тест сегодня
         
         # Проверяем, был ли пропуск дней
-        yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        try:
+            yesterday = (datetime.now(tz=user_tz) - timedelta(days=1)).strftime("%Y-%m-%d")
+        except Exception:
+            yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
         
         if last_test_date is None:
             # Первый тест вообще
