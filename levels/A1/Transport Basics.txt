@@ -1,70 +1,70 @@
-car - машина
-bus - автобус
-train - поезд
-airplane - самолёт
-bicycle - велосипед
-motorcycle - мотоцикл
-scooter - скутер
-truck - грузовик
-van - фургон
-taxi - такси
-ferry - паром
-subway - метро
-tram - трамвай
-ship - корабль
-boat - лодка
-helicopter - вертолёт
-rocket - ракета
-engine - двигатель
-wheel - колесо
-road - дорога
-street - улица
-highway - шоссе
-bridge - мост
-tunnel - тоннель
-station - станция
-platform - платформа
-ticket - билет
-fare - тариф
-driver - водитель
-passenger - пассажир
-seat - сиденье
-journey - путешествие
-trip - поездка
-route - маршрут
-map - карта
-speed - скорость
-traffic - движение
-accident - авария
-stop - остановка
-signal - сигнал
-intersection - перекрёсток
-parking - парковка
-garage - гараж
-load - груз
-cargo - товар
-license - водительские права
-road sign - дорожный знак
-fuel - топливо
-gas - бензин
-diesel - дизельное топливо
-electric car - электромобиль
-hybrid - гибрид
-route map - схема маршрута
-brake - тормоз
-accelerator - акселератор
-steering wheel - руль
-horn - гудок
-mirror - зеркало
-lane - полоса
-roundabout - кольцевая развязка
-exit - выход
-entrance - вход
-taxi stand - стоянка такси
-traffic light - светофор
-commute - ездить на работу
-ride - поездка
-distance - расстояние
-vehicle - транспортное средство
-roadway - проезжая часть
-transfer - пересадка
+car [kɑːr] - машина
+bus [bʌs] - автобус
+train [treɪn] - поезд
+airplane [ˈerpleɪn] - самолёт
+bicycle [ˈbaɪsɪkəl] - велосипед
+motorcycle [ˈmoʊtərsaɪkəl] - мотоцикл
+scooter [ˈskuːtər] - скутер
+truck [trʌk] - грузовик
+van [væn] - фургон
+taxi [ˈtæksi] - такси
+ferry [ˈferi] - паром
+subway [ˈsʌbweɪ] - метро
+tram [træm] - трамвай
+ship [ʃɪp] - корабль
+boat [boʊt] - лодка
+helicopter [ˈhelɪkɑːptər] - вертолёт
+rocket [ˈrɑːkət] - ракета
+engine [ˈendʒən] - двигатель
+wheel [wiːl] - колесо
+road [roʊd] - дорога
+street [striːt] - улица
+highway [ˈhaɪweɪ] - шоссе
+bridge [brɪdʒ] - мост
+tunnel [ˈtʌnəl] - тоннель
+station [ˈsteɪʃən] - станция
+platform [ˈplætfɔːrm] - платформа
+ticket [ˈtɪkət] - билет
+fare [fer] - тариф
+driver [ˈdraɪvər] - водитель
+passenger [ˈpæsəndʒər] - пассажир
+seat [siːt] - сиденье
+journey [ˈdʒɜːrni] - путешествие
+trip [trɪp] - поездка
+route [ruːt] - маршрут
+map [mæp] - карта
+speed [spiːd] - скорость
+traffic [ˈtræfɪk] - движение
+accident [ˈæksədənt] - авария
+stop [stɑːp] - остановка
+signal [ˈsɪɡnəl] - сигнал
+intersection [ˌɪntərˈsekʃən] - перекрёсток
+parking [ˈpɑːrkɪŋ] - парковка
+garage [ɡəˈrɑːʒ] - гараж
+load [loʊd] - груз
+cargo [ˈkɑːrɡoʊ] - товар
+license [ˈlaɪsəns] - водительские права
+road sign [roʊd saɪn] - дорожный знак
+fuel [ˈfjuːəl] - топливо
+gas [ɡæs] - бензин
+diesel [ˈdiːzəl] - дизельное топливо
+electric car [ɪˈlektrɪk kɑːr] - электромобиль
+hybrid [ˈhaɪbrɪd] - гибрид
+route map [ruːt mæp] - схема маршрута
+brake [breɪk] - тормоз
+accelerator [ækˈseləreɪtər] - акселератор
+steering wheel [ˈstɪrɪŋ wiːl] - руль
+horn [hɔːrn] - гудок
+mirror [ˈmɪrər] - зеркало
+lane [leɪn] - полоса
+roundabout [ˈraʊndəbaʊt] - кольцевая развязка
+exit [ˈeksət] - выход
+entrance [ˈentrəns] - вход
+taxi stand [ˈtæksi stænd] - стоянка такси
+traffic light [ˈtræfɪk laɪt] - светофор
+commute [kəˈmjuːt] - ездить на работу
+ride [raɪd] - поездка
+distance [ˈdɪstəns] - расстояние
+vehicle [ˈviːəkəl] - транспортное средство
+roadway [ˈroʊdweɪ] - проезжая часть
+transfer [ˈtrænsfər] - пересадка

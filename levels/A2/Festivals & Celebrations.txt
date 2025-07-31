@@ -1,80 +1,80 @@
-festival – фестиваль
-celebration – празднование
-party – вечеринка
-holiday – праздник
-birthday – день рождения
-anniversary – годовщина
-wedding – свадьба
-ceremony – церемония
-concert – концерт
-parade – парад
-fair – ярмарка
-carnival – карнавал
-gala – гала-вечер
-ball – бал
-reception – приём
-reunion – встреча
-fireworks – фейерверк
-celebration dinner – праздничный ужин
-feast – пир
-banquet – банкет
-toast – тост
-invitation – приглашение
-RSVP – ответ на приглашение
-gift – подарок
-card – открытка
-balloon – шарик
-decoration – украшение
-costume – костюм
-mask – маска
-dance – танец
-song – песня
-performance – представление
-play – спектакль
-recital – концерт
-tradition – традиция
-custom – обычай
-prayer – молитва
-blessing – благословение
-ritual – ритуал
-celebration cake – праздничный торт
-confetti – конфетти
-streamers – гирлянды
-banner – баннер
-flag – флаг
-national day – национальный праздник
-independence day – день независимости
-religious festival – религиозный праздник
-cultural event – культурное мероприятие
-outdoor party – уличная вечеринка
-indoor party – домашняя вечеринка
-picnic – пикник
-dance party – танцевальная вечеринка
-live music – живая музыка
-DJ – диджей
-performance art – перформанс
-stage – сцена
-audience – аудитория
-host – ведущий
-emcee – ведущий
-sponsor – спонсор
-organizer – организатор
-volunteer – волонтёр
-festivity – веселье
-merriment – веселье
-jubilation – ликование
-celebration speech – праздничная речь
-remembrance – память
-toastmaster – ведущий тостов
-live broadcast – прямая трансляция
-opening ceremony – церемония открытия
-closing ceremony – церемония закрытия
-art exhibition – художественная выставка
-cultural performance – культурное выступление
-seasonal festival – сезонный фестиваль
-harvest festival – праздник урожая
-spring festival – весенний фестиваль
-winter celebration – зимнее празднование
-summer party – летняя вечеринка
-autumn fair – осенняя ярмарка
-festive mood – праздничное настроение
+festival [ˈfestəvəl] – фестиваль
+celebration [ˌseləˈbreɪʃən] – празднование
+party [ˈpɑːrti] – вечеринка
+holiday [ˈhɑːlədeɪ] – праздник
+birthday [ˈbɜːrθdeɪ] – день рождения
+anniversary [ˌænəˈvɜːrsəri] – годовщина
+wedding [ˈwedɪŋ] – свадьба
+ceremony [ˈserəmoʊni] – церемония
+concert [ˈkɑːnsərt] – концерт
+parade [pəˈreɪd] – парад
+fair [fer] – ярмарка
+carnival [ˈkɑːrnəvəl] – карнавал
+gala [ˈɡælə] – гала-вечер
+ball [bɔːl] – бал
+reception [rɪˈsepʃən] – приём
+reunion [riːˈjuːnjən] – встреча
+fireworks [ˈfaɪərwɜːrks] – фейерверк
+celebration dinner [ˌseləˈbreɪʃən ˈdɪnər] – праздничный ужин
+feast [fiːst] – пир
+banquet [ˈbæŋkwət] – банкет
+toast [toʊst] – тост
+invitation [ˌɪnvəˈteɪʃən] – приглашение
+RSVP [ˌɑːr es viː ˈpiː] – ответ на приглашение
+gift [ɡɪft] – подарок
+card [kɑːrd] – открытка
+balloon [bəˈluːn] – шарик
+decoration [ˌdekəˈreɪʃən] – украшение
+costume [ˈkɑːstuːm] – костюм
+mask [mæsk] – маска
+dance [dæns] – танец
+song [sɔːŋ] – песня
+performance [pərˈfɔːrməns] – представление
+play [pleɪ] – спектакль
+recital [rɪˈsaɪtəl] – концерт
+tradition [trəˈdɪʃən] – традиция
+custom [ˈkʌstəm] – обычай
+prayer [prer] – молитва
+blessing [ˈblesɪŋ] – благословение
+ritual [ˈrɪtʃuəl] – ритуал
+celebration cake [ˌseləˈbreɪʃən keɪk] – праздничный торт
+confetti [kənˈfeti] – конфетти
+streamers [ˈstriːmərz] – гирлянды
+banner [ˈbænər] – баннер
+flag [flæɡ] – флаг
+national day [ˈnæʃənəl deɪ] – национальный праздник
+independence day [ˌɪndəˈpendəns deɪ] – день независимости
+religious festival [rɪˈlɪdʒəs ˈfestəvəl] – религиозный праздник
+cultural event [ˈkʌltʃərəl ɪˈvent] – культурное мероприятие
+outdoor party [ˈaʊtdɔːr ˈpɑːrti] – уличная вечеринка
+indoor party [ˈɪndɔːr ˈpɑːrti] – домашняя вечеринка
+picnic [ˈpɪknɪk] – пикник
+dance party [dæns ˈpɑːrti] – танцевальная вечеринка
+live music [laɪv ˈmjuːzɪk] – живая музыка
+DJ [ˈdiː dʒeɪ] – диджей
+performance art [pərˈfɔːrməns ɑːrt] – перформанс
+stage [steɪdʒ] – сцена
+audience [ˈɔːdiəns] – аудитория
+host [hoʊst] – ведущий
+emcee [ˌem ˈsiː] – ведущий
+sponsor [ˈspɑːnsər] – спонсор
+organizer [ˈɔːrɡənaɪzər] – организатор
+volunteer [ˌvɑːlənˈtɪr] – волонтёр
+festivity [feˈstɪvəti] – веселье
+merriment [ˈmerimənt] – веселье
+jubilation [ˌdʒuːbəˈleɪʃən] – ликование
+celebration speech [ˌseləˈbreɪʃən spiːtʃ] – праздничная речь
+remembrance [rɪˈmembrəns] – память
+toastmaster [ˈtoʊstmæstər] – ведущий тостов
+live broadcast [laɪv ˈbrɔːdkæst] – прямая трансляция
+opening ceremony [ˈoʊpənɪŋ ˈserəmoʊni] – церемония открытия
+closing ceremony [ˈkloʊzɪŋ ˈserəmoʊni] – церемония закрытия
+art exhibition [ɑːrt ˌeksəˈbɪʃən] – художественная выставка
+cultural performance [ˈkʌltʃərəl pərˈfɔːrməns] – культурное выступление
+seasonal festival [ˈsiːzənəl ˈfestəvəl] – сезонный фестиваль
+harvest festival [ˈhɑːrvəst ˈfestəvəl] – праздник урожая
+spring festival [sprɪŋ ˈfestəvəl] – весенний фестиваль
+winter celebration [ˈwɪntər ˌseləˈbreɪʃən] – зимнее празднование
+summer party [ˈsʌmər ˈpɑːrti] – летняя вечеринка
+autumn fair [ˈɔːtəm fer] – осенняя ярмарка
+festive mood [ˈfestɪv muːd] – праздничное настроение

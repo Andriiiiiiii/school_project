@@ -1,80 +1,79 @@
-tall – высокий
-short – низкий
-slim – стройный
-thin – худой
-fat – толстый
-heavy – тяжёлый
-light – легкий
-young – молодой
-old – старый
-middle-aged – среднего возраста
-attractive – привлекательный
-handsome – красивый (о мужчине)
-pretty – красивая (о женщине)
-beautiful – красивый, прекрасный
-plain – простой
-elegant – элегантный
-stylish – стильный
-casual – повседневный
-smart – сообразительный
-intelligent – умный
-clever – сообразительный
-witty – остроумный
-funny – смешной
-humorous – юмористичный
-serious – серьёзный
-kind – добрый
-friendly – дружелюбный
-generous – щедрый
-honest – честный
-loyal – преданный
-brave – смелый
-confident – уверенный
-shy – застенчивый
-outgoing – общительный
-talkative – болтливый
-reserved – сдержанный
-quiet – тихий
-calm – спокойный
-patient – терпеливый
-energetic – энергичный
-lively – живой
-creative – креативный
-imaginative – образный
-artistic – артистичный
-practical – практичный
-organized – организованный
-reliable – надёжный
-responsible – ответственный
-hardworking – трудолюбивый
-diligent – усердный
-ambitious – амбициозный
-competitive – конкурентный
-modest – скромный
-humble – скромный
-boastful – хвастливый
-arrogant – высокомерный
-rude – грубый
-polite – вежливый
-charming – обаятельный
-charismatic – харизматичный
-empathetic – сочувствующий
-sensitive – чувствительный
-caring – заботливый
-supportive – поддерживающий
-understanding – понимающий
-optimistic – оптимистичный
-pessimistic – пессимистичный
-realistic – реалистичный
-sentimental – сентиментальный
-dramatic – драматичный
-adventurous – авантюрный
-curious – любознательный
-inventive – изобретательный
-sincere – искренний
-faithful – верный
-meticulous – дотошный
-observant – наблюдательный
-empathetic – повтор (альтернативно можно пропустить или заменить на “compassionate – сострадательный”)
-compassionate – сострадательный
-resilient – устойчивый
+tall [tɔːl] – высокий
+short [ʃɔːrt] – низкий
+slim [slɪm] – стройный
+thin [θɪn] – худой
+fat [fæt] – толстый
+heavy [ˈhevi] – тяжёлый
+light [laɪt] – легкий
+young [jʌŋ] – молодой
+old [oʊld] – старый
+middle-aged [ˌmɪdəl ˈeɪdʒd] – среднего возраста
+attractive [əˈtræktɪv] – привлекательный
+handsome [ˈhænsəm] – красивый (о мужчине)
+pretty [ˈprɪti] – красивая (о женщине)
+beautiful [ˈbjuːtəfəl] – красивый, прекрасный
+plain [pleɪn] – простой
+elegant [ˈeləɡənt] – элегантный
+stylish [ˈstaɪlɪʃ] – стильный
+casual [ˈkæʒuəl] – повседневный
+smart [smɑːrt] – сообразительный
+intelligent [ɪnˈtelədʒənt] – умный
+clever [ˈklevər] – сообразительный
+witty [ˈwɪti] – остроумный
+funny [ˈfʌni] – смешной
+humorous [ˈhjuːmərəs] – юмористичный
+serious [ˈsɪriəs] – серьёзный
+kind [kaɪnd] – добрый
+friendly [ˈfrendli] – дружелюбный
+generous [ˈdʒenərəs] – щедрый
+honest [ˈɑːnəst] – честный
+loyal [ˈlɔɪəl] – преданный
+brave [breɪv] – смелый
+confident [ˈkɑːnfɪdənt] – уверенный
+shy [ʃaɪ] – застенчивый
+outgoing [ˈaʊtɡoʊɪŋ] – общительный
+talkative [ˈtɔːkətɪv] – болтливый
+reserved [rɪˈzɜːrvd] – сдержанный
+quiet [ˈkwaɪət] – тихий
+calm [kɑːm] – спокойный
+patient [ˈpeɪʃənt] – терпеливый
+energetic [ˌenərˈdʒetɪk] – энергичный
+lively [ˈlaɪvli] – живой
+creative [kriˈeɪtɪv] – креативный
+imaginative [ɪˈmædʒənətɪv] – образный
+artistic [ɑːrˈtɪstɪk] – артистичный
+practical [ˈpræktɪkəl] – практичный
+organized [ˈɔːrɡənaɪzd] – организованный
+reliable [rɪˈlaɪəbəl] – надёжный
+responsible [rɪˈspɑːnsəbəl] – ответственный
+hardworking [ˈhɑːrdwɜːrkɪŋ] – трудолюбивый
+diligent [ˈdɪlədʒənt] – усердный
+ambitious [æmˈbɪʃəs] – амбициозный
+competitive [kəmˈpetətɪv] – конкурентный
+modest [ˈmɑːdəst] – скромный
+humble [ˈhʌmbəl] – скромный
+boastful [ˈboʊstfəl] – хвастливый
+arrogant [ˈærəɡənt] – высокомерный
+rude [ruːd] – грубый
+polite [pəˈlaɪt] – вежливый
+charming [ˈtʃɑːrmɪŋ] – обаятельный
+charismatic [ˌkærɪzˈmætɪk] – харизматичный
+empathetic [ˌempəˈθetɪk] – сочувствующий
+sensitive [ˈsensətɪv] – чувствительный
+caring [ˈkerɪŋ] – заботливый
+supportive [səˈpɔːrtɪv] – поддерживающий
+understanding [ˌʌndərˈstændɪŋ] – понимающий
+optimistic [ˌɑːptəˈmɪstɪk] – оптимистичный
+pessimistic [ˌpesəˈmɪstɪk] – пессимистичный
+realistic [ˌriːəˈlɪstɪk] – реалистичный
+sentimental [ˌsentəˈmentəl] – сентиментальный
+dramatic [drəˈmætɪk] – драматичный
+adventurous [ədˈventʃərəs] – авантюрный
+curious [ˈkjʊriəs] – любознательный
+inventive [ɪnˈventɪv] – изобретательный
+sincere [sɪnˈsɪr] – искренний
+faithful [ˈfeɪθfəl] – верный
+meticulous [məˈtɪkjələs] – дотошный
+observant [əbˈzɜːrvənt] – наблюдательный
+compassionate [kəmˈpæʃənət] – сострадательный
+resilient [rɪˈzɪliənt] – устойчивый

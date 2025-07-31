@@ -1,20 +1,20 @@
-compare – сравнивать
-develop – развивать
-express – выражать
-importance – важность
-manage – управлять
-prepare – готовиться
-purpose – цель
-review – повторение, обзор
-summary – резюме, краткое изложение
-topic – тема
-article – статья
-information – информация
-describe – описывать
-discuss – обсуждать
-improve – улучшать
-practice – тренироваться
-listen – слушать
-respond – отвечать, реагировать
-useful – полезный
-focus – фокусироваться, сосредотачиваться
+compare [kəmˈper] – сравнивать
+develop [dɪˈveləp] – развивать
+express [ɪkˈspres] – выражать
+importance [ɪmˈpɔːrtəns] – важность
+manage [ˈmænɪdʒ] – управлять
+prepare [prɪˈper] – готовиться
+purpose [ˈpɜːrpəs] – цель
+review [rɪˈvjuː] – повторение, обзор
+summary [ˈsʌməri] – резюме, краткое изложение
+topic [ˈtɑːpɪk] – тема
+article [ˈɑːrtɪkəl] – статья
+information [ˌɪnfərˈmeɪʃən] – информация
+describe [dɪˈskraɪb] – описывать
+discuss [dɪˈskʌs] – обсуждать
+improve [ɪmˈpruːv] – улучшать
+practice [ˈpræktɪs] – тренироваться
+listen [ˈlɪsən] – слушать
+respond [rɪˈspɑːnd] – отвечать, реагировать
+useful [ˈjuːsfəl] – полезный
+focus [ˈfoʊkəs] – фокусироваться, сосредотачиваться

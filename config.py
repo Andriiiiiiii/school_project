@@ -11,8 +11,8 @@ SERVER_TIMEZONE = os.getenv("SERVER_TIMEZONE", "UTC")
 
 # Настройки уведомлений
 REMINDER_DEFAULT = os.getenv("REMINDER_DEFAULT", "09:00:00")
-REMINDER_START = os.getenv("REMINDER_START", "10:00")
-DURATION_HOURS = float(os.getenv("DURATION_HOURS", 10))  # 10:00-20:00
+REMINDER_START = os.getenv("REMINDER_START", "20:00")
+DURATION_HOURS = float(os.getenv("DURATION_HOURS", 1))  # 10:00-20:00
 DAILY_RESET_TIME = os.getenv("DAILY_RESET_TIME", "00:00")
 
 # Настройки по умолчанию

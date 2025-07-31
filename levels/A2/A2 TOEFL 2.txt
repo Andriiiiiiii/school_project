@@ -1,20 +1,20 @@
-achievement – достижение
-careful – осторожный, внимательный
-clearly – ясно, понятно
-opinion – мнение
-reason – причина
-result – результат
-skill – навык, умение
-suggest – предлагать
-understanding – понимание
-activity – деятельность, занятие
-context – контекст
-different – разный, различный
-plan – планировать
-method – метод, способ
-experience – опыт
-goal – цель, задача
-explanation – объяснение
-examples – примеры
-guide – руководство
-report – отчёт, доклад
+achievement [əˈtʃiːvmənt] – достижение
+careful [ˈkerfəl] – осторожный, внимательный
+clearly [ˈklɪrli] – ясно, понятно
+opinion [əˈpɪnjən] – мнение
+reason [ˈriːzən] – причина
+result [rɪˈzʌlt] – результат
+skill [skɪl] – навык, умение
+suggest [səˈdʒest] – предлагать
+understanding [ˌʌndərˈstændɪŋ] – понимание
+activity [ækˈtɪvəti] – деятельность, занятие
+context [ˈkɑːntekst] – контекст
+different [ˈdɪfərənt] – разный, различный
+plan [plæn] – планировать
+method [ˈmeθəd] – метод, способ
+experience [ɪkˈspɪriəns] – опыт
+goal [ɡoʊl] – цель, задача
+explanation [ˌekspləˈneɪʃən] – объяснение
+examples [ɪɡˈzæmpəlz] – примеры
+guide [ɡaɪd] – руководство
+report [rɪˈpɔːrt] – отчёт, доклад

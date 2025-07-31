@@ -1,80 +1,80 @@
-soccer – футбол
-basketball – баскетбол
-tennis – теннис
-volleyball – волейбол
-baseball – бейсбол
-rugby – регби
-hockey – хоккей
-golf – гольф
-swimming – плавание
-running – бег
-cycling – велоспорт
-jogging – пробежка
-skating – катание на коньках
-skiing – лыжи
-snowboarding – сноуборд
-boxing – бокс
-martial arts – боевые искусства
-yoga – йога
-pilates – пилатес
-dancing – танцы
-aerobics – аэробика
-hiking – поход
-climbing – скалолазание
-fishing – рыбалка
-camping – кемпинг
-chess – шахматы
-checkers – шашки
-cards – карты
-puzzles – головоломки
-painting – живопись
-drawing – рисование
-knitting – вязание
-sewing – шитьё
-photography – фотография
-writing – письмо
-reading – чтение
-gardening – садоводство
-cooking – кулинария
-baking – выпечка
-birdwatching – наблюдение за птицами
-model building – моделирование
-scrapbooking – скрапбукинг
-playing guitar – игра на гитаре
-playing piano – игра на пианино
-singing – пение
-acting – актёрское мастерство
-choreography – хореография
-sculpting – скульптура
-pottery – гончарное дело
-calligraphy – каллиграфия
-woodworking – деревообработка
-sprinting – спринт
-archery – стрельба из лука
-badminton – бадминтон
-table tennis – настольный теннис
-squash – сквош
-cycling race – велогонка
-marathon – марафон
-triathlon – триатлон
-scuba diving – подводное плавание
-surfing – серфинг
-skateboarding – скейтбординг
-parkour – паркур
-bowling – боулинг
-fencing – фехтование
-wrestling – борьба
-gymnastics – гимнастика
-cheerleading – чирлидинг
-darts – дартс
-billiards – бильярд
-snooker – снукер
-video games – видеоигры
-computer games – компьютерные игры
-virtual reality – виртуальная реальность
-geocaching – геокэшинг
-birding – орнитология
-metal detecting – металлоискательство
-stamp collecting – филателия
-coin collecting – нумизматика
-origami – оригами
+soccer [ˈsɑːkər] – футбол
+basketball [ˈbæskətbɔːl] – баскетбол
+tennis [ˈtenəs] – теннис
+volleyball [ˈvɑːlibɔːl] – волейбол
+baseball [ˈbeɪsbɔːl] – бейсбол
+rugby [ˈrʌɡbi] – регби
+hockey [ˈhɑːki] – хоккей
+golf [ɡɑːlf] – гольф
+swimming [ˈswɪmɪŋ] – плавание
+running [ˈrʌnɪŋ] – бег
+cycling [ˈsaɪklɪŋ] – велоспорт
+jogging [ˈdʒɑːɡɪŋ] – пробежка
+skating [ˈskeɪtɪŋ] – катание на коньках
+skiing [ˈskiːɪŋ] – лыжи
+snowboarding [ˈsnoʊbɔːrdɪŋ] – сноуборд
+boxing [ˈbɑːksɪŋ] – бокс
+martial arts [ˈmɑːrʃəl ɑːrts] – боевые искусства
+yoga [ˈjoʊɡə] – йога
+pilates [pəˈlɑːtiz] – пилатес
+dancing [ˈdænsɪŋ] – танцы
+aerobics [eˈroʊbɪks] – аэробика
+hiking [ˈhaɪkɪŋ] – поход
+climbing [ˈklaɪmɪŋ] – скалолазание
+fishing [ˈfɪʃɪŋ] – рыбалка
+camping [ˈkæmpɪŋ] – кемпинг
+chess [tʃes] – шахматы
+checkers [ˈtʃekərz] – шашки
+cards [kɑːrdz] – карты
+puzzles [ˈpʌzəlz] – головоломки
+painting [ˈpeɪntɪŋ] – живопись
+drawing [ˈdrɔːɪŋ] – рисование
+knitting [ˈnɪtɪŋ] – вязание
+sewing [ˈsoʊɪŋ] – шитьё
+photography [fəˈtɑːɡrəfi] – фотография
+writing [ˈraɪtɪŋ] – письмо
+reading [ˈriːdɪŋ] – чтение
+gardening [ˈɡɑːrdnɪŋ] – садоводство
+cooking [ˈkʊkɪŋ] – кулинария
+baking [ˈbeɪkɪŋ] – выпечка
+birdwatching [ˈbɜːrdwɑːtʃɪŋ] – наблюдение за птицами
+model building [ˈmɑːdəl ˈbɪldɪŋ] – моделирование
+scrapbooking [ˈskræpbʊkɪŋ] – скрапбукинг
+playing guitar [ˈpleɪɪŋ ɡɪˈtɑːr] – игра на гитаре
+playing piano [ˈpleɪɪŋ piˈænoʊ] – игра на пианино
+singing [ˈsɪŋɪŋ] – пение
+acting [ˈæktɪŋ] – актёрское мастерство
+choreography [ˌkɔːriˈɑːɡrəfi] – хореография
+sculpting [ˈskʌlptɪŋ] – скульптура
+pottery [ˈpɑːtəri] – гончарное дело
+calligraphy [kəˈlɪɡrəfi] – каллиграфия
+woodworking [ˈwʊdwɜːrkɪŋ] – деревообработка
+sprinting [ˈsprɪntɪŋ] – спринт
+archery [ˈɑːrtʃəri] – стрельба из лука
+badminton [ˈbædmɪntən] – бадминтон
+table tennis [ˈteɪbəl ˈtenəs] – настольный теннис
+squash [skwɔːʃ] – сквош
+cycling race [ˈsaɪklɪŋ reɪs] – велогонка
+marathon [ˈmærəθɑːn] – марафон
+triathlon [traɪˈæθlən] – триатлон
+scuba diving [ˈskuːbə ˈdaɪvɪŋ] – подводное плавание
+surfing [ˈsɜːrfɪŋ] – серфинг
+skateboarding [ˈskeɪtbɔːrdɪŋ] – скейтбординг
+parkour [pɑːrˈkʊr] – паркур
+bowling [ˈboʊlɪŋ] – боулинг
+fencing [ˈfensɪŋ] – фехтование
+wrestling [ˈreslɪŋ] – борьба
+gymnastics [dʒɪmˈnæstɪks] – гимнастика
+cheerleading [ˈtʃɪrliːdɪŋ] – чирлидинг
+darts [dɑːrts] – дартс
+billiards [ˈbɪljərdz] – бильярд
+snooker [ˈsnuːkər] – снукер
+video games [ˈvɪdioʊ ɡeɪmz] – видеоигры
+computer games [kəmˈpjuːtər ɡeɪmz] – компьютерные игры
+virtual reality [ˌvɜːrtʃuəl riˈæləti] – виртуальная реальность
+geocaching [ˈdʒiːoʊkæʃɪŋ] – геокэшинг
+birding [ˈbɜːrdɪŋ] – орнитология
+metal detecting [ˈmetəl dɪˈtektɪŋ] – металлоискательство
+stamp collecting [stæmp kəˈlektɪŋ] – филателия
+coin collecting [kɔɪn kəˈlektɪŋ] – нумизматика
+origami [ˌɔːrəˈɡɑːmi] – оригами

@@ -1,20 +1,20 @@
-book – книга
-daily – ежедневный
-easy – лёгкий
-family – семья
-friend – друг
-great – отличный
-help – помогать
-important – важный
-learn – изучать
-student – ученик
-school – школа
-home – дом
-food – еда
-drink – пить
-play – играть
-time – время
-write – писать
-read – читать
-new – новый
-happy – счастливый
+book [bʊk] – книга
+daily [ˈdeɪli] – ежедневный
+easy [ˈiːzi] – лёгкий
+family [ˈfæməli] – семья
+friend [frend] – друг
+great [ɡreɪt] – отличный
+help [help] – помогать
+important [ɪmˈpɔːrtənt] – важный
+learn [lɜːrn] – изучать
+student [ˈstuːdənt] – ученик
+school [skuːl] – школа
+home [hoʊm] – дом
+food [fuːd] – еда
+drink [drɪŋk] – пить
+play [pleɪ] – играть
+time [taɪm] – время
+write [raɪt] – писать
+read [riːd] – читать
+new [nuː] – новый
+happy [ˈhæpi] – счастливый

@@ -1,80 +1,80 @@
-city – город
-town – городок
-street – улица
-avenue – проспект
-boulevard – бульвар
-road – дорога
-lane – переулок
-square – площадь
-park – парк
-plaza – площадь
-intersection – перекрёсток
-traffic – движение
-congestion – пробка
-building – здание
-skyscraper – небоскрёб
-office – офис
-shop – магазин
-mall – торговый центр
-restaurant – ресторан
-cafe – кафе
-theater – театр
-cinema – кинотеатр
-museum – музей
-library – библиотека
-bank – банк
-post office – почта
-station – станция
-subway – метро
-bus stop – автобусная остановка
-taxi stand – стоянка такси
-hotel – отель
-hostel – хостел
-apartment – квартира
-house – дом
-neighborhood – район
-community – сообщество
-street light – уличный фонарь
-traffic light – светофор
-crosswalk – пешеходный переход
-sidewalk – тротуар
-alley – переулок
-graffiti – граффити
-construction – строительство
-bridge – мост
-tunnel – тоннель
-bus – автобус
-tram – трамвай
-train – поезд
-taxi – такси
-ride – поездка
-scooter – скутер
-bicycle – велосипед
-parking – парковка
-garage – гараж
-street vendor – уличный торговец
-billboard – рекламный щит
-fountain – фонтан
-monument – памятник
-statue – статуя
-government building – государственное здание
-courthouse – суд
-police station – полицейский участок
-fire station – пожарная часть
-hospital – больница
-clinic – клиника
-school – школа
-university – университет
-church – церковь
-synagogue – синагога
-mosque – мечеть
-temple – храм
-market – рынок
-supermarket – супермаркет
-convenience store – магазин у дома
-bakery – пекарня
-butcher shop – мясная лавка
-pharmacy – аптека
-gym – спортзал
-park bench – скамейка
-recycling bin – контейнер для переработки
+city [ˈsɪti] – город
+town [taʊn] – городок
+street [striːt] – улица
+avenue [ˈævənuː] – проспект
+boulevard [ˈbuːləvɑːrd] – бульвар
+road [roʊd] – дорога
+lane [leɪn] – переулок
+square [skwer] – площадь
+park [pɑːrk] – парк
+plaza [ˈplæzə] – площадь
+intersection [ˌɪntərˈsekʃən] – перекрёсток
+traffic [ˈtræfɪk] – движение
+congestion [kənˈdʒestʃən] – пробка
+building [ˈbɪldɪŋ] – здание
+skyscraper [ˈskaɪskreɪpər] – небоскрёб
+office [ˈɔːfəs] – офис
+shop [ʃɑːp] – магазин
+mall [mɔːl] – торговый центр
+restaurant [ˈrestərɑːnt] – ресторан
+cafe [kæˈfeɪ] – кафе
+theater [ˈθiːətər] – театр
+cinema [ˈsɪnəmə] – кинотеатр
+museum [mjuˈziːəm] – музей
+library [ˈlaɪbreri] – библиотека
+bank [bæŋk] – банк
+post office [poʊst ˈɔːfəs] – почта
+station [ˈsteɪʃən] – станция
+subway [ˈsʌbweɪ] – метро
+bus stop [bʌs stɑːp] – автобусная остановка
+taxi stand [ˈtæksi stænd] – стоянка такси
+hotel [hoʊˈtel] – отель
+hostel [ˈhɑːstəl] – хостел
+apartment [əˈpɑːrtmənt] – квартира
+house [haʊs] – дом
+neighborhood [ˈneɪbərhʊd] – район
+community [kəˈmjuːnəti] – сообщество
+street light [striːt laɪt] – уличный фонарь
+traffic light [ˈtræfɪk laɪt] – светофор
+crosswalk [ˈkrɔːswɔːk] – пешеходный переход
+sidewalk [ˈsaɪdwɔːk] – тротуар
+alley [ˈæli] – переулок
+graffiti [ɡrəˈfiːti] – граффити
+construction [kənˈstrʌkʃən] – строительство
+bridge [brɪdʒ] – мост
+tunnel [ˈtʌnəl] – тоннель
+bus [bʌs] – автобус
+tram [træm] – трамвай
+train [treɪn] – поезд
+taxi [ˈtæksi] – такси
+ride [raɪd] – поездка
+scooter [ˈskuːtər] – скутер
+bicycle [ˈbaɪsɪkəl] – велосипед
+parking [ˈpɑːrkɪŋ] – парковка
+garage [ɡəˈrɑːʒ] – гараж
+street vendor [striːt ˈvendər] – уличный торговец
+billboard [ˈbɪlbɔːrd] – рекламный щит
+fountain [ˈfaʊntən] – фонтан
+monument [ˈmɑːnjəmənt] – памятник
+statue [ˈstætʃuː] – статуя
+government building [ˈɡʌvərnmənt ˈbɪldɪŋ] – государственное здание
+courthouse [ˈkɔːrthaʊs] – суд
+police station [pəˈliːs ˈsteɪʃən] – полицейский участок
+fire station [ˈfaɪər ˈsteɪʃən] – пожарная часть
+hospital [ˈhɑːspɪtəl] – больница
+clinic [ˈklɪnɪk] – клиника
+school [skuːl] – школа
+university [ˌjuːnəˈvɜːrsəti] – университет
+church [tʃɜːrtʃ] – церковь
+synagogue [ˈsɪnəɡɑːɡ] – синагога
+mosque [mɑːsk] – мечеть
+temple [ˈtempəl] – храм
+market [ˈmɑːrkət] – рынок
+supermarket [ˈsuːpərmɑːrkət] – супермаркет
+convenience store [kənˈviːniəns stɔːr] – магазин у дома
+bakery [ˈbeɪkəri] – пекарня
+butcher shop [ˈbʊtʃər ʃɑːp] – мясная лавка
+pharmacy [ˈfɑːrməsi] – аптека
+gym [dʒɪm] – спортзал
+park bench [pɑːrk bentʃ] – скамейка
+recycling bin [riˈsaɪklɪŋ bɪn] – контейнер для переработки

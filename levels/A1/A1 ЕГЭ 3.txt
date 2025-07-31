@@ -1,20 +1,20 @@
-run – бегать
-walk – ходить пешком
-fast – быстрый
-slow – медленный
-sleep – спать
-wake up – просыпаться
-think – думать
-know – знать
-need – нуждаться
-want – хотеть
-buy – покупать
-shop – магазин
-money – деньги
-open – открывать
-close – закрывать
-birthday – день рождения
-gift – подарок
-party – вечеринка
-happy – счастливый
-friendship – дружба
+run [rʌn] – бегать
+walk [wɔːk] – ходить пешком
+fast [fæst] – быстрый
+slow [sloʊ] – медленный
+sleep [sliːp] – спать
+wake up [weɪk ʌp] – просыпаться
+think [θɪŋk] – думать
+know [noʊ] – знать
+need [niːd] – нуждаться
+want [wɑːnt] – хотеть
+buy [baɪ] – покупать
+shop [ʃɑːp] – магазин
+money [ˈmʌni] – деньги
+open [ˈoʊpən] – открывать
+close [kloʊz] – закрывать
+birthday [ˈbɜːrθdeɪ] – день рождения
+gift [ɡɪft] – подарок
+party [ˈpɑːrti] – вечеринка
+happy [ˈhæpi] – счастливый
+friendship [ˈfrendʃɪp] – дружба

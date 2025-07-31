@@ -1,50 +1,50 @@
-Man – мужчина  
-Woman – женщина  
-Boy – мальчик  
-Girl – девочка  
-Baby – ребёнок  
-Family – семья  
-Phone – телефон  
-Computer – компьютер  
-TV – телевизор  
-Music – музыка  
-Movie – фильм  
-Game – игра  
-Car – машина  
-Bus – автобус  
-Train – поезд  
-Bike – велосипед  
-Street – улица  
-City – город  
-Country – страна  
-Store – магазин  
-Money – деньги  
-Time – время  
-Hour – час  
-Minute – минута  
-Today – сегодня  
-Tomorrow – завтра  
-Yesterday – вчера  
-Now – сейчас  
-Later – позже  
-Always – всегда  
-Sometimes – иногда  
-Never – никогда  
-Color – цвет  
-Red – красный  
-Blue – синий  
-Green – зелёный  
-Yellow – жёлтый  
-Black – чёрный  
-White – белый  
-Shoes – обувь  
-Clothes – одежда  
-Hat – шапка / шляпа  
-Hands – руки  
-Feet – ноги  
-Face – лицо  
-Eyes – глаза  
-Hair – волосы  
-Smile – улыбка  
-Love – любовь  
-Like – нравиться  
+Man [mæn] – мужчина  
+Woman [ˈwʊmən] – женщина  
+Boy [bɔɪ] – мальчик  
+Girl [ɡɜːrl] – девочка  
+Baby [ˈbeɪbi] – ребёнок  
+Family [ˈfæməli] – семья  
+Phone [foʊn] – телефон  
+Computer [kəmˈpjuːtər] – компьютер  
+TV [ˌtiːˈviː] – телевизор  
+Music [ˈmjuːzɪk] – музыка  
+Movie [ˈmuːvi] – фильм  
+Game [ɡeɪm] – игра  
+Car [kɑːr] – машина  
+Bus [bʌs] – автобус  
+Train [treɪn] – поезд  
+Bike [baɪk] – велосипед  
+Street [striːt] – улица  
+City [ˈsɪti] – город  
+Country [ˈkʌntri] – страна  
+Store [stɔːr] – магазин  
+Money [ˈmʌni] – деньги  
+Time [taɪm] – время  
+Hour [aʊər] – час  
+Minute [ˈmɪnɪt] – минута  
+Today [təˈdeɪ] – сегодня  
+Tomorrow [təˈmɔːroʊ] – завтра  
+Yesterday [ˈjestərdeɪ] – вчера  
+Now [naʊ] – сейчас  
+Later [ˈleɪtər] – позже  
+Always [ˈɔːlweɪz] – всегда  
+Sometimes [ˈsʌmtaɪmz] – иногда  
+Never [ˈnevər] – никогда  
+Color [ˈkʌlər] – цвет  
+Red [red] – красный  
+Blue [bluː] – синий  
+Green [ɡriːn] – зелёный  
+Yellow [ˈjeloʊ] – жёлтый  
+Black [blæk] – чёрный  
+White [waɪt] – белый  
+Shoes [ʃuːz] – обувь  
+Clothes [kloʊðz] – одежда  
+Hat [hæt] – шапка / шляпа  
+Hands [hændz] – руки  
+Feet [fiːt] – ноги  
+Face [feɪs] – лицо  
+Eyes [aɪz] – глаза  
+Hair [her] – волосы  
+Smile [smaɪl] – улыбка  
+Love [lʌv] – любовь  
+Like [laɪk] – нравиться

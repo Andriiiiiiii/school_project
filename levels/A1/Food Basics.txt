@@ -1,70 +1,70 @@
-bread - хлеб
-butter - масло
-cheese - сыр
-egg - яйцо
-milk - молоко
-water - вода
-apple - яблоко
-banana - банан
-orange - апельсин
-grape - виноград
-lemon - лимон
-peach - персик
-pear - груша
-strawberry - клубника
-blueberry - черника
-pineapple - ананас
-tomato - помидор
-potato - картофель
-carrot - морковь
-lettuce - салат (листья)
-cucumber - огурец
-pepper - перец
-onion - лук
-garlic - чеснок
-mushroom - гриб
-rice - рис
-pasta - макароны
-soup - суп
-salad - салат
-burger - бургер
-sandwich - сэндвич
-pizza - пицца
-hot dog - хот-дог
-fries - картофель фри
-chicken - курица
-beef - говядина
-pork - свинина
-fish - рыба
-shrimp - креветка
-lobster - омар
-sausage - сосиска
-bacon - бекон
-ham - ветчина
-cake - торт
-cookie - печенье
-pie - пирог
-ice cream - мороженое
-chocolate - шоколад
-candy - конфета
-sugar - сахар
-salt - соль
-oil - растительное масло
-vinegar - уксус
-sauce - соус
-mustard - горчица
-ketchup - кетчуп
-yogurt - йогурт
-cereal - хлопья
-oatmeal - овсянка
-pancake - блин
-waffle - вафля
-syrup - сироп
-coffee - кофе
-tea - чай
-juice - сок
-soda - газировка
-smoothie - смузи
-snack - закуска
-dessert - десерт
-stew - рагу
+bread [bred] - хлеб
+butter [ˈbʌtər] - масло
+cheese [tʃiːz] - сыр
+egg [eɡ] - яйцо
+milk [mɪlk] - молоко
+water [ˈwɔːtər] - вода
+apple [ˈæpəl] - яблоко
+banana [bəˈnænə] - банан
+orange [ˈɔːrɪndʒ] - апельсин
+grape [ɡreɪp] - виноград
+lemon [ˈlemən] - лимон
+peach [piːtʃ] - персик
+pear [per] - груша
+strawberry [ˈstrɔːberi] - клубника
+blueberry [ˈbluːberi] - черника
+pineapple [ˈpaɪnæpəl] - ананас
+tomato [təˈmeɪtoʊ] - помидор
+potato [pəˈteɪtoʊ] - картофель
+carrot [ˈkærət] - морковь
+lettuce [ˈletɪs] - салат (листья)
+cucumber [ˈkjuːkʌmbər] - огурец
+pepper [ˈpepər] - перец
+onion [ˈʌnjən] - лук
+garlic [ˈɡɑːrlɪk] - чеснок
+mushroom [ˈmʌʃruːm] - гриб
+rice [raɪs] - рис
+pasta [ˈpɑːstə] - макароны
+soup [suːp] - суп
+salad [ˈsæləd] - салат
+burger [ˈbɜːrɡər] - бургер
+sandwich [ˈsænwɪtʃ] - сэндвич
+pizza [ˈpiːtsə] - пицца
+hot dog [hɑːt dɔːɡ] - хот-дог
+fries [fraɪz] - картофель фри
+chicken [ˈtʃɪkən] - курица
+beef [biːf] - говядина
+pork [pɔːrk] - свинина
+fish [fɪʃ] - рыба
+shrimp [ʃrɪmp] - креветка
+lobster [ˈlɑːbstər] - омар
+sausage [ˈsɔːsɪdʒ] - сосиска
+bacon [ˈbeɪkən] - бекон
+ham [hæm] - ветчина
+cake [keɪk] - торт
+cookie [ˈkʊki] - печенье
+pie [paɪ] - пирог
+ice cream [aɪs kriːm] - мороженое
+chocolate [ˈtʃɔːklət] - шоколад
+candy [ˈkændi] - конфета
+sugar [ˈʃʊɡər] - сахар
+salt [sɔːlt] - соль
+oil [ɔɪl] - растительное масло
+vinegar [ˈvɪnɪɡər] - уксус
+sauce [sɔːs] - соус
+mustard [ˈmʌstərd] - горчица
+ketchup [ˈketʃəp] - кетчуп
+yogurt [ˈjoʊɡərt] - йогурт
+cereal [ˈsɪriəl] - хлопья
+oatmeal [ˈoʊtmiːl] - овсянка
+pancake [ˈpænkeɪk] - блин
+waffle [ˈwɑːfəl] - вафля
+syrup [ˈsɪrəp] - сироп
+coffee [ˈkɔːfi] - кофе
+tea [tiː] - чай
+juice [dʒuːs] - сок
+soda [ˈsoʊdə] - газировка
+smoothie [ˈsmuːði] - смузи
+snack [snæk] - закуска
+dessert [dɪˈzɜːrt] - десерт
+stew [stuː] - рагу

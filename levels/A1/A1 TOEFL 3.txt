@@ -1,20 +1,20 @@
-speak – говорить, разговаривать
-notice – замечать
-group – группа
-pair – пара
-project – проект
-idea – идея
-learn – изучать
-meaning – значение, смысл
-correctly – правильно
-mistake – ошибка
-notebook – тетрадь
-pen – ручка
-paper – бумага
-board – доска (в классе)
-desk – письменный стол
-chair – стул
-window – окно
-door – дверь
-dictionary – словарь
-study – учиться, заниматься
+speak [spiːk] – говорить, разговаривать
+notice [ˈnoʊtɪs] – замечать
+group [ɡruːp] – группа
+pair [per] – пара
+project [ˈprɑːdʒekt] – проект
+idea [aɪˈdiːə] – идея
+learn [lɜːrn] – изучать
+meaning [ˈmiːnɪŋ] – значение, смысл
+correctly [kəˈrektli] – правильно
+mistake [mɪˈsteɪk] – ошибка
+notebook [ˈnoʊtbʊk] – тетрадь
+pen [pen] – ручка
+paper [ˈpeɪpər] – бумага
+board [bɔːrd] – доска (в классе)
+desk [desk] – письменный стол
+chair [tʃer] – стул
+window [ˈwɪndoʊ] – окно
+door [dɔːr] – дверь
+dictionary [ˈdɪkʃəneri] – словарь
+study [ˈstʌdi] – учиться, заниматься

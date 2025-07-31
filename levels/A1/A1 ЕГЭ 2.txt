@@ -1,20 +1,20 @@
-like – нравиться
-love – любить
-morning – утро
-night – ночь
-afternoon – день (после полудня)
-evening – вечер
-good – хороший
-bad – плохой
-young – молодой
-old – старый
-big – большой
-small – маленький
-nice – приятный
-weather – погода
-animal – животное
-pet – домашний питомец
-colour – цвет
-music – музыка
-song – песня
-funny – смешной
+like [laɪk] – нравиться
+love [lʌv] – любить
+morning [ˈmɔːrnɪŋ] – утро
+night [naɪt] – ночь
+afternoon [ˌæftərˈnuːn] – день (после полудня)
+evening [ˈiːvnɪŋ] – вечер
+good [ɡʊd] – хороший
+bad [bæd] – плохой
+young [jʌŋ] – молодой
+old [oʊld] – старый
+big [bɪɡ] – большой
+small [smɔːl] – маленький
+nice [naɪs] – приятный
+weather [ˈweðər] – погода
+animal [ˈænɪməl] – животное
+pet [pet] – домашний питомец
+colour [ˈkʌlər] – цвет
+music [ˈmjuːzɪk] – музыка
+song [sɔːŋ] – песня
+funny [ˈfʌni] – смешной

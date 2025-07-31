@@ -1,20 +1,20 @@
-basic – основной, базовый
-classroom – классная комната
-introduce – представлять, знакомить
-listen – слушать
-practice – тренировка, упражнение
-repeat – повторять
-simple – простой
-write – писать
-vocabulary – словарный запас
-conversation – разговор, беседа
-student – студент, ученик
-teacher – учитель
-ask – спрашивать
-answer – отвечать, ответ
-read – читать
-understand – понимать
-lesson – урок
-homework – домашняя работа
-page – страница
-correct – правильный
+basic [ˈbeɪsɪk] – основной, базовый
+classroom [ˈklæsruːm] – классная комната
+introduce [ˌɪntrəˈduːs] – представлять, знакомить
+listen [ˈlɪsən] – слушать
+practice [ˈpræktɪs] – тренировка, упражнение
+repeat [rɪˈpiːt] – повторять
+simple [ˈsɪmpəl] – простой
+write [raɪt] – писать
+vocabulary [voʊˈkæbjəleri] – словарный запас
+conversation [ˌkɑːnvərˈseɪʃən] – разговор, беседа
+student [ˈstuːdənt] – студент, ученик
+teacher [ˈtiːtʃər] – учитель
+ask [æsk] – спрашивать
+answer [ˈænsər] – отвечать, ответ
+read [riːd] – читать
+understand [ˌʌndərˈstænd] – понимать
+lesson [ˈlesən] – урок
+homework [ˈhoʊmwɜːrk] – домашняя работа
+page [peɪdʒ] – страница
+correct [kəˈrekt] – правильный

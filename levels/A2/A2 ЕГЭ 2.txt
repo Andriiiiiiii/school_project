@@ -1,20 +1,20 @@
-nature – природа
-forest – лес
-river – река
-mountain – гора
-ocean – океан
-animal – животное
-plant – растение
-weather – погода
-season – сезон, время года
-beautiful – красивый
-exciting – захватывающий
-adventure – приключение
-experience – опыт
-tourist – турист
-guide – гид
-stay – оставаться, останавливаться
-hotel – гостиница
-map – карта
-photo – фотография
-explore – исследовать
+nature [ˈneɪtʃər] – природа
+forest [ˈfɔːrəst] – лес
+river [ˈrɪvər] – река
+mountain [ˈmaʊntən] – гора
+ocean [ˈoʊʃən] – океан
+animal [ˈænɪməl] – животное
+plant [plænt] – растение
+weather [ˈweðər] – погода
+season [ˈsiːzən] – сезон, время года
+beautiful [ˈbjuːtəfəl] – красивый
+exciting [ɪkˈsaɪtɪŋ] – захватывающий
+adventure [ədˈventʃər] – приключение
+experience [ɪkˈspɪriəns] – опыт
+tourist [ˈtʊrəst] – турист
+guide [ɡaɪd] – гид
+stay [steɪ] – оставаться, останавливаться
+hotel [hoʊˈtel] – гостиница
+map [mæp] – карта
+photo [ˈfoʊtoʊ] – фотография
+explore [ɪkˈsplɔːr] – исследовать

@@ -1,80 +1,80 @@
-left – налево, левый
-right – направо, правый
-straight – прямо
-back – назад
-forward – вперед
-north – север
-south – юг
-east – восток
-west – запад
-map – карта
-route – маршрут
-road – дорога
-street – улица
-avenue – проспект
-intersection – перекрёсток
-corner – угол
-block – квартал
-distance – расстояние
-near – рядом
-far – далеко
-adjacent – смежный
-opposite – напротив
-between – между
-among – среди
-direction – направление
-turn – поворот
-crossroads – перекрёсток
-highway – шоссе
-lane – полоса
-bridge – мост
-tunnel – тоннель
-exit – выход
-entrance – вход
-sign – знак
-landmark – ориентир
-location – местоположение
-address – адрес
-street name – название улицы
-block number – номер квартала
-postal code – почтовый индекс
-GPS – GPS
-coordinate – координата
-map reading – чтение карты
-compass – компас
-satellite – спутник
-traffic – движение
-signal – сигнал
-guidepost – указатель
-direction sign – указатель направления
-path – тропинка
-trail – тропа
-route map – схема маршрута
-destination – пункт назначения
-way – путь
-crossing – переход
-pedestrian – пешеход
-highway exit – съезд с шоссе
-roundabout – кольцевая развязка
-ferry – паром
-station – станция
-terminal – терминал
-dock – док
-port – порт
-gateway – ворота
-vicinity – окрестность
-neighborhood – район
-area – область
-district – район
-suburb – пригород
-center – центр
-outskirts – окраина
-boundary – граница
-margin – край
-hub – центр
-locality – местность
-altitude – высота
-bearing – курс
-elevation – уровень (высота местности)
-orientation – ориентация
-position – положение
+left [left] – налево, левый
+right [raɪt] – направо, правый
+straight [streɪt] – прямо
+back [bæk] – назад
+forward [ˈfɔːrwərd] – вперед
+north [nɔːrθ] – север
+south [saʊθ] – юг
+east [iːst] – восток
+west [west] – запад
+map [mæp] – карта
+route [ruːt] – маршрут
+road [roʊd] – дорога
+street [striːt] – улица
+avenue [ˈævənuː] – проспект
+intersection [ˌɪntərˈsekʃən] – перекрёсток
+corner [ˈkɔːrnər] – угол
+block [blɑːk] – квартал
+distance [ˈdɪstəns] – расстояние
+near [nɪr] – рядом
+far [fɑːr] – далеко
+adjacent [əˈdʒeɪsənt] – смежный
+opposite [ˈɑːpəzət] – напротив
+between [bɪˈtwiːn] – между
+among [əˈmʌŋ] – среди
+direction [daɪˈrekʃən] – направление
+turn [tɜːrn] – поворот
+crossroads [ˈkrɔːsroʊdz] – перекрёсток
+highway [ˈhaɪweɪ] – шоссе
+lane [leɪn] – полоса
+bridge [brɪdʒ] – мост
+tunnel [ˈtʌnəl] – тоннель
+exit [ˈeksət] – выход
+entrance [ˈentrəns] – вход
+sign [saɪn] – знак
+landmark [ˈlændmɑːrk] – ориентир
+location [loʊˈkeɪʃən] – местоположение
+address [ˈædres] – адрес
+street name [striːt neɪm] – название улицы
+block number [blɑːk ˈnʌmbər] – номер квартала
+postal code [ˈpoʊstəl koʊd] – почтовый индекс
+GPS [ˌdʒiː piː ˈes] – GPS
+coordinate [koʊˈɔːrdənət] – координата
+map reading [mæp ˈriːdɪŋ] – чтение карты
+compass [ˈkʌmpəs] – компас
+satellite [ˈsætəlaɪt] – спутник
+traffic [ˈtræfɪk] – движение
+signal [ˈsɪɡnəl] – сигнал
+guidepost [ˈɡaɪdpoʊst] – указатель
+direction sign [daɪˈrekʃən saɪn] – указатель направления
+path [pæθ] – тропинка
+trail [treɪl] – тропа
+route map [ruːt mæp] – схема маршрута
+destination [ˌdestəˈneɪʃən] – пункт назначения
+way [weɪ] – путь
+crossing [ˈkrɔːsɪŋ] – переход
+pedestrian [pəˈdestriən] – пешеход
+highway exit [ˈhaɪweɪ ˈeksət] – съезд с шоссе
+roundabout [ˈraʊndəbaʊt] – кольцевая развязка
+ferry [ˈferi] – паром
+station [ˈsteɪʃən] – станция
+terminal [ˈtɜːrmənəl] – терминал
+dock [dɑːk] – док
+port [pɔːrt] – порт
+gateway [ˈɡeɪtweɪ] – ворота
+vicinity [vəˈsɪnəti] – окрестность
+neighborhood [ˈneɪbərhʊd] – район
+area [ˈeriə] – область
+district [ˈdɪstrɪkt] – район
+suburb [ˈsʌbɜːrb] – пригород
+center [ˈsentər] – центр
+outskirts [ˈaʊtskɜːrts] – окраина
+boundary [ˈbaʊndəri] – граница
+margin [ˈmɑːrdʒən] – край
+hub [hʌb] – центр
+locality [loʊˈkæləti] – местность
+altitude [ˈæltətuːd] – высота
+bearing [ˈberɪŋ] – курс
+elevation [ˌeləˈveɪʃən] – уровень (высота местности)
+orientation [ˌɔːriənˈteɪʃən] – ориентация
+position [pəˈzɪʃən] – положение

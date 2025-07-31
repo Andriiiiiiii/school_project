@@ -1,80 +1,80 @@
-shop – магазин
-store – магазин
-supermarket – супермаркет
-mall – торговый центр
-boutique – бутик
-market – рынок
-purchase – покупка
-buy – покупать
-sell – продавать
-cost – стоимость
-price – цена
-discount – скидка
-sale – распродажа
-bargain – выгодная покупка
-expensive – дорогой
-cheap – дешёвый
-affordable – доступный
-quality – качество
-value – ценность
-cash – наличные
-money – деньги
-coin – монета
-bill – банкнота
-wallet – кошелёк
-purse – сумочка
-credit card – кредитная карта
-debit card – дебетовая карта
-bank – банк
-ATM – банкомат
-payment – оплата
-pay – платить
-change – сдача
-receipt – чек
-invoice – счёт
-refund – возврат денег
-exchange – обмен
-transaction – транзакция
-fee – комиссия
-tip – чаевые
-service charge – плата за обслуживание
-coupon – купон
-voucher – ваучер
-discount code – промокод
-sale event – распродажа
-offer – предложение
-deal – сделка
-installment – рассрочка
-financing – финансирование
-loan – кредит
-interest – процент
-budget – бюджет
-saving – сбережение
-expense – расход
-customer – клиент
-client – клиент
-shopper – покупатель
-cash register – кассовый аппарат
-cashier – кассир
-shopping cart – тележка
-basket – корзина
-order – заказ
-delivery – доставка
-shipping – доставка
-online shopping – онлайн-покупки
-website – сайт
-e-commerce – электронная коммерция
-transaction fee – комиссия за транзакцию
-retail – розничная торговля
-wholesale – оптовая торговля
-invoice number – номер счёта
-receipt number – номер чека
-warranty – гарантия
-guarantee – гарантия
-exchange rate – обменный курс
-profit – прибыль
-loss – убыток
-merchant – торговец
-seller – продавец
-buyer – покупатель
-negotiation – переговоры
+shop [ʃɑːp] – магазин
+store [stɔːr] – магазин
+supermarket [ˈsuːpərmɑːrkət] – супермаркет
+mall [mɔːl] – торговый центр
+boutique [buːˈtiːk] – бутик
+market [ˈmɑːrkət] – рынок
+purchase [ˈpɜːrtʃəs] – покупка
+buy [baɪ] – покупать
+sell [sel] – продавать
+cost [kɔːst] – стоимость
+price [praɪs] – цена
+discount [ˈdɪskaʊnt] – скидка
+sale [seɪl] – распродажа
+bargain [ˈbɑːrɡən] – выгодная покупка
+expensive [ɪkˈspensɪv] – дорогой
+cheap [tʃiːp] – дешёвый
+affordable [əˈfɔːrdəbəl] – доступный
+quality [ˈkwɑːləti] – качество
+value [ˈvæljuː] – ценность
+cash [kæʃ] – наличные
+money [ˈmʌni] – деньги
+coin [kɔɪn] – монета
+bill [bɪl] – банкнота
+wallet [ˈwɑːlət] – кошелёк
+purse [pɜːrs] – сумочка
+credit card [ˈkredət kɑːrd] – кредитная карта
+debit card [ˈdebət kɑːrd] – дебетовая карта
+bank [bæŋk] – банк
+ATM [ˌeɪ tiː ˈem] – банкомат
+payment [ˈpeɪmənt] – оплата
+pay [peɪ] – платить
+change [tʃeɪndʒ] – сдача
+receipt [rɪˈsiːt] – чек
+invoice [ˈɪnvɔɪs] – счёт
+refund [ˈriːfʌnd] – возврат денег
+exchange [ɪksˈtʃeɪndʒ] – обмен
+transaction [trænˈzækʃən] – транзакция
+fee [fiː] – комиссия
+tip [tɪp] – чаевые
+service charge [ˈsɜːrvəs tʃɑːrdʒ] – плата за обслуживание
+coupon [ˈkuːpɑːn] – купон
+voucher [ˈvaʊtʃər] – ваучер
+discount code [ˈdɪskaʊnt koʊd] – промокод
+sale event [seɪl ɪˈvent] – распродажа
+offer [ˈɔːfər] – предложение
+deal [diːl] – сделка
+installment [ɪnˈstɔːlmənt] – рассрочка
+financing [faɪˈnænsɪŋ] – финансирование
+loan [loʊn] – кредит
+interest [ˈɪntrəst] – процент
+budget [ˈbʌdʒət] – бюджет
+saving [ˈseɪvɪŋ] – сбережение
+expense [ɪkˈspens] – расход
+customer [ˈkʌstəmər] – клиент
+client [ˈklaɪənt] – клиент
+shopper [ˈʃɑːpər] – покупатель
+cash register [kæʃ ˈredʒəstər] – кассовый аппарат
+cashier [kæˈʃɪr] – кассир
+shopping cart [ˈʃɑːpɪŋ kɑːrt] – тележка
+basket [ˈbæskət] – корзина
+order [ˈɔːrdər] – заказ
+delivery [dɪˈlɪvəri] – доставка
+shipping [ˈʃɪpɪŋ] – доставка
+online shopping [ˈɔːnlaɪn ˈʃɑːpɪŋ] – онлайн-покупки
+website [ˈwebsaɪt] – сайт
+e-commerce [ˈiː kɑːmərs] – электронная коммерция
+transaction fee [trænˈzækʃən fiː] – комиссия за транзакцию
+retail [ˈriːteɪl] – розничная торговля
+wholesale [ˈhoʊlseɪl] – оптовая торговля
+invoice number [ˈɪnvɔɪs ˈnʌmbər] – номер счёта
+receipt number [rɪˈsiːt ˈnʌmbər] – номер чека
+warranty [ˈwɔːrənti] – гарантия
+guarantee [ˌɡærənˈtiː] – гарантия
+exchange rate [ɪksˈtʃeɪndʒ reɪt] – обменный курс
+profit [ˈprɑːfət] – прибыль
+loss [lɔːs] – убыток
+merchant [ˈmɜːrtʃənt] – торговец
+seller [ˈselər] – продавец
+buyer [ˈbaɪər] – покупатель
+negotiation [nɪˌɡoʊʃiˈeɪʃən] – переговоры

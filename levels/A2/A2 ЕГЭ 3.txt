@@ -1,20 +1,20 @@
-sport – спорт
-team – команда
-player – игрок
-game – игра
-match – матч, соревнование
-healthy – здоровый
-exercise – упражнение
-active – активный
-train – тренироваться
-coach – тренер
-friendship – дружба
-celebrate – праздновать
-festival – фестиваль
-crowd – толпа
-performance – выступление
-stage – сцена
-audience – аудитория, зрители
-enjoy – наслаждаться
-favourite – любимый
-special – особенный
+sport [spɔːrt] – спорт
+team [tiːm] – команда
+player [ˈpleɪər] – игрок
+game [ɡeɪm] – игра
+match [mætʃ] – матч, соревнование
+healthy [ˈhelθi] – здоровый
+exercise [ˈeksərsaɪz] – упражнение
+active [ˈæktɪv] – активный
+train [treɪn] – тренироваться
+coach [koʊtʃ] – тренер
+friendship [ˈfrendʃɪp] – дружба
+celebrate [ˈseləbreɪt] – праздновать
+festival [ˈfestəvəl] – фестиваль
+crowd [kraʊd] – толпа
+performance [pərˈfɔːrməns] – выступление
+stage [steɪdʒ] – сцена
+audience [ˈɔːdiəns] – аудитория, зрители
+enjoy [ɪnˈdʒɔɪ] – наслаждаться
+favourite [ˈfeɪvərət] – любимый
+special [ˈspeʃəl] – особенный

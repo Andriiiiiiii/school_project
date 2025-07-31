@@ -1,80 +1,80 @@
-teacher – учитель
-professor – профессор
-student – студент
-doctor – врач
-nurse – медсестра
-dentist – стоматолог
-pharmacist – фармацевт
-engineer – инженер
-architect – архитектор
-lawyer – юрист
-accountant – бухгалтер
-manager – менеджер
-clerk – клерк
-secretary – секретарь
-receptionist – администратор
-salesman – продавец
-cashier – кассир
-chef – шеф-повар
-cook – повар
-waiter – официант
-waitress – официантка
-bartender – бармен
-pilot – пилот
-driver – водитель
-bus driver – водитель автобуса
-taxi driver – таксист
-police officer – полицейский
-firefighter – пожарный
-soldier – солдат
-military officer – военный офицер
-journalist – журналист
-reporter – репортер
-editor – редактор
-writer – писатель
-author – автор
-musician – музыкант
-singer – певец/певица
-actor – актёр
-actress – актриса
-dancer – танцор/танцовщица
-artist – художник
-photographer – фотограф
-designer – дизайнер
-programmer – программист
-developer – разработчик
-IT specialist – специалист по ИТ
-scientist – учёный
-researcher – исследователь
-analyst – аналитик
-consultant – консультант
-technician – техник
-mechanic – механик
-plumber – сантехник
-electrician – электрик
-carpenter – плотник
-builder – строитель
-farmer – фермер
-gardener – садовник
-butcher – мясник
-baker – пекарь
-fisherman – рыбак
-sailor – моряк
-flight attendant – стюард/стюардесса
-coach – тренер
-trainer – инструктор
-athlete – спортсмен
-referee – судья
-judge – судья
-paralegal – помощник юриста
-social worker – социальный работник
-psychologist – психолог
-therapist – терапевт
-counselor – консультант
-hairdresser – парикмахер
-beautician – косметолог
-barber – парикмахер
-security guard – охранник
-chauffeur – шофёр
-entrepreneur – предприниматель
-executive – руководитель
+teacher [ˈtiːtʃər] – учитель
+professor [prəˈfesər] – профессор
+student [ˈstuːdənt] – студент
+doctor [ˈdɑːktər] – врач
+nurse [nɜːrs] – медсестра
+dentist [ˈdentəst] – стоматолог
+pharmacist [ˈfɑːrməsəst] – фармацевт
+engineer [ˌendʒəˈnɪr] – инженер
+architect [ˈɑːrkətekt] – архитектор
+lawyer [ˈlɔːjər] – юрист
+accountant [əˈkaʊntənt] – бухгалтер
+manager [ˈmænədʒər] – менеджер
+clerk [klɜːrk] – клерк
+secretary [ˈsekrəteri] – секретарь
+receptionist [rɪˈsepʃənəst] – администратор
+salesman [ˈseɪlzmən] – продавец
+cashier [kæˈʃɪr] – кассир
+chef [ʃef] – шеф-повар
+cook [kʊk] – повар
+waiter [ˈweɪtər] – официант
+waitress [ˈweɪtrəs] – официантка
+bartender [ˈbɑːrtendər] – бармен
+pilot [ˈpaɪlət] – пилот
+driver [ˈdraɪvər] – водитель
+bus driver [bʌs ˈdraɪvər] – водитель автобуса
+taxi driver [ˈtæksi ˈdraɪvər] – таксист
+police officer [pəˈliːs ˈɔːfəsər] – полицейский
+firefighter [ˈfaɪərfaɪtər] – пожарный
+soldier [ˈsoʊldʒər] – солдат
+military officer [ˈmɪləteri ˈɔːfəsər] – военный офицер
+journalist [ˈdʒɜːrnələst] – журналист
+reporter [rɪˈpɔːrtər] – репортер
+editor [ˈedətər] – редактор
+writer [ˈraɪtər] – писатель
+author [ˈɔːθər] – автор
+musician [mjuˈzɪʃən] – музыкант
+singer [ˈsɪŋər] – певец/певица
+actor [ˈæktər] – актёр
+actress [ˈæktrəs] – актриса
+dancer [ˈdænsər] – танцор/танцовщица
+artist [ˈɑːrtəst] – художник
+photographer [fəˈtɑːɡrəfər] – фотограф
+designer [dɪˈzaɪnər] – дизайнер
+programmer [ˈproʊɡræmər] – программист
+developer [dɪˈveləpər] – разработчик
+IT specialist [ˌaɪ ˈtiː ˈspeʃələst] – специалист по ИТ
+scientist [ˈsaɪəntəst] – учёный
+researcher [rɪˈsɜːrtʃər] – исследователь
+analyst [ˈænələst] – аналитик
+consultant [kənˈsʌltənt] – консультант
+technician [tekˈnɪʃən] – техник
+mechanic [məˈkænɪk] – механик
+plumber [ˈplʌmər] – сантехник
+electrician [ɪˌlekˈtrɪʃən] – электрик
+carpenter [ˈkɑːrpəntər] – плотник
+builder [ˈbɪldər] – строитель
+farmer [ˈfɑːrmər] – фермер
+gardener [ˈɡɑːrdnər] – садовник
+butcher [ˈbʊtʃər] – мясник
+baker [ˈbeɪkər] – пекарь
+fisherman [ˈfɪʃərmən] – рыбак
+sailor [ˈseɪlər] – моряк
+flight attendant [flaɪt əˈtendənt] – стюард/стюардесса
+coach [koʊtʃ] – тренер
+trainer [ˈtreɪnər] – инструктор
+athlete [ˈæθliːt] – спортсмен
+referee [ˌrefəˈriː] – судья
+judge [dʒʌdʒ] – судья
+paralegal [ˌpærəˈliːɡəl] – помощник юриста
+social worker [ˈsoʊʃəl ˈwɜːrkər] – социальный работник
+psychologist [saɪˈkɑːlədʒəst] – психолог
+therapist [ˈθerəpəst] – терапевт
+counselor [ˈkaʊnsələr] – консультант
+hairdresser [ˈherdresər] – парикмахер
+beautician [bjuˈtɪʃən] – косметолог
+barber [ˈbɑːrbər] – парикмахер
+security guard [sɪˈkjʊrəti ɡɑːrd] – охранник
+chauffeur [ʃoʊˈfɜːr] – шофёр
+entrepreneur [ˌɑːntrəprəˈnɜːr] – предприниматель
+executive [ɪɡˈzekjətɪv] – руководитель

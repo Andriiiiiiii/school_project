@@ -1,80 +1,80 @@
-restaurant – ресторан
-cafe – кафе
-diner – закусочная
-bistro – бистро
-menu – меню
-order – заказ
-meal – блюдо, еда
-appetizer – закуска
-soup – суп
-salad – салат
-main course – основное блюдо
-dessert – десерт
-drink – напиток
-coffee – кофе
-tea – чай
-juice – сок
-water – вода
-soda – газировка
-beer – пиво
-wine – вино
-cocktail – коктейль
-tip – чаевые
-bill – счёт
-check – чек
-reservation – бронирование
-table – стол
-chair – стул
-waiter – официант
-waitress – официантка
-chef – шеф-повар
-cook – повар
-kitchen – кухня
-service – обслуживание
-serve – подавать
-dish – блюдо
-plate – тарелка
-fork – вилка
-knife – нож
-spoon – ложка
-napkin – салфетка
-tablecloth – скатерть
-cutlery – столовые приборы
-condiment – приправа
-sauce – соус
-spice – специя
-salt – соль
-pepper – перец
-bread – хлеб
-butter – масло
-appetizer plate – тарелка закусок
-buffet – шведский стол
-takeaway – еда навынос
-delivery – доставка
-dine in – прием пищи в ресторане
-takeout – еда навынос
-fast food – фастфуд
-reservation confirmation – подтверждение бронирования
-food critic – кулинарный критик
-special – специальное блюдо
-recommendation – рекомендация
-customer – посетитель
-guest – гость
-ambience – атмосфера
-decor – декор
-cuisine – кухня (стиль приготовления)
-appetizer menu – меню закусок
-main dish – основное блюдо
-dessert menu – меню десертов
-special offer – специальное предложение
-combo meal – комбо-набор
-portion – порция
-refill – добавка
-gourmet – гурман
-casual – повседневный
-reservation desk – стойка бронирования
-waiter service – обслуживание официантом
-ordering – заказ
-flavor – вкус
-fresh – свежий
-culinary – кулинарный
+restaurant [ˈrestərɑːnt] – ресторан
+cafe [kæˈfeɪ] – кафе
+diner [ˈdaɪnər] – закусочная
+bistro [ˈbiːstroʊ] – бистро
+menu [ˈmenjuː] – меню
+order [ˈɔːrdər] – заказ
+meal [miːl] – блюдо, еда
+appetizer [ˈæpətaɪzər] – закуска
+soup [suːp] – суп
+salad [ˈsæləd] – салат
+main course [meɪn kɔːrs] – основное блюдо
+dessert [dɪˈzɜːrt] – десерт
+drink [drɪŋk] – напиток
+coffee [ˈkɔːfi] – кофе
+tea [tiː] – чай
+juice [dʒuːs] – сок
+water [ˈwɔːtər] – вода
+soda [ˈsoʊdə] – газировка
+beer [bɪr] – пиво
+wine [waɪn] – вино
+cocktail [ˈkɑːkteɪl] – коктейль
+tip [tɪp] – чаевые
+bill [bɪl] – счёт
+check [tʃek] – чек
+reservation [ˌrezərˈveɪʃən] – бронирование
+table [ˈteɪbəl] – стол
+chair [tʃer] – стул
+waiter [ˈweɪtər] – официант
+waitress [ˈweɪtrəs] – официантка
+chef [ʃef] – шеф-повар
+cook [kʊk] – повар
+kitchen [ˈkɪtʃən] – кухня
+service [ˈsɜːrvəs] – обслуживание
+serve [sɜːrv] – подавать
+dish [dɪʃ] – блюдо
+plate [pleɪt] – тарелка
+fork [fɔːrk] – вилка
+knife [naɪf] – нож
+spoon [spuːn] – ложка
+napkin [ˈnæpkən] – салфетка
+tablecloth [ˈteɪbəlklɔːθ] – скатерть
+cutlery [ˈkʌtləri] – столовые приборы
+condiment [ˈkɑːndəmənt] – приправа
+sauce [sɔːs] – соус
+spice [spaɪs] – специя
+salt [sɔːlt] – соль
+pepper [ˈpepər] – перец
+bread [bred] – хлеб
+butter [ˈbʌtər] – масло
+appetizer plate [ˈæpətaɪzər pleɪt] – тарелка закусок
+buffet [bəˈfeɪ] – шведский стол
+takeaway [ˈteɪkəweɪ] – еда навынос
+delivery [dɪˈlɪvəri] – доставка
+dine in [daɪn ɪn] – прием пищи в ресторане
+takeout [ˈteɪkaʊt] – еда навынос
+fast food [fæst fuːd] – фастфуд
+reservation confirmation [ˌrezərˈveɪʃən ˌkɑːnfərˈmeɪʃən] – подтверждение бронирования
+food critic [fuːd ˈkrɪtɪk] – кулинарный критик
+special [ˈspeʃəl] – специальное блюдо
+recommendation [ˌrekəmənˈdeɪʃən] – рекомендация
+customer [ˈkʌstəmər] – посетитель
+guest [ɡest] – гость
+ambience [ˈæmbiəns] – атмосфера
+decor [deɪˈkɔːr] – декор
+cuisine [kwəˈziːn] – кухня (стиль приготовления)
+appetizer menu [ˈæpətaɪzər ˈmenjuː] – меню закусок
+main dish [meɪn dɪʃ] – основное блюдо
+dessert menu [dɪˈzɜːrt ˈmenjuː] – меню десертов
+special offer [ˈspeʃəl ˈɔːfər] – специальное предложение
+combo meal [ˈkɑːmboʊ miːl] – комбо-набор
+portion [ˈpɔːrʃən] – порция
+refill [riːˈfɪl] – добавка
+gourmet [ɡʊrˈmeɪ] – гурман
+casual [ˈkæʒuəl] – повседневный
+reservation desk [ˌrezərˈveɪʃən desk] – стойка бронирования
+waiter service [ˈweɪtər ˈsɜːrvəs] – обслуживание официантом
+ordering [ˈɔːrdərɪŋ] – заказ
+flavor [ˈfleɪvər] – вкус
+fresh [freʃ] – свежий
+culinary [ˈkʌləneri] – кулинарный

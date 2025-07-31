@@ -1,80 +1,80 @@
-leisure – досуг
-free time – свободное время
-hobby – хобби
-interest – интерес
-pastime – занятие
-relaxation – расслабление
-vacation – отпуск
-holiday – каникулы
-travel – путешествие
-picnic – пикник
-camping – кемпинг
-hiking – поход
-cycling – велоспорт
-jogging – пробежка
-swimming – плавание
-dancing – танцы
-singing – пение
-drawing – рисование
-painting – живопись
-photography – фотография
-reading – чтение
-writing – письмо
-music – музыка
-playing guitar – игра на гитаре
-playing piano – игра на пианино
-watching movies – просмотр фильмов
-cinema – кинотеатр
-theater – театр
-concert – концерт
-museum – музей
-exhibition – выставка
-festival – фестиваль
-game – игра
-video game – видеоигра
-board game – настольная игра
-card game – карточная игра
-puzzle – головоломка
-chess – шахматы
-football – футбол
-basketball – баскетбол
-tennis – теннис
-golf – гольф
-yoga – йога
-meditation – медитация
-spa – спа
-massage – массаж
-sauna – сауна
-reading book – чтение книги
-relaxing – отдых
-sunbathing – загорание
-stargazing – наблюдение за звёздами
-birdwatching – наблюдение за птицами
-shopping – шоппинг
-dining out – обед вне дома
-karaoke – караоке
-party – вечеринка
-celebration – празднование
-socializing – общение
-chatting – болтовня
-blogging – ведение блога
-surfing the internet – серфинг в интернете
-playing sports – занятия спортом
-cycling trip – велопоездка
-fishing – рыбалка
-gardening – садоводство
-cooking class – кулинарный мастер-класс
-art class – урок искусства
-pottery – гончарное дело
-reading magazine – чтение журнала
-radio – радио
-podcast – подкаст
-streaming – потоковое видео
-DIY – своими руками
-crafting – рукоделие
-volunteering – волонтёрство
-charity – благотворительность
-relaxation time – время отдыха
-unwind – расслабляться
-break – перерыв
-leisure activity – развлечение
+leisure [ˈliːʒər] – досуг
+free time [friː taɪm] – свободное время
+hobby [ˈhɑːbi] – хобби
+interest [ˈɪntrəst] – интерес
+pastime [ˈpæstaɪm] – занятие
+relaxation [ˌriːlækˈseɪʃən] – расслабление
+vacation [veɪˈkeɪʃən] – отпуск
+holiday [ˈhɑːlədeɪ] – каникулы
+travel [ˈtrævəl] – путешествие
+picnic [ˈpɪknɪk] – пикник
+camping [ˈkæmpɪŋ] – кемпинг
+hiking [ˈhaɪkɪŋ] – поход
+cycling [ˈsaɪklɪŋ] – велоспорт
+jogging [ˈdʒɑːɡɪŋ] – пробежка
+swimming [ˈswɪmɪŋ] – плавание
+dancing [ˈdænsɪŋ] – танцы
+singing [ˈsɪŋɪŋ] – пение
+drawing [ˈdrɔːɪŋ] – рисование
+painting [ˈpeɪntɪŋ] – живопись
+photography [fəˈtɑːɡrəfi] – фотография
+reading [ˈriːdɪŋ] – чтение
+writing [ˈraɪtɪŋ] – письмо
+music [ˈmjuːzɪk] – музыка
+playing guitar [ˈpleɪɪŋ ɡɪˈtɑːr] – игра на гитаре
+playing piano [ˈpleɪɪŋ piˈænoʊ] – игра на пианино
+watching movies [ˈwɑːtʃɪŋ ˈmuːviz] – просмотр фильмов
+cinema [ˈsɪnəmə] – кинотеатр
+theater [ˈθiːətər] – театр
+concert [ˈkɑːnsərt] – концерт
+museum [mjuˈziːəm] – музей
+exhibition [ˌeksəˈbɪʃən] – выставка
+festival [ˈfestəvəl] – фестиваль
+game [ɡeɪm] – игра
+video game [ˈvɪdioʊ ɡeɪm] – видеоигра
+board game [bɔːrd ɡeɪm] – настольная игра
+card game [kɑːrd ɡeɪm] – карточная игра
+puzzle [ˈpʌzəl] – головоломка
+chess [tʃes] – шахматы
+football [ˈfʊtbɔːl] – футбол
+basketball [ˈbæskətbɔːl] – баскетбол
+tennis [ˈtenəs] – теннис
+golf [ɡɑːlf] – гольф
+yoga [ˈjoʊɡə] – йога
+meditation [ˌmedəˈteɪʃən] – медитация
+spa [spɑː] – спа
+massage [məˈsɑːʒ] – массаж
+sauna [ˈsɔːnə] – сауна
+reading book [ˈriːdɪŋ bʊk] – чтение книги
+relaxing [rɪˈlæksɪŋ] – отдых
+sunbathing [ˈsʌnbeɪθɪŋ] – загорание
+stargazing [ˈstɑːrɡeɪzɪŋ] – наблюдение за звёздами
+birdwatching [ˈbɜːrdwɑːtʃɪŋ] – наблюдение за птицами
+shopping [ˈʃɑːpɪŋ] – шоппинг
+dining out [ˈdaɪnɪŋ aʊt] – обед вне дома
+karaoke [ˌkæriˈoʊki] – караоке
+party [ˈpɑːrti] – вечеринка
+celebration [ˌseləˈbreɪʃən] – празднование
+socializing [ˈsoʊʃəlaɪzɪŋ] – общение
+chatting [ˈtʃætɪŋ] – болтовня
+blogging [ˈblɔːɡɪŋ] – ведение блога
+surfing the internet [ˈsɜːrfɪŋ ðə ˈɪntərnet] – серфинг в интернете
+playing sports [ˈpleɪɪŋ spɔːrts] – занятия спортом
+cycling trip [ˈsaɪklɪŋ trɪp] – велопоездка
+fishing [ˈfɪʃɪŋ] – рыбалка
+gardening [ˈɡɑːrdnɪŋ] – садоводство
+cooking class [ˈkʊkɪŋ klæs] – кулинарный мастер-класс
+art class [ɑːrt klæs] – урок искусства
+pottery [ˈpɑːtəri] – гончарное дело
+reading magazine [ˈriːdɪŋ ˈmæɡəziːn] – чтение журнала
+radio [ˈreɪdioʊ] – радио
+podcast [ˈpɑːdkæst] – подкаст
+streaming [ˈstriːmɪŋ] – потоковое видео
+DIY [ˌdiː aɪ ˈwaɪ] – своими руками
+crafting [ˈkræftɪŋ] – рукоделие
+volunteering [ˌvɑːlənˈtɪrɪŋ] – волонтёрство
+charity [ˈtʃærəti] – благотворительность
+relaxation time [ˌriːlækˈseɪʃən taɪm] – время отдыха
+unwind [ʌnˈwaɪnd] – расслабляться
+break [breɪk] – перерыв
+leisure activity [ˈliːʒər ækˈtɪvəti] – развлечение

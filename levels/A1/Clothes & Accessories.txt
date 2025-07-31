@@ -1,70 +1,70 @@
-shirt - рубашка
-t-shirt - футболка
-blouse - блузка
-sweater - свитер
-jacket - куртка
-coat - пальто
-pants - штаны
-trousers - брюки
-jeans - джинсы
-shorts - шорты
-skirt - юбка
-dress - платье
-suit - костюм
-tie - галстук
-scarf - шарф
-hat - шляпа
-cap - кепка
-gloves - перчатки
-socks - носки
-shoes - обувь
-boots - ботинки
-sandals - сандалии
-belt - ремень
-underwear - нижнее бельё
-bra - бюстгальтер
-pajamas - пижама
-robe - халат
-swimsuit - купальник
-sunglasses - солнцезащитные очки
-watch - часы
-bag - сумка
-purse - кошелёк
-wallet - бумажник
-jewelry - украшения
-necklace - ожерелье
-bracelet - браслет
-ring - кольцо
-earring - серьга
-tie clip - зажим для галстука
-cufflinks - запонки
-umbrella - зонт
-backpack - рюкзак
-briefcase - портфель
-stockings - чулки
-tights - колготки
-beanie - шапка
-headband - повязка
-bow tie - бабочка
-suspenders - подтяжки
-overalls - комбинезон
-raincoat - дождевик
-apron - фартук
-cardigan - кардиган
-polo shirt - поло
-vest - жилет
-sportswear - спортивная одежда
-tracksuit - спортивный костюм
-flip-flops - шлёпанцы
-sneakers - кроссовки
-platform shoes - туфли на платформе
-shawl - шаль
-mittens - варежки
-sunhat - панама
-leg warmer - гетры
-bow - бантик
-trench coat - тренч
-anorak - анорак
-slipper - тапок
-beret - берет
-brooch - брошь
+shirt [ʃɜːrt] - рубашка
+t-shirt [ˈtiː ʃɜːrt] - футболка
+blouse [blaʊs] - блузка
+sweater [ˈswetər] - свитер
+jacket [ˈdʒækət] - куртка
+coat [koʊt] - пальто
+pants [pænts] - штаны
+trousers [ˈtraʊzərz] - брюки
+jeans [dʒiːnz] - джинсы
+shorts [ʃɔːrts] - шорты
+skirt [skɜːrt] - юбка
+dress [dres] - платье
+suit [suːt] - костюм
+tie [taɪ] - галстук
+scarf [skɑːrf] - шарф
+hat [hæt] - шляпа
+cap [kæp] - кепка
+gloves [ɡlʌvz] - перчатки
+socks [sɑːks] - носки
+shoes [ʃuːz] - обувь
+boots [buːts] - ботинки
+sandals [ˈsændəlz] - сандалии
+belt [belt] - ремень
+underwear [ˈʌndərwer] - нижнее бельё
+bra [brɑː] - бюстгальтер
+pajamas [pəˈdʒɑːməz] - пижама
+robe [roʊb] - халат
+swimsuit [ˈswɪmsuːt] - купальник
+sunglasses [ˈsʌnɡlæsəz] - солнцезащитные очки
+watch [wɑːtʃ] - часы
+bag [bæɡ] - сумка
+purse [pɜːrs] - кошелёк
+wallet [ˈwɑːlət] - бумажник
+jewelry [ˈdʒuːəlri] - украшения
+necklace [ˈnekləs] - ожерелье
+bracelet [ˈbreɪslət] - браслет
+ring [rɪŋ] - кольцо
+earring [ˈɪrɪŋ] - серьга
+tie clip [taɪ klɪp] - зажим для галстука
+cufflinks [ˈkʌflɪŋks] - запонки
+umbrella [ʌmˈbrelə] - зонт
+backpack [ˈbækpæk] - рюкзак
+briefcase [ˈbriːfkeɪs] - портфель
+stockings [ˈstɑːkɪŋz] - чулки
+tights [taɪts] - колготки
+beanie [ˈbiːni] - шапка
+headband [ˈhedbænd] - повязка
+bow tie [boʊ taɪ] - бабочка
+suspenders [səˈspendərz] - подтяжки
+overalls [ˈoʊvərɔːlz] - комбинезон
+raincoat [ˈreɪnkoʊt] - дождевик
+apron [ˈeɪprən] - фартук
+cardigan [ˈkɑːrdɪɡən] - кардиган
+polo shirt [ˈpoʊloʊ ʃɜːrt] - поло
+vest [vest] - жилет
+sportswear [ˈspɔːrtswer] - спортивная одежда
+tracksuit [ˈtræksuːt] - спортивный костюм
+flip-flops [ˈflɪp flɑːps] - шлёпанцы
+sneakers [ˈsniːkərz] - кроссовки
+platform shoes [ˈplætfɔːrm ʃuːz] - туфли на платформе
+shawl [ʃɔːl] - шаль
+mittens [ˈmɪtənz] - варежки
+sunhat [ˈsʌnhæt] - панама
+leg warmer [leɡ ˈwɔːrmər] - гетры
+bow [boʊ] - бантик
+trench coat [trentʃ koʊt] - тренч
+anorak [ˈænəræk] - анорак
+slipper [ˈslɪpər] - тапок
+beret [bəˈreɪ] - берет
+brooch [broʊtʃ] - брошь

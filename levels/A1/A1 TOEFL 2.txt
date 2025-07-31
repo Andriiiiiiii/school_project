@@ -1,20 +1,20 @@
-book – книга
-word – слово
-sentence – предложение (грамматическое)
-test – тест, проверка
-question – вопрос
-explain – объяснять
-start – начинать
-finish – заканчивать
-remember – помнить
-forget – забывать
-example – пример
-letter – письмо, буква
-easy – лёгкий
-difficult – трудный
-help – помогать
-use – использовать
-talk – разговаривать
-subject – предмет, тема
-important – важный
-classmate – одноклассник
+book [bʊk] – книга
+word [wɜːrd] – слово
+sentence [ˈsentəns] – предложение (грамматическое)
+test [test] – тест, проверка
+question [ˈkwestʃən] – вопрос
+explain [ɪkˈspleɪn] – объяснять
+start [stɑːrt] – начинать
+finish [ˈfɪnɪʃ] – заканчивать
+remember [rɪˈmembər] – помнить
+forget [fərˈɡet] – забывать
+example [ɪɡˈzæmpəl] – пример
+letter [ˈletər] – письмо, буква
+easy [ˈiːzi] – лёгкий
+difficult [ˈdɪfɪkəlt] – трудный
+help [help] – помогать
+use [juːz] – использовать
+talk [tɔːk] – разговаривать
+subject [ˈsʌbdʒekt] – предмет, тема
+important [ɪmˈpɔːrtənt] – важный
+classmate [ˈklæsmeɪt] – одноклассник

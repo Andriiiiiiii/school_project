@@ -1,20 +1,20 @@
-answer – ответ, отвечать
-community – сообщество
-difficult – трудный
-event – событие
-famous – известный
-goal – цель
-holiday – праздник
-interest – интерес
-job – работа
-travel – путешествовать
-city – город
-country – страна
-culture – культура
-tradition – традиция
-museum – музей
-history – история
-popular – популярный
-visit – посещать
-journey – путешествие
-plan – план
+answer [ˈænsər] – ответ, отвечать
+community [kəˈmjuːnəti] – сообщество
+difficult [ˈdɪfɪkəlt] – трудный
+event [ɪˈvent] – событие
+famous [ˈfeɪməs] – известный
+goal [ɡoʊl] – цель
+holiday [ˈhɑːlədeɪ] – праздник
+interest [ˈɪntrəst] – интерес
+job [dʒɑːb] – работа
+travel [ˈtrævəl] – путешествовать
+city [ˈsɪti] – город
+country [ˈkʌntri] – страна
+culture [ˈkʌltʃər] – культура
+tradition [trəˈdɪʃən] – традиция
+museum [mjuˈziːəm] – музей
+history [ˈhɪstəri] – история
+popular [ˈpɑːpjələr] – популярный
+visit [ˈvɪzət] – посещать
+journey [ˈdʒɜːrni] – путешествие
+plan [plæn] – план

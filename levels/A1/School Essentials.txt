@@ -1,70 +1,70 @@
-school - школа
-classroom - класс
-teacher - учитель
-student - ученик
-lesson - урок
-homework - домашнее задание
-notebook - тетрадь
-pencil - карандаш
-pen - ручка
-eraser - ластик
-ruler - линейка
-backpack - рюкзак
-schoolbag - школьная сумка
-desk - парта
-chair - стул
-blackboard - доска
-whiteboard - белая доска
-marker - маркер
-chalk - мел
-book - книга
-textbook - учебник
-dictionary - словарь
-computer - компьютер
-laptop - ноутбук
-projector - проектор
-globe - глобус
-map - карта
-crayon - цветной карандаш
-scissors - ножницы
-glue - клей
-paper - бумага
-notebook paper - лист бумаги
-folder - папка
-binder - скоросшиватель
-pencil case - пенал
-calculator - калькулятор
-test - тест
-exam - экзамен
-grade - оценка
-subject - предмет
-science - наука
-math - математика
-history - история
-geography - география
-literature - литература
-music - музыка
-art class - урок искусства
-computer class - урок информатики
-library - библиотека
-study - учеба
-lesson plan - план урока
-schedule - расписание
-break - перемена
-lunch - обед
-cafeteria - столовая
-project - проект
-research - исследование
-report - доклад
-attendance - посещаемость
-field trip - экскурсия
-sketchbook - блокнот для эскизов
-stapler - степлер
-paperclip - скрепка
-rubber band - резинка
-binder clip - зажим
-graduation - выпускной
-uniform - форма
-diploma - диплом
-principal - директор
-attendance sheet - ведомость
+school [skuːl] - школа
+classroom [ˈklæsruːm] - класс
+teacher [ˈtiːtʃər] - учитель
+student [ˈstuːdənt] - ученик
+lesson [ˈlesən] - урок
+homework [ˈhoʊmwɜːrk] - домашнее задание
+notebook [ˈnoʊtbʊk] - тетрадь
+pencil [ˈpensəl] - карандаш
+pen [pen] - ручка
+eraser [ɪˈreɪsər] - ластик
+ruler [ˈruːlər] - линейка
+backpack [ˈbækpæk] - рюкзак
+schoolbag [ˈskuːlbæɡ] - школьная сумка
+desk [desk] - парта
+chair [tʃer] - стул
+blackboard [ˈblækbɔːrd] - доска
+whiteboard [ˈwaɪtbɔːrd] - белая доска
+marker [ˈmɑːrkər] - маркер
+chalk [tʃɔːk] - мел
+book [bʊk] - книга
+textbook [ˈtekstbʊk] - учебник
+dictionary [ˈdɪkʃəneri] - словарь
+computer [kəmˈpjuːtər] - компьютер
+laptop [ˈlæptɑːp] - ноутбук
+projector [prəˈdʒektər] - проектор
+globe [ɡloʊb] - глобус
+map [mæp] - карта
+crayon [ˈkreɪən] - цветной карандаш
+scissors [ˈsɪzərz] - ножницы
+glue [ɡluː] - клей
+paper [ˈpeɪpər] - бумага
+notebook paper [ˈnoʊtbʊk ˈpeɪpər] - лист бумаги
+folder [ˈfoʊldər] - папка
+binder [ˈbaɪndər] - скоросшиватель
+pencil case [ˈpensəl keɪs] - пенал
+calculator [ˈkælkjəleɪtər] - калькулятор
+test [test] - тест
+exam [ɪɡˈzæm] - экзамен
+grade [ɡreɪd] - оценка
+subject [ˈsʌbdʒekt] - предмет
+science [ˈsaɪəns] - наука
+math [mæθ] - математика
+history [ˈhɪstəri] - история
+geography [dʒiˈɑːɡrəfi] - география
+literature [ˈlɪtərətʃər] - литература
+music [ˈmjuːzɪk] - музыка
+art class [ɑːrt klæs] - урок искусства
+computer class [kəmˈpjuːtər klæs] - урок информатики
+library [ˈlaɪbreri] - библиотека
+study [ˈstʌdi] - учеба
+lesson plan [ˈlesən plæn] - план урока
+schedule [ˈskedʒuːl] - расписание
+break [breɪk] - перемена
+lunch [lʌntʃ] - обед
+cafeteria [ˌkæfəˈtɪriə] - столовая
+project [ˈprɑːdʒekt] - проект
+research [rɪˈsɜːrtʃ] - исследование
+report [rɪˈpɔːrt] - доклад
+attendance [əˈtendəns] - посещаемость
+field trip [fiːld trɪp] - экскурсия
+sketchbook [ˈsketʃbʊk] - блокнот для эскизов
+stapler [ˈsteɪplər] - степлер
+paperclip [ˈpeɪpərklɪp] - скрепка
+rubber band [ˈrʌbər bænd] - резинка
+binder clip [ˈbaɪndər klɪp] - зажим
+graduation [ˌɡrædʒuˈeɪʃən] - выпускной
+uniform [ˈjuːnɪfɔːrm] - форма
+diploma [dɪˈploʊmə] - диплом
+principal [ˈprɪnsəpəl] - директор
+attendance sheet [əˈtendəns ʃiːt] - ведомость

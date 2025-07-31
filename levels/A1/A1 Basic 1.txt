@@ -1,51 +1,51 @@
-Hello – привет  
-Goodbye – пока  
-Please – пожалуйста  
-Thank you – спасибо  
-Yes – да  
-No – нет  
-Name – имя  
-Friend – друг  
-Family – семья  
-Mother – мама  
-Father – папа  
-Brother – брат  
-Sister – сестра  
-House – дом  
-Room – комната  
-School – школа  
-Teacher – учитель  
-Student – ученик  
-Book – книга  
-Pen – ручка  
-Chair – стул  
-Table – стол  
-Window – окно  
-Door – дверь  
-Bag – сумка  
-Food – еда  
-Water – вода  
-Milk – молоко  
-Bread – хлеб  
-Apple – яблоко  
-Dog – собака  
-Cat – кошка  
-Day – день  
-Night – ночь  
-Morning – утро  
-Evening – вечер  
-Sun – солнце  
-Rain – дождь  
-Cold – холод  
-Hot – жарко  
-Happy – счастливый  
-Sad – грустный  
-Big – большой  
-Small – маленький  
-Good – хороший  
-Bad – плохой  
-Go – идти  
-Come – приходить  
-Eat – есть  
-Drink – пить  
-Sleep – спать  
+Hello [həˈloʊ] – привет
+Goodbye [ɡʊdˈbaɪ] – пока
+Please [pliːz] – пожалуйста
+Thank you [θæŋk juː] – спасибо
+Yes [jes] – да
+No [noʊ] – нет
+Name [neɪm] – имя
+Friend [frend] – друг
+Family [ˈfæməli] – семья
+Mother [ˈmʌðər] – мама
+Father [ˈfɑːðər] – папа
+Brother [ˈbrʌðər] – брат
+Sister [ˈsɪstər] – сестра
+House [haʊs] – дом
+Room [ruːm] – комната
+School [skuːl] – школа
+Teacher [ˈtiːtʃər] – учитель
+Student [ˈstuːdənt] – ученик
+Book [bʊk] – книга
+Pen [pen] – ручка
+Chair [tʃer] – стул
+Table [ˈteɪbəl] – стол
+Window [ˈwɪndoʊ] – окно
+Door [dɔːr] – дверь
+Bag [bæɡ] – сумка
+Food [fuːd] – еда
+Water [ˈwɔːtər] – вода
+Milk [mɪlk] – молоко
+Bread [bred] – хлеб
+Apple [ˈæpəl] – яблоко
+Dog [dɔːɡ] – собака
+Cat [kæt] – кошка
+Day [deɪ] – день
+Night [naɪt] – ночь
+Morning [ˈmɔːrnɪŋ] – утро
+Evening [ˈiːvnɪŋ] – вечер
+Sun [sʌn] – солнце
+Rain [reɪn] – дождь
+Cold [koʊld] – холод
+Hot [hɑːt] – жарко
+Happy [ˈhæpi] – счастливый
+Sad [sæd] – грустный
+Big [bɪɡ] – большой
+Small [smɔːl] – маленький
+Good [ɡʊd] – хороший
+Bad [bæd] – плохой
+Go [ɡoʊ] – идти
+Come [kʌm] – приходить
+Eat [iːt] – есть
+Drink [drɪŋk] – пить
+Sleep [sliːp] – спать

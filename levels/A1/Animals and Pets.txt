@@ -1,70 +1,70 @@
-dog - собака
-cat - кошка
-bird - птица
-fish - рыба
-rabbit - кролик
-hamster - хомяк
-guinea pig - морская свинка
-parrot - попугай
-turtle - черепаха
-snake - змея
-lizard - ящерица
-horse - лошадь
-cow - корова
-pig - свинья
-sheep - овца
-goat - коза
-duck - утка
-chicken - курица
-rooster - петух
-goose - гусь
-deer - олень
-bear - медведь
-lion - лев
-tiger - тигр
-elephant - слон
-giraffe - жираф
-zebra - зебра
-monkey - обезьяна
-kangaroo - кенгуру
-panda - панда
-fox - лиса
-wolf - волк
-crocodile - крокодил
-alligator - аллигатор
-dolphin - дельфин
-whale - кит
-shark - акула
-octopus - осьминог
-crab - краб
-bee - пчела
-butterfly - бабочка
-ant - муравей
-spider - паук
-snail - улитка
-frog - лягушка
-squirrel - белка
-raccoon - енот
-bat - летучая мышь
-hedgehog - ёжик
-seal - тюлень
-penguin - пингвин
-polar bear - белый медведь
-cheetah - гепард
-camel - верблюд
-shrimp - креветка
-crayfish - раки
-seagull - чайка
-pelican - пеликан
-swan - лебедь
-ostrich - страус
-peacock - павлин
-flamingo - фламинго
-parakeet - волнистый попугайчик
-canary - канарейка
-goldfish - золотая рыбка
-iguana - игуана
-porcupine - дикобраз
-otter - выдра
-mole - крот
-koala - коала
+dog [dɔːɡ] - собака
+cat [kæt] - кошка
+bird [bɜːrd] - птица
+fish [fɪʃ] - рыба
+rabbit [ˈræbɪt] - кролик
+hamster [ˈhæmstər] - хомяк
+guinea pig [ˈɡɪni pɪɡ] - морская свинка
+parrot [ˈpærət] - попугай
+turtle [ˈtɜːrtəl] - черепаха
+snake [sneɪk] - змея
+lizard [ˈlɪzərd] - ящерица
+horse [hɔːrs] - лошадь
+cow [kaʊ] - корова
+pig [pɪɡ] - свинья
+sheep [ʃiːp] - овца
+goat [ɡoʊt] - коза
+duck [dʌk] - утка
+chicken [ˈtʃɪkən] - курица
+rooster [ˈruːstər] - петух
+goose [ɡuːs] - гусь
+deer [dɪr] - олень
+bear [ber] - медведь
+lion [ˈlaɪən] - лев
+tiger [ˈtaɪɡər] - тигр
+elephant [ˈeləfənt] - слон
+giraffe [dʒəˈræf] - жираф
+zebra [ˈziːbrə] - зебра
+monkey [ˈmʌŋki] - обезьяна
+kangaroo [ˌkæŋɡəˈruː] - кенгуру
+panda [ˈpændə] - панда
+fox [fɑːks] - лиса
+wolf [wʊlf] - волк
+crocodile [ˈkrɑːkədaɪl] - крокодил
+alligator [ˈæləˌɡeɪtər] - аллигатор
+dolphin [ˈdɑːlfɪn] - дельфин
+whale [weɪl] - кит
+shark [ʃɑːrk] - акула
+octopus [ˈɑːktəpəs] - осьминог
+crab [kræb] - краб
+bee [biː] - пчела
+butterfly [ˈbʌtərflaɪ] - бабочка
+ant [ænt] - муравей
+spider [ˈspaɪdər] - паук
+snail [sneɪl] - улитка
+frog [frɔːɡ] - лягушка
+squirrel [ˈskwɜːrəl] - белка
+raccoon [ræˈkuːn] - енот
+bat [bæt] - летучая мышь
+hedgehog [ˈhedʒhɔːɡ] - ёжик
+seal [siːl] - тюлень
+penguin [ˈpeŋɡwɪn] - пингвин
+polar bear [ˈpoʊlər ber] - белый медведь
+cheetah [ˈtʃiːtə] - гепард
+camel [ˈkæməl] - верблюд
+shrimp [ʃrɪmp] - креветка
+crayfish [ˈkreɪfɪʃ] - раки
+seagull [ˈsiːɡʌl] - чайка
+pelican [ˈpelɪkən] - пеликан
+swan [swɑːn] - лебедь
+ostrich [ˈɔːstrɪtʃ] - страус
+peacock [ˈpiːkɑːk] - павлин
+flamingo [fləˈmɪŋɡoʊ] - фламинго
+parakeet [ˈpærəkiːt] - волнистый попугайчик
+canary [kəˈneri] - канарейка
+goldfish [ˈɡoʊldfɪʃ] - золотая рыбка
+iguana [ɪˈɡwɑːnə] - игуана
+porcupine [ˈpɔːrkjəpaɪn] - дикобраз
+otter [ˈɑːtər] - выдра
+mole [moʊl] - крот
+koala [koʊˈɑːlə] - коала

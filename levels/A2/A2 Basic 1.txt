@@ -1,50 +1,50 @@
-Neighbour – сосед  
-Town – городок  
-Village – деревня  
-Flat – квартира  
-Ceiling – потолок  
-Floor – пол  
-Mirror – зеркало  
-Shower – душ  
-Toothbrush – зубная щётка  
-Towel – полотенце  
-Couch – диван  
-Cup – чашка  
-Fork – вилка  
-Knife – нож  
-Plate – тарелка  
-Fridge – холодильник  
-Market – рынок  
-Cash – наличные  
-Price – цена  
-Cheap – дешёвый  
-Expensive – дорогой  
-Buy – покупать  
-Sell – продавать  
-Waiter – официант  
-Menu – меню  
-Meal – приём пищи  
-Breakfast – завтрак  
-Lunch – обед  
-Dinner – ужин  
-Hungry – голодный  
-Thirsty – испытывающий жажду  
-Sick – больной  
-Healthy – здоровый  
-Doctor – врач  
-Hospital – больница  
-Help – помогать  
-Clean – чистить / чистый  
-Dirty – грязный  
-Fast – быстрый  
-Slow – медленный  
-Easy – лёгкий  
-Difficult – трудный  
-Important – важный  
-Different – разный  
-Together – вместе  
-Alone – один  
-Everyone – все  
-Someone – кто-то  
-Nothing – ничего  
-Everything – всё  
+Neighbour [ˈneɪbər] – сосед  
+Town [taʊn] – городок  
+Village [ˈvɪlɪdʒ] – деревня  
+Flat [flæt] – квартира  
+Ceiling [ˈsiːlɪŋ] – потолок  
+Floor [flɔːr] – пол  
+Mirror [ˈmɪrər] – зеркало  
+Shower [ˈʃaʊər] – душ  
+Toothbrush [ˈtuːθbrʌʃ] – зубная щётка  
+Towel [ˈtaʊəl] – полотенце  
+Couch [kaʊtʃ] – диван  
+Cup [kʌp] – чашка  
+Fork [fɔːrk] – вилка  
+Knife [naɪf] – нож  
+Plate [pleɪt] – тарелка  
+Fridge [frɪdʒ] – холодильник  
+Market [ˈmɑːrkət] – рынок  
+Cash [kæʃ] – наличные  
+Price [praɪs] – цена  
+Cheap [tʃiːp] – дешёвый  
+Expensive [ɪkˈspensɪv] – дорогой  
+Buy [baɪ] – покупать  
+Sell [sel] – продавать  
+Waiter [ˈweɪtər] – официант  
+Menu [ˈmenjuː] – меню  
+Meal [miːl] – приём пищи  
+Breakfast [ˈbrekfəst] – завтрак  
+Lunch [lʌntʃ] – обед  
+Dinner [ˈdɪnər] – ужин  
+Hungry [ˈhʌŋɡri] – голодный  
+Thirsty [ˈθɜːrsti] – испытывающий жажду  
+Sick [sɪk] – больной  
+Healthy [ˈhelθi] – здоровый  
+Doctor [ˈdɑːktər] – врач  
+Hospital [ˈhɑːspɪtəl] – больница  
+Help [help] – помогать  
+Clean [kliːn] – чистить / чистый  
+Dirty [ˈdɜːrti] – грязный  
+Fast [fæst] – быстрый  
+Slow [sloʊ] – медленный  
+Easy [ˈiːzi] – лёгкий  
+Difficult [ˈdɪfɪkəlt] – трудный  
+Important [ɪmˈpɔːrtənt] – важный  
+Different [ˈdɪfərənt] – разный  
+Together [təˈɡeðər] – вместе  
+Alone [əˈloʊn] – один  
+Everyone [ˈevriˌwʌn] – все  
+Someone [ˈsʌmwʌn] – кто-то  
+Nothing [ˈnʌθɪŋ] – ничего  
+Everything [ˈevriθɪŋ] – всё

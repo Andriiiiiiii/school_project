@@ -1,70 +1,70 @@
-apple - яблоко
-book - книга
-car - машина, автомобиль
-dog - собака
-chair - стул
-table - стол
-water - вода
-food - еда, пища
-house - дом
-family - семья
-friend - друг
-school - школа
-pen - ручка
-pencil - карандаш
-phone - телефон
-door - дверь
-window - окно
-bed - кровать
-computer - компьютер
-bus - автобус
-road - дорога
-tree - дерево
-flower - цветок
-sun - солнце
-moon - луна
-star - звезда
-sky - небо
-rain - дождь
-snow - снег
-wind - ветер
-fire - огонь
-earth - земля
-music - музыка
-movie - фильм
-song - песня
-breakfast - завтрак
-lunch - обед
-dinner - ужин
-coffee - кофе
-tea - чай
-bread - хлеб
-cheese - сыр
-fruit - фрукт
-vegetable - овощ
-meat - мясо
-fish - рыба
-egg - яйцо
-milk - молоко
-sugar - сахар
-salt - соль
-pepper - перец
-chicken - курица
-beef - говядина
-rice - рис
-soup - суп
-salad - салат
-juice - сок
-butter - масло
-cake - торт
-cookie - печенье
-park - парк
-street - улица
-shop - магазин
-market - рынок
-bank - банк
-hospital - больница
-church - церковь
-train - поезд
-airplane - самолёт
-bicycle - велосипед
+apple [ˈæpəl] - яблоко
+book [bʊk] - книга
+car [kɑːr] - машина, автомобиль
+dog [dɔːɡ] - собака
+chair [tʃer] - стул
+table [ˈteɪbəl] - стол
+water [ˈwɔːtər] - вода
+food [fuːd] - еда, пища
+house [haʊs] - дом
+family [ˈfæməli] - семья
+friend [frend] - друг
+school [skuːl] - школа
+pen [pen] - ручка
+pencil [ˈpensəl] - карандаш
+phone [foʊn] - телефон
+door [dɔːr] - дверь
+window [ˈwɪndoʊ] - окно
+bed [bed] - кровать
+computer [kəmˈpjuːtər] - компьютер
+bus [bʌs] - автобус
+road [roʊd] - дорога
+tree [triː] - дерево
+flower [ˈflaʊər] - цветок
+sun [sʌn] - солнце
+moon [muːn] - луна
+star [stɑːr] - звезда
+sky [skaɪ] - небо
+rain [reɪn] - дождь
+snow [snoʊ] - снег
+wind [wɪnd] - ветер
+fire [ˈfaɪər] - огонь
+earth [ɜːrθ] - земля
+music [ˈmjuːzɪk] - музыка
+movie [ˈmuːvi] - фильм
+song [sɔːŋ] - песня
+breakfast [ˈbrekfəst] - завтрак
+lunch [lʌntʃ] - обед
+dinner [ˈdɪnər] - ужин
+coffee [ˈkɔːfi] - кофе
+tea [tiː] - чай
+bread [bred] - хлеб
+cheese [tʃiːz] - сыр
+fruit [fruːt] - фрукт
+vegetable [ˈvedʒtəbəl] - овощ
+meat [miːt] - мясо
+fish [fɪʃ] - рыба
+egg [eɡ] - яйцо
+milk [mɪlk] - молоко
+sugar [ˈʃʊɡər] - сахар
+salt [sɔːlt] - соль
+pepper [ˈpepər] - перец
+chicken [ˈtʃɪkən] - курица
+beef [biːf] - говядина
+rice [raɪs] - рис
+soup [suːp] - суп
+salad [ˈsæləd] - салат
+juice [dʒuːs] - сок
+butter [ˈbʌtər] - масло
+cake [keɪk] - торт
+cookie [ˈkʊki] - печенье
+park [pɑːrk] - парк
+street [striːt] - улица
+shop [ʃɑːp] - магазин
+market [ˈmɑːrkət] - рынок
+bank [bæŋk] - банк
+hospital [ˈhɑːspɪtəl] - больница
+church [tʃɜːrtʃ] - церковь
+train [treɪn] - поезд
+airplane [ˈerpleɪn] - самолёт
+bicycle [ˈbaɪsɪkəl] - велосипед

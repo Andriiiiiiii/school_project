@@ -1,21 +1,20 @@
-advantage – преимущество
-disadvantage – недостаток
-environment – окружающая среда
-future – будущее
-past – прошлое
-recommend – рекомендовать
-success – успех
-use – использовать
-problem – проблема
-solution – решение
-opportunity – возможность
-mistake – ошибка
-check – проверять
-support – поддерживать
-attention – внимание
-confidence – уверенность
-education – образование
-important – важный
-organize – организовывать
-remember – помнить
-
+advantage [ədˈvæntɪdʒ] – преимущество
+disadvantage [ˌdɪsədˈvæntɪdʒ] – недостаток
+environment [ɪnˈvaɪrənmənt] – окружающая среда
+future [ˈfjuːtʃər] – будущее
+past [pæst] – прошлое
+recommend [ˌrekəˈmend] – рекомендовать
+success [səkˈses] – успех
+use [juːz] – использовать
+problem [ˈprɑːbləm] – проблема
+solution [səˈluːʃən] – решение
+opportunity [ˌɑːpərˈtuːnəti] – возможность
+mistake [mɪˈsteɪk] – ошибка
+check [tʃek] – проверять
+support [səˈpɔːrt] – поддерживать
+attention [əˈtenʃən] – внимание
+confidence [ˈkɑːnfɪdəns] – уверенность
+education [ˌedʒuˈkeɪʃən] – образование
+important [ɪmˈpɔːrtənt] – важный
+organize [ˈɔːrɡənaɪz] – организовывать
+remember [rɪˈmembər] – помнить

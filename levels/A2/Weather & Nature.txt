@@ -1,80 +1,80 @@
-weather – погода
-climate – климат
-sunny – солнечно
-cloudy – облачно
-rainy – дождливо
-stormy – штормово
-windy – ветрено
-snowy – снежно
-foggy – туманно
-hot – жарко
-warm – тепло
-cool – прохладно
-cold – холодно
-thunder – гром
-lightning – молния
-rain – дождь
-shower – ливень
-drizzle – морось
-hail – град
-sleet – мокрый снег
-weather forecast – прогноз погоды
-temperature – температура
-degree – градус
-barometer – барометр
-humidity – влажность
-atmosphere – атмосфера
-natural – природный
-nature – природа
-forest – лес
-tree – дерево
-plant – растение
-flower – цветок
-garden – сад
-field – поле
-mountain – гора
-hill – холм
-valley – долина
-river – река
-lake – озеро
-ocean – океан
-sea – море
-beach – пляж
-desert – пустыня
-island – остров
-waterfall – водопад
-volcano – вулкан
-earthquake – землетрясение
-natural disaster – стихийное бедствие
-ecosystem – экосистема
-wildlife – дикая природа
-animal – животное
-bird – птица
-fish – рыба
-insect – насекомое
-weather station – метеостанция
-sunrise – восход
-sunset – закат
-season – сезон
-spring – весна
-summer – лето
-autumn – осень
-winter – зима
-rainbow – радуга
-drought – засуха
-flood – наводнение
-tremor – толчок
-tornado – торнадо
-hurricane – ураган
-cyclone – циклон
-breeze – бриз
-gust – порыв ветра
-weather vane – флюгер
-sprinkler – разбрызгиватель
-frost – мороз
-dew – роса
-soil – почва
-rock – скала
-mineral – минерал
-landscape – пейзаж
-horizon – горизонт
+weather [ˈweðər] – погода
+climate [ˈklaɪmət] – климат
+sunny [ˈsʌni] – солнечно
+cloudy [ˈklaʊdi] – облачно
+rainy [ˈreɪni] – дождливо
+stormy [ˈstɔːrmi] – штормово
+windy [ˈwɪndi] – ветрено
+snowy [ˈsnoʊi] – снежно
+foggy [ˈfɔːɡi] – туманно
+hot [hɑːt] – жарко
+warm [wɔːrm] – тепло
+cool [kuːl] – прохладно
+cold [koʊld] – холодно
+thunder [ˈθʌndər] – гром
+lightning [ˈlaɪtnɪŋ] – молния
+rain [reɪn] – дождь
+shower [ˈʃaʊər] – ливень
+drizzle [ˈdrɪzəl] – морось
+hail [heɪl] – град
+sleet [sliːt] – мокрый снег
+weather forecast [ˈweðər ˈfɔːrkæst] – прогноз погоды
+temperature [ˈtemprətʃər] – температура
+degree [dɪˈɡriː] – градус
+barometer [bəˈrɑːmətər] – барометр
+humidity [hjuːˈmɪdəti] – влажность
+atmosphere [ˈætməsfɪr] – атмосфера
+natural [ˈnætʃərəl] – природный
+nature [ˈneɪtʃər] – природа
+forest [ˈfɔːrəst] – лес
+tree [triː] – дерево
+plant [plænt] – растение
+flower [ˈflaʊər] – цветок
+garden [ˈɡɑːrdən] – сад
+field [fiːld] – поле
+mountain [ˈmaʊntən] – гора
+hill [hɪl] – холм
+valley [ˈvæli] – долина
+river [ˈrɪvər] – река
+lake [leɪk] – озеро
+ocean [ˈoʊʃən] – океан
+sea [siː] – море
+beach [biːtʃ] – пляж
+desert [ˈdezərt] – пустыня
+island [ˈaɪlənd] – остров
+waterfall [ˈwɔːtərfɔːl] – водопад
+volcano [vɑːlˈkeɪnoʊ] – вулкан
+earthquake [ˈɜːrθkweɪk] – землетрясение
+natural disaster [ˈnætʃərəl dɪˈzæstər] – стихийное бедствие
+ecosystem [ˈiːkoʊsɪstəm] – экосистема
+wildlife [ˈwaɪldlaɪf] – дикая природа
+animal [ˈænɪməl] – животное
+bird [bɜːrd] – птица
+fish [fɪʃ] – рыба
+insect [ˈɪnsekt] – насекомое
+weather station [ˈweðər ˈsteɪʃən] – метеостанция
+sunrise [ˈsʌnraɪz] – восход
+sunset [ˈsʌnset] – закат
+season [ˈsiːzən] – сезон
+spring [sprɪŋ] – весна
+summer [ˈsʌmər] – лето
+autumn [ˈɔːtəm] – осень
+winter [ˈwɪntər] – зима
+rainbow [ˈreɪnboʊ] – радуга
+drought [draʊt] – засуха
+flood [flʌd] – наводнение
+tremor [ˈtremər] – толчок
+tornado [tɔːrˈneɪdoʊ] – торнадо
+hurricane [ˈhɜːrəkeɪn] – ураган
+cyclone [ˈsaɪkloʊn] – циклон
+breeze [briːz] – бриз
+gust [ɡʌst] – порыв ветра
+weather vane [ˈweðər veɪn] – флюгер
+sprinkler [ˈsprɪŋklər] – разбрызгиватель
+frost [frɔːst] – мороз
+dew [duː] – роса
+soil [sɔɪl] – почва
+rock [rɑːk] – скала
+mineral [ˈmɪnərəl] – минерал
+landscape [ˈlændskeɪp] – пейзаж
+horizon [həˈraɪzən] – горизонт

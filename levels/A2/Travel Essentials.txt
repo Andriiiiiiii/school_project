@@ -1,80 +1,80 @@
-passport – паспорт
-visa – виза
-ticket – билет
-boarding pass – посадочный талон
-luggage – багаж
-suitcase – чемодан
-backpack – рюкзак
-bag – сумка
-map – карта
-guidebook – путеводитель
-itinerary – маршрут
-reservation – бронирование
-booking – заказ
-hotel – отель
-hostel – хостел
-motel – мотель
-accommodation – жильё
-room – комната
-bed – кровать
-key – ключ
-travel – путешествие
-journey – путешествие
-trip – поездка
-tour – тур
-destination – пункт назначения
-airport – аэропорт
-terminal – терминал
-flight – рейс
-airline – авиакомпания
-departure – вылет
-arrival – прибытие
-gate – выход (на посадку)
-check-in – регистрация
-security – безопасность
-customs – таможня
-border – граница
-exchange – обмен
-currency – валюта
-money – деньги
-cash – наличные
-credit card – кредитная карта
-travel adapter – адаптер для путешествий
-charger – зарядное устройство
-power bank – повербанк
-travel insurance – страховка
-emergency – чрезвычайная ситуация
-hotline – горячая линия
-local – местный
-translation – перевод
-language – язык
-culture – культура
-souvenir – сувенир
-camera – камера
-video – видео
-photo – фотография
-GPS – GPS
-navigation – навигация
-guide – гид
-tour bus – туристический автобус
-rental car – аренда машины
-taxi – такси
-shuttle – шаттл
-ticket counter – касса
-waiting area – зал ожидания
-departure lounge – зал вылета
-arrival hall – зал прибытия
-travel documents – проездные документы
-visa fee – сбор за визу
-baggage claim – получение багажа
-carousel – лента для багажа
-excursion – экскурсия
-tour guide – экскурсовод
-travel agency – туристическое агентство
-visa application – заявление на визу
-departure time – время вылета
-arrival time – время прибытия
-delay – задержка
-cancellation – отмена
-refund – возврат
-travel plan – план путешествия
+passport [ˈpæspɔːrt] – паспорт
+visa [ˈviːzə] – виза
+ticket [ˈtɪkət] – билет
+boarding pass [ˈbɔːrdɪŋ pæs] – посадочный талон
+luggage [ˈlʌɡɪdʒ] – багаж
+suitcase [ˈsuːtkeɪs] – чемодан
+backpack [ˈbækpæk] – рюкзак
+bag [bæɡ] – сумка
+map [mæp] – карта
+guidebook [ˈɡaɪdbʊk] – путеводитель
+itinerary [aɪˈtɪnəreri] – маршрут
+reservation [ˌrezərˈveɪʃən] – бронирование
+booking [ˈbʊkɪŋ] – заказ
+hotel [hoʊˈtel] – отель
+hostel [ˈhɑːstəl] – хостел
+motel [moʊˈtel] – мотель
+accommodation [əˌkɑːməˈdeɪʃən] – жильё
+room [ruːm] – комната
+bed [bed] – кровать
+key [kiː] – ключ
+travel [ˈtrævəl] – путешествие
+journey [ˈdʒɜːrni] – путешествие
+trip [trɪp] – поездка
+tour [tʊr] – тур
+destination [ˌdestəˈneɪʃən] – пункт назначения
+airport [ˈerpɔːrt] – аэропорт
+terminal [ˈtɜːrmənəl] – терминал
+flight [flaɪt] – рейс
+airline [ˈerlaɪn] – авиакомпания
+departure [dɪˈpɑːrtʃər] – вылет
+arrival [əˈraɪvəl] – прибытие
+gate [ɡeɪt] – выход (на посадку)
+check-in [ˈtʃek ɪn] – регистрация
+security [sɪˈkjʊrəti] – безопасность
+customs [ˈkʌstəmz] – таможня
+border [ˈbɔːrdər] – граница
+exchange [ɪksˈtʃeɪndʒ] – обмен
+currency [ˈkɜːrənsi] – валюта
+money [ˈmʌni] – деньги
+cash [kæʃ] – наличные
+credit card [ˈkredət kɑːrd] – кредитная карта
+travel adapter [ˈtrævəl əˈdæptər] – адаптер для путешествий
+charger [ˈtʃɑːrdʒər] – зарядное устройство
+power bank [ˈpaʊər bæŋk] – повербанк
+travel insurance [ˈtrævəl ɪnˈʃʊrəns] – страховка
+emergency [ɪˈmɜːrdʒənsi] – чрезвычайная ситуация
+hotline [ˈhɑːtlaɪn] – горячая линия
+local [ˈloʊkəl] – местный
+translation [trænsˈleɪʃən] – перевод
+language [ˈlæŋɡwɪdʒ] – язык
+culture [ˈkʌltʃər] – культура
+souvenir [ˌsuːvəˈnɪr] – сувенир
+camera [ˈkæmərə] – камера
+video [ˈvɪdioʊ] – видео
+photo [ˈfoʊtoʊ] – фотография
+GPS [ˌdʒiː piː ˈes] – GPS
+navigation [ˌnævəˈɡeɪʃən] – навигация
+guide [ɡaɪd] – гид
+tour bus [tʊr bʌs] – туристический автобус
+rental car [ˈrentəl kɑːr] – аренда машины
+taxi [ˈtæksi] – такси
+shuttle [ˈʃʌtəl] – шаттл
+ticket counter [ˈtɪkət ˈkaʊntər] – касса
+waiting area [ˈweɪtɪŋ ˈeriə] – зал ожидания
+departure lounge [dɪˈpɑːrtʃər laʊndʒ] – зал вылета
+arrival hall [əˈraɪvəl hɔːl] – зал прибытия
+travel documents [ˈtrævəl ˈdɑːkjəmənts] – проездные документы
+visa fee [ˈviːzə fiː] – сбор за визу
+baggage claim [ˈbæɡɪdʒ kleɪm] – получение багажа
+carousel [ˌkærəˈsel] – лента для багажа
+excursion [ɪkˈskɜːrʒən] – экскурсия
+tour guide [tʊr ɡaɪd] – экскурсовод
+travel agency [ˈtrævəl ˈeɪdʒənsi] – туристическое агентство
+visa application [ˈviːzə ˌæplɪˈkeɪʃən] – заявление на визу
+departure time [dɪˈpɑːrtʃər taɪm] – время вылета
+arrival time [əˈraɪvəl taɪm] – время прибытия
+delay [dɪˈleɪ] – задержка
+cancellation [ˌkænsəˈleɪʃən] – отмена
+refund [ˈriːfʌnd] – возврат
+travel plan [ˈtrævəl plæn] – план путешествия

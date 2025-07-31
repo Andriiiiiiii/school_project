@@ -1,70 +1,70 @@
-head - голова
-hair - волосы
-face - лицо
-eye - глаз
-ear - ухо
-nose - нос
-mouth - рот
-tooth - зуб
-tongue - язык
-chin - подбородок
-cheek - щека
-forehead - лоб
-neck - шея
-shoulder - плечо
-arm - рука
-elbow - локоть
-hand - кисть
-finger - палец
-thumb - большой палец
-nail - ноготь
-chest - грудь
-stomach - живот
-back - спина
-waist - талия
-hip - бедро
-leg - нога
-knee - колено
-ankle - лодыжка
-foot - ступня
-toe - палец ноги
-skin - кожа
-bone - кость
-muscle - мышца
-heart - сердце
-lung - лёгкое
-blood - кровь
-brain - мозг
-doctor - врач
-nurse - медсестра
-hospital - больница
-medicine - лекарство
-pill - таблетка
-vitamin - витамин
-exercise - упражнение
-walk - прогулка
-run - бег
-sleep - сон
-healthy - здоровый
-sick - больной
-pain - боль
-fever - жар
-cough - кашель
-cold - простуда
-allergy - аллергия
-treatment - лечение
-clinic - клиника
-appointment - приём
-diagnosis - диагноз
-symptom - симптом
-recovery - восстановление
-injury - травма
-cut - порез
-bruise - синяк
-bandage - бинт
-injection - укол
-vaccine - вакцина
-surgery - операция
-therapy - терапия
-stress - стресс
-relaxation - расслабление
+head [hed] - голова
+hair [her] - волосы
+face [feɪs] - лицо
+eye [aɪ] - глаз
+ear [ɪr] - ухо
+nose [noʊz] - нос
+mouth [maʊθ] - рот
+tooth [tuːθ] - зуб
+tongue [tʌŋ] - язык
+chin [tʃɪn] - подбородок
+cheek [tʃiːk] - щека
+forehead [ˈfɔːrhed] - лоб
+neck [nek] - шея
+shoulder [ˈʃoʊldər] - плечо
+arm [ɑːrm] - рука
+elbow [ˈelboʊ] - локоть
+hand [hænd] - кисть
+finger [ˈfɪŋɡər] - палец
+thumb [θʌm] - большой палец
+nail [neɪl] - ноготь
+chest [tʃest] - грудь
+stomach [ˈstʌmək] - живот
+back [bæk] - спина
+waist [weɪst] - талия
+hip [hɪp] - бедро
+leg [leɡ] - нога
+knee [niː] - колено
+ankle [ˈæŋkəl] - лодыжка
+foot [fʊt] - ступня
+toe [toʊ] - палец ноги
+skin [skɪn] - кожа
+bone [boʊn] - кость
+muscle [ˈmʌsəl] - мышца
+heart [hɑːrt] - сердце
+lung [lʌŋ] - лёгкое
+blood [blʌd] - кровь
+brain [breɪn] - мозг
+doctor [ˈdɑːktər] - врач
+nurse [nɜːrs] - медсестра
+hospital [ˈhɑːspɪtəl] - больница
+medicine [ˈmedəsən] - лекарство
+pill [pɪl] - таблетка
+vitamin [ˈvaɪtəmɪn] - витамин
+exercise [ˈeksərsaɪz] - упражнение
+walk [wɔːk] - прогулка
+run [rʌn] - бег
+sleep [sliːp] - сон
+healthy [ˈhelθi] - здоровый
+sick [sɪk] - больной
+pain [peɪn] - боль
+fever [ˈfiːvər] - жар
+cough [kɔːf] - кашель
+cold [koʊld] - простуда
+allergy [ˈælərdʒi] - аллергия
+treatment [ˈtriːtmənt] - лечение
+clinic [ˈklɪnɪk] - клиника
+appointment [əˈpɔɪntmənt] - приём
+diagnosis [ˌdaɪəɡˈnoʊsɪs] - диагноз
+symptom [ˈsɪmptəm] - симптом
+recovery [rɪˈkʌvəri] - восстановление
+injury [ˈɪndʒəri] - травма
+cut [kʌt] - порез
+bruise [bruːz] - синяк
+bandage [ˈbændɪdʒ] - бинт
+injection [ɪnˈdʒekʃən] - укол
+vaccine [vækˈsiːn] - вакцина
+surgery [ˈsɜːrdʒəri] - операция
+therapy [ˈθerəpi] - терапия
+stress [stres] - стресс
+relaxation [ˌriːlækˈseɪʃən] - расслабление

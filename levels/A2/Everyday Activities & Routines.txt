@@ -1,80 +1,80 @@
-wake up – просыпаться
-get up – вставать
-stretch – разминаться
-yawn – зевать
-wash face – умываться
-brush teeth – чистить зубы
-take a shower – принимать душ
-get dressed – одеваться
-comb hair – расчесываться
-have breakfast – завтракать
-drink coffee – пить кофе
-read news – читать новости
-check email – проверять почту
-plan day – планировать день
-leave home – выходить из дома
-commute – ехать на работу
-drive – водить машину
-ride bus – ехать на автобусе
-work – работать
-attend meeting – посещать собрание
-write report – писать отчёт
-make calls – звонить
-take a break – делать перерыв
-have lunch – обедать
-chat with colleagues – общаться с коллегами
-return to work – возвращаться к работе
-finish work – заканчивать работу
-go home – идти домой
-cook dinner – готовить ужин
-set the table – накрывать на стол
-eat dinner – ужинать
-wash dishes – мыть посуду
-relax – отдыхать
-watch TV – смотреть телевизор
-read book – читать книгу
-listen to music – слушать музыку
-play games – играть в игры
-exercise – заниматься спортом
-take a walk – гулять
-check social media – проверять соцсети
-chat online – общаться онлайн
-call family – звонить семье
-help children – помогать детям
-do homework – делать домашнее задание
-study – учиться
-review notes – повторять конспект
-prepare for tomorrow – готовиться к завтрашнему дню
-set alarm – ставить будильник
-clean room – убираться в комнате
-do laundry – стирать
-iron clothes – гладить одежду
-vacuum – пылесосить
-water plants – поливать растения
-take out trash – выносить мусор
-pay bills – оплачивать счета
-shop online – делать покупки онлайн
-read magazine – читать журнал
-meditate – медитировать
-stretch again – снова разминаться
-call a friend – звонить другу
-write a journal – вести дневник
-check calendar – проверять календарь
-update schedule – обновлять расписание
-plan weekend – планировать выходные
-visit website – заходить на сайт
-learn new word – изучать новое слово
-practice language – практиковаться в языке
-organize files – организовывать файлы
-update computer – обновлять систему
-back up data – делать резервную копию
-download app – скачивать приложение
-log off – выходить из системы
-relax on sofa – отдыхать на диване
-take a nap – дремать
-dream – мечтать
-fall asleep – засыпать
-sleep well – хорошо спать
-have a good night – желать спокойной ночи
-reflect on day – размышлять о дне
-unwind – расслабляться
+wake up [weɪk ʌp] – просыпаться
+get up [ɡet ʌp] – вставать
+stretch [stretʃ] – разминаться
+yawn [jɔːn] – зевать
+wash face [wɔːʃ feɪs] – умываться
+brush teeth [brʌʃ tiːθ] – чистить зубы
+take a shower [teɪk ə ˈʃaʊər] – принимать душ
+get dressed [ɡet drest] – одеваться
+comb hair [koʊm her] – расчесываться
+have breakfast [hæv ˈbrekfəst] – завтракать
+drink coffee [drɪŋk ˈkɔːfi] – пить кофе
+read news [riːd nuːz] – читать новости
+check email [tʃek ˈiːmeɪl] – проверять почту
+plan day [plæn deɪ] – планировать день
+leave home [liːv hoʊm] – выходить из дома
+commute [kəˈmjuːt] – ехать на работу
+drive [draɪv] – водить машину
+ride bus [raɪd bʌs] – ехать на автобусе
+work [wɜːrk] – работать
+attend meeting [əˈtend ˈmiːtɪŋ] – посещать собрание
+write report [raɪt rɪˈpɔːrt] – писать отчёт
+make calls [meɪk kɔːlz] – звонить
+take a break [teɪk ə breɪk] – делать перерыв
+have lunch [hæv lʌntʃ] – обедать
+chat with colleagues [tʃæt wɪð ˈkɑːliːɡz] – общаться с коллегами
+return to work [rɪˈtɜːrn tu wɜːrk] – возвращаться к работе
+finish work [ˈfɪnɪʃ wɜːrk] – заканчивать работу
+go home [ɡoʊ hoʊm] – идти домой
+cook dinner [kʊk ˈdɪnər] – готовить ужин
+set the table [set ðə ˈteɪbəl] – накрывать на стол
+eat dinner [iːt ˈdɪnər] – ужинать
+wash dishes [wɔːʃ ˈdɪʃəz] – мыть посуду
+relax [rɪˈlæks] – отдыхать
+watch TV [wɑːtʃ ˌtiː ˈviː] – смотреть телевизор
+read book [riːd bʊk] – читать книгу
+listen to music [ˈlɪsən tu ˈmjuːzɪk] – слушать музыку
+play games [pleɪ ɡeɪmz] – играть в игры
+exercise [ˈeksərsaɪz] – заниматься спортом
+take a walk [teɪk ə wɔːk] – гулять
+check social media [tʃek ˈsoʊʃəl ˈmiːdiə] – проверять соцсети
+chat online [tʃæt ˈɔːnlaɪn] – общаться онлайн
+call family [kɔːl ˈfæməli] – звонить семье
+help children [help ˈtʃɪldrən] – помогать детям
+do homework [du ˈhoʊmwɜːrk] – делать домашнее задание
+study [ˈstʌdi] – учиться
+review notes [rɪˈvjuː noʊts] – повторять конспект
+prepare for tomorrow [prɪˈper fɔːr təˈmɔːroʊ] – готовиться к завтрашнему дню
+set alarm [set əˈlɑːrm] – ставить будильник
+clean room [kliːn ruːm] – убираться в комнате
+do laundry [du ˈlɔːndri] – стирать
+iron clothes [ˈaɪərn kloʊðz] – гладить одежду
+vacuum [ˈvækjuːm] – пылесосить
+water plants [ˈwɔːtər plænts] – поливать растения
+take out trash [teɪk aʊt træʃ] – выносить мусор
+pay bills [peɪ bɪlz] – оплачивать счета
+shop online [ʃɑːp ˈɔːnlaɪn] – делать покупки онлайн
+read magazine [riːd ˈmæɡəziːn] – читать журнал
+meditate [ˈmedəteɪt] – медитировать
+stretch again [stretʃ əˈɡen] – снова разминаться
+call a friend [kɔːl ə frend] – звонить другу
+write a journal [raɪt ə ˈdʒɜːrnəl] – вести дневник
+check calendar [tʃek ˈkælɪndər] – проверять календарь
+update schedule [ˈʌpdeɪt ˈskedʒuːl] – обновлять расписание
+plan weekend [plæn ˈwiːkend] – планировать выходные
+visit website [ˈvɪzət ˈwebsaɪt] – заходить на сайт
+learn new word [lɜːrn nuː wɜːrd] – изучать новое слово
+practice language [ˈpræktɪs ˈlæŋɡwɪdʒ] – практиковаться в языке
+organize files [ˈɔːrɡənaɪz faɪlz] – организовывать файлы
+update computer [ˈʌpdeɪt kəmˈpjuːtər] – обновлять систему
+back up data [bæk ʌp ˈdeɪtə] – делать резервную копию
+download app [ˈdaʊnloʊd æp] – скачивать приложение
+log off [lɔːɡ ɔːf] – выходить из системы
+relax on sofa [rɪˈlæks ɑːn ˈsoʊfə] – отдыхать на диване
+take a nap [teɪk ə næp] – дремать
+dream [driːm] – мечтать
+fall asleep [fɔːl əˈsliːp] – засыпать
+sleep well [sliːp wel] – хорошо спать
+have a good night [hæv ə ɡʊd naɪt] – желать спокойной ночи
+reflect on day [rɪˈflekt ɑːn deɪ] – размышлять о дне
+unwind [ʌnˈwaɪnd] – расслабляться

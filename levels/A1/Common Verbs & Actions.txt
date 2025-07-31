@@ -1,70 +1,70 @@
-to be - быть
-to have - иметь
-to do - делать
-to go - идти
-to come - приходить
-to see - видеть
-to look - смотреть
-to eat - есть
-to drink - пить
-to sleep - спать
-to wake up - просыпаться
-to speak - говорить
-to talk - разговаривать
-to listen - слушать
-to hear - слышать
-to read - читать
-to write - писать
-to draw - рисовать
-to play - играть
-to work - работать
-to study - учиться
-to learn - изучать
-to run - бегать
-to walk - гулять
-to swim - плавать
-to drive - водить
-to fly - летать
-to sing - петь
-to dance - танцевать
-to cook - готовить
-to bake - печь
-to clean - убирать
-to wash - мыть
-to open - открывать
-to close - закрывать
-to sit - сидеть
-to stand - стоять
-to lie down - лежать
-to jump - прыгать
-to climb - лазить
-to fall - падать
-to catch - ловить
-to throw - бросать
-to give - давать
-to take - брать
-to make - делать
-to build - строить
-to break - ломать
-to fix - чинить
-to love - любить
-to like - нравиться
-to hate - ненавидеть
-to want - хотеть
-to need - нуждаться
-to help - помогать
-to ask - спрашивать
-to answer - отвечать
-to wait - ждать
-to follow - следовать
-to stop - останавливаться
-to start - начинать
-to finish - заканчивать
-to remember - помнить
-to forget - забывать
-to understand - понимать
-to explain - объяснять
-to look for - искать
-to find - находить
-to decide - решать
-to choose - выбирать
+to be [tu bi] - быть
+to have [tu hæv] - иметь
+to do [tu du] - делать
+to go [tu ɡoʊ] - идти
+to come [tu kʌm] - приходить
+to see [tu si] - видеть
+to look [tu lʊk] - смотреть
+to eat [tu it] - есть
+to drink [tu drɪŋk] - пить
+to sleep [tu slip] - спать
+to wake up [tu weɪk ʌp] - просыпаться
+to speak [tu spik] - говорить
+to talk [tu tɔːk] - разговаривать
+to listen [tu ˈlɪsən] - слушать
+to hear [tu hɪr] - слышать
+to read [tu rid] - читать
+to write [tu raɪt] - писать
+to draw [tu drɔː] - рисовать
+to play [tu pleɪ] - играть
+to work [tu wɜːrk] - работать
+to study [tu ˈstʌdi] - учиться
+to learn [tu lɜːrn] - изучать
+to run [tu rʌn] - бегать
+to walk [tu wɔːk] - гулять
+to swim [tu swɪm] - плавать
+to drive [tu draɪv] - водить
+to fly [tu flaɪ] - летать
+to sing [tu sɪŋ] - петь
+to dance [tu dæns] - танцевать
+to cook [tu kʊk] - готовить
+to bake [tu beɪk] - печь
+to clean [tu klin] - убирать
+to wash [tu wɔːʃ] - мыть
+to open [tu ˈoʊpən] - открывать
+to close [tu kloʊz] - закрывать
+to sit [tu sɪt] - сидеть
+to stand [tu stænd] - стоять
+to lie down [tu laɪ daʊn] - лежать
+to jump [tu dʒʌmp] - прыгать
+to climb [tu klaɪm] - лазить
+to fall [tu fɔːl] - падать
+to catch [tu kætʃ] - ловить
+to throw [tu θroʊ] - бросать
+to give [tu ɡɪv] - давать
+to take [tu teɪk] - брать
+to make [tu meɪk] - делать
+to build [tu bɪld] - строить
+to break [tu breɪk] - ломать
+to fix [tu fɪks] - чинить
+to love [tu lʌv] - любить
+to like [tu laɪk] - нравиться
+to hate [tu heɪt] - ненавидеть
+to want [tu wɑːnt] - хотеть
+to need [tu nid] - нуждаться
+to help [tu help] - помогать
+to ask [tu æsk] - спрашивать
+to answer [tu ˈænsər] - отвечать
+to wait [tu weɪt] - ждать
+to follow [tu ˈfɑːloʊ] - следовать
+to stop [tu stɑːp] - останавливаться
+to start [tu stɑːrt] - начинать
+to finish [tu ˈfɪnɪʃ] - заканчивать
+to remember [tu rɪˈmembər] - помнить
+to forget [tu fərˈɡet] - забывать
+to understand [tu ˌʌndərˈstænd] - понимать
+to explain [tu ɪkˈspleɪn] - объяснять
+to look for [tu lʊk fɔːr] - искать
+to find [tu faɪnd] - находить
+to decide [tu dɪˈsaɪd] - решать
+to choose [tu tʃuz] - выбирать

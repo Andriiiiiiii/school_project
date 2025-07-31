@@ -1,51 +1,51 @@
-Trip – поездка  
-Journey – путешествие  
-Flight – перелёт  
-Airport – аэропорт  
-Ticket – билет  
-Passport – паспорт  
-Suitcase – чемодан  
-Map – карта  
-Beach – пляж  
-Mountain – гора  
-Lake – озеро  
-Forest – лес  
-Rainy – дождливый  
-Windy – ветрено  
-Snowy – снежно  
-Cloudy – облачно  
-Warm – тёплый  
-Cool – прохладный  
-Season – сезон  
-Spring – весна  
-Summer – лето  
-Autumn – осень  
-Winter – зима  
-Holiday – каникулы / отпуск  
-Free time – свободное время  
-Hobby – хобби  
-Drawing – рисование  
-Dancing – танцы  
-Singing – пение  
-Playing – игра (на инструменте или в игру)  
-Practice – практика / тренироваться  
-Lesson – урок  
-Subject – предмет (в школе)  
-Science – наука  
-History – история  
-Language – язык  
-Speak – говорить  
-Understand – понимать  
-Ask – спрашивать  
-Answer – отвечать  
-Talk – разговаривать  
-Listen – слушать  
-Laugh – смеяться  
-Cry – плакать  
-Feel – чувствовать  
-Need – нуждаться  
-Prefer – предпочитать  
-Hope – надеяться  
-Plan – планировать  
-Travel – путешествовать  
-Stay – оставаться / остановиться (в отеле, у друзей)  
+Trip [trɪp] – поездка  
+Journey [ˈdʒɜːrni] – путешествие  
+Flight [flaɪt] – перелёт  
+Airport [ˈerpɔːrt] – аэропорт  
+Ticket [ˈtɪkət] – билет  
+Passport [ˈpæspɔːrt] – паспорт  
+Suitcase [ˈsuːtkeɪs] – чемодан  
+Map [mæp] – карта  
+Beach [biːtʃ] – пляж  
+Mountain [ˈmaʊntən] – гора  
+Lake [leɪk] – озеро  
+Forest [ˈfɔːrəst] – лес  
+Rainy [ˈreɪni] – дождливый  
+Windy [ˈwɪndi] – ветрено  
+Snowy [ˈsnoʊi] – снежно  
+Cloudy [ˈklaʊdi] – облачно  
+Warm [wɔːrm] – тёплый  
+Cool [kuːl] – прохладный  
+Season [ˈsiːzən] – сезон  
+Spring [sprɪŋ] – весна  
+Summer [ˈsʌmər] – лето  
+Autumn [ˈɔːtəm] – осень  
+Winter [ˈwɪntər] – зима  
+Holiday [ˈhɑːlədeɪ] – каникулы / отпуск  
+Free time [friː taɪm] – свободное время  
+Hobby [ˈhɑːbi] – хобби  
+Drawing [ˈdrɔːɪŋ] – рисование  
+Dancing [ˈdænsɪŋ] – танцы  
+Singing [ˈsɪŋɪŋ] – пение  
+Playing [ˈpleɪɪŋ] – игра (на инструменте или в игру)  
+Practice [ˈpræktɪs] – практика / тренироваться  
+Lesson [ˈlesən] – урок  
+Subject [ˈsʌbdʒekt] – предмет (в школе)  
+Science [ˈsaɪəns] – наука  
+History [ˈhɪstəri] – история  
+Language [ˈlæŋɡwɪdʒ] – язык  
+Speak [spiːk] – говорить  
+Understand [ˌʌndərˈstænd] – понимать  
+Ask [æsk] – спрашивать  
+Answer [ˈænsər] – отвечать  
+Talk [tɔːk] – разговаривать  
+Listen [ˈlɪsən] – слушать  
+Laugh [læf] – смеяться  
+Cry [kraɪ] – плакать  
+Feel [fiːl] – чувствовать  
+Need [niːd] – нуждаться  
+Prefer [prɪˈfɜːr] – предпочитать  
+Hope [hoʊp] – надеяться  
+Plan [plæn] – планировать  
+Travel [ˈtrævəl] – путешествовать  
+Stay [steɪ] – оставаться / остановиться (в отеле, у друзей)

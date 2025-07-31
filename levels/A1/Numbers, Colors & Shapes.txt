@@ -1,70 +1,70 @@
-one - один
-two - два
-three - три
-four - четыре
-five - пять
-six - шесть
-seven - семь
-eight - восемь
-nine - девять
-ten - десять
-eleven - одиннадцать
-twelve - двенадцать
-thirteen - тринадцать
-fourteen - четырнадцать
-fifteen - пятнадцать
-sixteen - шестнадцать
-seventeen - семнадцать
-eighteen - восемнадцать
-nineteen - девятнадцать
-twenty - двадцать
-twenty-one - двадцать один
-twenty-two - двадцать два
-twenty-three - двадцать три
-twenty-four - двадцать четыре
-twenty-five - двадцать пять
-twenty-six - двадцать шесть
-twenty-seven - двадцать семь
-twenty-eight - двадцать восемь
-twenty-nine - двадцать девять
-thirty - тридцать
-red - красный
-blue - синий
-yellow - жёлтый
-green - зелёный
-orange - оранжевый
-purple - фиолетовый
-pink - розовый
-brown - коричневый
-black - чёрный
-white - белый
-gray - серый
-gold - золотой
-silver - серебряный
-beige - бежевый
-turquoise - бирюзовый
-violet - лиловый
-indigo - индиго
-magenta - маджента
-cyan - циан
-maroon - бордовый
-circle - круг
-square - квадрат
-triangle - треугольник
-rectangle - прямоугольник
-oval - овал
-diamond - ромб
-star - звезда
-heart - сердце
-pentagon - пятиугольник
-hexagon - шестиугольник
-octagon - восьмиугольник
-cube - куб
-sphere - шар
-cylinder - цилиндр
-cone - конус
-pyramid - пирамида
-ellipse - эллипс
-trapezoid - трапеция
-parallelogram - параллелограмм
-crescent - полумесяц
+one [wʌn] - один
+two [tuː] - два
+three [θriː] - три
+four [fɔːr] - четыре
+five [faɪv] - пять
+six [sɪks] - шесть
+seven [ˈsevən] - семь
+eight [eɪt] - восемь
+nine [naɪn] - девять
+ten [ten] - десять
+eleven [ɪˈlevən] - одиннадцать
+twelve [twelv] - двенадцать
+thirteen [ˌθɜːrˈtiːn] - тринадцать
+fourteen [ˌfɔːrˈtiːn] - четырнадцать
+fifteen [ˌfɪfˈtiːn] - пятнадцать
+sixteen [ˌsɪksˈtiːn] - шестнадцать
+seventeen [ˌsevənˈtiːn] - семнадцать
+eighteen [ˌeɪˈtiːn] - восемнадцать
+nineteen [ˌnaɪnˈtiːn] - девятнадцать
+twenty [ˈtwenti] - двадцать
+twenty-one [ˌtwenti ˈwʌn] - двадцать один
+twenty-two [ˌtwenti ˈtuː] - двадцать два
+twenty-three [ˌtwenti ˈθriː] - двадцать три
+twenty-four [ˌtwenti ˈfɔːr] - двадцать четыре
+twenty-five [ˌtwenti ˈfaɪv] - двадцать пять
+twenty-six [ˌtwenti ˈsɪks] - двадцать шесть
+twenty-seven [ˌtwenti ˈsevən] - двадцать семь
+twenty-eight [ˌtwenti ˈeɪt] - двадцать восемь
+twenty-nine [ˌtwenti ˈnaɪn] - двадцать девять
+thirty [ˈθɜːrti] - тридцать
+red [red] - красный
+blue [bluː] - синий
+yellow [ˈjeloʊ] - жёлтый
+green [ɡriːn] - зелёный
+orange [ˈɔːrɪndʒ] - оранжевый
+purple [ˈpɜːrpəl] - фиолетовый
+pink [pɪŋk] - розовый
+brown [braʊn] - коричневый
+black [blæk] - чёрный
+white [waɪt] - белый
+gray [ɡreɪ] - серый
+gold [ɡoʊld] - золотой
+silver [ˈsɪlvər] - серебряный
+beige [beɪʒ] - бежевый
+turquoise [ˈtɜːrkwɔɪz] - бирюзовый
+violet [ˈvaɪələt] - лиловый
+indigo [ˈɪndɪɡoʊ] - индиго
+magenta [məˈdʒentə] - маджента
+cyan [ˈsaɪæn] - циан
+maroon [məˈruːn] - бордовый
+circle [ˈsɜːrkəl] - круг
+square [skwer] - квадрат
+triangle [ˈtraɪæŋɡəl] - треугольник
+rectangle [ˈrektæŋɡəl] - прямоугольник
+oval [ˈoʊvəl] - овал
+diamond [ˈdaɪmənd] - ромб
+star [stɑːr] - звезда
+heart [hɑːrt] - сердце
+pentagon [ˈpentəɡən] - пятиугольник
+hexagon [ˈheksəɡən] - шестиугольник
+octagon [ˈɑːktəɡən] - восьмиугольник
+cube [kjuːb] - куб
+sphere [sfɪr] - шар
+cylinder [ˈsɪlɪndər] - цилиндр
+cone [koʊn] - конус
+pyramid [ˈpɪrəmɪd] - пирамида
+ellipse [ɪˈlɪps] - эллипс
+trapezoid [ˈtræpəzɔɪd] - трапеция
+parallelogram [ˌpærəˈleləɡræm] - параллелограмм
+crescent [ˈkresənt] - полумесяц
