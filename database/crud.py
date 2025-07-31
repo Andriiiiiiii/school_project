@@ -532,3 +532,155 @@ def update_user_memorize_words_count(chat_id: int, count: int):
     except Exception as e:
         logger.error(f"Error updating memorize_words_count for user {chat_id}: {e}")
         raise
+def generate_referral_code(chat_id: int) -> str:
+    """Генерирует уникальный реферальный код для пользователя."""
+    import hashlib
+    import time
+    raw_string = f"{chat_id}_{int(time.time())}"
+    return hashlib.md5(raw_string.encode()).hexdigest()[:8].upper()
+
+def set_user_referral_code(chat_id: int) -> str:
+    """Устанавливает реферальный код пользователю, если его нет."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute("SELECT referral_code FROM users WHERE chat_id = ?", (chat_id,))
+            result = cursor.fetchone()
+            
+            if result and result[0]:
+                return result[0]
+                
+        # Генерируем новый код
+        referral_code = generate_referral_code(chat_id)
+        
+        with db_manager.transaction() as tx:
+            tx.execute("UPDATE users SET referral_code = ? WHERE chat_id = ?", 
+                      (referral_code, chat_id))
+        
+        logger.info(f"Generated referral code {referral_code} for user {chat_id}")
+        return referral_code
+        
+    except Exception as e:
+        logger.error(f"Error setting referral code for user {chat_id}: {e}")
+        return generate_referral_code(chat_id)
+
+def add_referral(referrer_id: int, referred_id: int) -> bool:
+    """Добавляет реферал в систему."""
+    try:
+        with db_manager.transaction() as tx:
+            # Проверяем, что пользователь еще не является рефералом
+            cursor = tx.cursor()  # Получаем курсор от транзакции
+            cursor.execute("SELECT id FROM referrals WHERE referred_id = ?", (referred_id,))
+            if cursor.fetchone():
+                return False  # Уже является чьим-то рефералом
+                
+            # Проверяем, что пользователь не реферит сам себя
+            if referrer_id == referred_id:
+                return False
+                
+            # Добавляем реферал
+            from datetime import datetime
+            cursor.execute('''
+                INSERT INTO referrals (referrer_id, referred_id, created_at)
+                VALUES (?, ?, ?)
+            ''', (referrer_id, referred_id, datetime.now().isoformat()))
+            
+        logger.info(f"Added referral: {referrer_id} -> {referred_id}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error adding referral {referrer_id} -> {referred_id}: {e}")
+        return False
+
+def get_user_referrals(chat_id: int) -> list:
+    """Получает список рефералов пользователя."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute('''
+                SELECT r.referred_id, r.created_at, u.chat_id
+                FROM referrals r
+                LEFT JOIN users u ON r.referred_id = u.chat_id  
+                WHERE r.referrer_id = ?
+                ORDER BY r.created_at DESC
+            ''', (chat_id,))
+            return cursor.fetchall()
+    except Exception as e:
+        logger.error(f"Error getting referrals for user {chat_id}: {e}")
+        return []
+
+def count_user_referrals(chat_id: int) -> int:
+    """Подсчитывает количество рефералов пользователя."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute("SELECT COUNT(*) FROM referrals WHERE referrer_id = ?", (chat_id,))
+            result = cursor.fetchone()
+            return result[0] if result else 0
+    except Exception as e:
+        logger.error(f"Error counting referrals for user {chat_id}: {e}")
+        return 0
+
+def get_user_by_referral_code(referral_code: str) -> tuple:
+    """Получает пользователя по реферальному коду."""
+    try:
+        with db_manager.get_cursor() as cursor:
+            cursor.execute("SELECT * FROM users WHERE referral_code = ?", (referral_code,))
+            return cursor.fetchone()
+    except Exception as e:
+        logger.error(f"Error getting user by referral code {referral_code}: {e}")
+        return None
+
+def create_referral_reward(user_id: int, reward_type: str, reward_value: int, referrals_count: int):
+    """Создает награду за рефералы."""
+    try:
+        with db_manager.transaction() as tx:
+            from datetime import datetime
+            tx.execute('''
+                INSERT INTO referral_rewards 
+                (user_id, reward_type, reward_value, referrals_count, created_at)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (user_id, reward_type, reward_value, referrals_count, datetime.now().isoformat()))
+        
+        logger.info(f"Created referral reward for user {user_id}: {reward_type} {reward_value}")
+        
+    except Exception as e:
+        logger.error(f"Error creating referral reward for user {user_id}: {e}")
+
+def process_referral_rewards(user_id: int) -> bool:
+    """Обрабатывает награды за рефералы и активирует подписку."""
+    try:
+        referrals_count = count_user_referrals(user_id)
+        
+        # Проверяем, достиг ли пользователь 5 рефералов и не получал ли уже награду
+        if referrals_count >= 5:
+            with db_manager.get_cursor() as cursor:
+                cursor.execute('''
+                    SELECT COUNT(*) FROM referral_rewards 
+                    WHERE user_id = ? AND reward_type = 'subscription' AND processed = TRUE
+                ''', (user_id,))
+                
+                already_rewarded = cursor.fetchone()[0] > 0
+                
+                if not already_rewarded:
+                    # Создаем награду
+                    create_referral_reward(user_id, 'subscription', 1, referrals_count)
+                    
+                    # Активируем подписку на месяц
+                    from services.payment import PaymentService
+                    expiry_date = PaymentService.calculate_subscription_expiry(1, user_id)
+                    update_user_subscription(user_id, "premium", expiry_date, f"referral_reward_{int(datetime.now().timestamp())}")
+                    
+                    # Отмечаем награду как обработанную
+                    with db_manager.transaction() as tx:
+                        tx.execute('''
+                            UPDATE referral_rewards 
+                            SET processed = TRUE 
+                            WHERE user_id = ? AND reward_type = 'subscription' AND processed = FALSE
+                        ''', (user_id,))
+                    
+                    logger.info(f"Processed referral reward for user {user_id}: 1 month subscription")
+                    return True
+        
+        return False
+        
+    except Exception as e:
+        logger.error(f"Error processing referral rewards for user {user_id}: {e}")
+        return False

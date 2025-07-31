@@ -62,16 +62,55 @@ async def cmd_start(message: types.Message, bot: Bot) -> None:
         # Явно устанавливаем кнопку меню команд для этого конкретного чата
         await bot.set_chat_menu_button(chat_id=chat_id, menu_button=MenuButtonCommands())
         
+        # Обработка реферальной ссылки
+        referrer_id = None
+        if message.text and len(message.text.split()) > 1:
+            start_param = message.text.split()[1]
+            if start_param.startswith("ref_"):
+                try:
+                    referral_code = start_param[4:]  # Убираем "ref_"
+                    referrer = crud.get_user_by_referral_code(referral_code)
+                    if referrer:
+                        referrer_id = referrer[0]  # chat_id реферера
+                        logger.info(f"User {chat_id} came via referral from {referrer_id}")
+                except Exception as e:
+                    logger.error(f"Error processing referral link: {e}")
+        
         # ─── регистрация нового пользователя ───────────────────────────────
-        if not crud.get_user(chat_id):
+        is_new_user = not crud.get_user(chat_id)
+        if is_new_user:
             crud.add_user(chat_id)
             logger.info("Создан новый пользователь %s", chat_id)
+
+            # Устанавливаем реферальный код для нового пользователя
+            crud.set_user_referral_code(chat_id)
+
+            # Обрабатываем реферальную ссылку
+            if referrer_id and referrer_id != chat_id:
+                if crud.add_referral(referrer_id, chat_id):
+                    # Уведомляем реферера о новом друге
+                    try:
+                        referrals_count = crud.count_user_referrals(referrer_id)
+                        await bot.send_message(
+                            referrer_id,
+                            f"🎉 По вашей ссылке присоединился новый друг!\n"
+                            f"👥 Всего друзей: {referrals_count}/5\n"
+                            + (f"🎁 Поздравляем! Вы получили месяц Premium!" if referrals_count >= 5 else "")
+                        )
+                        
+                        # Проверяем и обрабатываем награды
+                        if crud.process_referral_rewards(referrer_id):
+                            await bot.send_message(
+                                referrer_id,
+                                "💎 Ваша Premium подписка активирована за приглашение 5 друзей!"
+                            )
+                    except Exception as e:
+                        logger.error(f"Error notifying referrer {referrer_id}: {e}")
 
             default_set = DEFAULT_SETS.get("A1")
             if default_set:
                 crud.update_user_chosen_set(chat_id, default_set)
                 from handlers.settings import user_set_selection
-
                 user_set_selection[chat_id] = default_set
                 logger.info("Базовый сет %s назначен пользователю %s", default_set, chat_id)
 

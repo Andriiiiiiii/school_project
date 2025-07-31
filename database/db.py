@@ -126,6 +126,7 @@ class DatabaseManager:
             logger.error("Транзакция отменена: %s", e)
             raise
     
+
     def init_db(self):
         """Инициализирует базу данных с оптимизированными таблицами."""
         try:
@@ -143,7 +144,8 @@ class DatabaseManager:
                     memorize_words_count INTEGER DEFAULT 5,
                     subscription_status TEXT DEFAULT 'free',
                     subscription_expires_at TEXT DEFAULT NULL,
-                    subscription_payment_id TEXT DEFAULT NULL
+                    subscription_payment_id TEXT DEFAULT NULL,
+                    referral_code TEXT UNIQUE
                 )
             ''', commit=True)
             
@@ -188,13 +190,41 @@ class DatabaseManager:
                 )
             ''', commit=True)
             
+            # Таблица рефералов
+            self.execute('''
+                CREATE TABLE IF NOT EXISTS referrals (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    referrer_id INTEGER NOT NULL,
+                    referred_id INTEGER NOT NULL,
+                    created_at TEXT NOT NULL,
+                    rewarded BOOLEAN DEFAULT FALSE,
+                    FOREIGN KEY (referrer_id) REFERENCES users (chat_id),
+                    FOREIGN KEY (referred_id) REFERENCES users (chat_id),
+                    UNIQUE(referred_id)
+                )
+            ''', commit=True)
+            
+            # Таблица наград за рефералы
+            self.execute('''
+                CREATE TABLE IF NOT EXISTS referral_rewards (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    reward_type TEXT NOT NULL,
+                    reward_value INTEGER NOT NULL,
+                    referrals_count INTEGER NOT NULL,
+                    created_at TEXT NOT NULL,
+                    processed BOOLEAN DEFAULT FALSE,
+                    FOREIGN KEY (user_id) REFERENCES users (chat_id)
+                )
+            ''', commit=True)
+                
             # Создаем индексы для оптимизации запросов
             self._create_indexes()
             
         except Exception as e:
             logger.error("Ошибка инициализации БД: %s", e)
             raise
-    
+
     def _create_indexes(self):
         """Создает индексы для оптимизации запросов."""
         indexes = [
@@ -202,7 +232,11 @@ class DatabaseManager:
             "CREATE INDEX IF NOT EXISTS idx_learned_words_word ON learned_words(word)",
             "CREATE INDEX IF NOT EXISTS idx_active_payments_chat_id ON active_payments(chat_id)",
             "CREATE INDEX IF NOT EXISTS idx_active_payments_processed ON active_payments(processed)",
-            "CREATE INDEX IF NOT EXISTS idx_users_subscription ON users(subscription_status, subscription_expires_at)"
+            "CREATE INDEX IF NOT EXISTS idx_users_subscription ON users(subscription_status, subscription_expires_at)",
+            "CREATE INDEX IF NOT EXISTS idx_referrals_referrer ON referrals(referrer_id)",
+            "CREATE INDEX IF NOT EXISTS idx_referrals_referred ON referrals(referred_id)", 
+            "CREATE INDEX IF NOT EXISTS idx_referral_rewards_user ON referral_rewards(user_id)",
+            "CREATE INDEX IF NOT EXISTS idx_users_referral_code ON users(referral_code)"
         ]
         
         for index_sql in indexes:
@@ -211,7 +245,7 @@ class DatabaseManager:
             except Exception as e:
                 if not PRODUCTION_MODE:
                     logger.warning("Не удалось создать индекс: %s", e)
-    
+
     def optimize_db(self):
         """Оптимизирует базу данных (вызывать периодически)."""
         try:

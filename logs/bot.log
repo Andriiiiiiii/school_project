@@ -2533,3 +2533,336 @@ TimeoutError
 2025-07-01 20:46:58,031 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-01 20:47:58 MSK)" (scheduled at 2025-07-01 20:46:58.024856+03:00)
 2025-07-01 20:46:58,032 - INFO - services.scheduler - Отправлено уведомление пользователю 380675615 в 20:46
 2025-07-01 20:46:58,035 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-01 20:47:58 MSK)" executed successfully
+2025-07-31 23:55:11,721 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-31 23:55:11,723 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-07-31 23:55:11,723 - INFO - apscheduler.scheduler - Scheduler started
+2025-07-31 23:55:11,723 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-07-31 23:55:11,967 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-07-31 23:55:11,967 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-07-31 23:55:11,974 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-07-31 23:55:19,055 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-07-31 23:55:19,232 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-07-31 23:55:19,232 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-07-31 23:55:19,232 - INFO - database.crud - Generated referral code C74B7553 for user 380675615
+2025-07-31 23:55:19,233 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-07-31 23:55:19,233 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-07-31 23:55:20,758 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-07-31 23:56:00,845 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-39' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=CantParseEntities("Can't parse entities: can't find end of the entity starting at byte offset 477")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 103, in share_referral_link
+    await bot.send_message(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.CantParseEntities: Can't parse entities: can't find end of the entity starting at byte offset 477
+2025-07-31 23:56:11,725 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-31 23:57:11 MSK)" (scheduled at 2025-07-31 23:56:11.721580+03:00)
+2025-07-31 23:56:11,725 - INFO - services.scheduler - Кэш пользователей обновлен: 1 пользователей
+2025-07-31 23:56:11,726 - INFO - services.payment - Checking 0 active payments
+2025-07-31 23:56:11,776 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-31 23:57:11 MSK)" executed successfully
+2025-07-31 23:56:24,637 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-07-31 23:56:24,779 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-07-31 23:56:24,779 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-07-31 23:56:24,779 - INFO - database.crud - Generated referral code 16A5ED31 for user 1999873173
+2025-07-31 23:56:24,779 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-07-31 23:56:24,779 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-07-31 23:56:27,324 - INFO - database.crud - Набор пользователя 1999873173 обновлен на B2 Basic 1
+2025-07-31 23:57:11,726 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-31 23:58:11 MSK)" (scheduled at 2025-07-31 23:57:11.721580+03:00)
+2025-07-31 23:57:11,727 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-07-31 23:58:11 MSK)" executed successfully
+2025-07-31 23:58:04,038 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-31 23:58:04,039 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-07-31 23:58:04,039 - INFO - apscheduler.scheduler - Scheduler started
+2025-07-31 23:58:04,040 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-07-31 23:58:04,296 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-07-31 23:58:04,296 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-07-31 23:58:04,298 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-07-31 23:58:08,061 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-07-31 23:58:08,193 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-07-31 23:58:08,194 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-07-31 23:58:08,194 - INFO - database.crud - Generated referral code 1667B548 for user 380675615
+2025-07-31 23:58:08,194 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-07-31 23:58:08,194 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-07-31 23:58:09,418 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-07-31 23:58:14,428 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-37' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=CantParseEntities("Can't parse entities: can't find end of the entity starting at byte offset 483")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 103, in share_referral_link
+    await bot.send_message(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.CantParseEntities: Can't parse entities: can't find end of the entity starting at byte offset 483
+2025-07-31 23:58:43,517 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-07-31 23:58:43,643 - INFO - handlers.commands - User 1999873173 came via referral from 380675615
+2025-07-31 23:58:43,643 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-07-31 23:58:43,643 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-07-31 23:58:43,643 - INFO - database.crud - Generated referral code FCD2D817 for user 1999873173
+2025-07-31 23:58:43,643 - ERROR - database.db - Транзакция отменена: 'sqlite3.Connection' object has no attribute 'fetchone'
+2025-07-31 23:58:43,644 - ERROR - database.crud - Error adding referral 380675615 -> 1999873173: 'sqlite3.Connection' object has no attribute 'fetchone'
+2025-07-31 23:58:43,644 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-07-31 23:58:43,644 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-07-31 23:59:04,043 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:00:04 MSK)" (scheduled at 2025-07-31 23:59:04.038279+03:00)
+2025-07-31 23:59:04,043 - INFO - services.scheduler - Кэш пользователей обновлен: 2 пользователей
+2025-07-31 23:59:04,044 - INFO - services.payment - Checking 0 active payments
+2025-07-31 23:59:04,086 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:00:04 MSK)" executed successfully
+2025-07-31 23:59:18,042 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-131' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=CantParseEntities("Can't parse entities: can't find end of the entity starting at byte offset 483")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 103, in share_referral_link
+    await bot.send_message(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 346, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.CantParseEntities: Can't parse entities: can't find end of the entity starting at byte offset 483
+2025-08-01 00:00:04,044 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:01:04 MSK)" (scheduled at 2025-08-01 00:00:04.038279+03:00)
+2025-08-01 00:00:04,045 - ERROR - database.crud - Error getting streak for user 380675615: no such column: days_streak
+2025-08-01 00:00:04,045 - INFO - services.scheduler - Saved 1 leftover words for user 380675615
+2025-08-01 00:00:04,045 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-08-01 00:00:04,046 - INFO - services.scheduler - Ежедневный сброс выполнен для пользователя 380675615 (TZ: Europe/Moscow)
+2025-08-01 00:00:04,046 - ERROR - database.crud - Error getting streak for user 1999873173: no such column: days_streak
+2025-08-01 00:00:04,046 - INFO - services.scheduler - Saved 5 leftover words for user 1999873173
+2025-08-01 00:00:04,046 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 1999873173
+2025-08-01 00:00:04,046 - INFO - services.scheduler - Ежедневный сброс выполнен для пользователя 1999873173 (TZ: Europe/Moscow)
+2025-08-01 00:00:04,047 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:01:04 MSK)" executed successfully
+2025-08-01 00:01:04,042 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:02:04 MSK)" (scheduled at 2025-08-01 00:01:04.038279+03:00)
+2025-08-01 00:01:04,042 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:02:04 MSK)" executed successfully
+2025-08-01 00:02:04,041 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:03:04 MSK)" (scheduled at 2025-08-01 00:02:04.038279+03:00)
+2025-08-01 00:02:04,043 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:03:04 MSK)" executed successfully
+2025-08-01 00:02:57,333 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-01 00:02:57,333 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-08-01 00:02:57,333 - INFO - apscheduler.scheduler - Scheduler started
+2025-08-01 00:02:57,333 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-08-01 00:02:57,588 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-08-01 00:02:57,589 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-08-01 00:02:57,590 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-08-01 00:03:03,409 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-08-01 00:03:03,567 - INFO - database.crud - Added new user 380675615 with default set A1 Basic 1
+2025-08-01 00:03:03,567 - INFO - handlers.commands - Создан новый пользователь 380675615
+2025-08-01 00:03:03,567 - INFO - database.crud - Generated referral code 16929CBD for user 380675615
+2025-08-01 00:03:03,567 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-08-01 00:03:03,567 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 380675615
+2025-08-01 00:03:06,295 - INFO - database.crud - Набор пользователя 380675615 обновлен на A1 Basic 1
+2025-08-01 00:03:09,814 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-32' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=CantParseEntities("Can't parse entities: character '!' is reserved and must be escaped with the preceding '\\'")>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 56, in show_referral_menu
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.CantParseEntities: Can't parse entities: character '!' is reserved and must be escaped with the preceding '\'
+2025-08-01 00:03:57,341 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:04:57 MSK)" (scheduled at 2025-08-01 00:03:57.333327+03:00)
+2025-08-01 00:03:57,342 - INFO - services.scheduler - Кэш пользователей обновлен: 1 пользователей
+2025-08-01 00:03:57,342 - INFO - services.payment - Checking 0 active payments
+2025-08-01 00:03:57,342 - ERROR - database.crud - Error getting streak for user 380675615: no such column: days_streak
+2025-08-01 00:03:57,342 - INFO - services.scheduler - Saved 1 leftover words for user 380675615
+2025-08-01 00:03:57,342 - INFO - utils.helpers - Кэш слов дня сброшен для пользователя 380675615
+2025-08-01 00:03:57,342 - INFO - services.scheduler - Ежедневный сброс выполнен для пользователя 380675615 (TZ: Europe/Moscow)
+2025-08-01 00:03:57,385 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:04:57 MSK)" executed successfully
+2025-08-01 00:04:57,341 - INFO - apscheduler.executors.default - Running job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:05:57 MSK)" (scheduled at 2025-08-01 00:04:57.333327+03:00)
+2025-08-01 00:04:57,345 - INFO - apscheduler.executors.default - Job "scheduler_job (trigger: interval[0:01:00], next run at: 2025-08-01 00:05:57 MSK)" executed successfully
+2025-08-01 00:05:44,762 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-01 00:05:44,763 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-08-01 00:05:44,763 - INFO - apscheduler.scheduler - Scheduler started
+2025-08-01 00:05:44,764 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-08-01 00:05:45,068 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-08-01 00:05:45,068 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-08-01 00:05:45,072 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-08-01 00:05:50,336 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-08-01 00:06:18,155 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-08-01 00:06:18,354 - INFO - handlers.commands - User 1999873173 came via referral from 380675615
+2025-08-01 00:06:18,358 - INFO - database.crud - Added new user 1999873173 with default set A1 Basic 1
+2025-08-01 00:06:18,358 - INFO - handlers.commands - Создан новый пользователь 1999873173
+2025-08-01 00:06:18,359 - INFO - database.crud - Generated referral code 12708EF7 for user 1999873173
+2025-08-01 00:06:18,359 - INFO - database.crud - Added referral: 380675615 -> 1999873173
+2025-08-01 00:06:18,539 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A1 Basic 1
+2025-08-01 00:06:18,539 - INFO - handlers.commands - Базовый сет A1 Basic 1 назначен пользователю 1999873173
+2025-08-01 00:06:23,637 - INFO - database.crud - Набор пользователя 1999873173 обновлен на A2 Basic 1
+2025-08-01 00:06:44,376 - INFO - apscheduler.scheduler - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-01 00:06:44,376 - INFO - apscheduler.scheduler - Added job "scheduler_job" to job store "default"
+2025-08-01 00:06:44,376 - INFO - apscheduler.scheduler - Scheduler started
+2025-08-01 00:06:44,376 - INFO - services.scheduler - Планировщик запущен в режиме DEVELOPMENT
+2025-08-01 00:06:44,699 - INFO - handlers.commands - Кнопка меню команд установлена глобально
+2025-08-01 00:06:44,699 - INFO - __main__ - Проверка пропущенных уведомлений за последние 2 часов
+2025-08-01 00:06:44,704 - INFO - __main__ - Бот успешно запущен в режиме: DEVELOPMENT
+2025-08-01 00:06:52,855 - INFO - handlers.commands - Команда /start от chat_id=380675615
+2025-08-01 00:06:53,050 - INFO - handlers.commands - User 380675615 came via referral from 1999873173
+2025-08-01 00:07:04,622 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-08-01 00:07:09,686 - INFO - handlers.commands - Команда /start от chat_id=1999873173
+2025-08-01 00:07:18,967 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-54' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 83, in show_referral_history
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-08-01 00:07:25,279 - ERROR - asyncio - Task exception was never retrieved
+future: <Task finished name='Task-74' coro=<Dispatcher._process_polling_updates() done, defined at /home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/english_learning_bot/handlers/referrals.py", line 83, in show_referral_history
+    await callback.message.edit_text(
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/types/message.py", line 2919, in edit_text
+    return await self.bot.edit_message_text(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3122, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/home/olegb/project/venv/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
